@@ -1,0 +1,80 @@
+#+TITLE: Project Management of Teaching Econometrics
+#+AUTHOR: Zheng Tian
+#+EMAIL: zngtian@gmail.com
+#+DATE: Spring semester, 2017
+#+OPTIONS: H:3 num:2 toc:nil
+#+CATEGORY: teaching
+#+PROPERTY: header-args:R  :session *econR*
+#+FILETAGS: teaching_econometrics
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage[round]{natbib}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+#+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
+#+LATEX_HEADER: \newcommand{\E}{\mathrm{E}}
+#+LATEX_HEADER: \newcommand{\var}{\mathrm{Var}}
+#+LATEX_HEADER: \newcommand{\cov}{\mathrm{Cov}}
+#+LATEX_HEADER: \newcommand{\corr}{\mathrm{Corr}}
+#+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
+#+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+#+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
+#+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+#+LATEX_HEADER: \newtheorem{definition}{Definition}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}
+
+
+* Introduction
+** Goals
+
+* Plan and Tasks
+
+* Syllabus
+
+* Lecture Notes
+
+** Lecture 1
+
+** Lecture 2
+
+** Lecture 3
+
+** R tutorials
+
+** Git tutorials
+
+* Presentation
+
+** Lecture 1
+
+** Lecture 2
+
+** Lecture 3
+
+* Homework sets
+
+** Homework set 1
+
+** Homework set 2
+
+* Course Project
+
+** Introduction
+
+** Starter codes
+
+* Examination
+
+** Quiz
+
+** Midterm exam
+
+** Final exam
