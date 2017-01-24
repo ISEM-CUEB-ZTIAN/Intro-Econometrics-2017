@@ -33,9 +33,77 @@
 
 
 * Introduction
+
+** What is this project about?
+
+This project is for preparing the course of Introduction to Econometrics for
+undergraduate students at ISEM, CUEB in the spring semester
+(February--June), 2017. 
+
 ** Goals
 
+The goal of setting up this project is to use it and github as a
+platform to maintain course materials for teaching this course. 
+
+What will be achieved through this projects include:
+- Lecture notes. All lecture notes will be written using Emacs org
+  mode, exported to pdf and html files. 
+- Presentation slides. Slides will be written using org mode, exported
+  via beamer and reveal.js to pdf and html files.
+- Lecture notes (maybe plus slides) will be shown through github
+  pages. 
+- Homework sets.
+- Course projects. Students need to practice Econometrics by
+  programming with R, and document their work with Rmarkdown and
+  knitr.
+- Exames and quiz.
+
+
 * Plan and Tasks
+
+** Stage I: Set up basic course skeleton <2017-01-24 Tue>-<2017-02-05 Sun>
+
+In this stage, I will move the course materials in last two years to
+this project, updating course information and making necessary but
+minor changes to the contents of course materials. 
+
+*** Update syllabus
+- [ ] Change class time.
+- [ ] Change classroom.
+- [ ] Change course schedule.
+- [ ] Add contents for course project.
+
+*** Copy lecture notes, slides, and update time in each note.
+- [ ] Copy lecture notes.
+- [ ] Copy slides.
+- [ ] Change time in each file.
+
+** Stage II: Revise course materials <2017-02-06 Mon>-<2017-03-05 Sun>
+
+In this stage, I will revise the previous lecture notes and
+slides, add new materials for R programming, reproducible research
+method, and add course project templates. 
+
+*** Revise lecture notes
+- [ ] Add more detailed information.
+
+*** Revise slides
+- [ ] Remove redundant information in slides.
+- [ ] Export to reveal.js with hints in slide notes.
+
+*** Revise tutorial for R
+- [ ] Fine-tune the documentation and R source blocks in org files.
+- [ ] Re-format tutorials with Rmarkdown. 
+
+*** Prepare homework and exams
+
+** Stage III: Add new elements in html <2017-03-06 Mon>-<2017-03-19 Sun>
+
+In this stage, I will focus on transforming the plain html files
+exported from org files with new export engines, such as jekyll. The
+final product is a github page, such as
+http://intro-economtrics-isem-2017.github.io. 
+
 
 * Syllabus
 
