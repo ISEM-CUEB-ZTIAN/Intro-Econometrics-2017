@@ -107,6 +107,10 @@ http://intro-economtrics-isem-2017.github.io.
 
 * Syllabus
 
+** The file of syllabus
+
+[[file:handouts/syllabus/syllabus_2016_undergrad.org][syllabus_2016_undergrad.org]]
+
 * Lecture Notes
 
 ** Lecture 1

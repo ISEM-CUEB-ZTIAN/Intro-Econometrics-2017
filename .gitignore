@@ -268,3 +268,6 @@ _site/
 *#
 */auto/*
 
+*_archive
+*.el
+/handouts/syllabus/auto/
