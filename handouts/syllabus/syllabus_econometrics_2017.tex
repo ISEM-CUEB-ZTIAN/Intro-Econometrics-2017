@@ -1,4 +1,4 @@
-% Created 2017-01-24 Tue 20:29
+% Created 2017-01-30 Mon 21:46
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -18,6 +18,7 @@
 \usepackage{setspace}
 \singlespace
 \usepackage{CJK}
+\usepackage{parskip}
 \setcounter{secnumdepth}{1}
 \author{Zheng Tian}
 \date{Spring semester, 2017}
@@ -27,16 +28,18 @@
  pdftitle={Syllabus for Introduction to Econometrics},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
  pdflang={English}}
 \begin{document}
 
 \maketitle
 
-\section{Basic information}
-\label{sec:orgf8ce1fa}
+\section{Basic information\footnote{The instructor reserves the right to change this syllabus as
+time and circumstances dictate. Necessary changes will be announced in
+class in advance when possible.}}
+\label{sec:org0afc9f8}
 \subsection*{Time and location}
-\label{sec:org0f9e4bf}
+\label{sec:org78ce625}
 
 \begin{center}
 \begin{tabular}{llll}
@@ -48,7 +51,7 @@ Even weeks & Monday & 08:00 am -- 11:50 am & Buoxue Building (\begin{CJK}{UTF8}{
 
 
 \subsection*{Instructor information}
-\label{sec:orgc211ace}
+\label{sec:org555fde7}
 
 \begin{center}
 \begin{tabular}{ll}
@@ -61,7 +64,7 @@ Tel: & 83951054\\
 
 
 \subsection*{Office hours}
-\label{sec:org2830bcd}
+\label{sec:org7cc4a97}
 Office hours are tentatively scheduled as follows,
 
 \begin{center}
@@ -71,58 +74,60 @@ Friday & 9:30 am -- 11:30 am\\
 \end{tabular}
 \end{center}
 
-You are welcomed to stop by our offices at any other time. But making
+You are welcomed to stop by my office at any other time. But making
 an appointment by email or phone in advance is highly recommended.
 
 
 \section{Course description}
-\label{sec:org5d5b15d}
+\label{sec:org70de6cc}
 \subsection*{Objectives}
-\label{sec:org8856ba7}
+\label{sec:orgc0812ac}
 
-This course is an introductory Econometrics course. Econometrics is a
-subject consisting of "economic tricks" for quantitative analysis,
-which is an indispensable component of economists' research
-toolbox. The roles of Econometrics include, but not limited to,
-quantitatively examining the relationship between various economic
+Econometrics is a subject in Economics, consisting of "economic
+tricks" for quantitative analysis. It is an indispensable component in
+economists' toolbox. The roles of Econometrics include, but not
+limited to, quantitatively examining the association between economic
 variables, giving empirical support to economic theories, making
 forecasts about economic performance in the future, and evaluating
-policy impacts, etc. At an introductory level, the goals of this
-course concern (1) letting students know basic econometric methods and
-theories, and (2) enabling students to use software, primarily R, to
-estimate a simple econometric model regarding their own research
-interests.
+policy impacts. At an introductory level, this course want to
+achieve the following goals: (1) letting students know basic
+econometric theories and methods, (2) enabling students to use
+software, primarily R, to estimate a simple econometric model, and (3)
+making students be aware of the notion of reproducible research as a
+standard workflow of empirical research.
 
-Serving for these ends, the contents of this course cover, but not
-limited to, the single and multiple OLS regression estimation,
-hypothesis testing, model specification assessment, detection and
-solutions to problems in regression, for example, heteroskedasticity
-and multicollinearity, and panel data model. If time permitted, we may
-also cover such topics as instrumental variable methods, and the
-Probit and Logit models for a limited dependent variable. Except for
-the concept of serial correlation, this course will not cover time
-series econometrics, which is the main topic of the Econometric course
-in the next semester.
+Serving for these ends, the contents of this course will cover single
+and multiple linear regression model, the ordinary least squares
+estimation, hypothesis testing, model specification assessment,
+detection and solutions to problems in regression, such as,
+heteroskedasticity and multicollinearity, and panel data model. If
+time is permitted, we will also cover such topics as instrumental
+variable methods, and the Probit and Logit models. This course will
+not cover Time Series Econometrics except for a touch on the
+concept of serial correlation. This course will lay out a solid
+foundation for the future series of Econometric courses, such as
+Intermediate Econometrics, Time Series Econometrics, and Advanced
+Econometrics.
 
 
 \subsection*{Prerequisite}
-\label{sec:orgf4a6c41}
+\label{sec:org3b9a217}
 
-Principles of Microeconomics and Macroeconomics, Calculus,
+Principles of Microeconomics, Principles of Macroeconomics, Calculus,
 Introductory Probability and Statistics, and Linear Algebra.
 
 
 \section{Textbooks}
-\label{sec:orgd2f3166}
+\label{sec:orgb519749}
 \subsection*{Required}
-\label{sec:org0c107ce}
+\label{sec:org89ab030}
 
 Stock, J. and Wastson, M. (2010) \emph{Introduction to Econometrics}, 3rd
 edition
 \href{http://www.amazon.cn/gp/product/B00R7EEEUY/ref\%3Dox\_sc\_act\_title\_2?ie\%3DUTF8\&psc\%3D1\&smid\%3DA1AJ19PSB66TGU}{\url{http://www.amazon.cn/gp/product/B00R7EEEUY/ref=ox\_sc\_act\_title\_2?ie=UTF8\&psc=1\&smid=A1AJ19PSB66TGU}}
 
 \subsection*{Recommended}
-\label{sec:org8df8d5e}
+\label{sec:orge4e2b40}
 
 \begin{itemize}
 \item Jeffery Wooldridge (2012) \emph{Introductory Econometrics}, 5th edition, China edition
@@ -132,21 +137,18 @@ edition
 
 
 \section{Course materials}
-\label{sec:org6805e6d}
+\label{sec:org9ca85ec}
 \subsection*{Lecture notes}
-\label{sec:orge17fdee}
+\label{sec:orgb9d548d}
 
-Lecture notes will be sent via email and uploaded
-in Baidu Cloud. The authorized links to lecture notes and other
-materials will be sent via email when they are uploaded. Hence, you
-must provide me your valid email addresses for the purposes of
-communication and distributing course materials.
-
-\textbf{Please read carefully lecture notes, which are the basis for all assignments and tests in this course.}
-
+Lecture notes will be sent via email and uploaded in Baidu Cloud. The
+authorized links to lecture notes and other materials will be sent via
+email when they are uploaded. Hence, you must provide me your valid
+email addresses for the purposes of communication and distribution of 
+course materials.
 
 \subsection*{Book companion materials}
-\label{sec:org1c72773}
+\label{sec:orga70cfed}
 
 There is a companion website for this book,
 \url{http://wps.aw.com/aw\_stock\_ie\_3/}, where you can download dataset for
@@ -155,108 +157,148 @@ datasets for empirical homework in Baidu Cloud.
 
 
 \section{Course assignments}
-\label{sec:orgaebc4f8}
-\subsection*{{\bfseries\sffamily TODO} Homework}
-\label{sec:orgefd882c}
+\label{sec:org44ac9d5}
+\subsection*{Homework}
+\label{sec:orgc9fadcb}
 
 \begin{itemize}
-\item Homework will be assigned every other week. Homework will help
-you understand fundamental concepts in econometric theories and
-grasp basic estimation and testing methods through practice and
-applications.
-\item Questions of homework will be selected from the end-of-chapter
-exercises in the textbook of Stock and Watson. I suggest that you
-read through the chapter(s) covered in the homework before answering
-questions.
+\item Homework will be assigned every other week, aiming to help students
+understand fundamental concepts in econometric theories and grasp
+basic estimation and inference methods.
+
+\item Each homework will consist of two parts, theoretical questions and
+empirical exercises, which are all selected from the end-of-chapter
+exercises in the textbook of Stock and Watson.
+
+\item The due day of each homework will be on Mondays of the week after
+each homework is assigned. I strongly suggest you do your homework
+early before the due day.
+
 \item You can finish your homework by either handwriting or typesetting
-using word process software, e.g., Microsoft Word, LaTex, and the
-like. Typesetting is highly recommended.
-\item Each homework set will be assigned on Tuesdays of odd weeks (except
-for Homework 1 assigned on Week 2), and
-\textbf{due at 12:00 am on Mondays} of the immediately following
-week. You have one week to complete each homework set, and I
-strongly suggest you not wait until the last minute before the due
-time to complete it.
-\item You can turn in your homework in class on Mondays or email to me
-by the due time. Do not forget put your name on your homework.
+using word process software, e.g., Microsoft Word, \LaTeX{}, and the
+like. Typesetting rather than handwriting is highly recommended.
+
 \item Homework will be graded as A, B, C, and D, based on the following
 rule
 \begin{itemize}
-\item A: homework is submitted by the due time. Numeric and mathematical
+\item \textbf{A}: Homework is submitted by the due day. Numeric and mathematical
 answers are correct for all questions with only minor
-mistakes. Explanations to your answers are convincing with correct
-use of econometric terminology. English writing is clear and
-grammatically right. (A = 100 percent points)
-\item B: homework is submitted by the due time. Numeric and mathematical
-answers are correct for most questions. Explanations are sound but
-may not be totally right. English writing is a little obscure with
+mistakes. Empirical exercises are finished with the desired
+format (the format is explained below). Explanations to your
+answers are convincing with correct use of econometric
+terminology. English writing is clear and grammatically right. (A
+= 100 percent points)
+\item \textbf{B}: Homework is submitted by the due day. Numeric and
+mathematical answers are correct for most questions. Empirical
+exercises are finished with the desired format. Explanations are
+sound but may not be totally right. English writing is good with
 minor grammatical errors. (B = 85 percent points)
-\item C: homework is submitted by the due time. Numeric and mathematical
-answers are correct for almost half of questions. Explanations may
-not be right but correctly using related econometric
-terminology. English writing is just understandable with obvious
+\item \textbf{C}: Homework is submitted by the due day. Empirical exercises
+are finished, without complying with the required format. Numeric
+and mathematical answers are correct for nearly half of
+questions. Explanations may not be right but with some
+merits. English writing is merely understandable with obvious
 grammatical errors. (C = 70 percent points)
-\item D: homework is submitted by the due time. Numeric and mathematical
-answers are correct only for a few questions. Explanations are
-wrong but with some merits. English writing is poor in both
-understanding and grammar. (D = 60 percent points)
+\item \textbf{D}: Homework is submitted by the due day. Numeric and
+mathematical answers are correct only for a few
+questions. Explanations are wrong. English writing is very
+poor. (D = 60 percent points)
 \end{itemize}
-\item Homework must be submitted by the due time. A grace period of late
+
+\item Homework must be submitted on the due day. A grace period for late
 submission can be granted by request in advance. If granted, you
-must turn in your homework two days after the due day. Late
-submission of homework is subject to downgrading score to a lower
-level. No submission at all will result in no score on the homework.
+must turn in your homework within one week after the due day. Late
+submission of homework is subject to reducing score to a lower
+level. No submission at all will result in no score on homework.
 \end{itemize}
 
 \begin{itemize}
-\item {\bfseries\sffamily TODO} Add a policy for group work in homework
-\label{sec:orgc4fe5d8}
+\item Requirement for empirical exercises
+\label{sec:org3a5d6ad}
+
+Empirical exercises are the questions that ask you to do data analysis
+with software. Completing empirical exercises usually involves two
+types of work. One type is writing code in software to read data,
+estimate the model, and calculate statistics. Another type of work is
+writing narrative words to describe your question and explaining your
+results. Therefore, completed empirical exercises should reflect
+your endeavor on both types of work. To this end, the desired format
+of empirical exercises should consist of the following components.
+
+\begin{enumerate}
+\item A short introduction to what is the question;
+\item Mathematical equations for the regression model and statistics;
+\item A description of your estimation results with correct
+interpretation;
+\item Tables and graphs that help reflect estimation results;
+\item The code that you write to carry out estimation.
+\end{enumerate}
+
+Although you can use any software to do empirical exercises, I prefer
+using RStudio and the \texttt{rmarkdown} package, which I will teach in
+class. We will learn how to make dynamic documents in the manner of
+reproducible research. 
+
+\item The requirements for group working on homework
+\label{sec:org906e1d5}
+
+Admittedly, some questions in homework may be difficult and completing
+a whole set of homework may be time consuming. Therefore, I allow you
+to form study groups to do homework. Sharing knowledge and helping
+fellow students are meritorious, and the spirit of team working is
+desirable in many careers. 
+
+The formation of study groups is totally voluntary. The size of each
+group should not exceed four students, and each student should only
+join one group. Please send me the information of your study group no
+later than \textbf{March 6th}. 
+
+High resemblance of completed homework within each group is
+permitted. However, homework that is highly alike between groups will
+be treated as shirking, resulting in lower scores for all persons
+involved. Similarly, empirical exercises can only be identical among
+members within each group, and should be different between groups.
 \end{itemize}
 
 
 \subsection*{Mid-term examination}
-\label{sec:org5be3276}
+\label{sec:org2dfcf04}
 
 \begin{itemize}
-\item The mid-term exam will cover most materials taught from Week 5 to
-Week 9.
-\item It is tentatively scheduled on \textbf{May 9th, Monday}.
-\item This will be a closed-book test. But you are allowed to bring a
+\item The mid-term exam will cover most materials taught before and
+including Chapter 6: multiple regression estimation.
+\item It is tentatively scheduled on \textbf{April 24th, Monday}.
+\item It will be a closed-book test. But you are allowed to bring a
 one-sided "cheat sheet", on which you can write down some notes that
-help you remember some important definitions and formulas. You are
-allowed to write on \textbf{only one side} on the cheat sheet.
+help you remember some important definitions and formulae. You are
+allowed to write on only one side on the cheat sheet.
 \item If you miss the mid-term exam, a make-up test can be arranged. You
-must notify me in advance of your absence with a valid excuse.
+must notify me of your absence in advance with a valid excuse.
 \end{itemize}
 
 
 \subsection*{Final examination}
-\label{sec:org6426d94}
+\label{sec:org4e8c3dc}
 
 \begin{itemize}
 \item The final exam will be comprehensive, covering all being taught
 throughout the semester.
 \item The time and location are to be arranged and announced by the
 university.
-\item This will also be a closed-book test. But you are still allowed to
+\item It will also be a closed-book test. You are still allowed to
 bring a "cheat sheet" written on \textbf{both sides} this time.
 \item The make-up test will follow the rule of the university.
 \end{itemize}
 
 
-\subsection*{{\bfseries\sffamily TODO} Add course project description}
-\label{sec:org24255ff}
-
-
 \section{Grade distribution}
-\label{sec:org7d450eb}
+\label{sec:org219761f}
 
 \begin{center}
 \begin{tabular}{lr}
 Assignments & Scores\\
 \hline
-Homework & 20\\
-Course project & 10\\
+Homework & 30\\
 Midterm exam & 30\\
 Final exam & 40\\
 \hline
@@ -264,24 +306,19 @@ total & 100\\
 \end{tabular}
 \end{center}
 
-A total of five bonus points will be offered contingent on your
-performance. The announcement about the chances earning bonus points
-will be made in the class.
-
 
 \section{Course outline and schedule}
-\label{sec:orgd7b892e}
+\label{sec:org25dcf10}
 
-Table \ref{tab:org978aebc} is the tentative outline and schedule for this course.\footnote{The instructor reserves the right to change this syllabus as
-time and circumstances dictate. Necessary changes will be announced in
-class in advance when possible.} The
-schedule is subject to change according to the actual course
-progress. Chapters referred in the table are in the required
-textbook. Other related references would be cited in lecture notes.
+Table \ref{tab:org09ad187} displays the tentative outline and schedule
+for this course. The schedule is subject to change according to
+the actual course progress. Chapters referred in the table are in the
+required textbook. Other related references would be cited in lecture
+notes.
 
 {\small
 \begin{longtable}{p{2.8cm}p{9cm}p{3cm}}
-\caption{\label{tab:org978aebc}
+\caption{\label{tab:org09ad187}
 Tentative Course Schedule}
 \\
  &  & \\
@@ -306,53 +343,53 @@ Week 2 &  & \\
 \textit{[2017-02-27 Mon]} & Review of statistics (Chapter 3) & \\
 \hline
 Week 3 &  & \\
-\textit{[2017-03-06 Mon]} & Continue review of statistics & Homework 1 due\\
-\textit{[2017-03-08 Wed]} & Review of linear algebra (Appendix 18.1) & \\
+\textit{[2017-03-06 Mon]} & Review of linear algebra (Appendix 18.1) & Homework 1 due\\
+\textit{[2017-03-08 Wed]} & Introduction to R & \\
 \hline
 Week 4 &  & \\
-\textit{[2017-03-13 Mon]} & Introduction to R & \\
+\textit{[2017-03-13 Mon]} & Single regression: estimation (Chapters 4 and 17) & \\
 \hline
 Week 5 &  & \\
-\textit{[2017-03-20 Mon]} & Single regression: estimation (Chapters 4 and 17) & \\
-\textit{[2017-03-22 Wed]} & Continue on single regression estimation & \\
+\textit{[2017-03-20 Mon]} & Continue on single regression estimation & \\
+\textit{[2017-03-22 Wed]} & Single regression: hypothesis tests (chapters 5 and 17) & \\
 \hline
 Week 6 &  & \\
-\textit{[2017-04-03 Mon]} & Single regression: hypothesis tests (chapters 5 and 17) & Homework 2 due\\
+\textit{[2017-04-03 Mon]} & Continue on single regression hypothesis tests & Homework 2 due\\
 \hline
 Week 7 &  & \\
-\textit{[2017-04-10 Mon]} & Continue on single regression hypothesis tests & \\
-\textit{[2017-04-12 Wed]} & Single regression with R and introduction to R Markdown & \\
+\textit{[2017-04-10 Mon]} & Single regression with R and introduction to rmarkdown & \\
+\textit{[2017-04-12 Wed]} & Multiple regression: estimation (chapters 6 and 18) & \\
 \hline
 Week 8 &  & \\
-\textit{[2017-04-17 Mon]} & Multiple regression: estimation (chapters 6 and 18) & Homework 3 due\\
+\textit{[2017-04-17 Mon]} & Continue on multiple regression estimation & Homework 3 due\\
 \hline
 Week 9 &  & \\
-\textit{[2017-04-24 Mon]} & Continue on multiple regression estimation & \\
+\textit{[2017-04-24 Mon]} & Mid-term examination & \\
 \textit{[2017-04-26 Wed]} & Multiple regression: hypothesis tests (chapters 7 and 18) & \\
 \hline
 Week 10 &  & \\
 \textit{[2017-05-01 Mon]} & Labor Day break & Homework 4 due\\
 \hline
 Week 11 &  & \\
-\textit{[2017-05-08 Mon]} & Mid-term examination & \\
-\textit{[2017-05-10 Wed]} & Continue on multiple regression hypothesis tests & \\
+\textit{[2017-05-08 Mon]} & Continue on multiple regression hypothesis tests & \\
+\textit{[2017-05-10 Wed]} & Multiple regression with R & \\
 \hline
 Week 12 &  & \\
-\textit{[2017-05-15 Mon]} & Multiple regression with R & Homework 5 due\\
+\textit{[2017-05-15 Mon]} & Nonlinear regressions (chapter 8) & Homework 5 due\\
 \hline
 Week 13 &  & \\
-\textit{[2017-05-22 Mon]} & Nonlinear regressions (chapter 8) & \\
-\textit{[2017-05-24 Wed]} & Continue on nonlinear regressions and R & \\
+\textit{[2017-05-22 Mon]} & Continue on nonlinear regressions and R & \\
+\textit{[2017-05-24 Wed]} & Assessing multiple regression (chapter 9) & \\
 \hline
 Week 14 &  & \\
-\textit{[2017-05-29 Mon]} & Assessing multiple regression (chapter 9) & Homework 6 due\\
+\textit{[2017-05-29 Mon]} & Continue on assessing multiple regression & Homework 6 due\\
 \hline
 Week 15 &  & \\
-\textit{[2017-06-05 Mon]} & Continue on assessing multiple regression & \\
-\textit{[2017-06-07 Wed]} & Regression with panel data (chapter 10) & \\
+\textit{[2017-06-05 Mon]} & Regression with panel data (chapter 10) & \\
+\textit{[2017-06-07 Wed]} & Continue on panel data model and R & \\
 \hline
 Week 16 &  & \\
-\textit{[2017-06-12 Mon]} & Continue on panel data model and R & Homework 7 due\\
+\textit{[2017-06-12 Mon]} & Review and Q\&A & Homework 7 due\\
 \hline
 Week 17 &  & \\
 TBA & Final examination & \\
@@ -362,7 +399,7 @@ TBA & Final examination & \\
 
 
 \section{Policy on academic dishonesty}
-\label{sec:orga93f11d}
+\label{sec:org6f60205}
 
 Academic dishonesty is defined to include but is not limited to the
 following: plagiarism; cheating and dishonest practices in connection

@@ -8,10 +8,10 @@
 #+LATEX_HEADER: \usepackage{setspace}
 #+LATEX_HEADER: \singlespace
 #+LATEX_HEADER: \usepackage{CJK}
-# #+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{parskip}
 # #+LATEX_HEADER: \usepackage[UTF8]{ctex}
 
-* Basic information
+* Basic information[fn:1]
 ** Time and location
 
   | Odd weeks  | Monday    | 08:00 am -- 09:50 am | Buoxue Building (\begin{CJK}{UTF8}{gbsn}博学楼\end{CJK}) 706    |
@@ -33,7 +33,7 @@ Office hours are tentatively scheduled as follows,
 | Tuesday | 9:30 am -- 11:30 am  |
 | Friday  | 9:30 am -- 11:30 am  |
 
-You are welcomed to stop by our offices at any other time. But making
+You are welcomed to stop by my office at any other time. But making
 an appointment by email or phone in advance is highly recommended.
 
 
@@ -41,14 +41,14 @@ an appointment by email or phone in advance is highly recommended.
 ** Objectives
 
 Econometrics is a subject in Economics, consisting of "economic
-tricks" for quantitative analysis and becoming an indispensable
-component in economists' toolbox. The roles of Econometrics include,
-but not limited to, quantitatively examining the relationship between
-various economic variables, giving empirical support to economic
-theories, making forecasts about economic performance in the future,
-and evaluating policy impacts, etc. At an introductory level, this
-course want to achieve the following goals: (1) letting students know
-basic econometric methods and theories, (2) enabling students to use
+tricks" for quantitative analysis. It is an indispensable component in
+economists' toolbox. The roles of Econometrics include, but not
+limited to, quantitatively examining the association between economic
+variables, giving empirical support to economic theories, making
+forecasts about economic performance in the future, and evaluating
+policy impacts. At an introductory level, this course want to
+achieve the following goals: (1) letting students know basic
+econometric theories and methods, (2) enabling students to use
 software, primarily R, to estimate a simple econometric model, and (3)
 making students be aware of the notion of reproducible research as a
 standard workflow of empirical research.
@@ -69,7 +69,7 @@ Econometrics.
 
 ** Prerequisite
 
-Principles of Microeconomics and Macroeconomics, Calculus,
+Principles of Microeconomics, Principles of Macroeconomics, Calculus,
 Introductory Probability and Statistics, and Linear Algebra.
 
 
@@ -90,16 +90,11 @@ edition
 * Course materials
 ** Lecture notes
 
-Lecture notes will be sent via email and uploaded
-in Baidu Cloud. The authorized links to lecture notes and other
-materials will be sent via email when they are uploaded. Hence, you
-must provide me your valid email addresses for the purposes of
-communication and distributing course materials.
-
-*** TODO Update the above paragraph when github page is ready
-
-*Please read carefully lecture notes, which are the basis for all assignments and tests in this course.*
-
+Lecture notes will be sent via email and uploaded in Baidu Cloud. The
+authorized links to lecture notes and other materials will be sent via
+email when they are uploaded. Hence, you must provide me your valid
+email addresses for the purposes of communication and distribution of 
+course materials.
 
 ** Book companion materials
 
@@ -110,66 +105,109 @@ datasets for empirical homework in Baidu Cloud.
 
 
 * Course assignments
-** TODO Homework
+** Homework
 
-- Homework will be assigned every other week, aiming to help
+- Homework will be assigned every other week, aiming to help students
   understand fundamental concepts in econometric theories and grasp
-  basic estimation and testing methods through practice and
-  applications.
+  basic estimation and inference methods. 
 
 - Each homework will consist of two parts, theoretical questions and
   empirical exercises, which are all selected from the end-of-chapter
   exercises in the textbook of Stock and Watson. 
 
-- The due day of each homework will be on Monday of the immediate
-  following week after it is assigned. I strongly suggest you
-  not wait until the last minute before the due day to work on your
-  homework. 
+- The due day of each homework will be on Mondays of the week after
+  each homework is assigned. I strongly suggest you do your homework
+  early before the due day. 
 
 - You can finish your homework by either handwriting or typesetting
-  using word process software, e.g., Microsoft Word, LaTex, and the
-  like. Typesetting is highly recommended.
+  using word process software, e.g., Microsoft Word, LaTeX, and the
+  like. Typesetting rather than handwriting is highly recommended.
 
 - Homework will be graded as A, B, C, and D, based on the following
   rule
-  + A: homework is submitted by the due time. Numeric and mathematical
+  + *A*: Homework is submitted by the due day. Numeric and mathematical
     answers are correct for all questions with only minor
-    mistakes. Explanations to your answers are convincing with correct
-    use of econometric terminology. English writing is clear and
-    grammatically right. (A = 100 percent points)
-  + B: homework is submitted by the due time. Numeric and mathematical
-    answers are correct for most questions. Explanations are sound but
-    may not be totally right. English writing is a little obscure with
+    mistakes. Empirical exercises are finished with the desired
+    format (the format is explained below). Explanations to your
+    answers are convincing with correct use of econometric
+    terminology. English writing is clear and grammatically right. (A
+    = 100 percent points)
+  + *B*: Homework is submitted by the due day. Numeric and
+    mathematical answers are correct for most questions. Empirical
+    exercises are finished with the desired format. Explanations are
+    sound but may not be totally right. English writing is good with
     minor grammatical errors. (B = 85 percent points)
-  + C: homework is submitted by the due time. Numeric and mathematical
-    answers are correct for almost half of questions. Explanations may
-    not be right but correctly using related econometric
-    terminology. English writing is just understandable with obvious
+  + *C*: Homework is submitted by the due day. Empirical exercises
+    are finished, without complying with the required format. Numeric
+    and mathematical answers are correct for nearly half of
+    questions. Explanations may not be right but with some
+    merits. English writing is merely understandable with obvious
     grammatical errors. (C = 70 percent points)
-  + D: homework is submitted by the due time. Numeric and mathematical
-    answers are correct only for a few questions. Explanations are
-    wrong but with some merits. English writing is poor in both
-    understanding and grammar. (D = 60 percent points)
-- Homework must be submitted by the due time. A grace period of late
+  + *D*: Homework is submitted by the due day. Numeric and
+    mathematical answers are correct only for a few
+    questions. Explanations are wrong. English writing is very
+    poor. (D = 60 percent points)
+
+- Homework must be submitted on the due day. A grace period for late
   submission can be granted by request in advance. If granted, you
-  must turn in your homework two days after the due day. Late
-  submission of homework is subject to downgrading score to a lower
-  level. No submission at all will result in no score on the homework.
+  must turn in your homework within one week after the due day. Late
+  submission of homework is subject to reducing score to a lower
+  level. No submission at all will result in no score on homework.
+
+*** Requirement for empirical exercises
+
+Empirical exercises are the questions that ask you to do data analysis
+with software. Completing empirical exercises usually involves two
+types of work. One type is writing code in software to read data,
+estimate the model, and calculate statistics. Another type of work is
+writing narrative words to describe your question and explaining your
+results. Therefore, completed empirical exercises should reflect
+your endeavor on both types of work. To this end, the desired format
+of empirical exercises should consist of the following components.
+
+1. A short introduction to what is the question;
+2. Mathematical equations for the regression model and statistics;
+3. A description of your estimation results with correct
+   interpretation;
+4. Tables and graphs that help reflect estimation results;
+5. The code that you write to carry out estimation. 
   
-*** TODO Add a policy for group work in homework
+Although you can use any software to do empirical exercises, I prefer
+using RStudio and the ~rmarkdown~ package, which I will teach in
+class. We will learn how to make dynamic documents in the manner of
+reproducible research. 
+
+*** The requirements for group working on homework
+
+Admittedly, some questions in homework may be difficult and completing
+a whole set of homework may be time consuming. Therefore, I allow you
+to form study groups to do homework. Sharing knowledge and helping
+fellow students are meritorious, and the spirit of team working is
+desirable in many careers. 
+
+The formation of study groups is totally voluntary. The size of each
+group should not exceed four students, and each student should only
+join one group. Please send me the information of your study group no
+later than *March 6th*. 
+
+High resemblance of completed homework within each group is
+permitted. However, homework that is highly alike between groups will
+be treated as shirking, resulting in lower scores for all persons
+involved. Similarly, empirical exercises can only be identical among
+members within each group, and should be different between groups.
 
 
 ** Mid-term examination
 
-- The mid-term exam will cover most materials taught from Week 5 to
-  Week 9.
-- It is tentatively scheduled on *May 9th, Monday*.
-- This will be a closed-book test. But you are allowed to bring a
+- The mid-term exam will cover most materials taught before and
+  including Chapter 6: multiple regression estimation.
+- It is tentatively scheduled on *April 24th, Monday*.
+- It will be a closed-book test. But you are allowed to bring a
   one-sided "cheat sheet", on which you can write down some notes that
-  help you remember some important definitions and formulas. You are
-  allowed to write on *only one side* on the cheat sheet.
+  help you remember some important definitions and formulae. You are
+  allowed to write on only one side on the cheat sheet.
 - If you miss the mid-term exam, a make-up test can be arranged. You
-  must notify me in advance of your absence with a valid excuse.
+  must notify me of your absence in advance with a valid excuse.
 
 
 ** Final examination
@@ -178,103 +216,95 @@ datasets for empirical homework in Baidu Cloud.
   throughout the semester.
 - The time and location are to be arranged and announced by the
   university.
-- This will also be a closed-book test. But you are still allowed to
+- It will also be a closed-book test. You are still allowed to
   bring a "cheat sheet" written on *both sides* this time.
 - The make-up test will follow the rule of the university.
 
 
-** TODO Add course project description
-
-
 * Grade distribution
 
-| Assignments    | Scores |
-|----------------+--------|
-| Homework       |     20 |
-| Course project |     10 |
-| Midterm exam   |     30 |
-| Final exam     |     40 |
-|----------------+--------|
-| total          |    100 |
-#+TBLFM: @6$2=vsum(@2$2..@5$2)
-
-A total of five bonus points will be offered contingent on your
-performance. The announcement about the chances earning bonus points
-will be made in the class.
+| Assignments  | Scores |
+|--------------+--------|
+| Homework     |     30 |
+| Midterm exam |     30 |
+| Final exam   |     40 |
+|--------------+--------|
+| total        |    100 |
 
 
 * Course outline and schedule
 
-Table [[tab-course-schedule]] is the tentative outline and schedule for this course.[fn:1] The
-schedule is subject to change according to the actual course
-progress. Chapters referred in the table are in the required
-textbook. Other related references would be cited in lecture notes.
+Table [[tab-course-schedule]] displays the tentative outline and schedule
+for this course. The schedule is subject to change according to
+the actual course progress. Chapters referred in the table are in the
+required textbook. Other related references would be cited in lecture
+notes.
 
 #+NAME: tab-course-schedule
 #+CAPTION: Tentative Course Schedule
 #+ATTR_LATEX: :environment longtable :float t :align p{2.8cm}p{9cm}p{3cm} :center t :font \small
-|                  |                                                                   |                |
-| Dates            | Contents                                                          | Due dates      |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 1           |                                                                   |                |
-| [2017-02-20 Mon] | Syllabus and Introduction (Chapter 1)                             |                |
-| [2017-02-22 Wed] | Review of probability (Chapter 2)                                 |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 2           |                                                                   |                |
-| [2017-02-27 Mon] | Review of statistics (Chapter 3)                                  |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 3           |                                                                   |                |
-| [2017-03-06 Mon] | Continue review of statistics                                     | Homework 1 due |
-| [2017-03-08 Wed] | Review of linear algebra (Appendix 18.1)                          |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 4           |                                                                   |                |
-| [2017-03-13 Mon] | Introduction to R                                                 |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 5           |                                                                   |                |
-| [2017-03-20 Mon] | Single regression: estimation (Chapters 4 and 17)                 |                |
-| [2017-03-22 Wed] | Continue on single regression estimation                          |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 6           |                                                                   |                |
-| [2017-04-03 Mon] | Single regression: hypothesis tests (chapters 5 and 17)           | Homework 2 due |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 7           |                                                                   |                |
-| [2017-04-10 Mon] | Continue on single regression hypothesis tests                    |                |
-| [2017-04-12 Wed] | Single regression with R and reproducible research with Rmarkdown |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 8           |                                                                   |                |
-| [2017-04-17 Mon] | Multiple regression: estimation (chapters 6 and 18)               | Homework 3 due |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 9           |                                                                   |                |
-| [2017-04-24 Mon] | Continue on multiple regression estimation                        |                |
-| [2017-04-26 Wed] | Multiple regression: hypothesis tests (chapters 7 and 18)         |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 10          |                                                                   |                |
-| [2017-05-01 Mon] | Labor Day break                                                   | Homework 4 due |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 11          |                                                                   |                |
-| [2017-05-08 Mon] | Mid-term examination                                              |                |
-| [2017-05-10 Wed] | Continue on multiple regression hypothesis tests                  |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 12          |                                                                   |                |
-| [2017-05-15 Mon] | Multiple regression with R                                        | Homework 5 due |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 13          |                                                                   |                |
-| [2017-05-22 Mon] | Nonlinear regressions (chapter 8)                                 |                |
-| [2017-05-24 Wed] | Continue on nonlinear regressions and R                           |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 14          |                                                                   |                |
-| [2017-05-29 Mon] | Assessing multiple regression (chapter 9)                         | Homework 6 due |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 15          |                                                                   |                |
-| [2017-06-05 Mon] | Continue on assessing multiple regression                         |                |
-| [2017-06-07 Wed] | Regression with panel data (chapter 10)                           |                |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 16          |                                                                   |                |
-| [2017-06-12 Mon] | Continue on panel data model and R                                | Homework 7 due |
-|------------------+-------------------------------------------------------------------+----------------|
-| Week 17          |                                                                   |                |
-| TBA              | Final examination                                                 |                |
-|------------------+-------------------------------------------------------------------+----------------|
+|                  |                                                           |                |
+| Dates            | Contents                                                  | Due dates      |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 1           |                                                           |                |
+| [2017-02-20 Mon] | Syllabus and Introduction (Chapter 1)                     |                |
+| [2017-02-22 Wed] | Review of probability (Chapter 2)                         |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 2           |                                                           |                |
+| [2017-02-27 Mon] | Review of statistics (Chapter 3)                          |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 3           |                                                           |                |
+| [2017-03-06 Mon] | Review of linear algebra (Appendix 18.1)                  | Homework 1 due |
+| [2017-03-08 Wed] | Introduction to R                                         |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 4           |                                                           |                |
+| [2017-03-13 Mon] | Single regression: estimation (Chapters 4 and 17)         |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 5           |                                                           |                |
+| [2017-03-20 Mon] | Continue on single regression estimation                  |                |
+| [2017-03-22 Wed] | Single regression: hypothesis tests (chapters 5 and 17)   |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 6           |                                                           |                |
+| [2017-04-03 Mon] | Continue on single regression hypothesis tests            | Homework 2 due |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 7           |                                                           |                |
+| [2017-04-10 Mon] | Single regression with R and introduction to rmarkdown    |                |
+| [2017-04-12 Wed] | Multiple regression: estimation (chapters 6 and 18)       |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 8           |                                                           |                |
+| [2017-04-17 Mon] | Continue on multiple regression estimation                | Homework 3 due |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 9           |                                                           |                |
+| [2017-04-24 Mon] | Mid-term examination                                      |                |
+| [2017-04-26 Wed] | Multiple regression: hypothesis tests (chapters 7 and 18) |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 10          |                                                           |                |
+| [2017-05-01 Mon] | Labor Day break                                           | Homework 4 due |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 11          |                                                           |                |
+| [2017-05-08 Mon] | Continue on multiple regression hypothesis tests          |                |
+| [2017-05-10 Wed] | Multiple regression with R                                |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 12          |                                                           |                |
+| [2017-05-15 Mon] | Nonlinear regressions (chapter 8)                         | Homework 5 due |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 13          |                                                           |                |
+| [2017-05-22 Mon] | Continue on nonlinear regressions and R                   |                |
+| [2017-05-24 Wed] | Assessing multiple regression (chapter 9)                 |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 14          |                                                           |                |
+| [2017-05-29 Mon] | Continue on assessing multiple regression                 | Homework 6 due |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 15          |                                                           |                |
+| [2017-06-05 Mon] | Regression with panel data (chapter 10)                   |                |
+| [2017-06-07 Wed] | Continue on panel data model and R                        |                |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 16          |                                                           |                |
+| [2017-06-12 Mon] | Review and Q&A                                            | Homework 7 due |
+|------------------+-----------------------------------------------------------+----------------|
+| Week 17          |                                                           |                |
+| TBA              | Final examination                                         |                |
+|------------------+-----------------------------------------------------------+----------------|
 
 
 * Policy on academic dishonesty
@@ -284,7 +314,6 @@ following: plagiarism; cheating and dishonest practices in connection
 with examinations, papers and projects; forgery, misrepresentation and
 fraud. Such behavior will not be tolerated and will be handled
 according to university guidelines.
-
 
 * Footnotes
 
