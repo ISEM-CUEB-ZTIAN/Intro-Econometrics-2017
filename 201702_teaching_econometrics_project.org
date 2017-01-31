@@ -1,9 +1,9 @@
-#+TITLE: Project Management of Teaching Econometrics
+#+TITLE: Teaching Project: Introduction to Econometrics
 #+AUTHOR: Zheng Tian
 #+EMAIL: zngtian@gmail.com
 #+DATE: Spring semester, 2017
 #+OPTIONS: H:3 num:2 toc:nil
-#+CATEGORY: teaching
+#+CATEGORY: TEACHING
 #+PROPERTY: header-args:R  :session *econR*
 #+FILETAGS: teaching_econometrics
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
@@ -38,20 +38,20 @@
 
 This project is for preparing the course of Introduction to Econometrics for
 undergraduate students at ISEM, CUEB in the spring semester
-(February--June), 2017. 
+(February--June), 2017.
 
 ** Goals
 
 The goal of setting up this project is to use it and github as a
-platform to maintain course materials for teaching this course. 
+platform to maintain course materials for teaching this course.
 
 What will be achieved through this projects include:
 - Lecture notes. All lecture notes will be written using Emacs org
-  mode, exported to pdf and html files. 
+  mode, exported to pdf and html files.
 - Presentation slides. Slides will be written using org mode, exported
   via beamer and reveal.js to pdf and html files.
 - Lecture notes (maybe plus slides) will be shown through github
-  pages. 
+  pages.
 - Homework sets.
 - Course projects. Students need to practice Econometrics by
   programming with R, and document their work with Rmarkdown and
@@ -65,7 +65,7 @@ What will be achieved through this projects include:
 
 In this stage, I will move the course materials in last two years to
 this project, updating course information and making necessary but
-minor changes to the contents of course materials. 
+minor changes to the contents of course materials.
 
 *** Update syllabus
 - [ ] Change class time.
@@ -82,7 +82,7 @@ minor changes to the contents of course materials.
 
 In this stage, I will revise the previous lecture notes and
 slides, add new materials for R programming, reproducible research
-method, and add course project templates. 
+method, and add course project templates.
 
 *** Revise lecture notes
 - [ ] Add more detailed information.
@@ -93,7 +93,7 @@ method, and add course project templates.
 
 *** Revise tutorial for R
 - [ ] Fine-tune the documentation and R source blocks in org files.
-- [ ] Re-format tutorials with Rmarkdown. 
+- [ ] Re-format tutorials with Rmarkdown.
 
 *** Prepare homework and exams
 
@@ -102,14 +102,15 @@ method, and add course project templates.
 In this stage, I will focus on transforming the plain html files
 exported from org files with new export engines, such as jekyll. The
 final product is a github page, such as
-http://intro-economtrics-isem-2017.github.io. 
+http://intro-economtrics-isem-2017.github.io.
 
 
 * Syllabus
 
 ** The file of syllabus
 
-[[file:handouts/syllabus/syllabus_2016_undergrad.org][syllabus_2016_undergrad.org]]
+[[file:handouts/syllabus/syllabus_econometrics_2017.org][syllabus_econometrics_2017.org]]
+
 
 * Lecture Notes
 

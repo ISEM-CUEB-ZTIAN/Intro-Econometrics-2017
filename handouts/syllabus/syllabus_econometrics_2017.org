@@ -112,25 +112,24 @@ datasets for empirical homework in Baidu Cloud.
 * Course assignments
 ** TODO Homework
 
-- Homework will be assigned every other week. Homework will help
-  you understand fundamental concepts in econometric theories and
-  grasp basic estimation and testing methods through practice and
+- Homework will be assigned every other week, aiming to help
+  understand fundamental concepts in econometric theories and grasp
+  basic estimation and testing methods through practice and
   applications.
-- Questions of homework will be selected from the end-of-chapter
-  exercises in the textbook of Stock and Watson. I suggest that you
-  read through the chapter(s) covered in the homework before answering
-  questions.
+
+- Each homework will consist of two parts, theoretical questions and
+  empirical exercises, which are all selected from the end-of-chapter
+  exercises in the textbook of Stock and Watson. 
+
+- The due day of each homework will be on Monday of the immediate
+  following week after it is assigned. I strongly suggest you
+  not wait until the last minute before the due day to work on your
+  homework. 
+
 - You can finish your homework by either handwriting or typesetting
   using word process software, e.g., Microsoft Word, LaTex, and the
   like. Typesetting is highly recommended.
-- Each homework set will be assigned on Tuesdays of odd weeks (except
-  for Homework 1 assigned on Week 2), and
-  *due at 12:00 am on Mondays* of the immediately following
-  week. You have one week to complete each homework set, and I
-  strongly suggest you not wait until the last minute before the due
-  time to complete it.
-- You can turn in your homework in class on Mondays or email to me
-  by the due time. Do not forget put your name on your homework.
+
 - Homework will be graded as A, B, C, and D, based on the following
   rule
   + A: homework is submitted by the due time. Numeric and mathematical
@@ -156,7 +155,7 @@ datasets for empirical homework in Baidu Cloud.
   must turn in your homework two days after the due day. Late
   submission of homework is subject to downgrading score to a lower
   level. No submission at all will result in no score on the homework.
-
+  
 *** TODO Add a policy for group work in homework
 
 
