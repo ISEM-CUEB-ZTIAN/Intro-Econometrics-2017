@@ -271,3 +271,4 @@ _site/
 *_archive
 *.el
 /handouts/syllabus/auto/
+_config.yml
