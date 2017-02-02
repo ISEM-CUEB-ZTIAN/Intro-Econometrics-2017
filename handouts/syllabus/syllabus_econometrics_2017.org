@@ -14,17 +14,17 @@
 * Basic information[fn:1]
 ** Time and location
 
-  | Odd weeks  | Monday    | 08:00 am -- 09:50 am | Buoxue Building (\begin{CJK}{UTF8}{gbsn}博学楼\end{CJK}) 706    |
-  |            | Wednesday | 10:00 am -- 11:50 am | Buoxue Building (\begin{CJK}{UTF8}{gbsn}博学楼\end{CJK}) 306    |
-  | Even weeks | Monday    | 08:00 am -- 11:50 am | Buoxue Building (\begin{CJK}{UTF8}{gbsn}博学楼\end{CJK}) 706    |
+  | Odd weeks  | Monday    | 08:00 am -- 09:50 am | Buoxue Building (\begin{CJK*}{UTF8}{gbsn}博学楼\end{CJK*}) 706 |
+  |            | Wednesday | 10:00 am -- 11:50 am | Buoxue Building (\begin{CJK*}{UTF8}{gbsn}博学楼\end{CJK*}) 306 |
+  | Even weeks | Monday    | 08:00 am -- 11:50 am | Buoxue Building (\begin{CJK*}{UTF8}{gbsn}博学楼\end{CJK*}) 706 |
 
 
 ** Instructor information
 
-  | Name:   | Zheng Tian (\begin{CJK}{UTF8}{gbsn}田峥\end{CJK})            |
-  | Email:  | ztian_cueb@163.com                                           |
-  | Office: | Angong Building (\begin{CJK}{UTF8}{gbsn}安工楼\end{CJK}) 215 |
-  | Tel:    | 83951054                                                     |
+  | Name:   | Zheng Tian (\begin{CJK*}{UTF8}{gbsn}田峥\end{CJK*})            |
+  | Email:  | ztian_cueb@163.com                                             |
+  | Office: | Angong Building (\begin{CJK*}{UTF8}{gbsn}安工楼\end{CJK*}) 215 |
+  | Tel:    | 8395-1054                                                      |
 
 
 ** Office hours
