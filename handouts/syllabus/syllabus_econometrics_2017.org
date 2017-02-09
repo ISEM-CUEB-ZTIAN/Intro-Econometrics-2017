@@ -11,6 +11,7 @@
 #+LATEX_HEADER: \usepackage{parskip}
 # #+LATEX_HEADER: \usepackage[UTF8]{ctex}
 
+
 * Basic information[fn:1]
 ** Time and location
 
@@ -93,7 +94,7 @@ edition
 Lecture notes will be sent via email and uploaded in Baidu Cloud. The
 authorized links to lecture notes and other materials will be sent via
 email when they are uploaded. Hence, you must provide me your valid
-email addresses for the purposes of communication and distribution of 
+email addresses for the purposes of communication and distribution of
 course materials.
 
 ** Book companion materials
@@ -109,15 +110,15 @@ datasets for empirical homework in Baidu Cloud.
 
 - Homework will be assigned every other week, aiming to help students
   understand fundamental concepts in econometric theories and grasp
-  basic estimation and inference methods. 
+  basic estimation and inference methods.
 
 - Each homework will consist of two parts, theoretical questions and
   empirical exercises, which are all selected from the end-of-chapter
-  exercises in the textbook of Stock and Watson. 
+  exercises in the textbook of Stock and Watson.
 
 - The due day of each homework will be on Mondays of the week after
   each homework is assigned. I strongly suggest you do your homework
-  early before the due day. 
+  early before the due day.
 
 - You can finish your homework by either handwriting or typesetting
   using word process software, e.g., Microsoft Word, LaTeX, and the
@@ -170,12 +171,12 @@ of empirical exercises should consist of the following components.
 3. A description of your estimation results with correct
    interpretation;
 4. Tables and graphs that help reflect estimation results;
-5. The code that you write to carry out estimation. 
-  
+5. The code that you write to carry out estimation.
+
 Although you can use any software to do empirical exercises, I prefer
 using RStudio and the ~rmarkdown~ package, which I will teach in
 class. We will learn how to make dynamic documents in the manner of
-reproducible research. 
+reproducible research.
 
 *** The requirements for group working on homework
 
@@ -183,12 +184,12 @@ Admittedly, some questions in homework may be difficult and completing
 a whole set of homework may be time consuming. Therefore, I allow you
 to form study groups to do homework. Sharing knowledge and helping
 fellow students are meritorious, and the spirit of team working is
-desirable in many careers. 
+desirable in many careers.
 
 The formation of study groups is totally voluntary. The size of each
 group should not exceed four students, and each student should only
 join one group. Please send me the information of your study group no
-later than *March 6th*. 
+later than *March 6th*.
 
 High resemblance of completed homework within each group is
 permitted. However, homework that is highly alike between groups will
@@ -314,6 +315,7 @@ following: plagiarism; cheating and dishonest practices in connection
 with examinations, papers and projects; forgery, misrepresentation and
 fraud. Such behavior will not be tolerated and will be handled
 according to university guidelines.
+
 
 * Footnotes
 

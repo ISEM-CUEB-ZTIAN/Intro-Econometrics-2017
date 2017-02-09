@@ -1,0 +1,140 @@
+#+TITLE: Lecture 1: Economic Questions and Data
+#+AUTHOR: Zheng Tian
+#+DATE:
+#+OPTIONS: toc:nil H:4 num:2
+#+PROPERTY: header-args:R  :session my-r-session
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+#+LATEX_HEADER: \newtheorem{definition}{Definition}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}
+#+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
+#+LATEX_HEADER: \newcommand{\var}{\mathrm{Var}}
+#+LATEX_HEADER: \newcommand{\cov}{\mathrm{Cov}}
+#+LATEX_HEADER: \newcommand{\corr}{\mathrm{Corr}}
+#+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
+#+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+#+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
+#+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+
+* What is Econometrics about?
+
+** Definition of Econometrics
+
+Econometricians may give different definitions of Econometrics from
+their own perspective.
+
+Stock and Watson (2015) define Econometrics as
+    #+BEGIN_QUOTE
+    At a broad level, econometrics is the science and art of using
+    economic theory and statistical techniques to analyze economic
+    data.
+    #+END_QUOTE
+
+    
+** The objective of Econometrics
+
+  Frisch (1933) set the objectives of Econometrics as follows,
+  #+BEGIN_QUOTE
+  (Econometrics's) main objective shall be to promote studies that aim at
+  a unification of the theoretical-quantitative and the
+  empirical-quantitative approach to economic problems and that are
+  penetrated by constructive and rigorous thinking similar to that which
+  has come to dominate the natural sciences. ...... Experience has shown
+  that each of these three viewpoints, that of statistics, economic
+  theory, and mathematics, is a necessary, but not by itself a
+  sufficient, condition for a real understanding of the quantitative
+  relations in modern economic life. It is the unification of all
+  three that is powerful. And it is this unification that constitutes
+  econometrics.
+  #+END_QUOTE
+
+
+* Economic Questions We Examine
+
+** Four practical questions
+
+- Question 1 :: does reducing class size improve elementary school education?
+
+- Question 2 :: is there racial discrimination in the market for home loan?
+
+- Question 3 :: how much do cigarette taxes reduce smoking?
+
+- Question 4 :: what will the rate of inflation be next year?
+
+
+** How does an econometrician formulate such questions?
+
+Ideally, an econometrician would design his/her econometric modeling
+by the following steps
+
+1) Establish a theoretical model to qualitatively describe how X could
+   cause Y, holding other factors constant. From the theoretical
+   model, put forward some hypotheses to validate the theory.
+2) Find actual data to measure the variables in the theory
+3) Set up an empirical model to test the theoretical model, using
+   available data.
+4) Choose a suitable estimation method to estimate the empirical model.
+5) Perform some hypothesis tests and model specification test to
+   validate the estimation results.
+6) Based on the estimation and test results, determine whether the theory
+   is internally and externally valid.
+
+
+* Causal Effects and Idealized Experiments
+
+The success of an econometric analysis relies on whether the causal
+effects between X and Y can be accurately identified, excluding the
+influences of other factors.
+
+** Randomized controlled experiment
+
+*** Controlled experiment
+
+Control group (no treatment) versus treatment group (with treatment)
+
+*** Randomized experiment
+the treamtment is assigned randomly
+
+*** Advantages and disadvantages
+
+- Advantages :: eliminate the possibility of a systematic relationship that could
+  blur the causal effects of the treatment
+
+- Disadvantages :: it is difficult to implement, especially for social
+                   science
+
+
+* Data Sources and Types
+** TODO Experimental versus observational data
+
+** Cross-sectional data
+
+- heights of all 30 students in a class
+
+- total population of each province in China in 2014
+
+** Time series data
+
+- stock price of Company A by hour over the last month
+
+- consumer price index of China by month from 1990 to 2014
+
+** Panel data
+
+- annual wage of a fixed group of respondents in a survey conducted by
+  a statistic agency in 1990, 1995, 2000, 2005, and 2010
+
+- GDP per capita of each country in Asia from 1990 to 2014
+

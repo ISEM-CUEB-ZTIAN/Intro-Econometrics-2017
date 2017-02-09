@@ -40,6 +40,7 @@ This project is for preparing the course of Introduction to Econometrics for
 undergraduate students at ISEM, CUEB in the spring semester
 (February--June), 2017.
 
+
 ** Goals
 
 The goal of setting up this project is to use it and github as a
@@ -78,7 +79,11 @@ minor changes to the contents of course materials.
 - [ ] Copy slides.
 - [ ] Change time in each file.
 
+
 ** Stage II: Revise course materials <2017-02-06 Mon>-<2017-03-05 Sun>
+:PROPERTIES:
+:ID:       2B260EB9-511C-463D-BE01-E20D032D94C1
+:END:
 
 In this stage, I will revise the previous lecture notes and
 slides, add new materials for R programming, reproducible research
@@ -97,6 +102,7 @@ method, and add course project templates.
 
 *** Prepare homework and exams
 
+
 ** Stage III: Add new elements in html <2017-03-06 Mon>-<2017-03-19 Sun>
 
 In this stage, I will focus on transforming the plain html files
@@ -111,26 +117,26 @@ http://intro-economtrics-isem-2017.github.io.
 
 [[file:handouts/syllabus/syllabus_econometrics_2017.org][syllabus_econometrics_2017.org]]
 
+* My own study notes
 
-* Lecture Notes
+[[file:~/OneDrive/study/statistics_econometrics/econometrics/learning_econometrics.org]]
 
-** Lecture 1
+* Lecture notes and slides
 
-** Lecture 2
+** TODO Lecture 1
+*** TODO Lecture notes
 
-** Lecture 3
+[[file:handouts/lecture_notes/lecture_1/lecture_1.org]]
 
-** R tutorials
+*** TODO Slides
 
-** Git tutorials
+** TODO Lecture 2
 
-* Presentation
+** TODO Lecture 3
 
-** Lecture 1
+** TODO R tutorials
+** TODO Rmarkdown tutorials
 
-** Lecture 2
-
-** Lecture 3
 
 * Homework sets
 
@@ -138,11 +144,6 @@ http://intro-economtrics-isem-2017.github.io.
 
 ** Homework set 2
 
-* Course Project
-
-** Introduction
-
-** Starter codes
 
 * Examination
 
