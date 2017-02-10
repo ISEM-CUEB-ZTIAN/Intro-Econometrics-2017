@@ -2,7 +2,9 @@
 #+AUTHOR: Zheng Tian
 #+DATE:
 #+OPTIONS: toc:nil H:4 num:2
+#+OPTIONS: tex:dvipng
 #+PROPERTY: header-args:R  :session my-r-session
+
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]
 #+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}

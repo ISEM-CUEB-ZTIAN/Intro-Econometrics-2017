@@ -1,0 +1,191 @@
+% Created 2017-02-10 Fri 10:15
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{parskip}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\newcommand{\corr}{\mathrm{Corr}}
+\newcommand{\pr}{\mathrm{Pr}}
+\newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+\DeclareMathOperator*{\plim}{plim}
+\newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+\setcounter{secnumdepth}{2}
+\author{Zheng Tian}
+\date{}
+\title{Lecture 1: Economic Questions and Data}
+\hypersetup{
+ pdfauthor={Zheng Tian},
+ pdftitle={Lecture 1: Economic Questions and Data},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{What is Econometrics about?}
+\label{sec:orga4c3199}
+
+\subsection{Definition of Econometrics}
+\label{sec:org142ff02}
+
+Econometricians may give different definitions of Econometrics from
+their own perspective.
+
+Stock and Watson (2015) define Econometrics as
+\begin{quote}
+At a broad level, econometrics is the science and art of using
+economic theory and statistical techniques to analyze economic
+data.
+\end{quote}
+
+
+\subsection{The objective of Econometrics}
+\label{sec:orge6d008f}
+
+Frisch (1933) set the objectives of Econometrics as follows,
+\begin{quote}
+(Econometrics's) main objective shall be to promote studies that aim at
+a unification of the theoretical-quantitative and the
+empirical-quantitative approach to economic problems and that are
+penetrated by constructive and rigorous thinking similar to that which
+has come to dominate the natural sciences. \ldots{}\ldots{} Experience has shown
+that each of these three viewpoints, that of statistics, economic
+theory, and mathematics, is a necessary, but not by itself a
+sufficient, condition for a real understanding of the quantitative
+relations in modern economic life. It is the unification of all
+three that is powerful. And it is this unification that constitutes
+econometrics.
+\end{quote}
+
+
+\section{Economic Questions We Examine}
+\label{sec:orgcdf6e69}
+
+\subsection{Four practical questions}
+\label{sec:org13400d8}
+
+\begin{description}
+\item[{Question 1}] does reducing class size improve elementary school education?
+
+\item[{Question 2}] is there racial discrimination in the market for home loan?
+
+\item[{Question 3}] how much do cigarette taxes reduce smoking?
+
+\item[{Question 4}] what will the rate of inflation be next year?
+\end{description}
+
+
+\subsection{How does an econometrician formulate such questions?}
+\label{sec:orgd61830c}
+
+Ideally, an econometrician would design his/her econometric modeling
+by the following steps
+
+\begin{enumerate}
+\item Establish a theoretical model to qualitatively describe how X could
+cause Y, holding other factors constant. From the theoretical
+model, put forward some hypotheses to validate the theory.
+\item Find actual data to measure the variables in the theory
+\item Set up an empirical model to test the theoretical model, using
+available data.
+\item Choose a suitable estimation method to estimate the empirical model.
+\item Perform some hypothesis tests and model specification test to
+validate the estimation results.
+\item Based on the estimation and test results, determine whether the theory
+is internally and externally valid.
+\end{enumerate}
+
+
+\section{Causal Effects and Idealized Experiments}
+\label{sec:org4880463}
+
+The success of an econometric analysis relies on whether the causal
+effects between X and Y can be accurately identified, excluding the
+influences of other factors.
+
+\subsection{Randomized controlled experiment}
+\label{sec:org1bdc749}
+
+\subsubsection*{Controlled experiment}
+\label{sec:org12efdd8}
+
+Control group (no treatment) versus treatment group (with treatment)
+
+\subsubsection*{Randomized experiment}
+\label{sec:org51b68ff}
+the treamtment is assigned randomly
+
+\subsubsection*{Advantages and disadvantages}
+\label{sec:org656204c}
+
+\begin{description}
+\item[{Advantages}] eliminate the possibility of a systematic relationship that could
+blur the causal effects of the treatment
+
+\item[{Disadvantages}] it is difficult to implement, especially for social
+science
+\end{description}
+
+
+\section{Data Sources and Types}
+\label{sec:orgf4364ca}
+\subsection{{\bfseries\sffamily TODO} Experimental versus observational data}
+\label{sec:org04c3a96}
+
+\subsection{Cross-sectional data}
+\label{sec:org21cdc25}
+
+\begin{itemize}
+\item heights of all 30 students in a class
+
+\item total population of each province in China in 2014
+\end{itemize}
+
+\subsection{Time series data}
+\label{sec:org90e2642}
+
+\begin{itemize}
+\item stock price of Company A by hour over the last month
+
+\item consumer price index of China by month from 1990 to 2014
+\end{itemize}
+
+\subsection{Panel data}
+\label{sec:org686247e}
+
+\begin{itemize}
+\item annual wage of a fixed group of respondents in a survey conducted by
+a statistic agency in 1990, 1995, 2000, 2005, and 2010
+
+\item GDP per capita of each country in Asia from 1990 to 2014
+\end{itemize}
+\end{document}

@@ -1,0 +1,14 @@
+#+TITLE: Econometrics 2017
+#+OPTIONS: toc:1 H:2 num:1
+
+This website contains the course materials for the course of
+Econometrics offered at ISEM, CUEB, in the 2nd semester of the
+2016-2017 academic year. 
+
+* Syllabus
+
+Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017_web.org][html]] or [[file:handouts/syllabus/syllabus_econometrics_2017.pdf][pdf]]).
+
+* Lecture notes
+
+- Lecture 1.([[file:handouts/lecture_notes/lecture_1/lecture_1.org][html]] or [[file:handouts/lecture_notes/lecture_1/lecture_1.pdf][pdf]])
