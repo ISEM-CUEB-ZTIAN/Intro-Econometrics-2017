@@ -1,7 +1,7 @@
 #+TITLE: Syllabus for Introduction to Econometrics
 #+AUTHOR: Zheng Tian
 #+DATE: Spring semester, 2017
-#+OPTIONS: toc:nil H:2 num:1
+#+OPTIONS: toc:1 H:2 num:1
 #+OPTIONS: ^:{}
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
@@ -10,6 +10,8 @@
 #+LATEX_HEADER: \usepackage{CJK}
 #+LATEX_HEADER: \usepackage{parskip}
 # #+LATEX_HEADER: \usepackage[UTF8]{ctex}
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../css/readtheorg.css" />
 
 
 * Basic information[fn:1]

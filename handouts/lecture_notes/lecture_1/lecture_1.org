@@ -1,9 +1,11 @@
 #+TITLE: Lecture 1: Economic Questions and Data
 #+AUTHOR: Zheng Tian
 #+DATE:
-#+OPTIONS: toc:nil H:4 num:2
+#+OPTIONS: toc:1 H:4 num:2
 #+OPTIONS: tex:dvipng
 #+PROPERTY: header-args:R  :session my-r-session
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]

@@ -1,6 +1,9 @@
 #+TITLE: Econometrics 2017
 #+OPTIONS: toc:1 H:2 num:1
 
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/readtheorg.css" />
+
+
 This website contains the course materials for the course of
 Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 2016-2017 academic year. 
