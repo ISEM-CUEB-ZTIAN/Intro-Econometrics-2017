@@ -1,15 +1,15 @@
-This project is for preparing the course of Econometrics for
-undergraduate students at ISEM, CUEB
-in the Spring semester, 2017. 
+This project is for preparing the course of Econometrics for undergraduate students at ISEM, CUEB in the Spring semester, 2017.
 
-# Contents
+See all course materials at <https://isem-cueb-ztian.github.io/Intro-Econometrics-2017/>.
 
-- Lecture notes, written in org mode and exported to pdf;
-- Slides using both beamer and reveal.js; 
-- Data sets that are used in the course.
+Contents
+========
 
-# Course information
+-   Lecture notes in both html and pdf.
+-   Data sets that are used in the course.
 
-- See syllabus for detailed information of this course. 
+Course information
+==================
 
+-   See syllabus for detailed information of this course.
 
