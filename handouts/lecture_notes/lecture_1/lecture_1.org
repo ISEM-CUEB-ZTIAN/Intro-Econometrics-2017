@@ -45,7 +45,7 @@ their respective point of views:
 - it is the process of fitting mathematical economic model
   to real-world data;
 - it is the science and art of using historical data to make
-  quantitative policy recommendations in government and business. 
+  quantitative policy recommendations in government and business.
 
 Stock and Watson (2015) define Econometrics as
     #+BEGIN_QUOTE
@@ -63,11 +63,11 @@ econometrics the science AND art?
 
 - Econometrics is a science because it essentially complies with the
   principle of *falsifiability*[fn:1] of scientific research, as Karl Popper
-  defined. 
-  
+  defined.
+
   #+NAME: fig-reasoning-cycle
-  #+CAPTION: A reasoning cycle of scientific research 
-  #+ATTR_HTML: :width 500 :height 350
+  #+CAPTION: A reasoning cycle of scientific research
+  #+ATTR_HTML: :width 450 :height 350
   #+ATTR_LATEX: :width 0.6\textwidth
   [[file:figure/reasoning-cycle-research.jpg]]
 
@@ -77,15 +77,15 @@ econometrics the science AND art?
   though an economic theory is not rejected by one set of data at a
   time period, it can be very likely to be rejected using another set of
   data at another time period. Then, a new theory or hypothesis will
-  be brought up. 
+  be brought up.
 
 - Econometrics is an art because the data are usually incomplete and
   unobserved to validate a hypothesis, so we need to use human
   creativity to reach a balance between scientific rigor and realistic
-  approximation. 
+  approximation.
 
 The following quote captures the dual nature of econometrics as both
-science and art: 
+science and art:
     #+BEGIN_QUOTE
   Econometrics is alchemy since econometricians can create nearly any
   result desired, but it is also science because econometricians also
@@ -103,12 +103,15 @@ model or a logical economic reasoning. Guided with this economic
 theory, we build an econometric model to characterize the relationship
 between various variables involved in the theory. Then we collect data
 to measure these variables, and use statistical techniques to estimate
-and model and test hypotheses raised from the theory. 
+and model and test hypotheses raised from the theory.
 
-*** TODO Use ditta to generate a flowchart
+#+CAPTION: A workflow of econometric research
+#+ARRT_HTML: :width 800
+#+ATTR_LATEX: :width 1.0\textwidth
+[[file:figure/econometric_workflow.png]]
 
 Let's look at a real example to get a first impression of what is
-econometrics. 
+econometrics.
 
 
 * Economic Questions We Examine
