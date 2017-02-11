@@ -117,9 +117,11 @@ http://intro-economtrics-isem-2017.github.io.
 
 [[file:handouts/syllabus/syllabus_econometrics_2017.org][syllabus_econometrics_2017.org]]
 
+
 * My own study notes
 
 [[file:~/OneDrive/study/statistics_econometrics/econometrics/learning_econometrics.org]]
+
 
 * Lecture notes and slides
 

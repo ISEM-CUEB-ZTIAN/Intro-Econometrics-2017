@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-10 Fri 10:27 -->
+<!-- 2017-02-10 Fri 23:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lecture 1: Economic Questions and Data</title>
@@ -234,24 +234,34 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3afaa3a">1. What is Econometrics about?</a></li>
-<li><a href="#org849b5b5">2. Economic Questions We Examine</a></li>
-<li><a href="#org674d389">3. Causal Effects and Idealized Experiments</a></li>
-<li><a href="#org605a642">4. Data Sources and Types</a></li>
+<li><a href="#org01778a0">1. What is Econometrics about?</a></li>
+<li><a href="#org1e8e77a">2. Economic Questions We Examine</a></li>
+<li><a href="#orged67d5d">3. Causal Effects and Idealized Experiments</a></li>
+<li><a href="#org874c626">4. Data Sources and Types</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3afaa3a" class="outline-2">
-<h2 id="org3afaa3a"><span class="section-number-2">1</span> What is Econometrics about?</h2>
+<div id="outline-container-org01778a0" class="outline-2">
+<h2 id="org01778a0"><span class="section-number-2">1</span> What is Econometrics about?</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org3e21a81" class="outline-3">
-<h3 id="org3e21a81"><span class="section-number-3">1.1</span> Definition of Econometrics</h3>
+</div><div id="outline-container-org31ebb7f" class="outline-3">
+<h3 id="org31ebb7f"><span class="section-number-3">1.1</span> Definition of Econometrics</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-Econometricians may give different definitions of Econometrics from
-their own perspective.
+Econometricians may give you very different answers for the question
+of <i>What is Econometrics</i>. The following answers are all right from
+their respective point of views:
 </p>
+<ul class="org-ul">
+<li>econometrics is the science of testing economic theories;</li>
+<li>it is the set of tools used to forecasting future values
+of economic variables;</li>
+<li>it is the process of fitting mathematical economic model
+to real-world data;</li>
+<li>it is the science and art of using historical data to make
+quantitative policy recommendations in government and business.</li>
+</ul>
 
 <p>
 Stock and Watson (2015) define Econometrics as
@@ -264,40 +274,94 @@ data.
 </p>
 </blockquote>
 </div>
+
+<div id="outline-container-org39f68c3" class="outline-4">
+<h4 id="org39f68c3">Science or art?</h4>
+<div class="outline-text-4" id="text-org39f68c3">
+<p>
+Let us dissect the above definition a little bit. First, why is
+econometrics the science AND art?
+</p>
+
+<ul class="org-ul">
+<li><p>
+Econometrics is a science because it essentially complies with the
+principle of <b>falsifiability</b><sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> of scientific research, as Karl Popper
+defined. 
+</p>
+
+
+<div id="org60f4204" class="figure">
+<p><img src="figure/reasoning-cycle-research.jpg" alt="reasoning-cycle-research.jpg" width="400" height="350" />
+</p>
+<p><span class="figure-number">Figure 1: </span>A reasoning cycle of scientific research</p>
 </div>
 
-
-<div id="outline-container-org8fe7ecc" class="outline-3">
-<h3 id="org8fe7ecc"><span class="section-number-3">1.2</span> The objective of Econometrics</h3>
-<div class="outline-text-3" id="text-1-2">
 <p>
-Frisch (1933) set the objectives of Econometrics as follows,
+Econometricians propose a hypothesis based on either existing economic
+theories or their own economic reasoning, and then collect data to
+test the hypothesis that can be rejected or fail to be rejected. Even
+though an economic theory is not rejected by one set of data at a
+time period, it can be very likely to be rejected using another set of
+data at another time period. Then, a new theory or hypothesis will
+be brought up. 
+</p></li>
+
+<li>Econometrics is an art because the data are usually incomplete and
+unobserved to validate a hypothesis, so we need to use human
+creativity to reach a balance between scientific rigor and realistic
+approximation.</li>
+</ul>
+
+<p>
+The following quote captures the dual nature of econometrics as both
+science and art: 
 </p>
 <blockquote>
 <p>
-(Econometrics's) main objective shall be to promote studies that aim at
-a unification of the theoretical-quantitative and the
-empirical-quantitative approach to economic problems and that are
-penetrated by constructive and rigorous thinking similar to that which
-has come to dominate the natural sciences. &#x2026;&#x2026; Experience has shown
-that each of these three viewpoints, that of statistics, economic
-theory, and mathematics, is a necessary, but not by itself a
-sufficient, condition for a real understanding of the quantitative
-relations in modern economic life. It is the unification of all
-three that is powerful. And it is this unification that constitutes
-econometrics.
+Econometrics is alchemy since econometricians can create nearly any
+result desired, but it is also science because econometricians also
+know how to reject and avoid spurious models. &#x2013; Hansen (1996)
 </p>
 </blockquote>
 </div>
 </div>
+
+
+<div id="outline-container-orge97e919" class="outline-4">
+<h4 id="orge97e919">Three components of econometric research</h4>
+<div class="outline-text-4" id="text-orge97e919">
+<p>
+A complete process of econometric research inevitably consists of three
+components: economic theory, statistical techniques, and economic
+data. When we have a research question, we first need to find or
+formulate an economic theory that can be either a formal mathematical
+model or a logical economic reasoning. Guided with this economic
+theory, we build an econometric model to characterize the relationship
+between various variables involved in the theory. Then we collect data
+to measure these variables, and use statistical techniques to estimate
+and model and test hypotheses raised from the theory. 
+</p>
 </div>
 
+<div id="outline-container-org98631dc" class="outline-5">
+<h5 id="org98631dc"><span class="todo TODO">TODO</span> Use ditta to generate a flowchart</h5>
+<div class="outline-text-5" id="text-org98631dc">
+<p>
+Let's look at a real example to get a first impression of what is
+econometrics. 
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-<div id="outline-container-org849b5b5" class="outline-2">
-<h2 id="org849b5b5"><span class="section-number-2">2</span> Economic Questions We Examine</h2>
+<div id="outline-container-org1e8e77a" class="outline-2">
+<h2 id="org1e8e77a"><span class="section-number-2">2</span> Economic Questions We Examine</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgf6d2fae" class="outline-3">
-<h3 id="orgf6d2fae"><span class="section-number-3">2.1</span> Four practical questions</h3>
+</div><div id="outline-container-org7714275" class="outline-3">
+<h3 id="org7714275"><span class="section-number-3">2.1</span> Four practical questions</h3>
 <div class="outline-text-3" id="text-2-1">
 <dl class="org-dl">
 <dt>Question 1</dt><dd>does reducing class size improve elementary school education?</dd>
@@ -312,8 +376,8 @@ econometrics.
 </div>
 
 
-<div id="outline-container-org6f3b4bc" class="outline-3">
-<h3 id="org6f3b4bc"><span class="section-number-3">2.2</span> How does an econometrician formulate such questions?</h3>
+<div id="outline-container-org8bc7285" class="outline-3">
+<h3 id="org8bc7285"><span class="section-number-3">2.2</span> How does an econometrician formulate such questions?</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Ideally, an econometrician would design his/her econometric modeling
@@ -338,8 +402,8 @@ is internally and externally valid.</li>
 </div>
 
 
-<div id="outline-container-org674d389" class="outline-2">
-<h2 id="org674d389"><span class="section-number-2">3</span> Causal Effects and Idealized Experiments</h2>
+<div id="outline-container-orged67d5d" class="outline-2">
+<h2 id="orged67d5d"><span class="section-number-2">3</span> Causal Effects and Idealized Experiments</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The success of an econometric analysis relies on whether the causal
@@ -348,30 +412,30 @@ influences of other factors.
 </p>
 </div>
 
-<div id="outline-container-org8f4bc9a" class="outline-3">
-<h3 id="org8f4bc9a"><span class="section-number-3">3.1</span> Randomized controlled experiment</h3>
+<div id="outline-container-org2b699fb" class="outline-3">
+<h3 id="org2b699fb"><span class="section-number-3">3.1</span> Randomized controlled experiment</h3>
 <div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-orgfaba027" class="outline-4">
-<h4 id="orgfaba027">Controlled experiment</h4>
-<div class="outline-text-4" id="text-orgfaba027">
+</div><div id="outline-container-orgbd175ab" class="outline-4">
+<h4 id="orgbd175ab">Controlled experiment</h4>
+<div class="outline-text-4" id="text-orgbd175ab">
 <p>
 Control group (no treatment) versus treatment group (with treatment)
 </p>
 </div>
 </div>
 
-<div id="outline-container-org544b539" class="outline-4">
-<h4 id="org544b539">Randomized experiment</h4>
-<div class="outline-text-4" id="text-org544b539">
+<div id="outline-container-org5878c94" class="outline-4">
+<h4 id="org5878c94">Randomized experiment</h4>
+<div class="outline-text-4" id="text-org5878c94">
 <p>
 the treamtment is assigned randomly
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgca63296" class="outline-4">
-<h4 id="orgca63296">Advantages and disadvantages</h4>
-<div class="outline-text-4" id="text-orgca63296">
+<div id="outline-container-org8c5807e" class="outline-4">
+<h4 id="org8c5807e">Advantages and disadvantages</h4>
+<div class="outline-text-4" id="text-org8c5807e">
 <dl class="org-dl">
 <dt>Advantages</dt><dd>eliminate the possibility of a systematic relationship that could
 blur the causal effects of the treatment</dd>
@@ -385,15 +449,15 @@ science</dd>
 </div>
 
 
-<div id="outline-container-org605a642" class="outline-2">
-<h2 id="org605a642"><span class="section-number-2">4</span> Data Sources and Types</h2>
+<div id="outline-container-org874c626" class="outline-2">
+<h2 id="org874c626"><span class="section-number-2">4</span> Data Sources and Types</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org2892956" class="outline-3">
-<h3 id="org2892956"><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Experimental versus observational data</h3>
+</div><div id="outline-container-org31a48a7" class="outline-3">
+<h3 id="org31a48a7"><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Experimental versus observational data</h3>
 </div>
 
-<div id="outline-container-org97c2ad6" class="outline-3">
-<h3 id="org97c2ad6"><span class="section-number-3">4.2</span> Cross-sectional data</h3>
+<div id="outline-container-org239420d" class="outline-3">
+<h3 id="org239420d"><span class="section-number-3">4.2</span> Cross-sectional data</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>heights of all 30 students in a class</li>
@@ -403,8 +467,8 @@ science</dd>
 </div>
 </div>
 
-<div id="outline-container-orga9a4eb2" class="outline-3">
-<h3 id="orga9a4eb2"><span class="section-number-3">4.3</span> Time series data</h3>
+<div id="outline-container-org7c1e7b7" class="outline-3">
+<h3 id="org7c1e7b7"><span class="section-number-3">4.3</span> Time series data</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li>stock price of Company A by hour over the last month</li>
@@ -414,8 +478,8 @@ science</dd>
 </div>
 </div>
 
-<div id="outline-container-org5b6de56" class="outline-3">
-<h3 id="org5b6de56"><span class="section-number-3">4.4</span> Panel data</h3>
+<div id="outline-container-org9a11b60" class="outline-3">
+<h3 id="org9a11b60"><span class="section-number-3">4.4</span> Panel data</h3>
 <div class="outline-text-3" id="text-4-4">
 <ul class="org-ul">
 <li>annual wage of a fixed group of respondents in a survey conducted by
@@ -426,10 +490,20 @@ a statistic agency in 1990, 1995, 2000, 2005, and 2010</li>
 </div>
 </div>
 </div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Read this article about falsifiability <a href="https://explorable.com/falsifiability">https://explorable.com/falsifiability</a>.
+</p></div></div>
+
+
 </div>
+</div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-02-10 Fri 10:27</p>
+<p class="date">Created: 2017-02-10 Fri 23:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

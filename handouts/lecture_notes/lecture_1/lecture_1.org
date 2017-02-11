@@ -36,8 +36,16 @@
 
 ** Definition of Econometrics
 
-Econometricians may give different definitions of Econometrics from
-their own perspective.
+Econometricians may give you very different answers for the question
+of /What is Econometrics/. The following answers are all right from
+their respective point of views:
+- econometrics is the science of testing economic theories;
+- it is the set of tools used to forecasting future values
+  of economic variables;
+- it is the process of fitting mathematical economic model
+  to real-world data;
+- it is the science and art of using historical data to make
+  quantitative policy recommendations in government and business. 
 
 Stock and Watson (2015) define Econometrics as
     #+BEGIN_QUOTE
@@ -46,24 +54,59 @@ Stock and Watson (2015) define Econometrics as
     data.
     #+END_QUOTE
 
-    
-** The objective of Econometrics
+*** Science or art?
 
-  Frisch (1933) set the objectives of Econometrics as follows,
-  #+BEGIN_QUOTE
-  (Econometrics's) main objective shall be to promote studies that aim at
-  a unification of the theoretical-quantitative and the
-  empirical-quantitative approach to economic problems and that are
-  penetrated by constructive and rigorous thinking similar to that which
-  has come to dominate the natural sciences. ...... Experience has shown
-  that each of these three viewpoints, that of statistics, economic
-  theory, and mathematics, is a necessary, but not by itself a
-  sufficient, condition for a real understanding of the quantitative
-  relations in modern economic life. It is the unification of all
-  three that is powerful. And it is this unification that constitutes
-  econometrics.
+Let us dissect the above definition a little bit. First, why is
+econometrics the science AND art?
+
+- Econometrics is a science because it essentially complies with the
+  principle of *falsifiability*[fn:1] of scientific research, as Karl Popper
+  defined. 
+  
+  #+NAME: fig-reasoning-cycle
+  #+CAPTION: A reasoning cycle of scientific research 
+  #+ATTR_HTML: :width 400 :height 350
+  #+ATTR_LATEX: :width 0.6\textwidth
+  [[file:figure/reasoning-cycle-research.jpg]]
+
+  Econometricians propose a hypothesis based on either existing economic
+  theories or their own economic reasoning, and then collect data to
+  test the hypothesis that can be rejected or fail to be rejected. Even
+  though an economic theory is not rejected by one set of data at a
+  time period, it can be very likely to be rejected using another set of
+  data at another time period. Then, a new theory or hypothesis will
+  be brought up. 
+
+- Econometrics is an art because the data are usually incomplete and
+  unobserved to validate a hypothesis, so we need to use human
+  creativity to reach a balance between scientific rigor and realistic
+  approximation. 
+
+The following quote captures the dual nature of econometrics as both
+science and art: 
+    #+BEGIN_QUOTE
+  Econometrics is alchemy since econometricians can create nearly any
+  result desired, but it is also science because econometricians also
+  know how to reject and avoid spurious models. -- Hansen (1996)
   #+END_QUOTE
 
+
+*** Economic theory, statistics, and data
+
+A complete process of econometric research inevitably consists of three
+components: economic theory, statistical techniques, and economic
+data. When we have a research question, we first need to find or
+formulate an economic theory that can be either a formal mathematical
+model or a logical economic reasoning. Guided with this economic
+theory, we build an econometric model to characterize the relationship
+between various variables involved in the theory. Then we collect data
+to measure these variables, and use statistical techniques to estimate
+and model and test hypotheses raised from the theory. 
+
+**** TODO Use ditta to generate a flowchart
+
+Let's look at a real example to get a first impression of what is
+econometrics. 
 
 * Economic Questions We Examine
 
@@ -141,4 +184,8 @@ the treamtment is assigned randomly
   a statistic agency in 1990, 1995, 2000, 2005, and 2010
 
 - GDP per capita of each country in Asia from 1990 to 2014
+
+* Footnotes
+
+[fn:1] Read this article about falsifiability https://explorable.com/falsifiability.
 

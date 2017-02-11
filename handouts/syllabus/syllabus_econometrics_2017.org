@@ -9,15 +9,19 @@
 #+LATEX_HEADER: \singlespace
 #+LATEX_HEADER: \usepackage{CJK}
 #+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
 # #+LATEX_HEADER: \usepackage[UTF8]{ctex}
+# #+SETUPFILE: theme-readtheorg.setup
+# #+SETUPFILE: theme-bigblow.setup
 
+* Basic information
 
-* Basic information[fn:1]
 ** Time and location
 
-  | Odd weeks  | Monday    | 08:00 am -- 09:50 am | Buoxue Building (\begin{CJK*}{UTF8}{gbsn}博学楼\end{CJK*}) 706 |
-  |            | Wednesday | 10:00 am -- 11:50 am | Buoxue Building (\begin{CJK*}{UTF8}{gbsn}博学楼\end{CJK*}) 306 |
-  | Even weeks | Monday    | 08:00 am -- 11:50 am | Buoxue Building (\begin{CJK*}{UTF8}{gbsn}博学楼\end{CJK*}) 706 |
+  | Odd weeks  | Monday    | 08:00 am -- 09:50 am | Buoxue Building (\begin{CJK}{UTF8}{gbsn}博学楼\end{CJK}) 706 |
+  |            | Wednesday | 10:00 am -- 11:50 am | Buoxue Building (\begin{CJK}{UTF8}{gbsn}博学楼\end{CJK}) 306 |
+  | Even weeks | Monday    | 08:00 am -- 11:50 am | Buoxue Building (\begin{CJK}{UTF8}{gbsn}博学楼\end{CJK}) 706 |
 
 
 ** Instructor information
@@ -39,6 +43,7 @@ an appointment by email or phone in advance is highly recommended.
 
 
 * Course description
+
 ** Objectives
 
 Econometrics is a subject in Economics, consisting of "economic
@@ -79,12 +84,11 @@ Introductory Probability and Statistics, and Linear Algebra.
 
 Stock, J. and Wastson, M. (2010) /Introduction to Econometrics/, 3rd
 edition
-[[http://www.amazon.cn/gp/product/B00R7EEEUY/ref%3Dox_sc_act_title_2?ie%3DUTF8&psc%3D1&smid%3DA1AJ19PSB66TGU][http://www.amazon.cn/gp/product/B00R7EEEUY/ref=ox_sc_act_title_2?ie=UTF8&psc=1&smid=A1AJ19PSB66TGU]]
 
 ** Recommended
 
 - Jeffery Wooldridge (2012) /Introductory Econometrics/, 5th edition, China edition
-  http://www.amazon.cn/dp/B00ITGHEYW/ref=pd_bxgy_14_img_2?ie=UTF8&refRID=1HC25MXFFYG5GNPRFDS1
+
 - Kleiber and Zeileis (2008) /Applied Econometrics with R/
 
 
@@ -316,10 +320,4 @@ with examinations, papers and projects; forgery, misrepresentation and
 fraud. Such behavior will not be tolerated and will be handled
 according to university guidelines.
 
-
-* Footnotes
-
-[fn:1] The instructor reserves the right to change this syllabus as
-time and circumstances dictate. Necessary changes will be announced in
-class in advance when possible.
 

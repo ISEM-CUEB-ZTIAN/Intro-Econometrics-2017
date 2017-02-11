@@ -1,4 +1,4 @@
-% Created 2017-02-10 Fri 10:15
+% Created 2017-02-10 Fri 23:31
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -50,15 +50,28 @@
 \begin{document}
 
 \maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
 
 \section{What is Econometrics about?}
-\label{sec:orga4c3199}
+\label{sec:orgdb3a57b}
 
 \subsection{Definition of Econometrics}
-\label{sec:org142ff02}
+\label{sec:orga8c46fb}
 
-Econometricians may give different definitions of Econometrics from
-their own perspective.
+Econometricians may give you very different answers for the question
+of \emph{What is Econometrics}. The following answers are all right from
+their respective point of views:
+\begin{itemize}
+\item econometrics is the science of testing economic theories;
+\item it is the set of tools used to forecasting future values
+of economic variables;
+\item it is the process of fitting mathematical economic model
+to real-world data;
+\item it is the science and art of using historical data to make
+quantitative policy recommendations in government and business.
+\end{itemize}
 
 Stock and Watson (2015) define Econometrics as
 \begin{quote}
@@ -67,31 +80,71 @@ economic theory and statistical techniques to analyze economic
 data.
 \end{quote}
 
+\subsubsection*{Science or art?}
+\label{sec:org6bb18d0}
 
-\subsection{The objective of Econometrics}
-\label{sec:orge6d008f}
+Let us dissect the above definition a little bit. First, why is
+econometrics the science AND art?
 
-Frisch (1933) set the objectives of Econometrics as follows,
+\begin{itemize}
+\item Econometrics is a science because it essentially complies with the
+principle of \textbf{falsifiability}\footnote{Read this article about falsifiability \url{https://explorable.com/falsifiability}.} of scientific research, as Karl Popper
+defined. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{figure/reasoning-cycle-research.jpg}
+\caption{\label{fig:orgde010a5}
+A reasoning cycle of scientific research}
+\end{figure}
+
+Econometricians propose a hypothesis based on either existing economic
+theories or their own economic reasoning, and then collect data to
+test the hypothesis that can be rejected or fail to be rejected. Even
+though an economic theory is not rejected by one set of data at a
+time period, it can be very likely to be rejected using another set of
+data at another time period. Then, a new theory or hypothesis will
+be brought up.
+
+\item Econometrics is an art because the data are usually incomplete and
+unobserved to validate a hypothesis, so we need to use human
+creativity to reach a balance between scientific rigor and realistic
+approximation.
+\end{itemize}
+
+The following quote captures the dual nature of econometrics as both
+science and art: 
 \begin{quote}
-(Econometrics's) main objective shall be to promote studies that aim at
-a unification of the theoretical-quantitative and the
-empirical-quantitative approach to economic problems and that are
-penetrated by constructive and rigorous thinking similar to that which
-has come to dominate the natural sciences. \ldots{}\ldots{} Experience has shown
-that each of these three viewpoints, that of statistics, economic
-theory, and mathematics, is a necessary, but not by itself a
-sufficient, condition for a real understanding of the quantitative
-relations in modern economic life. It is the unification of all
-three that is powerful. And it is this unification that constitutes
-econometrics.
+Econometrics is alchemy since econometricians can create nearly any
+result desired, but it is also science because econometricians also
+know how to reject and avoid spurious models. -- Hansen (1996)
 \end{quote}
 
 
+\subsubsection*{Economic theory, statistics, and data}
+\label{sec:org26334a9}
+
+A complete process of econometric research inevitably consists of three
+components: economic theory, statistical techniques, and economic
+data. When we have a research question, we first need to find or
+formulate an economic theory that can be either a formal mathematical
+model or a logical economic reasoning. Guided with this economic
+theory, we build an econometric model to characterize the relationship
+between various variables involved in the theory. Then we collect data
+to measure these variables, and use statistical techniques to estimate
+and model and test hypotheses raised from the theory. 
+
+\paragraph*{{\bfseries\sffamily TODO} Use ditta to generate a flowchart}
+\label{sec:org48298de}
+
+Let's look at a real example to get a first impression of what is
+econometrics. 
+
 \section{Economic Questions We Examine}
-\label{sec:orgcdf6e69}
+\label{sec:orgcf9aa98}
 
 \subsection{Four practical questions}
-\label{sec:org13400d8}
+\label{sec:org0ad65fa}
 
 \begin{description}
 \item[{Question 1}] does reducing class size improve elementary school education?
@@ -105,7 +158,7 @@ econometrics.
 
 
 \subsection{How does an econometrician formulate such questions?}
-\label{sec:orgd61830c}
+\label{sec:orgfc78e92}
 
 Ideally, an econometrician would design his/her econometric modeling
 by the following steps
@@ -126,26 +179,26 @@ is internally and externally valid.
 
 
 \section{Causal Effects and Idealized Experiments}
-\label{sec:org4880463}
+\label{sec:org8947717}
 
 The success of an econometric analysis relies on whether the causal
 effects between X and Y can be accurately identified, excluding the
 influences of other factors.
 
 \subsection{Randomized controlled experiment}
-\label{sec:org1bdc749}
+\label{sec:org86f8071}
 
 \subsubsection*{Controlled experiment}
-\label{sec:org12efdd8}
+\label{sec:orgfd31a67}
 
 Control group (no treatment) versus treatment group (with treatment)
 
 \subsubsection*{Randomized experiment}
-\label{sec:org51b68ff}
+\label{sec:org1e3b9fa}
 the treamtment is assigned randomly
 
 \subsubsection*{Advantages and disadvantages}
-\label{sec:org656204c}
+\label{sec:org9cea44f}
 
 \begin{description}
 \item[{Advantages}] eliminate the possibility of a systematic relationship that could
@@ -157,12 +210,12 @@ science
 
 
 \section{Data Sources and Types}
-\label{sec:orgf4364ca}
+\label{sec:org04139b4}
 \subsection{{\bfseries\sffamily TODO} Experimental versus observational data}
-\label{sec:org04c3a96}
+\label{sec:orge08787e}
 
 \subsection{Cross-sectional data}
-\label{sec:org21cdc25}
+\label{sec:org73d411d}
 
 \begin{itemize}
 \item heights of all 30 students in a class
@@ -171,7 +224,7 @@ science
 \end{itemize}
 
 \subsection{Time series data}
-\label{sec:org90e2642}
+\label{sec:orgfe73d04}
 
 \begin{itemize}
 \item stock price of Company A by hour over the last month
@@ -180,7 +233,7 @@ science
 \end{itemize}
 
 \subsection{Panel data}
-\label{sec:org686247e}
+\label{sec:org64ab29d}
 
 \begin{itemize}
 \item annual wage of a fixed group of respondents in a survey conducted by
