@@ -54,7 +54,9 @@ Stock and Watson (2015) define Econometrics as
     data.
     #+END_QUOTE
 
-*** Science or art?
+
+
+** Science or art?
 
 Let us dissect the above definition a little bit. First, why is
 econometrics the science AND art?
@@ -65,7 +67,7 @@ econometrics the science AND art?
   
   #+NAME: fig-reasoning-cycle
   #+CAPTION: A reasoning cycle of scientific research 
-  #+ATTR_HTML: :width 400 :height 350
+  #+ATTR_HTML: :width 500 :height 350
   #+ATTR_LATEX: :width 0.6\textwidth
   [[file:figure/reasoning-cycle-research.jpg]]
 
@@ -91,7 +93,7 @@ science and art:
   #+END_QUOTE
 
 
-*** Economic theory, statistics, and data
+** Economic theory, statistics, and data
 
 A complete process of econometric research inevitably consists of three
 components: economic theory, statistical techniques, and economic
@@ -103,10 +105,11 @@ between various variables involved in the theory. Then we collect data
 to measure these variables, and use statistical techniques to estimate
 and model and test hypotheses raised from the theory. 
 
-**** TODO Use ditta to generate a flowchart
+*** TODO Use ditta to generate a flowchart
 
 Let's look at a real example to get a first impression of what is
 econometrics. 
+
 
 * Economic Questions We Examine
 
@@ -184,6 +187,8 @@ the treamtment is assigned randomly
   a statistic agency in 1990, 1995, 2000, 2005, and 2010
 
 - GDP per capita of each country in Asia from 1990 to 2014
+
+
 
 * Footnotes
 
