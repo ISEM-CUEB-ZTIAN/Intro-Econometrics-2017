@@ -32,7 +32,7 @@
 #+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
 #+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
 
-* What is Econometrics about?
+* What is Econometrics?
 
 ** Definition of Econometrics
 
@@ -62,11 +62,12 @@ Let us dissect the above definition a little bit. First, why is
 econometrics the science AND art?
 
 - Econometrics is a science because it essentially complies with the
-  principle of *falsifiability*[fn:1] of scientific research, as Karl Popper
-  defined.
+  principle of *falsifiability* of scientific research, as Karl Popper
+  defined. Figure [[fig-reasoning-cycle]] show a typical reasoning cycle
+  of a scientific research.[fn:1]
 
   #+NAME: fig-reasoning-cycle
-  #+CAPTION: A reasoning cycle of scientific research
+  #+CAPTION: A reasoning cycle of scientific research 
   #+ATTR_HTML: :width 450 :height 350
   #+ATTR_LATEX: :width 0.6\textwidth
   [[file:figure/reasoning-cycle-research.jpg]]
@@ -103,11 +104,12 @@ model or a logical economic reasoning. Guided with this economic
 theory, we build an econometric model to characterize the relationship
 between various variables involved in the theory. Then we collect data
 to measure these variables, and use statistical techniques to estimate
-and model and test hypotheses raised from the theory.
+the model and test hypotheses that are raised from the theory.
 
-#+CAPTION: A workflow of econometric research
+#+NAME: fig-workflow
 #+ARRT_HTML: :width 800
 #+ATTR_LATEX: :width 1.0\textwidth
+#+CAPTION: A workflow of econometric research
 [[file:figure/econometric_workflow.png]]
 
 Let's look at a real example to get a first impression of what is
@@ -195,5 +197,9 @@ the treamtment is assigned randomly
 
 * Footnotes
 
-[fn:1] Read this article about falsifiability https://explorable.com/falsifiability.
+[fn:1] Source of Figure [[fig-reasoning-cycle]]: Martyn Shuttleworth (Sep
+21, 2008). Falsifiability. Retrieved Feb 10, 2017 from Explorable.com:
+https://explorable.com/falsifiability.
+
+
 

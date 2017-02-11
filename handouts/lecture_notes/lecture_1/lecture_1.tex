@@ -1,4 +1,4 @@
-% Created 2017-02-11 Sat 01:29
+% Created 2017-02-11 Sat 01:57
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -54,11 +54,11 @@
 \tableofcontents
 
 
-\section{What is Econometrics about?}
-\label{sec:orgaf97795}
+\section{What is Econometrics?}
+\label{sec:org3ee4e63}
 
 \subsection{Definition of Econometrics}
-\label{sec:org1f44975}
+\label{sec:org3cb51c5}
 
 Econometricians may give you very different answers for the question
 of \emph{What is Econometrics}. The following answers are all right from
@@ -83,20 +83,23 @@ data.
 
 
 \subsection{Science or art?}
-\label{sec:org625cba7}
+\label{sec:orgcc77cf9}
 
 Let us dissect the above definition a little bit. First, why is
 econometrics the science AND art?
 
 \begin{itemize}
 \item Econometrics is a science because it essentially complies with the
-principle of \textbf{falsifiability}\footnote{Read this article about falsifiability \url{https://explorable.com/falsifiability}.} of scientific research, as Karl Popper
-defined.
+principle of \textbf{falsifiability} of scientific research, as Karl Popper
+defined. Figure \ref{fig:org810b5e4} show a typical reasoning cycle
+of a scientific research.\footnote{Source of Figure \ref{fig:org810b5e4}: Martyn Shuttleworth (Sep
+21, 2008). Falsifiability. Retrieved Feb 10, 2017 from Explorable.com:
+\url{https://explorable.com/falsifiability}.}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth]{figure/reasoning-cycle-research.jpg}
-\caption{\label{fig:org9e00561}
+\caption{\label{fig:org810b5e4}
 A reasoning cycle of scientific research}
 \end{figure}
 
@@ -124,7 +127,7 @@ know how to reject and avoid spurious models. -- Hansen (1996)
 
 
 \subsection{Economic theory, statistics, and data}
-\label{sec:org39e6e4e}
+\label{sec:orgac0f946}
 
 A complete process of econometric research inevitably consists of three
 components: economic theory, statistical techniques, and economic
@@ -134,21 +137,23 @@ model or a logical economic reasoning. Guided with this economic
 theory, we build an econometric model to characterize the relationship
 between various variables involved in the theory. Then we collect data
 to measure these variables, and use statistical techniques to estimate
-and model and test hypotheses raised from the theory.
+the model and test hypotheses that are raised from the theory.
 
-\begin{center}
-\includegraphics[width=1.2\textwidth]{figure/econometric_workflow.png}
-\end{center}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{figure/econometric_workflow.png}
+\caption{A workflow of econometric research}
+\end{figure}
 
 Let's look at a real example to get a first impression of what is
 econometrics.
 
 
 \section{Economic Questions We Examine}
-\label{sec:org1171ca6}
+\label{sec:org0593572}
 
 \subsection{Four practical questions}
-\label{sec:orged3da03}
+\label{sec:org09f75b3}
 
 \begin{description}
 \item[{Question 1}] does reducing class size improve elementary school education?
@@ -162,7 +167,7 @@ econometrics.
 
 
 \subsection{How does an econometrician formulate such questions?}
-\label{sec:orga44cd5d}
+\label{sec:org5b05299}
 
 Ideally, an econometrician would design his/her econometric modeling
 by the following steps
@@ -183,26 +188,26 @@ is internally and externally valid.
 
 
 \section{Causal Effects and Idealized Experiments}
-\label{sec:orgc1941e0}
+\label{sec:org5c01698}
 
 The success of an econometric analysis relies on whether the causal
 effects between X and Y can be accurately identified, excluding the
 influences of other factors.
 
 \subsection{Randomized controlled experiment}
-\label{sec:orga519c53}
+\label{sec:org3b943c0}
 
 \subsubsection*{Controlled experiment}
-\label{sec:org185f632}
+\label{sec:orgbbdadb3}
 
 Control group (no treatment) versus treatment group (with treatment)
 
 \subsubsection*{Randomized experiment}
-\label{sec:org85d3fdd}
+\label{sec:org6c458a7}
 the treamtment is assigned randomly
 
 \subsubsection*{Advantages and disadvantages}
-\label{sec:orgda316d7}
+\label{sec:org68a14b0}
 
 \begin{description}
 \item[{Advantages}] eliminate the possibility of a systematic relationship that could
@@ -214,12 +219,12 @@ science
 
 
 \section{Data Sources and Types}
-\label{sec:orgbcf84cf}
+\label{sec:orgc3aaa37}
 \subsection{{\bfseries\sffamily TODO} Experimental versus observational data}
-\label{sec:orga24cd4a}
+\label{sec:orgbbf3f79}
 
 \subsection{Cross-sectional data}
-\label{sec:orgd15641b}
+\label{sec:orgab41fc0}
 
 \begin{itemize}
 \item heights of all 30 students in a class
@@ -228,7 +233,7 @@ science
 \end{itemize}
 
 \subsection{Time series data}
-\label{sec:org6b96512}
+\label{sec:org2862fae}
 
 \begin{itemize}
 \item stock price of Company A by hour over the last month
@@ -237,7 +242,7 @@ science
 \end{itemize}
 
 \subsection{Panel data}
-\label{sec:org27217ba}
+\label{sec:org47a24b8}
 
 \begin{itemize}
 \item annual wage of a fixed group of respondents in a survey conducted by
