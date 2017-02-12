@@ -48,12 +48,11 @@ their respective point of views:
   quantitative policy recommendations in government and business.
 
 Stock and Watson (2015) define Econometrics as
-    #+BEGIN_QUOTE
-    At a broad level, econometrics is the science and art of using
-    economic theory and statistical techniques to analyze economic
-    data.
-    #+END_QUOTE
-
+#+BEGIN_QUOTE
+At a broad level, econometrics is the science and art of using
+economic theory and statistical techniques to analyze economic
+data.
+#+END_QUOTE
 
 
 ** Science or art?
@@ -87,11 +86,11 @@ econometrics the science AND art?
 
 The following quote captures the dual nature of econometrics as both
 science and art:
-    #+BEGIN_QUOTE
-  Econometrics is alchemy since econometricians can create nearly any
-  result desired, but it is also science because econometricians also
-  know how to reject and avoid spurious models. -- Hansen (1996)
-  #+END_QUOTE
+#+BEGIN_QUOTE
+Econometrics is alchemy since econometricians can create nearly any
+result desired, but it is also science because econometricians also
+know how to reject and avoid spurious models. -- Hansen (1996)
+#+END_QUOTE
 
 
 ** Economic theory, statistics, and data
@@ -117,6 +116,8 @@ econometrics.
 
 
 * Economic Questions We Examine
+
+
 
 ** Four practical questions
 

@@ -69,16 +69,10 @@ this project, updating course information and making necessary but
 minor changes to the contents of course materials.
 
 *** Update syllabus
-- [ ] Change class time.
-- [ ] Change classroom.
-- [ ] Change course schedule.
-- [ ] Add contents for course project.
-
-*** Copy lecture notes, slides, and update time in each note.
-- [ ] Copy lecture notes.
-- [ ] Copy slides.
-- [ ] Change time in each file.
-
+- [X] Change class time.
+- [X] Change classroom.
+- [X] Change course schedule.
+- [X] Add contents for course project.
 
 ** Stage II: Revise course materials <2017-02-06 Mon>-<2017-03-05 Sun>
 :PROPERTIES:
