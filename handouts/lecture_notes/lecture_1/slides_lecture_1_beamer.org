@@ -12,7 +12,16 @@
 #+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
 #+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
 
+
 * What is Econometrics
+#+TOC: headlines [currentsection]
+
+** What do you think of Econometrics?
+
+- Economics?
+- Mathematics?
+- Statistics?
+
 
 ** Definition of Econometrics
 
@@ -27,13 +36,237 @@ data.
 
 ** Science or art?
 
-Econometrics is a science because it essentially complies with the
-principle of *falsifiability* of scientific research, as Karl Popper
-defined.
-
-*** The reasoning cycle of scientific research
+- The principle of *falsifiability* of scientific research, as Karl Popper
+  defined.
 
   #+CAPTION: A reasoning cycle of scientific research
-  #+ATTR_HTML: :width 450 :height 350
-  #+ATTR_LATEX: :width 0.5\textwidth
+  #+ATTR_LATEX: :width 0.6\textwidth :height 0.6\textheight
   [[file:figure/reasoning-cycle-research.jpg]]
+
+
+** Economic theory, statistics, and data
+
+- A complete process of econometric research consists of
+  - Economic theory
+  - Statistical techniques
+  - Economic data
+
+#+NAME: fig-workflow
+#+ATTR_LATEX: :width 1.0\textwidth
+#+ATTR_HTML: :width 1200 
+#+CAPTION: A workflow of econometric research
+[[file:figure/econometric_workflow.png]]
+
+
+* Economic Questions We Examine
+#+TOC: headlines [currentsection]
+
+** Question #1: Does reducing class size improve elementary school education?
+
+*** The argument for small class size goes like this              :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+Small classes get more teacher-student interaction, fewer disruptions,
+and higher grades in test. 
+
+#+ATTR_HTML: :width 1200
+[[file:figure/calclassroom_cmp.png]]
+
+*** The question of interest                                      :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+**** The research question
+
+Is there any effect of reducing class size on improving students' grades in
+elementary schools?
+
+**** Who cares such research?
+
+- Teachers
+- Parents
+- School principles
+- Superintendents of school districts
+
+*** The research design                                           :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+- Qualitative research design :: A field investigation
+
+- Quantitative research design :: Randomized controlled experiments
+     (RCE, or randomized controlled trial, RCT)
+
+*** The sample and data                                           :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+- Draw samples and collect data from 420 California school districts
+  in 1999. 
+- Cross-sectional data. Each row represents a distinct unit of
+  observation. All observations are collected in a single year.
+
+#+ATTR_HTML: :width 750 :height 500
+#+ATTR_LATEX: :width 0.6\textwidth :height 0.5\textheight
+#+CAPTION: A screen shot of the dataset the California school districts in 1999
+#+NAME: fig-tbl-1-1
+[[file:figure/table1_1.png]]
+
+*** The econometric model                                         :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+- Use common sense to build an econometric model in this case. 
+- Variables involved: the average test scores in a school district
+  (/TestScore/) and the student-teacher ratio /STR/. 
+- For simplicity, we set up a *simple linear regression
+  model* as follows,
+
+\[ TestScore = \beta_0 + \beta_1 STR + OtherFactors  \]
+
+- The hypothesis we make is that if /STR/ has a non-zero effect on
+  /TestScore/, that is, $\beta_1 \neq 0$. 
+
+- The model is then estimated using some estimation method, and we
+  test the hypothesis with the estimation results using some test
+  statistics.
+
+
+** Three other questions
+
+*** The three other questions                                     :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+- Question 1 :: Does reducing class size improve elementary school education?
+- Question 2 :: Is there racial discrimination in the market for home loan?
+- Question 3 :: How much do cigarette taxes reduce smoking?
+- Question 4 :: What will the rate of inflation be next year?
+
+*** A summary of data types                                       :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:BEAMER_opt(Opt): shrink
+:END:
+
+#+ATTR_LATEX: :font \footnotesize :align clp{5cm}
+#+NAME: tab-data-types
+#+CAPTION: Data types and econometric methods for all four questions
+| Questions | Data types                     | Econometric methods                                |
+|-----------+--------------------------------+----------------------------------------------------|
+| #1        | experimental, cross-sectional  | multiple regression                                |
+| #2        | observational, cross-sectional | multiple regression with binary dependent variable |
+| #3        | observational, panel data      | Panel data regression model                        |
+| #4        | observational, time series     | multiple regression with lagged dependent variable |
+
+
+* Causal Effects and Idealized Experiments
+#+TOC: headlines [currentsection]
+
+** Randomized controlled experiment
+
+*** Randomized controlled experiments (or trials, RCTs thereafter) :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+- Clinical trials to test the effectiveness of medical
+  intervention. 
+- All participants are *randomly* assigned into two groups. 
+- The control group receives no treatment (or placebo)
+- The treatment group receives the treatment. 
+- After a follow-up period, compare the two groups. 
+
+*** An illustration of RCTs                                       :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+#+NAME: fig-rct-example
+#+CAPTION: An illustration of a randomized controlled experiment
+#+ATTR_HTML: :width 600
+#+ATTR_LATEX: :width 0.8\textwidth :height 0.6\textheight
+[[file:figure/rct_example.png]]
+
+*** The advantage of RCTs                                         :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+- Randomization minimizes selection bias. 
+- In the example of California school districts,
+  randomized control experiments ensure that the only systematic difference
+  between the classes in the control group and those in the treatment
+  group is the treatment (reduced class size) itself, with the effects
+  from other *confounding factors* eliminated. 
+
+*** The disadvantage of RCTs                                      :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+- Time and costs :: RCTs usually are expensive to undertake and take a
+  long time to observe the effect of treatment.
+- Conflict of interest dangers :: RCTs may be funded by special interest
+  groups so that its objectivity is doubtful.
+- Ethnics :: Especially in social science, we cannot impose some
+  treatment due to ethnic concerns. 
+
+
+** Causal effect
+
+- *Causal effect* is defined to be the effect on an outcome of a given
+  action or treatment as measured in an ideal RCT. 
+- The concept of the ideal randomized controlled experiment does
+  provide a theoretical benchmark to define causal effects in research
+  design.
+
+
+* Data Sources and Types
+#+TOC: headlines [currentsection]
+
+** Experimental versus observational data
+
+- *Experimental data* come from experiments designed to evaluate a
+  treatment or policy or to investigate a causal effect.
+- *Observational (or nonexperimental) data* are collected using
+  surveys, and administrative records.
+- The problem of using observational data to estimate causal effects is
+  that the "treatment" is not randomly assigned. 
+- Much of econometric methods are developed to deal with
+  causality using observational data.
+
+
+** Cross-sectional data
+
+- Data on different entities for a single time period are called
+  *cross-sectional data*.
+- The sequence of each observation number is arbitrarily assigned.
+- Cross-sectional data can be experimental data or observational data.
+
+
+** Time series data
+
+- Time series data are data for a single entity collected at multiple
+  time periods.
+- The sequence of each record is based on the time period
+  it happened. 
+
+
+** Panel data
+
+- *Panel data*, also called *longitudinal data*, are data for multiple
+  entities in which *each entity* is observed at two or more time
+  periods.
+- Panel data are very useful for estimating causal effects. 
+
+
+
+
+
