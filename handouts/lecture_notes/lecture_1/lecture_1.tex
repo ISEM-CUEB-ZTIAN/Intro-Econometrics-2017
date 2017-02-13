@@ -1,4 +1,4 @@
-% Created 2017-02-12 Sun 21:48
+% Created 2017-02-12 Sun 23:09
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -39,10 +39,10 @@
 \setcounter{secnumdepth}{1}
 \author{Zheng Tian}
 \date{}
-\title{Lecture 1: Economic Questions and Data}
+\title{Lecture 1: What is Econometrics?}
 \hypersetup{
  pdfauthor={Zheng Tian},
- pdftitle={Lecture 1: Economic Questions and Data},
+ pdftitle={Lecture 1: What is Econometrics?},
  pdfkeywords={},
  pdfsubject={},
  pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
@@ -55,10 +55,10 @@
 
 
 \section{What is Econometrics?}
-\label{sec:org45137a8}
+\label{sec:org92a8322}
 
 \subsection*{Definition of Econometrics}
-\label{sec:orgc1a579c}
+\label{sec:orgbd4080a}
 
 Econometricians may give you very different answers for the question
 of \emph{What is Econometrics}. The following answers are all right from
@@ -82,7 +82,7 @@ data.
 
 
 \subsection*{Science or art?}
-\label{sec:org4bb1b00}
+\label{sec:org22c764a}
 
 Let us dissect the above definition a little bit. First, why is
 econometrics the science AND art?
@@ -90,15 +90,15 @@ econometrics the science AND art?
 \begin{itemize}
 \item Econometrics is a science because it essentially complies with the
 principle of \textbf{falsifiability} of scientific research, as Karl Popper
-defined. Figure \ref{fig:org55366b7} show a typical reasoning cycle
-of a scientific research.\footnote{Source of Figure \ref{fig:org55366b7}: Martyn Shuttleworth (Sep
-21, 2008). Falsifiability. Retrieved February 10th, 2017 from Explorable.com:
+defined. Figure \ref{fig:org1b84c2c} show a typical reasoning cycle
+of a scientific research.\footnote{Source of Figure \ref{fig:org1b84c2c}: Martyn Shuttleworth (Sep
+21, 2008). Falsifiability. Retrieved February 10th, 2017, from Explorable.com:
 \url{https://explorable.com/falsifiability}.}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth]{figure/reasoning-cycle-research.jpg}
-\caption{\label{fig:org55366b7}
+\caption{\label{fig:org1b84c2c}
 A reasoning cycle of scientific research}
 \end{figure}
 
@@ -126,7 +126,7 @@ know how to reject and avoid spurious models. -- Hansen (1996)
 
 
 \subsection*{Economic theory, statistics, and data}
-\label{sec:orgcf0772b}
+\label{sec:org499311f}
 
 A complete process of econometric research inevitably consists of three
 components: economic theory, statistical techniques, and economic
@@ -141,7 +141,7 @@ the model and test hypotheses that are raised from the theory.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{figure/econometric_workflow.png}
-\caption{\label{fig:org82e6477}
+\caption{\label{fig:orged9c2a8}
 A workflow of econometric research}
 \end{figure}
 
@@ -150,13 +150,13 @@ econometrics.
 
 
 \section{Economic Questions We Examine}
-\label{sec:orge0f895c}
+\label{sec:org5afe1f9}
 
 \subsection*{Question \#1: Does reducing class size improve elementary school education?}
-\label{sec:org64c1569}
+\label{sec:org22cbe87}
 
 \subsubsection*{The story goes like this}
-\label{sec:org1f30ffc}
+\label{sec:org9870b40}
 
 There is a proposal for improving basic learning in elementary schools
 in the U.S. It suggests reducing class size, arguing that with fewer
@@ -166,7 +166,7 @@ enhanced, and grades improve. Researchers want to find evidence to
 prove such arguments.
 
 \subsubsection*{The question of interest}
-\label{sec:org5593453}
+\label{sec:org39ea275}
 
 The question of interest in this example is whether there is
 any effect of reducing class size on improving students' grades in
@@ -179,7 +179,7 @@ school board  members, and the list goes no, who are at stake with
 such a research project.
 
 \subsubsection*{The research design}
-\label{sec:org91e2a7c}
+\label{sec:orgf466c71}
 
 To investigate the effect of class size on learning performance, we
 can do either qualitative research or quantitative research. A field
@@ -196,19 +196,19 @@ examine the magnitude of the effect. We will explain RCE in the next
 section.
 
 \subsubsection*{The sample and data}
-\label{sec:org0356f82}
+\label{sec:org0c461ce}
 
 Obviously, it is unfeasible to carry out such an experiment
 nationwide. So researchers draw samples and collect data from 420
 California school districts in 1999. We will use this California
 school dataset throughout this course. So let's take a glimpse. Figure
-\ref{fig:orge691f85} is a screen shot of the first 25 observations in the
+\ref{fig:org607a030} is a screen shot of the first 25 observations in the
 dataset.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{figure/table1_1.png}
-\caption{\label{fig:orge691f85}
+\caption{\label{fig:org607a030}
 A screen shot of the dataset the California school districts in 1999}
 \end{figure}
 
@@ -221,7 +221,7 @@ arbitrary. Having the data in hand, the next step is to set up an
 econometric model.
 
 \subsubsection*{The econometric model}
-\label{sec:org83593ed}
+\label{sec:orgfcf86d3}
 
 Since there is no formal economic theory underlying this research, we
 use our common sense to build an econometric model. The key variables
@@ -240,7 +240,7 @@ statistics. All of these comprise the core of this course.
 
 
 \subsection*{Three other questions}
-\label{sec:orga5aebf8}
+\label{sec:org9c40033}
 
 Chapter 1 in The textbook explaines three other questions that can be
 answered using different types of data and applying different
@@ -254,7 +254,7 @@ econometric methods.
 \end{description}
 
 \begin{table}[htbp]
-\caption{\label{tab:org4392faf}
+\caption{\label{tab:orga6aeec4}
 Data types and econometric methods for all four questions}
 \centering
 \begin{tabular}{lll}
@@ -269,7 +269,7 @@ Questions & Data types & Econometric methods\\
 
 
 \section{Causal Effects and Idealized Experiments}
-\label{sec:orga436fb7}
+\label{sec:orgcb63cd1}
 
 In the example of California School districts, the main concern of the
 research is whether reducing class size would improve students'
@@ -279,7 +279,7 @@ disentangle from other factors that could influence test scores,
 researchers conduct a randomized controlled experiment. 
 
 \subsection*{Randomized controlled experiment}
-\label{sec:orge591b01}
+\label{sec:org14671f6}
 
 Randomized controlled experiments (or trials, RCT thereafter) are
 commonly used in clinical trial to test the effectiveness of medical
@@ -288,12 +288,14 @@ are randomly assigned to two groups: a control group and a treatment
 group. The control group receives no treatment (or placebo), while the
 treatment group receives the treatment. After a follow-up period,
 researchers compare the two groups to check the effectiveness of the
-treatment.
+treatment. See an illustration of RCTs in Figure \ref{fig:orgd2cc4d5}. \footnote{Source of Figure \ref{fig:orgd2cc4d5}: Emma Tomkinson (May 20,
+2013). Retrieved February 12th, 2017, from
+\url{https://emmatomkinson.com/2013/05/20/randomised-controlled-trials-rcts-in-public-policy/}.}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{figure/rct_example.png}
-\caption{\label{fig:orgf7d64da}
+\caption{\label{fig:orgd2cc4d5}
 An illustration of a randomized controlled experiment}
 \end{figure}
 
@@ -322,7 +324,7 @@ treatment due to ethnic concerns.
 
 
 \subsection*{Causal effect}
-\label{sec:org9ce497b}
+\label{sec:org9df9ca4}
 
 \textbf{Causal effect} is defined to be the effect on an outcome of a given
 action or treatment as measured in an ideal RCT. Although it is almost
@@ -334,10 +336,10 @@ in this course concern detecting the causal effect among variables.
 
 
 \section{Data Sources and Types}
-\label{sec:orge243688}
+\label{sec:orgdb98e7d}
 
 \subsection*{Experimental versus observational data}
-\label{sec:orgb4f8813}
+\label{sec:org0c1088c}
 
 \textbf{Experimental data} come from experiments designed to evaluate a
 treatment or policy or to investigate a causal effect. \textbf{Observational
@@ -352,7 +354,7 @@ causality using observational data.
 
 
 \subsection*{Cross-sectional data}
-\label{sec:org945adc4}
+\label{sec:orgf0df436}
 
 Data on different entities for a single time period are called
 \textbf{cross-sectional data}. The sequence of each observation number is
@@ -362,7 +364,7 @@ experimental data or observational data.
 
 
 \subsection*{Time series data}
-\label{sec:org25af7c1}
+\label{sec:org3d52383}
 
 Time series data are data for a single entity collected at multiple
 time periods. The sequence of each record is based on the time period
@@ -374,7 +376,7 @@ series data, but it will be another course in our econometric series.
 
 
 \subsection*{Panel data}
-\label{sec:org303e37f}
+\label{sec:org9e04857}
 
 \textbf{Panel data}, also called \textbf{longitudinal data}, are data for multiple
 entities in which \textbf{each entity} is observed at two or more time

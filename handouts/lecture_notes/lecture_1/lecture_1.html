@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-12 Sun 21:46 -->
+<!-- 2017-02-12 Sun 23:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Lecture 1: Economic Questions and Data</title>
+<title>Lecture 1: What is Econometrics?</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Zheng Tian" />
 <style type="text/css">
@@ -229,25 +229,25 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Lecture 1: Economic Questions and Data</h1>
+<h1 class="title">Lecture 1: What is Econometrics?</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org15f5a57">1. What is Econometrics?</a></li>
-<li><a href="#orgdbcaab1">2. Economic Questions We Examine</a></li>
-<li><a href="#org815b402">3. Causal Effects and Idealized Experiments</a></li>
-<li><a href="#org9493ed7">4. Data Sources and Types</a></li>
+<li><a href="#org26fb611">1. What is Econometrics?</a></li>
+<li><a href="#org0ef5335">2. Economic Questions We Examine</a></li>
+<li><a href="#org1312679">3. Causal Effects and Idealized Experiments</a></li>
+<li><a href="#org785d9be">4. Data Sources and Types</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org15f5a57" class="outline-2">
-<h2 id="org15f5a57"><span class="section-number-2">1</span> What is Econometrics?</h2>
+<div id="outline-container-org26fb611" class="outline-2">
+<h2 id="org26fb611"><span class="section-number-2">1</span> What is Econometrics?</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org2e7068e" class="outline-3">
-<h3 id="org2e7068e">Definition of Econometrics</h3>
-<div class="outline-text-3" id="text-org2e7068e">
+</div><div id="outline-container-org7d66a10" class="outline-3">
+<h3 id="org7d66a10">Definition of Econometrics</h3>
+<div class="outline-text-3" id="text-org7d66a10">
 <p>
 Econometricians may give you very different answers for the question
 of <i>What is Econometrics</i>. The following answers are all right from
@@ -277,9 +277,9 @@ data.
 </div>
 
 
-<div id="outline-container-org4c46761" class="outline-3">
-<h3 id="org4c46761">Science or art?</h3>
-<div class="outline-text-3" id="text-org4c46761">
+<div id="outline-container-orgdac6c1e" class="outline-3">
+<h3 id="orgdac6c1e">Science or art?</h3>
+<div class="outline-text-3" id="text-orgdac6c1e">
 <p>
 Let us dissect the above definition a little bit. First, why is
 econometrics the science AND art?
@@ -289,12 +289,12 @@ econometrics the science AND art?
 <li><p>
 Econometrics is a science because it essentially complies with the
 principle of <b>falsifiability</b> of scientific research, as Karl Popper
-defined. Figure <a href="#org53ddf5f">1</a> show a typical reasoning cycle
+defined. Figure <a href="#org8d031cc">1</a> show a typical reasoning cycle
 of a scientific research.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
 
 
-<div id="org53ddf5f" class="figure">
+<div id="org8d031cc" class="figure">
 <p><img src="figure/reasoning-cycle-research.jpg" alt="reasoning-cycle-research.jpg" width="450" height="350" />
 </p>
 <p><span class="figure-number">Figure 1: </span>A reasoning cycle of scientific research</p>
@@ -331,9 +331,9 @@ know how to reject and avoid spurious models. &#x2013; Hansen (1996)
 </div>
 
 
-<div id="outline-container-org602e8c5" class="outline-3">
-<h3 id="org602e8c5">Economic theory, statistics, and data</h3>
-<div class="outline-text-3" id="text-org602e8c5">
+<div id="outline-container-org8f79b93" class="outline-3">
+<h3 id="org8f79b93">Economic theory, statistics, and data</h3>
+<div class="outline-text-3" id="text-org8f79b93">
 <p>
 A complete process of econometric research inevitably consists of three
 components: economic theory, statistical techniques, and economic
@@ -347,7 +347,7 @@ the model and test hypotheses that are raised from the theory.
 </p>
 
 
-<div id="org0a07320" class="figure">
+<div id="org6aa5352" class="figure">
 <p><img src="figure/econometric_workflow.png" alt="econometric_workflow.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>A workflow of econometric research</p>
@@ -362,15 +362,15 @@ econometrics.
 </div>
 
 
-<div id="outline-container-orgdbcaab1" class="outline-2">
-<h2 id="orgdbcaab1"><span class="section-number-2">2</span> Economic Questions We Examine</h2>
+<div id="outline-container-org0ef5335" class="outline-2">
+<h2 id="org0ef5335"><span class="section-number-2">2</span> Economic Questions We Examine</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org60297d6" class="outline-3">
-<h3 id="org60297d6">Question #1: Does reducing class size improve elementary school education?</h3>
-<div class="outline-text-3" id="text-org60297d6">
-</div><div id="outline-container-org084b518" class="outline-4">
-<h4 id="org084b518">The story goes like this</h4>
-<div class="outline-text-4" id="text-org084b518">
+</div><div id="outline-container-org5645764" class="outline-3">
+<h3 id="org5645764">Question #1: Does reducing class size improve elementary school education?</h3>
+<div class="outline-text-3" id="text-org5645764">
+</div><div id="outline-container-orgdbc750d" class="outline-4">
+<h4 id="orgdbc750d">The story goes like this</h4>
+<div class="outline-text-4" id="text-orgdbc750d">
 <p>
 There is a proposal for improving basic learning in elementary schools
 in the U.S. It suggests reducing class size, arguing that with fewer
@@ -382,9 +382,9 @@ prove such arguments.
 </div>
 </div>
 
-<div id="outline-container-org9f0eaa6" class="outline-4">
-<h4 id="org9f0eaa6">The question of interest</h4>
-<div class="outline-text-4" id="text-org9f0eaa6">
+<div id="outline-container-orgdf97c86" class="outline-4">
+<h4 id="orgdf97c86">The question of interest</h4>
+<div class="outline-text-4" id="text-orgdf97c86">
 <p>
 The question of interest in this example is whether there is
 any effect of reducing class size on improving students' grades in
@@ -401,9 +401,9 @@ such a research project.
 </div>
 </div>
 
-<div id="outline-container-org8924e16" class="outline-4">
-<h4 id="org8924e16">The research design</h4>
-<div class="outline-text-4" id="text-org8924e16">
+<div id="outline-container-org74c5902" class="outline-4">
+<h4 id="org74c5902">The research design</h4>
+<div class="outline-text-4" id="text-org74c5902">
 <p>
 To investigate the effect of class size on learning performance, we
 can do either qualitative research or quantitative research. A field
@@ -424,20 +424,20 @@ section.
 </div>
 </div>
 
-<div id="outline-container-org47b6787" class="outline-4">
-<h4 id="org47b6787">The sample and data</h4>
-<div class="outline-text-4" id="text-org47b6787">
+<div id="outline-container-org7009f89" class="outline-4">
+<h4 id="org7009f89">The sample and data</h4>
+<div class="outline-text-4" id="text-org7009f89">
 <p>
 Obviously, it is unfeasible to carry out such an experiment
 nationwide. So researchers draw samples and collect data from 420
 California school districts in 1999. We will use this California
 school dataset throughout this course. So let's take a glimpse. Figure
-<a href="#org850303e">3</a> is a screen shot of the first 25 observations in the
+<a href="#org04609eb">3</a> is a screen shot of the first 25 observations in the
 dataset.
 </p>
 
 
-<div id="org850303e" class="figure">
+<div id="org04609eb" class="figure">
 <p><img src="figure/table1_1.png" alt="table1_1.png" width="750" height="500" />
 </p>
 <p><span class="figure-number">Figure 3: </span>A screen shot of the dataset the California school districts in 1999</p>
@@ -455,9 +455,9 @@ econometric model.
 </div>
 </div>
 
-<div id="outline-container-orga10e64e" class="outline-4">
-<h4 id="orga10e64e">The econometric model</h4>
-<div class="outline-text-4" id="text-orga10e64e">
+<div id="outline-container-orge47c82c" class="outline-4">
+<h4 id="orge47c82c">The econometric model</h4>
+<div class="outline-text-4" id="text-orge47c82c">
 <p>
 Since there is no formal economic theory underlying this research, we
 use our common sense to build an econometric model. The key variables
@@ -483,9 +483,9 @@ statistics. All of these comprise the core of this course.
 </div>
 
 
-<div id="outline-container-orgc5ed9a6" class="outline-3">
-<h3 id="orgc5ed9a6">Three other questions</h3>
-<div class="outline-text-3" id="text-orgc5ed9a6">
+<div id="outline-container-orgcdcbc99" class="outline-3">
+<h3 id="orgcdcbc99">Three other questions</h3>
+<div class="outline-text-3" id="text-orgcdcbc99">
 <p>
 Chapter 1 in The textbook explaines three other questions that can be
 answered using different types of data and applying different
@@ -499,7 +499,7 @@ econometric methods.
 <dt>Question 4</dt><dd>What will the rate of inflation be next year?</dd>
 </dl>
 
-<table id="org1b613d3" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org1601500" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Data types and econometric methods for all four questions</caption>
 
 <colgroup>
@@ -547,8 +547,8 @@ econometric methods.
 </div>
 
 
-<div id="outline-container-org815b402" class="outline-2">
-<h2 id="org815b402"><span class="section-number-2">3</span> Causal Effects and Idealized Experiments</h2>
+<div id="outline-container-org1312679" class="outline-2">
+<h2 id="org1312679"><span class="section-number-2">3</span> Causal Effects and Idealized Experiments</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 In the example of California School districts, the main concern of the
@@ -560,9 +560,9 @@ researchers conduct a randomized controlled experiment.
 </p>
 </div>
 
-<div id="outline-container-org1aa3cf6" class="outline-3">
-<h3 id="org1aa3cf6">Randomized controlled experiment</h3>
-<div class="outline-text-3" id="text-org1aa3cf6">
+<div id="outline-container-orgdb9309c" class="outline-3">
+<h3 id="orgdb9309c">Randomized controlled experiment</h3>
+<div class="outline-text-3" id="text-orgdb9309c">
 <p>
 Randomized controlled experiments (or trials, RCT thereafter) are
 commonly used in clinical trial to test the effectiveness of medical
@@ -571,11 +571,11 @@ are randomly assigned to two groups: a control group and a treatment
 group. The control group receives no treatment (or placebo), while the
 treatment group receives the treatment. After a follow-up period,
 researchers compare the two groups to check the effectiveness of the
-treatment.
+treatment. See an illustration of RCTs in Figure <a href="#org5fcba24">4</a>. <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
 </p>
 
 
-<div id="org099ed71" class="figure">
+<div id="org5fcba24" class="figure">
 <p><img src="figure/rct_example.png" alt="rct_example.png" width="600" />
 </p>
 <p><span class="figure-number">Figure 4: </span>An illustration of a randomized controlled experiment</p>
@@ -586,7 +586,7 @@ The most important advantage of RCT is that randomization minimizes
 selection bias and the different comparison groups allow the
 researchers to determine any effects of the treatment when compared
 with the no treatment (control) group, while other variables are kept
-constant.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> In the example of California school districts,
+constant.<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup> In the example of California school districts,
 randomized control experiments ensure that the only systematic difference
 between the classes in the control group and those in the treatment
 group is the treatment (reduced class size) itself, with the effects
@@ -609,9 +609,9 @@ treatment due to ethnic concerns.</dd>
 </div>
 
 
-<div id="outline-container-org0a924c7" class="outline-3">
-<h3 id="org0a924c7">Causal effect</h3>
-<div class="outline-text-3" id="text-org0a924c7">
+<div id="outline-container-org4e272d0" class="outline-3">
+<h3 id="org4e272d0">Causal effect</h3>
+<div class="outline-text-3" id="text-org4e272d0">
 <p>
 <b>Causal effect</b> is defined to be the effect on an outcome of a given
 action or treatment as measured in an ideal RCT. Although it is almost
@@ -626,12 +626,12 @@ in this course concern detecting the causal effect among variables.
 </div>
 
 
-<div id="outline-container-org9493ed7" class="outline-2">
-<h2 id="org9493ed7"><span class="section-number-2">4</span> Data Sources and Types</h2>
+<div id="outline-container-org785d9be" class="outline-2">
+<h2 id="org785d9be"><span class="section-number-2">4</span> Data Sources and Types</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org91e3fd1" class="outline-3">
-<h3 id="org91e3fd1">Experimental versus observational data</h3>
-<div class="outline-text-3" id="text-org91e3fd1">
+</div><div id="outline-container-orgb6fe90d" class="outline-3">
+<h3 id="orgb6fe90d">Experimental versus observational data</h3>
+<div class="outline-text-3" id="text-orgb6fe90d">
 <p>
 <b>Experimental data</b> come from experiments designed to evaluate a
 treatment or policy or to investigate a causal effect. <b>Observational
@@ -650,9 +650,9 @@ causality using observational data.
 </div>
 
 
-<div id="outline-container-org7d0c759" class="outline-3">
-<h3 id="org7d0c759">Cross-sectional data</h3>
-<div class="outline-text-3" id="text-org7d0c759">
+<div id="outline-container-org524c014" class="outline-3">
+<h3 id="org524c014">Cross-sectional data</h3>
+<div class="outline-text-3" id="text-org524c014">
 <p>
 Data on different entities for a single time period are called
 <b>cross-sectional data</b>. The sequence of each observation number is
@@ -664,9 +664,9 @@ experimental data or observational data.
 </div>
 
 
-<div id="outline-container-org3d08e30" class="outline-3">
-<h3 id="org3d08e30">Time series data</h3>
-<div class="outline-text-3" id="text-org3d08e30">
+<div id="outline-container-orgd1f9aef" class="outline-3">
+<h3 id="orgd1f9aef">Time series data</h3>
+<div class="outline-text-3" id="text-orgd1f9aef">
 <p>
 Time series data are data for a single entity collected at multiple
 time periods. The sequence of each record is based on the time period
@@ -680,9 +680,9 @@ series data, but it will be another course in our econometric series.
 </div>
 
 
-<div id="outline-container-orga5fb081" class="outline-3">
-<h3 id="orga5fb081">Panel data</h3>
-<div class="outline-text-3" id="text-orga5fb081">
+<div id="outline-container-orgbe762a0" class="outline-3">
+<h3 id="orgbe762a0">Panel data</h3>
+<div class="outline-text-3" id="text-orgbe762a0">
 <p>
 <b>Panel data</b>, also called <b>longitudinal data</b>, are data for multiple
 entities in which <b>each entity</b> is observed at two or more time
@@ -698,12 +698,18 @@ this course.
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-Source of Figure <a href="#org53ddf5f">1</a>: Martyn Shuttleworth (Sep
-21, 2008). Falsifiability. Retrieved February 10th, 2017 from Explorable.com:
+Source of Figure <a href="#org8d031cc">1</a>: Martyn Shuttleworth (Sep
+21, 2008). Falsifiability. Retrieved February 10th, 2017, from Explorable.com:
 <a href="https://explorable.com/falsifiability">https://explorable.com/falsifiability</a>.
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Source of Figure <a href="#org5fcba24">4</a>: Emma Tomkinson (May 20,
+2013). Retrieved February 12th, 2017, from
+<a href="https://emmatomkinson.com/2013/05/20/randomised-controlled-trials-rcts-in-public-policy/">https://emmatomkinson.com/2013/05/20/randomised-controlled-trials-rcts-in-public-policy/</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
 Randomized controlled trial. In <i>Wikipedia</i>. Retrieved February
 12th, 2017, from
 <a href="https://en.wikipedia.org/wiki/Randomized_controlled_trial">https://en.wikipedia.org/wiki/Randomized_controlled_trial</a>.
@@ -714,7 +720,7 @@ Randomized controlled trial. In <i>Wikipedia</i>. Retrieved February
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-02-12 Sun 21:46</p>
+<p class="date">Created: 2017-02-12 Sun 23:08</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

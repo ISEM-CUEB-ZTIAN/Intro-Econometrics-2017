@@ -235,7 +235,7 @@ are randomly assigned to two groups: a control group and a treatment
 group. The control group receives no treatment (or placebo), while the
 treatment group receives the treatment. After a follow-up period,
 researchers compare the two groups to check the effectiveness of the
-treatment.
+treatment. See an illustration of RCTs in Figure [[fig-rct-example]]. [fn:3]
 
 #+NAME: fig-rct-example
 #+CAPTION: An illustration of a randomized controlled experiment
@@ -322,12 +322,15 @@ this course.
 * Footnotes
 
 [fn:1] Source of Figure [[fig-reasoning-cycle]]: Martyn Shuttleworth (Sep
-21, 2008). Falsifiability. Retrieved February 10th, 2017 from Explorable.com:
+21, 2008). Falsifiability. Retrieved February 10th, 2017, from Explorable.com:
 https://explorable.com/falsifiability.
+
+[fn:3] Source of Figure [[fig-rct-example]]: Emma Tomkinson (May 20,
+2013). Retrieved February 12th, 2017, from
+https://emmatomkinson.com/2013/05/20/randomised-controlled-trials-rcts-in-public-policy/.
 
 [fn:2] Randomized controlled trial. In /Wikipedia/. Retrieved February
 12th, 2017, from
 https://en.wikipedia.org/wiki/Randomized_controlled_trial.
-
 
 
