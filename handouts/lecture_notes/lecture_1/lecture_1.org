@@ -1,7 +1,7 @@
-#+TITLE: Lecture 1: Economic Questions and Data
+#+TITLE: Lecture 1: What is Econometrics?
 #+AUTHOR: Zheng Tian
 #+DATE:
-#+OPTIONS: toc:1 H:4 num:2
+#+OPTIONS: toc:1 H:3 num:1
 #+OPTIONS: tex:dvipng
 #+PROPERTY: header-args:R  :session my-r-session
 
@@ -9,7 +9,7 @@
 
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]
-#+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \usepackage{setspace}
 #+LATEX_HEADER: \onehalfspacing
 #+LATEX_HEADER: \usepackage{parskip}
@@ -66,7 +66,7 @@ econometrics the science AND art?
   of a scientific research.[fn:1]
 
   #+NAME: fig-reasoning-cycle
-  #+CAPTION: A reasoning cycle of scientific research 
+  #+CAPTION: A reasoning cycle of scientific research
   #+ATTR_HTML: :width 450 :height 350
   #+ATTR_LATEX: :width 0.6\textwidth
   [[file:figure/reasoning-cycle-research.jpg]]
@@ -106,7 +106,6 @@ to measure these variables, and use statistical techniques to estimate
 the model and test hypotheses that are raised from the theory.
 
 #+NAME: fig-workflow
-#+ARRT_HTML: :width 800
 #+ATTR_LATEX: :width 1.0\textwidth
 #+CAPTION: A workflow of econometric research
 [[file:figure/econometric_workflow.png]]
@@ -117,90 +116,218 @@ econometrics.
 
 * Economic Questions We Examine
 
+** Question #1: Does reducing class size improve elementary school education?
+
+*** The story goes like this
+
+There is a proposal for improving basic learning in elementary schools
+in the U.S. It suggests reducing class size, arguing that with fewer
+students in the classroom, each students get more of the teacher's
+attention, there are fewer class disruptions, learning is thus
+enhanced, and grades improve. Researchers want to find evidence to
+prove such arguments.
+
+*** The question of interest
+
+The question of interest in this example is whether there is
+any effect of reducing class size on improving students' grades in
+elementary schools.
+
+Before we start a research project, we often consider its practical
+significance. Simply, who will care such a research? We could list
+parents, school principles, superintendents of school districts,
+school board  members, and the list goes no, who are at stake with
+such a research project.
+
+*** The research design
+
+To investigate the effect of class size on learning performance, we
+can do either qualitative research or quantitative research. A field
+study, for example, is a qualitative research in which researchers
+will interview students and teachers and follow some classes for a
+period on the spot. Although qualitative research design is not the focus of
+this course, we should keep in mind of such a research direction.
+
+We focus on a quantitative research design because we want to know
+exactly how much improvement in students' learning would be when class
+size is reduced by one student per class. Researchers use *randomized
+controlled experiments (RCE, or randomized controlled trial, RCT)* to
+examine the magnitude of the effect. We will explain RCE in the next
+section.
+
+*** The sample and data
+
+Obviously, it is unfeasible to carry out such an experiment
+nationwide. So researchers draw samples and collect data from 420
+California school districts in 1999. We will use this California
+school dataset throughout this course. So let's take a glimpse. Figure
+[[fig-tbl-1-1]] is a screen shot of the first 25 observations in the
+dataset.
+
+#+ATTR_HTML: :width 750 :height 500
+#+ATTR_LATEX: :width 1.0\textwidth
+#+CAPTION: A screen shot of the dataset the California school districts in 1999
+#+NAME: fig-tbl-1-1
+[[file:figure/table1_1.png]]
+
+This is an example of cross-sectional data. Each row represents a
+distinct unit of observation, which is a school district in California
+in this example. All observations are collected in a single
+year. Although an observation number is assigned to each row, the
+order bears no real meaning, that is, the sorting of observations is
+arbitrary. Having the data in hand, the next step is to set up an
+econometric model.
+
+*** The econometric model
+
+Since there is no formal economic theory underlying this research, we
+use our common sense to build an econometric model. The key variables
+involved in this research is the performance of students' learning and
+class size. The former is measured by the average test scores in a
+school district (/TestScore/), and the latter is measured by student-teacher
+ratios (/STR/). For simplicity, we set up a *simple linear regression
+model* as follows,
+
+\[ TestScore = \beta_0 + \beta_1 STR + OtherFactors  \]
+
+The hypothesis we make is that if /STR/ has a non-zero effect on
+/TestScore/. The model is then estimated using some estimation method,
+and we test the hypothesis with the estimation results using some test
+statistics. All of these comprise the core of this course.
 
 
-** Four practical questions
+** Three other questions
 
-- Question 1 :: does reducing class size improve elementary school education?
+Chapter 1 in The textbook explaines three other questions that can be
+answered using different types of data and applying different
+econometric methods.
 
-- Question 2 :: is there racial discrimination in the market for home loan?
+- Question 1 :: Does reducing class size improve elementary school education?
+- Question 2 :: Is there racial discrimination in the market for home loan?
+- Question 3 :: How much do cigarette taxes reduce smoking?
+- Question 4 :: What will the rate of inflation be next year?
 
-- Question 3 :: how much do cigarette taxes reduce smoking?
-
-- Question 4 :: what will the rate of inflation be next year?
-
-
-** How does an econometrician formulate such questions?
-
-Ideally, an econometrician would design his/her econometric modeling
-by the following steps
-
-1) Establish a theoretical model to qualitatively describe how X could
-   cause Y, holding other factors constant. From the theoretical
-   model, put forward some hypotheses to validate the theory.
-2) Find actual data to measure the variables in the theory
-3) Set up an empirical model to test the theoretical model, using
-   available data.
-4) Choose a suitable estimation method to estimate the empirical model.
-5) Perform some hypothesis tests and model specification test to
-   validate the estimation results.
-6) Based on the estimation and test results, determine whether the theory
-   is internally and externally valid.
+#+NAME: tab-data-types
+#+CAPTION: Data types and econometric methods for all four questions
+| Questions | Data types                     | Econometric methods                                |
+|-----------+--------------------------------+----------------------------------------------------|
+| #1        | experimental, cross-sectional  | multiple regression                                |
+| #2        | observational, cross-sectional | multiple regression with binary dependent variable |
+| #3        | observational, panel data      | Panel data regression model                        |
+| #4        | observational, time series     | multiple regression with lagged dependent variable |
 
 
 * Causal Effects and Idealized Experiments
 
-The success of an econometric analysis relies on whether the causal
-effects between X and Y can be accurately identified, excluding the
-influences of other factors.
+In the example of California School districts, the main concern of the
+research is whether reducing class size would improve students'
+learning, comprising a *causal relationship* between reducing class
+size (the cause) and improvement in test scores (the consequence). To
+disentangle from other factors that could influence test scores,
+researchers conduct a randomized controlled experiment. 
 
 ** Randomized controlled experiment
 
-*** Controlled experiment
+Randomized controlled experiments (or trials, RCT thereafter) are
+commonly used in clinical trial to test the effectiveness of medical
+intervention. In a randomized controlled experiment, the participants
+are randomly assigned to two groups: a control group and a treatment
+group. The control group receives no treatment (or placebo), while the
+treatment group receives the treatment. After a follow-up period,
+researchers compare the two groups to check the effectiveness of the
+treatment.
 
-Control group (no treatment) versus treatment group (with treatment)
+#+NAME: fig-rct-example
+#+CAPTION: An illustration of a randomized controlled experiment
+#+ATTR_HTML: :width 600
+#+ATTR_LATEX: :width 1.0\textwidth
+[[file:figure/rct_example.png]]
 
-*** Randomized experiment
-the treamtment is assigned randomly
+The most important advantage of RCT is that randomization minimizes
+selection bias and the different comparison groups allow the
+researchers to determine any effects of the treatment when compared
+with the no treatment (control) group, while other variables are kept
+constant.[fn:2] In the example of California school districts,
+randomized control experiments ensure that the only systematic difference
+between the classes in the control group and those in the treatment
+group is the treatment (reduced class size) itself, with the effects
+from other *confounding factors* eliminated. 
 
-*** Advantages and disadvantages
+However, there are the disadvantages of RCTs. Among the most
+frequently cited drawbacks are:
+- Time and costs :: RCTs usually are expensive to undertake and take a
+  long time to observe the effect of treatment.
+- Conflict of interest dangers :: RCTs may be funded by special interest
+  groups so that its objectivity is doubtful.
+- Ethnics :: Especially in social science, we cannot impose some
+  treatment due to ethnic concerns. 
 
-- Advantages :: eliminate the possibility of a systematic relationship that could
-  blur the causal effects of the treatment
 
-- Disadvantages :: it is difficult to implement, especially for social
-                   science
+** Causal effect
+
+*Causal effect* is defined to be the effect on an outcome of a given
+action or treatment as measured in an ideal RCT. Although it is almost
+impossible to do an ideal RCT, the concept of the ideal randomized
+controlled experiment does provide a theoretical benchmark to define
+causal effects in research design, while the implementation of such an
+experiment is nearly impossible. Most econometric methods to be taught
+in this course concern detecting the causal effect among variables. 
 
 
 * Data Sources and Types
-** TODO Experimental versus observational data
+
+** Experimental versus observational data
+
+*Experimental data* come from experiments designed to evaluate a
+treatment or policy or to investigate a causal effect. *Observational
+(or nonexperimental) data* are collected using surveys, and
+administrative records.
+
+The problem of using observational data to estimate causal effects is
+that the "treatment" is not randomly assigned, so it is challenging to
+sort out the effect of the "treatment" from other relevant
+factors. Much of econometric methods are developed to deal with
+causality using observational data.
+
 
 ** Cross-sectional data
 
-- heights of all 30 students in a class
+Data on different entities for a single time period are called
+*cross-sectional data*. The sequence of each observation number is
+arbitrarily assigned. The data in the example of California school
+districts are cross-sectional. Cross-sectional data can be
+experimental data or observational data. 
 
-- total population of each province in China in 2014
 
 ** Time series data
 
-- stock price of Company A by hour over the last month
+Time series data are data for a single entity collected at multiple
+time periods. The sequence of each record is based on the time period
+it happened, which bears real meaning in understanding the trend. An
+example of time series data is the consumer price index (CPI) of China
+by month from 1990 to 2014. Most time series data are
+observational. This course will not cover any chapters regarding time
+series data, but it will be another course in our econometric series. 
 
-- consumer price index of China by month from 1990 to 2014
 
 ** Panel data
 
-- annual wage of a fixed group of respondents in a survey conducted by
-  a statistic agency in 1990, 1995, 2000, 2005, and 2010
-
-- GDP per capita of each country in Asia from 1990 to 2014
-
+*Panel data*, also called *longitudinal data*, are data for multiple
+entities in which *each entity* is observed at two or more time
+periods. Panel data are very useful for estimating causal effects. If
+time permits, we will cover some basic use of panel data at the end of
+this course. 
 
 
 * Footnotes
 
 [fn:1] Source of Figure [[fig-reasoning-cycle]]: Martyn Shuttleworth (Sep
-21, 2008). Falsifiability. Retrieved Feb 10, 2017 from Explorable.com:
+21, 2008). Falsifiability. Retrieved February 10th, 2017 from Explorable.com:
 https://explorable.com/falsifiability.
+
+[fn:2] Randomized controlled trial. In /Wikipedia/. Retrieved February
+12th, 2017, from
+https://en.wikipedia.org/wiki/Randomized_controlled_trial.
 
 
 

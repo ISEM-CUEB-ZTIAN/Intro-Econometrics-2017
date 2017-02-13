@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-11 Sat 01:58 -->
+<!-- 2017-02-12 Sun 21:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lecture 1: Economic Questions and Data</title>
@@ -234,20 +234,20 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd0e0ff2">1. What is Econometrics?</a></li>
-<li><a href="#orgccd780a">2. Economic Questions We Examine</a></li>
-<li><a href="#orgc094070">3. Causal Effects and Idealized Experiments</a></li>
-<li><a href="#org29fdc5f">4. Data Sources and Types</a></li>
+<li><a href="#org15f5a57">1. What is Econometrics?</a></li>
+<li><a href="#orgdbcaab1">2. Economic Questions We Examine</a></li>
+<li><a href="#org815b402">3. Causal Effects and Idealized Experiments</a></li>
+<li><a href="#org9493ed7">4. Data Sources and Types</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd0e0ff2" class="outline-2">
-<h2 id="orgd0e0ff2"><span class="section-number-2">1</span> What is Econometrics?</h2>
+<div id="outline-container-org15f5a57" class="outline-2">
+<h2 id="org15f5a57"><span class="section-number-2">1</span> What is Econometrics?</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org534df21" class="outline-3">
-<h3 id="org534df21"><span class="section-number-3">1.1</span> Definition of Econometrics</h3>
-<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-org2e7068e" class="outline-3">
+<h3 id="org2e7068e">Definition of Econometrics</h3>
+<div class="outline-text-3" id="text-org2e7068e">
 <p>
 Econometricians may give you very different answers for the question
 of <i>What is Econometrics</i>. The following answers are all right from
@@ -277,10 +277,9 @@ data.
 </div>
 
 
-
-<div id="outline-container-orgea3ed80" class="outline-3">
-<h3 id="orgea3ed80"><span class="section-number-3">1.2</span> Science or art?</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org4c46761" class="outline-3">
+<h3 id="org4c46761">Science or art?</h3>
+<div class="outline-text-3" id="text-org4c46761">
 <p>
 Let us dissect the above definition a little bit. First, why is
 econometrics the science AND art?
@@ -290,12 +289,12 @@ econometrics the science AND art?
 <li><p>
 Econometrics is a science because it essentially complies with the
 principle of <b>falsifiability</b> of scientific research, as Karl Popper
-defined. Figure <a href="#org029a98e">1</a> show a typical reasoning cycle
+defined. Figure <a href="#org53ddf5f">1</a> show a typical reasoning cycle
 of a scientific research.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
 
 
-<div id="org029a98e" class="figure">
+<div id="org53ddf5f" class="figure">
 <p><img src="figure/reasoning-cycle-research.jpg" alt="reasoning-cycle-research.jpg" width="450" height="350" />
 </p>
 <p><span class="figure-number">Figure 1: </span>A reasoning cycle of scientific research</p>
@@ -332,9 +331,9 @@ know how to reject and avoid spurious models. &#x2013; Hansen (1996)
 </div>
 
 
-<div id="outline-container-org21aa55d" class="outline-3">
-<h3 id="org21aa55d"><span class="section-number-3">1.3</span> Economic theory, statistics, and data</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org602e8c5" class="outline-3">
+<h3 id="org602e8c5">Economic theory, statistics, and data</h3>
+<div class="outline-text-3" id="text-org602e8c5">
 <p>
 A complete process of econometric research inevitably consists of three
 components: economic theory, statistical techniques, and economic
@@ -348,7 +347,7 @@ the model and test hypotheses that are raised from the theory.
 </p>
 
 
-<div class="figure">
+<div id="org0a07320" class="figure">
 <p><img src="figure/econometric_workflow.png" alt="econometric_workflow.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>A workflow of econometric research</p>
@@ -363,136 +362,334 @@ econometrics.
 </div>
 
 
-<div id="outline-container-orgccd780a" class="outline-2">
-<h2 id="orgccd780a"><span class="section-number-2">2</span> Economic Questions We Examine</h2>
+<div id="outline-container-orgdbcaab1" class="outline-2">
+<h2 id="orgdbcaab1"><span class="section-number-2">2</span> Economic Questions We Examine</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org23d4eee" class="outline-3">
-<h3 id="org23d4eee"><span class="section-number-3">2.1</span> Four practical questions</h3>
-<div class="outline-text-3" id="text-2-1">
-<dl class="org-dl">
-<dt>Question 1</dt><dd>does reducing class size improve elementary school education?</dd>
-
-<dt>Question 2</dt><dd>is there racial discrimination in the market for home loan?</dd>
-
-<dt>Question 3</dt><dd>how much do cigarette taxes reduce smoking?</dd>
-
-<dt>Question 4</dt><dd>what will the rate of inflation be next year?</dd>
-</dl>
-</div>
-</div>
-
-
-<div id="outline-container-orge77ad1b" class="outline-3">
-<h3 id="orge77ad1b"><span class="section-number-3">2.2</span> How does an econometrician formulate such questions?</h3>
-<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-org60297d6" class="outline-3">
+<h3 id="org60297d6">Question #1: Does reducing class size improve elementary school education?</h3>
+<div class="outline-text-3" id="text-org60297d6">
+</div><div id="outline-container-org084b518" class="outline-4">
+<h4 id="org084b518">The story goes like this</h4>
+<div class="outline-text-4" id="text-org084b518">
 <p>
-Ideally, an econometrician would design his/her econometric modeling
-by the following steps
+There is a proposal for improving basic learning in elementary schools
+in the U.S. It suggests reducing class size, arguing that with fewer
+students in the classroom, each students get more of the teacher's
+attention, there are fewer class disruptions, learning is thus
+enhanced, and grades improve. Researchers want to find evidence to
+prove such arguments.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9f0eaa6" class="outline-4">
+<h4 id="org9f0eaa6">The question of interest</h4>
+<div class="outline-text-4" id="text-org9f0eaa6">
+<p>
+The question of interest in this example is whether there is
+any effect of reducing class size on improving students' grades in
+elementary schools.
 </p>
 
-<ol class="org-ol">
-<li>Establish a theoretical model to qualitatively describe how X could
-cause Y, holding other factors constant. From the theoretical
-model, put forward some hypotheses to validate the theory.</li>
-<li>Find actual data to measure the variables in the theory</li>
-<li>Set up an empirical model to test the theoretical model, using
-available data.</li>
-<li>Choose a suitable estimation method to estimate the empirical model.</li>
-<li>Perform some hypothesis tests and model specification test to
-validate the estimation results.</li>
-<li>Based on the estimation and test results, determine whether the theory
-is internally and externally valid.</li>
-</ol>
+<p>
+Before we start a research project, we often consider its practical
+significance. Simply, who will care such a research? We could list
+parents, school principles, superintendents of school districts,
+school board  members, and the list goes no, who are at stake with
+such a research project.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8924e16" class="outline-4">
+<h4 id="org8924e16">The research design</h4>
+<div class="outline-text-4" id="text-org8924e16">
+<p>
+To investigate the effect of class size on learning performance, we
+can do either qualitative research or quantitative research. A field
+study, for example, is a qualitative research in which researchers
+will interview students and teachers and follow some classes for a
+period on the spot. Although qualitative research design is not the focus of
+this course, we should keep in mind of such a research direction.
+</p>
+
+<p>
+We focus on a quantitative research design because we want to know
+exactly how much improvement in students' learning would be when class
+size is reduced by one student per class. Researchers use <b>randomized
+controlled experiments (RCE, or randomized controlled trial, RCT)</b> to
+examine the magnitude of the effect. We will explain RCE in the next
+section.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org47b6787" class="outline-4">
+<h4 id="org47b6787">The sample and data</h4>
+<div class="outline-text-4" id="text-org47b6787">
+<p>
+Obviously, it is unfeasible to carry out such an experiment
+nationwide. So researchers draw samples and collect data from 420
+California school districts in 1999. We will use this California
+school dataset throughout this course. So let's take a glimpse. Figure
+<a href="#org850303e">3</a> is a screen shot of the first 25 observations in the
+dataset.
+</p>
+
+
+<div id="org850303e" class="figure">
+<p><img src="figure/table1_1.png" alt="table1_1.png" width="750" height="500" />
+</p>
+<p><span class="figure-number">Figure 3: </span>A screen shot of the dataset the California school districts in 1999</p>
+</div>
+
+<p>
+This is an example of cross-sectional data. Each row represents a
+distinct unit of observation, which is a school district in California
+in this example. All observations are collected in a single
+year. Although an observation number is assigned to each row, the
+order bears no real meaning, that is, the sorting of observations is
+arbitrary. Having the data in hand, the next step is to set up an
+econometric model.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga10e64e" class="outline-4">
+<h4 id="orga10e64e">The econometric model</h4>
+<div class="outline-text-4" id="text-orga10e64e">
+<p>
+Since there is no formal economic theory underlying this research, we
+use our common sense to build an econometric model. The key variables
+involved in this research is the performance of students' learning and
+class size. The former is measured by the average test scores in a
+school district (<i>TestScore</i>), and the latter is measured by student-teacher
+ratios (<i>STR</i>). For simplicity, we set up a <b>simple linear regression
+model</b> as follows,
+</p>
+
+<p>
+<img src="ltximg/lecture_1_00cb98a1e8d62cbb3fcff7bd07b05f40ed8f5347.png" alt="lecture_1_00cb98a1e8d62cbb3fcff7bd07b05f40ed8f5347.png" />
+</p>
+
+<p>
+The hypothesis we make is that if <i>STR</i> has a non-zero effect on
+<i>TestScore</i>. The model is then estimated using some estimation method,
+and we test the hypothesis with the estimation results using some test
+statistics. All of these comprise the core of this course.
+</p>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgc094070" class="outline-2">
-<h2 id="orgc094070"><span class="section-number-2">3</span> Causal Effects and Idealized Experiments</h2>
+<div id="outline-container-orgc5ed9a6" class="outline-3">
+<h3 id="orgc5ed9a6">Three other questions</h3>
+<div class="outline-text-3" id="text-orgc5ed9a6">
+<p>
+Chapter 1 in The textbook explaines three other questions that can be
+answered using different types of data and applying different
+econometric methods.
+</p>
+
+<dl class="org-dl">
+<dt>Question 1</dt><dd>Does reducing class size improve elementary school education?</dd>
+<dt>Question 2</dt><dd>Is there racial discrimination in the market for home loan?</dd>
+<dt>Question 3</dt><dd>How much do cigarette taxes reduce smoking?</dd>
+<dt>Question 4</dt><dd>What will the rate of inflation be next year?</dd>
+</dl>
+
+<table id="org1b613d3" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Data types and econometric methods for all four questions</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Questions</th>
+<th scope="col" class="org-left">Data types</th>
+<th scope="col" class="org-left">Econometric methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">#1</td>
+<td class="org-left">experimental, cross-sectional</td>
+<td class="org-left">multiple regression</td>
+</tr>
+
+<tr>
+<td class="org-left">#2</td>
+<td class="org-left">observational, cross-sectional</td>
+<td class="org-left">multiple regression with binary dependent variable</td>
+</tr>
+
+<tr>
+<td class="org-left">#3</td>
+<td class="org-left">observational, panel data</td>
+<td class="org-left">Panel data regression model</td>
+</tr>
+
+<tr>
+<td class="org-left">#4</td>
+<td class="org-left">observational, time series</td>
+<td class="org-left">multiple regression with lagged dependent variable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org815b402" class="outline-2">
+<h2 id="org815b402"><span class="section-number-2">3</span> Causal Effects and Idealized Experiments</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-The success of an econometric analysis relies on whether the causal
-effects between X and Y can be accurately identified, excluding the
-influences of other factors.
+In the example of California School districts, the main concern of the
+research is whether reducing class size would improve students'
+learning, comprising a <b>causal relationship</b> between reducing class
+size (the cause) and improvement in test scores (the consequence). To
+disentangle from other factors that could influence test scores,
+researchers conduct a randomized controlled experiment. 
 </p>
 </div>
 
-<div id="outline-container-org7dc32a3" class="outline-3">
-<h3 id="org7dc32a3"><span class="section-number-3">3.1</span> Randomized controlled experiment</h3>
-<div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-org4ac3881" class="outline-4">
-<h4 id="org4ac3881">Controlled experiment</h4>
-<div class="outline-text-4" id="text-org4ac3881">
+<div id="outline-container-org1aa3cf6" class="outline-3">
+<h3 id="org1aa3cf6">Randomized controlled experiment</h3>
+<div class="outline-text-3" id="text-org1aa3cf6">
 <p>
-Control group (no treatment) versus treatment group (with treatment)
+Randomized controlled experiments (or trials, RCT thereafter) are
+commonly used in clinical trial to test the effectiveness of medical
+intervention. In a randomized controlled experiment, the participants
+are randomly assigned to two groups: a control group and a treatment
+group. The control group receives no treatment (or placebo), while the
+treatment group receives the treatment. After a follow-up period,
+researchers compare the two groups to check the effectiveness of the
+treatment.
 </p>
-</div>
+
+
+<div id="org099ed71" class="figure">
+<p><img src="figure/rct_example.png" alt="rct_example.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 4: </span>An illustration of a randomized controlled experiment</p>
 </div>
 
-<div id="outline-container-org4c94b9e" class="outline-4">
-<h4 id="org4c94b9e">Randomized experiment</h4>
-<div class="outline-text-4" id="text-org4c94b9e">
 <p>
-the treamtment is assigned randomly
+The most important advantage of RCT is that randomization minimizes
+selection bias and the different comparison groups allow the
+researchers to determine any effects of the treatment when compared
+with the no treatment (control) group, while other variables are kept
+constant.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> In the example of California school districts,
+randomized control experiments ensure that the only systematic difference
+between the classes in the control group and those in the treatment
+group is the treatment (reduced class size) itself, with the effects
+from other <b>confounding factors</b> eliminated. 
 </p>
-</div>
-</div>
 
-<div id="outline-container-org40d589d" class="outline-4">
-<h4 id="org40d589d">Advantages and disadvantages</h4>
-<div class="outline-text-4" id="text-org40d589d">
+<p>
+However, there are the disadvantages of RCTs. Among the most
+frequently cited drawbacks are:
+</p>
 <dl class="org-dl">
-<dt>Advantages</dt><dd>eliminate the possibility of a systematic relationship that could
-blur the causal effects of the treatment</dd>
-
-<dt>Disadvantages</dt><dd>it is difficult to implement, especially for social
-science</dd>
+<dt>Time and costs</dt><dd>RCTs usually are expensive to undertake and take a
+long time to observe the effect of treatment.</dd>
+<dt>Conflict of interest dangers</dt><dd>RCTs may be funded by special interest
+groups so that its objectivity is doubtful.</dd>
+<dt>Ethnics</dt><dd>Especially in social science, we cannot impose some
+treatment due to ethnic concerns.</dd>
 </dl>
 </div>
 </div>
+
+
+<div id="outline-container-org0a924c7" class="outline-3">
+<h3 id="org0a924c7">Causal effect</h3>
+<div class="outline-text-3" id="text-org0a924c7">
+<p>
+<b>Causal effect</b> is defined to be the effect on an outcome of a given
+action or treatment as measured in an ideal RCT. Although it is almost
+impossible to do an ideal RCT, the concept of the ideal randomized
+controlled experiment does provide a theoretical benchmark to define
+causal effects in research design, while the implementation of such an
+experiment is nearly impossible. Most econometric methods to be taught
+in this course concern detecting the causal effect among variables. 
+</p>
+</div>
 </div>
 </div>
 
 
-<div id="outline-container-org29fdc5f" class="outline-2">
-<h2 id="org29fdc5f"><span class="section-number-2">4</span> Data Sources and Types</h2>
+<div id="outline-container-org9493ed7" class="outline-2">
+<h2 id="org9493ed7"><span class="section-number-2">4</span> Data Sources and Types</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgb793732" class="outline-3">
-<h3 id="orgb793732"><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Experimental versus observational data</h3>
-</div>
+</div><div id="outline-container-org91e3fd1" class="outline-3">
+<h3 id="org91e3fd1">Experimental versus observational data</h3>
+<div class="outline-text-3" id="text-org91e3fd1">
+<p>
+<b>Experimental data</b> come from experiments designed to evaluate a
+treatment or policy or to investigate a causal effect. <b>Observational
+(or nonexperimental) data</b> are collected using surveys, and
+administrative records.
+</p>
 
-<div id="outline-container-org2ae5a85" class="outline-3">
-<h3 id="org2ae5a85"><span class="section-number-3">4.2</span> Cross-sectional data</h3>
-<div class="outline-text-3" id="text-4-2">
-<ul class="org-ul">
-<li>heights of all 30 students in a class</li>
-
-<li>total population of each province in China in 2014</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org2e3be5b" class="outline-3">
-<h3 id="org2e3be5b"><span class="section-number-3">4.3</span> Time series data</h3>
-<div class="outline-text-3" id="text-4-3">
-<ul class="org-ul">
-<li>stock price of Company A by hour over the last month</li>
-
-<li>consumer price index of China by month from 1990 to 2014</li>
-</ul>
+<p>
+The problem of using observational data to estimate causal effects is
+that the "treatment" is not randomly assigned, so it is challenging to
+sort out the effect of the "treatment" from other relevant
+factors. Much of econometric methods are developed to deal with
+causality using observational data.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org498e9ac" class="outline-3">
-<h3 id="org498e9ac"><span class="section-number-3">4.4</span> Panel data</h3>
-<div class="outline-text-3" id="text-4-4">
-<ul class="org-ul">
-<li>annual wage of a fixed group of respondents in a survey conducted by
-a statistic agency in 1990, 1995, 2000, 2005, and 2010</li>
 
-<li>GDP per capita of each country in Asia from 1990 to 2014</li>
-</ul>
+<div id="outline-container-org7d0c759" class="outline-3">
+<h3 id="org7d0c759">Cross-sectional data</h3>
+<div class="outline-text-3" id="text-org7d0c759">
+<p>
+Data on different entities for a single time period are called
+<b>cross-sectional data</b>. The sequence of each observation number is
+arbitrarily assigned. The data in the example of California school
+districts are cross-sectional. Cross-sectional data can be
+experimental data or observational data. 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org3d08e30" class="outline-3">
+<h3 id="org3d08e30">Time series data</h3>
+<div class="outline-text-3" id="text-org3d08e30">
+<p>
+Time series data are data for a single entity collected at multiple
+time periods. The sequence of each record is based on the time period
+it happened, which bears real meaning in understanding the trend. An
+example of time series data is the consumer price index (CPI) of China
+by month from 1990 to 2014. Most time series data are
+observational. This course will not cover any chapters regarding time
+series data, but it will be another course in our econometric series. 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orga5fb081" class="outline-3">
+<h3 id="orga5fb081">Panel data</h3>
+<div class="outline-text-3" id="text-orga5fb081">
+<p>
+<b>Panel data</b>, also called <b>longitudinal data</b>, are data for multiple
+entities in which <b>each entity</b> is observed at two or more time
+periods. Panel data are very useful for estimating causal effects. If
+time permits, we will cover some basic use of panel data at the end of
+this course. 
+</p>
 </div>
 </div>
 </div>
@@ -501,9 +698,15 @@ a statistic agency in 1990, 1995, 2000, 2005, and 2010</li>
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-Source of Figure <a href="#org029a98e">1</a>: Martyn Shuttleworth (Sep
-21, 2008). Falsifiability. Retrieved Feb 10, 2017 from Explorable.com:
+Source of Figure <a href="#org53ddf5f">1</a>: Martyn Shuttleworth (Sep
+21, 2008). Falsifiability. Retrieved February 10th, 2017 from Explorable.com:
 <a href="https://explorable.com/falsifiability">https://explorable.com/falsifiability</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Randomized controlled trial. In <i>Wikipedia</i>. Retrieved February
+12th, 2017, from
+<a href="https://en.wikipedia.org/wiki/Randomized_controlled_trial">https://en.wikipedia.org/wiki/Randomized_controlled_trial</a>.
 </p></div></div>
 
 
@@ -511,7 +714,7 @@ Source of Figure <a href="#org029a98e">1</a>: Martyn Shuttleworth (Sep
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-02-11 Sat 01:58</p>
+<p class="date">Created: 2017-02-12 Sun 21:46</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

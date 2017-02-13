@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Lecture 1: What is Econometrics</title>
+<meta name="author" content="(Zheng Tian)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../../reveal.js/css/theme/beige.css" id="theme"/>
+
+<link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Lecture 1: What is Econometrics</h1><h2 class="author">Zheng Tian</h2><p class="date">Created: 2017-02-12 Sun 22:18</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org3759e35">What is Econometrics</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org3759e35">
+<h2 id="org3759e35">What is Econometrics</h2>
+<div class="outline-text-2" id="text-org3759e35">
+</div></section>
+</section>
+<section>
+<section id="slide-org7ebe600">
+<h3 id="org7ebe600">Definition of Econometrics</h3>
+<p>
+Stock and Watson (2015) define Econometrics as
+</p>
+
+<blockquote nil>
+<p>
+At a broad level, econometrics is the science and art of using
+economic theory and statistical techniques to analyze economic
+data.
+</p>
+</blockquote>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org913be71">
+<h3 id="org913be71">Science or art?</h3>
+<p>
+Econometrics is a science because it essentially complies with the
+principle of <b>falsifiability</b> of scientific research, as Karl Popper
+defined.
+</p>
+
+</section>
+<section id="slide-orgc06bd54">
+<h4 id="orgc06bd54">The reasoning cycle of scientific research</h4>
+
+<div class="figure">
+<p><img src="figure/reasoning-cycle-research.jpg" alt="reasoning-cycle-research.jpg" width="450" height="350" />
+</p>
+<p><span class="figure-number">Figure 1: </span>A reasoning cycle of scientific research</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1000,
+height: 800,
+margin: 0.20,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: '../../../reveal.js/plugin/menu/menu.js' },
+ { src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: '../../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

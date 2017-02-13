@@ -1,0 +1,39 @@
+#+TITLE: Lecture 1: What is Econometrics
+#+AUTHOR: Zheng Tian
+#+EMAIL: zngtian@gmail.com
+#+DATE:
+#+OPTIONS: H:2 num:1 toc:1 ^:{} tex:dvipng
+
+#+STARTUP: beamer
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+BEAMER_THEME: CambridgeUS
+#+BEAMER_COLOR_THEME: beaver
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
+
+* What is Econometrics
+
+** Definition of Econometrics
+
+Stock and Watson (2015) define Econometrics as
+
+#+BEGIN_QUOTE
+At a broad level, econometrics is the science and art of using
+economic theory and statistical techniques to analyze economic
+data.
+#+END_QUOTE
+
+
+** Science or art?
+
+Econometrics is a science because it essentially complies with the
+principle of *falsifiability* of scientific research, as Karl Popper
+defined.
+
+*** The reasoning cycle of scientific research
+
+  #+CAPTION: A reasoning cycle of scientific research
+  #+ATTR_HTML: :width 450 :height 350
+  #+ATTR_LATEX: :width 0.5\textwidth
+  [[file:figure/reasoning-cycle-research.jpg]]
