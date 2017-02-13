@@ -12,6 +12,9 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 
 Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017_web.org][html]] or [[file:handouts/syllabus/syllabus_econometrics_2017.pdf][pdf]]).
 
+
 * Lecture notes
 
-- Lecture 1 ([[file:handouts/lecture_notes/lecture_1/lecture_1.org][html]] or [[file:handouts/lecture_notes/lecture_1/lecture_1.pdf][pdf]]) and the slides ([[file:handouts/lecture_notes/lecture_1/slides_lecture_1.html][html]] or [[file:handouts/lecture_notes/lecture_1/slides_lecture_1_beamer.pdf][pdf]])
+- Lecture 1: What is Econometrics? ::
+  - The lecture notes ([[file:handouts/lecture_notes/lecture_1/lecture_1.org][html]] or [[file:handouts/lecture_notes/lecture_1/lecture_1.pdf][pdf]])
+  - The slides ([[file:handouts/lecture_notes/lecture_1/slides_lecture_1.html][html]] or [[file:handouts/lecture_notes/lecture_1/slides_lecture_1_beamer.pdf][pdf]])

@@ -95,18 +95,25 @@ edition
 * Course materials
 ** Lecture notes
 
-Lecture notes will be sent via email and uploaded in Baidu Cloud. The
-authorized links to lecture notes and other materials will be sent via
-email when they are uploaded. Hence, you must provide me your valid
-email addresses for the purposes of communication and distribution of
-course materials.
+Lecture notes, along with other course materials, including slides,
+homework, and answers, will be uploaded to
+https://isem-cueb-ztian.github.io/Intro-Econometrics-2017/. 
+
+# Lecture notes will be sent via email and uploaded in Baidu Cloud. The
+# authorized links to lecture notes and other materials will be sent via
+# email when they are uploaded. Hence, you must provide me your valid
+# email addresses for the purposes of communication and distribution of
+# course materials.
+
 
 ** Book companion materials
 
 There is a companion website for this book,
 [[http://wps.aw.com/aw_stock_ie_3/]], where you can download dataset for
-exercises, pratical quizzes, and STATA tutorial. You can also download
-datasets for empirical homework in Baidu Cloud.
+exercises, pratical quizzes, and STATA tutorial. 
+
+# You can also download
+# datasets for empirical homework in Baidu Cloud.
 
 
 * Course assignments
