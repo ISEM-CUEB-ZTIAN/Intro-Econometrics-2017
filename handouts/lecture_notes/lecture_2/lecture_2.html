@@ -1,0 +1,1279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-02-19 Sun 15:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lecture 2: Review of Probability</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Zheng Tian" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Lecture 2: Review of Probability</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org114991f">1. Random Variables and Probability Distributions</a></li>
+<li><a href="#orgf485070">2. Expectation, Variance, and Other Moments</a></li>
+<li><a href="#org5b656e5">3. Two Random Variables</a></li>
+<li><a href="#org203315e">4. Four Specific Distributions</a></li>
+<li><a href="#orgd3815b6">5. Random Sampling and the Distribution of the Sample Average</a></li>
+<li><a href="#orgc2afbc7">6. Large Sample Approximations to Sampling Distributions</a></li>
+</ul>
+</div>
+</div>
+<p>
+This lecture will review the basics in probability theory. The review
+is by no means comprehensive. We will just refresh our mind with the
+concepts that will be used the lectures that follow. 
+</p>
+
+<div id="outline-container-org114991f" class="outline-2">
+<h2 id="org114991f"><span class="section-number-2">1</span> Random Variables and Probability Distributions</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orge93f005" class="outline-3">
+<h3 id="orge93f005"><span class="section-number-3">1.1</span> Defining probabilities and random variables</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-org782945d" class="outline-4">
+<h4 id="org782945d">Experiments, outcomes, sample space, and events</h4>
+<div class="outline-text-4" id="text-org782945d">
+<p>
+Probabilities are defined with respect to things whose occurrence are
+random. We use the idea of an <b>experiment</b> to symbolize the processes
+that generate random results. The <b>outcomes</b> of an experiment are its
+mutually exclusive potential results. For example, a simple experiment
+might be tossing a coin, the outcome of which is either getting a
+head(H) or a tail(T) but not both.
+</p>
+
+<p>
+We can denote all the outcomes from an experiment with a set \(S\), that
+is called the <b>sample space</b>. In the tossing-coin experiment, the
+sample space is \(\{H, T\}\). Or if we toss a dice, the sample space is
+\(\{1, 2, 3, 4, 5, 6\}\). An <b>event</b> is a subset of the sample
+space. Getting a head is an event, which is \(\{H\} \subset \{H, T\}\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org009d4d1" class="outline-4">
+<h4 id="org009d4d1">Probability</h4>
+<div class="outline-text-4" id="text-org009d4d1">
+<p>
+The <b>probability</b> of an event is the proportion of the time that the
+event will occur in the long run. For example, we toss a coin for \(n\)
+times and get \(m\) heads. When \(n\) is very large, we can say that the
+probability of getting a head in a toss is \(m/n\). Obviously, we cannot
+always repeat an experiment with infinite times. So we need a general
+(axiomatic) definition of probability as follows.
+</p>
+
+<p>
+<b>Definition of probability</b> A probability of an event \(A\)
+in the sample space \(S\), denoted as \(\mathrm{Pr}(A)\), is a function
+that assign \(A\) a real number in \([0, 1]\), satisfying the following
+three conditions:
+</p>
+<ol class="org-ol">
+<li>\(0 \leq \mathrm{Pr}(A) \leq 1\).</li>
+<li>\(\mathrm{Pr}(S) = 1\).</li>
+<li>For any disjoint sets, \(A\) and \(B\), that is \(A\) and \(B\) have no
+element in common, \(\mathrm{Pr}(A \cup B) = \mathrm{Pr}(A) +
+  \mathrm{Pr}(B)\).</li>
+</ol>
+
+<p>
+Here we use the concept of disjoint (or mutually exclusive) sets. \(A\)
+and \(B\) are disjoint if there is no common element between these two
+sets, that is, \(A \cap B\) is an empty set. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org03f5a14" class="outline-4">
+<h4 id="org03f5a14">Random variables</h4>
+<div class="outline-text-4" id="text-org03f5a14">
+<p>
+Instead of using words or a set symbol to represent an event or an
+outcome, we can use numeric value to do so. A <b>random variable</b> is
+thus a numerical summary associated with the outcomes of an
+experiment. You can also think of a random variable as a function
+mapping from an event \(\omega\) in the sample space \(\Omega\) to the
+real line, as illustrated in Figure <a href="#orgeab0c56">1</a>. 
+</p>
+
+
+<div id="orgeab0c56" class="figure">
+<p><img src="figure/random_variable_demo1.png" alt="random_variable_demo1.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 1: </span>An illustration of random variable</p>
+</div>
+
+<p>
+Random variables can take different types of values. A <b>discrete</b> random
+variables takes on a discrete set of values, like \(0, 1, 2, \ldots, n\)
+whereas a <b>continuous</b> random variable takes on a continuum of possble
+values, like any value in the interval \((a, b)\). 
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org96ece89" class="outline-3">
+<h3 id="org96ece89"><span class="section-number-3">1.2</span> Probability distributions</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-org68a9ad5" class="outline-4">
+<h4 id="org68a9ad5">The probability distribution for a discrete random variable</h4>
+<div class="outline-text-4" id="text-org68a9ad5">
+<p>
+The probability distribution of a discrete random variable is the list
+of all possible values of the variable and the probability that each
+value will occur. These probabilities sum to 1. 
+</p>
+</div>
+
+<ul class="org-ul"><li><a id="org2d79c95"></a>The probability mass function<br  /><div class="outline-text-5" id="text-org2d79c95">
+<p>
+Let \(X\) be a discrete random variable. The probability distribution of
+\(X\) (or the probability mass function), \(p(x)\), is
+</p>
+\begin{equation*}
+p(x) = \mathrm{Pr}(X = x)
+\end{equation*}
+<p>
+where we use \(X\) to denote the random variable and \(x\) to denote a
+specific value that \(X\) can take. We denote the set of all possible
+value of \(X\) as \(S\). 
+</p>
+
+<p>
+The axioms of probability require that (1) \(0 \leq p(x) \leq
+1\) and (2) \( \sum_{ \{\text{all } x \text{ in } S \} } p(x) =
+1\).
+</p>
+
+<table id="org6893d8c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> An illustration of the probability distribution of a discrete random variable</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(X\)</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(\mathrm{P}(x)\)</td>
+<td class="org-right">0.25</td>
+<td class="org-right">0.75</td>
+<td class="org-right">0.25</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+
+<li><a id="orgb0f494c"></a>The cumulative probability distribution<br  /><div class="outline-text-5" id="text-orgb0f494c">
+<p>
+The <b>cumulative probability distribution</b> (or the cumulative
+distribution function, c.d.f.) is the probability that the random variable is
+less than or equal to a particular value. Let \(F(x)\) be the c.d.f of
+\(X\). Then \(F(x) = p(X \leq x)\). 
+</p>
+
+<p>
+Table <a href="#org604687a">2</a> and Figure <a href="#orge56f7eb">2</a> show that the
+c.d.f. of a discrete random variable is a step function of \(x\). 
+</p>
+
+<table id="org604687a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> An illustration of the c.d.f. of a discrete random variable</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(X\)</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-left">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(\mathrm{P}(x)\)</td>
+<td class="org-right">0.25</td>
+<td class="org-right">0.50</td>
+<td class="org-right">0.25</td>
+<td class="org-left">1</td>
+</tr>
+
+<tr>
+<td class="org-left">C.d.f.</td>
+<td class="org-right">0.25</td>
+<td class="org-right">0.75</td>
+<td class="org-right">1</td>
+<td class="org-left">--</td>
+</tr>
+</tbody>
+</table>
+
+
+<div id="orge56f7eb" class="figure">
+<p><img src="figure/cdf_discrete_example.png" alt="cdf_discrete_example.png" width="500" height="330" />
+</p>
+<p><span class="figure-number">Figure 2: </span>The c.d.f. of a discrete random variable</p>
+</div>
+</div></li>
+
+<li><a id="org1018d92"></a>Bernouli distribution<br  /><div class="outline-text-5" id="text-org1018d92">
+<p>
+Many experiments like tossing a coin generate two outcomes: 1
+with the probability of \(p\) and 0 with the probability of \(1-p\). The
+random variable generated from such an experiment follows the Bernoulli
+distribution. 
+</p>
+
+<p>
+The Bernoulli distribution
+</p>
+\begin{equation*}
+  G =
+    \begin{cases}
+      1 & \text{with probability } p \\
+      0 & \text{with probability } 1-p
+    \end{cases}
+  \end{equation*}
+</div></li></ul>
+</div>
+
+<div id="outline-container-org0464e91" class="outline-4">
+<h4 id="org0464e91">The probability distribution of a continuous random variable</h4>
+<div class="outline-text-4" id="text-org0464e91">
+<p>
+Unlike a discrete random variable that we can enumerate its values for
+each corresponding event, a specific value of a continuous random
+variable is just a point in the real line, the probability of which is
+zero. Instead, we use the concept of the <b>probability density function
+(p.d.f)</b> as the counterpart of the probability mass function. And the
+definition of the p.d.f. of a continuous random variable depends on
+the definition of its. c.d.f. 
+</p>
+
+<p>
+The cumulative distribution function of a continous random variable
+is defined as it is for a discrete random variable. That is, for a
+continous random variable, \(X\), the c.d.f. is \(F(x) = \mathrm{Pr}(X
+\leq x)\). And the <b>p.d.f.</b> of \(X\) is the function that satisfies 
+\[ F(x) = \int_{-\infty}^{x} f(t) \mathrm{d}t \text{ for all } x \]
+</p>
+
+
+<div id="org03c7f99" class="figure">
+<p><img src="figure/norm1.png" alt="norm1.png" width="500" height="450" />
+</p>
+<p><span class="figure-number">Figure 3: </span>The p.d.f. and c.d.f. of a continuous random variable (the normal distribution)</p>
+</div>
+
+<p>
+For both discrete and continuous random variable, \(F(X)\) must satisfy
+the following properties:
+</p>
+<ol class="org-ol">
+<li>\(F(+\infty) = 1 \text{ and } F(-\infty) = 0\) (\(F(x)\) is bounded between 0 and 1)</li>
+<li>\(x > y \Rightarrow F(x) \geq F(y)\) (\(F(x)\) is nondecreasing)</li>
+</ol>
+
+<p>
+By the definition of the c.d.f., we can conveniently calculate
+probabilities, such as, 
+</p>
+<ul class="org-ul">
+<li>\(\mathrm{P}(x > a) = 1 - \mathrm{P}(x \leq a) = 1 - F(a)\)</li>
+<li>\(\mathrm{P}(a < x \leq b) = F(b) - F(a)\).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf485070" class="outline-2">
+<h2 id="orgf485070"><span class="section-number-2">2</span> Expectation, Variance, and Other Moments</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org06da8e4" class="outline-3">
+<h3 id="org06da8e4"><span class="section-number-3">2.1</span> The expected value of a random variable</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-orgc5619f8" class="outline-4">
+<h4 id="orgc5619f8">Definition</h4>
+<div class="outline-text-4" id="text-orgc5619f8">
+<p>
+The <b>expected value</b> of a random variable, X, denoted as \(E(X)\), is
+the long-run average of the random variable over many repeated
+trials or occurrences, which is also called the <b>expectation</b> or the
+<b>mean</b>. The expected value measures the centrality of a random
+variable. 
+</p>
+
+<ul class="org-ul">
+<li><p>
+For a discrete random variable
+\[ E(X) = \sum_{i=1}^n x_i \mathrm{Pr}(X = x_i) \]
+</p>
+
+<p>
+e.g. The expectation of a Bernoulli random variable, G
+  \[ E(G) = 1 \cdot p + 0 \cdot (1-p) = p \]
+</p></li>
+
+<li>For a continuous random variable
+\[ E(X) = \int_{-\infty}^{\infty} x f(x) \mathrm{d}x\]</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org87f18eb" class="outline-3">
+<h3 id="org87f18eb"><span class="section-number-3">2.2</span> The variance and standard deviation</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+The <b>variance</b> of a random variable \(X\) measures its average
+deviation from its own expected value. Let \(E(X) = \mu_X\) and denote
+the variance of \(X\), denoted as \(\mathrm{Var}(X)\) or \(\sigma^2_X\), is then
+</p>
+
+\begin{equation*}
+\mathrm{Var}(X) = E(X-\mu_X)^{2}=
+\begin{cases}
+\sum_{i=1}^n (x - \mu_X)^{2}\mathrm{Pr}(X = x_i) & \text{if } X \text{ is discrete} \\
+\int_{-\infty}^{\infty} (x - \mu_X)^{2}f(x)\mathrm{d} x  & \text{if } X \text{ is continuous}
+\end{cases}
+\end{equation*}
+
+<p>
+The <b>standard deviation</b> of \(X\) is the square root of
+\(\mathrm{Var}(X)\) and is denoted as \(\sigma_{X}\). That is,
+\(\sigma_{X} = \sqrt{\mathrm{Var}(X)}\)
+</p>
+
+<p>
+A convenient formula for calculating the variance is
+\[ \mathrm{Var}(X) = E(X - \mu_X)^{2} = E(X^{2}) - \mu_X^{2} \]
+</p>
+
+<p>
+The variance of a Bernoulli random variable, \(G\) 
+\[ \mathrm{Var}(G) = (1-p)^{2}p + (0-p)^{2}(1-p) = p(1-p) \] and \(\sigma_{G} =
+\sqrt{p(1-p)}\). 
+</p>
+
+<p>
+From the definition of the expectation and variance, we can compute
+the expectation and variance of a linear function of \(X\). Let \(Y = a +
+bX\), then 
+</p>
+<ul class="org-ul">
+<li>\(E(Y) = a + E(X)\)</li>
+<li>\(\mathrm{Var}(Y) = \mathrm{Var}(a + b X) = b^{2} \mathrm{Var}(X)\).</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgd6c523a" class="outline-3">
+<h3 id="orgd6c523a"><span class="section-number-3">2.3</span> Moments of a random variable, skewness and kurtosis</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+The expectation and variance are two special cases of the <b>moments</b> of
+a distribution. 
+</p>
+</div>
+
+<div id="outline-container-org686aae8" class="outline-4">
+<h4 id="org686aae8">Definition of the moments of a distribution</h4>
+<div class="outline-text-4" id="text-org686aae8">
+<dl class="org-dl">
+<dt>k<sup>th</sup> moment</dt><dd>The k<sup>th</sup> <b>moment</b> of the distribution of \(X\) is
+\(E(X^{k})\). So, the expectation is the "first"
+moment of \(X\).</dd>
+
+<dt>k<sup>th</sup> central moment</dt><dd>The k<sup>th</sup> central moment of the distribution
+of \(X\) with its mean \(\mu_X\) is \(E(X - \mu_X)^{k}\). So, the
+variance is the second central moment of \(X\).</dd>
+</dl>
+
+<p>
+It is important to remember that not all the moments of a distribution
+exist. This is especially true for continuous random variables, for
+which the integral to compute the moments may not converge. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgba7faa6" class="outline-4">
+<h4 id="orgba7faa6">Skewness and kurtosis</h4>
+<div class="outline-text-4" id="text-orgba7faa6">
+<p>
+We also use the third and fourth central moments to measure how a
+distribution looks like asymmetric and how thick are its tails. 
+</p>
+</div>
+
+<ul class="org-ul"><li><a id="orge375af4"></a>Skewness<br  /><div class="outline-text-5" id="text-orge375af4">
+<p>
+The skewness of a distribution provides a mathematical way to describe
+how much a distribution deviates from symmetry. It is defined as 
+\[ \text{Skewness} =  E(X - \mu_X)^{3}/\sigma_{X}^{3} \]
+</p>
+
+<ul class="org-ul">
+<li>A symmetric distribution has a skewness of zero.</li>
+<li>The skewness can be either positive or negative.</li>
+<li>That \(E(X - \mu_X)^3\) is divided by \(\sigma^3_X\) is to make the
+skewness measure unit free. That is, changing the units of Y does
+not change its skewness.</li>
+</ul>
+</div></li>
+
+<li><a id="orgc5c024c"></a>Kurtosis<br  /><div class="outline-text-5" id="text-orgc5c024c">
+<p>
+The kurtosis of the distribution of a random variable \(X\) measures how
+much of the variance of \(X\) arises from extreme values, which makes
+the distribution have "heavy" tails. 
+</p>
+
+<p>
+The kurtosis of the distribution of \(X\) is 
+\[ \text{Kurtosis} = E(X - \mu_X)^{4}/\sigma_{X}^{4} \]
+</p>
+
+<ul class="org-ul">
+<li>The kurtosis must be positive.</li>
+<li>The kurtosis of the normal distribution is 3. So a distribution that
+has its kurtosis exceeding 3 is called heavy-tailed, or
+<b>leptokurtic</b>.</li>
+<li>The kurtosis is also unit free.</li>
+</ul>
+
+<p>
+Figure <a href="#orgc29dbc3">4</a> displays four distributions with different
+skewness and kurtosis. All four distributions have a mean of zero and
+a variance of one, while (a) and (b) are symmetric and (b)-(d) are
+heavy-tailed. 
+</p>
+
+
+<div id="orgc29dbc3" class="figure">
+<p><img src="figure/fig-2-3.png" alt="fig-2-3.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Four distributions with different skewness and kurtosis</p>
+</div>
+</div></li></ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5b656e5" class="outline-2">
+<h2 id="org5b656e5"><span class="section-number-2">3</span> Two Random Variables</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org1724e03" class="outline-3">
+<h3 id="org1724e03"><span class="section-number-3">3.1</span> The joint and marginal distributions</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-orgc68228a" class="outline-4">
+<h4 id="orgc68228a">The joint probability distributions</h4>
+<div class="outline-text-4" id="text-orgc68228a">
+</div><ul class="org-ul"><li><a id="org8f0f40d"></a>The joint probability (density) functions<br  /><div class="outline-text-5" id="text-org8f0f40d">
+<ul class="org-ul">
+<li>For two discrete random variables \(X\) and \(Y\), the joint probability
+distribution of \(X\) and \(Y\) is the probability that \(X\) and \(Y\)
+simultaneously take on certain values, \(x\) and \(y\), that is
+\[ p(x, y) = \mathrm{Pr}(X = x, Y = y)\]
+which must satisfy the following
+<ol class="org-ol">
+<li>\(p(x, y) \geq 0\)</li>
+<li>\(\sum_{x}\sum_{y} p(x, y) = 1\)</li>
+</ol></li>
+<li>For two continuous random variables, the counterpart of \(p(x, y)\) is
+the joint probability density function, \(f(x, y)\), such that
+<ol class="org-ol">
+<li>\(f(x, y) \geq 0\)</li>
+<li>\(\int_{x}\int_{y}f(x, y)\, \dx x\, \dx y= 1\)</li>
+</ol></li>
+</ul>
+</div></li></ul>
+</div>
+
+<div id="outline-container-org0f77f30" class="outline-4">
+<h4 id="org0f77f30">The marginal probability distribution</h4>
+<div class="outline-text-4" id="text-org0f77f30">
+</div><ul class="org-ul"><li><a id="orga92b06c"></a>The marginal probability (density) distribution<br  /><div class="outline-text-5" id="text-orga92b06c">
+<p>
+The marginal probability (density) distribution function of \(X\) is
+computed from the joint probability (density) distribution function,
+\(f(x, y)\) as
+</p>
+\begin{equation*}
+f_{X}(x) =
+\begin{cases}
+\sum_{y} p(x, y) & \text{ in the discrete case} \\
+\int_{y} f(x, y)\, \dx y & \text{ in the continuous case}
+\end{cases}
+\end{equation*}
+</div></li></ul>
+</div>
+</div>
+
+<div id="outline-container-org8e97ea4" class="outline-3">
+<h3 id="org8e97ea4"><span class="section-number-3">3.2</span> Conditional distributions</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="outline-container-orgcadd8a3" class="outline-4">
+<h4 id="orgcadd8a3">The conditional probability</h4>
+<div class="outline-text-4" id="text-orgcadd8a3">
+<p>
+For any two events \(A\) and \(B\), the conditional probability of A given
+B is defined as
+\[ \mathrm{Pr}(A|B) = \frac{\mathrm{Pr}(A \cap B )}{\mathrm{Pr}(B)}\]
+</p>
+</div>
+</div>
+<div id="outline-container-org4c6d611" class="outline-4">
+<h4 id="org4c6d611">The conditional probability (density) distribution</h4>
+<div class="outline-text-4" id="text-org4c6d611">
+</div><ul class="org-ul"><li><a id="org1a40695"></a>For the discrete case, the conditional probability function is<br  /><div class="outline-text-5" id="text-org1a40695">
+<p>
+\[ p(x|y) = \frac{\mathrm{Pr}(X=x, Y=y)}{\mathrm{Pr}(Y=y)}\]
+</p>
+</div></li>
+
+<li><a id="orgc48c104"></a>the continuous case, the conditional density function is<br  /><div class="outline-text-5" id="text-orgc48c104">
+<p>
+\[ f(x|y) = \frac{f(x, y)}{f_{Y}(y)}\]
+</p>
+</div></li></ul>
+</div>
+
+<div id="outline-container-org59d5fc7" class="outline-4">
+<h4 id="org59d5fc7">The conditional expectation</h4>
+<div class="outline-text-4" id="text-org59d5fc7">
+</div><ul class="org-ul"><li><a id="org99f2a45"></a>Definition<br  /><div class="outline-text-5" id="text-org99f2a45">
+\begin{equation*}
+E(X|Y=y) =
+\begin{cases}
+\sum_{x}xp(x|y) & \text{ in the discrete case} \\
+\int_{x}xf(x|y)\, \mathrm{d}x & \text{ in the continuous case}
+\end{cases}
+\end{equation*}
+</div></li>
+
+<li><a id="orgf33afa8"></a>The law of iterated expectation: \(E(X) = E\left[E(X|Y)\right]\)<br  /><div class="outline-text-5" id="text-orgf33afa8">
+\begin{proof}
+we prove the law of iterated expectation for the continuous case. The proof for the discrete case is similar.
+\begin{align*}
+E(X) & = \int_{x} xf_{X}(x)\, \mathrm{d}x \\
+     & = \int_{x}\int_{y} xf(x, y)\, \mathrm{d}y\, \mathrm{d}x & \text{ by the definition of } f_{X}(x)) \\
+     & = \int_{x}\int_{y} xf(x|y)f_{Y}(y)\, \mathrm{d}y\, \mathrm{dx} & \text{ by the definition of } f(x|y) \\
+     & = \int_{y} \left[\int_{x} xf(x|y)\, \mathrm{d}x \right] f_{Y}(y)\, \mathrm{d}y & \text{ by the property of integral} \\
+     & = \int_{y} E(X|Y=y)f_{Y}(y)\, \mathrm{d}y & \\
+     & = E\left[E(X|Y)\right]
+\end{align*}
+\end{proof}
+
+<ul class="org-ul">
+<li>If \(E(X|Y) = 0\), then \(E(X)=E\left[E(X|Y)\right]=0\).</li>
+</ul>
+</div></li></ul>
+</div>
+
+<div id="outline-container-orgf3852a7" class="outline-4">
+<h4 id="orgf3852a7">Independence</h4>
+<div class="outline-text-4" id="text-orgf3852a7">
+<p>
+Two random variables \(X\) and \(Y\) are <b>independent</b> if
+\[ f(x|y) = f_{X}(x) \text{ or } f(y|x) = f_{Y}(y) \]
+</p>
+
+<p>
+It follows that \(X\) and \(Y\) are independent if
+\[ f(x, y) = f(x|y)f_{Y}(y) = f_{X}(x)f_{Y}(y) \]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3f738d6" class="outline-3">
+<h3 id="org3f738d6"><span class="section-number-3">3.3</span> Covariance and Correlation</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-orge310f55" class="outline-4">
+<h4 id="orge310f55">Covariance</h4>
+<div class="outline-text-4" id="text-orge310f55">
+<p>
+The covariance of two random variables \(X\) and \(Y\) is
+\[ \cov(X, Y) = E(X-\mu_{X})(Y-\mu_{Y}) \equiv \sigma_{XY} \]
+</p>
+
+<p>
+The covariance can also be computed as
+\[ \cov(X, Y) = E(XY) - E(X)E(Y) \]
+</p>
+
+<p>
+If \(X\) and \(Y\) are independent, then
+</p>
+\begin{align*}
+\cov(X, Y) & = \int_{x}\int_{y}(x - \mu_{x})(y - \mu_{Y})f(x, y)\, \dx(x)\, \dx(y) \\
+& = \int_{x} (x - \mu_{X})f_{X}(x)\, \dx(x) \int_{y}(y - \mu_{Y})f_{Y}(y)\, \dx(y) \\
+& = \left[E(X) - \mu_{X} \right] \left[ E(Y) - \mu_{Y} \right] \\
+& = 0
+\end{align*}
+
+<p>
+It means that if \(X\) and \(Y\) are independent, then they are
+uncorrelated as well. But the opposite direction does not hold.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7b9726b" class="outline-4">
+<h4 id="org7b9726b">Correlation</h4>
+<div class="outline-text-4" id="text-org7b9726b">
+<p>
+The correlation coefficient between \(X\) and \(Y\) is given by
+\[
+\corr(X, Y) = \frac{\cov(X, Y)}{\left[\var(X)\var(Y)\right]^{1/2}} =
+\frac{\sigma_{XY}}{\sigma_{X}\sigma_{Y}} \equiv \rho_{XY}
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org91a0b93" class="outline-4">
+<h4 id="org91a0b93">Some useful operations</h4>
+<div class="outline-text-4" id="text-org91a0b93">
+<p>
+Let \(X\), \(Y\) be random variables, with the means \(\mu_{X}\) and
+\(\mu_{Y}\), the variance \(\sigma^{2}_{X}\) and \(\sigma^{2}_{Y}\), and the
+covariance \(\sigma_{XY}\), respectively. Then,
+</p>
+\begin{align*}
+E(a + bX + cY) & = a + b \mu_{X} + c \mu_{Y} \\
+\var(aX + bY)  & = a^{2} \sigma^{2}_{X} + b^{2} \sigma^{2}_{Y} + 2ab\sigma_{XY} \\
+\cov(a + bX + cV, Y) & = b\sigma_{XY} + c\sigma_{VY} \\
+\cov(X, Y) & \leq \sigma_{X}\sigma_{Y} \text{ and }  \corr(X, Y) \leq 1
+\end{align*}
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org203315e" class="outline-2">
+<h2 id="org203315e"><span class="section-number-2">4</span> Four Specific Distributions</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org8a4c10d" class="outline-3">
+<h3 id="org8a4c10d"><span class="section-number-3">4.1</span> The normal distribution</h3>
+<div class="outline-text-3" id="text-4-1">
+</div><div id="outline-container-org2d13963" class="outline-4">
+<h4 id="org2d13963">Definition</h4>
+<div class="outline-text-4" id="text-org2d13963">
+<p>
+The p.d.f. of a normally distributed random variable \(x\) is
+\[ f(x) =
+\frac{1}{\sigma\sqrt{2\pi}}\exp\left[-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right]
+\]
+for which \(E(X) = \mu\) and \(\var(X) = \sigma^{2}\), and \(x\) is denoted
+as \(x \sim N(\mu, \sigma^{2})\)
+</p>
+
+<p>
+The standard normal distribution is a special case of the normal
+distribution, for which \(\mu = 0\) and \(\sigma = 0\). The p.d.f of the
+standard normal distribution is
+\[
+\phi(x) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)
+\]
+The c.d.f of the standard normal distribution is often denoted as
+\(\varPhi(x)\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3615e28" class="outline-4">
+<h4 id="org3615e28">Transforming a normally distributed random variable to the standard normal distribution</h4>
+<div class="outline-text-4" id="text-org3615e28">
+<p>
+Let \(X\) be a normally distributed random variable with the mean &mu;
+and the standard deviation &sigma;, i.e., \(X \sim N(\mu,
+\sigma^2)\). Then \(Z = \frac{X - \mu}{\sigma}\) follows the standard
+normal distribution, \(N(0, 1)\).
+</p>
+
+<p>
+It follows that for any two number \(c_1 < c_2\) and let
+\(d_1 = (c_1 - \mu)/\sigma\) and \(d_2 = (c_2 - \mu/\sigma)\), then
+</p>
+\begin{align*}
+\mathrm{Pr}(X \leq c_2) & = \mathrm{Pr}(Z \leq d_2) = \varPhi(d_2) \\
+\mathrm{Pr}(X \geq c_1) & = \mathrm{Pr}(Z \geq d_1) = 1 - \varPhi(d_1) \\
+\mathrm{Pr}(c_1 \leq X \leq c_2) & = \mathrm{Pr}(d_1 \leq Z \leq d_2) = \varPhi(d_2) - \varPhi(d_1)
+\end{align*}
+
+
+<div class="figure">
+<p><img src="figure/norm1.png" alt="norm1.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgee16649" class="outline-4">
+<h4 id="orgee16649">The multivariate normal distribution</h4>
+<div class="outline-text-4" id="text-orgee16649">
+<p>
+The normal distribution can be generalized to describe the joint
+distribution of a set of random variables, which have the multivariate
+normal distribution. (See Appendix 17.1 for the p.d.f of this
+distribution and the special case of the bivariate normal
+distribution.)
+</p>
+</div>
+
+<ul class="org-ul"><li><a id="org8a2e002"></a>Important properties of the multivariate normal distribution<br  /><div class="outline-text-5" id="text-org8a2e002">
+<ol class="org-ol">
+<li><p>
+If \(X\) and \(Y\) have a bivariate normal distribution with covariance
+\(\sigma_{XY}\) and \(a\) and \(b\) are two constants, then
+\[
+   aX + bY \sim N(a\mu_X + b\mu_Y, a^2\sigma_X + b^2\sigma_Y +
+   2ab\sigma_{XY})
+   \]
+</p>
+
+<p>
+More generally, if n random variables, \(x_1, \ldots, x_n\), have a
+multivariate normal distribution, then any linear combination of
+these variables is normally distributed, for example, \(\sum_{i=1}^n
+   x_i\). For any real numbers, \(\alpha_1, \ldots, \alpha_n\), a linear
+combination of \({x_i}\) is \(\sum_i \alpha_i x_i\).
+</p></li>
+
+<li>If a set of random variables has a multivariate normal
+distribution, then the marginal distribution of each of the
+variables is normal.</li>
+
+<li><p>
+If random variables with a multivariate normal distribution have
+covariances that equal zero, then these random variables are
+independent.
+</p>
+
+<p>
+Let \(X\) and \(Y\) be two random variables with a bivariate normal
+distribution. The joint p.d.f of \(X\) and \(Y\) is \(f(x, y)\), with the
+marginal p.d.f. being \(f_X(x)\) and \(f_Y(y)\), respectively. Then we have
+\[ \cov(X, Y) = 0 \Leftrightarrow f(x, y) = f_X(x)f_Y(y) \]
+</p>
+
+<p>
+<b>Note</b>: this property only holds for random variables with a
+multivariate normal distribution. Generally, uncorrelation does not
+imply independence.
+</p></li>
+
+<li>If \(X\) and \(Y\) have a bivariate normal distribution, then
+\[E(Y|X = x) = a + bx \]
+where \(a\) and \(b\) are constants.</li>
+</ol>
+</div></li></ul>
+</div>
+</div>
+
+<div id="outline-container-org0b2be39" class="outline-3">
+<h3 id="org0b2be39"><span class="section-number-3">4.2</span> The chi-squared distribution</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Let \(Z_1, \ldots, Z_n\) be n indepenent standard normal distribution,
+i.e. \(Z_i \sim N(0, 1)\) for all \(i = 1, \ldots, n\). The random
+variable
+\[W = \sum_{i=1}^n Z^2_i \]
+has a chi-squared distribution with \(n\) degrees of freedom, denoted as
+\(W \sim \chi^2(n)\), with \(E(W) = n\) and \(\var(W) = 2n\)
+</p>
+
+<p>
+e.g. If \(Z \sim N(0, 1)\), then \(W = Z^2 \sim \chi^2(1)\) with \(E(W) =
+1\) and \(\var(W) = 2\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga7b2bcd" class="outline-3">
+<h3 id="orga7b2bcd"><span class="section-number-3">4.3</span> The student t distribution</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Let \(Z \sim N(0, 1)\), \(W \sim \chi^2(m)\), and let \(Z\) and \(W\) be
+independently distributed. Then the random variable
+\[t = \frac{Z}{\sqrt{W/m}} \]
+has a student t distribution with \(m\) degrees of freedom, denoted as
+\(t \sim t(m)\).
+</p>
+
+<p>
+As \(n \rightarrow \infty\), \(t\) has a standard normal distribution.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org28fc570" class="outline-3">
+<h3 id="org28fc570"><span class="section-number-3">4.4</span> The F distribution</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+Let \(W_1 \sim \chi^2(n_1)\), \(W_2 \sim \chi^2(n_2)\), and \(W_1\) and
+\(W_2\) are independent. Then the random variable
+\[ F = \frac{W_1/n_1}{W_2/n_2}\]
+has an F distribution with \((n_1, n_2)\) degrees of freedom, denoted as
+\(F \sim F(n_1, n_2)\)
+</p>
+
+<ul class="org-ul">
+<li>If \(t \sim t(n)\), then \(t^2 \sim F(1, n)\)</li>
+<li>As \(n_2 \rightarrow \infty\), the \(F(n_1, \infty)\) distribution is the
+same as the \(\chi^2(n_1)\) distribution, divided by \(n_1\).</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd3815b6" class="outline-2">
+<h2 id="orgd3815b6"><span class="section-number-2">5</span> Random Sampling and the Distribution of the Sample Average</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgd1dc7ab" class="outline-3">
+<h3 id="orgd1dc7ab"><span class="section-number-3">5.1</span> Random sampling</h3>
+<div class="outline-text-3" id="text-5-1">
+<dl class="org-dl">
+<dt>Simple random sampling</dt><dd>\(n\) objects are selected at random from a
+<b>population</b>, and each member of the population is equally likely
+to be included in the sample</dd>
+
+<dt>i.i.d. draws</dt><dd>when \(Y_1, Y_2, \ldots, Y_n\) are drawn from the same
+distribution and are independently distributed, they
+are said to be <b>independently and identically
+distributed</b> or <b>i.i.d</b>. This fact can be denoted as
+\(Y_i \sim IID(\mu_Y, \sigma^2_Y)\) for \(i = 1, 2,
+                  \ldots, n\).</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org2b97d3b" class="outline-3">
+<h3 id="org2b97d3b"><span class="section-number-3">5.2</span> The sampling distribution of the sample average</h3>
+<div class="outline-text-3" id="text-5-2">
+</div><div id="outline-container-org022de3b" class="outline-4">
+<h4 id="org022de3b">The sample average</h4>
+<div class="outline-text-4" id="text-org022de3b">
+<p>
+The <b>sample average</b> or <b>sample mean</b>, \(\overline{Y}\), of the \(n\)
+observation \(Y_1, Y_2, \ldots, Y_n\) is
+\[ \overline{Y} = \frac{1}{n}\sum^n_{i=1} Y_i \]
+Note that since \(Y_i\) is random, so is \(\overline{Y}\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6069652" class="outline-4">
+<h4 id="org6069652">The mean and variance of \(\overline{Y}\)</h4>
+<div class="outline-text-4" id="text-org6069652">
+<p>
+Suppose that \(Y_i \sim IID(\mu_Y, \sigma^2_{Y})\) for all \(i = 1,
+\ldots, n\). Then, by the definition of \(\overline{Y}\) and the fact
+that \(Y_i\) and \(Y_j\) are independent for any \(i \neq j\), implying
+\(\cov(Y_i, Y_j)=0\), we have
+\[
+E(\overline{Y}) =
+\frac{1}{n}\sum^n_{i=1}E(Y_i) = \frac{1}{n}\cdot n\mu_Y = \mu_Y
+\]
+and
+\[
+\var(\overline{Y}) = \frac{1}{n^2}\sum^n_{i=1}\var(Y_i) +
+\frac{1}{n^2}\sum^n_{i=1}\sum^n_{j=1}\cov(Y_i, Y_j) =
+\frac{\sigma^2_Y}{n}
+\]
+</p>
+
+<p>
+e.g. If \(Y_1, \ldots, Y_n\) are i.i.d. draws from \(N(\mu_Y,
+\sigma^2_Y)\), then \(\overline{Y} \sim N(\mu_Y, \sigma^2_Y/n)\).
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc2afbc7" class="outline-2">
+<h2 id="orgc2afbc7"><span class="section-number-2">6</span> Large Sample Approximations to Sampling Distributions</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-org32a9511" class="outline-3">
+<h3 id="org32a9511"><span class="section-number-3">6.1</span> The law of large numbers</h3>
+<div class="outline-text-3" id="text-6-1">
+</div><div id="outline-container-org26550f4" class="outline-4">
+<h4 id="org26550f4">Convergence in probability</h4>
+<div class="outline-text-4" id="text-org26550f4">
+<p>
+Let \(S_1, \ldots, S_n, \ldots\) be a sequence of random variables,
+denoted as \(\{S_n\}\). \(\{S_n\}\) is said to converge in probability to a
+limit &mu; that is, \(S_n \xrightarrow{\text{ \textit p }} \mu\), if and only if
+\[ \mathrm{Pr} \left(|S_n-\mu| \geq \delta \right) \rightarrow 0 \]
+as \(n \rightarrow \infty\) for every \(\delta > 0\).
+</p>
+
+<ul class="org-ul">
+<li>e.g. \(S_n = \overline{Y}\). That is, \(S_1=Y_1\), \(S_2=1/2(Y_1+Y_2)\),
+\(S_n=1/n\sum_i Y_i\), and so forth.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org93c10a1" class="outline-4">
+<h4 id="org93c10a1">The law of large numbers</h4>
+<div class="outline-text-4" id="text-org93c10a1">
+<p>
+If \(Y_1, \ldots, Y_n\) are i.i.d., \(E(Y_i)=\mu_Y\) and \(\var(Y_i) <
+\infty\), then \(\overline{Y} \xrightarrow{\text{ \textit p }} \mu_Y\)
+</p>
+
+
+<div class="figure">
+<p><img src="figure/demo_lln.png" alt="demo_lln.png" />
+</p>
+<p><span class="figure-number">Figure 6: </span>An illustration of the law of large numbers</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0717f61" class="outline-3">
+<h3 id="org0717f61"><span class="section-number-3">6.2</span> The central limit theorem</h3>
+<div class="outline-text-3" id="text-6-2">
+</div><div id="outline-container-org825e8d0" class="outline-4">
+<h4 id="org825e8d0">Convergence in distribution</h4>
+<div class="outline-text-4" id="text-org825e8d0">
+<p>
+Let \(F_1, F_2, \ldots, F_n, \ldots\) be a sequence of cumulative
+distribution functions corresponding to a sequence of random
+variables, \(S_1, S_2, \ldots, S_n, \ldots\). Then the sequence of
+random variables \(S_n\) is said to <b>converge in distribution</b> to \(S\),
+denoted as \(S_n \xrightarrow{\text{ \textit d }} S\), if the
+distribution functions \(\{F_n\}\) converge to \(F\), the distribution
+function of \(S\). That is,
+\[ S_n \xrightarrow{\text{ \textit d }} S \text{ if and only if } \lim_{n
+\rightarrow \infty}F_n(t)=F(t) \]
+where the limit holds at all points \(t\) at which the limiting
+distribution \(F\) is continuous. The distribution \(F\) is called the
+<b>asymptotic distribution</b> of \(S_n\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb3fd265" class="outline-4">
+<h4 id="orgb3fd265">The central limit theorem (Lindeberg-Levy CLT)</h4>
+<div class="outline-text-4" id="text-orgb3fd265">
+<p>
+If \(Y_1, Y_2, \ldots, Y_n\) are i.i.d. random samples from a
+probability distribution with finite mean \(\mu_Y\) and finite variance
+\(\sigma^2_Y\), i.e., \(0 < \sigma^2_Y < \infty\) and \(\overline{Y} =
+(1/n)\sum_i^nY_i\). Then
+\[ \sqrt{n}(\overline{Y}-\mu_Y) \xrightarrow{\text{ \textit d }} N(0,
+\sigma^2_Y) \]
+It follows that since \(\sigma_{\overline{Y}} =
+\sqrt{\var(\overline{Y})} = \sigma_Y/\sqrt{n}\),
+\[ \frac{\overline{Y} - \mu_Y}{\sigma_{\overline{Y}}}
+\xrightarrow{\text{ \textit d }} N(0, 1) \]
+</p>
+
+
+<div class="figure">
+<p><img src="figure/fig-2-9.png" alt="fig-2-9.png" />
+</p>
+<p><span class="figure-number">Figure 7: </span>Distribution of the standardized sample average of n Bernoulli random variable with p = 0.78</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Zheng Tian</p>
+<p class="date">Created: 2017-02-19 Sun 15:58</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

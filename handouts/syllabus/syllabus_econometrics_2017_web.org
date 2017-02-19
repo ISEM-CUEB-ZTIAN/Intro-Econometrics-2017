@@ -19,7 +19,7 @@
 
   | Odd weeks  | Monday    | 08:00 am -- 09:50 am | Buoxue Building (博学楼) 706                                   |
   |            | Wednesday | 10:00 am -- 11:50 am | Buoxue Building (博学楼) 306                                   |
-  | Even weeks | Monday    | 08:00 am -- 11:50 am | Buoxue Building (博学楼) 706                                   |
+  | Even weeks | Monday    | 08:00 am -- 09:50 am | Buoxue Building (博学楼) 706                                   |
 
 
 ** Instructor information
