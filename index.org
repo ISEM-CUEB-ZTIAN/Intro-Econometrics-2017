@@ -15,9 +15,9 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 
 * Lecture notes
 
-- Lecture 1: What is Econometrics? ::
-  - The lecture notes ([[file:handouts/lecture_notes/lecture_1/lecture_1.org][html]] or [[file:handouts/lecture_notes/lecture_1/lecture_1.pdf][pdf]])
-  - The slides ([[file:handouts/lecture_notes/lecture_1/slides_lecture_1.html][html]] or [[file:handouts/lecture_notes/lecture_1/slides_lecture_1_beamer.pdf][pdf]])
+** Lecture 1: What is Econometrics?
+- The lecture notes ([[file:handouts/lecture_notes/lecture_1/lecture_1.org][html]] or [[file:handouts/lecture_notes/lecture_1/lecture_1.pdf][pdf]])
+- The slides ([[file:handouts/lecture_notes/lecture_1/slides_lecture_1.html][html]] or [[file:handouts/lecture_notes/lecture_1/slides_lecture_1_beamer.pdf][pdf]])
 
-- Lecture 2: Review of Probability
-  - The lecture notes ([[file:handouts/lecture_notes/lecture_2/lecture_2.org][html]] or [[file:handouts/lecture_notes/lecture_2/lecture_2.pdf][pdf]])
+**  Lecture 2: Review of Probability 
+- The lecture notes ([[file:handouts/lecture_notes/lecture_2/lecture_2.org][html]] or [[file:handouts/lecture_notes/lecture_2/lecture_2.pdf][pdf]])
