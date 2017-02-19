@@ -36,12 +36,39 @@ data.
 
 ** Science or art?
 
+*** Science                                                       :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
 - The principle of *falsifiability* of scientific research, as Karl Popper
   defined.
 
   #+CAPTION: A reasoning cycle of scientific research
-  #+ATTR_LATEX: :width 0.6\textwidth :height 0.6\textheight
+  #+ATTR_LATEX: :width 0.6\textwidth
   [[file:figure/reasoning-cycle-research.jpg]]
+
+*** Art                                                           :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+Econometrics is an art because 
+- the data are usually incomplete and unobserved to validate a
+  hypothesis
+- we need to use human creativity to reach a balance between
+  scientific rigor and realistic approximation.
+
+*** A quote from Hansen                                           :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+#+BEGIN_QUOTE
+Econometrics is alchemy since econometricians can create nearly any
+result desired, but it is also science because econometricians also
+know how to reject and avoid spurious models. -- Hansen (1996)
+#+END_QUOTE
 
 
 ** Economic theory, statistics, and data

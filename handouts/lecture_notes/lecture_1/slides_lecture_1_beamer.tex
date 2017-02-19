@@ -1,4 +1,4 @@
-% Created 2017-02-13 Mon 14:23
+% Created 2017-02-19 Sun 21:31
 % Intended LaTeX compiler: pdflatex
 \documentclass[presentation]{beamer}
 \usepackage[utf8]{inputenc}
@@ -38,11 +38,11 @@
 
 
 \section{What is Econometrics}
-\label{sec:orgace6ef0}
+\label{sec:org7253b79}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
-\begin{frame}[label={sec:org6ad0bc0}]{What do you think of Econometrics?}
+\begin{frame}[label={sec:org3f837f0}]{What do you think of Econometrics?}
 \begin{itemize}
 \item Economics?
 \item Mathematics?
@@ -51,7 +51,7 @@
 \end{frame}
 
 
-\begin{frame}[label={sec:orgaff73b4}]{Definition of Econometrics}
+\begin{frame}[label={sec:orgee0e4bc}]{Definition of Econometrics}
 Stock and Watson (2015) define Econometrics as
 
 \begin{quote}
@@ -62,21 +62,42 @@ data.
 \end{frame}
 
 
-\begin{frame}[label={sec:org1fbec6d}]{Science or art?}
+\subsection*{Science or art?}
+\label{sec:org774530d}
+
+\begin{frame}[label={sec:org269f823}]{Science}
 \begin{itemize}
 \item The principle of \alert{falsifiability} of scientific research, as Karl Popper
 defined.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.6\textwidth,height=0.6\textheight]{figure/reasoning-cycle-research.jpg}
+\includegraphics[width=0.6\textwidth]{figure/reasoning-cycle-research.jpg}
 \caption{A reasoning cycle of scientific research}
 \end{figure}
 \end{itemize}
 \end{frame}
 
+\begin{frame}[label={sec:org3630b27}]{Art}
+Econometrics is an art because 
+\begin{itemize}
+\item the data are usually incomplete and unobserved to validate a
+hypothesis
+\item we need to use human creativity to reach a balance between
+scientific rigor and realistic approximation.
+\end{itemize}
+\end{frame}
 
-\begin{frame}[label={sec:orgb035554}]{Economic theory, statistics, and data}
+\begin{frame}[label={sec:org830be0b}]{A quote from Hansen}
+\begin{quote}
+Econometrics is alchemy since econometricians can create nearly any
+result desired, but it is also science because econometricians also
+know how to reject and avoid spurious models. -- Hansen (1996)
+\end{quote}
+\end{frame}
+
+
+\begin{frame}[label={sec:org0bdcef3}]{Economic theory, statistics, and data}
 \begin{itemize}
 \item A complete process of econometric research consists of
 \begin{itemize}
@@ -89,21 +110,21 @@ defined.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{figure/econometric_workflow.png}
-\caption{\label{fig:orga839ddb}
+\caption{\label{fig:org3c89a86}
 A workflow of econometric research}
 \end{figure}
 \end{frame}
 
 
 \section{Economic Questions We Examine}
-\label{sec:org059bc82}
+\label{sec:orge26a5bc}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
 \subsection*{Question \#1: Does reducing class size improve elementary school education?}
-\label{sec:org9fd08aa}
+\label{sec:org1e8afd0}
 
-\begin{frame}[label={sec:org9221c45}]{The argument for small class size goes like this}
+\begin{frame}[label={sec:org2cb2b50}]{The argument for small class size goes like this}
 Small classes get more teacher-student interaction, fewer disruptions,
 and higher grades in test. 
 
@@ -112,7 +133,7 @@ and higher grades in test.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgca0e4e3}]{The question of interest}
+\begin{frame}[label={sec:org655792a}]{The question of interest}
 \begin{block}{The research question}
 Is there any effect of reducing class size on improving students' grades in
 elementary schools?
@@ -128,7 +149,7 @@ elementary schools?
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org10415a5}]{The research design}
+\begin{frame}[label={sec:org3cc5c2a}]{The research design}
 \begin{description}
 \item[{Qualitative research design}] A field investigation
 
@@ -137,7 +158,7 @@ elementary schools?
 \end{description}
 \end{frame}
 
-\begin{frame}[label={sec:org0f3a1c4}]{The sample and data}
+\begin{frame}[label={sec:org31501ee}]{The sample and data}
 \begin{itemize}
 \item Draw samples and collect data from 420 California school districts
 in 1999.
@@ -148,12 +169,12 @@ observation. All observations are collected in a single year.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth,height=0.5\textheight]{figure/table1_1.png}
-\caption{\label{fig:orgda30687}
+\caption{\label{fig:orgb4c8e1f}
 A screen shot of the dataset the California school districts in 1999}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:orga9d0a0c}]{The econometric model}
+\begin{frame}[label={sec:org509ac96}]{The econometric model}
 \begin{itemize}
 \item Use common sense to build an econometric model in this case.
 \item Variables involved: the average test scores in a school district
@@ -176,9 +197,9 @@ statistics.
 
 
 \subsection*{Three other questions}
-\label{sec:org11c4995}
+\label{sec:org58c7dd5}
 
-\begin{frame}[label={sec:orga0eba84}]{The three other questions}
+\begin{frame}[label={sec:orgb8a8ecf}]{The three other questions}
 \begin{description}
 \item[{Question 1}] Does reducing class size improve elementary school education?
 \item[{Question 2}] Is there racial discrimination in the market for home loan?
@@ -187,9 +208,9 @@ statistics.
 \end{description}
 \end{frame}
 
-\begin{frame}[label={sec:org31b4265}]{A summary of data types}
+\begin{frame}[label={sec:org91373c4}]{A summary of data types}
 \begin{table}[htbp]
-\caption{\label{tab:org9040c10}
+\caption{\label{tab:org83b0e24}
 Data types and econometric methods for all four questions}
 \centering
 \footnotesize
@@ -206,14 +227,14 @@ Questions & Data types & Econometric methods\\
 
 
 \section{Causal Effects and Idealized Experiments}
-\label{sec:org3176805}
+\label{sec:org1dbaaab}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
 \subsection*{Randomized controlled experiment}
-\label{sec:org0cb3305}
+\label{sec:org0c9653f}
 
-\begin{frame}[label={sec:orgb4b8f5f}]{Randomized controlled experiments (or trials, RCTs thereafter)}
+\begin{frame}[label={sec:org66c68dd}]{Randomized controlled experiments (or trials, RCTs thereafter)}
 \begin{itemize}
 \item Clinical trials to test the effectiveness of medical
 intervention.
@@ -224,16 +245,16 @@ intervention.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org2afdb73}]{An illustration of RCTs}
+\begin{frame}[label={sec:orgdca644e}]{An illustration of RCTs}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth,height=0.6\textheight]{figure/rct_example.png}
-\caption{\label{fig:orgfb88e5a}
+\caption{\label{fig:orgd14f26e}
 An illustration of a randomized controlled experiment}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org13e74eb}]{The advantage of RCTs}
+\begin{frame}[label={sec:org557de8d}]{The advantage of RCTs}
 \begin{itemize}
 \item Randomization minimizes selection bias.
 \item In the example of California school districts,
@@ -244,7 +265,7 @@ from other \alert{confounding factors} eliminated.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orga8685ec}]{The disadvantage of RCTs}
+\begin{frame}[label={sec:orgbde0448}]{The disadvantage of RCTs}
 \begin{description}
 \item[{Time and costs}] RCTs usually are expensive to undertake and take a
 long time to observe the effect of treatment.
@@ -256,7 +277,7 @@ treatment due to ethnic concerns.
 \end{frame}
 
 
-\begin{frame}[label={sec:org23efa67}]{Causal effect}
+\begin{frame}[label={sec:org8e6eee4}]{Causal effect}
 \begin{itemize}
 \item \alert{Causal effect} is defined to be the effect on an outcome of a given
 action or treatment as measured in an ideal RCT.
@@ -268,11 +289,11 @@ design.
 
 
 \section{Data Sources and Types}
-\label{sec:org9cf4a30}
+\label{sec:org9f7f021}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
-\begin{frame}[label={sec:org7896b34}]{Experimental versus observational data}
+\begin{frame}[label={sec:org1f34248}]{Experimental versus observational data}
 \begin{itemize}
 \item \alert{Experimental data} come from experiments designed to evaluate a
 treatment or policy or to investigate a causal effect.
@@ -286,7 +307,7 @@ causality using observational data.
 \end{frame}
 
 
-\begin{frame}[label={sec:org4a08e8d}]{Cross-sectional data}
+\begin{frame}[label={sec:orgb5b9ef3}]{Cross-sectional data}
 \begin{itemize}
 \item Data on different entities for a single time period are called
 \alert{cross-sectional data}.
@@ -296,7 +317,7 @@ causality using observational data.
 \end{frame}
 
 
-\begin{frame}[label={sec:org647b748}]{Time series data}
+\begin{frame}[label={sec:org4660e77}]{Time series data}
 \begin{itemize}
 \item Time series data are data for a single entity collected at multiple
 time periods.
@@ -306,7 +327,7 @@ it happened.
 \end{frame}
 
 
-\begin{frame}[label={sec:org9928999}]{Panel data}
+\begin{frame}[label={sec:org8c2ed57}]{Panel data}
 \begin{itemize}
 \item \alert{Panel data}, also called \alert{longitudinal data}, are data for multiple
 entities in which \alert{each entity} is observed at two or more time

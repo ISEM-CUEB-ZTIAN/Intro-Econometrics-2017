@@ -342,6 +342,7 @@ heavy-tailed.
 #+ATTR_LATEX: :width 0.8\textwidth
 [[file:figure/fig-2-3.png]]
 
+
 * Two Random Variables
 ** The joint and marginal distributions
 *** The joint probability distributions
