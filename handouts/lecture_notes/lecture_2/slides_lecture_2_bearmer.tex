@@ -1,0 +1,638 @@
+% Created 2017-02-21 Tue 22:16
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+\setcounter{secnumdepth}{1}
+\author{Zheng Tian}
+\date{}
+\title{Lecture 2: Review of Probability}
+\hypersetup{
+ pdfauthor={Zheng Tian},
+ pdftitle={Lecture 2: Review of Probability},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\end{frame}
+
+
+\section{Random Variables and Probability Distributions}
+\label{sec:org8ec0b88}
+
+\subsection*{Defining probabilities and random variables}
+\label{sec:org878cd5d}
+
+\begin{frame}[label={sec:org8ee8fe1}]{Experiments and outcomes}
+\begin{itemize}
+\item An \alert{experiment} is the processes that generate random results
+\item The \alert{outcomes} of an experiment are its
+mutually exclusive potential results.
+\item Example: tossing a coin. The outcome is either getting a head(H) or a tail(T)
+but not both.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgd252c12}]{Sample space and events}
+\begin{itemize}
+\item A \alert{sample space} consists of all the outcomes from an experiment,
+denoted with the set \(S\).
+\begin{itemize}
+\item \(S = \{H, T\}\) in the tossing-coin experiment.
+\end{itemize}
+
+\item An \alert{event} is a subset of the sample 
+space.
+
+\item Getting a head is an event, which is \(\{H\} \subset \{H, T\}\).
+\end{itemize}
+\end{frame}
+
+\subsection*{Probability}
+\label{sec:org92ad719}
+
+\begin{frame}[label={sec:org47339db}]{An intuitive definition of probability}
+\begin{itemize}
+\item The \alert{probability} of an event is the proportion of the time that the
+event will occur in the long run.
+
+\item For example, we toss a coin for \(n\)
+times and get \(m\) heads. When \(n\) is very large, we can say that the
+probability of getting a head in a toss is \(m/n\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org955455a}]{An axiomatic definition of probability}
+\begin{itemize}
+\item A probability of an event \(A\) in the sample space \(S\), denoted as
+\(\mathrm{Pr}(A)\), is a function that assign \(A\) a real number in \([0,
+  1]\), satisfying the following three conditions:
+\begin{enumerate}
+\item \(0 \leq \mathrm{Pr}(A) \leq 1\).
+\item \(\mathrm{Pr}(S) = 1\).
+\item For any disjoint sets, \(A\) and \(B\), that is \(A\) and \(B\) have no
+element in common, \(\mathrm{Pr}(A \cup B) = \mathrm{Pr}(A) +
+    \mathrm{Pr}(B)\).
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\subsection*{Random variables}
+\label{sec:org3872f74}
+
+\begin{frame}[label={sec:orgd163cd6}]{The definition of random variables}
+\begin{itemize}
+\item A \alert{random variable} is a numerical summary associated with the
+outcomes of an experiment.
+
+\item You can also think of a random variable as a function
+mapping from an event \(\omega\) in the sample space \(\Omega\) to the
+real line.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org8061353}]{An illustration of random variables}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{figure/random_variable_demo1.png}
+\caption{\label{fig:org506f65b}
+An illustration of random variable}
+\end{figure}
+\end{frame}
+
+\begin{frame}[label={sec:org342d5cb}]{Discrete and continuous random variables}
+Random variables can take different types of values
+
+\begin{itemize}
+\item A \alert{discrete} random
+variables takes on a discrete set of values, like \(0, 1, 2, \ldots, n\)
+\item A \alert{continuous} random variable takes on a continuum of possble
+values, like any value in the interval \((a, b)\).
+\end{itemize}
+\end{frame}
+
+\subsection*{Probability distributions}
+\label{sec:org753bd6c}
+
+\begin{frame}[label={sec:org9678599}]{The probability distribution for a discrete random variable}
+\begin{itemize}
+\item The probability distribution of a discrete random variable is the list
+of all possible values of the variable and the probability that each
+value will occur. These probabilities sum to 1.
+
+\item The probability mass function. Let \(X\) be a discrete random
+variable. The probability distribution of \(X\) (or the probability
+mass function), \(p(x)\), is
+\begin{equation*}
+p(x) = \mathrm{Pr}(X = x)
+\end{equation*}
+
+\item The axioms of probability require that 
+\begin{enumerate}
+\item \(0 \leq p(x) \leq  1\)
+\item 2) \(\sum_{i=1}^n p(x_i) =  1\).
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org37bba7d}]{An example of the probability distribution of a discrete random variable}
+\begin{table}[htbp]
+\caption{\label{tab:org388079b}
+An illustration of the probability distribution of a discrete random variable}
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+\(X\) & 1 & 2 & 3 & Sum\\
+\midrule
+\(\mathrm{P}(x)\) & 0.25 & 0.75 & 0.25 & 1\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\subsection*{The cumulative probability distribution}
+\label{sec:org5d18725}
+
+\begin{frame}[label={sec:org1d8bd9b}]{Definition of the c.d.f.}
+\begin{itemize}
+\item The \alert{cumulative probability distribution} (or the cumulative
+distribution function, c.d.f.): 
+
+Let \(F(x)\) be the c.d.f of \(X\). Then \(F(x) = \mathrm{Pr}(X \leq x)\).
+\end{itemize}
+
+\begin{table}[htbp]
+\caption{\label{tab:orgbe2a6a9}
+An illustration of the c.d.f. of a discrete random variable}
+\centering
+\begin{tabular}{lrrrl}
+\toprule
+\(X\) & 1 & 2 & 3 & Sum\\
+\midrule
+\(\mathrm{P}(x)\) & 0.25 & 0.50 & 0.25 & 1\\
+C.d.f. & 0.25 & 0.75 & 1 & --\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[label={sec:orge67a82a}]{An illustration of the c.d.f. of a discrete random variable}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.53\textwidth,height=0.45\textheight]{figure/cdf_discrete_example.png}
+\caption{\label{fig:orgbc500e5}
+The c.d.f. of a discrete random variable}
+\end{figure}
+\end{frame}
+
+\begin{frame}[label={sec:orgc432871}]{Bernouli distribution}
+The Bernoulli distribution
+\begin{equation*}
+  G =
+    \begin{cases}
+      1 & \text{with probability } p \\
+      0 & \text{with probability } 1-p
+    \end{cases}
+  \end{equation*}
+\end{frame}
+
+\subsection*{The probability distribution of a continuous random variable}
+\label{sec:org2e4aee7}
+
+\begin{frame}[label={sec:org3eff1e4}]{Definition of the c.d.f. and the p.d.f.}
+\begin{itemize}
+\item The cumulative distribution function of a continous random variable
+is defined as it is for a discrete random variable. 
+\[ F(x) = \mathrm{Pr}(X \leq x) \]
+
+\item The \alert{probability density function (p.d.f.)} of \(X\) is the function
+that satisfies
+\[ F(x) = \int_{-\infty}^{x} f(t) \mathrm{d}t \text{ for all } x \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org7d1eb83}]{Properties of the c.d.f.}
+\begin{itemize}
+\item For both discrete and continuous random variable, \(F(X)\) must satisfy
+the following properties:
+\begin{enumerate}
+\item \(F(+\infty) = 1 \text{ and } F(-\infty) = 0\) (\(F(x)\) is bounded between 0 and 1)
+\item \(x > y \Rightarrow F(x) \geq F(y)\) (\(F(x)\) is nondecreasing)
+\end{enumerate}
+
+\item By the definition of the c.d.f., we can conveniently calculate
+probabilities, such as,
+\begin{itemize}
+\item \(\mathrm{P}(x > a) = 1 - \mathrm{P}(x \leq a) = 1 - F(a)\)
+\item \(\mathrm{P}(a < x \leq b) = F(b) - F(a)\).
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgb2c33a4}]{The c.d.f. and p.d.f. of a normal distribution}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth,height=0.5\textheight]{figure/norm1.png}
+\caption{\label{fig:org4814d46}
+The p.d.f. and c.d.f. of a continuous random variable (the normal distribution)}
+\end{figure}
+\end{frame}
+
+
+\section{Expectation, Variance, and Other Moments}
+\label{sec:org3da791b}
+
+\subsection*{The expected value of a random variable}
+\label{sec:org368edef}
+
+\begin{frame}[label={sec:org461442c}]{The expected value}
+\begin{itemize}
+\item The \alert{expected value} of a random variable, X, denoted as \(\mathrm{E}(X)\), is
+the long-run average of the random variable over many repeated
+trials or occurrences, which is also called the \alert{expectation} or the
+\alert{mean}.
+
+\item The expected value measures the centrality of a random variable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgb1b651d}]{Mathematical definition}
+\begin{itemize}
+\item For a discrete random variable
+\[ \mathrm{E}(X) = \sum_{i=1}^n x_i \mathrm{Pr}(X = x_i) \]
+
+\item e.g. The expectation of a Bernoulli random variable, \(G\),
+\[ \mathrm{E}(G) = 1 \cdot p + 0 \cdot (1-p) = p \]
+
+\item For a continuous random variable
+\[ \mathrm{E}(X) = \int_{-\infty}^{\infty} x f(x) \mathrm{d}x\]
+\end{itemize}
+\end{frame}
+
+\subsection*{The variance and standard deviation}
+\label{sec:org847377e}
+
+\begin{frame}[label={sec:orgcd0b0fe}]{Definition of variance and standard deviation}
+\begin{itemize}
+\item The \alert{variance} of a random variable \(X\) measures its average
+deviation from its own expected value.
+
+\item Let \(\mathrm{E}(X) = \mu_X\). Then the variance of \(X\),
+
+\begin{align*}
+\mathrm{Var}(X) & =  \sigma^2_X =  \mathrm{E}(X-\mu_X)^{2} \\
+& = 
+\begin{cases}
+\sum_{i=1}^n (x - \mu_X)^{2}\mathrm{Pr}(X = x_i) & \text{if } X \text{ is discrete} \\
+\int_{-\infty}^{\infty} (x - \mu_X)^{2}f(x)\mathrm{d} x  & \text{if } X \text{ is continuous}
+\end{cases}
+\end{align*}
+
+\item The \alert{standard deviation} of \(X\): \(\sigma_{X} = \sqrt{\mathrm{Var}(X)}\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgbd52c9e}]{Computing variance}
+\begin{itemize}
+\item A convenient formula for calculating the variance is
+\[ \mathrm{Var}(X) = \mathrm{E}(X - \mu_X)^{2} = \mathrm{E}(X^{2}) - \mu_X^{2} \]
+
+\item The variance of a Bernoulli random variable, \(G\)
+\[ \mathrm{Var}(G) = (1-p)^{2}p + (0-p)^{2}(1-p) = p(1-p) \]
+
+\item The expectation and variance of a linear function of \(X\). Let \(Y = a +
+  bX\), then
+\begin{itemize}
+\item \(\mathrm{E}(Y) = a + \mathrm{E}(X)\)
+\item \(\mathrm{Var}(Y) = \mathrm{Var}(a + b X) = b^{2} \mathrm{Var}(X)\).
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection*{Moments of a random variable, skewness and kurtosis}
+\label{sec:orgdb62186}
+
+\begin{frame}[label={sec:org9f88054}]{Definition of the moments of a distribution}
+\begin{description}
+\item[{k\(^{\text{th}}\) moment}] The k\(^{\text{th}}\) \alert{moment} of the distribution of \(X\) is
+\(\mathrm{E}(X^{k})\). So, the expectation is the "first"
+moment of \(X\).
+
+\item[{k\(^{\text{th}}\) central moment}] The k\(^{\text{th}}\) central moment of the distribution
+of \(X\) with its mean \(\mu_X\) is \(\mathrm{E}(X - \mu_X)^{k}\). So, the
+variance is the second central moment of \(X\).
+\end{description}
+
+\begin{block}{A caveat}
+It is important to remember that not all the moments of a distribution
+exist. 
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org8264f6f}]{Skewness}
+\begin{itemize}
+\item The skewness of a distribution provides a mathematical way to describe
+how much a distribution deviates from symmetry.
+
+\[ \text{Skewness} =  \mathrm{E}(X - \mu_X)^{3}/\sigma_{X}^{3} \]
+
+\item A symmetric distribution has a skewness of zero.
+\item The skewness can be either positive or negative.
+\item That \(\mathrm{E}(X - \mu_X)^3\) is divided by \(\sigma^3_X\) is to make
+the skewness measure unit free.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org5dd5889}]{Kurtosis}
+\begin{itemize}
+\item The kurtosis of the distribution of a random variable \(X\) measures how
+much of the variance of \(X\) arises from extreme values, which makes
+the distribution have "heavy" tails.
+
+\[ \text{Kurtosis} = \mathrm{E}(X - \mu_X)^{4}/\sigma_{X}^{4} \]
+
+\item The kurtosis must be positive.
+\item The kurtosis of the normal distribution is 3. So a distribution that
+has its kurtosis exceeding 3 is called heavy-tailed.
+\item The kurtosis is also unit free.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org4c75dbb}]{An illustration of skewness and kurtosis}
+\begin{center}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight]{figure/fig-2-3.png}
+\end{center}
+
+\begin{itemize}
+\item All four distributions have a mean of zero and
+a variance of one, while (a) and (b) are symmetric and (b)-(d) are
+heavy-tailed.
+\end{itemize}
+\end{frame}
+
+
+\section{Two Random Variables}
+\label{sec:orgabc3c9c}
+
+\begin{frame}[label={sec:org7baf345}]{The joint and marginal distributions}
+\begin{block}{The joint probability function of two discrete random variables}
+\begin{itemize}
+\item The joint distribution of two random variables \(X\) and \(Y\) is
+\[ p(x, y) = \mathrm{Pr}(X = x, Y = y)\]
+
+\item \(p(x, y)\) must satisfy
+\begin{enumerate}
+\item \(p(x, y) \geq 0\)
+\item \(\sum_{i=1}^n\sum_{j=1}^m p(x_i, y_j) = 1\) for all possible
+combinations of values of \(X\) and \(Y\).
+\end{enumerate}
+\end{itemize}
+\end{block}
+
+\begin{block}{The joint probability function of two continuous random variables}
+\begin{itemize}
+\item For two continuous random variables, \(X\) and \(Y\), the counterpart of \(p(x, y)\) is
+the joint probability density function, \(f(x, y)\), such that
+\begin{enumerate}
+\item \(f(x, y) \geq 0\)
+\item \(\int_{-\infty}^{{\infty}} \int_{-\infty}^{\infty} f(x, y)\, dx\, dy= 1\)
+\end{enumerate}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org2d0eb51}]{The marginal probability distribution}
+\begin{itemize}
+\item The marginal probability distribution of a random variable \(X\) is
+simply the probability distribution of its own.
+
+\item For a discrete random variable, we can compute the marginal
+distribution of \(X\) as
+\[ \mathrm{Pr}(X=x) = \sum_{i=1}^n \mathrm{Pr}(X, Y=y_i) = \sum_{i=1}^n p(x, y_i)  \]
+
+\item For a continuous random variable, the marginal distribution is
+\[f_X(x) = \int_{-\infty}^{\infty} f(x, y)\, dy \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org813b02d}]{An example of joint and marginal distributions}
+\begin{table}[htbp]
+\caption{\label{tab:org5353127}
+Joint and marginal distributions of raining and commuting time}
+\centering
+\begin{tabular}{lrrr}
+ & Rain (\(X=0\)) & No rain (\(X=1\)) & Total\\
+\hline
+Long commute (\(Y=0\)) & 0.15 & 0.07 & 0.22\\
+Short commute (\(Y=1\)) & 0.15 & 0.63 & 0.78\\
+\hline
+Total & 0.30 & 0.70 & 1\\
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[label={sec:org0b3a35a}]{Conditional probability}
+\begin{itemize}
+\item For any two events \(A\) and \(B\), the conditional probability of \(A\) given
+\(B\) is defined as
+\begin{equation*}
+\mathrm{Pr}(A|B) = \frac{\mathrm{Pr}(A \cap B)}{\mathrm{Pr}(B)}
+\end{equation*}
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.4\textwidth,height=0.4\textheight]{figure/conditional_probability.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:orga98c3ed}]{The conditional probability distribution}
+\begin{itemize}
+\item The conditional distribution of a random variable \(Y\) given another
+random variable \(X\) is \(\mathrm{Pr}(Y | X=x)\).
+
+\item The formula to compute it is
+\[ \mathrm{Pr}(Y | X=x) = \frac{\mathrm{Pr}(X=x, Y)}{\mathrm{Pr}(X=x)} \]
+
+\item For continuous random variables \(X\) and \(Y\), we define the conditional
+density function as
+\[ f(y|x) = \frac{f(x, y)}{f_X(x)} \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org73c9778}]{The conditional expectation}
+\begin{itemize}
+\item The \alert{conditional expectation} of \(Y\) given \(X\) is the expected value
+of the conditional distribution of \(Y\) given \(X\).
+
+\item For discrete random variables, the conditional mean of \(Y\) given \(X=x\) is
+\begin{equation*}
+\mathrm{E}(Y \mid X=x) = \sum_{i=1}^n y_i \mathrm{Pr}(Y \mid X=x)
+\end{equation*}
+
+\item For continuous random variables, it is computed as
+\begin{equation*}
+\int_{-\infty}^{\infty} y f(y \mid x)\, dy
+\end{equation*}
+
+\item The expected mean of commuting time given it is raining is \(0 \times
+  0.1 + 1 \times 0.9 = 0.9\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgb4c8e1b}]{The law of iterated expectation}
+\begin{itemize}
+\item \alert{The law of iterated expectation}:
+
+\[ \mathrm{E}(Y) = E \left[ \mathrm{E}(Y|X) \right] \]
+
+\item It says that the mean of \(Y\) is the weighted average of the
+conditional expectation of \(Y\) given \(X\), weighted by the
+probability distribution of \(X\). That is,
+\[ \mathrm{E}(Y) = \sum_{i=1}^n \mathrm{E}(Y \mid X=x_i) \mathrm{Pr}(X=x_i) \]
+
+\item If \(\mathrm{E}(X|Y) = 0\), then \(\mathrm{E}(X)=E\left[\mathrm{E}(X|Y)\right]=0\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org4874f94}]{Conditional variance}
+\begin{itemize}
+\item With the conditional mean of \(Y\) given \(X\), we can compute the
+conditional variance as
+\[ \mathrm{Var}(Y \mid X=x) = \sum_{i=1}^n \left[ y_i - \mathrm{E}(Y \mid X=x)
+  \right]^2 \mathrm{Pr}(Y=y_i \mid X=x) \]
+
+\item From the law of iterated expectation, we can get the following
+\[ \mathrm{Var}(Y) = \mathrm{E}(\mathrm{Var}(Y \mid X)) + \mathrm{Var}(\mathrm{E}(Y \mid
+  X)) \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org250ba8b}]{Independent random variables}
+\begin{itemize}
+\item Two random variables \(X\) and \(Y\) are \alert{independently distributed}, or
+\alert{independent}, if knowing the value of one of the variable provides no
+information about the other.
+\item Mathematically, it means that 
+\[ \mathrm{Pr}(Y=y \mid X=x) = \mathrm{Pr}(Y=y)  \]
+
+\item If \(X\) and \(Y\) are independent
+\[ \mathrm{Pr}(Y=y, X=x) = \mathrm{Pr}(X=x) \mathrm{Pr}(Y=y) \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org5a655c6}]{Independence between two continuous random variable}
+\begin{itemize}
+\item For two continuous random variables, \(X\) and \(Y\), they are
+\alert{independent} if
+\[ f(x|y) = f_{X}(x) \text{ or } f(y|x) = f_{Y}(y) \]
+
+\item It follows that if \(X\) and \(Y\) are independent
+\[ f(x, y) = f(x|y)f_{Y}(y) = f_{X}(x)f_{Y}(y) \]
+\end{itemize}
+\end{frame}
+
+\subsection*{Covariance and Correlation}
+\label{sec:orgd59126b}
+
+\begin{frame}[label={sec:orgcc34837}]{Covariance}
+\begin{itemize}
+\item The covariance of two discrete random variables \(X\) and \(Y\) is
+\begin{align*}
+\mathrm{Cov}(X, Y) & = \sigma_{XY} = \mathrm{E}(X-\mu_{X})(Y-\mu_{Y}) \\
+                   & = \sum_{i=1}^n \sum_{j=1}^m (x_i - \mu_X)(y_j - \mu_Y) \mathrm{Pr}(X=x_i, Y=y_j)
+\end{align*}
+
+\item For continous random variables, the covariance of \(X\) and \(Y\) is
+\[ \mathrm{Cov}(X, Y) = \int_{-\infty}^{\infty}
+  \int_{-\infty}^{\infty} (x-\mu_X)(y-\mu_y)f(x, y) dx dy \]
+
+\item The covariance can also be computed as
+\[ \mathrm{Cov}(X, Y) = \mathrm{E}(XY) - \mathrm{E}(X)\mathrm{E}(Y) \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org6697b72}]{Correlation coefficient}
+\begin{itemize}
+\item The \alert{correlation coefficient} of \(X\) and \(Y\) is
+
+\[ \mathrm{corr}(X, Y) = \rho_{XY} = \frac{\mathrm{Cov}(X, Y)}{\left[\mathrm{Var}(X)\mathrm{Var}(Y)\right]^{1/2}} =
+  \frac{\sigma_{XY}}{\sigma_{X}\sigma_{Y}} \]
+
+\item \(-1 \leq \mathrm{corr}(X, Y) \leq 1\).
+
+\item \(\mathrm{corr}(X, Y)=0\) (or \(\mathrm{Cov}(X,Y)=0\)) means that \(X\)
+and \(Y\) are uncorrelated.
+
+\item Since \(\mathrm{Cov}(X, Y) = \mathrm{E}(XY) -
+  \mathrm{E}(X)\mathrm{E}(Y)\), when \(X\) and \(Y\) are uncorrelated, then \(\mathrm{E}(XY) =
+  \mathrm{E}(X) \mathrm{E}(Y)\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org10fda8a}]{Independence and uncorrelation}
+\begin{itemize}
+\item If \(X\) and \(Y\) are independent, then
+\begin{align*}
+\mathrm{Cov}(X, Y) & = \sum_{i=1}^n \sum_{j=1}^m (x_i - \mu_X)(y_j - \mu_Y) \mathrm{Pr}(X=x_i) \mathrm{Pr}(Y=y_j) \\
+                   & = \sum_{i=1}^n (x_i - \mu_X) \mathrm{Pr}(X=x_i) \sum_{j=1}^m (y_j - \mu_y) \mathrm{Pr}(Y=y_j) \\
+                   & = 0 \times 0 = 0
+\end{align*}
+
+\item That is, if \(X\) and \(Y\) are independent, they must be
+uncorrelated.
+
+\item However, the converse is not true. If \(X\) and \(Y\) are
+uncorrelated, there is a possibility that they are actually
+dependent.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org74da8c6}]{Conditional mean and correlation}
+\begin{itemize}
+\item If \(X\) and \(Y\) are independent, then we must have 
+\(\mathrm{E}(Y \mid X) = \mathrm{E}(Y) = \mu_Y\)
+
+\item Then, we can prove that
+\(\mathrm{Cov}(X, Y) = 0\) and \(\mathrm{corr}(X, Y)=0\).
+
+\begin{align*}
+\mathrm{E}(XY) & = \mathrm{E}(\mathrm{E}(XY \mid X)) = \mathrm{E}(X \mathrm{E}(Y \mid X)) \\
+               & = \mathrm{E}(X) \mathrm{E}(Y \mid X) = \mathrm{E}(X) \mathrm{E}(Y)
+\end{align*}
+
+It follows that \(\mathrm{Cov}(X,Y) = \mathrm{E}(XY) - \mathrm{E}(X)
+   \mathrm{E}(Y) = 0\) and \(\mathrm{corr}(X, Y)=0\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org19713f5}]{Some useful operations}
+The following properties
+of \(\mathrm{E}(\cdot)\), \(\mathrm{Var}(\cdot)\) and
+\(\mathrm{Cov}(\cdot)\) are useful in calculation,
+
+\begin{align*}
+\mathrm{E}(a + bX + cY)      & = a + b \mu_{X} + c \mu_{Y} \\
+\mathrm{Var}(aX + bY)        & = a^{2} \sigma^{2}_{X} + b^{2} \sigma^{2}_{Y} + 2ab\sigma_{XY} \\
+\mathrm{Cov}(a + bX + cV, Y) & = b\sigma_{XY} + c\sigma_{VY} \\
+\end{align*}
+\end{frame}
+\end{document}

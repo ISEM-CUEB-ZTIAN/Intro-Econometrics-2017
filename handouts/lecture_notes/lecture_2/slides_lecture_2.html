@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Lecture 2: Review of Probability</title>
+<meta name="author" content="(Zheng Tian)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../../reveal.js/css/theme/beige.css" id="theme"/>
+
+<link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Lecture 2: Review of Probability</h1><h2 class="author">Zheng Tian</h2><p class="date">Created: 2017-02-21 Tue 22:17</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgc55c116">Random Variables and Probability Distributions</a></li>
+<li><a href="#/slide-orgce5e047">Expectation, Variance, and Other Moments</a></li>
+<li><a href="#/slide-org3a6da75">Two Random Variables</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+
+<section>
+<section id="slide-orgc55c116">
+<h2 id="orgc55c116">Random Variables and Probability Distributions</h2>
+<div class="outline-text-2" id="text-orgc55c116">
+</div></section>
+</section>
+<section>
+<section id="slide-org7aa6aab">
+<h3 id="org7aa6aab">Defining probabilities and random variables</h3>
+<div class="outline-text-3" id="text-org7aa6aab">
+</div></section>
+<section id="slide-org90b3e0c">
+<h4 id="org90b3e0c">Experiments and outcomes</h4>
+<ul>
+<li>An <b>experiment</b> is the processes that generate random results</li>
+<li>The <b>outcomes</b> of an experiment are its
+mutually exclusive potential results.</li>
+<li>Example: tossing a coin. The outcome is either getting a head(H) or a tail(T)
+but not both.</li>
+
+</ul>
+
+</section>
+<section id="slide-orga82e6c8">
+<h4 id="orga82e6c8">Sample space and events</h4>
+<ul>
+<li>A <b>sample space</b> consists of all the outcomes from an experiment,
+denoted with the set \(S\).
+<ul>
+<li>\(S = \{H, T\}\) in the tossing-coin experiment.</li>
+
+</ul></li>
+
+<li>An <b>event</b> is a subset of the sample 
+space. 
+<ul>
+<li>Getting a head is an event, which is \(\{H\} \subset \{H, T\}\).</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4bc09af">
+<h3 id="org4bc09af">Probability</h3>
+<div class="outline-text-3" id="text-org4bc09af">
+</div></section>
+<section id="slide-org5e094db">
+<h4 id="org5e094db">An intuitive definition of probability</h4>
+<ul>
+<li>The <b>probability</b> of an event is the proportion of the time that the
+event will occur in the long run.</li>
+
+<li>For example, we toss a coin for \(n\)
+times and get \(m\) heads. When \(n\) is very large, we can say that the
+probability of getting a head in a toss is \(m/n\).</li>
+
+</ul>
+
+</section>
+<section id="slide-org0577f59">
+<h4 id="org0577f59">An axiomatic definition of probability</h4>
+<ul>
+<li>A probability of an event \(A\) in the sample space \(S\), denoted as
+\(\mathrm{Pr}(A)\), is a function that assign \(A\) a real number in \([0,
+  1]\), satisfying the following three conditions:
+<ol>
+<li>\(0 \leq \mathrm{Pr}(A) \leq 1\).</li>
+<li>\(\mathrm{Pr}(S) = 1\).</li>
+<li>For any disjoint sets, \(A\) and \(B\), that is \(A\) and \(B\) have no
+element in common, \(\mathrm{Pr}(A \cup B) = \mathrm{Pr}(A) +
+    \mathrm{Pr}(B)\).</li>
+
+</ol></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgac72c09">
+<h3 id="orgac72c09">Random variables</h3>
+<div class="outline-text-3" id="text-orgac72c09">
+</div></section>
+<section id="slide-org3bad2d1">
+<h4 id="org3bad2d1">The definition of random variables</h4>
+<ul>
+<li>A <b>random variable</b> is a numerical summary associated with the
+outcomes of an experiment.</li>
+
+<li>You can also think of a random variable as a function
+mapping from an event \(\omega\) in the sample space \(\Omega\) to the
+real line.</li>
+
+</ul>
+
+</section>
+<section id="slide-org0453a14">
+<h4 id="org0453a14">An illustration of random variables</h4>
+
+<div id="orge8601a5" class="figure">
+<p><img src="figure/random_variable_demo1.png" alt="random_variable_demo1.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 1: </span>An illustration of random variable</p>
+</div>
+
+</section>
+<section id="slide-org54e503d">
+<h4 id="org54e503d">Discrete and continuous random variables</h4>
+<p>
+Random variables can take different types of values
+</p>
+
+<ul>
+<li>A <b>discrete</b> random
+variables takes on a discrete set of values, like \(0, 1, 2, \ldots, n\)</li>
+<li>A <b>continuous</b> random variable takes on a continuum of possble
+values, like any value in the interval \((a, b)\).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org89b329d">
+<h3 id="org89b329d">Probability distributions</h3>
+<div class="outline-text-3" id="text-org89b329d">
+</div></section>
+<section id="slide-org64e320c">
+<h4 id="org64e320c">The probability distribution for a discrete random variable</h4>
+<ul>
+<li>The probability distribution of a discrete random variable is the list
+of all possible values of the variable and the probability that each
+value will occur. These probabilities sum to 1.</li>
+
+<li><p>
+The probability mass function. Let \(X\) be a discrete random
+variable. The probability distribution of \(X\) (or the probability
+mass function), \(p(x)\), is
+</p>
+<div>
+\begin{equation*}
+p(x) = \mathrm{Pr}(X = x)
+\end{equation*}
+
+</div></li>
+
+<li>The axioms of probability require that 
+<ol>
+<li>\(0 \leq p(x) \leq 1\)</li>
+<li>\( \sum_{i=1}^n p(x_i) = 1\).</li>
+
+</ol></li>
+
+</ul>
+
+</section>
+<section id="slide-orgf7fd669">
+<h4 id="orgf7fd669">An example of the probability distribution of a discrete random variable</h4>
+<table id="orge7b6c39" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> An illustration of the probability distribution of a discrete random variable</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(X\)</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(\mathrm{P}(x)\)</td>
+<td class="org-right">0.25</td>
+<td class="org-right">0.75</td>
+<td class="org-right">0.25</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdc45b1d">
+<h3 id="orgdc45b1d">The cumulative probability distribution</h3>
+<ul>
+<li><p>
+The <b>cumulative probability distribution</b> (or the cumulative
+distribution function, c.d.f.): 
+</p>
+
+<p>
+Let \(F(x)\) be the c.d.f of \(X\). Then \(F(x) = \mathrm{Pr}(X \leq x)\).
+</p></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org06c6f62">
+<h3 id="org06c6f62">The c.d.f. of a discrete random variable is a step function</h3>
+<table id="org1e74384" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> An illustration of the c.d.f. of a discrete random variable</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(X\)</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-left">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(\mathrm{P}(x)\)</td>
+<td class="org-right">0.25</td>
+<td class="org-right">0.50</td>
+<td class="org-right">0.25</td>
+<td class="org-left">1</td>
+</tr>
+
+<tr>
+<td class="org-left">C.d.f.</td>
+<td class="org-right">0.25</td>
+<td class="org-right">0.75</td>
+<td class="org-right">1</td>
+<td class="org-left">--</td>
+</tr>
+</tbody>
+</table>
+
+
+<div id="orgc3a9b5a" class="figure">
+<p><img src="figure/cdf_discrete_example.png" alt="cdf_discrete_example.png" width="450" height="300" />
+</p>
+<p><span class="figure-number">Figure 2: </span>The c.d.f. of a discrete random variable</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2a7282c">
+<h3 id="org2a7282c">Bernouli distribution</h3>
+<p>
+The Bernoulli distribution
+</p>
+<div>
+\begin{equation*}
+  G =
+    \begin{cases}
+      1 & \text{with probability } p \\
+      0 & \text{with probability } 1-p
+    \end{cases}
+  \end{equation*}
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org97ad69b">
+<h3 id="org97ad69b">The probability distribution of a continuous random variable</h3>
+<div class="outline-text-3" id="text-org97ad69b">
+</div></section>
+<section id="slide-org4d82b99">
+<h4 id="org4d82b99">Definition of the c.d.f. and the p.d.f. of a continuous random variable</h4>
+<ul>
+<li>The cumulative distribution function of a continous random variable
+is defined as it is for a discrete random variable. 
+\[ F(x) = \mathrm{Pr}(X \leq x) \]</li>
+
+<li>The <b>probability density function (p.d.f.)</b> of \(X\) is the function
+that satisfies
+\[ F(x) = \int_{-\infty}^{x} f(t) \mathrm{d}t \text{ for all } x \]</li>
+
+</ul>
+
+</section>
+<section id="slide-org916c921">
+<h4 id="org916c921">Properties of the c.d.f.</h4>
+<ul>
+<li>For both discrete and continuous random variable, \(F(X)\) must satisfy
+the following properties:
+<ol>
+<li>\(F(+\infty) = 1 \text{ and } F(-\infty) = 0\) (\(F(x)\) is bounded between 0 and 1)</li>
+<li>\(x > y \Rightarrow F(x) \geq F(y)\) (\(F(x)\) is nondecreasing)</li>
+
+</ol></li>
+
+<li>By the definition of the c.d.f., we can conveniently calculate
+probabilities, such as,
+<ul>
+<li>\(\mathrm{P}(x > a) = 1 - \mathrm{P}(x \leq a) = 1 - F(a)\)</li>
+<li>\(\mathrm{P}(a < x \leq b) = F(b) - F(a)\).</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org6cfa26c">
+<h4 id="org6cfa26c">The c.d.f. and p.d.f. of a normal distribution</h4>
+
+<div id="org823fff0" class="figure">
+<p><img src="figure/norm1.png" alt="norm1.png" width="500" height="450" />
+</p>
+<p><span class="figure-number">Figure 3: </span>The p.d.f. and c.d.f. of a continuous random variable (the normal distribution)</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgce5e047">
+<h2 id="orgce5e047">Expectation, Variance, and Other Moments</h2>
+<div class="outline-text-2" id="text-orgce5e047">
+</div></section>
+</section>
+<section>
+<section id="slide-org22c07ca">
+<h3 id="org22c07ca">The expected value of a random variable</h3>
+<div class="outline-text-3" id="text-org22c07ca">
+</div></section>
+<section id="slide-org4d17b7b">
+<h4 id="org4d17b7b">The expected value</h4>
+<ul>
+<li>The <b>expected value</b> of a random variable, X, denoted as \(\mathrm{E}(X)\), is
+the long-run average of the random variable over many repeated
+trials or occurrences, which is also called the <b>expectation</b> or the
+<b>mean</b>.</li>
+
+<li>The expected value measures the centrality of a random variable.</li>
+
+</ul>
+
+</section>
+<section id="slide-orge1bc809">
+<h4 id="orge1bc809">Mathematical definition</h4>
+<ul>
+<li>For a discrete random variable
+\[ \mathrm{E}(X) = \sum_{i=1}^n x_i \mathrm{Pr}(X = x_i) \]</li>
+
+<li>e.g. The expectation of a Bernoulli random variable, \(G\),
+\[ \mathrm{E}(G) = 1 \cdot p + 0 \cdot (1-p) = p \]</li>
+
+<li>For a continuous random variable
+\[ \mathrm{E}(X) = \int_{-\infty}^{\infty} x f(x) \mathrm{d}x\]</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgafd13f3">
+<h3 id="orgafd13f3">The variance and standard deviation</h3>
+<div class="outline-text-3" id="text-orgafd13f3">
+</div></section>
+<section id="slide-org7959602">
+<h4 id="org7959602">Definition of variance and standard deviation</h4>
+<ul>
+<li>The <b>variance</b> of a random variable \(X\) measures its average
+deviation from its own expected value.</li>
+
+<li><p>
+Let \(\mathrm{E}(X) = \mu_X\). Then the variance of \(X\),
+</p>
+
+<div>
+\begin{align*}
+\mathrm{Var}(X) & =  \sigma^2_X =  \mathrm{E}(X-\mu_X)^{2} \\
+& = 
+\begin{cases}
+\sum_{i=1}^n (x - \mu_X)^{2}\mathrm{Pr}(X = x_i) & \text{if } X \text{ is discrete} \\
+\int_{-\infty}^{\infty} (x - \mu_X)^{2}f(x)\mathrm{d} x  & \text{if } X \text{ is continuous}
+\end{cases}
+\end{align*}
+
+</div></li>
+
+<li>The <b>standard deviation</b> of \(X\): &sigma;<sub>X</sub> = \sqrt{\mathrm{Var}(X)}$</li>
+
+</ul>
+
+</section>
+<section id="slide-org91a3f2f">
+<h4 id="org91a3f2f">Computing variance</h4>
+<ul>
+<li>A convenient formula for calculating the variance is
+\[ \mathrm{Var}(X) = \mathrm{E}(X - \mu_X)^{2} = \mathrm{E}(X^{2}) - \mu_X^{2} \]</li>
+
+<li>The variance of a Bernoulli random variable, \(G\)
+\[ \mathrm{Var}(G) = (1-p)^{2}p + (0-p)^{2}(1-p) = p(1-p) \]</li>
+
+<li>The expectation and variance of a linear function of \(X\). Let \(Y = a +
+  bX\), then
+<ul>
+<li>\(\mathrm{E}(Y) = a + \mathrm{E}(X)\)</li>
+<li>\(\mathrm{Var}(Y) = \mathrm{Var}(a + b X) = b^{2} \mathrm{Var}(X)\).</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd61f49f">
+<h3 id="orgd61f49f">Moments of a random variable, skewness and kurtosis</h3>
+<div class="outline-text-3" id="text-orgd61f49f">
+</div></section>
+<section id="slide-orgaaa0094">
+<h4 id="orgaaa0094">Definition of the moments of a distribution</h4>
+<dl>
+<dt>k<sup>th</sup> moment</dt><dd>The k<sup>th</sup> <b>moment</b> of the distribution of \(X\) is
+\(\mathrm{E}(X^{k})\). So, the expectation is the "first"
+moment of \(X\).</dd>
+
+<dt>k<sup>th</sup> central moment</dt><dd>The k<sup>th</sup> central moment of the distribution
+of \(X\) with its mean \(\mu_X\) is \(\mathrm{E}(X - \mu_X)^{k}\). So, the
+variance is the second central moment of \(X\).</dd>
+
+</dl>
+
+<ul class="org-ul"><li><a id="org6b559b3"></a>A caveat<br  /><p>
+It is important to remember that not all the moments of a distribution
+exist. 
+</p></li></ul>
+
+</section>
+<section id="slide-orgb68bfcb">
+<h4 id="orgb68bfcb">Skewness</h4>
+<ul>
+<li><p>
+The skewness of a distribution provides a mathematical way to describe
+how much a distribution deviates from symmetry.
+</p>
+
+<p>
+\[ \text{Skewness} =  \mathrm{E}(X - \mu_X)^{3}/\sigma_{X}^{3} \]
+</p></li>
+
+<li>A symmetric distribution has a skewness of zero.</li>
+<li>The skewness can be either positive or negative.</li>
+<li>That \(\mathrm{E}(X - \mu_X)^3\) is divided by \(\sigma^3_X\) is to make
+the skewness measure unit free.</li>
+
+</ul>
+
+</section>
+<section id="slide-orgd49f72b">
+<h4 id="orgd49f72b">Kurtosis</h4>
+<ul>
+<li><p>
+The kurtosis of the distribution of a random variable \(X\) measures how
+much of the variance of \(X\) arises from extreme values, which makes
+the distribution have "heavy" tails.
+</p>
+
+<p>
+\[ \text{Kurtosis} = \mathrm{E}(X - \mu_X)^{4}/\sigma_{X}^{4} \]
+</p></li>
+
+<li>The kurtosis must be positive.</li>
+<li>The kurtosis of the normal distribution is 3. So a distribution that
+has its kurtosis exceeding 3 is called heavy-tailed.</li>
+<li>The kurtosis is also unit free.</li>
+
+</ul>
+
+</section>
+<section id="slide-orgdc04acd">
+<h4 id="orgdc04acd">An illustration of skewness and kurtosis</h4>
+
+<div class="figure">
+<p><img src="figure/fig-2-3.png" alt="fig-2-3.png" width="550" height="450" />
+</p>
+</div>
+
+<ul>
+<li>All four distributions have a mean of zero and
+a variance of one, while (a) and (b) are symmetric and (b)-(d) are
+heavy-tailed.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org3a6da75">
+<h2 id="org3a6da75">Two Random Variables</h2>
+<div class="outline-text-2" id="text-org3a6da75">
+</div></section>
+</section>
+<section>
+<section id="slide-org73f12ee">
+<h3 id="org73f12ee">The joint and marginal distributions</h3>
+<div class="outline-text-3" id="text-org73f12ee">
+</div></section>
+<section id="slide-org7cd0526">
+<h4 id="org7cd0526">The joint probability function of two discrete random variables</h4>
+<ul>
+<li>The joint distribution of two random variables \(X\) and \(Y\) is
+\[ p(x, y) = \mathrm{Pr}(X = x, Y = y)\]</li>
+
+<li>\(p(x, y)\) must satisfy
+<ol>
+<li>\(p(x, y) \geq 0\)</li>
+<li>\(\sum_{i=1}^n\sum_{j=1}^m p(x_i, y_j) = 1\) for all possible
+combinations of values of \(X\) and \(Y\).</li>
+
+</ol></li>
+
+</ul>
+
+</section>
+<section id="slide-org40e413f">
+<h4 id="org40e413f">The joint probability function of two continuous random variables</h4>
+<ul>
+<li>For two continuous random variables, \(X\) and \(Y\), the counterpart of \(p(x, y)\) is
+the joint probability density function, \(f(x, y)\), such that
+<ol>
+<li>\(f(x, y) \geq 0\)</li>
+<li>\(\int_{-\infty}^{{\infty}} \int_{-\infty}^{\infty} f(x, y)\, dx\, dy= 1\)</li>
+
+</ol></li>
+
+</ul>
+
+</section>
+<section id="slide-org4f8d93b">
+<h4 id="org4f8d93b">The marginal probability distribution</h4>
+<ul>
+<li>The marginal probability distribution of a random variable \(X\) is
+simply the probability distribution of its own.</li>
+
+<li>For a discrete random variable, we can compute the marginal
+distribution of \(X\) as
+\[ \mathrm{Pr}(X=x) = \sum_{i=1}^n \mathrm{Pr}(X, Y=y_i) = \sum_{i=1}^n p(x, y_i)  \]</li>
+
+<li>For a continuous random variable, the marginal distribution is
+\[f_X(x) = \int_{-\infty}^{\infty} f(x, y)\, dy \]</li>
+
+</ul>
+
+</section>
+<section id="slide-orgc9a0b8f">
+<h4 id="orgc9a0b8f">An example of joint and marginal distributions</h4>
+<table id="org7aeb57f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 3:</span> Joint and marginal distributions of raining and commuting time</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">Rain (\(X=0\))</th>
+<th scope="col" class="org-right">No rain (\(X=1\))</th>
+<th scope="col" class="org-right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Long commute (\(Y=0\))</td>
+<td class="org-right">0.15</td>
+<td class="org-right">0.07</td>
+<td class="org-right">0.22</td>
+</tr>
+
+<tr>
+<td class="org-left">Short commute (\(Y=1\))</td>
+<td class="org-right">0.15</td>
+<td class="org-right">0.63</td>
+<td class="org-right">0.78</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Total</td>
+<td class="org-right">0.30</td>
+<td class="org-right">0.70</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org9af5186">
+<h3 id="org9af5186">Conditional distributions</h3>
+<div class="outline-text-3" id="text-org9af5186">
+</div></section>
+<section id="slide-org06fbd37">
+<h4 id="org06fbd37">The conditional probability</h4>
+<ul>
+<li><p>
+For any two events \(A\) and \(B\), the conditional probability of A given
+B is defined as
+</p>
+<div>
+\begin{equation*}
+\mathrm{Pr}(A|B) = \frac{\mathrm{Pr}(A \cap B)}{\mathrm{Pr}(B)}
+\end{equation*}
+
+</div></li>
+
+</ul>
+
+</section>
+<section id="slide-org3720427">
+<h4 id="org3720427">Conditional probability illustrated</h4>
+
+<div id="orge5d7d87" class="figure">
+<p><img src="figure/conditional_probability.png" alt="conditional_probability.png" width="400" height="400" />
+</p>
+<p><span class="figure-number">Figure 5: </span>An illustration of conditional probability</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd6ad182">
+<h3 id="orgd6ad182">The conditional probability distribution</h3>
+<ul>
+<li>The conditional distribution of a random variable \(Y\) given another
+random variable \(X\) is \(\mathrm{Pr}(Y | X=x)\).</li>
+
+<li>The formula to compute it is
+\[ \mathrm{Pr}(Y | X=x) = \frac{\mathrm{Pr}(X=x, Y)}{\mathrm{Pr}(X=x)} \]</li>
+
+<li>For continuous random variables \(X\) and \(Y\), we define the conditional
+density function as
+\[ f(y|x) = \frac{f(x, y)}{f_X(x)} \]</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdcd234a">
+<h3 id="orgdcd234a">The conditional expectation</h3>
+<ul>
+<li>The <b>conditional expectation</b> of \(Y\) given \(X\) is the expected value
+of the conditional distribution of \(Y\) given \(X\).</li>
+
+<li><p>
+For discrete random variables, the conditional mean of \(Y\) given \(X=x\) is
+</p>
+<div>
+\begin{equation*}
+\mathrm{E}(Y \mid X=x) = \sum_{i=1}^n y_i \mathrm{Pr}(Y \mid X=x)
+\end{equation*}
+
+</div></li>
+
+<li><p>
+For continuous random variables, it is computed as
+</p>
+<div>
+\begin{equation*}
+\int_{-\infty}^{\infty} y f(y \mid x)\, dy
+\end{equation*}
+
+</div></li>
+
+<li>The expected mean of commuting time given it is raining is \(0 \times
+  0.1 + 1 \times 0.9 = 0.9\).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbb256bd">
+<h3 id="orgbb256bd">The law of iterated expectation</h3>
+<ul>
+<li><p>
+<b>The law of iterated expectation</b>:
+</p>
+
+<p>
+\[ \mathrm{E}(Y) = E \left[ \mathrm{E}(Y|X) \right] \]
+</p></li>
+
+<li>It says that the mean of \(Y\) is the weighted average of the
+conditional expectation of \(Y\) given \(X\), weighted by the
+probability distribution of \(X\). That is,
+\[ \mathrm{E}(Y) = \sum_{i=1}^n \mathrm{E}(Y \mid X=x_i) \mathrm{Pr}(X=x_i) \]</li>
+
+<li>If \(\mathrm{E}(X|Y) = 0\), then \(\mathrm{E}(X)=E\left[\mathrm{E}(X|Y)\right]=0\).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org917d9ae">
+<h3 id="org917d9ae">Conditional variance</h3>
+<ul>
+<li>With the conditional mean of \(Y\) given \(X\), we can compute the
+conditional variance as
+\[ \mathrm{Var}(Y \mid X=x) = \sum_{i=1}^n \left[ y_i - \mathrm{E}(Y \mid X=x)
+  \right]^2 \mathrm{Pr}(Y=y_i \mid X=x) \]</li>
+
+<li>From the law of iterated expectation, we can get the following
+\[ \mathrm{Var}(Y) = \mathrm{E}(\mathrm{Var}(Y \mid X)) + \mathrm{Var}(\mathrm{E}(Y \mid
+  X)) \]</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org21aa4dd">
+<h3 id="org21aa4dd">Independent random variables</h3>
+<ul>
+<li>Two random variables \(X\) and \(Y\) are <b>independently distributed</b>, or
+<b>independent</b>, if knowing the value of one of the variable provides no
+information about the other.</li>
+<li>Mathematically, it means that 
+\[ \mathrm{Pr}(Y=y \mid X=x) = \mathrm{Pr}(Y=y)  \]</li>
+
+<li>If \(X\) and \(Y\) are independent
+\[ \mathrm{Pr}(Y=y, X=x) = \mathrm{Pr}(X=x) \mathrm{Pr}(Y=y) \]</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org92a114d">
+<h3 id="org92a114d">Independence between two continuous random variable</h3>
+<ul>
+<li>For two continuous random variables, \(X\) and \(Y\), they are
+<b>independent</b> if
+\[ f(x|y) = f_{X}(x) \text{ or } f(y|x) = f_{Y}(y) \]</li>
+
+<li>It follows that if \(X\) and \(Y\) are independent
+\[ f(x, y) = f(x|y)f_{Y}(y) = f_{X}(x)f_{Y}(y) \]</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orge5e6878">
+<h3 id="orge5e6878">Covariance and Correlation</h3>
+<div class="outline-text-3" id="text-orge5e6878">
+</div></section>
+<section id="slide-org844ec9b">
+<h4 id="org844ec9b">Covariance</h4>
+<ul>
+<li><p>
+The covariance of two discrete random variables \(X\) and \(Y\) is
+</p>
+<div>
+\begin{align*}
+\mathrm{Cov}(X, Y) & = \sigma_{XY} = \mathrm{E}(X-\mu_{X})(Y-\mu_{Y}) \\
+                   & = \sum_{i=1}^n \sum_{j=1}^m (x_i - \mu_X)(y_j - \mu_Y) \mathrm{Pr}(X=x_i, Y=y_j)
+\end{align*}
+
+</div></li>
+
+<li>For continous random variables, the covariance of \(X\) and \(Y\) is
+\[ \mathrm{Cov}(X, Y) = \int_{-\infty}^{\infty}
+  \int_{-\infty}^{\infty} (x-\mu_X)(y-\mu_y)f(x, y) dx dy \]</li>
+
+<li>The covariance can also be computed as
+\[ \mathrm{Cov}(X, Y) = \mathrm{E}(XY) - \mathrm{E}(X)\mathrm{E}(Y) \]</li>
+
+</ul>
+
+</section>
+<section id="slide-orgc5c7690">
+<h4 id="orgc5c7690">Correlation coefficient</h4>
+<ul>
+<li><p>
+The <b>correlation coefficient</b> of \(X\) and \(Y\) is
+</p>
+
+<p>
+\[ \mathrm{corr}(X, Y) = \rho_{XY} = \frac{\mathrm{Cov}(X, Y)}{\left[\mathrm{Var}(X)\mathrm{Var}(Y)\right]^{1/2}} =
+  \frac{\sigma_{XY}}{\sigma_{X}\sigma_{Y}} \]
+</p></li>
+
+<li>\(-1 \leq \mathrm{corr}(X, Y) \leq 1\).</li>
+
+<li>\(\mathrm{corr}(X, Y)=0\) (or \(\mathrm{Cov}(X,Y)=0\)) means that \(X\)
+and \(Y\) are uncorrelated.</li>
+
+<li>Since \(\mathrm{Cov}(X, Y) = \mathrm{E}(XY) -
+  \mathrm{E}(X)\mathrm{E}(Y)\), when \(X\) and \(Y\) are uncorrelated, then \(\mathrm{E}(XY) =
+  \mathrm{E}(X) \mathrm{E}(Y)\).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb62de84">
+<h3 id="orgb62de84">Independence and uncorrelation</h3>
+<ul>
+<li><p>
+If \(X\) and \(Y\) are independent, then
+</p>
+<div>
+\begin{align*}
+\mathrm{Cov}(X, Y) & = \sum_{i=1}^n \sum_{j=1}^m (x_i - \mu_X)(y_j - \mu_Y) \mathrm{Pr}(X=x_i) \mathrm{Pr}(Y=y_j) \\
+                   & = \sum_{i=1}^n (x_i - \mu_X) \mathrm{Pr}(X=x_i) \sum_{j=1}^m (y_j - \mu_y) \mathrm{Pr}(Y=y_j) \\
+                   & = 0 \times 0 = 0
+\end{align*}
+
+</div></li>
+
+<li>That is, if \(X\) and \(Y\) are independent, they must be
+uncorrelated.</li>
+
+<li>However, the converse is not true. If \(X\) and \(Y\) are
+uncorrelated, there is a possibility that they are actually
+dependent.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0cd739c">
+<h3 id="org0cd739c">Conditional mean and correlation</h3>
+<ul>
+<li>If \(X\) and \(Y\) are independent, then we must have 
+\(\mathrm{E}(Y \mid X) = \mathrm{E}(Y) = \mu_Y\)</li>
+
+<li><p>
+Then, we can prove that
+\(\mathrm{Cov}(X, Y) = 0\) and \(\mathrm{corr}(X, Y)=0\).
+</p>
+
+<div>
+\begin{align*}
+\mathrm{E}(XY) & = \mathrm{E}(\mathrm{E}(XY \mid X)) = \mathrm{E}(X \mathrm{E}(Y \mid X)) \\
+               & = \mathrm{E}(X) \mathrm{E}(Y \mid X) = \mathrm{E}(X) \mathrm{E}(Y)
+\end{align*}
+
+</div>
+
+<p>
+It follows that \(\mathrm{Cov}(X,Y) = \mathrm{E}(XY) - \mathrm{E}(X)
+   \mathrm{E}(Y) = 0\) and \(\mathrm{corr}(X, Y)=0\). 
+</p></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf41d8ea">
+<h3 id="orgf41d8ea">Some useful operations</h3>
+<p>
+The following properties
+of \(\mathrm{E}(\cdot)\), \(\mathrm{Var}(\cdot)\) and
+\(\mathrm{Cov}(\cdot)\) are useful in calculation,
+</p>
+
+<div>
+\begin{align*}
+\mathrm{E}(a + bX + cY)      & = a + b \mu_{X} + c \mu_{Y} \\
+\mathrm{Var}(aX + bY)        & = a^{2} \sigma^{2}_{X} + b^{2} \sigma^{2}_{Y} + 2ab\sigma_{XY} \\
+\mathrm{Cov}(a + bX + cV, Y) & = b\sigma_{XY} + c\sigma_{VY} \\
+\end{align*}
+
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1000,
+height: 800,
+margin: 0.20,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: '../../../reveal.js/plugin/menu/menu.js' },
+ { src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: '../../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

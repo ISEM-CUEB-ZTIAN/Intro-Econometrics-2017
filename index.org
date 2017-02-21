@@ -21,3 +21,5 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 
 **  Lecture 2: Review of Probability 
 - The lecture notes ([[file:handouts/lecture_notes/lecture_2/lecture_2.org][html]] or [[file:handouts/lecture_notes/lecture_2/lecture_2.pdf][pdf]])
+- The slides ([[file:handouts/lecture_notes/lecture_2/slides_lecture_2.html][html]] or [[file:handouts/lecture_notes/lecture_2/slides_lecture_2_bearmer.pdf][pdf]])
+
