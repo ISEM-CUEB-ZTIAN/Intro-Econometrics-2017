@@ -23,11 +23,6 @@
 #+LATEX_HEADER: \hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
 #+LATEX_HEADER: \newtheorem{definition}{Definition}
 #+LATEX_HEADER: \newtheorem{theorem}{Theorem}
-#+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
-#+LATEX_HEADER: \newcommand{\var}{\mathrm{Var}}
-#+LATEX_HEADER: \newcommand{\cov}{\mathrm{Cov}}
-#+LATEX_HEADER: \newcommand{\corr}{\mathrm{Corr}}
-#+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
 #+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
 #+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
 #+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
@@ -35,7 +30,7 @@
 
 This lecture will review the basics in probability theory. The review
 is by no means comprehensive. We will just refresh our mind with the
-concepts that will be used the lectures that follow. 
+concepts that will be used the lectures that follow.
 
 * Random Variables and Probability Distributions
 
@@ -65,10 +60,11 @@ probability of getting a head in a toss is $m/n$. Obviously, we cannot
 always repeat an experiment with infinite times. So we need a general
 (axiomatic) definition of probability as follows.
 
-*Definition of probability* A probability of an event $A$
-in the sample space $S$, denoted as $\mathrm{Pr}(A)$, is a function
-that assign $A$ a real number in $[0, 1]$, satisfying the following
-three conditions:
+*** An axiomatic definition of probability
+
+A probability of an event $A$ in the sample space $S$, denoted as
+$\mathrm{Pr}(A)$, is a function that assign $A$ a real number in $[0,
+1]$, satisfying the following three conditions:
 1) $0 \leq \mathrm{Pr}(A) \leq 1$.
 2) $\mathrm{Pr}(S) = 1$.
 3) For any disjoint sets, $A$ and $B$, that is $A$ and $B$ have no
@@ -77,7 +73,7 @@ three conditions:
 
 Here we use the concept of disjoint (or mutually exclusive) sets. $A$
 and $B$ are disjoint if there is no common element between these two
-sets, that is, $A \cap B$ is an empty set. 
+sets, that is, $A \cap B$ is an empty set.
 
 *** Random variables
 
@@ -86,7 +82,7 @@ outcome, we can use numeric value to do so. A *random variable* is
 thus a numerical summary associated with the outcomes of an
 experiment. You can also think of a random variable as a function
 mapping from an event $\omega$ in the sample space $\Omega$ to the
-real line, as illustrated in Figure [[fig-random-variable]]. 
+real line, as illustrated in Figure [[fig-random-variable]].
 
 #+NAME: fig-random-variable
 #+CAPTION: An illustration of random variable
@@ -97,7 +93,7 @@ real line, as illustrated in Figure [[fig-random-variable]].
 Random variables can take different types of values. A *discrete* random
 variables takes on a discrete set of values, like $0, 1, 2, \ldots, n$
 whereas a *continuous* random variable takes on a continuum of possble
-values, like any value in the interval $(a, b)$. 
+values, like any value in the interval $(a, b)$.
 
 
 ** Probability distributions
@@ -106,7 +102,7 @@ values, like any value in the interval $(a, b)$.
 
 The probability distribution of a discrete random variable is the list
 of all possible values of the variable and the probability that each
-value will occur. These probabilities sum to 1. 
+value will occur. These probabilities sum to 1.
 
 **** The probability mass function
 
@@ -117,7 +113,7 @@ p(x) = \mathrm{Pr}(X = x)
 \end{equation*}
 where we use $X$ to denote the random variable and $x$ to denote a
 specific value that $X$ can take. We denote the set of all possible
-value of $X$ as $S$. 
+value of $X$ as $S$.
 
 The axioms of probability require that (1) $0 \leq p(x) \leq
 1$ and (2) $ \sum_{ \{\text{all } x \text{ in } S \} } p(x) =
@@ -136,10 +132,10 @@ The axioms of probability require that (1) $0 \leq p(x) \leq
 The *cumulative probability distribution* (or the cumulative
 distribution function, c.d.f.) is the probability that the random variable is
 less than or equal to a particular value. Let $F(x)$ be the c.d.f of
-$X$. Then $F(x) = p(X \leq x)$. 
+$X$. Then $F(x) = \mathrm{Pr}(X \leq x)$.
 
 Table [[tab-cdf-disc-exmp]] and Figure [[fig-cdf-discrete]] show that the
-c.d.f. of a discrete random variable is a step function of $x$. 
+c.d.f. of a discrete random variable is a step function of $x$.
 
 #+ATTR_LATEX: :booktabs t
 #+NAME: tab-cdf-disc-exmp
@@ -151,7 +147,7 @@ c.d.f. of a discrete random variable is a step function of $x$.
 
 #+NAME: fig-cdf-discrete
 #+CAPTION: The c.d.f. of a discrete random variable
-#+ATTR_HTML: :width 500 :height 330 
+#+ATTR_HTML: :width 500 :height 330
 #+ATTR_LATEX: :width 0.53\textwidth :height 0.3\textheight
 [[file:figure/cdf_discrete_example.png]]
 
@@ -160,7 +156,7 @@ c.d.f. of a discrete random variable is a step function of $x$.
 Many experiments like tossing a coin generate two outcomes: 1
 with the probability of $p$ and 0 with the probability of $1-p$. The
 random variable generated from such an experiment follows the Bernoulli
-distribution. 
+distribution.
 
 The Bernoulli distribution
 \begin{equation*}
@@ -179,12 +175,12 @@ variable is just a point in the real line, the probability of which is
 zero. Instead, we use the concept of the *probability density function
 (p.d.f)* as the counterpart of the probability mass function. And the
 definition of the p.d.f. of a continuous random variable depends on
-the definition of its. c.d.f. 
+the definition of its. c.d.f.
 
 The cumulative distribution function of a continous random variable
 is defined as it is for a discrete random variable. That is, for a
 continous random variable, $X$, the c.d.f. is $F(x) = \mathrm{Pr}(X
-\leq x)$. And the *p.d.f.* of $X$ is the function that satisfies 
+\leq x)$. And the *p.d.f.* of $X$ is the function that satisfies
 \[ F(x) = \int_{-\infty}^{x} f(t) \mathrm{d}t \text{ for all } x \]
 
 #+NAME: fig-normal-example
@@ -199,9 +195,9 @@ the following properties:
 2) $x > y \Rightarrow F(x) \geq F(y)$ ($F(x)$ is nondecreasing)
 
 By the definition of the c.d.f., we can conveniently calculate
-probabilities, such as, 
+probabilities, such as,
 - $\mathrm{P}(x > a) = 1 - \mathrm{P}(x \leq a) = 1 - F(a)$
-- $\mathrm{P}(a < x \leq b) = F(b) - F(a)$. 
+- $\mathrm{P}(a < x \leq b) = F(b) - F(a)$.
 
 
 * Expectation, Variance, and Other Moments
@@ -210,20 +206,20 @@ probabilities, such as,
 
 *** Definition
 
-The *expected value* of a random variable, X, denoted as $E(X)$, is
+The *expected value* of a random variable, X, denoted as $\mathrm{E}(X)$, is
 the long-run average of the random variable over many repeated
 trials or occurrences, which is also called the *expectation* or the
 *mean*. The expected value measures the centrality of a random
-variable. 
+variable.
 
 - For a discrete random variable
-  \[ E(X) = \sum_{i=1}^n x_i \mathrm{Pr}(X = x_i) \]
+  \[ \mathrm{E}(X) = \sum_{i=1}^n x_i \mathrm{Pr}(X = x_i) \]
 
   e.g. The expectation of a Bernoulli random variable, G
-    \[ E(G) = 1 \cdot p + 0 \cdot (1-p) = p \]
+    \[ \mathrm{E}(G) = 1 \cdot p + 0 \cdot (1-p) = p \]
 
 - For a continuous random variable
-  \[ E(X) = \int_{-\infty}^{\infty} x f(x) \mathrm{d}x\]
+  \[ \mathrm{E}(X) = \int_{-\infty}^{\infty} x f(x) \mathrm{d}x\]
 
 *** COMMENT Expectation of a function of a random variable
 
@@ -231,7 +227,7 @@ Let $g(X)$ be a function of a random variable $X$. The expected
 value of $g(X)$ is
 
 \begin{equation*}
-E(g(X)) =
+\mathrm{E}(g(X)) =
 \begin{cases}
 \sum_{x} g(x)\mathrm{Pr}(X=x) & \text{if } X \text{ is discrete} \\
 \int_{x} g(x)f(x) \mathrm{d}x & \text{if } X \text{ is continuous}
@@ -242,7 +238,7 @@ e.g. Let $Y = g(X) = a + bX$ for a continuous random variable $X$,
 then
 
 \begin{equation*}
-E(Y) = E(g(X)) = \int_{x}(a + bx)f(x) \mathrm{d}x = a\int_{x}f(x)\mathrm{d}x + b\int_{x}xf(x)\mathrm{d}x = a + bE(X)
+\mathrm{E}(Y) = \mathrm{E}(g(X)) = \int_{x}(a + bx)f(x) \mathrm{d}x = a\int_{x}f(x)\mathrm{d}x + b\int_{x}xf(x)\mathrm{d}x = a + b\mathrm{E}(X)
 \end{equation*}
 
 in which we use the fact that $\int_{x}f(x)\mathrm{d}x = 1$.
@@ -251,11 +247,11 @@ in which we use the fact that $\int_{x}f(x)\mathrm{d}x = 1$.
 ** The variance and standard deviation
 
 The *variance* of a random variable $X$ measures its average
-deviation from its own expected value. Let $E(X) = \mu_X$ and denote
+deviation from its own expected value. Let $\mathrm{E}(X) = \mu_X$ and denote
 the variance of $X$, denoted as $\mathrm{Var}(X)$ or $\sigma^2_X$, is then
 
 \begin{equation*}
-\mathrm{Var}(X) = E(X-\mu_X)^{2}=
+\mathrm{Var}(X) = \mathrm{E}(X-\mu_X)^{2}=
 \begin{cases}
 \sum_{i=1}^n (x - \mu_X)^{2}\mathrm{Pr}(X = x_i) & \text{if } X \text{ is discrete} \\
 \int_{-\infty}^{\infty} (x - \mu_X)^{2}f(x)\mathrm{d} x  & \text{if } X \text{ is continuous}
@@ -267,74 +263,74 @@ $\mathrm{Var}(X)$ and is denoted as $\sigma_{X}$. That is,
 $\sigma_{X} = \sqrt{\mathrm{Var}(X)}$
 
 A convenient formula for calculating the variance is
-\[ \mathrm{Var}(X) = E(X - \mu_X)^{2} = E(X^{2}) - \mu_X^{2} \]
+\[ \mathrm{Var}(X) = \mathrm{E}(X - \mu_X)^{2} = \mathrm{E}(X^{2}) - \mu_X^{2} \]
 
-The variance of a Bernoulli random variable, $G$ 
+The variance of a Bernoulli random variable, $G$
 \[ \mathrm{Var}(G) = (1-p)^{2}p + (0-p)^{2}(1-p) = p(1-p) \] and $\sigma_{G} =
-\sqrt{p(1-p)}$. 
+\sqrt{p(1-p)}$.
 
 From the definition of the expectation and variance, we can compute
 the expectation and variance of a linear function of $X$. Let $Y = a +
-bX$, then 
-- $E(Y) = a + E(X)$
-- $\mathrm{Var}(Y) = \mathrm{Var}(a + b X) = b^{2} \mathrm{Var}(X)$. 
+bX$, then
+- $\mathrm{E}(Y) = a + \mathrm{E}(X)$
+- $\mathrm{Var}(Y) = \mathrm{Var}(a + b X) = b^{2} \mathrm{Var}(X)$.
 
 
 ** Moments of a random variable, skewness and kurtosis
 
 The expectation and variance are two special cases of the *moments* of
-a distribution. 
+a distribution.
 
 *** Definition of the moments of a distribution
 
 - k^{th} moment :: The k^{th} *moment* of the distribution of $X$ is
-                   $E(X^{k})$. So, the expectation is the "first"
+                   $\mathrm{E}(X^{k})$. So, the expectation is the "first"
                    moment of $X$.
 
 - k^{th} central moment :: The k^{th} central moment of the distribution
-     of $X$ with its mean $\mu_X$ is $E(X - \mu_X)^{k}$. So, the
+     of $X$ with its mean $\mu_X$ is $\mathrm{E}(X - \mu_X)^{k}$. So, the
      variance is the second central moment of $X$.
 
 It is important to remember that not all the moments of a distribution
 exist. This is especially true for continuous random variables, for
-which the integral to compute the moments may not converge. 
+which the integral to compute the moments may not converge.
 
 *** Skewness and kurtosis
 
 We also use the third and fourth central moments to measure how a
-distribution looks like asymmetric and how thick are its tails. 
+distribution looks like asymmetric and how thick are its tails.
 
 **** Skewness
 
 The skewness of a distribution provides a mathematical way to describe
-how much a distribution deviates from symmetry. It is defined as 
-\[ \text{Skewness} =  E(X - \mu_X)^{3}/\sigma_{X}^{3} \]
+how much a distribution deviates from symmetry. It is defined as
+\[ \text{Skewness} =  \mathrm{E}(X - \mu_X)^{3}/\sigma_{X}^{3} \]
 
 - A symmetric distribution has a skewness of zero.
-- The skewness can be either positive or negative. 
-- That $E(X - \mu_X)^3$ is divided by $\sigma^3_X$ is to make the
+- The skewness can be either positive or negative.
+- That $\mathrm{E}(X - \mu_X)^3$ is divided by $\sigma^3_X$ is to make the
   skewness measure unit free. That is, changing the units of Y does
-  not change its skewness. 
+  not change its skewness.
 
 **** Kurtosis
 
 The kurtosis of the distribution of a random variable $X$ measures how
 much of the variance of $X$ arises from extreme values, which makes
-the distribution have "heavy" tails. 
+the distribution have "heavy" tails.
 
-The kurtosis of the distribution of $X$ is 
-\[ \text{Kurtosis} = E(X - \mu_X)^{4}/\sigma_{X}^{4} \]
+The kurtosis of the distribution of $X$ is
+\[ \text{Kurtosis} = \mathrm{E}(X - \mu_X)^{4}/\sigma_{X}^{4} \]
 
-- The kurtosis must be positive. 
+- The kurtosis must be positive.
 - The kurtosis of the normal distribution is 3. So a distribution that
   has its kurtosis exceeding 3 is called heavy-tailed, or
-  *leptokurtic*. 
-- The kurtosis is also unit free. 
+  *leptokurtic*.
+- The kurtosis is also unit free.
 
 Figure [[fig-skew-kurt]] displays four distributions with different
 skewness and kurtosis. All four distributions have a mean of zero and
 a variance of one, while (a) and (b) are symmetric and (b)-(d) are
-heavy-tailed. 
+heavy-tailed.
 
 #+NAME: fig-skew-kurt
 #+CAPTION: Four distributions with different skewness and kurtosis
@@ -344,130 +340,301 @@ heavy-tailed.
 
 
 * Two Random Variables
-** The joint and marginal distributions
-*** The joint probability distributions
-**** The joint probability (density) functions
 
-- For two discrete random variables $X$ and $Y$, the joint probability
-  distribution of $X$ and $Y$ is the probability that $X$ and $Y$
-  simultaneously take on certain values, $x$ and $y$, that is
-  \[ p(x, y) = \mathrm{Pr}(X = x, Y = y)\]
-  which must satisfy the following
-  1. $p(x, y) \geq 0$
-  2. $\sum_{x}\sum_{y} p(x, y) = 1$
-- For two continuous random variables, the counterpart of $p(x, y)$ is
-  the joint probability density function, $f(x, y)$, such that
-  1. $f(x, y) \geq 0$
-  2. $\int_{x}\int_{y}f(x, y)\, \dx x\, \dx y= 1$
+Econometrics in most cases considers the relations between two or
+more variables. We use the concepts of joint, marginal, and
+conditional distributions to describe such relations.
+
+** The joint and marginal distributions
+
+*** The joint probability functions
+
+For two discrete random variables, $X$ and $Y$, the joint probability
+distribution of $X$ and $Y$ is the probability that $X$ and $Y$
+simultaneously take on certain values, $x$ and $y$, that is
+\[ p(x, y) = \mathrm{Pr}(X = x, Y = y)\]
+which must satisfy the following
+1. $p(x, y) \geq 0$
+2. $\sum_{i=1}^n\sum_{j=1}^m p(x_i, y_j) = 1$ for all possible
+   combinations of values of $X$ and $Y$.
+
+For two continuous random variables, $X$ and $Y$, the counterpart of $p(x, y)$ is
+the joint probability density function, $f(x, y)$, such that
+1. $f(x, y) \geq 0$
+2. $\int_{-\infty}^{{\infty}} \int_{-\infty}^{\infty} f(x, y)\, dx\, dy= 1$
 
 *** The marginal probability distribution
-**** The marginal probability (density) distribution
 
-The marginal probability (density) distribution function of $X$ is
-computed from the joint probability (density) distribution function,
-$f(x, y)$ as
-\begin{equation*}
-f_{X}(x) =
-\begin{cases}
-\sum_{y} p(x, y) & \text{ in the discrete case} \\
-\int_{y} f(x, y)\, \dx y & \text{ in the continuous case}
-\end{cases}
-\end{equation*}
+The marginal probability distribution of a random variable $X$ is
+simply the probability distribution of its own. Since it is computed
+from the joint probability distribution of $X$ and $Y$, we call it as
+marginal probability of $X$.
+
+- For a discrete random variable, we can compute the marginal
+  distribution of $X$ as
+  \[ \mathrm{Pr}(X=x) = \sum_{i=1}^n \mathrm{Pr}(X, Y=y_i) = \sum_{i=1}^n p(x, y_i)  \]
+- For a continuous random variable, the marginal distribution is
+  \[f_X(x) = \int_{-\infty}^{\infty} f(x, y)\, dy \]
+
+By summing over or integrating out the values of $Y$, we get the
+probability distribution of $X$ of its own.
+
+*** An example of joint and marginal distributions
+
+Suppose we have two random variables: $X$ and $Y$. $X$ equals 1 if
+today is not raining and 0 otherwise, and $Y$ equals 1 if it takes a short
+time for commuting and 0 otherwise. The joint probability distribution
+of these two random variables is the distribution that $X$ takes the
+value of 1 or 0 at the same time $Y$ takes the value of 1 or 0, which
+can be represented in the following table.
+
+#+NAME: tab-joint-dist
+#+CAPTION: Joint distribution of raining and commuting time
+|                       | Rain ($X=0$) | No rain ($X=1$) | Total |
+|-----------------------+--------------+-----------------+-------|
+| Long commute ($Y=0$)  |         0.15 |            0.07 |  0.22 |
+| Short commute ($Y=1$) |         0.15 |            0.63 |  0.78 |
+|-----------------------+--------------+-----------------+-------|
+| Total                 |         0.30 |            0.70 |     1 |
+
+The four cells in the middle are the joint distribution. For example,
+the joint probability of raining and taking a short commute is
+0.15. The last row is the marginal distribution of $X$, indicating
+that the probability of raining no matter taking a long or short
+commute is 0.30. The marginal distribution of $X$ is in fact a
+Bernoulli distribution. Similarly, the last column is the marginal
+distribution of $Y$, which is also a Bernoulli distribution.
+
 
 ** Conditional distributions
+
 *** The conditional probability
+
+We often say that given one thing happens, what is the probability of
+another thing to happen? To answer this question, we need the concept
+of conditional probability.
+
 For any two events $A$ and $B$, the conditional probability of A given
 B is defined as
-\[ \mathrm{Pr}(A|B) = \frac{\mathrm{Pr}(A \cap B )}{\mathrm{Pr}(B)}\]
-*** The conditional probability (density) distribution
-**** For the discrete case, the conditional probability function is
-
-\[ p(x|y) = \frac{\mathrm{Pr}(X=x, Y=y)}{\mathrm{Pr}(Y=y)}\]
-
-**** the continuous case, the conditional density function is
-\[ f(x|y) = \frac{f(x, y)}{f_{Y}(y)}\]
-
-*** The conditional expectation
-**** Definition
-
 \begin{equation*}
-E(X|Y=y) =
-\begin{cases}
-\sum_{x}xp(x|y) & \text{ in the discrete case} \\
-\int_{x}xf(x|y)\, \mathrm{d}x & \text{ in the continuous case}
-\end{cases}
+\mathrm{Pr}(A|B) = \frac{\mathrm{Pr}(A \cap B)}{\mathrm{Pr}(B)}
 \end{equation*}
 
-**** The law of iterated expectation: $E(X) = E\left[E(X|Y)\right]$
+Figure [[fig-conditional-probability]][fn:1] helps us understand the
+meaning of conditional probability. When we condition on the set B,
+the sample space shrink from the original sample space, S, to a new
+sample space, B. Since $\mathrm{Pr}(A \cap B)$ is defined over S, so
+we need to divide it by $\mathrm{Pr}(B)$ to get $\mathrm{Pr}(A|B)$.
 
-\begin{proof}
-we prove the law of iterated expectation for the continuous case. The proof for the discrete case is similar.
-\begin{align*}
-E(X) & = \int_{x} xf_{X}(x)\, \mathrm{d}x \\
-     & = \int_{x}\int_{y} xf(x, y)\, \mathrm{d}y\, \mathrm{d}x & \text{ by the definition of } f_{X}(x)) \\
-     & = \int_{x}\int_{y} xf(x|y)f_{Y}(y)\, \mathrm{d}y\, \mathrm{dx} & \text{ by the definition of } f(x|y) \\
-     & = \int_{y} \left[\int_{x} xf(x|y)\, \mathrm{d}x \right] f_{Y}(y)\, \mathrm{d}y & \text{ by the property of integral} \\
-     & = \int_{y} E(X|Y=y)f_{Y}(y)\, \mathrm{d}y & \\
-     & = E\left[E(X|Y)\right]
-\end{align*}
-\end{proof}
+#+CAPTION: An illustration of conditional probability
+#+NAME: fig-conditional-probability
+#+ATTR_LATEX: :width 0.45\textwidth :height 0.31\textheight
+#+ATTR_HTML: :width 400 :height 400
+[[file:figure/conditional_probability.png]]
 
-- If $E(X|Y) = 0$, then $E(X)=E\left[E(X|Y)\right]=0$.
+*** The conditional probability distribution
+
+The conditional distribution of a random variable $Y$ given another
+random variable $X$ is the distribution of $Y$ conditional on X taking
+a specific value, denoted as $\mathrm{Pr}(Y | X=x)$. And the formula
+to compute it is
+\[ \mathrm{Pr}(Y | X=x) = \frac{\mathrm{Pr}(X=x,
+Y)}{\mathrm{Pr}(X=x)} \]
+
+For continuous random variables $X$ and $Y$, we define the conditional
+density function as
+\[ f(y|x) = \frac{f(x, y)}{f_X(x)} \]
+
+In the above example of raining and commuting time, we can compute the
+conditional distribution of commuting time given raining or not as
+follows
+| $\mathrm{Pr}(Y=0 \mid X=0)$ | 0.15/0.30 = 0.5 | $\mathrm{Pr}(Y=0 \mid X=1)$ | 0.07/0.7 = 0.1 |
+| $\mathrm{Pr}(Y=1 \mid X=0)$ | 0.15/0.30 = 0.5 | $\mathrm{Pr}(Y=1 \mid X=1)$ | 0.63/0.7 = 0.9 |
+
+*** The conditional expectation
+
+**** Definition
+
+The *conditional expectation* of $Y$ given $X$ is the expected value
+of the conditional distribution of $Y$ given $X$.
+
+- For discrete random variables, the conditional mean of $Y$ given $X=x$ is
+  \begin{equation*}
+  \mathrm{E}(Y \mid X=x) = \sum_{i=1}^n y_i \mathrm{Pr}(Y \mid X=x)
+  \end{equation*}
+
+- For continuous random variables, it is computed as
+  \begin{equation*}
+  \int_{-\infty}^{\infty} y f(y \mid x)\, dy
+  \end{equation*}
+
+- The expected mean of commuting time given it is raining is $0 \times
+  0.1 + 1 \times 0.9 = 0.9$.
+
+**** The law of iterated expectation
+
+Conditional expectations have a special property called *the law of
+iterated expectation*, $\mathrm{E}(Y) = E \left[ \mathrm{E}(Y|X) \right]$.
+
+It says that the mean of $Y$ is the weighted average of the
+conditional expectation of $Y$ given $X$, weighted by the probability
+distribution of $X$. That is,
+\[ \mathrm{E}(Y) = \sum_{i=1}^n \mathrm{E}(Y \mid X=x_i) \mathrm{Pr}(X=x_i) \]
+
+The proof for the above equation is one question in the homework.
+
+# \begin{align*}
+# \mathrm{E}(X) & = \int_{x} xf_{X}(x)\, \mathrm{d}x \\
+#      & = \int_{x}\int_{y} xf(x, y)\, \mathrm{d}y\, \mathrm{d}x & \text{ by the definition of } f_{X}(x)) \\
+#      & = \int_{x}\int_{y} xf(x|y)f_{Y}(y)\, \mathrm{d}y\, \mathrm{dx} & \text{ by the definition of } f(x|y) \\
+#      & = \int_{y} \left[\int_{x} xf(x|y)\, \mathrm{d}x \right] f_{Y}(y)\, \mathrm{d}y & \text{ by the property of integral} \\
+#      & = \int_{y} \mathrm{E}(X|Y=y)f_{Y}(y)\, \mathrm{d}y & \\
+#      & = E\left[\mathrm{E}(X|Y)\right]
+# \end{align*}
+
+If $\mathrm{E}(X|Y) = 0$, then $\mathrm{E}(X)=E\left[\mathrm{E}(X|Y)\right]=0$.
+
+**** Conditional variance
+
+With the conditional mean of $Y$ given $X$, we can compute the
+conditional variance as
+\[ \mathrm{Var}(Y \mid X=x) = \sum_{i=1}^n \left[ y_i - \mathrm{E}(Y \mid X=x)
+\right]^2 \mathrm{Pr}(Y=y_i \mid X=x) \]
+
+From the law of iterated expectation, we can get the following
+\[ \mathrm{Var}(Y) = \mathrm{E}(\mathrm{Var}(Y \mid X)) + \mathrm{Var}(\mathrm{E}(Y \mid
+X)) \]
 
 *** Independence
-Two random variables $X$ and $Y$ are *independent* if
+
+**** The definition of independent random variables
+
+Two random variables $X$ and $Y$ are *independently distributed*, or
+*independent*, if knowing the value of one of the variable provides no
+information about the other. Mathematically, it means that 
+\[ \mathrm{Pr}(Y=y \mid X=x) = \mathrm{Pr}(Y=y)  \]
+
+It follows that if $X$ and $Y$ are independent
+\[ \mathrm{Pr}(Y=y, X=x) = \mathrm{Pr}(X=x) \mathrm{Pr}(Y=y) \]
+
+For two continuous random variables, $X$ and $Y$, they are
+*independent* if
 \[ f(x|y) = f_{X}(x) \text{ or } f(y|x) = f_{Y}(y) \]
 
-It follows that $X$ and $Y$ are independent if
+It follows that if $X$ and $Y$ are independent
 \[ f(x, y) = f(x|y)f_{Y}(y) = f_{X}(x)f_{Y}(y) \]
 
+
 ** Covariance and Correlation
+
 *** Covariance
-The covariance of two random variables $X$ and $Y$ is
-\[ \cov(X, Y) = E(X-\mu_{X})(Y-\mu_{Y}) \equiv \sigma_{XY} \]
 
-The covariance can also be computed as
-\[ \cov(X, Y) = E(XY) - E(X)E(Y) \]
+Covariance and correlation measure the co-movement of two random
+variables. The covariance of two random variables $X$ and $Y$ is
 
-If $X$ and $Y$ are independent, then
 \begin{align*}
-\cov(X, Y) & = \int_{x}\int_{y}(x - \mu_{x})(y - \mu_{Y})f(x, y)\, \dx(x)\, \dx(y) \\
-& = \int_{x} (x - \mu_{X})f_{X}(x)\, \dx(x) \int_{y}(y - \mu_{Y})f_{Y}(y)\, \dx(y) \\
-& = \left[E(X) - \mu_{X} \right] \left[ E(Y) - \mu_{Y} \right] \\
-& = 0
+\mathrm{Cov}(X, Y) & = \sigma_{XY} = \mathrm{E}(X-\mu_{X})(Y-\mu_{Y}) \\
+                   & = \sum_{i=1}^n \sum_{j=1}^m (x_i - \mu_X)(y_j - \mu_Y) \mathrm{Pr}(X=x_i, Y=y_j)
 \end{align*}
 
-It means that if $X$ and $Y$ are independent, then they are
-uncorrelated as well. But the opposite direction does not hold.
+For continous random variables, the covariance of $X$ and $Y$ is
+\[ \mathrm{Cov}(X, Y) = \int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty} (x-\mu_X)(y-\mu_y)f(x, y) dx dy \]
 
-*** Correlation
-The correlation coefficient between $X$ and $Y$ is given by
-\[
-\corr(X, Y) = \frac{\cov(X, Y)}{\left[\var(X)\var(Y)\right]^{1/2}} =
-\frac{\sigma_{XY}}{\sigma_{X}\sigma_{Y}} \equiv \rho_{XY}
-\]
+The covariance can also be computed as
+\[ \mathrm{Cov}(X, Y) = \mathrm{E}(XY) - \mathrm{E}(X)\mathrm{E}(Y) \]
+
+*** Correlation coefficient
+
+Since the unit of the covariance of $X$ and $Y$ is the product of the
+unit of $X$ and that of $Y$, its meaning is hard to be interpreted. We
+often use the correlation coefficient to measure the correlation,
+regardless of the units of $X$ and $Y$. The *correlation coefficient*
+of $X$ and $Y$ is
+
+\[ \mathrm{corr}(X, Y) = \rho_{XY} = \frac{\mathrm{Cov}(X, Y)}{\left[\mathrm{Var}(X)\mathrm{Var}(Y)\right]^{1/2}} =
+\frac{\sigma_{XY}}{\sigma_{X}\sigma_{Y}} \]
+
+The absolute value of a correlation coefficient must be less
+than 1. That is, $-1 \leq \mathrm{corr}(X, Y) \leq 1$. 
+
+And $\mathrm{corr}(X, Y)=0$ (or $\mathrm{Cov}(X,Y)=0$) means that $X$
+and $Y$ are uncorrelated. Since $\mathrm{Cov}(X, Y) = \mathrm{E}(XY) -
+\mathrm{E}(X)\mathrm{E}(Y)$, when $X$ and $Y$ are uncorrelated, then $\mathrm{E}(XY) =
+\mathrm{E}(X) \mathrm{E}(Y)$. 
+
+*** Independence and uncorrelation
+
+There is an important relationship between the two concepts of
+independence and uncorrelation. If $X$ and $Y$ are independent, then
+
+\begin{align*}
+\mathrm{Cov}(X, Y) & = \sum_{i=1}^n \sum_{j=1}^m (x_i - \mu_X)(y_j - \mu_Y) \mathrm{Pr}(X=x_i) \mathrm{Pr}(Y=y_j) \\
+                   & = \sum_{i=1}^n (x_i - \mu_X) \mathrm{Pr}(X=x_i) \sum_{j=1}^m (y_j - \mu_y) \mathrm{Pr}(Y=y_j) \\
+                   & = 0 \times 0 = 0
+\end{align*}
+
+That is, if $X$ and $Y$ are independent, they must be
+uncorrelated. However, the converse is not true. If $X$ and $Y$ are
+uncorrelated, there is a possibility that they are actually
+dependent. (Read this article, [[http://www.stat.cmu.edu/~cshalizi/uADA/13/reminders/uncorrelated-vs-independent.pdf][``uncorrelated-vs-independent'']], for a detailed explanation[fn:2])
+
+Accordingly, if $X$ and $Y$ are independent, then we must have
+
+\begin{align*}
+\mathrm{E}(Y \mid X) & = \sum_{i=1}^n y_i \mathrm{Pr}(Y=y_i \mid X) \\
+                     & = \sum_{i=1}^n y_i \mathrm{Pr}(Y=y_i) \\
+                     & = \mathrm{E}(Y) = \mu_Y
+\end{align*}
+
+That is, the conditional mean of $Y$ given $X$ does not depend on any
+value of $X$ when $Y$ is independent of $X$. Then, we can prove that
+$\mathrm{Cov}(X, Y) = 0$ and $\mathrm{corr}(X, Y)=0$.
+
+\begin{align*}
+\mathrm{E}(XY) & = \mathrm{E}(\mathrm{E}(XY \mid X)) = \mathrm{E}(X \mathrm{E}(Y \mid X)) \\
+               & = \mathrm{E}(X) \mathrm{E}(Y \mid X) = \mathrm{E}(X) \mathrm{E}(Y)
+\end{align*}
+
+It follows that $\mathrm{Cov}(X,Y) = \mathrm{E}(XY) - \mathrm{E}(X)
+\mathrm{E}(Y) = 0$ and $\mathrm{corr}(X, Y)=0$. 
+
+Again, the converse is not true. That is, if $X$ and $Y$ are
+uncorrelated, the conditional mean of $Y$ given $X$ may still depend
+on $X$. (See Exercise 2.23 at the end of Chapter 2.)
 
 *** Some useful operations
-Let $X$, $Y$ be random variables, with the means $\mu_{X}$ and
+
+Let $X$ and $Y$ be two random variables, with the means $\mu_{X}$ and
 $\mu_{Y}$, the variance $\sigma^{2}_{X}$ and $\sigma^{2}_{Y}$, and the
-covariance $\sigma_{XY}$, respectively. Then,
+covariance $\sigma_{XY}$, respectively. Then, the following properties
+of $\mathrm{E}(\cdot)$, $\mathrm{Var}(\cdot)$ and
+$\mathrm{Cov}(\cdot)$ are useful in calculation,
+
 \begin{align*}
-E(a + bX + cY) & = a + b \mu_{X} + c \mu_{Y} \\
-\var(aX + bY)  & = a^{2} \sigma^{2}_{X} + b^{2} \sigma^{2}_{Y} + 2ab\sigma_{XY} \\
-\cov(a + bX + cV, Y) & = b\sigma_{XY} + c\sigma_{VY} \\
-\cov(X, Y) & \leq \sigma_{X}\sigma_{Y} \text{ and }  \corr(X, Y) \leq 1
+\mathrm{E}(a + bX + cY)      & = a + b \mu_{X} + c \mu_{Y} \\
+\mathrm{Var}(aX + bY)        & = a^{2} \sigma^{2}_{X} + b^{2} \sigma^{2}_{Y} + 2ab\sigma_{XY} \\
+\mathrm{Cov}(a + bX + cV, Y) & = b\sigma_{XY} + c\sigma_{VY} \\
 \end{align*}
 
 
 * Four Specific Distributions
+
+There are a variety of statistical distributions. In this course, we
+will probably use the following four distributions: the normal
+distribution, the chi-squared distribution, the student t
+distribution, and the F distribution. 
+
 ** The normal distribution
+
 *** Definition
-The p.d.f. of a normally distributed random variable $x$ is
+The p.d.f. of a normally distributed random variable $X$ is
 \[ f(x) =
 \frac{1}{\sigma\sqrt{2\pi}}\exp\left[-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right]
 \]
-for which $E(X) = \mu$ and $\var(X) = \sigma^{2}$, and $x$ is denoted
-as $x \sim N(\mu, \sigma^{2})$
+for which $\mathrm{E}(X) = \mu$ and $\mathrm{Var}(X) = \sigma^{2}$. We
+usually write $X \sim N(\mu, \sigma^{2})$ to say $X$ has a normal
+distribution with mean $\mu$ and variance $\sigma^2$. 
 
 The standard normal distribution is a special case of the normal
 distribution, for which $\mu = 0$ and $\sigma = 0$. The p.d.f of the
@@ -476,20 +643,38 @@ standard normal distribution is
 \phi(x) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)
 \]
 The c.d.f of the standard normal distribution is often denoted as
-$\varPhi(x)$.
+$\Phi(x)$.
+
+The normal distribution is symmetric around its mean, $\mu$, with the
+skewness equal 0, and has 95% of its probability between
+$\mu-1.96\sigma$ and $\mu+1.96\sigma$, with the kurtosis
+equal 3. Figure [[fig-normal-distr]] displays the probability density of a
+normal distribution.[fn:3]
+
+#+CAPTION: The normal probability density
+#+NAME: fig-normal-distr
+#+ATTR_HTML: 600
+#+ATTR_LATEX: :width 0.6\textwidth 
+[[file:figure/Normal-distribution-curve.jpg]]
 
 *** Transforming a normally distributed random variable to the standard normal distribution
-Let $X$ be a normally distributed random variable with the mean \mu
-and the standard deviation \sigma, i.e., $X \sim N(\mu,
-\sigma^2)$. Then $Z = \frac{X - \mu}{\sigma}$ follows the standard
-normal distribution, $N(0, 1)$.
 
-It follows that for any two number $c_1 < c_2$ and let
-$d_1 = (c_1 - \mu)/\sigma$ and $d_2 = (c_2 - \mu/\sigma)$, then
+Let $X$ be a random variable with a normal distribution, i.e., $X \sim
+N(\mu, \sigma^2)$. Then, we can easily compute the probability of $X$
+by transforming it into a random variable with the standard normal
+distribution. We compute $Z = (X-\mu)/\sigma$, which follows
+the standard normal distribution, $N(0, 1)$.
+
+For example, if $X \sim N(1, 4)$, then $Z = (X-1)/2 \sim N(0,
+1)$. When we want to find $\mathrm{Pr}(X \leq 4)$, we only need to
+compute $\Phi(3/2)$.[fn:4]
+
+Generally, for any two number $c_1 < c_2$ and let $d_1 = (c_1 - \mu)/\sigma$ and
+$d_2 = (c_2 - \mu)/\sigma$, we have
 \begin{align*}
-\mathrm{Pr}(X \leq c_2) & = \mathrm{Pr}(Z \leq d_2) = \varPhi(d_2) \\
-\mathrm{Pr}(X \geq c_1) & = \mathrm{Pr}(Z \geq d_1) = 1 - \varPhi(d_1) \\
-\mathrm{Pr}(c_1 \leq X \leq c_2) & = \mathrm{Pr}(d_1 \leq Z \leq d_2) = \varPhi(d_2) - \varPhi(d_1)
+\mathrm{Pr}(X \leq c_2) & = \mathrm{Pr}(Z \leq d_2) = \Phi(d_2) \\
+\mathrm{Pr}(X \geq c_1) & = \mathrm{Pr}(Z \geq d_1) = 1 - \Phi(d_1) \\
+\mathrm{Pr}(c_1 \leq X \leq c_2) & = \mathrm{Pr}(d_1 \leq Z \leq d_2) = \Phi(d_2) - \Phi(d_1)
 \end{align*}
 
 # #+NAME: normal distribution
@@ -504,10 +689,8 @@ $d_1 = (c_1 - \mu)/\sigma$ and $d_2 = (c_2 - \mu/\sigma)$, then
 #      ylab = "probability", col = "blue")
 # #+END_SRC
 
-#+RESULTS: normal
-[[file:figure/norm1.png]]
-
 *** The multivariate normal distribution
+
 The normal distribution can be generalized to describe the joint
 distribution of a set of random variables, which have the multivariate
 normal distribution. (See Appendix 17.1 for the p.d.f of this
@@ -540,50 +723,55 @@ distribution.)
    Let $X$ and $Y$ be two random variables with a bivariate normal
    distribution. The joint p.d.f of $X$ and $Y$ is $f(x, y)$, with the
    marginal p.d.f. being $f_X(x)$ and $f_Y(y)$, respectively. Then we have
-   \[ \cov(X, Y) = 0 \Leftrightarrow f(x, y) = f_X(x)f_Y(y) \]
+   \[ \mathrm{Cov}(X, Y) = 0 \Leftrightarrow f(x, y) = f_X(x)f_Y(y) \]
 
    *Note*: this property only holds for random variables with a
    multivariate normal distribution. Generally, uncorrelation does not
    imply independence.
 
 4. If $X$ and $Y$ have a bivariate normal distribution, then
-   \[E(Y|X = x) = a + bx \]
+   \[\mathrm{E}(Y|X = x) = a + bx \]
    where $a$ and $b$ are constants.
 
 ** The chi-squared distribution
+
 Let $Z_1, \ldots, Z_n$ be n indepenent standard normal distribution,
-i.e. $Z_i \sim N(0, 1)$ for all $i = 1, \ldots, n$. The random
+i.e. $Z_i \sim N(0, 1)$ for all $i = 1, \ldots, n$. Then, the random
 variable
 \[W = \sum_{i=1}^n Z^2_i \]
 has a chi-squared distribution with $n$ degrees of freedom, denoted as
-$W \sim \chi^2(n)$, with $E(W) = n$ and $\var(W) = 2n$
+$W \sim \chi^2(n)$, with $\mathrm{E}(W) = n$ and $\mathrm{Var}(W) = 2n$
 
-e.g. If $Z \sim N(0, 1)$, then $W = Z^2 \sim \chi^2(1)$ with $E(W) =
-1$ and $\var(W) = 2$.
+If $Z \sim N(0, 1)$, then $W = Z^2 \sim \chi^2(1)$ with $\mathrm{E}(W) =
+1$ and $\mathrm{Var}(W) = 2$.
 
 ** The student t distribution
-Let $Z \sim N(0, 1)$, $W \sim \chi^2(m)$, and let $Z$ and $W$ be
-independently distributed. Then the random variable
+
+Let $Z \sim N(0, 1)$, $W \sim \chi^2(m)$, and $Z$ and $W$ be
+independently distributed. Then, the random variable
 \[t = \frac{Z}{\sqrt{W/m}} \]
 has a student t distribution with $m$ degrees of freedom, denoted as
 $t \sim t(m)$.
 
-As $n \rightarrow \infty$, $t$ has a standard normal distribution.
+As $n$ increases, $t$ gets close to a standard normal distribution.
 
 ** The F distribution
+
 Let $W_1 \sim \chi^2(n_1)$, $W_2 \sim \chi^2(n_2)$, and $W_1$ and
-$W_2$ are independent. Then the random variable
+$W_2$ are independent. Then, the random variable
 \[ F = \frac{W_1/n_1}{W_2/n_2}\]
 has an F distribution with $(n_1, n_2)$ degrees of freedom, denoted as
 $F \sim F(n_1, n_2)$
 
 - If $t \sim t(n)$, then $t^2 \sim F(1, n)$
 - As $n_2 \rightarrow \infty$, the $F(n_1, \infty)$ distribution is the
-  same as the $\chi^2(n_1)$ distribution, divided by $n_1$.
+  same as the $\chi^2(n_1)$ distribution divided by $n_1$.
 
 
 * Random Sampling and the Distribution of the Sample Average
+
 ** Random sampling
+
 - Simple random sampling :: $n$ objects are selected at random from a
      *population*, and each member of the population is equally likely
      to be included in the sample
@@ -596,25 +784,28 @@ $F \sim F(n_1, n_2)$
                   \ldots, n$.
 
 ** The sampling distribution of the sample average
+
 *** The sample average
+
 The *sample average* or *sample mean*, $\overline{Y}$, of the $n$
 observation $Y_1, Y_2, \ldots, Y_n$ is
 \[ \overline{Y} = \frac{1}{n}\sum^n_{i=1} Y_i \]
 Note that since $Y_i$ is random, so is $\overline{Y}$.
 
 *** The mean and variance of $\overline{Y}$
+
 Suppose that $Y_i \sim IID(\mu_Y, \sigma^2_{Y})$ for all $i = 1,
 \ldots, n$. Then, by the definition of $\overline{Y}$ and the fact
 that $Y_i$ and $Y_j$ are independent for any $i \neq j$, implying
-$\cov(Y_i, Y_j)=0$, we have
+$\mathrm{Cov}(Y_i, Y_j)=0$, we have
 \[
-E(\overline{Y}) =
-\frac{1}{n}\sum^n_{i=1}E(Y_i) = \frac{1}{n}\cdot n\mu_Y = \mu_Y
+\mathrm{E}(\overline{Y}) =
+\frac{1}{n}\sum^n_{i=1}\mathrm{E}(Y_i) = \frac{1}{n}\cdot n\mu_Y = \mu_Y
 \]
 and
 \[
-\var(\overline{Y}) = \frac{1}{n^2}\sum^n_{i=1}\var(Y_i) +
-\frac{1}{n^2}\sum^n_{i=1}\sum^n_{j=1}\cov(Y_i, Y_j) =
+\mathrm{Var}(\overline{Y}) = \frac{1}{n^2}\sum^n_{i=1}\mathrm{Var}(Y_i) +
+\frac{1}{n^2}\sum^n_{i=1}\sum^n_{j=1}\mathrm{Cov}(Y_i, Y_j) =
 \frac{\sigma^2_Y}{n}
 \]
 
@@ -625,9 +816,9 @@ e.g. If $Y_1, \ldots, Y_n$ are i.i.d. draws from $N(\mu_Y,
 * Large Sample Approximations to Sampling Distributions
 ** The law of large numbers
 *** Convergence in probability
-Let $S_1, \ldots, S_n, \ldots$ be a sequence of random variables,
+Let $S_1, \ldots, S_n$ be a sequence of random variables,
 denoted as $\{S_n\}$. $\{S_n\}$ is said to converge in probability to a
-limit \mu that is, $S_n \xrightarrow{\text{ \textit p }} \mu$, if and only if
+limit \mu that is, $S_n \xrightarrow{\text{p}} \mu$, if and only if
 \[ \mathrm{Pr} \left(|S_n-\mu| \geq \delta \right) \rightarrow 0 \]
 as $n \rightarrow \infty$ for every $\delta > 0$.
 
@@ -635,8 +826,8 @@ as $n \rightarrow \infty$ for every $\delta > 0$.
   $S_n=1/n\sum_i Y_i$, and so forth.
 
 *** The law of large numbers
-If $Y_1, \ldots, Y_n$ are i.i.d., $E(Y_i)=\mu_Y$ and $\var(Y_i) <
-\infty$, then $\overline{Y} \xrightarrow{\text{ \textit p }} \mu_Y$
+If $Y_1, \ldots, Y_n$ are i.i.d., $\mathrm{E}(Y_i)=\mu_Y$ and $\mathrm{Var}(Y_i) <
+\infty$, then $\overline{Y} \xrightarrow{\text{p}} \mu_Y$
 
 # #+NAME: the Law of large numbers
 # #+BEGIN_SRC R :exports results :results output graphics :file ./img/demo_lln.png
@@ -658,32 +849,68 @@ If $Y_1, \ldots, Y_n$ are i.i.d., $E(Y_i)=\mu_Y$ and $\var(Y_i) <
 [[file:figure/demo_lln.png]]
 
 ** The central limit theorem
+
 *** Convergence in distribution
+
 Let $F_1, F_2, \ldots, F_n, \ldots$ be a sequence of cumulative
 distribution functions corresponding to a sequence of random
 variables, $S_1, S_2, \ldots, S_n, \ldots$. Then the sequence of
 random variables $S_n$ is said to *converge in distribution* to $S$,
-denoted as $S_n \xrightarrow{\text{ \textit d }} S$, if the
+denoted as $S_n \xrightarrow{\text{d}} S$, if the
 distribution functions $\{F_n\}$ converge to $F$, the distribution
 function of $S$. That is,
-\[ S_n \xrightarrow{\text{ \textit d }} S \text{ if and only if } \lim_{n
+\[ S_n \xrightarrow{\text{d}} S \text{ if and only if } \lim_{n
 \rightarrow \infty}F_n(t)=F(t) \]
 where the limit holds at all points $t$ at which the limiting
 distribution $F$ is continuous. The distribution $F$ is called the
 *asymptotic distribution* of $S_n$.
 
 *** The central limit theorem (Lindeberg-Levy CLT)
+
 If $Y_1, Y_2, \ldots, Y_n$ are i.i.d. random samples from a
 probability distribution with finite mean $\mu_Y$ and finite variance
 $\sigma^2_Y$, i.e., $0 < \sigma^2_Y < \infty$ and $\overline{Y} =
 (1/n)\sum_i^nY_i$. Then
-\[ \sqrt{n}(\overline{Y}-\mu_Y) \xrightarrow{\text{ \textit d }} N(0,
+\[ \sqrt{n}(\overline{Y}-\mu_Y) \xrightarrow{\text{d}} N(0,
 \sigma^2_Y) \]
 It follows that since $\sigma_{\overline{Y}} =
-\sqrt{\var(\overline{Y})} = \sigma_Y/\sqrt{n}$,
+\sqrt{\mathrm{Var}(\overline{Y})} = \sigma_Y/\sqrt{n}$,
 \[ \frac{\overline{Y} - \mu_Y}{\sigma_{\overline{Y}}}
-\xrightarrow{\text{ \textit d }} N(0, 1) \]
+\xrightarrow{\text{ d}} N(0, 1) \]
 
 #+CAPTION: Distribution of the standardized sample average of n Bernoulli random variable with p = 0.78
 #+ATTR_LATEX: :width 0.8\textwidth
 [[file:figure/fig-2-9.png]]
+
+*** Demonstration for the law of large number and the central limit theorem
+
+The following files demonstrate the law of large number and the
+central limit theorem. To view these files, first you need to download
+them by saving into your disk, then open them with Wolfram CDF
+Player that can be downloaded from http://www.wolfram.com/cdf-player/. 
+
+- The law of large number:
+  [[file+sys:IllustratingTheLawOfLargeNumbers.cdf]]
+- The central limit theorem: [[file+sys:IllustratingTheCentralLimitTheoremWithSumsOfBernoulliRandomV.cdf]]
+
+
+* Footnotes
+
+[fn:4] The value of $\Phi(x)$ can be found in a table for the standard
+normal distribution, like the one in the following link,
+https://www.thestudentroom.co.uk/attachment.php?attachmentid=134337&d=1330530156. 
+
+[fn:3] Source of Figure [[fig-normal-distr]]: Characteristics of the
+Normal Distribution. Retrieved from
+http://howmed.net/community-medicine/normal-distribution-curve/. 
+
+[fn:2] Shalizi, Cosma. (2013). Reminder No. 1: Uncorrelated
+vs. Independent. Retrieved from
+http://www.stat.cmu.edu/~cshalizi/uADA/13/reminders/uncorrelated-vs-independent.pdf. 
+
+[fn:1] Source of Figure [[fig-conditional-probability]]: Pishro-Nik, Hossein. (2017). Introduction to
+Probability & Statistics. Retrieved from
+https://www.probabilitycourse.com/.
+
+
+
