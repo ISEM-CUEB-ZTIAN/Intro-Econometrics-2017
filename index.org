@@ -1,5 +1,5 @@
 #+TITLE: Econometrics 2017
-#+OPTIONS: toc:1 H:2 num:1
+#+OPTIONS: toc:2 H:2 num:1
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/readtheorg.css" />
 
