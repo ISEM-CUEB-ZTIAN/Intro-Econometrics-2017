@@ -531,3 +531,122 @@ $\mathrm{Cov}(\cdot)$ are useful in calculation,
 \end{align*}
 
 
+* Four Specific Distributions
+
+** The normal distribution
+
+*** The normal distribution
+
+- The p.d.f. of a normally distributed random variable $X$ is
+  \[ f(x) =
+  \frac{1}{\sigma\sqrt{2\pi}}\exp\left[-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right]
+  \]
+- $\mathrm{E}(X) = \mu$ and $\mathrm{Var}(X) = \sigma^{2}$.
+- We write $X \sim N(\mu, \sigma^{2})$
+
+*** The standard normal distribution
+
+- The standard normal distribution is a special case of the normal
+  distribution, for which $\mu = 0$ and $\sigma = 0$. The p.d.f of the
+  standard normal distribution is
+  \[
+  \phi(x) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)
+  \]
+- The c.d.f of the standard normal distribution is often denoted as
+  $\Phi(x)$.
+
+*** Symmetric and skinny tails
+
+- The normal distribution is symmetric around its mean, $\mu$, with the
+  skewness equal 0
+- It has 95% of its probability between
+  $\mu-1.96\sigma$ and $\mu+1.96\sigma$, with the kurtosis
+  equal 3.
+
+#+CAPTION: The normal probability density
+#+NAME: fig-normal-distr
+#+ATTR_HTML: 400
+#+ATTR_LATEX: :width 0.6\textwidth 
+[[file:figure/Normal-distribution-curve.jpg]]
+
+*** Transforming a normally distributed random variable to the standard normal distribution
+
+- Let $X$ be a random variable with a normal distribution, i.e., $X \sim
+  N(\mu, \sigma^2)$. 
+- We compute $Z = (X-\mu)/\sigma$, which follows
+  the standard normal distribution, $N(0, 1)$.
+- For example, if $X \sim N(1, 4)$, then $Z = (X-1)/2 \sim N(0,
+  1)$. When we want to find $\mathrm{Pr}(X \leq 4)$, we only need to
+  compute $\Phi(3/2)$
+- Generally, for any two number $c_1 < c_2$ and let $d_1 = (c_1 - \mu)/\sigma$ and
+  $d_2 = (c_2 - \mu)/\sigma$, we have
+  \begin{align*}
+  \mathrm{Pr}(X \leq c_2) & = \mathrm{Pr}(Z \leq d_2) = \Phi(d_2) \\
+  \mathrm{Pr}(X \geq c_1) & = \mathrm{Pr}(Z \geq d_1) = 1 - \Phi(d_1) \\
+  \mathrm{Pr}(c_1 \leq X \leq c_2) & = \mathrm{Pr}(d_1 \leq Z \leq d_2) = \Phi(d_2) - \Phi(d_1)
+  \end{align*}
+
+*** The multivariate normal distribution
+
+- The multivariate normal distribution is the joint
+  distribution of a set of random variables. 
+
+- The p.d.f. of the multivariate normal distribution is beyond the
+  scope of this course, but the following properties make this
+  distribution handy in analysis. 
+
+*** Important properties of the multivariate normal distribution
+
+- If n random variables, $x_1, \ldots, x_n$, have a multivariate
+  normal distribution, then any linear combination of these variables
+  is normally distributed. For any real numbers, $\alpha_1, \ldots,
+  \alpha_n$, a linear combination of ${x_i}$ is $\sum_i \alpha_i x_i$.
+
+- If a set of random variables has a multivariate normal
+  distribution, then the marginal distribution of each of the
+  variables is normal.
+
+- If random variables with a multivariate normal distribution have
+  covariances that equal zero, then these random variables are
+  independent.
+
+- If $X$ and $Y$ have a bivariate normal distribution, then
+  $\mathrm{E}(Y|X = x) = a + bx$, where $a$ and $b$ are constants.
+
+** The chi-squared distribution
+
+- Let $Z_1, \ldots, Z_n$ be n indepenent standard normal distribution,
+  i.e. $Z_i \sim N(0, 1)$ for all $i = 1, \ldots, n$. Then, the random
+  variable
+  \[W = \sum_{i=1}^n Z^2_i \]
+  has a chi-squared distribution with $n$ degrees of freedom, denoted as
+  $W \sim \chi^2(n)$, with $\mathrm{E}(W) = n$ and $\mathrm{Var}(W) = 2n$
+
+- If $Z \sim N(0, 1)$, then $W = Z^2 \sim \chi^2(1)$ with $\mathrm{E}(W) =
+  1$ and $\mathrm{Var}(W) = 2$.
+
+** The student t distribution
+
+- Let $Z \sim N(0, 1)$, $W \sim \chi^2(m)$, and $Z$ and $W$ be
+  independently distributed. Then, the random variable
+  \[t = \frac{Z}{\sqrt{W/m}} \]
+  has a student t distribution with $m$ degrees of freedom, denoted as
+  $t \sim t(m)$.
+
+- As $n$ increases, $t$ gets close to a standard normal distribution.
+
+** The F distribution
+
+- Let $W_1 \sim \chi^2(n_1)$, $W_2 \sim \chi^2(n_2)$, and $W_1$ and
+  $W_2$ are independent. Then, the random variable
+  \[ F = \frac{W_1/n_1}{W_2/n_2}\]
+  has an F distribution with $(n_1, n_2)$ degrees of freedom, denoted as
+  $F \sim F(n_1, n_2)$
+
+- If $t \sim t(n)$, then $t^2 \sim F(1, n)$
+
+- As $n_2 \rightarrow \infty$, the $F(n_1, \infty)$ distribution is the
+  same as the $\chi^2(n_1)$ distribution divided by $n_1$.
+
+
+
