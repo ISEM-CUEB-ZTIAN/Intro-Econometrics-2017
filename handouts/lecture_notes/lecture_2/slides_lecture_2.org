@@ -249,7 +249,7 @@ in which we use the fact that $\int_{x}f(x)\mathrm{d}x = 1$.
   \end{cases}
   \end{align*}
 
-- The *standard deviation* of $X$: \sigma_{X} = \sqrt{\mathrm{Var}(X)}$
+- The *standard deviation* of $X$: $\sigma_{X} = \sqrt{\mathrm{Var}(X)}$
 
 *** Computing variance
 
@@ -259,8 +259,9 @@ in which we use the fact that $\int_{x}f(x)\mathrm{d}x = 1$.
 - The variance of a Bernoulli random variable, $G$
   \[ \mathrm{Var}(G) = (1-p)^{2}p + (0-p)^{2}(1-p) = p(1-p) \]
 
-- The expectation and variance of a linear function of $X$. Let $Y = a +
-  bX$, then
+*** The expectation and variance of a linear function of $X$
+
+Let $Y = a + bX$, then
   - $\mathrm{E}(Y) = a + \mathrm{E}(X)$
   - $\mathrm{Var}(Y) = \mathrm{Var}(a + b X) = b^{2} \mathrm{Var}(X)$.
 
