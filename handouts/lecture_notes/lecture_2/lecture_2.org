@@ -116,16 +116,15 @@ specific value that $X$ can take. We denote the set of all possible
 value of $X$ as $S$.
 
 The axioms of probability require that (1) $0 \leq p(x) \leq
-1$ and (2) $ \sum_{ \{\text{all } x \text{ in } S \} } p(x) =
-1$.
+1$ and (2) $ \sum_{i=1}^n p(x_i) = 1$.
 
 #+ATTR_LATEX: :booktabs t
 #+NAME: tab-pmf-exmp
 #+CAPTION: An illustration of the probability distribution of a discrete random variable
 | $X$             |    1 |    2 |    3 | Sum |
 |-----------------+------+------+------+-----|
-| $\mathrm{P}(x)$ | 0.25 | 0.75 | 0.25 |  1  |
-#+TBLFM: @2$5=vsum($2..$INVALID)
+| $\mathrm{P}(x)$ | 0.25 | 0.50 | 0.25 |  1. |
+#+TBLFM: @2$5=vsum($2..$4)
 
 **** The cumulative probability distribution
 
@@ -253,7 +252,7 @@ the variance of $X$, denoted as $\mathrm{Var}(X)$ or $\sigma^2_X$, is then
 \begin{equation*}
 \mathrm{Var}(X) = \mathrm{E}(X-\mu_X)^{2}=
 \begin{cases}
-\sum_{i=1}^n (x - \mu_X)^{2}\mathrm{Pr}(X = x_i) & \text{if } X \text{ is discrete} \\
+\sum_{i=1}^n (x_i - \mu_X)^{2}\mathrm{Pr}(X = x_i) & \text{if } X \text{ is discrete} \\
 \int_{-\infty}^{\infty} (x - \mu_X)^{2}f(x)\mathrm{d} x  & \text{if } X \text{ is continuous}
 \end{cases}
 \end{equation*}
@@ -272,7 +271,7 @@ The variance of a Bernoulli random variable, $G$
 From the definition of the expectation and variance, we can compute
 the expectation and variance of a linear function of $X$. Let $Y = a +
 bX$, then
-- $\mathrm{E}(Y) = a + \mathrm{E}(X)$
+- $\mathrm{E}(Y) = a + b\mathrm{E}(X)$
 - $\mathrm{Var}(Y) = \mathrm{Var}(a + b X) = b^{2} \mathrm{Var}(X)$.
 
 
@@ -460,7 +459,7 @@ of the conditional distribution of $Y$ given $X$.
 
 - For discrete random variables, the conditional mean of $Y$ given $X=x$ is
   \begin{equation*}
-  \mathrm{E}(Y \mid X=x) = \sum_{i=1}^n y_i \mathrm{Pr}(Y \mid X=x)
+  \mathrm{E}(Y \mid X=x) = \sum_{i=1}^n y_i \mathrm{Pr}(Y=y_i \mid X=x)
   \end{equation*}
 
 - For continuous random variables, it is computed as

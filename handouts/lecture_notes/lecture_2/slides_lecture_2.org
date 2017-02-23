@@ -117,8 +117,8 @@ Random variables can take different types of values
 #+CAPTION: An illustration of the probability distribution of a discrete random variable
 | $X$             |    1 |    2 |    3 | Sum |
 |-----------------+------+------+------+-----|
-| $\mathrm{P}(x)$ | 0.25 | 0.75 | 0.25 |  1  |
-#+TBLFM: @2$5=vsum($2..$INVALID)
+| $\mathrm{P}(x)$ | 0.25 | 0.50 | 0.25 |  1. |
+#+TBLFM: @2$5=vsum($2..$4)
 
 ** The cumulative probability distribution
 
@@ -244,7 +244,7 @@ in which we use the fact that $\int_{x}f(x)\mathrm{d}x = 1$.
   \mathrm{Var}(X) & =  \sigma^2_X =  \mathrm{E}(X-\mu_X)^{2} \\
   & = 
   \begin{cases}
-  \sum_{i=1}^n (x - \mu_X)^{2}\mathrm{Pr}(X = x_i) & \text{if } X \text{ is discrete} \\
+  \sum_{i=1}^n (x_i - \mu_X)^{2}\mathrm{Pr}(X = x_i) & \text{if } X \text{ is discrete} \\
   \int_{-\infty}^{\infty} (x - \mu_X)^{2}f(x)\mathrm{d} x  & \text{if } X \text{ is continuous}
   \end{cases}
   \end{align*}
@@ -262,7 +262,7 @@ in which we use the fact that $\int_{x}f(x)\mathrm{d}x = 1$.
 *** The expectation and variance of a linear function of $X$
 
 Let $Y = a + bX$, then
-  - $\mathrm{E}(Y) = a + \mathrm{E}(X)$
+  - $\mathrm{E}(Y) = a + b\mathrm{E}(X)$
   - $\mathrm{Var}(Y) = \mathrm{Var}(a + b X) = b^{2} \mathrm{Var}(X)$.
 
 ** Moments of a random variable, skewness and kurtosis
@@ -399,7 +399,7 @@ exist.
 
 - For discrete random variables, the conditional mean of $Y$ given $X=x$ is
   \begin{equation*}
-  \mathrm{E}(Y \mid X=x) = \sum_{i=1}^n y_i \mathrm{Pr}(Y \mid X=x)
+  \mathrm{E}(Y \mid X=x) = \sum_{i=1}^n y_i \mathrm{Pr}(Y=y_i \mid X=x)
   \end{equation*}
 
 - For continuous random variables, it is computed as
