@@ -339,7 +339,7 @@ heavy-tailed.
 #+NAME: fig-skew-kurt
 #+CAPTION: Four distributions with different skewness and kurtosis
 #+ATTR_HTML: :width 600
-#+ATTR_LATEX: :width 0.8\textwidth
+#+ATTR_LATEX: :width 0.75\textwidth :height 0.5\textheight
 [[file:figure/fig-2-3.png]]
 
 
@@ -657,9 +657,9 @@ normal distribution.[fn:3]
 
 #+CAPTION: The normal probability density
 #+NAME: fig-normal-distr
-#+ATTR_HTML: 600
-#+ATTR_LATEX: :width 0.6\textwidth 
-[[file:figure/Normal-distribution-curve.jpg]]
+#+ATTR_HTML: 500
+#+ATTR_LATEX: :width 0.9\textwidth 
+[[file:figure/Normal-distribution-curve.png]]
 
 *** Transforming a normally distributed random variable to the standard normal distribution
 
@@ -737,6 +737,7 @@ distribution.)
    \[\mathrm{E}(Y|X = x) = a + bx \]
    where $a$ and $b$ are constants.
 
+
 ** The chi-squared distribution
 
 Let $Z_1, \ldots, Z_n$ be n indepenent standard normal distribution,
@@ -749,6 +750,16 @@ $W \sim \chi^2(n)$, with $\mathrm{E}(W) = n$ and $\mathrm{Var}(W) = 2n$
 If $Z \sim N(0, 1)$, then $W = Z^2 \sim \chi^2(1)$ with $\mathrm{E}(W) =
 1$ and $\mathrm{Var}(W) = 2$.
 
+Figure [[fig-chisquared]] shows the p.d.f. of chi-squared distributions
+with different degrees of freedom. 
+
+#+NAME: fig-chisquared
+#+ATTR_LATEX: :width 0.8\textwidth
+#+ATTR_HTML: :width 500
+#+CAPTION: The probability density function of chi-squared distributions
+[[file:figure/chi_squared_pdf.png]]
+
+
 ** The student t distribution
 
 Let $Z \sim N(0, 1)$, $W \sim \chi^2(m)$, and $Z$ and $W$ be
@@ -758,6 +769,16 @@ has a student t distribution with $m$ degrees of freedom, denoted as
 $t \sim t(m)$.
 
 As $n$ increases, $t$ gets close to a standard normal distribution.
+
+Figure [[fig-student-t]] shows the p.d.f. of student t distributions
+with different degrees of freedom. 
+
+#+NAME: fig-student-t
+#+ATTR_LATEX: :width 0.8\textwidth
+#+ATTR_HTML: :width 500
+#+CAPTION: The probability density function of student t distributions
+[[file:figure/students_t_pdf.png]]
+
 
 ** The F distribution
 
@@ -771,134 +792,229 @@ $F \sim F(n_1, n_2)$
 - As $n_2 \rightarrow \infty$, the $F(n_1, \infty)$ distribution is the
   same as the $\chi^2(n_1)$ distribution divided by $n_1$.
 
+Figure [[fig-f-dist]] shows the p.d.f. of F distributions
+with different degrees of freedom. 
+
+#+NAME: fig-f-dist
+#+ATTR_LATEX: :width 0.8\textwidth
+#+ATTR_HTML: :width 500
+#+CAPTION: The probability density function of F distributions
+[[file:figure/fisher_f_pdf.png]]
+
 
 * Random Sampling and the Distribution of the Sample Average
 
 ** Random sampling
 
-- Simple random sampling :: $n$ objects are selected at random from a
-     *population*, and each member of the population is equally likely
-     to be included in the sample
+Almost all the statistical and econometric procedures involve averages
+of a sample of data. When samples are randomly drawn from a larger
+population, the average itself is a random variable. Therefore, in
+the next three sections, we consider the distributions of sample
+averages. 
 
-- i.i.d. draws :: when $Y_1, Y_2, \ldots, Y_n$ are drawn from the same
-                  distribution and are independently distributed, they
-                  are said to be *independently and identically
-                  distributed* or *i.i.d*. This fact can be denoted as
-                  $Y_i \sim IID(\mu_Y, \sigma^2_Y)$ for $i = 1, 2,
-                  \ldots, n$.
+*** Simple random sampling 
+
+In statistics, a *population* is a set of similar items or events which
+is of interest for some question or experiment. A statistical
+population can be a group of actually existing objects (e.g. the set
+of all stars within the Milky Way galaxy) or a hypothetical and
+potentially infinite group of objects conceived as a generalization
+from experience (e.g. the set of all possible hands in a game of
+poker).[fn:5]
+
+*Simple random sampling* is a procedure in which $n$ objects are
+selected at random from a population, and each member of the
+population is equally likely to be included in the sample. 
+
+Let $Y_1, Y_2, \ldots Y_n$ be the first $n$ observations in a random
+sample. Since they are randomly drawn from a population, $Y_1, \ldots,
+Y_n$ are random variables. And the sample average is also a random
+variable. 
+
+*** i.i.d draws
+
+Since $Y_1, Y_2, \ldots, Y_n$ are drawn from the same population, the
+marginal distribution of $Y_i$ is the same for each $i=1, \ldots,
+n$. And the marginal distribution is the distribution of the
+population $Y$. When $Y_i$ has the same marginal distribution for
+$i=1, \ldots, n$, then $Y_1, \ldots, Y_n$ are said to be *identically
+distributed*. 
+
+With simple random sampling, the value of $Y_i$ does not depend on
+that of $Y_j$ for $i \neq j$. That is, under simple random sampling,
+$Y_1, \ldots, Y_n$ are *independent distributed*. 
+
+Therefore, when $Y_1, \ldots, Y_n$ are drawn with simple random
+sampling from the same distribution of $Y$, we say that they are
+*independently and identically distributed* or *i.i.d*, which can be
+denoted as 
+\[ Y_i \sim IID(\mu_Y, \sigma^2_Y) \text{ for } i = 1, 2, \ldots, n\]
+given that the population expectation is $\mu_Y$ and the variance
+is $\sigma^2_Y$.
+
 
 ** The sampling distribution of the sample average
 
 *** The sample average
 
 The *sample average* or *sample mean*, $\overline{Y}$, of the $n$
-observation $Y_1, Y_2, \ldots, Y_n$ is
+observations $Y_1, Y_2, \ldots, Y_n$ is
 \[ \overline{Y} = \frac{1}{n}\sum^n_{i=1} Y_i \]
-Note that since $Y_i$ is random, so is $\overline{Y}$.
+
+When $Y_1, \ldots, Y_n$ are randomly drawn, $\overline{Y}$ is also a
+random variable that should have its own distribution, called the
+*sampling distribution*. We are mostly interested in the mean,
+variance, and the form of the sampling distribution.
 
 *** The mean and variance of $\overline{Y}$
 
 Suppose that $Y_i \sim IID(\mu_Y, \sigma^2_{Y})$ for all $i = 1,
 \ldots, n$. Then, by the definition of $\overline{Y}$ and the fact
-that $Y_i$ and $Y_j$ are independent for any $i \neq j$, implying
+that $Y_i$ and $Y_j$ are independent for any $i \neq j$ and thus,
 $\mathrm{Cov}(Y_i, Y_j)=0$, we have
 \[
-\mathrm{E}(\overline{Y}) =
-\frac{1}{n}\sum^n_{i=1}\mathrm{E}(Y_i) = \frac{1}{n}\cdot n\mu_Y = \mu_Y
+\mathrm{E}(\overline{Y}) = \mu_{\overline{Y}} =
+\frac{1}{n}\sum^n_{i=1}\mathrm{E}(Y_i) = \frac{1}{n} n \mu_Y = \mu_Y
 \]
 and
 \[
-\mathrm{Var}(\overline{Y}) = \frac{1}{n^2}\sum^n_{i=1}\mathrm{Var}(Y_i) +
+\mathrm{Var}(\overline{Y}) = \sigma^2_{\overline{Y}} =  \frac{1}{n^2}\sum^n_{i=1}\mathrm{Var}(Y_i) +
 \frac{1}{n^2}\sum^n_{i=1}\sum^n_{j=1}\mathrm{Cov}(Y_i, Y_j) =
 \frac{\sigma^2_Y}{n}
 \]
+And the standard deviation of the sample mean is
+$\sigma_{\overline{Y}} = \sigma_Y / \sqrt{n}$.
 
-e.g. If $Y_1, \ldots, Y_n$ are i.i.d. draws from $N(\mu_Y,
-\sigma^2_Y)$, then $\overline{Y} \sim N(\mu_Y, \sigma^2_Y/n)$.
+*** Sampling distribution of $\overline{Y}$ when $Y$ is normally distributed 
+
+The sample average $\overline{Y}$ is a linear combination of $Y_1,
+\ldots, Y_n$. When $Y_1, \ldots, Y_n$ are i.i.d. draws from $N(\mu_Y,
+\sigma^2_Y)$, from the properties of the multivariate normal
+distribution, $\overline{Y}$ is normally distributed. That is 
+\[ \overline{Y} \sim N(\mu_Y, \sigma^2_Y/n) \]
 
 
 * Large Sample Approximations to Sampling Distributions
+
+** The exact distribution and the asymptotic distribution
+
+The sampling distribution that exactly describes the distribution of
+$\overline{Y}$ for any $n$ is called the *exact distribution* or
+*finite-sample distribution*. For example, when $Y$ is normally
+distributed and $Y_1, \ldots, Y_n$ are i.i.d. draws from $N(\mu_Y,
+\sigma^2_Y)$, we know the exact distribution of $\overline{Y}$ is
+$N(\mu_Y, \sigma^2_Y/n)$. 
+
+However, in most cases, we cannot obtain an exact distribution of
+$\overline{Y}$, for which we can only get an approximation. The
+large-sample approximation to the sampling distribution is called the
+*asymptotic distribution*. The existence of the asymptotic
+distribution of $\overline{Y}$ is guaranteed by the *law of large
+numbers* and the *central limit theorem*. 
+
+
 ** The law of large numbers
+
 *** Convergence in probability
+
 Let $S_1, \ldots, S_n$ be a sequence of random variables,
 denoted as $\{S_n\}$. $\{S_n\}$ is said to converge in probability to a
-limit \mu that is, $S_n \xrightarrow{\text{p}} \mu$, if and only if
-\[ \mathrm{Pr} \left(|S_n-\mu| \geq \delta \right) \rightarrow 0 \]
+limit \mu (denoted as $S_n \xrightarrow{\text{p}} \mu$), if and only if
+\[ \mathrm{Pr} \left(|S_n-\mu| < \delta \right) \rightarrow 1 \]
 as $n \rightarrow \infty$ for every $\delta > 0$.
 
-- e.g. $S_n = \overline{Y}$. That is, $S_1=Y_1$, $S_2=1/2(Y_1+Y_2)$,
-  $S_n=1/n\sum_i Y_i$, and so forth.
+For example, $S_n = \overline{Y}$. That is, $S_1=Y_1$, $S_2=1/2(Y_1+Y_2)$,
+$S_n=1/n\sum_i Y_i$, and so forth.
 
 *** The law of large numbers
-If $Y_1, \ldots, Y_n$ are i.i.d., $\mathrm{E}(Y_i)=\mu_Y$ and $\mathrm{Var}(Y_i) <
-\infty$, then $\overline{Y} \xrightarrow{\text{p}} \mu_Y$
 
-# #+NAME: the Law of large numbers
-# #+BEGIN_SRC R :exports results :results output graphics :file ./img/demo_lln.png
-# set.seed(123)
-# n <- 1000
-# x <- 0:1
-# p <- 0.78
-# d <- sample(x, n, prob = c(1-p, p), replace = TRUE)
-# s <- cumsum(d)
-# r <- s/(1:n)
-# plot(r, ylim=c(0.5, 1), type="l", col="blue",
-#      xlab="the number of draws from a Bernoulli distribution with P(X=1)=0.78",
-#      ylab="the sample mean")
-# lines(c(0,n), c(p, p))
-# #+END_SRC
+The law of large numbers (LLN) states that if $Y_1, \ldots, Y_n$ are i.i.d. with
+$\mathrm{E}(Y_i)=\mu_Y$ and $\mathrm{Var}(Y_i) < \infty$, then
+$\overline{Y} \xrightarrow{\text{p}} \mu_Y$. 
+
+The conditions for the LLN to be held is $Y_i$ for $i=1, \ldots, n$
+are i.i.d., and the variance of $Y_i$ is finite. The latter says that
+there is no extremely large outliers in the random samples. The
+presence of outliers in the sample can substantially influence the
+sample mean, rendering its convergence to be unachievable. 
+
+Figure [[fig-2-8]] shows that the convergence sample mean of random
+samples from a Bernoulli distribution that $\mathrm{Pr}(Y_i = 1) =
+0.78$. As the number of sample increases, the sample mean (i.e., the
+proportion that $Y_i = 1$) get close to the true mean of 0.78. 
 
 #+CAPTION: An illustration of the law of large numbers
+#+NAME: fig-2-8
 #+ATTR_LATEX: :width 0.75\textwidth
-[[file:figure/demo_lln.png]]
+#+ATTR_HTML: :width 600
+[[file:figure/fig-2-8.png]]
+
+Here is another demonstration of the law of large number,[fn:6]
+[[file+sys:IllustratingTheLawOfLargeNumbers.cdf]]. To view this file,
+first you need to download them by saving into your disk, then open
+them with Wolfram CDF Player that can be downloaded from
+http://www.wolfram.com/cdf-player/.
+
 
 ** The central limit theorem
 
+The LLN ensures the convergence of the sample mean from the sampling
+distribution, while the *central limit theorem* (CLT) ensures the
+convergence of the sampling distribution itself. 
+
 *** Convergence in distribution
 
-Let $F_1, F_2, \ldots, F_n, \ldots$ be a sequence of cumulative
-distribution functions corresponding to a sequence of random
-variables, $S_1, S_2, \ldots, S_n, \ldots$. Then the sequence of
-random variables $S_n$ is said to *converge in distribution* to $S$,
-denoted as $S_n \xrightarrow{\text{d}} S$, if the
-distribution functions $\{F_n\}$ converge to $F$, the distribution
-function of $S$. That is,
+Let $F_1, F_2, \ldots, F_n$ be a sequence of cumulative distribution
+functions corresponding to a sequence of random variables, $S_1, S_2,
+\ldots, S_n$. Then the sequence of random variables ${S_n}$ is said to
+*converge in distribution* to a random variable $S$ (denoted as $S_n
+\xrightarrow{\text{d}} S$), if the distribution functions $\{F_n\}$
+converge to $F$ that is the distribution function of $S$. We can write
+it as
+
 \[ S_n \xrightarrow{\text{d}} S \text{ if and only if } \lim_{n
-\rightarrow \infty}F_n(t)=F(t) \]
-where the limit holds at all points $t$ at which the limiting
+\rightarrow \infty}F_n(x)=F(x) \]
+
+where the limit holds at all points $x$ at which the limiting
 distribution $F$ is continuous. The distribution $F$ is called the
 *asymptotic distribution* of $S_n$.
 
 *** The central limit theorem (Lindeberg-Levy CLT)
 
-If $Y_1, Y_2, \ldots, Y_n$ are i.i.d. random samples from a
+The CLT states that if $Y_1, Y_2, \ldots, Y_n$ are i.i.d. random samples from a
 probability distribution with finite mean $\mu_Y$ and finite variance
 $\sigma^2_Y$, i.e., $0 < \sigma^2_Y < \infty$ and $\overline{Y} =
 (1/n)\sum_i^nY_i$. Then
+
 \[ \sqrt{n}(\overline{Y}-\mu_Y) \xrightarrow{\text{d}} N(0,
 \sigma^2_Y) \]
+
 It follows that since $\sigma_{\overline{Y}} =
 \sqrt{\mathrm{Var}(\overline{Y})} = \sigma_Y/\sqrt{n}$,
 \[ \frac{\overline{Y} - \mu_Y}{\sigma_{\overline{Y}}}
 \xrightarrow{\text{ d}} N(0, 1) \]
 
-#+CAPTION: Distribution of the standardized sample average of n Bernoulli random variable with p = 0.78
+Figure [[fig-2-9]] shows that as $n$ increases, the standardized sample
+average of the samples from a Bernoulli distribution get close to a
+normal distribution. 
+
+#+CAPTION: An illustration of the central limit theorem
+#+NAME: fig-2-9
+#+ATTR_HTML: :width 600
 #+ATTR_LATEX: :width 0.8\textwidth
 [[file:figure/fig-2-9.png]]
 
-*** Demonstration for the law of large number and the central limit theorem
-
-The following files demonstrate the law of large number and the
-central limit theorem. To view these files, first you need to download
-them by saving into your disk, then open them with Wolfram CDF
-Player that can be downloaded from http://www.wolfram.com/cdf-player/. 
-
-- The law of large number:
-  [[file+sys:IllustratingTheLawOfLargeNumbers.cdf]]
-- The central limit theorem: [[file+sys:IllustratingTheCentralLimitTheoremWithSumsOfBernoulliRandomV.cdf]]
+Here is the demonstration of the CLT with Wolfram CDF Player,
+[[file+sys:IllustratingTheCentralLimitTheoremWithSumsOfBernoulliRandomV.cdf]].
 
 
 * Footnotes
+
+[fn:6] This example and the one for the CLT are both retrieved from
+http://demonstrations.wolfram.com/index.html. 
+
+[fn:5] Wikipedia. Statistical population. Retrieved from
+https://en.wikipedia.org/wiki/Statistical_population. 
 
 [fn:4] The value of $\Phi(x)$ can be found in a table for the standard
 normal distribution, like the one in the following link,
