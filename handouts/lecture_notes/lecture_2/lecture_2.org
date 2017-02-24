@@ -188,7 +188,7 @@ continous random variable, $X$, the c.d.f. is $F(x) = \mathrm{Pr}(X
 #+ATTR_LATEX: :width 0.6\textwidth :height 0.5\textheight
 [[file:figure/norm1.png]]
 
-For both discrete and continuous random variable, $F(X)$ must satisfy
+For both discrete and continuous random variable, $F(x)$ must satisfy
 the following properties:
 1) $F(+\infty) = 1 \text{ and } F(-\infty) = 0$ ($F(x)$ is bounded between 0 and 1)
 2) $x > y \Rightarrow F(x) \geq F(y)$ ($F(x)$ is nondecreasing)
@@ -197,6 +197,11 @@ By the definition of the c.d.f., we can conveniently calculate
 probabilities, such as,
 - $\mathrm{P}(x > a) = 1 - \mathrm{P}(x \leq a) = 1 - F(a)$
 - $\mathrm{P}(a < x \leq b) = F(b) - F(a)$.
+
+*A note on notation*. The c.d.f. and p.d.f. of a random variable $X$ are
+sometimes denoted as $F_X(x)$ and $f_X(x)$. In our lecture notes, if
+there is no confusion, I will simply use $F(x)$ and $f(x)$ without the
+subscript. 
 
 
 * Expectation, Variance, and Other Moments
