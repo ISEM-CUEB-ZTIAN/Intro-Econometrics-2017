@@ -1,0 +1,386 @@
+#+TITLE: Lecture 3: Review of Statistics
+#+AUTHOR: Zheng Tian
+#+DATE:
+#+OPTIONS: toc:1 H:3 num:2
+# #+OPTIONS: tex:dvipng
+#+PROPERTY: header-args:R  :session my-r-session
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+#+LATEX_HEADER: \newtheorem{definition}{Definition}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}
+#+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+#+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
+#+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+
+
+
+* Estimation of the Population Mean
+** Estimators and their properties
+*** Estimators
+- *estimator*
+  - a function of a sample of data to be drawn randomly from a
+    population. 
+  - An estimator is a random variable.
+- *estimate*
+  - the numerical value of the estimator when it is actually computed
+    using data from a specific sample.
+  - An estimate is a nonrandom number.
+- An estimator of the population mean $\mu_Y$, denoted as $\hat \mu_Y$
+  - $\hat \mu_Y = \overline{Y}$ or $Y_1$?
+- How can we judge which estimator is better than another?
+
+*** Unbiasedness
+- $\hat \mu_Y$ is an unbiased estimator of $\mu_Y$ if $E(\hat \mu_Y) =
+  \mu_Y$. 
+
+*** Consistency
+- $\hat \mu_Y$ is a consistent estimator of $\mu_Y$ if as $n
+  \rightarrow \infty$, $\hat \mu_Y \xrightarrow{\text{ \textit p }}
+  \mu_Y$. 
+
+*** Efficiency
+- Let $\tilde{\mu}_Y$ and $\bar{\mu}_Y$ be two unbiased estimators of
+  $\mu_Y$. Then $\hat{\mu}_Y$ is said to be more efficient than
+  $\tilde{\mu}_Y$ if $\var(\hat{\mu}_Y) < \var(\tilde{\mu}_Y)$.
+- In words, $\hat{\mu}_Y$ is more efficient than $\tilde{\mu}_Y$
+  because $\hat{\mu}_Y$ uses the information in the data more
+  efficiently than does $\tilde{\mu}_Y$. 
+ 
+** Properties of $\overline{Y}$
+Given that $Y_1, \ldots, Y_n$ are i.i.d., and $\overline{Y} =
+1/n\sum_i Y_i$, we have
+*** Unbiased and consistent
+- $\overline{Y}$ is unbiased since $E(\overline{Y}) = \mu_Y$
+- $\overline{Y}$ is consistent since as $n \rightarrow \infty$,
+  $\overline{Y} \xrightarrow{\text{ \textit p }} \mu_Y$ by the law of
+  large numbers. 
+*** Efficiency
+- $\overline{Y}$ is BLUE
+  - Let $\tilde{\mu}_Y$ be any linear estimator of $\mu_Y$, that is, 
+    \[ \tilde{\mu}_Y = 1/n\sum_{i=1}^n \alpha_i Y_i \]
+    where $\alpha_1, \ldots, \alpha_n$ are nonrandom constants. 
+  - If $\tilde{\mu}_Y$ is unbiased, then we always have
+    \[ \var(\overline{Y}) < \var(\tilde{\mu}_Y) \]
+    unless $\tilde{\mu}_Y = \overline{Y}$. Thus $\overline{Y}$ is
+    called the Best Linear Unbiased Estimator (BLUE). 
+*** $\overline{Y}$ is the least squares estimator of $\mu_Y$
+- Consider the following model
+  \[ Y_i = \alpha + u_i \text{ for } i = 1, 2, \ldots, n \]
+  where $\alpha$ is a nonrandom intercept to be estimated, $u_i$ is
+  the error term, which is a random variable with the mean zero. 
+  
+  Thus, we have $E(Y_i) = \alpha = \mu_Y$. That means $\alpha$ is the
+  mean of $Y_i$, and an estimator for $\alpha$ is just an estimator
+  for $\mu_Y$. And $u_i$ dictates the fluctuation of each $Y_i$ around
+  its mean. We use $\sum_{i=1}^n (Y_i - \alpha)^2$ to measure the total
+  fluctuations or errors.
+
+- The least squares estimator of $\mu_Y$ or $\alpha$ is obtained by
+  solving the following problem
+  \[ \operatorname*{min}_\alpha\: \sum_{i=1}^n (Y_i - \alpha)^2 \]
+    
+    \begin{proof}[Proof: $\overline{Y}$ is the least squares estimator of $\mu_Y$] 
+    The first order condition for the minimization problem is
+    \begin{equation*}
+      \frac{\dx}{\dx \alpha}\sum_{i=1}^n (Y_i - \alpha)^2 = -2\sum_{i=1}^n(Y_i - \alpha) = -2\sum_{i=1}^n Y_i+ 2n\alpha = 0      
+    \end{equation*}
+    Solving for the final equation for $\alpha$, we get $\hat{\alpha} = 1/n\sum_{i=1}^n Y_i = \overline{Y}$. \qedhere
+    \end{proof}
+
+** The importance of random sampling
+All the results we have obtained above rely on the condition that
+$Y_1, \ldots, Y_n$ are i.i.d.~draws. Otherwise, if the samples are
+drawn nonrandomly, we would get a biased estimate.
+
+* Hypothesis Tests Concerning the Population Mean
+*** Basic ideas about hypothesis testing
+Three components consist of a hypothesis testing
+- a goal for the test: the null hypothesis
+- some tools: the test statistic, the confidence interval
+- some rules: the p-value, the significance level, and the critical value
+
+** Null and alternative hypotheses
+Hypothesis testing is to make a provisional decision based on the
+evidence at hand on whether a null hypothesis is to be rejected or
+not, comparing with an alternative hypothesis. 
+- Two-sided tests
+
+  $H_0:\; E(Y) = \mu_{Y,0}$ v.s. $H_1:\; E(Y) \neq \mu_{Y,0}$
+
+- One-sided test
+
+  $H_0:\; E(Y) < \mu_{Y,0}$ v.s. $H_1:\; E(Y) > \mu_{Y,0}$
+
+- The language
+  
+  We can not say "accept the null hypothesis", but say "reject the
+  null hypothesis or fail to reject the null".
+
+** The p-value
+*** Definition
+- The *p-value*, also called the *significance probability*, is the
+  probability of drawing a statistic at least as adverse to the null
+  hypothesis as the one you actually computed in your sample, assuming
+  the null hypothesis is correct.
+
+- The *significance level*, denoted as $\alpha$, of a test is a
+  pre-specified probability of incorrectly rejecting the null
+  hypothesis, when the null is true (*Type I error*). Usually, $\alpha =
+  0.05$. 
+
+- The p-value, also named the marginal significance level, is the
+  smallest significance level at which you can reject the null
+  hypothesis. 
+
+- We can reject the null if the $\text{p-value} < \alpha$. 
+
+- Mathematically, the p-value is
+  \[ \text{p-value} = \pr_{H_0}\left( \left| \overline{Y} - \mu_{Y,0}
+  \right| > \left| \overline{Y}^{act} - \mu_{Y,0} \right| \right) \]
+
+** Calculating the p-value when $\sigma_Y$ is known
+If $Y_i \sim IID(\mu_Y, \sigma^2_Y)$ for $i = 1, \ldots, n$
+- When $\sigma_Y$ is known, $\var(\overline{Y}) =
+  \sigma^2_{\overline{Y}} = \sigma^2_Y/n$, and the sampling
+  distribution of $\overline{Y}$ is $N(\mu_Y,
+  \sigma^2_{\overline{Y}})$, that is, $(\overline{Y} -
+  \mu_Y)/\sigma_{\overline{Y}} \xrightarrow{\text{ \textit d }} N(0, 1)$.
+
+- The p-value is then calculated as
+  \[ \text{p-value} = \pr_{H_0} \left( \left| \frac{\overline{Y} -
+  \mu_{Y,0}}{\sigma_{\overline{Y}}} \right| > \left|
+  \frac{\overline{Y}^{act} - \mu_{Y,0}}{\sigma_{\overline{Y}}}
+  \right|\right) = 2\varPhi\left( -\left|
+  \frac{\overline{Y}^{act}-\mu_{Y,0}}{\sigma_{\overline{Y}}} \right|
+  \right) \] 
+  
+  #+CAPTION: Calculating the p-value
+  #+ATTR_LATEX: :width 0.7\textwidth
+  [[file:img/fig-3-1.png]]
+
+- The z statistic
+   \[ z = \frac{\overline{Y} -
+  \mu_{Y,0}}{\sigma_{\overline{Y}}} = \frac{\overline{Y} -
+  \mu_{Y,0}}{\sigma_Y/\sqrt{n}} \xrightarrow{\text{ \textit d }} N(0, 1)\] 
+  and 
+  \[\text{p--value } = 2\varPhi(-|z^{act}|), \text{ where } z^{act} = 
+  (\overline{Y}^{act} - \mu_{Y,0})/\sigma_{\overline{Y}} \]
+
+** The sample variance, sample standard deviation, and standard error
+*** The sample variance and standard deviation
+- The *sample variance*, $s^2_Y$, is
+  \[ s^2_Y = \frac{1}{n-1}\sum^n_{i=1} (Y_i - \overline{Y})^2 \]
+  The *sample standard deviation*, $s_Y$, is the square root of $s^2_Y$. 
+
+- $E(Y_i - \overline{Y})^2 = [(n - 1)/n]\sigma^2_Y$
+
+*** Consistency of the sample variance
+The sample variance, $s^2_Y$, is a consistent estimator of the
+population variance, that is, as $n \rightarrow \infty$, $s^2_Y
+\xrightarrow{\text{ \textit p }} \sigma^2_Y$. See the proof in
+Appendix 3.3.
+
+*** The standard error of $\overline{Y}$
+The standard error of $\overline{Y}$, denoted as $SE(\overline{Y})$ or
+$\hat{\sigma}_{\overline{Y}}$, is an estimator of the standard
+deviation of $\overline{Y}$, $\sigma_{\overline{Y}}=\sigma_Y/\sqrt{n}$. When $Y_1, \ldots, Y_n$ are i.i.d.,
+\[ SE(\overline{Y}) = \hat{\sigma}_{\overline{Y}} = \frac{s_Y}{\sqrt{n}} \]
+
+** Calculating the p-value when $\sigma_Y$ is unknown (in a large sample)
+*** The t-statistic
+- When $\sigma_Y$ is known, we use the z statistic, and $z
+  \xrightarrow{\text{ \textit d }} N(0, 1)$ 
+- When $\sigma_Y$ is unknown, by replacing $\sigma_Y$ with $s_Y$, we
+  use the t statistic 
+  \[ t = \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})} =
+  \frac{\overline{Y} - \mu_{Y,0}}{s_Y/\sqrt{n}} \] 
+- The asymptotic distribution of the t statistic
+
+  Since as $n \rightarrow \infty$, $s_Y \xrightarrow{\textit p}
+  \sigma_Y$. Thus, $t \xrightarrow{ \text{ \textit d } } N(0, 1)$.
+
+- When n is large, the p-value can be calculated using
+  \[ \text{p--value} = 2\varPhi(-|t^{act}|) \]
+  where $t^{act} = (\overline{Y}^{act} - \mu_{Y,0})/SE(\overline{Y})$
+  
+*** Using t-statistics when the sample size is small
+When $Y_i \sim NID(\mu_Y, \sigma_Y^{2})$ for $i = 1, \ldots, n$, we
+have the exact distribution for the t statistic, that is,
+\[ t \sim t(n-1) \]
+
+See Section 3.6 (Page 129) in the textbook for a discussion about the
+reason for t has a t distribution with (n-1) degree of freedom.
+
+** Hypothesis testing with a pre-specified significance level
+*** Type I and type II errors
+- *Type I error*. The null hypothesis is rejected when in fact it is
+  true.
+- *Type II error*. The null hypothesis is not rejected when in fact it
+  is false.
+*** The significance level and the critical value
+- *significance level*. The pre-specified probability of type I error.
+  $\alpha = 0.05, 0.10, or 0.01$
+
+- *critical value*. The value of the test statistic for which the test
+  rejects the null hypothesis at the given significance level. 
+  
+  For example. In a two-sided test, with the z statistic. The critical
+  value at the 5\% significance level is $c_{\alpha}$ such that
+  $\varPhi(c_{\alpha}) = 0.975$. Accordingly, we know $c_{\alpha}
+  \approx 1.96$. 
+
+- *rejection rule*
+  With a large sample and the t statistic, we reject the null
+  hypothesis when $|t^{act}| > c_{\alpha} = 1.96$, which is the same as we reject
+  the null if the p-value is less than the critical value.
+
+*** The rejection and acceptance region
+- *rejection region*. The set of values of the test statistic for
+  which the test rejects the null.
+- *acceptance region* is the vice.
+
+#+CAPTION: An illustration of a two-sided test
+#+ATTR_LATEX: :width 0.7\textwidth
+[[file:./img/fig9_1.png]]
+
+*** The power and the size of the test
+- The *size* of the test is the probability that the test actually
+  incorrectly rejects the null hypothesis when it is true. That is,
+  the size of the test is just the significance level. 
+- The *power* of the test is the probability that the test correctly
+  rejects the null when the alternative is true. That is,
+  $\text{power} = 1 - \pr(\text{type II error})$
+
+* Confidence Intervals for the Population Mean
+** Some concepts
+- Confidence set :: the set of values that contains the true
+                    population mean $\mu_Y$ with a certain
+                    prespecified probability.
+
+- Confidence level :: the prespecified probability that $\mu_Y$ is
+     contained in the confidence set. $\text{confidence level} = 1 -
+     \text{significance level}$.
+
+- Confidence interval :: the confidence set when it is an interval
+
+** Constructing a confidence interval for the population mean
+*** Constructing a confidence interval based on the t statistic and a large sample
+To test the null hypothesis $H_0: \mu_Y = \mu_{Y,0}$, we use the t
+statistic
+\[ t = \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})}
+\xrightarrow{\text{ \textit d }} N(0, 1) \]
+We fail to reject the null at the significance level of 5% if $|t| <
+1.95$, where 1.95 is the critical value at the 5% significance
+level. Plugging the definition of $t$ and solving the inequalities, we
+get
+\begin{align*}
+-1.95 & \leq \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})} \leq 1.95 \\
+\overline{Y} - 1.95 SE(\overline{Y}) & \leq \mu_{Y,0} \leq \overline{Y} + 1.95 SE(\overline{Y})
+\end{align*}
+Thus, the 95% confidence interval two-sided confidence interval for
+$\mu_Y$ is 
+\[ \left[\overline{Y} - 1.95 SE(\overline{Y}),\; \overline{Y} + 1.95 SE(\overline{Y})\right] \]
+
+* Comparing Means from Different Populations
+** Hypothesis tests for the difference between two means
+- Two populations: male college graduates v.s. female college graduates
+
+- Hypothesis tests: test whether the mean earnings for the male and
+  female graduates differ by a certain amount, that is, 
+  \[ H_0: \mu_m - \mu_w = d_0,\; \text{ vs. }\: H_1: \mu_m - \mu_w \neq d_0 \]
+  
+- Steps:
+  1. Draw $n_m$ samples $Y_{m,1}, Y_{m,2},\ldots, Y_{m,n_m}$ for the
+     male and $n_w$ samples $Y_{w,1}, Y_{w,2}, \ldots, Y_{w,n_w}$ for
+     the female randomly, assuming that the male population and the
+     female population are independent.
+
+  2. Calculate the sample average earnings -- $\overline{Y}_m$ for the
+     male and $\overline{Y}_w$ for the female. $\overline{Y}_m$ and
+     $\overline{Y}_w$ are the unbiased estimators for $\mu_m$ and
+     $\mu_w$, respectively.
+
+     As $n_m$ and $n_w$ get very large, we know $\overline{Y}_m
+     \xrightarrow{\text{ \textit d }} N(\mu_Y, \sigma^2_m/n_m)$, and
+     $\overline{Y}_w \rarrowd{d} N(\mu_w, \sigma^2_w)$. Thus, given
+     that $\overline{Y}_m - \overline{Y}_w$ is a linear function of
+     $\overline{Y}_m$ and $\overline{Y}_w$ and $Y_{m,i}$ and $Y_{w,j}$
+     for $i, j = 1, 2, \ldots$ are independent, we have
+     \[(\overline{Y}_m - \overline{Y}_w) \rarrowd{d} N(\mu_m - \mu_w,\;
+     \frac{\sigma^2_m}{n_m} + \frac{\sigma^2_w}{n_w}) \]
+
+  3. When $\sigma^2_m$ and $\sigma^2_w$ are known, we use the z statistic
+     \[ z = \frac{(\overline{Y}_m - \overline{Y}_w) - d_0}{\left(
+     \frac{\sigma^2_m}{n_m} + \frac{\sigma^2_w}{n_w} \right)^{1/2}}
+     \sim N(0, 1) \]
+
+     When $\sigma^2_m$ and $\sigma^2_w$ are unknown, we the t
+     statistic
+     \[ t = \frac{(\overline{Y}_m - \overline{Y}_w) -
+     d_0}{SE(\overline{Y}_m - \overline{Y}_w)} \rarrowd{d}
+     N(0, 1) \] 
+     where
+     \[ SE(\overline{Y}_m - \overline{Y}_w) = \left(
+     \frac{s^2_m}{n_m} + \frac{s^2_w}{n_w} \right)^{1/2}\]
+     \[s^2_m = \frac{1}{n_m-1}\sum^{n_m}_{i=1}(Y_{m,i} -
+     \overline{Y}_m)^2\] 
+     \[s^2_w = \frac{1}{n_w-1}\sum^{n_w}_{i=1}(Y_{w,i} -
+     \overline{Y}_w)^2 \]
+
+  4. Calculate the p value
+     The p value for the two-sided test is calculated as 
+     \[ \text{p value} = 2\varPhi(-|t|) \]
+
+     For a two-sided test at the 5% significant level, we can reject
+     the null hypothesis when the p value is less than 5%, or,
+     equivalently, when $|t| > 1.96$. 
+
+** Confidence intervals for the difference between two means
+The 95% confidence interval can be constructed as usual based on the t
+statistic we have computed above. That is,
+
+\[ \text{95\% confidence interval for } d = \mu_m - \mu_w \text{ is }  \]
+\[ (\overline{Y}_m - \overline{Y}_w) \pm 1.96SE(\overline{Y}_m - \overline{Y}_w) \]
+
+* TODO Differences-of-Means Estimation of Causal Effects Using Experimental Data
+
+* TODO Using the t-Statistic When the Sample Size Is Small
+
+* Scatterplots, the Sample Covariance, and the Sample Correlation
+** Scatterplots
+
+#+CAPTION:
+#+ATTR_LATEX: :width 0.8\textwidth
+[[file:img/fig-4-2.png]]
+
+** Sample covariance and correlation
+*** Sample covariance
+The *sample covariance*, denoted as $s_{XY}$, is
+\[ s_{XY} = \frac{1}{n-1}\sum^n_{i=1}(X_i - \overline{X})(Y_i -
+\overline{Y}) \]
+
+*** Sample correlation
+The *sample correlation coefficient*, denoted as $r_{XY}$, is
+\[ r_{XY} = \frac{s_{XY}}{s_X s_Y} \]
+and we have $|r_{XY}| \leq 1$. 
+*** Consistency of the sample covariance and correlation
+If $(X_i,\, Y_i)$ are i.i.d. and $X_i$ and $Y_i$ have finite fourth
+moments, then
+\[ s_{XY} \rarrowd{p} \sigma_{XY} \text{ and } r_{XY} \rarrowd{p}
+\rho_{XY} \]
+
