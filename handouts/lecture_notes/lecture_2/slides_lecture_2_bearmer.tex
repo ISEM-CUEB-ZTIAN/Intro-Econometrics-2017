@@ -1,4 +1,4 @@
-% Created 2017-02-24 Fri 17:11
+% Created 2017-02-26 Sun 21:19
 % Intended LaTeX compiler: pdflatex
 \documentclass[presentation]{beamer}
 \usepackage[utf8]{inputenc}
@@ -37,12 +37,12 @@
 
 
 \section{Random Variables and Probability Distributions}
-\label{sec:org3de758e}
+\label{sec:orga3c2043}
 
 \subsection*{Defining probabilities and random variables}
-\label{sec:orgd54e66e}
+\label{sec:org5889efb}
 
-\begin{frame}[label={sec:orgb6537a6}]{Experiments and outcomes}
+\begin{frame}[label={sec:org234d1fb}]{Experiments and outcomes}
 \begin{itemize}
 \item An \alert{experiment} is the processes that generate random results
 \item The \alert{outcomes} of an experiment are its
@@ -52,7 +52,7 @@ but not both.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org74eafbd}]{Sample space and events}
+\begin{frame}[label={sec:orgf02b174}]{Sample space and events}
 \begin{itemize}
 \item A \alert{sample space} consists of all the outcomes from an experiment,
 denoted with the set \(S\).
@@ -68,9 +68,9 @@ space.
 \end{frame}
 
 \subsection*{Probability}
-\label{sec:org12f3351}
+\label{sec:org34ee039}
 
-\begin{frame}[label={sec:org5c2253d}]{An intuitive definition of probability}
+\begin{frame}[label={sec:org027dfe3}]{An intuitive definition of probability}
 \begin{itemize}
 \item The \alert{probability} of an event is the proportion of the time that the
 event will occur in the long run.
@@ -81,7 +81,7 @@ probability of getting a head in a toss is \(m/n\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org787839a}]{An axiomatic definition of probability}
+\begin{frame}[label={sec:org9475b95}]{An axiomatic definition of probability}
 \begin{itemize}
 \item A probability of an event \(A\) in the sample space \(S\), denoted as
 \(\mathrm{Pr}(A)\), is a function that assign \(A\) a real number in \([0,
@@ -97,9 +97,9 @@ element in common, \(\mathrm{Pr}(A \cup B) = \mathrm{Pr}(A) +
 \end{frame}
 
 \subsection*{Random variables}
-\label{sec:org8acfc04}
+\label{sec:org295e134}
 
-\begin{frame}[label={sec:org194cd63}]{The definition of random variables}
+\begin{frame}[label={sec:org24ba4d3}]{The definition of random variables}
 \begin{itemize}
 \item A \alert{random variable} is a numerical summary associated with the
 outcomes of an experiment.
@@ -110,16 +110,16 @@ real line.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org8d56a70}]{An illustration of random variables}
+\begin{frame}[label={sec:org633ca1c}]{An illustration of random variables}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{figure/random_variable_demo1.png}
-\caption{\label{fig:org97c2047}
+\caption{\label{fig:org94a069d}
 An illustration of random variable}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org6a95a1f}]{Discrete and continuous random variables}
+\begin{frame}[label={sec:org122c8a1}]{Discrete and continuous random variables}
 Random variables can take different types of values
 
 \begin{itemize}
@@ -131,9 +131,9 @@ values, like any value in the interval \((a, b)\).
 \end{frame}
 
 \subsection*{Probability distributions}
-\label{sec:orgff12c8a}
+\label{sec:orgf6f83de}
 
-\begin{frame}[label={sec:org8049660}]{The probability distribution for a discrete random variable}
+\begin{frame}[label={sec:orgf394a04}]{The probability distribution for a discrete random variable}
 \begin{itemize}
 \item The probability distribution of a discrete random variable is the list
 of all possible values of the variable and the probability that each
@@ -154,9 +154,9 @@ p(x) = \mathrm{Pr}(X = x)
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org22c9920}]{An example of the probability distribution of a discrete random variable}
+\begin{frame}[label={sec:org6062aee}]{An example of the probability distribution of a discrete random variable}
 \begin{table}[htbp]
-\caption{\label{tab:orga182a8e}
+\caption{\label{tab:orgfc02b6d}
 An illustration of the probability distribution of a discrete random variable}
 \centering
 \begin{tabular}{lrrrr}
@@ -170,9 +170,9 @@ An illustration of the probability distribution of a discrete random variable}
 \end{frame}
 
 \subsection*{The cumulative probability distribution}
-\label{sec:orge140c90}
+\label{sec:org076d5a2}
 
-\begin{frame}[label={sec:orgee86029}]{Definition of the c.d.f.}
+\begin{frame}[label={sec:org02ce530}]{Definition of the c.d.f.}
 \begin{itemize}
 \item The \alert{cumulative probability distribution} (or the cumulative
 distribution function, c.d.f.): 
@@ -181,7 +181,7 @@ Let \(F(x)\) be the c.d.f of \(X\). Then \(F(x) = \mathrm{Pr}(X \leq x)\).
 \end{itemize}
 
 \begin{table}[htbp]
-\caption{\label{tab:org27dc27b}
+\caption{\label{tab:org5333de8}
 An illustration of the c.d.f. of a discrete random variable}
 \centering
 \begin{tabular}{lrrrl}
@@ -195,16 +195,16 @@ C.d.f. & 0.25 & 0.75 & 1 & --\\
 \end{table}
 \end{frame}
 
-\begin{frame}[label={sec:org3bcb367}]{An illustration of the c.d.f. of a discrete random variable}
+\begin{frame}[label={sec:orgaf5f45c}]{An illustration of the c.d.f. of a discrete random variable}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.53\textwidth,height=0.45\textheight]{figure/cdf_discrete_example.png}
-\caption{\label{fig:orgafc60df}
+\caption{\label{fig:org58232d0}
 The c.d.f. of a discrete random variable}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org99a4fd2}]{Bernouli distribution}
+\begin{frame}[label={sec:org10fe43b}]{Bernouli distribution}
 The Bernoulli distribution
 \begin{equation*}
   G =
@@ -216,9 +216,9 @@ The Bernoulli distribution
 \end{frame}
 
 \subsection*{The probability distribution of a continuous random variable}
-\label{sec:orgfd26f10}
+\label{sec:orgd5c5c69}
 
-\begin{frame}[label={sec:org6712988}]{Definition of the c.d.f. and the p.d.f.}
+\begin{frame}[label={sec:org4506ddd}]{Definition of the c.d.f. and the p.d.f.}
 \begin{itemize}
 \item The cumulative distribution function of a continous random variable
 is defined as it is for a discrete random variable. 
@@ -230,7 +230,7 @@ that satisfies
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org3ceac06}]{Properties of the c.d.f.}
+\begin{frame}[label={sec:org358dc50}]{Properties of the c.d.f.}
 \begin{itemize}
 \item For both discrete and continuous random variable, \(F(X)\) must satisfy
 the following properties:
@@ -248,23 +248,23 @@ probabilities, such as,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgf78e7f1}]{The c.d.f. and p.d.f. of a normal distribution}
+\begin{frame}[label={sec:org0007337}]{The c.d.f. and p.d.f. of a normal distribution}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth,height=0.7\textheight]{figure/norm1.png}
-\caption{\label{fig:org7487383}
+\caption{\label{fig:org2248c41}
 The p.d.f. and c.d.f. of a continuous random variable (the normal distribution)}
 \end{figure}
 \end{frame}
 
 
 \section{Expectation, Variance, and Other Moments}
-\label{sec:org1517329}
+\label{sec:org35428c8}
 
 \subsection*{The expected value of a random variable}
-\label{sec:org2439e0d}
+\label{sec:orgdce8c78}
 
-\begin{frame}[label={sec:org114b22d}]{The expected value}
+\begin{frame}[label={sec:org2982a16}]{The expected value}
 \begin{itemize}
 \item The \alert{expected value} of a random variable, X, denoted as \(\mathrm{E}(X)\), is
 the long-run average of the random variable over many repeated
@@ -275,7 +275,7 @@ trials or occurrences, which is also called the \alert{expectation} or the
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orge76765d}]{Mathematical definition}
+\begin{frame}[label={sec:org95a5f11}]{Mathematical definition}
 \begin{itemize}
 \item For a discrete random variable
 \[ \mathrm{E}(X) = \sum_{i=1}^n x_i \mathrm{Pr}(X = x_i) \]
@@ -289,9 +289,9 @@ trials or occurrences, which is also called the \alert{expectation} or the
 \end{frame}
 
 \subsection*{The variance and standard deviation}
-\label{sec:org546ab7d}
+\label{sec:org8fa46dd}
 
-\begin{frame}[label={sec:org0382b9d}]{Definition of variance and standard deviation}
+\begin{frame}[label={sec:org2ab911f}]{Definition of variance and standard deviation}
 \begin{itemize}
 \item The \alert{variance} of a random variable \(X\) measures its average
 deviation from its own expected value.
@@ -311,7 +311,7 @@ deviation from its own expected value.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org5efa022}]{Computing variance}
+\begin{frame}[label={sec:org83374d8}]{Computing variance}
 \begin{itemize}
 \item A convenient formula for calculating the variance is
 \[ \mathrm{Var}(X) = \mathrm{E}(X - \mu_X)^{2} = \mathrm{E}(X^{2}) - \mu_X^{2} \]
@@ -329,9 +329,9 @@ deviation from its own expected value.
 \end{frame}
 
 \subsection*{Moments of a random variable, skewness and kurtosis}
-\label{sec:org3cce15d}
+\label{sec:orgd5b5938}
 
-\begin{frame}[label={sec:org0db4b65}]{Definition of the moments of a distribution}
+\begin{frame}[label={sec:org128ce64}]{Definition of the moments of a distribution}
 \begin{description}
 \item[{k\(^{\text{th}}\) moment}] The k\(^{\text{th}}\) \alert{moment} of the distribution of \(X\) is
 \(\mathrm{E}(X^{k})\). So, the expectation is the "first"
@@ -348,7 +348,7 @@ exist.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org5df83c9}]{Skewness}
+\begin{frame}[label={sec:org1f6ed89}]{Skewness}
 \begin{itemize}
 \item The skewness of a distribution provides a mathematical way to describe
 how much a distribution deviates from symmetry.
@@ -362,7 +362,7 @@ the skewness measure unit free.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org4950435}]{Kurtosis}
+\begin{frame}[label={sec:orge7253ec}]{Kurtosis}
 \begin{itemize}
 \item The kurtosis of the distribution of a random variable \(X\) measures how
 much of the variance of \(X\) arises from extreme values, which makes
@@ -377,7 +377,7 @@ has its kurtosis exceeding 3 is called heavy-tailed.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgf84370c}]{An illustration of skewness and kurtosis}
+\begin{frame}[label={sec:org189391b}]{An illustration of skewness and kurtosis}
 \begin{center}
 \includegraphics[width=0.5\textwidth,height=0.5\textheight]{figure/fig-2-3.png}
 \end{center}
@@ -391,9 +391,9 @@ heavy-tailed.
 
 
 \section{Two Random Variables}
-\label{sec:org6c34a7b}
+\label{sec:org55b889f}
 
-\begin{frame}[label={sec:orgbc5c373}]{The joint and marginal distributions}
+\begin{frame}[label={sec:orgb2bfd64}]{The joint and marginal distributions}
 \begin{block}{The joint probability function of two discrete random variables}
 \begin{itemize}
 \item The joint distribution of two random variables \(X\) and \(Y\) is
@@ -420,7 +420,7 @@ the joint probability density function, \(f(x, y)\), such that
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgbe40bd0}]{The marginal probability distribution}
+\begin{frame}[label={sec:org6ed8949}]{The marginal probability distribution}
 \begin{itemize}
 \item The marginal probability distribution of a random variable \(X\) is
 simply the probability distribution of its own.
@@ -434,9 +434,9 @@ distribution of \(X\) as
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgbfc0ad7}]{An example of joint and marginal distributions}
+\begin{frame}[label={sec:org6d9ef1b}]{An example of joint and marginal distributions}
 \begin{table}[htbp]
-\caption{\label{tab:orgefd4a9e}
+\caption{\label{tab:org1e8fc69}
 Joint and marginal distributions of raining and commuting time}
 \centering
 \begin{tabular}{lrrr}
@@ -450,7 +450,7 @@ Total & 0.30 & 0.70 & 1\\
 \end{table}
 \end{frame}
 
-\begin{frame}[label={sec:orgee0184e}]{Conditional probability}
+\begin{frame}[label={sec:orgcb3e42d}]{Conditional probability}
 \begin{itemize}
 \item For any two events \(A\) and \(B\), the conditional probability of \(A\) given
 \(B\) is defined as
@@ -464,7 +464,7 @@ Total & 0.30 & 0.70 & 1\\
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org59af49c}]{The conditional probability distribution}
+\begin{frame}[label={sec:org9b77bcf}]{The conditional probability distribution}
 \begin{itemize}
 \item The conditional distribution of a random variable \(Y\) given another
 random variable \(X\) is \(\mathrm{Pr}(Y | X=x)\).
@@ -478,7 +478,7 @@ density function as
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org913d1d6}]{The conditional expectation}
+\begin{frame}[label={sec:org69cd067}]{The conditional expectation}
 \begin{itemize}
 \item The \alert{conditional expectation} of \(Y\) given \(X\) is the expected value
 of the conditional distribution of \(Y\) given \(X\).
@@ -498,7 +498,7 @@ of the conditional distribution of \(Y\) given \(X\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgb004eba}]{The law of iterated expectation}
+\begin{frame}[label={sec:orge1d9344}]{The law of iterated expectation}
 \begin{itemize}
 \item \alert{The law of iterated expectation}:
 
@@ -513,7 +513,7 @@ probability distribution of \(X\). That is,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org6be0246}]{Conditional variance}
+\begin{frame}[label={sec:orgd8d4f55}]{Conditional variance}
 \begin{itemize}
 \item With the conditional mean of \(Y\) given \(X\), we can compute the
 conditional variance as
@@ -526,7 +526,7 @@ conditional variance as
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgfbaf15e}]{Independent random variables}
+\begin{frame}[label={sec:org6271f01}]{Independent random variables}
 \begin{itemize}
 \item Two random variables \(X\) and \(Y\) are \alert{independently distributed}, or
 \alert{independent}, if knowing the value of one of the variable provides no
@@ -539,7 +539,7 @@ information about the other.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1302a4f}]{Independence between two continuous random variable}
+\begin{frame}[label={sec:org76c591f}]{Independence between two continuous random variable}
 \begin{itemize}
 \item For two continuous random variables, \(X\) and \(Y\), they are
 \alert{independent} if
@@ -551,9 +551,9 @@ information about the other.
 \end{frame}
 
 \subsection*{Covariance and Correlation}
-\label{sec:org219092d}
+\label{sec:orgb28089b}
 
-\begin{frame}[label={sec:org3e9b9ad}]{Covariance}
+\begin{frame}[label={sec:org818937d}]{Covariance}
 \begin{itemize}
 \item The covariance of two discrete random variables \(X\) and \(Y\) is
 \begin{align*}
@@ -570,7 +570,7 @@ information about the other.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgd99a11c}]{Correlation coefficient}
+\begin{frame}[label={sec:orgbb5085f}]{Correlation coefficient}
 \begin{itemize}
 \item The \alert{correlation coefficient} of \(X\) and \(Y\) is
 
@@ -588,7 +588,7 @@ and \(Y\) are uncorrelated.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org9157b8f}]{Independence and uncorrelation}
+\begin{frame}[label={sec:orga45cb05}]{Independence and uncorrelation}
 \begin{itemize}
 \item If \(X\) and \(Y\) are independent, then
 \begin{align*}
@@ -606,7 +606,7 @@ dependent.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org248d613}]{Conditional mean and correlation}
+\begin{frame}[label={sec:org355074f}]{Conditional mean and correlation}
 \begin{itemize}
 \item If \(X\) and \(Y\) are independent, then we must have 
 \(\mathrm{E}(Y \mid X) = \mathrm{E}(Y) = \mu_Y\)
@@ -624,7 +624,7 @@ It follows that \(\mathrm{Cov}(X,Y) = \mathrm{E}(XY) - \mathrm{E}(X)
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgfb0908a}]{Some useful operations}
+\begin{frame}[label={sec:orga80e77f}]{Some useful operations}
 The following properties
 of \(\mathrm{E}(\cdot)\), \(\mathrm{Var}(\cdot)\) and
 \(\mathrm{Cov}(\cdot)\) are useful in calculation,
@@ -640,9 +640,9 @@ of \(\mathrm{E}(\cdot)\), \(\mathrm{Var}(\cdot)\) and
 
 
 \section{Four Specific Distributions}
-\label{sec:org16a8661}
+\label{sec:org8e50b18}
 
-\begin{frame}[label={sec:org5dac612}]{The normal distribution}
+\begin{frame}[label={sec:org784392f}]{The normal distribution}
 \begin{block}{The normal distribution}
 \begin{itemize}
 \item The p.d.f. of a normally distributed random variable \(X\) is
@@ -666,7 +666,7 @@ standard normal distribution is
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org332b786}]{Symmetric and skinny tails}
+\begin{frame}[label={sec:org649f43a}]{Symmetric and skinny tails}
 \begin{itemize}
 \item The normal distribution is symmetric around its mean, \(\mu\), with the
 skewness equal 0
@@ -676,16 +676,16 @@ equal 3.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org7c9c46d}]{The p.d.f. of the normal distribution}
+\begin{frame}[label={sec:orgae24f4e}]{The p.d.f. of the normal distribution}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{figure/Normal-distribution-curve.png}
-\caption{\label{fig:orgf54fb72}
+\caption{\label{fig:org1b18b7c}
 The normal probability density}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:orgfca0522}]{Transforming a normally distributed random variable to the standard normal distribution}
+\begin{frame}[label={sec:orga3169ba}]{Transforming a normally distributed random variable to the standard normal distribution}
 \begin{itemize}
 \item Let \(X\) be a random variable with a normal distribution, i.e., \(X \sim
   N(\mu, \sigma^2)\).
@@ -697,7 +697,7 @@ compute \(\Phi(3/2)\)
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org45cffa5}]{Transforming a normally distributed random variable to the standard normal distribution}
+\begin{frame}[label={sec:orgebb0a31}]{Transforming a normally distributed random variable to the standard normal distribution}
 \begin{itemize}
 \item Generally, for any two number \(c_1 < c_2\) and let \(d_1 = (c_1 - \mu)/\sigma\) and
 \(d_2 = (c_2 - \mu)/\sigma\), we have
@@ -709,7 +709,7 @@ compute \(\Phi(3/2)\)
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgcbfe664}]{The multivariate normal distribution}
+\begin{frame}[label={sec:orge2fef1c}]{The multivariate normal distribution}
 \begin{itemize}
 \item The multivariate normal distribution is the joint
 distribution of a set of random variables.
@@ -720,7 +720,7 @@ distribution handy in analysis.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org21549d4}]{Important properties of the multivariate normal distribution}
+\begin{frame}[label={sec:orga5ed9ae}]{Important properties of the multivariate normal distribution}
 \begin{itemize}
 \item If n random variables, \(x_1, \ldots, x_n\), have a multivariate
 normal distribution, then any linear combination of these variables
@@ -740,7 +740,7 @@ independent.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgd8d4f49}]{The chi-squared distribution}
+\begin{frame}[label={sec:org86956b8}]{The chi-squared distribution}
 \begin{itemize}
 \item Let \(Z_1, \ldots, Z_n\) be n indepenent standard normal distribution,
 i.e. \(Z_i \sim N(0, 1)\) for all \(i = 1, \ldots, n\). Then, the random
@@ -754,16 +754,16 @@ has a chi-squared distribution with \(n\) degrees of freedom, denoted as
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgbf8ad89}]{The p.d.f. of chi-squared distributions}
+\begin{frame}[label={sec:orgfc945a6}]{The p.d.f. of chi-squared distributions}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{figure/chi_squared_pdf.png}
-\caption{\label{fig:orga8aa66d}
+\caption{\label{fig:orgfc4668b}
 The probability density function of chi-squared distributions}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org041a407}]{The student t distribution}
+\begin{frame}[label={sec:org8b81a3c}]{The student t distribution}
 \begin{itemize}
 \item Let \(Z \sim N(0, 1)\), \(W \sim \chi^2(m)\), and \(Z\) and \(W\) be
 independently distributed. Then, the random variable
@@ -775,16 +775,16 @@ has a student t distribution with \(m\) degrees of freedom, denoted as
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1f76ceb}]{The p.d.f. of student t distributions}
+\begin{frame}[label={sec:org4b6b5c1}]{The p.d.f. of student t distributions}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{figure/students_t_pdf.png}
-\caption{\label{fig:org55de15a}
+\caption{\label{fig:orgb603442}
 The probability density function of student t distributions}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org49406f2}]{The F distribution}
+\begin{frame}[label={sec:org42bbb56}]{The F distribution}
 \begin{itemize}
 \item Let \(W_1 \sim \chi^2(n_1)\), \(W_2 \sim \chi^2(n_2)\), and \(W_1\) and
 \(W_2\) are independent. Then, the random variable
@@ -799,23 +799,23 @@ same as the \(\chi^2(n_1)\) distribution divided by \(n_1\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org07992dd}]{The p.d.f. of F distributions}
+\begin{frame}[label={sec:orgca10372}]{The p.d.f. of F distributions}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{figure/fisher_f_pdf.png}
-\caption{\label{fig:org3fd0aaf}
+\caption{\label{fig:org4c846db}
 The probability density function of F distributions}
 \end{figure}
 \end{frame}
 
 
 \section{Random Sampling and the Distribution of the Sample Average}
-\label{sec:org83b938b}
+\label{sec:orgc251fb7}
 
 \subsection*{Random sampling}
-\label{sec:org154cf00}
+\label{sec:orgc7e37c9}
 
-\begin{frame}[label={sec:org5d27921}]{Simple random sampling}
+\begin{frame}[label={sec:orgb2acc40}]{Simple random sampling}
 \begin{itemize}
 \item A \alert{population} is a set of similar items or events which
 is of interest for some question or experiment.
@@ -830,7 +830,7 @@ sample. Since they are randomly drawn from a population, \(Y_1, \ldots,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgca0919d}]{i.i.d draws}
+\begin{frame}[label={sec:org00ac4f9}]{i.i.d draws}
 \begin{itemize}
 \item Since \(Y_1, Y_2, \ldots, Y_n\) are drawn from the same population,
 the marginal distribution of \(Y_i\) is the same for each \(i=1,
@@ -852,9 +852,9 @@ is \(\sigma^2_Y\).
 
 
 \subsection*{The sampling distribution of the sample average}
-\label{sec:orgddf5a74}
+\label{sec:org6a61c06}
 
-\begin{frame}[label={sec:orgef87f63}]{The sample average}
+\begin{frame}[label={sec:org2035027}]{The sample average}
 \begin{itemize}
 \item The \alert{sample average} or \alert{sample mean}, \(\overline{Y}\), of the \(n\)
 observations \(Y_1, Y_2, \ldots, Y_n\) is
@@ -866,7 +866,7 @@ random variable that should have its own distribution, called the
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org6bf8c0b}]{The mean and variance of \(\overline{Y}\)}
+\begin{frame}[label={sec:org9027a9b}]{The mean and variance of \(\overline{Y}\)}
 \begin{itemize}
 \item Suppose that \(Y_i \sim IID(\mu_Y, \sigma^2_{Y})\) for all \(i = 1,
   \ldots, n\). Then
@@ -885,7 +885,7 @@ and
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org686e981}]{Sampling distribution of \(\overline{Y}\) when \(Y\) is normally distributed}
+\begin{frame}[label={sec:org742b1a7}]{Sampling distribution of \(\overline{Y}\) when \(Y\) is normally distributed}
 \begin{itemize}
 \item When \(Y_1, \ldots, Y_n\) are i.i.d. draws from \(N(\mu_Y,
   \sigma^2_Y)\), from the properties of the multivariate normal
@@ -896,9 +896,9 @@ distribution, \(\overline{Y}\) is normally distributed. That is
 
 
 \section{Large Sample Approximations to Sampling Distributions}
-\label{sec:org65b777a}
+\label{sec:org5d3a6a8}
 
-\begin{frame}[label={sec:org09a73de}]{The exact distribution and the asymptotic distribution}
+\begin{frame}[label={sec:orgad7721d}]{The exact distribution and the asymptotic distribution}
 \begin{itemize}
 \item The sampling distribution that exactly describes the distribution of
 \(\overline{Y}\) for any \(n\) is called the \alert{exact distribution} or
@@ -913,9 +913,9 @@ distribution, \(\overline{Y}\) is normally distributed. That is
 \end{frame}
 
 \subsection*{The law of large numbers}
-\label{sec:orge115b2c}
+\label{sec:orgc3ef94a}
 
-\begin{frame}[label={sec:org0fb7afd}]{Convergence in probability}
+\begin{frame}[label={sec:org8995dc5}]{Convergence in probability}
 \begin{itemize}
 \item Let \(S_1, \ldots, S_n\) be a sequence of random variables,
 denoted as \(\{S_n\}\). \(\{S_n\}\) is said to converge in probability to a
@@ -928,7 +928,7 @@ as \(n \rightarrow \infty\) for every \(\delta > 0\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgbc0b4b7}]{The law of large numbers}
+\begin{frame}[label={sec:org8a02e0a}]{The law of large numbers}
 \begin{itemize}
 \item The law of large numbers (LLN) states that if \(Y_1, \ldots, Y_n\) are i.i.d. with
 \(\mathrm{E}(Y_i)=\mu_Y\) and \(\mathrm{Var}(Y_i) < \infty\), then
@@ -940,19 +940,19 @@ there is no extremely large outliers in the random samples.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org7a6d49f}]{The LLN illustrated}
+\begin{frame}[label={sec:org53b3952}]{The LLN illustrated}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{figure/fig-2-8.png}
-\caption{\label{fig:org590c121}
+\caption{\label{fig:orgb170182}
 An illustration of the law of large numbers}
 \end{figure}
 \end{frame}
 
 \subsection*{The central limit theorem}
-\label{sec:orgfa28186}
+\label{sec:orga20201e}
 
-\begin{frame}[label={sec:org52dca56}]{Convergence in distribution}
+\begin{frame}[label={sec:orgb7dbb77}]{Convergence in distribution}
 \begin{itemize}
 \item Let \(F_1, F_2, \ldots, F_n\) be a sequence of cumulative distribution
 functions corresponding to a sequence of random variables, \(S_1, S_2,
@@ -969,7 +969,7 @@ it as
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org9e41def}]{The central limit theorem (Lindeberg-Levy CLT)}
+\begin{frame}[label={sec:org5c8b1a6}]{The central limit theorem (Lindeberg-Levy CLT)}
 \begin{itemize}
 \item The CLT states that if \(Y_1, Y_2, \ldots, Y_n\) are i.i.d. random samples from a
 probability distribution with finite mean \(\mu_Y\) and finite variance
@@ -987,16 +987,16 @@ probability distribution with finite mean \(\mu_Y\) and finite variance
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1beed3b}]{The CLT illustrated}
+\begin{frame}[label={sec:org585f946}]{The CLT illustrated}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{figure/fig-2-9.png}
-\caption{\label{fig:org01cf757}
+\caption{\label{fig:orgc57e061}
 An illustration of the central limit theorem}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:orga0a2f95}]{Illustrations with Wolfram CDF player}
+\begin{frame}[label={sec:org3d1aa7b}]{Illustrations with Wolfram CDF player}
 \begin{itemize}
 \item To view the following demonstrations,
 first you need to download them by saving into your disk, then open

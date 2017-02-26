@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-02-26 Sun 21:10 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lecture 3: Review of Statistics</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Zheng Tian" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Lecture 3: Review of Statistics</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc130ab2">1. Introduction</a></li>
+<li><a href="#org97261a3">2. Estimation of the Population Mean</a>
+<ul>
+<li><a href="#orge692634">2.1. Estimators</a></li>
+<li><a href="#org6c39481">2.2. Unbiasedness</a></li>
+<li><a href="#orgfaf96d6">2.3. Consistency</a></li>
+<li><a href="#orgcd6933c">2.4. Variance and efficiency</a></li>
+<li><a href="#orgbb61d37">2.5. \(\overline{Y}\) is the best linear unbiased estimator (BLUE)</a></li>
+<li><a href="#org1b484bf">2.6. \(\overline{Y}\) is the least squares estimator of \(\mu_Y\)</a></li>
+</ul>
+</li>
+<li><a href="#org7109f66">3. Hypothesis Tests Concerning the Population Mean</a>
+<ul>
+<li><a href="#org47f4304">3.1. Null and alternative hypotheses</a></li>
+<li><a href="#org6be1393">3.2. Test statistics</a></li>
+<li><a href="#org1539c5c">3.3. Hypothesis testing with a pre-specified significance level</a></li>
+<li><a href="#org7aa85d0">3.4. The p-value</a></li>
+<li><a href="#org43add45">3.5. One-sided alternatives</a></li>
+</ul>
+</li>
+<li><a href="#org6ade6c5">4. Confidence Intervals for the Population Mean</a>
+<ul>
+<li><a href="#org93241dc">4.1. Definitions</a></li>
+<li><a href="#org31d7265">4.2. Constructing a confidence interval based on the t statistic</a></li>
+</ul>
+</li>
+<li><a href="#orgc5aaa16">5. Comparing Means from Different Populations</a>
+<ul>
+<li><a href="#org637770a">5.1. Hypothesis tests for the difference between two means</a></li>
+<li><a href="#org22d1f71">5.2. Confidence intervals for the difference between two means</a></li>
+<li><a href="#org1b07ab8">5.3. Differences-of-Means Estimation of Causal Effects Using Experimental Data</a></li>
+</ul>
+</li>
+<li><a href="#org91226f5">6. Scatterplots, the Sample Covariance, and the Sample Correlation</a>
+<ul>
+<li><a href="#orge1da936">6.1. Scatterplots</a></li>
+<li><a href="#org1775f9c">6.2. Sample covariance and correlation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc130ab2" class="outline-2">
+<h2 id="orgc130ab2"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Statistics is the science of using data to learn about the world
+around us. The key insight of statistics is that one can learn about a
+population distribution by selecting a random sample from that
+population. Three types of statistical methods are used throughout
+econometrics: estimation, hypothesis testing, and confidence
+interval. 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org97261a3" class="outline-2">
+<h2 id="org97261a3"><span class="section-number-2">2</span> Estimation of the Population Mean</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Suppose we draw \(n\) random samples, \(Y_1, \ldots, Y_n\), that are
+i.i.d. with the population mean \(\mu_Y\) and the variance \(\sigma^2_Y\),
+i.e., \(Y_i \sim IID(\mu_Y, \sigma^2_Y)\) for \(i=1, \ldots, n\). The goal
+is to estimate \(\mu_Y\) given these \(n\) samples. A natural way is to
+compute the sample average, \(\overline{Y}\). Let see the properties of
+\(\overline{Y}\) as an estimator of \(\mu_Y\).
+</p>
+</div>
+
+<div id="outline-container-orge692634" class="outline-3">
+<h3 id="orge692634"><span class="section-number-3">2.1</span> Estimators</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+An <b>estimator</b> is a function of a sample of data to be drawn randomly
+from a population. An <b>estimate</b> is the numerical value of the
+estimator when it is actually computed using data from a specific
+sample. An estimator is a random variable because of randomness in
+selecting the sample, while an estimate is a nonrandom realization of
+the estimator. 
+</p>
+
+<p>
+Since \(\overline{Y} = (1/n)\sum_{i=1}^n Y_i\), it is an estimator of
+\(\mu_Y\). However, \(Y_1\), the first observation, can also be used as an
+estimator because it is indeed a function of sample data. As such, we
+can have many different estimators of \(\mu_Y\). How can we judge which
+estimator is better than another?
+</p>
+
+<p>
+We use three criteria to assess an estimator: unbiasedness,
+consistency, and efficiency. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6c39481" class="outline-3">
+<h3 id="org6c39481"><span class="section-number-3">2.2</span> Unbiasedness</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Let \(\hat{\mu}_Y\) be an estimator of \(\mu_Y\). The estimator
+\(\hat{\mu}_Y\) is said to be unbiased if \(\mathrm{E}(\hat{\mu}_Y) =
+\mu_Y\), where \(\mathrm{E}(\hat{\mu}_Y)\) is the expectation of the
+sampling distribution of \(\hat{\mu}_Y\).
+</p>
+
+<ul class="org-ul">
+<li>\(\overline{Y}\) is an unbiased estimator of \(\mu_Y\). In Lecture 2, we
+have already shown that \(\mathrm{E}(\overline{Y}) = \mu_Y\) when \(Y_i
+  \sim IID(\mu_Y, \sigma^2_Y)\) for \(i=1, \ldots, n\).</li>
+<li>\(Y_1\) is also an unbiased estimator because \(\mathrm{E}(Y_1) =
+  \mu_Y\) when \(Y_1\) is drawn from \(IID(\mu_Y, \sigma^2_Y)\).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfaf96d6" class="outline-3">
+<h3 id="orgfaf96d6"><span class="section-number-3">2.3</span> Consistency</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+\(\hat \mu_Y\) is a consistent estimator of \(\mu_Y\) if \(\hat{\mu}_Y\) is
+convergent in probability to \(\mu_Y\). That is, \(\hat{\mu}_Y\) is
+consistent if \(\hat{\mu}_Y \xrightarrow{\text{ p }} \mu_Y\) as \(n
+\rightarrow \infty\). 
+</p>
+
+<ul class="org-ul">
+<li>\(\overline{Y}\) is a consistent estimator of \(\mu_Y\). The law of large
+number ensures that \(\overline{Y} \xrightarrow{\text{ p }} \mu_Y\) is
+true when \(Y_i \sim IID(\mu_Y, \sigma^2_Y)\) for \(i=1, \ldots, n\), and \(\sigma^2_Y <
+  \infty\).</li>
+
+<li>However, we cannot assess the consistency for \(Y_1\) because it cannot
+be written as the form of an average.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcd6933c" class="outline-3">
+<h3 id="orgcd6933c"><span class="section-number-3">2.4</span> Variance and efficiency</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+When both \(\tilde{\mu}_Y\) and \(\hat{\mu}_Y\) are two unbiased
+estimators of \(\mu_Y\), we choose the estimator with the tightest
+sampling distribution, which means the smallest variance. Thus,
+\(\hat{\mu}_Y\) is said to be more efficient than \(\tilde{\mu}_Y\) if
+\(\mathrm{Var}(\hat{\mu}_Y) < \mathrm{Var}(\tilde{\mu}_Y)\).
+</p>
+
+<p>
+In words, \(\hat{\mu}_Y\) is more efficient than \(\tilde{\mu}_Y\)
+because \(\hat{\mu}_Y\) uses the information in the data more
+efficiently than does \(\tilde{\mu}_Y\). 
+</p>
+
+<p>
+In Lecture 2, we compute the variance of \(\overline{Y}\) to be
+\(\sigma^2_Y / n\) when \(Y_i \sim IID(\mu_Y, \sigma^2_Y)\). The variance
+of \(Y_1\) is \(\sigma^2_Y\). When \(n > 1\), \(\overline{Y}\) is more
+efficient than \(Y_1\). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbb61d37" class="outline-3">
+<h3 id="orgbb61d37"><span class="section-number-3">2.5</span> \(\overline{Y}\) is the best linear unbiased estimator (BLUE)</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+In fact, \(\overline{Y}\) happens to be the best linear unbiased
+estimator (BLUE). It means that among all linear unbiased estimator,
+\(\overline{Y}\) has the smallest variance. 
+</p>
+
+<p>
+A linear estimator of \(\mu_Y\) is a weighted average of \(Y_1, \ldots,
+Y_n\), written as
+\[ \tilde{\mu}_Y = \frac{1}{n} \sum_{i=1}^n \alpha_i Y_i \]
+where \(\alpha_1, \ldots, \alpha_n\) are nonrandom constants. 
+</p>
+
+<p>
+If \(\tilde{\mu}_Y\) is another unbiased estimator of \(\mu_Y\), then we
+always have \(\mathrm{Var}(\overline{Y}) \leq
+\mathrm{Var}(\tilde{\mu}_Y)\), and the equality holds only if
+\(\tilde{\mu}_Y = \overline{Y}\). It means that \(\overline{Y}\) is BLUE.
+</p>
+</div>
+
+<div id="outline-container-org148a419" class="outline-4">
+<h4 id="org148a419">The proof of \(\mathrm{Var(\overline{Y})} \leq \mathrm{Var}(\tilde{\mu}_Y)\)</h4>
+<div class="outline-text-4" id="text-org148a419">
+<p>
+That \(\tilde{\mu}_Y\) is an unbiased estimator of \(\mu_Y\) means that
+\[\mu_Y = \mathrm{E}(\tilde{\mu}_Y) = \mathrm{E}\left( \frac{1}{n} \sum_{i=1}^n \alpha_i
+Y_i \right) = \frac{1}{n} \mu_Y \sum_{i=1}^n \alpha_i \]
+which requires \(\frac{1}{n} \sum_{i=1}^n \alpha_i = 1\). 
+</p>
+
+<p>
+We know the variance of \(\mathrm{Var}(\overline{Y})\) is
+\(\sigma^2_Y / n\), and the variance of \(\tilde{\mu}_Y\) can be computed as
+</p>
+\begin{equation*}
+\mathrm{Var}(\tilde{\mu}_Y) = \frac{1}{n^2} \sum_{i=1}^n \alpha_i^2 \mathrm{Var}(Y_i) = \frac{\sigma^2_Y}{n^2} \sum_{i=1}^n \alpha_i^2 
+\end{equation*}
+<p>
+So, to prove \(\mathrm{Var}(\tilde{\mu}_Y) \geq
+\mathrm{Var}(\overline{Y})\), we only need to show
+\(\frac{1}{n}\sum_{i=1}^n \alpha_i^2 \geq 1\).  
+</p>
+
+<p>
+\[
+\frac{1}{n}\sum_{i=1}^n \alpha_i^2 = \frac{1}{n} \sum_{i=1}^n
+(\alpha_i^2 - 2\alpha_i + 1) + \frac{1}{n}\sum_{i=1}^n 2\alpha_i - 1 =
+\frac{1}{n} \sum_{i=1}^n (\alpha_i - 1)^2 + 1 \geq 1 \] 
+</p>
+
+<p>
+The second equality holds because \(\frac{1}{n} \sum_{i=1}^n \alpha_i =
+1\).  And \(\mathrm{Var}(\tilde{\mu}_Y) = \mathrm{Var}(\overline{Y})\)
+only if \(\alpha_i = 1\) for all \(i=1, \ldots, n\), which is equivalent
+to \(\tilde{\mu}_Y = \overline{Y}\).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1b484bf" class="outline-3">
+<h3 id="org1b484bf"><span class="section-number-3">2.6</span> \(\overline{Y}\) is the least squares estimator of \(\mu_Y\)</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Consider the following model
+  \[ Y_i = \alpha + u_i \text{ for } i = 1, 2, \ldots, n \]
+where \(\alpha\) is a nonrandom intercept to be estimated, \(u_i\) is
+the error term, which is a random variable with \(\mathrm{E}(u_i) = 0\). 
+</p>
+
+<p>
+Thus, we have \(E(Y_i) = \alpha = \mu_Y\). That means \(\alpha\) is the
+mean of \(Y_i\), and an estimator for \(\alpha\) is just an estimator for
+\(\mu_Y\). \(u_i\) can be seen as the error of predicting \(Y_i\) with
+\(\alpha\) for each \(i\), and we use \(\sum_{i=1}^n (Y_i - \alpha)^2\) to
+measure the total prediction errors. A natural choice of an estimator
+of \(\alpha\) is the one that minimizes this sum of squared errors. 
+</p>
+
+<p>
+The least squares estimator of \(\mu_Y\) (or \(\alpha\)) is obtained by
+solving the following problem
+  \[ \operatorname*{min}_a\: \sum_{i=1}^n (Y_i - a)^2 \]
+The solution of this minimization problem is just \(a = \overline{Y}\). 
+</p>
+</div>
+
+<div id="outline-container-org7c9d2d2" class="outline-4">
+<h4 id="org7c9d2d2">The proof for \(\overline{Y}\) is the least square estimator</h4>
+<div class="outline-text-4" id="text-org7c9d2d2">
+<p>
+The first order condition for the minimization problem is
+</p>
+\begin{equation*}
+  \frac{d}{da}\sum_{i=1}^n (Y_i - a)^2 = -2\sum_{i=1}^n(Y_i - a) = -2\sum_{i=1}^n Y_i+ 2n a = 0      
+\end{equation*}
+<p>
+Solving the equation for \(a\), we get \(a = 1/n\sum_{i=1}^n Y_i = \overline{Y}\).
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7109f66" class="outline-2">
+<h2 id="org7109f66"><span class="section-number-2">3</span> Hypothesis Tests Concerning the Population Mean</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org47f4304" class="outline-3">
+<h3 id="org47f4304"><span class="section-number-3">3.1</span> Null and alternative hypotheses</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+With the estimate of the population mean, we can test some hypotheses
+regarding the mean. Hypothesis testing is thus to make a provisional
+decision based on the evidence at hand on. We first set up a
+hypothesis to be tested, called the <b>null hypothesis</b>, and a second
+hypothesis called the <b>alternative hypothesis</b> that holds if the null
+does not. 
+</p>
+
+<p>
+In this lecture, we focus on the hypothesis of the population mean,
+\(\mathrm{E}(Y)\), taking on a specific value, \(\mu_{Y,0}\). So the null
+hypothesis, denoted as \(H_0\), is
+\[ H_0: E(Y) = \mu_{Y,0}  \]
+</p>
+
+<p>
+The alternative hypothesis, denoted as \(H_1\), can be either two-sided,
+i.e., \(H_1: E(Y) \neq \mu_{Y,0}\), or one-sided, i.e., \(H_1: E(Y) >
+\mu_{Y,0}\), depending on the question of interest. 
+</p>
+
+<p>
+One thing should be kept in mind is that we usually do not say "accept
+the null hypothesis" when the hypothesis test is in favor of the null,
+but say "fail to reject the null". That means, that given the sample
+data at hand, we do not have sufficient evidence to prove the null
+hypothesis is false, but it is likely that the null would be rejected
+given another set of samples.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6be1393" class="outline-3">
+<h3 id="org6be1393"><span class="section-number-3">3.2</span> Test statistics</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Upon setting up the hypotheses to be tested, we need test statistics to be
+used in the test. In the case of testing the population mean,
+\(\mathrm{E}(Y)\), we find two test statistics in two different
+situations: the z-statistic when \(\sigma_Y\) is known and the
+t-statistic when \(\sigma_Y\) is unknown
+</p>
+</div>
+
+<div id="outline-container-org13c0229" class="outline-4">
+<h4 id="org13c0229">The z-statistic when \(\sigma_Y\) is known</h4>
+<div class="outline-text-4" id="text-org13c0229">
+<p>
+We know that when \(Y_i \sim IID(\mu_Y, \sigma^2_Y)\) for \(i=1, \ldots,
+n\), \(E(\overline{Y}) = \mu_Y\) and
+\(\mathrm{Var}(\overline{Y}) = \sigma^2_{\overline{Y}} = \sigma^2_Y /
+n\). In the null hypothesis, we specify \(\mu_Y = \mu_{Y,0}\). So given
+that \(\sigma_Y\) is known, the
+z-statistic is computed as 
+\[ z = \frac{\overline{Y} -
+  \mu_{Y,0}}{\sigma_{\overline{Y}}} = \frac{\overline{Y} -
+  \mu_{Y,0}}{\sigma_Y/\sqrt{n}} \]
+As \(n \rightarrow \infty\), by the central limit theorem, we know \(z
+\xrightarrow{\text{ d }} N(0, 1)\). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcdba4d0" class="outline-4">
+<h4 id="orgcdba4d0">The t-statistic when \(\sigma_Y\) is unknown</h4>
+<div class="outline-text-4" id="text-orgcdba4d0">
+<p>
+Of course, \(\sigma_Y\) is the standard deviation of the population
+variance that is usually unknown. So we need to replace \(\sigma_Y\)
+with its estimator. 
+</p>
+</div>
+
+<ul class="org-ul"><li><a id="org503db0c"></a>The sample variance and standard deviation<br  /><div class="outline-text-5" id="text-org503db0c">
+<p>
+The <b>sample variance</b> \(s^2_Y\) is is an estimator of the population
+variance \(\sigma^2_Y\), which is computed as
+  \[ s^2_Y = \frac{1}{n-1}\sum^n_{i=1} (Y_i - \overline{Y})^2 \]
+The <b>sample standard deviation</b>, \(s_Y\), is the square root of \(s^2_Y\). 
+</p>
+
+<p>
+We can prove that the sample variance, \(s^2_Y\), is a consistent estimator of the
+population variance, that is, as \(n \rightarrow \infty\), \(s^2_Y
+\xrightarrow{\text{ p }} \sigma^2_Y\). (See the proof in
+Appendix 3.3.)
+</p>
+</div></li>
+
+<li><a id="org91ee6c7"></a>The standard error of \(\overline{Y}\)<br  /><div class="outline-text-5" id="text-org91ee6c7">
+<p>
+The standard error of \(\overline{Y}\), denoted as \(SE(\overline{Y})\) or
+\(\hat{\sigma}_{\overline{Y}}\), is an estimator of the standard
+deviation of \(\overline{Y}\),
+\(\sigma_{\overline{Y}}=\sigma_Y/\sqrt{n}\), with \(s_Y\) replacing
+\(\sigma_Y\). 
+\[ SE(\overline{Y}) = \hat{\sigma}_{\overline{Y}} =
+\frac{s_Y}{\sqrt{n}} \]
+</p>
+</div></li>
+
+<li><a id="org81b6139"></a>The t-statistic<br  /><div class="outline-text-5" id="text-org81b6139">
+<p>
+When \(\sigma_Y\) is unknown, by replacing \(\sigma_Y\) with \(s_Y\), we
+have the t statistic 
+  \[ t = \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})} =
+  \frac{\overline{Y} - \mu_{Y,0}}{s_Y/\sqrt{n}} \] 
+</p>
+
+<ul class="org-ul">
+<li>The asymptotic distribution of the t statistic is \(N(0, 1)\) because
+\(s_Y\) is a consistent estimator of \(\sigma_Y\).</li>
+
+<li>When \(Y_i\) for \(i=1, \ldots, n\) are i.i.d. from \(N(\mu_Y,
+  \sigma_Y^{2})\), we can show that the exact distribution for the
+Student t
+statistic is the Student t distribution with \((n-1)\) degrees of
+freedom. That is
+\[ t \sim t(n-1)  \]
+(See Section 3.6, Page 129, in the textbook for a discussion about the
+reason for t has a t distribution with \(n-1\) degree of freedom.)</li>
+</ul>
+</div></li></ul>
+</div>
+</div>
+
+<div id="outline-container-org1539c5c" class="outline-3">
+<h3 id="org1539c5c"><span class="section-number-3">3.3</span> Hypothesis testing with a pre-specified significance level</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+With the null and alternative hypotheses being the goal of the test
+and test statistics being the tools, we need a rule to make a
+judgment: When can we reject (or fail to reject) the null hypothesis
+if the test statistic takes on what values? To do so, we need to first
+define some concepts. 
+</p>
+</div>
+
+<div id="outline-container-orga4b14d0" class="outline-4">
+<h4 id="orga4b14d0">Type I and type II errors</h4>
+<div class="outline-text-4" id="text-orga4b14d0">
+<p>
+A statistical hypothesis test can make two types of mistakes:
+</p>
+<ul class="org-ul">
+<li><b>Type I error</b>. The null hypothesis is rejected when in fact it is
+true.</li>
+<li><b>Type II error</b>. The null hypothesis is not rejected when in fact it
+is false.</li>
+</ul>
+
+<p>
+The probability of making a type I error is easier to be identified
+and controlled than that of a type II error. So the commonly practiced
+rule of judging a hypothesis test concerns avoiding the type I error.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd8243c4" class="outline-4">
+<h4 id="orgd8243c4">The significance level and the critical value</h4>
+<div class="outline-text-4" id="text-orgd8243c4">
+<ul class="org-ul">
+<li>The <b>significance level</b> is the pre-specified probability of type I error.
+Usually, we set the significance level to be \(\alpha = 0.05, 0.10,
+  \text{ or } 0.01\).</li>
+
+<li>The <b>critical value</b>, denoted as \(c_{\alpha}\), is the value of the test statistic for which
+the test rejects the null hypothesis at the given significance
+level. The \(N(0, 1)\) critical value for a two-sided test with a 5%
+significance level is 1.96.</li>
+
+<li>The <b>rejection rule</b>.  For a two-sided test, we reject the null
+hypothesis when \(|z^{act}| > c_{\alpha}\).</li>
+
+<li><p>
+The rejection rule is easier to be understood with the rejection and
+acceptance region, as shown in Figure <a href="#org667e8f9">1</a>. The
+<b>rejection region</b> is the set of values of the test statistic for
+which the test rejects the null, and the <b>acceptance region</b> is the
+vice.
+</p>
+
+
+<div id="org667e8f9" class="figure">
+<p><img src="figure/fig9_1.png" alt="fig9_1.png" width="500" />
+</p>
+<p><span class="figure-number">Figure 1: </span>An illustration of a two-sided test</p>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orged13081" class="outline-4">
+<h4 id="orged13081">The power and the size of the test</h4>
+<div class="outline-text-4" id="text-orged13081">
+<ul class="org-ul">
+<li>The <b>size</b> of the test is the probability that the test actually
+incorrectly rejects the null hypothesis when it is true. That is,
+the size of the test is just the significance level.</li>
+
+<li>The <b>power</b> of the test is the probability that the test correctly
+rejects the null when the alternative is true. That is,
+\(\text{power} = 1 - \mathrm{Pr}(\text{type II error})\)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7aa85d0" class="outline-3">
+<h3 id="org7aa85d0"><span class="section-number-3">3.4</span> The p-value</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+The <b>p-value</b>, also called the <b>significance probability</b>, is the
+probability of drawing a statistic at least as adverse to the null
+hypothesis as the one you actually computed in your sample, assuming
+the null hypothesis is correct.
+</p>
+
+<p>
+The p-value provides more information than the significance level. In
+fact, the p-value is also named the marginal significance level, which
+the smallest significance level at which you can reject the null
+hypothesis. The rejection rule of rejecting the null is then the
+\(\text{p-value} < \alpha\).
+</p>
+
+<p>
+Mathematically, the p-value is computed as
+</p>
+
+\begin{equation*}
+p\text{-value} = 
+\begin{cases}
+\mathrm{Pr}_{H_0}\left(|z| > |z^{act}|\right)=2\Phi(-|z^{act}|) \text{ when } \sigma_Y \text{ is known} \\
+\mathrm{Pr}_{H_0}\left(|t| > |t^{act}|\right)=2\Phi(-|t^{act}|) \text{ when } \sigma_Y \text{ is unknown}
+\end{cases}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org43add45" class="outline-3">
+<h3 id="org43add45"><span class="section-number-3">3.5</span> One-sided alternatives</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+For a one-sided alternative hypothesis, \(H_1: \mathrm{E}(Y) >
+\mu_{Y,0}\), we can compute the p-value as
+\[ p\text{-value} = \mathrm{Pr}_{H_0}(t > t^{act}) = 1 - \Phi(t^{act}) \]
+</p>
+
+<p>
+The \(N(0, 1)\) critical value for a one-sided test with a 5%
+significance level is 1.64. The rejection region for this test is all
+values of the t-statistic exceeding 1.64. 
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6ade6c5" class="outline-2">
+<h2 id="org6ade6c5"><span class="section-number-2">4</span> Confidence Intervals for the Population Mean</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org93241dc" class="outline-3">
+<h3 id="org93241dc"><span class="section-number-3">4.1</span> Definitions</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>A <b>confidence set</b> is the set of values that contains the true
+population mean \(\mu_Y\) with a certain prespecified probability.</li>
+
+<li>A <b>confidence level</b> is the prespecified probability that \(\mu_Y\) is
+contained in the confidence set. \(\text{confidence level} = 1 -
+  \text{significance level}\).</li>
+
+<li>A <b>confidence interval</b> is the confidence set when it is an
+interval.</li>
+
+<li>In the case of a two-sided test for \(\mu_Y\), we say that a 95%
+confidence interval is an interval constructed so that it contains
+the true value of \(\mu_Y\) in 95% of all possible random samples.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org31d7265" class="outline-3">
+<h3 id="org31d7265"><span class="section-number-3">4.2</span> Constructing a confidence interval based on the t statistic</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Step 1: we compute the t statistic for the two-sided test
+\[ t = \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})}
+   \xrightarrow{\text{ d }} N(0, 1) \]</li>
+
+<li>Step 2: we know that we fail to reject the null at the 5% level if \(|t| <
+  1.96\).</li>
+
+<li><p>
+Step 3: we plug in the definition of \(t\) and solving for \(|t| \leq 1.96\), we
+get
+</p>
+\begin{align*}
+-1.96 & \leq \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})} \leq 1.96 \\
+\overline{Y} - 1.96 SE(\overline{Y}) & \leq \mu_{Y,0} \leq \overline{Y} + 1.96 SE(\overline{Y})
+\end{align*}
+
+<p>
+Thus, the 95% confidence interval two-sided confidence interval for
+\(\mu_Y\) is 
+\[ \{ \overline{Y} \pm 1.96 SE(\overline{Y}) \} \]
+</p></li>
+</ul>
+
+<p>
+Similarly, we can get 
+</p>
+<ul class="org-ul">
+<li>90% confidence interval for \(\mu_Y = \{ \overline{Y} \pm 1.64
+  SE(\overline{Y}) \}\)</li>
+<li>99% confidence interval for \(\mu_Y = \{ \overline{Y} \pm 2.58
+  SE(\overline{Y}) \}\)</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc5aaa16" class="outline-2">
+<h2 id="orgc5aaa16"><span class="section-number-2">5</span> Comparing Means from Different Populations</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-org637770a" class="outline-3">
+<h3 id="org637770a"><span class="section-number-3">5.1</span> Hypothesis tests for the difference between two means</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Now we extend hypothesis testing involving one population mean to that
+regarding comparison between two population means. Say, the difference
+in earnings between male college graduates and female college
+graduates. The basic ideas and procedure in this test is the same as
+for testing the single population mean. 
+</p>
+
+<p>
+Let \(Y_{m, i}\) for \(i=1, \ldots, n_m\) be \(n_m\) i.i.d. samples from the
+population of earnings of male college graduate, i.e., 
+\[ Y_{m,i} \sim IID(\mu_m, \sigma^2_m)  \text{ for } i=1,\ldots,n_m \]
+and \(Y_{w, j}\) for
+\(j=1, \ldots, n_w\) be \(n_w\) i.i.d. samples from the population of
+earnings of female college graduate, i.e.,
+\[ Y_{w,j} \sim IID(\mu_w, \sigma^2_w)  \text{ for } j=1,\ldots,n_w \]
+Also, we assume that \(Y_{m,i}\) and \(Y_{w,j}\) are independent. 
+</p>
+
+<p>
+The hypothesis to be tested is whether the mean earnings for the male and
+female graduates differ by a certain amount, that is, 
+\[ H_0: \mu_m - \mu_w = d_0,\; \text{ vs. }\: H_1: \mu_m - \mu_w \neq d_0 \]
+</p>
+
+<p>
+As in the test for the single population mean, we can take the
+following steps to test the difference in two population means:
+</p>
+<ol class="org-ol">
+<li><p>
+Calculate the sample average earnings: \(\overline{Y}_m\) for the
+male and \(\overline{Y}_w\) for the female. \(\overline{Y}_m\) and
+\(\overline{Y}_w\) are the unbiased estimators for \(\mu_m\) and
+\(\mu_w\), respectively.
+</p>
+
+<p>
+As \(n_m\) and \(n_w\) get large, we know \(\overline{Y}_m
+   \xrightarrow{\text{ d }} N(\mu_Y, \sigma^2_m/n_m)\), and
+\(\overline{Y}_w \xrightarrow{d} N(\mu_w, \sigma^2_w / n_w)\). 
+</p>
+
+<p>
+Given that \(\overline{Y}_m - \overline{Y}_w\) is a linear function
+of \(\overline{Y}_m\) and \(\overline{Y}_w\), and \(Y_{m,i}\) and
+\(Y_{w,j}\) are independent, we know that 
+\[(\overline{Y}_m - \overline{Y}_w) \xrightarrow{d} N(\mu_m -
+   \mu_w,\; \frac{\sigma^2_m}{n_m} + \frac{\sigma^2_w}{n_w}) \]
+</p></li>
+
+<li><p>
+When \(\sigma^2_m\) and \(\sigma^2_w\) are known, we use the z statistic
+\[ z = \frac{(\overline{Y}_m - \overline{Y}_w) - d_0}{\left(
+   \frac{\sigma^2_m}{n_m} + \frac{\sigma^2_w}{n_w} \right)^{1/2}}
+   \xrightarrow{\text{ d }} N(0, 1) \]
+</p>
+
+<p>
+When \(\sigma^2_m\) and \(\sigma^2_w\) are unknown, we the t
+statistic
+\[ t = \frac{(\overline{Y}_m - \overline{Y}_w) -
+   d_0}{SE(\overline{Y}_m - \overline{Y}_w)} \xrightarrow{\text{ d }}
+   N(0, 1) \] 
+where
+</p>
+\begin{gather*}
+SE(\overline{Y}_m - \overline{Y}_w) = \left(\frac{s^2_m}{n_m} + \frac{s^2_w}{n_w} \right)^{1/2} \\
+s^2_m = \frac{1}{n_m-1}\sum^{n_m}_{i=1}(Y_{m,i} - \overline{Y}_m)^2 \\
+s^2_w = \frac{1}{n_w-1}\sum^{n_w}_{i=1}(Y_{w,i} - \overline{Y}_w)^2
+\end{gather*}</li>
+
+<li><p>
+Calculate the p value: The p value for the two-sided test is calculated as 
+\[ p\text{-value} = 2\Phi(-|t|) \]
+</p>
+
+<p>
+For a two-sided test at the 5% significant level, we can reject
+the null hypothesis when the p value is less than 5%, or,
+equivalently, when \(|t| > 1.96\). 
+</p></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org22d1f71" class="outline-3">
+<h3 id="org22d1f71"><span class="section-number-3">5.2</span> Confidence intervals for the difference between two means</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+The 95% confidence interval can be constructed as usual based on the t
+statistic we have computed above. That is, the 95% confidence interval
+for \(d = \mu_m - \mu_w\) is
+\[ (\overline{Y}_m - \overline{Y}_w) \pm 1.96SE(\overline{Y}_m -
+\overline{Y}_w) \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1b07ab8" class="outline-3">
+<h3 id="org1b07ab8"><span class="section-number-3">5.3</span> Differences-of-Means Estimation of Causal Effects Using Experimental Data</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+The difference-of-means estimation and hypothesis test can be used in
+estimation of causal effect in ideal randomized controlled
+experiments (RCE). 
+</p>
+
+<p>
+We define the outcome of a RCE to be \(Y\) and the binary treatment
+variable to be \(X\), \(X=1\) for the treatment group and \(X=0\) for the
+control group. Then the causal effect of the treatment can be
+conveniently expressed as the difference in the conditional
+expectation, 
+\[ E(Y \mid X=1) - E(Y \mid X=0)  \]
+</p>
+
+<p>
+We can consider the treatment group and the control group to represent two
+independent population. Then, we can use the estimation and hypothesis
+test regarding the difference between two population means to examine
+the causal effect. 
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org91226f5" class="outline-2">
+<h2 id="org91226f5"><span class="section-number-2">6</span> Scatterplots, the Sample Covariance, and the Sample Correlation</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-orge1da936" class="outline-3">
+<h3 id="orge1da936"><span class="section-number-3">6.1</span> Scatterplots</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Before a formal statistical study, we often first do some exploratory
+analysis. Drawing graphs is an important aspect of exploratory data
+analysis to visualize the patterns of the variables of
+interests. 
+</p>
+
+<p>
+A <b>scatterplot</b> is a plot of \(n\) observations on \(X_i\) and \(Y_i\), in
+which each observation is represented by the point \((X_i,
+Y_i)\). Figure <a href="#org879319b">2</a> is the scatterplot between test scores and the
+student-teacher ratios in the example of California school districts. 
+</p>
+
+
+<div id="org879319b" class="figure">
+<p><img src="figure/fig-4-2.png" alt="fig-4-2.png" width="500" />
+</p>
+<p><span class="figure-number">Figure 2: </span>The scatterplot between test scores and student-teacher ratios</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1775f9c" class="outline-3">
+<h3 id="org1775f9c"><span class="section-number-3">6.2</span> Sample covariance and correlation</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+The population covariance and correlation measure the relation between
+two random variables \(X\) and \(Y\) in their population joint probability
+distribution. Since they are typically unknown, we use the <b>sample
+covariance</b> and the <b>sample correlation coefficient</b> as their
+estimators. 
+</p>
+</div>
+
+<div id="outline-container-org62f4225" class="outline-4">
+<h4 id="org62f4225">Sample covariance</h4>
+<div class="outline-text-4" id="text-org62f4225">
+<p>
+The <b>sample covariance</b>, denoted as \(s_{XY}\), is
+\[ s_{XY} = \frac{1}{n-1}\sum^n_{i=1}(X_i - \overline{X})(Y_i -
+\overline{Y}) \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0753306" class="outline-4">
+<h4 id="org0753306">Sample correlation</h4>
+<div class="outline-text-4" id="text-org0753306">
+<p>
+The <b>sample correlation coefficient</b>, denoted as \(r_{XY}\), is
+\[ r_{XY} = \frac{s_{XY}}{s_X s_Y} \]
+and we have \(|r_{XY}| \leq 1\). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaebc494" class="outline-4">
+<h4 id="orgaebc494">Consistency of the sample covariance and correlation</h4>
+<div class="outline-text-4" id="text-orgaebc494">
+<p>
+If \((X_i,\, Y_i)\) are i.i.d. and \(X_i\) and \(Y_i\) have finite fourth
+moments, then
+\[ s_{XY} \xrightarrow{\text{ p }} \sigma_{XY} \text{ and } r_{XY}
+\xrightarrow{\text{ p } } \rho_{XY} \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5ebd84b" class="outline-4">
+<h4 id="org5ebd84b">The correlation coefficient measures the linear association</h4>
+<div class="outline-text-4" id="text-org5ebd84b">
+<p>
+We should emphasize that the correlation coefficient is a measure of
+linear association between \(X\) and \(Y\). There could be a relationship
+with zero correlation coefficient, but is in fact nonlinear, as shown
+in Figure <a href="#orgad52608">3</a>. 
+</p>
+
+
+<div id="orgad52608" class="figure">
+<p><img src="figure/fig-3-3.png" alt="fig-3-3.png" width="500" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Scatterplots for four hypothetical data sets</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Zheng Tian</p>
+<p class="date">Created: 2017-02-26 Sun 21:10</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

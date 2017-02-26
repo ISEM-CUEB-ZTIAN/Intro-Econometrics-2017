@@ -27,31 +27,33 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Lecture 2: Review of Probability</h1><h2 class="author">Zheng Tian</h2><p class="date">Created: 2017-02-23 Thu 09:36</p>
+<section id="sec-title-slide"><h1 class="title">Lecture 2: Review of Probability</h1><h2 class="author">Zheng Tian</h2><p class="date">Created: 2017-02-26 Sun 21:18</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org3ea5aaa">1. Random Variables and Probability Distributions</a></li>
-<li><a href="#/slide-org3355f17">2. Expectation, Variance, and Other Moments</a></li>
-<li><a href="#/slide-orgb15d952">3. Two Random Variables</a></li>
-<li><a href="#/slide-org41d6f6d">4. Four Specific Distributions</a></li>
+<li><a href="#/slide-org81e3dde">1. Random Variables and Probability Distributions</a></li>
+<li><a href="#/slide-org9448cb0">2. Expectation, Variance, and Other Moments</a></li>
+<li><a href="#/slide-org80f0c1e">3. Two Random Variables</a></li>
+<li><a href="#/slide-orgd56373d">4. Four Specific Distributions</a></li>
+<li><a href="#/slide-orga139986">5. Random Sampling and the Distribution of the Sample Average</a></li>
+<li><a href="#/slide-org80496cb">6. Large Sample Approximations to Sampling Distributions</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org3ea5aaa">
-<h2 id="org3ea5aaa"><span class="section-number-2">1</span> Random Variables and Probability Distributions</h2>
+<section id="slide-org81e3dde">
+<h2 id="org81e3dde"><span class="section-number-2">1</span> Random Variables and Probability Distributions</h2>
 <div class="outline-text-2" id="text-1">
 </div></section>
-<section id="slide-org604040e">
-<h3 id="org604040e">Defining probabilities and random variables</h3>
-<div class="outline-text-3" id="text-org604040e">
-</div><ul class="org-ul"><li><a id="org4d7edc8"></a>Experiments and outcomes&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<section id="slide-orgc1cace7">
+<h3 id="orgc1cace7">Defining probabilities and random variables</h3>
+<div class="outline-text-3" id="text-orgc1cace7">
+</div><ul class="org-ul"><li><a id="org59c4e37"></a>Experiments and outcomes&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li>An <b>experiment</b> is the processes that generate random results</li>
 <li>The <b>outcomes</b> of an experiment are its
 mutually exclusive potential results.</li>
@@ -60,111 +62,113 @@ but not both.</li>
 
 </ul></li>
 
-<li><a id="orge4ec24a"></a>Sample space and events&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li><a id="org311b980"></a>Sample space and events&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li>A <b>sample space</b> consists of all the outcomes from an experiment,
-denoted with the set <img src="ltximg/slides_lecture_2_bearmer_d2a38ea749b6453b1a82525a59677389740b1f3d.png" alt="slides_lecture_2_bearmer_d2a38ea749b6453b1a82525a59677389740b1f3d.png" />.
+denoted with the set \(S\).
 <ul>
-<li><img src="ltximg/slides_lecture_2_bearmer_f6dffcf794278df4b007a9c3ed38dc9fa2742bc3.png" alt="slides_lecture_2_bearmer_f6dffcf794278df4b007a9c3ed38dc9fa2742bc3.png" /> in the tossing-coin experiment.</li>
+<li>\(S = \{H, T\}\) in the tossing-coin experiment.</li>
 
 </ul></li>
 
 <li>An <b>event</b> is a subset of the sample 
 space.</li>
 
-<li>Getting a head is an event, which is <img src="ltximg/slides_lecture_2_bearmer_befa98391947a9ee6a560747c5baab88360b174e.png" alt="slides_lecture_2_bearmer_befa98391947a9ee6a560747c5baab88360b174e.png" />.</li>
+<li>Getting a head is an event, which is \(\{H\} \subset \{H, T\}\).</li>
 
 </ul></li></ul>
 
 </section>
-<section id="slide-org7352b88">
-<h3 id="org7352b88">Probability</h3>
-<div class="outline-text-3" id="text-org7352b88">
-</div><ul class="org-ul"><li><a id="orgfa5dd7c"></a>An intuitive definition of probability&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<section id="slide-orgd40f8c8">
+<h3 id="orgd40f8c8">Probability</h3>
+<div class="outline-text-3" id="text-orgd40f8c8">
+</div><ul class="org-ul"><li><a id="org408db46"></a>An intuitive definition of probability&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li>The <b>probability</b> of an event is the proportion of the time that the
 event will occur in the long run.</li>
 
-<li>For example, we toss a coin for <img src="ltximg/slides_lecture_2_bearmer_8dc06fd47174103d35895dd81dad57274aa3fe49.png" alt="slides_lecture_2_bearmer_8dc06fd47174103d35895dd81dad57274aa3fe49.png" />
-times and get <img src="ltximg/slides_lecture_2_bearmer_c5125f28de9ff8ef427f06329bde92181f11b4cb.png" alt="slides_lecture_2_bearmer_c5125f28de9ff8ef427f06329bde92181f11b4cb.png" /> heads. When <img src="ltximg/slides_lecture_2_bearmer_8dc06fd47174103d35895dd81dad57274aa3fe49.png" alt="slides_lecture_2_bearmer_8dc06fd47174103d35895dd81dad57274aa3fe49.png" /> is very large, we can say that the
-probability of getting a head in a toss is <img src="ltximg/slides_lecture_2_bearmer_a02795e91ac61e5e75fb118ccb22f95f7dfcc4c4.png" alt="slides_lecture_2_bearmer_a02795e91ac61e5e75fb118ccb22f95f7dfcc4c4.png" />.</li>
+<li>For example, we toss a coin for \(n\)
+times and get \(m\) heads. When \(n\) is very large, we can say that the
+probability of getting a head in a toss is \(m/n\).</li>
 
 </ul></li>
 
-<li><a id="org79ec2e5"></a>An axiomatic definition of probability&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
-<li>A probability of an event <img src="ltximg/slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" alt="slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" /> in the sample space <img src="ltximg/slides_lecture_2_bearmer_d2a38ea749b6453b1a82525a59677389740b1f3d.png" alt="slides_lecture_2_bearmer_d2a38ea749b6453b1a82525a59677389740b1f3d.png" />, denoted as
-<img src="ltximg/slides_lecture_2_bearmer_81d5489bf315d6c2ff28294c8b7b0b72a27389e6.png" alt="slides_lecture_2_bearmer_81d5489bf315d6c2ff28294c8b7b0b72a27389e6.png" />, is a function that assign <img src="ltximg/slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" alt="slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" /> a real number in <img src="ltximg/slides_lecture_2_bearmer_3567de3f7dedcd856466288e76fd3e15d97dc449.png" alt="slides_lecture_2_bearmer_3567de3f7dedcd856466288e76fd3e15d97dc449.png" />, satisfying the following three conditions:
+<li><a id="orgca90050"></a>An axiomatic definition of probability&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>A probability of an event \(A\) in the sample space \(S\), denoted as
+\(\mathrm{Pr}(A)\), is a function that assign \(A\) a real number in \([0,
+  1]\), satisfying the following three conditions:
 <ol>
-<li><img src="ltximg/slides_lecture_2_bearmer_2bbf0b0888837a7b614da468d9109cbdc74f1afb.png" alt="slides_lecture_2_bearmer_2bbf0b0888837a7b614da468d9109cbdc74f1afb.png" />.</li>
-<li><img src="ltximg/slides_lecture_2_bearmer_f401bf2514fb2af5eef7d5ac627066c86fc1e184.png" alt="slides_lecture_2_bearmer_f401bf2514fb2af5eef7d5ac627066c86fc1e184.png" />.</li>
-<li>For any disjoint sets, <img src="ltximg/slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" alt="slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" /> and <img src="ltximg/slides_lecture_2_bearmer_72c78c1f3170ee1309c5c2aa40a4fccbbdedb5c9.png" alt="slides_lecture_2_bearmer_72c78c1f3170ee1309c5c2aa40a4fccbbdedb5c9.png" />, that is <img src="ltximg/slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" alt="slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" /> and <img src="ltximg/slides_lecture_2_bearmer_72c78c1f3170ee1309c5c2aa40a4fccbbdedb5c9.png" alt="slides_lecture_2_bearmer_72c78c1f3170ee1309c5c2aa40a4fccbbdedb5c9.png" /> have no
-element in common, <img src="ltximg/slides_lecture_2_bearmer_28c638cc6937942f05e9120402ee3e0584faad61.png" alt="slides_lecture_2_bearmer_28c638cc6937942f05e9120402ee3e0584faad61.png" />.</li>
+<li>\(0 \leq \mathrm{Pr}(A) \leq 1\).</li>
+<li>\(\mathrm{Pr}(S) = 1\).</li>
+<li>For any disjoint sets, \(A\) and \(B\), that is \(A\) and \(B\) have no
+element in common, \(\mathrm{Pr}(A \cup B) = \mathrm{Pr}(A) +
+    \mathrm{Pr}(B)\).</li>
 
 </ol></li>
 
 </ul></li></ul>
 
 </section>
-<section id="slide-orgdda7951">
-<h3 id="orgdda7951">Random variables</h3>
-<div class="outline-text-3" id="text-orgdda7951">
-</div><ul class="org-ul"><li><a id="orgb20a65f"></a>The definition of random variables&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<section id="slide-org9a83f50">
+<h3 id="org9a83f50">Random variables</h3>
+<div class="outline-text-3" id="text-org9a83f50">
+</div><ul class="org-ul"><li><a id="orgcdc2aac"></a>The definition of random variables&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li>A <b>random variable</b> is a numerical summary associated with the
 outcomes of an experiment.</li>
 
 <li>You can also think of a random variable as a function
-mapping from an event <img src="ltximg/slides_lecture_2_bearmer_c6e2653c0218778a8ada1ac1aa19b8f6c8fb95fc.png" alt="slides_lecture_2_bearmer_c6e2653c0218778a8ada1ac1aa19b8f6c8fb95fc.png" /> in the sample space <img src="ltximg/slides_lecture_2_bearmer_15dc21ccbccba3e80f30a12532e650b49ca337c6.png" alt="slides_lecture_2_bearmer_15dc21ccbccba3e80f30a12532e650b49ca337c6.png" /> to the
+mapping from an event \(\omega\) in the sample space \(\Omega\) to the
 real line.</li>
 
 </ul></li>
 
-<li><a id="orge7f2a4d"></a>An illustration of random variables&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div id="orgcdc5719" class="figure">
+<li><a id="org01ddcc1"></a>An illustration of random variables&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div id="orgf4efdbd" class="figure">
 <p><img src="figure/random_variable_demo1.png" alt="random_variable_demo1.png" width="600" />
 </p>
 <p><span class="figure-number">Figure 1: </span>An illustration of random variable</p>
 </div></li>
 
-<li><a id="org3512b85"></a>Discrete and continuous random variables&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><p>
+<li><a id="orgc4b19e8"></a>Discrete and continuous random variables&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><p>
 Random variables can take different types of values
 </p>
 
 <ul>
 <li>A <b>discrete</b> random
-variables takes on a discrete set of values, like <img src="ltximg/slides_lecture_2_bearmer_87ec995db163e81bde0b8d2665738e2763fb51ca.png" alt="slides_lecture_2_bearmer_87ec995db163e81bde0b8d2665738e2763fb51ca.png" /></li>
+variables takes on a discrete set of values, like \(0, 1, 2, \ldots, n\)</li>
 <li>A <b>continuous</b> random variable takes on a continuum of possble
-values, like any value in the interval <img src="ltximg/slides_lecture_2_bearmer_14f463cf9047331dd96372783d71dfebc4eb5d32.png" alt="slides_lecture_2_bearmer_14f463cf9047331dd96372783d71dfebc4eb5d32.png" />.</li>
+values, like any value in the interval \((a, b)\).</li>
 
 </ul></li></ul>
 
 </section>
-<section id="slide-orgc2c04fd">
-<h3 id="orgc2c04fd">Probability distributions</h3>
-<div class="outline-text-3" id="text-orgc2c04fd">
-</div><ul class="org-ul"><li><a id="orge5242c5"></a>The probability distribution for a discrete random variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<section id="slide-orgf8001bd">
+<h3 id="orgf8001bd">Probability distributions</h3>
+<div class="outline-text-3" id="text-orgf8001bd">
+</div><ul class="org-ul"><li><a id="orge2e56c6"></a>The probability distribution for a discrete random variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li>The probability distribution of a discrete random variable is the list
 of all possible values of the variable and the probability that each
 value will occur. These probabilities sum to 1.</li>
 
 <li><p>
-The probability mass function. Let <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> be a discrete random
-variable. The probability distribution of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> (or the probability
-mass function), <img src="ltximg/slides_lecture_2_bearmer_ab5a55b4ebfd21a5bd4f1aa0c9975f498ed36369.png" alt="slides_lecture_2_bearmer_ab5a55b4ebfd21a5bd4f1aa0c9975f498ed36369.png" />, is
+The probability mass function. Let \(X\) be a discrete random
+variable. The probability distribution of \(X\) (or the probability
+mass function), \(p(x)\), is
 </p>
 <div>
+\begin{equation*}
+p(x) = \mathrm{Pr}(X = x)
+\end{equation*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_dccca5b548f2feb0384d5db0b0d76e6c8e482580.png" alt="slides_lecture_2_bearmer_dccca5b548f2feb0384d5db0b0d76e6c8e482580.png" /></p>
-</div>
 </div></li>
 
 <li>The axioms of probability require that 
 <ol>
-<li><img src="ltximg/slides_lecture_2_bearmer_00b0b34cf577301910867cce8109d730649a417c.png" alt="slides_lecture_2_bearmer_00b0b34cf577301910867cce8109d730649a417c.png" /></li>
-<li>2) <img src="ltximg/slides_lecture_2_bearmer_774ad01d32a4bc244842c18c060db575103264ed.png" alt="slides_lecture_2_bearmer_774ad01d32a4bc244842c18c060db575103264ed.png" />.</li>
+<li>\(0 \leq p(x) \leq  1\)</li>
+<li>2) \( \sum_{i=1}^n p(x_i) =  1\).</li>
 
 </ol></li>
 
 </ul></li>
 
-<li><a id="orga61fe7d"></a>An example of the probability distribution of a discrete random variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><table id="org6c361f1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<li><a id="org38c8a48"></a>An example of the probability distribution of a discrete random variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><table id="org283f492" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> An illustration of the probability distribution of a discrete random variable</caption>
 
 <colgroup>
@@ -180,7 +184,7 @@ mass function), <img src="ltximg/slides_lecture_2_bearmer_ab5a55b4ebfd21a5bd4f1a
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left"><img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /></th>
+<th scope="col" class="org-left">\(X\)</th>
 <th scope="col" class="org-right">1</th>
 <th scope="col" class="org-right">2</th>
 <th scope="col" class="org-right">3</th>
@@ -189,7 +193,7 @@ mass function), <img src="ltximg/slides_lecture_2_bearmer_ab5a55b4ebfd21a5bd4f1a
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><img src="ltximg/slides_lecture_2_bearmer_d017164917528a764875159e0b5f64d1cca21976.png" alt="slides_lecture_2_bearmer_d017164917528a764875159e0b5f64d1cca21976.png" /></td>
+<td class="org-left">\(\mathrm{P}(x)\)</td>
 <td class="org-right">0.25</td>
 <td class="org-right">0.50</td>
 <td class="org-right">0.25</td>
@@ -199,22 +203,22 @@ mass function), <img src="ltximg/slides_lecture_2_bearmer_ab5a55b4ebfd21a5bd4f1a
 </table></li></ul>
 
 </section>
-<section id="slide-orgce9ab3c">
-<h3 id="orgce9ab3c">The cumulative probability distribution</h3>
-<div class="outline-text-3" id="text-orgce9ab3c">
-</div><ul class="org-ul"><li><a id="org9303471"></a>Definition of the c.d.f.&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<section id="slide-org2e8fec0">
+<h3 id="org2e8fec0">The cumulative probability distribution</h3>
+<div class="outline-text-3" id="text-org2e8fec0">
+</div><ul class="org-ul"><li><a id="org0a3e2f7"></a>Definition of the c.d.f.&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li><p>
 The <b>cumulative probability distribution</b> (or the cumulative
 distribution function, c.d.f.): 
 </p>
 
 <p>
-Let <img src="ltximg/slides_lecture_2_bearmer_0c66cdb5f04de04f1a00fd15cdcc97aa6f71e6ef.png" alt="slides_lecture_2_bearmer_0c66cdb5f04de04f1a00fd15cdcc97aa6f71e6ef.png" /> be the c.d.f of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />. Then <img src="ltximg/slides_lecture_2_bearmer_d279d10f30466184087b0f96c03e11910408195a.png" alt="slides_lecture_2_bearmer_d279d10f30466184087b0f96c03e11910408195a.png" />.
+Let \(F(x)\) be the c.d.f of \(X\). Then \(F(x) = \mathrm{Pr}(X \leq x)\).
 </p></li>
 
 </ul>
 
-<table id="orgbb8bfc6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orge1bdcad" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> An illustration of the c.d.f. of a discrete random variable</caption>
 
 <colgroup>
@@ -230,7 +234,7 @@ Let <img src="ltximg/slides_lecture_2_bearmer_0c66cdb5f04de04f1a00fd15cdcc97aa6f
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left"><img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /></th>
+<th scope="col" class="org-left">\(X\)</th>
 <th scope="col" class="org-right">1</th>
 <th scope="col" class="org-right">2</th>
 <th scope="col" class="org-right">3</th>
@@ -239,7 +243,7 @@ Let <img src="ltximg/slides_lecture_2_bearmer_0c66cdb5f04de04f1a00fd15cdcc97aa6f
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><img src="ltximg/slides_lecture_2_bearmer_d017164917528a764875159e0b5f64d1cca21976.png" alt="slides_lecture_2_bearmer_d017164917528a764875159e0b5f64d1cca21976.png" /></td>
+<td class="org-left">\(\mathrm{P}(x)\)</td>
 <td class="org-right">0.25</td>
 <td class="org-right">0.50</td>
 <td class="org-right">0.25</td>
@@ -256,60 +260,64 @@ Let <img src="ltximg/slides_lecture_2_bearmer_0c66cdb5f04de04f1a00fd15cdcc97aa6f
 </tbody>
 </table></li>
 
-<li><a id="orgcbb21d9"></a>An illustration of the c.d.f. of a discrete random variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div id="orgab12301" class="figure">
+<li><a id="org7e2a97c"></a>An illustration of the c.d.f. of a discrete random variable&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div id="orgb34aa65" class="figure">
 <p><img src="figure/cdf_discrete_example.png" alt="cdf_discrete_example.png" width="500" height="450" />
 </p>
 <p><span class="figure-number">Figure 2: </span>The c.d.f. of a discrete random variable</p>
 </div></li></ul>
 
 </section>
-<section id="slide-org534a8af">
-<h3 id="org534a8af">Bernouli distribution</h3>
+<section id="slide-org9882890">
+<h3 id="org9882890">Bernouli distribution</h3>
 <p>
 The Bernoulli distribution
 </p>
 <div>
+\begin{equation*}
+  G =
+    \begin{cases}
+      1 & \text{with probability } p \\
+      0 & \text{with probability } 1-p
+    \end{cases}
+  \end{equation*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_32cfc64be1db74cb246d53a973eb3d1505a34da2.png" alt="slides_lecture_2_bearmer_32cfc64be1db74cb246d53a973eb3d1505a34da2.png" /></p>
-</div>
 </div>
 
 </section>
-<section id="slide-orgec6851d">
-<h3 id="orgec6851d">The probability distribution of a continuous random variable</h3>
-<div class="outline-text-3" id="text-orgec6851d">
-</div><ul class="org-ul"><li><a id="orga7a79d3"></a>Definition of the c.d.f. and the p.d.f.&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<section id="slide-orga00dc9a">
+<h3 id="orga00dc9a">The probability distribution of a continuous random variable</h3>
+<div class="outline-text-3" id="text-orga00dc9a">
+</div><ul class="org-ul"><li><a id="orgdee9bf0"></a>Definition of the c.d.f. and the p.d.f.&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li>The cumulative distribution function of a continous random variable
 is defined as it is for a discrete random variable. 
-<img src="ltximg/slides_lecture_2_bearmer_e767c031e3a9d44cfb3479448ac79d65dbfe7411.png" alt="slides_lecture_2_bearmer_e767c031e3a9d44cfb3479448ac79d65dbfe7411.png" /></li>
+\[ F(x) = \mathrm{Pr}(X \leq x) \]</li>
 
-<li>The <b>probability density function (p.d.f.)</b> of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> is the function
+<li>The <b>probability density function (p.d.f.)</b> of \(X\) is the function
 that satisfies
-<img src="ltximg/slides_lecture_2_bearmer_2b6f81fd2a52b9901541db4954bb430f76a201d9.png" alt="slides_lecture_2_bearmer_2b6f81fd2a52b9901541db4954bb430f76a201d9.png" /></li>
+\[ F(x) = \int_{-\infty}^{x} f(t) \mathrm{d}t \text{ for all } x \]</li>
 
 </ul></li>
 
-<li><a id="orgd4b6465"></a>Properties of the c.d.f.&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
-<li>For both discrete and continuous random variable, <img src="ltximg/slides_lecture_2_bearmer_b252a73f18d5e0805120a3415062749598837a6f.png" alt="slides_lecture_2_bearmer_b252a73f18d5e0805120a3415062749598837a6f.png" /> must satisfy
+<li><a id="org98305f4"></a>Properties of the c.d.f.&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>For both discrete and continuous random variable, \(F(X)\) must satisfy
 the following properties:
 <ol>
-<li><img src="ltximg/slides_lecture_2_bearmer_a5b97f87048bbb7d410aaac924699321ee068d50.png" alt="slides_lecture_2_bearmer_a5b97f87048bbb7d410aaac924699321ee068d50.png" /> (<img src="ltximg/slides_lecture_2_bearmer_0c66cdb5f04de04f1a00fd15cdcc97aa6f71e6ef.png" alt="slides_lecture_2_bearmer_0c66cdb5f04de04f1a00fd15cdcc97aa6f71e6ef.png" /> is bounded between 0 and 1)</li>
-<li><img src="ltximg/slides_lecture_2_bearmer_db2350dda455c0e3462405c55d0586c207992ff6.png" alt="slides_lecture_2_bearmer_db2350dda455c0e3462405c55d0586c207992ff6.png" /> (<img src="ltximg/slides_lecture_2_bearmer_0c66cdb5f04de04f1a00fd15cdcc97aa6f71e6ef.png" alt="slides_lecture_2_bearmer_0c66cdb5f04de04f1a00fd15cdcc97aa6f71e6ef.png" /> is nondecreasing)</li>
+<li>\(F(+\infty) = 1 \text{ and } F(-\infty) = 0\) (\(F(x)\) is bounded between 0 and 1)</li>
+<li>\(x > y \Rightarrow F(x) \geq F(y)\) (\(F(x)\) is nondecreasing)</li>
 
 </ol></li>
 
 <li>By the definition of the c.d.f., we can conveniently calculate
 probabilities, such as,
 <ul>
-<li><img src="ltximg/slides_lecture_2_bearmer_0e767d251f4e970d16af7cc8c24b045e23bfa516.png" alt="slides_lecture_2_bearmer_0e767d251f4e970d16af7cc8c24b045e23bfa516.png" /></li>
-<li><img src="ltximg/slides_lecture_2_bearmer_c55482f1cde5f78e70e135f244e61e7c3c26d731.png" alt="slides_lecture_2_bearmer_c55482f1cde5f78e70e135f244e61e7c3c26d731.png" />.</li>
+<li>\(\mathrm{P}(x > a) = 1 - \mathrm{P}(x \leq a) = 1 - F(a)\)</li>
+<li>\(\mathrm{P}(a < x \leq b) = F(b) - F(a)\).</li>
 
 </ul></li>
 
 </ul></li>
 
-<li><a id="orga01b5bd"></a>The c.d.f. and p.d.f. of a normal distribution&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div id="orge11a86b" class="figure">
+<li><a id="orgd7354cd"></a>The c.d.f. and p.d.f. of a normal distribution&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div id="org724de17" class="figure">
 <p><img src="figure/norm1.png" alt="norm1.png" width="500" height="450" />
 </p>
 <p><span class="figure-number">Figure 3: </span>The p.d.f. and c.d.f. of a continuous random variable (the normal distribution)</p>
@@ -319,15 +327,15 @@ probabilities, such as,
 </section>
 </section>
 <section>
-<section id="slide-org3355f17">
-<h2 id="org3355f17"><span class="section-number-2">2</span> Expectation, Variance, and Other Moments</h2>
+<section id="slide-org9448cb0">
+<h2 id="org9448cb0"><span class="section-number-2">2</span> Expectation, Variance, and Other Moments</h2>
 <div class="outline-text-2" id="text-2">
 </div></section>
-<section id="slide-org98676cc">
-<h3 id="org98676cc">The expected value of a random variable</h3>
-<div class="outline-text-3" id="text-org98676cc">
-</div><ul class="org-ul"><li><a id="org5fc0c5e"></a>The expected value&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
-<li>The <b>expected value</b> of a random variable, X, denoted as <img src="ltximg/slides_lecture_2_bearmer_f47512ae070ee69dc8add113a176273fc21c0377.png" alt="slides_lecture_2_bearmer_f47512ae070ee69dc8add113a176273fc21c0377.png" />, is
+<section id="slide-org3292f06">
+<h3 id="org3292f06">The expected value of a random variable</h3>
+<div class="outline-text-3" id="text-org3292f06">
+</div><ul class="org-ul"><li><a id="orgd35ee18"></a>The expected value&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>The <b>expected value</b> of a random variable, X, denoted as \(\mathrm{E}(X)\), is
 the long-run average of the random variable over many repeated
 trials or occurrences, which is also called the <b>expectation</b> or the
 <b>mean</b>.</li>
@@ -336,103 +344,109 @@ trials or occurrences, which is also called the <b>expectation</b> or the
 
 </ul></li>
 
-<li><a id="org823b629"></a>Mathematical definition&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li><a id="org69107c5"></a>Mathematical definition&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li>For a discrete random variable
-<img src="ltximg/slides_lecture_2_bearmer_938a7863271760f662432f0990130e03a0a7bf3d.png" alt="slides_lecture_2_bearmer_938a7863271760f662432f0990130e03a0a7bf3d.png" /></li>
+\[ \mathrm{E}(X) = \sum_{i=1}^n x_i \mathrm{Pr}(X = x_i) \]</li>
 
-<li>e.g. The expectation of a Bernoulli random variable, <img src="ltximg/slides_lecture_2_bearmer_74653eee2a33a8d9929ab6881b88ae0ca46bd2e9.png" alt="slides_lecture_2_bearmer_74653eee2a33a8d9929ab6881b88ae0ca46bd2e9.png" />,
-<img src="ltximg/slides_lecture_2_bearmer_770647282f2ab668b205dae12addca72647d3683.png" alt="slides_lecture_2_bearmer_770647282f2ab668b205dae12addca72647d3683.png" /></li>
+<li>e.g. The expectation of a Bernoulli random variable, \(G\),
+\[ \mathrm{E}(G) = 1 \cdot p + 0 \cdot (1-p) = p \]</li>
 
 <li>For a continuous random variable
-<img src="ltximg/slides_lecture_2_bearmer_ad2952cf159d26a53ff47505427eb65269559997.png" alt="slides_lecture_2_bearmer_ad2952cf159d26a53ff47505427eb65269559997.png" /></li>
+\[ \mathrm{E}(X) = \int_{-\infty}^{\infty} x f(x) \mathrm{d}x\]</li>
 
 </ul></li></ul>
 
 </section>
-<section id="slide-orgad37d6e">
-<h3 id="orgad37d6e">The variance and standard deviation</h3>
-<div class="outline-text-3" id="text-orgad37d6e">
-</div><ul class="org-ul"><li><a id="org470af10"></a>Definition of variance and standard deviation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
-<li>The <b>variance</b> of a random variable <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> measures its average
+<section id="slide-org26cd3c9">
+<h3 id="org26cd3c9">The variance and standard deviation</h3>
+<div class="outline-text-3" id="text-org26cd3c9">
+</div><ul class="org-ul"><li><a id="org1bfb1d9"></a>Definition of variance and standard deviation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>The <b>variance</b> of a random variable \(X\) measures its average
 deviation from its own expected value.</li>
 
 <li><p>
-Let <img src="ltximg/slides_lecture_2_bearmer_8eba5823b0db9862800136679ba854887afa145c.png" alt="slides_lecture_2_bearmer_8eba5823b0db9862800136679ba854887afa145c.png" />. Then the variance of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />,
+Let \(\mathrm{E}(X) = \mu_X\). Then the variance of \(X\),
 </p>
 
 <div>
+\begin{align*}
+\mathrm{Var}(X) & =  \sigma^2_X =  \mathrm{E}(X-\mu_X)^{2} \\
+& = 
+\begin{cases}
+\sum_{i=1}^n (x_i - \mu_X)^{2}\mathrm{Pr}(X = x_i) & \text{if } X \text{ is discrete} \\
+\int_{-\infty}^{\infty} (x - \mu_X)^{2}f(x)\mathrm{d} x  & \text{if } X \text{ is continuous}
+\end{cases}
+\end{align*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_182b701866c8721568634a03403f82c089a9873a.png" alt="slides_lecture_2_bearmer_182b701866c8721568634a03403f82c089a9873a.png" /></p>
-</div>
 </div></li>
 
-<li>The <b>standard deviation</b> of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />: <img src="ltximg/slides_lecture_2_bearmer_c34bad02a0e61c1ee09e39fc6eaac5ada3cd67f1.png" alt="slides_lecture_2_bearmer_c34bad02a0e61c1ee09e39fc6eaac5ada3cd67f1.png" /></li>
+<li>The <b>standard deviation</b> of \(X\): \(\sigma_{X} = \sqrt{\mathrm{Var}(X)}\)</li>
 
 </ul></li>
 
-<li><a id="orgba83e92"></a>Computing variance&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li><a id="orgf3b5dd8"></a>Computing variance&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li>A convenient formula for calculating the variance is
-<img src="ltximg/slides_lecture_2_bearmer_17688ade8615dc221e6867f3eca5c978260bf525.png" alt="slides_lecture_2_bearmer_17688ade8615dc221e6867f3eca5c978260bf525.png" /></li>
+\[ \mathrm{Var}(X) = \mathrm{E}(X - \mu_X)^{2} = \mathrm{E}(X^{2}) - \mu_X^{2} \]</li>
 
-<li>The variance of a Bernoulli random variable, <img src="ltximg/slides_lecture_2_bearmer_74653eee2a33a8d9929ab6881b88ae0ca46bd2e9.png" alt="slides_lecture_2_bearmer_74653eee2a33a8d9929ab6881b88ae0ca46bd2e9.png" />
-<img src="ltximg/slides_lecture_2_bearmer_c95181739a286e2793780b6cd44a7e5d283a1ad4.png" alt="slides_lecture_2_bearmer_c95181739a286e2793780b6cd44a7e5d283a1ad4.png" /></li>
+<li>The variance of a Bernoulli random variable, \(G\)
+\[ \mathrm{Var}(G) = (1-p)^{2}p + (0-p)^{2}(1-p) = p(1-p) \]</li>
 
-<li>The expectation and variance of a linear function of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />. Let <img src="ltximg/slides_lecture_2_bearmer_9e12df3b114fa3d33c365345dfdc1c4f2016f198.png" alt="slides_lecture_2_bearmer_9e12df3b114fa3d33c365345dfdc1c4f2016f198.png" />, then
+<li>The expectation and variance of a linear function of \(X\). Let \(Y = a +
+  bX\), then
 <ul>
-<li><img src="ltximg/slides_lecture_2_bearmer_5249ce9a1c4011c1775ee272b5118975111f0066.png" alt="slides_lecture_2_bearmer_5249ce9a1c4011c1775ee272b5118975111f0066.png" /></li>
-<li><img src="ltximg/slides_lecture_2_bearmer_e73285cccf7c677dfe6f8dda54ad69d57d1dd081.png" alt="slides_lecture_2_bearmer_e73285cccf7c677dfe6f8dda54ad69d57d1dd081.png" />.</li>
+<li>\(\mathrm{E}(Y) = a + b\mathrm{E}(X)\)</li>
+<li>\(\mathrm{Var}(Y) = \mathrm{Var}(a + b X) = b^{2} \mathrm{Var}(X)\).</li>
 
 </ul></li>
 
 </ul></li></ul>
 
 </section>
-<section id="slide-org9802d8d">
-<h3 id="org9802d8d">Moments of a random variable, skewness and kurtosis</h3>
-<div class="outline-text-3" id="text-org9802d8d">
-</div><ul class="org-ul"><li><a id="org8419bbc"></a>Definition of the moments of a distribution&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><dl>
-<dt>k<sup>th</sup> moment</dt><dd>The k<sup>th</sup> <b>moment</b> of the distribution of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> is
-<img src="ltximg/slides_lecture_2_bearmer_79fcd9c17cbbca4af8a0c939ef8cae2620569bcd.png" alt="slides_lecture_2_bearmer_79fcd9c17cbbca4af8a0c939ef8cae2620569bcd.png" />. So, the expectation is the "first"
-moment of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />.</dd>
+<section id="slide-orgac84cb4">
+<h3 id="orgac84cb4">Moments of a random variable, skewness and kurtosis</h3>
+<div class="outline-text-3" id="text-orgac84cb4">
+</div><ul class="org-ul"><li><a id="org2fad741"></a>Definition of the moments of a distribution&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><dl>
+<dt>k<sup>th</sup> moment</dt><dd>The k<sup>th</sup> <b>moment</b> of the distribution of \(X\) is
+\(\mathrm{E}(X^{k})\). So, the expectation is the "first"
+moment of \(X\).</dd>
 
 <dt>k<sup>th</sup> central moment</dt><dd>The k<sup>th</sup> central moment of the distribution
-of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> with its mean <img src="ltximg/slides_lecture_2_bearmer_3d41e6da75228a9daef1314efd8d9db918bfceb3.png" alt="slides_lecture_2_bearmer_3d41e6da75228a9daef1314efd8d9db918bfceb3.png" /> is <img src="ltximg/slides_lecture_2_bearmer_46baa786d52088a4c6669bb97973a6cb317b4d21.png" alt="slides_lecture_2_bearmer_46baa786d52088a4c6669bb97973a6cb317b4d21.png" />. So, the
-variance is the second central moment of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />.</dd>
+of \(X\) with its mean \(\mu_X\) is \(\mathrm{E}(X - \mu_X)^{k}\). So, the
+variance is the second central moment of \(X\).</dd>
 
 </dl>
 
-<ul class="org-ul"><li><a id="org7ee5d4a"></a>A caveat<br  /><p>
+<ul class="org-ul"><li><a id="orgcf3a6c6"></a>A caveat<br  /><p>
 It is important to remember that not all the moments of a distribution
 exist. 
 </p></li></ul></li>
 
-<li><a id="orgbfe99ce"></a>Skewness&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li><a id="orge506172"></a>Skewness&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li><p>
 The skewness of a distribution provides a mathematical way to describe
 how much a distribution deviates from symmetry.
 </p>
 
 <p>
-<img src="ltximg/slides_lecture_2_bearmer_1231164dbee9d714dba5a0f2728b644b83b94755.png" alt="slides_lecture_2_bearmer_1231164dbee9d714dba5a0f2728b644b83b94755.png" />
+\[ \text{Skewness} =  \mathrm{E}(X - \mu_X)^{3}/\sigma_{X}^{3} \]
 </p></li>
 
 <li>A symmetric distribution has a skewness of zero.</li>
 <li>The skewness can be either positive or negative.</li>
-<li>That <img src="ltximg/slides_lecture_2_bearmer_6aca99e4564f5b4a0f9eb8505e7f1bdc474cd388.png" alt="slides_lecture_2_bearmer_6aca99e4564f5b4a0f9eb8505e7f1bdc474cd388.png" /> is divided by <img src="ltximg/slides_lecture_2_bearmer_b3d3e03de1e1a8f0c9654307a3804e33a43270be.png" alt="slides_lecture_2_bearmer_b3d3e03de1e1a8f0c9654307a3804e33a43270be.png" /> is to make
+<li>That \(\mathrm{E}(X - \mu_X)^3\) is divided by \(\sigma^3_X\) is to make
 the skewness measure unit free.</li>
 
 </ul></li>
 
-<li><a id="orgb1178ea"></a>Kurtosis&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li><a id="orga634109"></a>Kurtosis&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li><p>
-The kurtosis of the distribution of a random variable <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> measures how
-much of the variance of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> arises from extreme values, which makes
+The kurtosis of the distribution of a random variable \(X\) measures how
+much of the variance of \(X\) arises from extreme values, which makes
 the distribution have "heavy" tails.
 </p>
 
 <p>
-<img src="ltximg/slides_lecture_2_bearmer_6f375cd36287d4ab17f66f29469b08c89017ac94.png" alt="slides_lecture_2_bearmer_6f375cd36287d4ab17f66f29469b08c89017ac94.png" />
+\[ \text{Kurtosis} = \mathrm{E}(X - \mu_X)^{4}/\sigma_{X}^{4} \]
 </p></li>
 
 <li>The kurtosis must be positive.</li>
@@ -442,7 +456,7 @@ has its kurtosis exceeding 3 is called heavy-tailed.</li>
 
 </ul></li>
 
-<li><a id="org96d0231"></a>An illustration of skewness and kurtosis&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div class="figure">
+<li><a id="org74f4945"></a>An illustration of skewness and kurtosis&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div class="figure">
 <p><img src="figure/fig-2-3.png" alt="fig-2-3.png" />
 </p>
 </div>
@@ -458,58 +472,58 @@ heavy-tailed.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgb15d952">
-<h2 id="orgb15d952"><span class="section-number-2">3</span> Two Random Variables</h2>
+<section id="slide-org80f0c1e">
+<h2 id="org80f0c1e"><span class="section-number-2">3</span> Two Random Variables</h2>
 <div class="outline-text-2" id="text-3">
 </div></section>
-<section id="slide-org26748aa">
-<h3 id="org26748aa">The joint and marginal distributions</h3>
-<div class="outline-text-3" id="text-org26748aa">
-</div><ul class="org-ul"><li><a id="org4972c95"></a>The joint probability function of two discrete random variables<br  /><ul>
-<li>The joint distribution of two random variables <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> is
-<img src="ltximg/slides_lecture_2_bearmer_2ed8b884f0b506a3a4833eb234c8d866df3c91bc.png" alt="slides_lecture_2_bearmer_2ed8b884f0b506a3a4833eb234c8d866df3c91bc.png" /></li>
+<section id="slide-orgdb1fd42">
+<h3 id="orgdb1fd42">The joint and marginal distributions</h3>
+<div class="outline-text-3" id="text-orgdb1fd42">
+</div><ul class="org-ul"><li><a id="org14dda08"></a>The joint probability function of two discrete random variables<br  /><ul>
+<li>The joint distribution of two random variables \(X\) and \(Y\) is
+\[ p(x, y) = \mathrm{Pr}(X = x, Y = y)\]</li>
 
-<li><img src="ltximg/slides_lecture_2_bearmer_13d3dc17aeb1362cc9ccddd230bebb166fc1fba6.png" alt="slides_lecture_2_bearmer_13d3dc17aeb1362cc9ccddd230bebb166fc1fba6.png" /> must satisfy
+<li>\(p(x, y)\) must satisfy
 <ol>
-<li><img src="ltximg/slides_lecture_2_bearmer_57f6fd96ceffc75a00658ed78b7142f16e15ea49.png" alt="slides_lecture_2_bearmer_57f6fd96ceffc75a00658ed78b7142f16e15ea49.png" /></li>
-<li><img src="ltximg/slides_lecture_2_bearmer_31817a640129ed14b112c9300f6ec3567720a766.png" alt="slides_lecture_2_bearmer_31817a640129ed14b112c9300f6ec3567720a766.png" /> for all possible
-combinations of values of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" />.</li>
+<li>\(p(x, y) \geq 0\)</li>
+<li>\(\sum_{i=1}^n\sum_{j=1}^m p(x_i, y_j) = 1\) for all possible
+combinations of values of \(X\) and \(Y\).</li>
 
 </ol></li>
 
 </ul></li>
 
-<li><a id="org1a1bcc5"></a>The joint probability function of two continuous random variables<br  /><ul>
-<li>For two continuous random variables, <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" />, the counterpart of <img src="ltximg/slides_lecture_2_bearmer_13d3dc17aeb1362cc9ccddd230bebb166fc1fba6.png" alt="slides_lecture_2_bearmer_13d3dc17aeb1362cc9ccddd230bebb166fc1fba6.png" /> is
-the joint probability density function, <img src="ltximg/slides_lecture_2_bearmer_56e10f17ca250129aeaf74e69dae900d4e4d729f.png" alt="slides_lecture_2_bearmer_56e10f17ca250129aeaf74e69dae900d4e4d729f.png" />, such that
+<li><a id="org986e709"></a>The joint probability function of two continuous random variables<br  /><ul>
+<li>For two continuous random variables, \(X\) and \(Y\), the counterpart of \(p(x, y)\) is
+the joint probability density function, \(f(x, y)\), such that
 <ol>
-<li><img src="ltximg/slides_lecture_2_bearmer_cd4058484b53b07bbfe503f46b33f3915de9a812.png" alt="slides_lecture_2_bearmer_cd4058484b53b07bbfe503f46b33f3915de9a812.png" /></li>
-<li><img src="ltximg/slides_lecture_2_bearmer_56d29a49bffbe2ac29dfa261e0672019e19e7f73.png" alt="slides_lecture_2_bearmer_56d29a49bffbe2ac29dfa261e0672019e19e7f73.png" /></li>
+<li>\(f(x, y) \geq 0\)</li>
+<li>\(\int_{-\infty}^{{\infty}} \int_{-\infty}^{\infty} f(x, y)\, dx\, dy= 1\)</li>
 
 </ol></li>
 
 </ul></li></ul>
 
 </section>
-<section id="slide-org6db47e7">
-<h3 id="org6db47e7">The marginal probability distribution</h3>
+<section id="slide-org32d146b">
+<h3 id="org32d146b">The marginal probability distribution</h3>
 <ul>
-<li>The marginal probability distribution of a random variable <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> is
+<li>The marginal probability distribution of a random variable \(X\) is
 simply the probability distribution of its own.</li>
 
 <li>For a discrete random variable, we can compute the marginal
-distribution of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> as
-<img src="ltximg/slides_lecture_2_bearmer_89fb7242a600b523031973a5daf8c28d4243f8cc.png" alt="slides_lecture_2_bearmer_89fb7242a600b523031973a5daf8c28d4243f8cc.png" /></li>
+distribution of \(X\) as
+\[ \mathrm{Pr}(X=x) = \sum_{i=1}^n \mathrm{Pr}(X, Y=y_i) = \sum_{i=1}^n p(x, y_i)  \]</li>
 
 <li>For a continuous random variable, the marginal distribution is
-<img src="ltximg/slides_lecture_2_bearmer_52f9e1d494ea597b4e166e61016fdacb66fff0b8.png" alt="slides_lecture_2_bearmer_52f9e1d494ea597b4e166e61016fdacb66fff0b8.png" /></li>
+\[f_X(x) = \int_{-\infty}^{\infty} f(x, y)\, dy \]</li>
 
 </ul>
 
 </section>
-<section id="slide-orga4a4430">
-<h3 id="orga4a4430">An example of joint and marginal distributions</h3>
-<table id="orgae57df1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<section id="slide-orge7fee7b">
+<h3 id="orge7fee7b">An example of joint and marginal distributions</h3>
+<table id="org2ea6520" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 3:</span> Joint and marginal distributions of raining and commuting time</caption>
 
 <colgroup>
@@ -524,21 +538,21 @@ distribution of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be0733
 <thead>
 <tr>
 <th scope="col" class="org-left">&#xa0;</th>
-<th scope="col" class="org-right">Rain (<img src="ltximg/slides_lecture_2_bearmer_46b8d3c8847986d700e22dd4f742c235b3a2230e.png" alt="slides_lecture_2_bearmer_46b8d3c8847986d700e22dd4f742c235b3a2230e.png" />)</th>
-<th scope="col" class="org-right">No rain (<img src="ltximg/slides_lecture_2_bearmer_64ff035d7b96022ee82cee9cd94b8c5aee30c877.png" alt="slides_lecture_2_bearmer_64ff035d7b96022ee82cee9cd94b8c5aee30c877.png" />)</th>
+<th scope="col" class="org-right">Rain (\(X=0\))</th>
+<th scope="col" class="org-right">No rain (\(X=1\))</th>
 <th scope="col" class="org-right">Total</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left">Long commute (<img src="ltximg/slides_lecture_2_bearmer_9566230fe5bf30926b3286c0d54fd643e4ae5701.png" alt="slides_lecture_2_bearmer_9566230fe5bf30926b3286c0d54fd643e4ae5701.png" />)</td>
+<td class="org-left">Long commute (\(Y=0\))</td>
 <td class="org-right">0.15</td>
 <td class="org-right">0.07</td>
 <td class="org-right">0.22</td>
 </tr>
 
 <tr>
-<td class="org-left">Short commute (<img src="ltximg/slides_lecture_2_bearmer_3fd3604354c017238507c929a2a5cec223f7f9ec.png" alt="slides_lecture_2_bearmer_3fd3604354c017238507c929a2a5cec223f7f9ec.png" />)</td>
+<td class="org-left">Short commute (\(Y=1\))</td>
 <td class="org-right">0.15</td>
 <td class="org-right">0.63</td>
 <td class="org-right">0.78</td>
@@ -555,18 +569,18 @@ distribution of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be0733
 </table>
 
 </section>
-<section id="slide-org18d72da">
-<h3 id="org18d72da">Conditional probability</h3>
+<section id="slide-org50caacc">
+<h3 id="org50caacc">Conditional probability</h3>
 <ul>
 <li><p>
-For any two events <img src="ltximg/slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" alt="slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" /> and <img src="ltximg/slides_lecture_2_bearmer_72c78c1f3170ee1309c5c2aa40a4fccbbdedb5c9.png" alt="slides_lecture_2_bearmer_72c78c1f3170ee1309c5c2aa40a4fccbbdedb5c9.png" />, the conditional probability of <img src="ltximg/slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" alt="slides_lecture_2_bearmer_a5e4121d94266351285ce8f7b0821d9db1b19764.png" /> given
-<img src="ltximg/slides_lecture_2_bearmer_72c78c1f3170ee1309c5c2aa40a4fccbbdedb5c9.png" alt="slides_lecture_2_bearmer_72c78c1f3170ee1309c5c2aa40a4fccbbdedb5c9.png" /> is defined as
+For any two events \(A\) and \(B\), the conditional probability of \(A\) given
+\(B\) is defined as
 </p>
 <div>
+\begin{equation*}
+\mathrm{Pr}(A|B) = \frac{\mathrm{Pr}(A \cap B)}{\mathrm{Pr}(B)}
+\end{equation*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_849057d4026be23ac04349f194b5e82d6e896396.png" alt="slides_lecture_2_bearmer_849057d4026be23ac04349f194b5e82d6e896396.png" /></p>
-</div>
 </div></li>
 
 </ul>
@@ -578,217 +592,231 @@ For any two events <img src="ltximg/slides_lecture_2_bearmer_a5e4121d94266351285
 </div>
 
 </section>
-<section id="slide-org27f9e46">
-<h3 id="org27f9e46">The conditional probability distribution</h3>
+<section id="slide-orge1ee4a5">
+<h3 id="orge1ee4a5">The conditional probability distribution</h3>
 <ul>
-<li>The conditional distribution of a random variable <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> given another
-random variable <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> is <img src="ltximg/slides_lecture_2_bearmer_be199f43cbf56274e91f30dff6561d1063f5166c.png" alt="slides_lecture_2_bearmer_be199f43cbf56274e91f30dff6561d1063f5166c.png" />.</li>
+<li>The conditional distribution of a random variable \(Y\) given another
+random variable \(X\) is \(\mathrm{Pr}(Y | X=x)\).</li>
 
 <li>The formula to compute it is
-<img src="ltximg/slides_lecture_2_bearmer_ae6a0ad2e908dee4a79f83b94fccd10f62a76375.png" alt="slides_lecture_2_bearmer_ae6a0ad2e908dee4a79f83b94fccd10f62a76375.png" /></li>
+\[ \mathrm{Pr}(Y | X=x) = \frac{\mathrm{Pr}(X=x, Y)}{\mathrm{Pr}(X=x)} \]</li>
 
-<li>For continuous random variables <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" />, we define the conditional
+<li>For continuous random variables \(X\) and \(Y\), we define the conditional
 density function as
-<img src="ltximg/slides_lecture_2_bearmer_69ca6cb438ad57f1c34a019f0bfc44d1db2df3d9.png" alt="slides_lecture_2_bearmer_69ca6cb438ad57f1c34a019f0bfc44d1db2df3d9.png" /></li>
+\[ f(y|x) = \frac{f(x, y)}{f_X(x)} \]</li>
 
 </ul>
 
 </section>
-<section id="slide-org31ef84d">
-<h3 id="org31ef84d">The conditional expectation</h3>
+<section id="slide-orgebe0746">
+<h3 id="orgebe0746">The conditional expectation</h3>
 <ul>
-<li>The <b>conditional expectation</b> of <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> given <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> is the expected value
-of the conditional distribution of <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> given <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />.</li>
+<li>The <b>conditional expectation</b> of \(Y\) given \(X\) is the expected value
+of the conditional distribution of \(Y\) given \(X\).</li>
 
 <li><p>
-For discrete random variables, the conditional mean of <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> given <img src="ltximg/slides_lecture_2_bearmer_ea2e46268134fdb26f770d1c9ec65ef8a770a1b3.png" alt="slides_lecture_2_bearmer_ea2e46268134fdb26f770d1c9ec65ef8a770a1b3.png" /> is
+For discrete random variables, the conditional mean of \(Y\) given \(X=x\) is
 </p>
 <div>
+\begin{equation*}
+\mathrm{E}(Y \mid X=x) = \sum_{i=1}^n y_i \mathrm{Pr}(Y=y_i \mid X=x)
+\end{equation*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_87303e9299d719937dd2eb2bf210f43aaa2963be.png" alt="slides_lecture_2_bearmer_87303e9299d719937dd2eb2bf210f43aaa2963be.png" /></p>
-</div>
 </div></li>
 
 <li><p>
 For continuous random variables, it is computed as
 </p>
 <div>
+\begin{equation*}
+\int_{-\infty}^{\infty} y f(y \mid x)\, dy
+\end{equation*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_a8c9f9dc48f4a02af5b4dddf78df94932ba752c8.png" alt="slides_lecture_2_bearmer_a8c9f9dc48f4a02af5b4dddf78df94932ba752c8.png" /></p>
-</div>
 </div></li>
 
-<li>The expected mean of commuting time given it is raining is <img src="ltximg/slides_lecture_2_bearmer_ade82603fc6b9be0a09b3267a1ddc21a7da96f7e.png" alt="slides_lecture_2_bearmer_ade82603fc6b9be0a09b3267a1ddc21a7da96f7e.png" />.</li>
+<li>The expected mean of commuting time given it is raining is \(0 \times
+  0.1 + 1 \times 0.9 = 0.9\).</li>
 
 </ul>
 
 </section>
-<section id="slide-org09f5cbe">
-<h3 id="org09f5cbe">The law of iterated expectation</h3>
+<section id="slide-org97dae2b">
+<h3 id="org97dae2b">The law of iterated expectation</h3>
 <ul>
 <li><p>
 <b>The law of iterated expectation</b>:
 </p>
 
 <p>
-<img src="ltximg/slides_lecture_2_bearmer_0d8d1607240f0a2717a347b40f1e469cf4b2a34b.png" alt="slides_lecture_2_bearmer_0d8d1607240f0a2717a347b40f1e469cf4b2a34b.png" />
+\[ \mathrm{E}(Y) = E \left[ \mathrm{E}(Y|X) \right] \]
 </p></li>
 
-<li>It says that the mean of <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> is the weighted average of the
-conditional expectation of <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> given <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />, weighted by the
-probability distribution of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />. That is,
-<img src="ltximg/slides_lecture_2_bearmer_b661c66bea02e35ceb6f8b540ba136a4f8c6b05f.png" alt="slides_lecture_2_bearmer_b661c66bea02e35ceb6f8b540ba136a4f8c6b05f.png" /></li>
+<li>It says that the mean of \(Y\) is the weighted average of the
+conditional expectation of \(Y\) given \(X\), weighted by the
+probability distribution of \(X\). That is,
+\[ \mathrm{E}(Y) = \sum_{i=1}^n \mathrm{E}(Y \mid X=x_i) \mathrm{Pr}(X=x_i) \]</li>
 
-<li>If <img src="ltximg/slides_lecture_2_bearmer_592e11e9f792458328d93ca40990ad4cb3458d17.png" alt="slides_lecture_2_bearmer_592e11e9f792458328d93ca40990ad4cb3458d17.png" />, then <img src="ltximg/slides_lecture_2_bearmer_950865a5806e047a735ef5f8d57d94a79a45059c.png" alt="slides_lecture_2_bearmer_950865a5806e047a735ef5f8d57d94a79a45059c.png" />.</li>
+<li>If \(\mathrm{E}(X|Y) = 0\), then \(\mathrm{E}(X)=E\left[\mathrm{E}(X|Y)\right]=0\).</li>
 
 </ul>
 
 </section>
-<section id="slide-orgfec751a">
-<h3 id="orgfec751a">Conditional variance</h3>
+<section id="slide-org8b94ea0">
+<h3 id="org8b94ea0">Conditional variance</h3>
 <ul>
-<li>With the conditional mean of <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> given <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />, we can compute the
+<li>With the conditional mean of \(Y\) given \(X\), we can compute the
 conditional variance as
-<img src="ltximg/slides_lecture_2_bearmer_6a10fb8d2ee8dd91d6d4e08cc52843d45ef21b73.png" alt="slides_lecture_2_bearmer_6a10fb8d2ee8dd91d6d4e08cc52843d45ef21b73.png" /></li>
+\[ \mathrm{Var}(Y \mid X=x) = \sum_{i=1}^n \left[ y_i - \mathrm{E}(Y \mid X=x)
+  \right]^2 \mathrm{Pr}(Y=y_i \mid X=x) \]</li>
 
 <li>From the law of iterated expectation, we can get the following
-<img src="ltximg/slides_lecture_2_bearmer_b157032d1734a17c12fbcb8a4ddf8510b395f68c.png" alt="slides_lecture_2_bearmer_b157032d1734a17c12fbcb8a4ddf8510b395f68c.png" /></li>
+\[ \mathrm{Var}(Y) = \mathrm{E}(\mathrm{Var}(Y \mid X)) + \mathrm{Var}(\mathrm{E}(Y \mid
+  X)) \]</li>
 
 </ul>
 
 </section>
-<section id="slide-org033730b">
-<h3 id="org033730b">Independent random variables</h3>
+<section id="slide-org9788079">
+<h3 id="org9788079">Independent random variables</h3>
 <ul>
-<li>Two random variables <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> are <b>independently distributed</b>, or
+<li>Two random variables \(X\) and \(Y\) are <b>independently distributed</b>, or
 <b>independent</b>, if knowing the value of one of the variable provides no
 information about the other.</li>
 <li>Mathematically, it means that 
-<img src="ltximg/slides_lecture_2_bearmer_69b9dda9e40d3db186386b614063fbc9a0e0c85c.png" alt="slides_lecture_2_bearmer_69b9dda9e40d3db186386b614063fbc9a0e0c85c.png" /></li>
+\[ \mathrm{Pr}(Y=y \mid X=x) = \mathrm{Pr}(Y=y)  \]</li>
 
-<li>If <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> are independent
-<img src="ltximg/slides_lecture_2_bearmer_3b388f9376d7922b6bac860c2ea47aad866f00f5.png" alt="slides_lecture_2_bearmer_3b388f9376d7922b6bac860c2ea47aad866f00f5.png" /></li>
+<li>If \(X\) and \(Y\) are independent
+\[ \mathrm{Pr}(Y=y, X=x) = \mathrm{Pr}(X=x) \mathrm{Pr}(Y=y) \]</li>
 
 </ul>
 
 </section>
-<section id="slide-org85c89ad">
-<h3 id="org85c89ad">Independence between two continuous random variable</h3>
+<section id="slide-org323a6d2">
+<h3 id="org323a6d2">Independence between two continuous random variable</h3>
 <ul>
-<li>For two continuous random variables, <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" />, they are
+<li>For two continuous random variables, \(X\) and \(Y\), they are
 <b>independent</b> if
-<img src="ltximg/slides_lecture_2_bearmer_b11acd47e8350a00ff7372bca257fcfea7e96071.png" alt="slides_lecture_2_bearmer_b11acd47e8350a00ff7372bca257fcfea7e96071.png" /></li>
+\[ f(x|y) = f_{X}(x) \text{ or } f(y|x) = f_{Y}(y) \]</li>
 
-<li>It follows that if <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> are independent
-<img src="ltximg/slides_lecture_2_bearmer_fb5eea59e3b5bc5209bf69dff36016d82e66d1ac.png" alt="slides_lecture_2_bearmer_fb5eea59e3b5bc5209bf69dff36016d82e66d1ac.png" /></li>
+<li>It follows that if \(X\) and \(Y\) are independent
+\[ f(x, y) = f(x|y)f_{Y}(y) = f_{X}(x)f_{Y}(y) \]</li>
 
 </ul>
 
 </section>
-<section id="slide-orgbb9dabb">
-<h3 id="orgbb9dabb">Covariance and Correlation</h3>
-<div class="outline-text-3" id="text-orgbb9dabb">
-</div><ul class="org-ul"><li><a id="org41dbaa8"></a>Covariance&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<section id="slide-org342f045">
+<h3 id="org342f045">Covariance and Correlation</h3>
+<div class="outline-text-3" id="text-org342f045">
+</div><ul class="org-ul"><li><a id="org69fc4c2"></a>Covariance&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li><p>
-The covariance of two discrete random variables <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> is
+The covariance of two discrete random variables \(X\) and \(Y\) is
 </p>
 <div>
+\begin{align*}
+\mathrm{Cov}(X, Y) & = \sigma_{XY} = \mathrm{E}(X-\mu_{X})(Y-\mu_{Y}) \\
+                   & = \sum_{i=1}^n \sum_{j=1}^m (x_i - \mu_X)(y_j - \mu_Y) \mathrm{Pr}(X=x_i, Y=y_j)
+\end{align*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_7516a6ad5fee2fb82673fa37c5965fc8363d15b7.png" alt="slides_lecture_2_bearmer_7516a6ad5fee2fb82673fa37c5965fc8363d15b7.png" /></p>
-</div>
 </div></li>
 
-<li>For continous random variables, the covariance of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> is
-<img src="ltximg/slides_lecture_2_bearmer_c70008c0c754685007c8d78ea952fc85510bad0d.png" alt="slides_lecture_2_bearmer_c70008c0c754685007c8d78ea952fc85510bad0d.png" /></li>
+<li>For continous random variables, the covariance of \(X\) and \(Y\) is
+\[ \mathrm{Cov}(X, Y) = \int_{-\infty}^{\infty}
+  \int_{-\infty}^{\infty} (x-\mu_X)(y-\mu_y)f(x, y) dx dy \]</li>
 
 <li>The covariance can also be computed as
-<img src="ltximg/slides_lecture_2_bearmer_6e55333b6fccaf98f6cfbdc6016e62e9f0fa3e31.png" alt="slides_lecture_2_bearmer_6e55333b6fccaf98f6cfbdc6016e62e9f0fa3e31.png" /></li>
+\[ \mathrm{Cov}(X, Y) = \mathrm{E}(XY) - \mathrm{E}(X)\mathrm{E}(Y) \]</li>
 
 </ul></li>
 
-<li><a id="orgd4b8b88"></a>Correlation coefficient&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li><a id="orgb41e424"></a>Correlation coefficient&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
 <li><p>
-The <b>correlation coefficient</b> of <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> is
+The <b>correlation coefficient</b> of \(X\) and \(Y\) is
 </p>
 
 <p>
-<img src="ltximg/slides_lecture_2_bearmer_55eb96a92c4b11fb119d82718859e26c9d633cbb.png" alt="slides_lecture_2_bearmer_55eb96a92c4b11fb119d82718859e26c9d633cbb.png" />
+\[ \mathrm{corr}(X, Y) = \rho_{XY} = \frac{\mathrm{Cov}(X, Y)}{\left[\mathrm{Var}(X)\mathrm{Var}(Y)\right]^{1/2}} =
+  \frac{\sigma_{XY}}{\sigma_{X}\sigma_{Y}} \]
 </p></li>
 
-<li><img src="ltximg/slides_lecture_2_bearmer_4705ac35f365ba7c2229ad5a6fd49830883f5ed4.png" alt="slides_lecture_2_bearmer_4705ac35f365ba7c2229ad5a6fd49830883f5ed4.png" />.</li>
+<li>\(-1 \leq \mathrm{corr}(X, Y) \leq 1\).</li>
 
-<li><img src="ltximg/slides_lecture_2_bearmer_939e1c22c26c99a23edd6e7b7501fb62ab55e2f6.png" alt="slides_lecture_2_bearmer_939e1c22c26c99a23edd6e7b7501fb62ab55e2f6.png" /> (or <img src="ltximg/slides_lecture_2_bearmer_5a7c2af33f7e286af7655957f1e37e975b7c52eb.png" alt="slides_lecture_2_bearmer_5a7c2af33f7e286af7655957f1e37e975b7c52eb.png" />) means that <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" />
-and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> are uncorrelated.</li>
+<li>\(\mathrm{corr}(X, Y)=0\) (or \(\mathrm{Cov}(X,Y)=0\)) means that \(X\)
+and \(Y\) are uncorrelated.</li>
 
-<li>Since <img src="ltximg/slides_lecture_2_bearmer_97d248c9ee3bec581510ab749f268130b5a33d49.png" alt="slides_lecture_2_bearmer_97d248c9ee3bec581510ab749f268130b5a33d49.png" />, when <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> are uncorrelated, then <img src="ltximg/slides_lecture_2_bearmer_5c632e2601830193bce5e605124769f77b2cf3a6.png" alt="slides_lecture_2_bearmer_5c632e2601830193bce5e605124769f77b2cf3a6.png" />.</li>
+<li>Since \(\mathrm{Cov}(X, Y) = \mathrm{E}(XY) -
+  \mathrm{E}(X)\mathrm{E}(Y)\), when \(X\) and \(Y\) are uncorrelated, then \(\mathrm{E}(XY) =
+  \mathrm{E}(X) \mathrm{E}(Y)\).</li>
 
 </ul></li></ul>
 
 </section>
-<section id="slide-org07b3e98">
-<h3 id="org07b3e98">Independence and uncorrelation</h3>
+<section id="slide-orgd2590df">
+<h3 id="orgd2590df">Independence and uncorrelation</h3>
 <ul>
 <li><p>
-If <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> are independent, then
+If \(X\) and \(Y\) are independent, then
 </p>
 <div>
+\begin{align*}
+\mathrm{Cov}(X, Y) & = \sum_{i=1}^n \sum_{j=1}^m (x_i - \mu_X)(y_j - \mu_Y) \mathrm{Pr}(X=x_i) \mathrm{Pr}(Y=y_j) \\
+                   & = \sum_{i=1}^n (x_i - \mu_X) \mathrm{Pr}(X=x_i) \sum_{j=1}^m (y_j - \mu_y) \mathrm{Pr}(Y=y_j) \\
+                   & = 0 \times 0 = 0
+\end{align*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_8b8d61e127ac0d3ebd931b8a470e7d10c80a4b95.png" alt="slides_lecture_2_bearmer_8b8d61e127ac0d3ebd931b8a470e7d10c80a4b95.png" /></p>
-</div>
 </div></li>
 
-<li>That is, if <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> are independent, they must be
+<li>That is, if \(X\) and \(Y\) are independent, they must be
 uncorrelated.</li>
 
-<li>However, the converse is not true. If <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> are
+<li>However, the converse is not true. If \(X\) and \(Y\) are
 uncorrelated, there is a possibility that they are actually
 dependent.</li>
 
 </ul>
 
 </section>
-<section id="slide-orge38bb8e">
-<h3 id="orge38bb8e">Conditional mean and correlation</h3>
+<section id="slide-org767fb52">
+<h3 id="org767fb52">Conditional mean and correlation</h3>
 <ul>
-<li>If <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> are independent, then we must have 
-<img src="ltximg/slides_lecture_2_bearmer_191f8b30272696e9653d2f88defa689dfe46ff61.png" alt="slides_lecture_2_bearmer_191f8b30272696e9653d2f88defa689dfe46ff61.png" /></li>
+<li>If \(X\) and \(Y\) are independent, then we must have 
+\(\mathrm{E}(Y \mid X) = \mathrm{E}(Y) = \mu_Y\)</li>
 
 <li><p>
 Then, we can prove that
-<img src="ltximg/slides_lecture_2_bearmer_5d8acde61c0bc0c5fb5e0d0d80f32d975bf61245.png" alt="slides_lecture_2_bearmer_5d8acde61c0bc0c5fb5e0d0d80f32d975bf61245.png" /> and <img src="ltximg/slides_lecture_2_bearmer_939e1c22c26c99a23edd6e7b7501fb62ab55e2f6.png" alt="slides_lecture_2_bearmer_939e1c22c26c99a23edd6e7b7501fb62ab55e2f6.png" />.
+\(\mathrm{Cov}(X, Y) = 0\) and \(\mathrm{corr}(X, Y)=0\).
 </p>
 
 <div>
+\begin{align*}
+\mathrm{E}(XY) & = \mathrm{E}(\mathrm{E}(XY \mid X)) = \mathrm{E}(X \mathrm{E}(Y \mid X)) \\
+               & = \mathrm{E}(X) \mathrm{E}(Y \mid X) = \mathrm{E}(X) \mathrm{E}(Y)
+\end{align*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_a55fdc2cb0025cca8644c0f21598ca7cb32ebf56.png" alt="slides_lecture_2_bearmer_a55fdc2cb0025cca8644c0f21598ca7cb32ebf56.png" /></p>
-</div>
 </div>
 
 <p>
-It follows that <img src="ltximg/slides_lecture_2_bearmer_027d9d686cafb3657d848c87dc9b7b4ec6271247.png" alt="slides_lecture_2_bearmer_027d9d686cafb3657d848c87dc9b7b4ec6271247.png" /> and <img src="ltximg/slides_lecture_2_bearmer_939e1c22c26c99a23edd6e7b7501fb62ab55e2f6.png" alt="slides_lecture_2_bearmer_939e1c22c26c99a23edd6e7b7501fb62ab55e2f6.png" />. 
+It follows that \(\mathrm{Cov}(X,Y) = \mathrm{E}(XY) - \mathrm{E}(X)
+   \mathrm{E}(Y) = 0\) and \(\mathrm{corr}(X, Y)=0\). 
 </p></li>
 
 </ul>
 
 </section>
-<section id="slide-orge631f75">
-<h3 id="orge631f75">Some useful operations</h3>
+<section id="slide-orgb1a24ff">
+<h3 id="orgb1a24ff">Some useful operations</h3>
 <p>
 The following properties
-of <img src="ltximg/slides_lecture_2_bearmer_014badc3a642255d022ba6da7cec1d29ad356032.png" alt="slides_lecture_2_bearmer_014badc3a642255d022ba6da7cec1d29ad356032.png" />, <img src="ltximg/slides_lecture_2_bearmer_b4de6dcde8b838060794d2fc82c02ed60510d895.png" alt="slides_lecture_2_bearmer_b4de6dcde8b838060794d2fc82c02ed60510d895.png" /> and
-<img src="ltximg/slides_lecture_2_bearmer_5c1f8ce39105ec7bb31b446c5029a9b1c9d69ce7.png" alt="slides_lecture_2_bearmer_5c1f8ce39105ec7bb31b446c5029a9b1c9d69ce7.png" /> are useful in calculation,
+of \(\mathrm{E}(\cdot)\), \(\mathrm{Var}(\cdot)\) and
+\(\mathrm{Cov}(\cdot)\) are useful in calculation,
 </p>
 
 <div>
+\begin{align*}
+\mathrm{E}(a + bX + cY)      & = a + b \mu_{X} + c \mu_{Y} \\
+\mathrm{Var}(aX + bY)        & = a^{2} \sigma^{2}_{X} + b^{2} \sigma^{2}_{Y} + 2ab\sigma_{XY} \\
+\mathrm{Cov}(a + bX + cV, Y) & = b\sigma_{XY} + c\sigma_{VY} \\
+\end{align*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_938e09458b4d5d5c0035458ac111b1e9d5619904.png" alt="slides_lecture_2_bearmer_938e09458b4d5d5c0035458ac111b1e9d5619904.png" /></p>
-</div>
 </div>
 
 
@@ -797,73 +825,91 @@ of <img src="ltximg/slides_lecture_2_bearmer_014badc3a642255d022ba6da7cec1d29ad3
 </section>
 </section>
 <section>
-<section id="slide-org41d6f6d">
-<h2 id="org41d6f6d"><span class="section-number-2">4</span> Four Specific Distributions</h2>
+<section id="slide-orgd56373d">
+<h2 id="orgd56373d"><span class="section-number-2">4</span> Four Specific Distributions</h2>
 <div class="outline-text-2" id="text-4">
 </div></section>
-<section id="slide-org28ef16f">
-<h3 id="org28ef16f">The normal distribution</h3>
-<div class="outline-text-3" id="text-org28ef16f">
-</div><ul class="org-ul"><li><a id="orga9a2abd"></a>The normal distribution<br  /><ul>
-<li>The p.d.f. of a normally distributed random variable <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> is
-<img src="ltximg/slides_lecture_2_bearmer_1a5e5605dce0ace34719f19f5a57e2681bf11f2d.png" alt="slides_lecture_2_bearmer_1a5e5605dce0ace34719f19f5a57e2681bf11f2d.png" /></li>
-<li><img src="ltximg/slides_lecture_2_bearmer_b8288ca996b91b196e4fa6b5771850a6aec3c0ed.png" alt="slides_lecture_2_bearmer_b8288ca996b91b196e4fa6b5771850a6aec3c0ed.png" /> and <img src="ltximg/slides_lecture_2_bearmer_cc257d76bc646c58ec38260713498335e739f9df.png" alt="slides_lecture_2_bearmer_cc257d76bc646c58ec38260713498335e739f9df.png" />, and we write <img src="ltximg/slides_lecture_2_bearmer_11f994e3c4e827eab4a7d4c1709bb1d731b07c76.png" alt="slides_lecture_2_bearmer_11f994e3c4e827eab4a7d4c1709bb1d731b07c76.png" /></li>
+<section id="slide-org0b38efd">
+<h3 id="org0b38efd">The normal distribution</h3>
+<div class="outline-text-3" id="text-org0b38efd">
+</div><ul class="org-ul"><li><a id="org3c9f68e"></a>The normal distribution<br  /><ul>
+<li>The p.d.f. of a normally distributed random variable \(X\) is
+\[ f(x) =
+  \frac{1}{\sigma\sqrt{2\pi}}\exp\left[-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right]
+  \]</li>
+<li>\(\mathrm{E}(X) = \mu\) and \(\mathrm{Var}(X) = \sigma^{2}\), and we write \(X \sim N(\mu, \sigma^{2})\)</li>
 
 </ul></li>
 
-<li><a id="org902d41f"></a>The standard normal distribution<br  /><ul>
-<li>The standard normal distribution has <img src="ltximg/slides_lecture_2_bearmer_e4c61aa6a2cbee5cc487d2461c1f18dc9fcc04cb.png" alt="slides_lecture_2_bearmer_e4c61aa6a2cbee5cc487d2461c1f18dc9fcc04cb.png" /> and <img src="ltximg/slides_lecture_2_bearmer_373f64059b654a1ec93490fd500c9fb46979da6c.png" alt="slides_lecture_2_bearmer_373f64059b654a1ec93490fd500c9fb46979da6c.png" />. The p.d.f of the
+<li><a id="org2edff5c"></a>The standard normal distribution<br  /><ul>
+<li>The standard normal distribution has \(\mu = 0\) and \(\sigma = 0\). The p.d.f of the
 standard normal distribution is
-<img src="ltximg/slides_lecture_2_bearmer_0f6bc99f68ed94e66598ef2b9c6b6dacd47fea71.png" alt="slides_lecture_2_bearmer_0f6bc99f68ed94e66598ef2b9c6b6dacd47fea71.png" /></li>
+\[
+  \phi(x) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)
+  \]</li>
 <li>The c.d.f of the standard normal distribution is often denoted as
-<img src="ltximg/slides_lecture_2_bearmer_6bc51c0e41fd9c187b425a8b7e7e4c90362b5397.png" alt="slides_lecture_2_bearmer_6bc51c0e41fd9c187b425a8b7e7e4c90362b5397.png" />.</li>
+\(\Phi(x)\).</li>
 
 </ul></li></ul>
 
 </section>
-<section id="slide-orgf8faef2">
-<h3 id="orgf8faef2">Symmetric and skinny tails</h3>
+<section id="slide-orga5c74dc">
+<h3 id="orga5c74dc">Symmetric and skinny tails</h3>
 <ul>
-<li>The normal distribution is symmetric around its mean, <img src="ltximg/slides_lecture_2_bearmer_4c6db2c5ac3479789905f33f0173f881d6c10b3c.png" alt="slides_lecture_2_bearmer_4c6db2c5ac3479789905f33f0173f881d6c10b3c.png" />, with the
+<li>The normal distribution is symmetric around its mean, \(\mu\), with the
 skewness equal 0</li>
 <li>It has 95% of its probability between
-<img src="ltximg/slides_lecture_2_bearmer_fabca6bffcd3f6db81c2f913cd853a486f99cb81.png" alt="slides_lecture_2_bearmer_fabca6bffcd3f6db81c2f913cd853a486f99cb81.png" /> and <img src="ltximg/slides_lecture_2_bearmer_67ccc8a532bec2d55d37064a9e0daab166e82e82.png" alt="slides_lecture_2_bearmer_67ccc8a532bec2d55d37064a9e0daab166e82e82.png" />, with the kurtosis
+\(\mu-1.96\sigma\) and \(\mu+1.96\sigma\), with the kurtosis
 equal 3.</li>
 
 </ul>
 
+</section>
+<section id="slide-org45347d1">
+<h3 id="org45347d1">The p.d.f. of the normal distribution</h3>
 
-<div id="orgc873685" class="figure">
-<p><img src="figure/Normal-distribution-curve.jpg" alt="Normal-distribution-curve.jpg" />
+<div id="orga23acd2" class="figure">
+<p><img src="figure/Normal-distribution-curve.png" alt="Normal-distribution-curve.png" />
 </p>
 <p><span class="figure-number">Figure 6: </span>The normal probability density</p>
 </div>
 
 </section>
-<section id="slide-org314eae2">
-<h3 id="org314eae2">Transforming a normally distributed random variable to the standard normal distribution</h3>
+<section id="slide-org7b749f4">
+<h3 id="org7b749f4">Transforming a normally distributed random variable to the standard normal distribution</h3>
 <ul>
-<li>Let <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> be a random variable with a normal distribution, i.e., <img src="ltximg/slides_lecture_2_bearmer_e2ca12aa9c592f49dcc037039d5596dfa87f9d69.png" alt="slides_lecture_2_bearmer_e2ca12aa9c592f49dcc037039d5596dfa87f9d69.png" />.</li>
-<li>We compute <img src="ltximg/slides_lecture_2_bearmer_2d00418114ef41d628269fc76d32acb0c1026040.png" alt="slides_lecture_2_bearmer_2d00418114ef41d628269fc76d32acb0c1026040.png" />, which follows
-the standard normal distribution, <img src="ltximg/slides_lecture_2_bearmer_4f7f119ad211fe980e4cce0ef3d305a79efd4901.png" alt="slides_lecture_2_bearmer_4f7f119ad211fe980e4cce0ef3d305a79efd4901.png" />.</li>
-<li>For example, if <img src="ltximg/slides_lecture_2_bearmer_29dc3f5ef5a5976c7a2b78eccf8cfc79de7046cb.png" alt="slides_lecture_2_bearmer_29dc3f5ef5a5976c7a2b78eccf8cfc79de7046cb.png" />, then <img src="ltximg/slides_lecture_2_bearmer_f4b8f2614950537a38a56eff42daac557ff23861.png" alt="slides_lecture_2_bearmer_f4b8f2614950537a38a56eff42daac557ff23861.png" />. When we want to find <img src="ltximg/slides_lecture_2_bearmer_3682bc043c591b33ecaca9d66a059479850dd201.png" alt="slides_lecture_2_bearmer_3682bc043c591b33ecaca9d66a059479850dd201.png" />, we only need to
-compute <img src="ltximg/slides_lecture_2_bearmer_dd231e430b140c5b16cf8d7aa0e747091343c0e5.png" alt="slides_lecture_2_bearmer_dd231e430b140c5b16cf8d7aa0e747091343c0e5.png" /></li>
+<li>Let \(X\) be a random variable with a normal distribution, i.e., \(X \sim
+  N(\mu, \sigma^2)\).</li>
+<li>We compute \(Z = (X-\mu)/\sigma\), which follows
+the standard normal distribution, \(N(0, 1)\).</li>
+<li>For example, if \(X \sim N(1, 4)\), then \(Z = (X-1)/2 \sim N(0,
+  1)\). When we want to find \(\mathrm{Pr}(X \leq 4)\), we only need to
+compute \(\Phi(3/2)\)</li>
+
+</ul>
+
+</section>
+<section id="slide-org4d0a008">
+<h3 id="org4d0a008">Transforming a normally distributed random variable to the standard normal distribution</h3>
+<ul>
 <li><p>
-Generally, for any two number <img src="ltximg/slides_lecture_2_bearmer_c87ee179251cc2cf402552d34d11b2e34b40f457.png" alt="slides_lecture_2_bearmer_c87ee179251cc2cf402552d34d11b2e34b40f457.png" /> and let <img src="ltximg/slides_lecture_2_bearmer_524c267ad4dd3314e070ccc749b75ec4584d3338.png" alt="slides_lecture_2_bearmer_524c267ad4dd3314e070ccc749b75ec4584d3338.png" /> and
-<img src="ltximg/slides_lecture_2_bearmer_d3c633c68c3930749765de7f2f0e5f36cbe1fd17.png" alt="slides_lecture_2_bearmer_d3c633c68c3930749765de7f2f0e5f36cbe1fd17.png" />, we have
+Generally, for any two number \(c_1 < c_2\) and let \(d_1 = (c_1 - \mu)/\sigma\) and
+\(d_2 = (c_2 - \mu)/\sigma\), we have
 </p>
 <div>
+\begin{align*}
+\mathrm{Pr}(X \leq c_2) & = \mathrm{Pr}(Z \leq d_2) = \Phi(d_2) \\
+\mathrm{Pr}(X \geq c_1) & = \mathrm{Pr}(Z \geq d_1) = 1 - \Phi(d_1) \\
+\mathrm{Pr}(c_1 \leq X \leq c_2) & = \mathrm{Pr}(d_1 \leq Z \leq d_2) = \Phi(d_2) - \Phi(d_1)
+\end{align*}
 
-<div class="figure">
-<p><img src="ltximg/slides_lecture_2_bearmer_9cdb7694ecfe947c933bbe55e0af5bbcb37662bd.png" alt="slides_lecture_2_bearmer_9cdb7694ecfe947c933bbe55e0af5bbcb37662bd.png" /></p>
-</div>
 </div></li>
 
 </ul>
 
 </section>
-<section id="slide-org3485914">
-<h3 id="org3485914">The multivariate normal distribution</h3>
+<section id="slide-orgfc30865">
+<h3 id="orgfc30865">The multivariate normal distribution</h3>
 <ul>
 <li>The multivariate normal distribution is the joint
 distribution of a set of random variables.</li>
@@ -875,12 +921,13 @@ distribution handy in analysis.</li>
 </ul>
 
 </section>
-<section id="slide-orgd913631">
-<h3 id="orgd913631">Important properties of the multivariate normal distribution</h3>
+<section id="slide-org48ce30e">
+<h3 id="org48ce30e">Important properties of the multivariate normal distribution</h3>
 <ul>
-<li>If n random variables, <img src="ltximg/slides_lecture_2_bearmer_055ddfd0b16a56a708086a586186630edb7a3294.png" alt="slides_lecture_2_bearmer_055ddfd0b16a56a708086a586186630edb7a3294.png" />, have a multivariate
+<li>If n random variables, \(x_1, \ldots, x_n\), have a multivariate
 normal distribution, then any linear combination of these variables
-is normally distributed. For any real numbers, <img src="ltximg/slides_lecture_2_bearmer_2c702e8d539d4efc8620e087153b84ec9a52948a.png" alt="slides_lecture_2_bearmer_2c702e8d539d4efc8620e087153b84ec9a52948a.png" />, a linear combination of <img src="ltximg/slides_lecture_2_bearmer_0047058d3bf79e30ef292751d4935a81349e4247.png" alt="slides_lecture_2_bearmer_0047058d3bf79e30ef292751d4935a81349e4247.png" /> is <img src="ltximg/slides_lecture_2_bearmer_5d5ef09529c86e939903119af082b2bb301dc361.png" alt="slides_lecture_2_bearmer_5d5ef09529c86e939903119af082b2bb301dc361.png" />.</li>
+is normally distributed. For any real numbers, \(\alpha_1, \ldots,
+  \alpha_n\), a linear combination of \({x_i}\) is \(\sum_i \alpha_i x_i\).</li>
 
 <li>If a set of random variables has a multivariate normal
 distribution, then the marginal distribution of each of the
@@ -890,54 +937,299 @@ variables is normal.</li>
 covariances that equal zero, then these random variables are
 independent.</li>
 
-<li>If <img src="ltximg/slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" alt="slides_lecture_2_bearmer_2f72cb0bf847f415be07339eb31be0e1545308b2.png" /> and <img src="ltximg/slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" alt="slides_lecture_2_bearmer_a687cdbfd667e085042b599f73f84638d3fc2bf7.png" /> have a bivariate normal distribution, then
-<img src="ltximg/slides_lecture_2_bearmer_9e7a8badb23f0d8d88a835f3bacd5b2cc886bed8.png" alt="slides_lecture_2_bearmer_9e7a8badb23f0d8d88a835f3bacd5b2cc886bed8.png" />, where <img src="ltximg/slides_lecture_2_bearmer_0875c65bb9202af5c2612d870bfbe80df6af8619.png" alt="slides_lecture_2_bearmer_0875c65bb9202af5c2612d870bfbe80df6af8619.png" /> and <img src="ltximg/slides_lecture_2_bearmer_c2aa688c49849fc03788e2c911653b790d04f980.png" alt="slides_lecture_2_bearmer_c2aa688c49849fc03788e2c911653b790d04f980.png" /> are constants.</li>
+<li>If \(X\) and \(Y\) have a bivariate normal distribution, then
+\(\mathrm{E}(Y|X = x) = a + bx\), where \(a\) and \(b\) are constants.</li>
 
 </ul>
 
 </section>
-<section id="slide-orgbf9d1ac">
-<h3 id="orgbf9d1ac">The chi-squared distribution</h3>
+<section id="slide-org3aba773">
+<h3 id="org3aba773">The chi-squared distribution</h3>
 <ul>
-<li>Let <img src="ltximg/slides_lecture_2_bearmer_3dd3123e9858c1c8ad5005d4ffa1ad8fe1cc0b6f.png" alt="slides_lecture_2_bearmer_3dd3123e9858c1c8ad5005d4ffa1ad8fe1cc0b6f.png" /> be n indepenent standard normal distribution,
-i.e. <img src="ltximg/slides_lecture_2_bearmer_6cac1412f232545b3318d520c3ab0ae6e0f1696e.png" alt="slides_lecture_2_bearmer_6cac1412f232545b3318d520c3ab0ae6e0f1696e.png" /> for all <img src="ltximg/slides_lecture_2_bearmer_f2814487445e2e8ead48676f0321e1809678e716.png" alt="slides_lecture_2_bearmer_f2814487445e2e8ead48676f0321e1809678e716.png" />. Then, the random
+<li>Let \(Z_1, \ldots, Z_n\) be n indepenent standard normal distribution,
+i.e. \(Z_i \sim N(0, 1)\) for all \(i = 1, \ldots, n\). Then, the random
 variable
-<img src="ltximg/slides_lecture_2_bearmer_cdfb00d88e40fb7e7842b59f16e1758d1cd193d1.png" alt="slides_lecture_2_bearmer_cdfb00d88e40fb7e7842b59f16e1758d1cd193d1.png" />
-has a chi-squared distribution with <img src="ltximg/slides_lecture_2_bearmer_8dc06fd47174103d35895dd81dad57274aa3fe49.png" alt="slides_lecture_2_bearmer_8dc06fd47174103d35895dd81dad57274aa3fe49.png" /> degrees of freedom, denoted as
-<img src="ltximg/slides_lecture_2_bearmer_83a7db65b1192e50dfca1f72bbc7ef6d24793603.png" alt="slides_lecture_2_bearmer_83a7db65b1192e50dfca1f72bbc7ef6d24793603.png" />, with <img src="ltximg/slides_lecture_2_bearmer_0bbb5d1f8af49175e7119060d1bb6703cf5ec1fa.png" alt="slides_lecture_2_bearmer_0bbb5d1f8af49175e7119060d1bb6703cf5ec1fa.png" /> and <img src="ltximg/slides_lecture_2_bearmer_17cb9a7c7f915a6e9ea1052f2e200abd4fd3964d.png" alt="slides_lecture_2_bearmer_17cb9a7c7f915a6e9ea1052f2e200abd4fd3964d.png" /></li>
+\[W = \sum_{i=1}^n Z^2_i \]
+has a chi-squared distribution with \(n\) degrees of freedom, denoted as
+\(W \sim \chi^2(n)\), with \(\mathrm{E}(W) = n\) and \(\mathrm{Var}(W) = 2n\)</li>
 
-<li>If <img src="ltximg/slides_lecture_2_bearmer_46fc0330fe3edef74251b25d90a85702ea28d76c.png" alt="slides_lecture_2_bearmer_46fc0330fe3edef74251b25d90a85702ea28d76c.png" />, then <img src="ltximg/slides_lecture_2_bearmer_99bee3388478553dac86fe36a965b9f105a231a0.png" alt="slides_lecture_2_bearmer_99bee3388478553dac86fe36a965b9f105a231a0.png" /> with <img src="ltximg/slides_lecture_2_bearmer_2e549209e8d828eb4ac3b4905042e9d564ba83ee.png" alt="slides_lecture_2_bearmer_2e549209e8d828eb4ac3b4905042e9d564ba83ee.png" /> and <img src="ltximg/slides_lecture_2_bearmer_dda02d93d526c437883ca26294ecfbea625d2942.png" alt="slides_lecture_2_bearmer_dda02d93d526c437883ca26294ecfbea625d2942.png" />.</li>
+<li>If \(Z \sim N(0, 1)\), then \(W = Z^2 \sim \chi^2(1)\) with \(\mathrm{E}(W) =
+  1\) and \(\mathrm{Var}(W) = 2\).</li>
 
 </ul>
 
 </section>
-<section id="slide-org851b5ca">
-<h3 id="org851b5ca">The student t distribution</h3>
+<section id="slide-org683e79a">
+<h3 id="org683e79a">The p.d.f. of chi-squared distributions</h3>
+
+<div id="org80c6ba5" class="figure">
+<p><img src="figure/chi_squared_pdf.png" alt="chi_squared_pdf.png" width="700" />
+</p>
+<p><span class="figure-number">Figure 7: </span>The probability density function of chi-squared distributions</p>
+</div>
+
+</section>
+<section id="slide-org68e48b9">
+<h3 id="org68e48b9">The student t distribution</h3>
 <ul>
-<li>Let <img src="ltximg/slides_lecture_2_bearmer_46fc0330fe3edef74251b25d90a85702ea28d76c.png" alt="slides_lecture_2_bearmer_46fc0330fe3edef74251b25d90a85702ea28d76c.png" />, <img src="ltximg/slides_lecture_2_bearmer_7aa51eebaa4488a620e92ad83ed8282454fcb378.png" alt="slides_lecture_2_bearmer_7aa51eebaa4488a620e92ad83ed8282454fcb378.png" />, and <img src="ltximg/slides_lecture_2_bearmer_8555ef7288c33db8aae44e0719c8bc2ec3956239.png" alt="slides_lecture_2_bearmer_8555ef7288c33db8aae44e0719c8bc2ec3956239.png" /> and <img src="ltximg/slides_lecture_2_bearmer_71d27a968976490a6e165334c07c415ce666099b.png" alt="slides_lecture_2_bearmer_71d27a968976490a6e165334c07c415ce666099b.png" /> be
+<li>Let \(Z \sim N(0, 1)\), \(W \sim \chi^2(m)\), and \(Z\) and \(W\) be
 independently distributed. Then, the random variable
-<img src="ltximg/slides_lecture_2_bearmer_a6b76c59295e05a117f36dc8bbaa6ab150e73658.png" alt="slides_lecture_2_bearmer_a6b76c59295e05a117f36dc8bbaa6ab150e73658.png" />
-has a student t distribution with <img src="ltximg/slides_lecture_2_bearmer_c5125f28de9ff8ef427f06329bde92181f11b4cb.png" alt="slides_lecture_2_bearmer_c5125f28de9ff8ef427f06329bde92181f11b4cb.png" /> degrees of freedom, denoted as
-<img src="ltximg/slides_lecture_2_bearmer_ce0862ad25392bf5efb8e602f46ea072d1a025f4.png" alt="slides_lecture_2_bearmer_ce0862ad25392bf5efb8e602f46ea072d1a025f4.png" />.</li>
+\[t = \frac{Z}{\sqrt{W/m}} \]
+has a student t distribution with \(m\) degrees of freedom, denoted as
+\(t \sim t(m)\).</li>
 
-<li>As <img src="ltximg/slides_lecture_2_bearmer_8dc06fd47174103d35895dd81dad57274aa3fe49.png" alt="slides_lecture_2_bearmer_8dc06fd47174103d35895dd81dad57274aa3fe49.png" /> increases, <img src="ltximg/slides_lecture_2_bearmer_fc023ccaec24b3df4514a72f47328965ece58155.png" alt="slides_lecture_2_bearmer_fc023ccaec24b3df4514a72f47328965ece58155.png" /> gets close to a standard normal distribution.</li>
+<li>As \(n\) increases, \(t\) gets close to a standard normal distribution.</li>
 
 </ul>
 
 </section>
-<section id="slide-orgfa455ca">
-<h3 id="orgfa455ca">The F distribution</h3>
+<section id="slide-orgfdd8403">
+<h3 id="orgfdd8403">The p.d.f. of student t distributions</h3>
+
+<div id="orgdebfc1d" class="figure">
+<p><img src="figure/students_t_pdf.png" alt="students_t_pdf.png" width="700" />
+</p>
+<p><span class="figure-number">Figure 8: </span>The probability density function of student t distributions</p>
+</div>
+
+</section>
+<section id="slide-org8234d84">
+<h3 id="org8234d84">The F distribution</h3>
 <ul>
-<li>Let <img src="ltximg/slides_lecture_2_bearmer_e4c657a7e468f2ecb420bb3ff66dfe7a86782f67.png" alt="slides_lecture_2_bearmer_e4c657a7e468f2ecb420bb3ff66dfe7a86782f67.png" />, <img src="ltximg/slides_lecture_2_bearmer_9fd1e2e28542cafb22dfd3b77a0609af9b7fa130.png" alt="slides_lecture_2_bearmer_9fd1e2e28542cafb22dfd3b77a0609af9b7fa130.png" />, and <img src="ltximg/slides_lecture_2_bearmer_ac8bdce541800a2baa9b8ad789882201644240eb.png" alt="slides_lecture_2_bearmer_ac8bdce541800a2baa9b8ad789882201644240eb.png" /> and
-<img src="ltximg/slides_lecture_2_bearmer_a2d7ba078f0d26f1dfb107b219661c737bdce952.png" alt="slides_lecture_2_bearmer_a2d7ba078f0d26f1dfb107b219661c737bdce952.png" /> are independent. Then, the random variable
-<img src="ltximg/slides_lecture_2_bearmer_18054938cd0717f4a2b163ead251866683530b88.png" alt="slides_lecture_2_bearmer_18054938cd0717f4a2b163ead251866683530b88.png" />
-has an F distribution with <img src="ltximg/slides_lecture_2_bearmer_fca9e85ec1734159b97b7a8ae440713fbd0e02a2.png" alt="slides_lecture_2_bearmer_fca9e85ec1734159b97b7a8ae440713fbd0e02a2.png" /> degrees of freedom, denoted as
-<img src="ltximg/slides_lecture_2_bearmer_a25ebf1861820838bff69c46cc2db59ede1827da.png" alt="slides_lecture_2_bearmer_a25ebf1861820838bff69c46cc2db59ede1827da.png" /></li>
+<li>Let \(W_1 \sim \chi^2(n_1)\), \(W_2 \sim \chi^2(n_2)\), and \(W_1\) and
+\(W_2\) are independent. Then, the random variable
+\[ F = \frac{W_1/n_1}{W_2/n_2}\]
+has an F distribution with \((n_1, n_2)\) degrees of freedom, denoted as
+\(F \sim F(n_1, n_2)\)</li>
 
-<li>If <img src="ltximg/slides_lecture_2_bearmer_82d78ad2e1674398fc87de41a78549ea061ca700.png" alt="slides_lecture_2_bearmer_82d78ad2e1674398fc87de41a78549ea061ca700.png" />, then <img src="ltximg/slides_lecture_2_bearmer_a21201b9237456d91c05a3d229c5ec281101bfc7.png" alt="slides_lecture_2_bearmer_a21201b9237456d91c05a3d229c5ec281101bfc7.png" /></li>
+<li>If \(t \sim t(n)\), then \(t^2 \sim F(1, n)\)</li>
 
-<li>As <img src="ltximg/slides_lecture_2_bearmer_a83f367ee20de6c331650abc5e87d7d55f5ffd0f.png" alt="slides_lecture_2_bearmer_a83f367ee20de6c331650abc5e87d7d55f5ffd0f.png" />, the <img src="ltximg/slides_lecture_2_bearmer_11f752f5ed3d3e48ed9962b815c076a16336dd26.png" alt="slides_lecture_2_bearmer_11f752f5ed3d3e48ed9962b815c076a16336dd26.png" /> distribution is the
-same as the <img src="ltximg/slides_lecture_2_bearmer_1d93b5a82c36ac2912fec9da66ac15667ef32204.png" alt="slides_lecture_2_bearmer_1d93b5a82c36ac2912fec9da66ac15667ef32204.png" /> distribution divided by <img src="ltximg/slides_lecture_2_bearmer_b878890109c15f0020b46121ae0afbdd29955315.png" alt="slides_lecture_2_bearmer_b878890109c15f0020b46121ae0afbdd29955315.png" />.</li>
+<li>As \(n_2 \rightarrow \infty\), the \(F(n_1, \infty)\) distribution is the
+same as the \(\chi^2(n_1)\) distribution divided by \(n_1\).</li>
+
+</ul>
+
+</section>
+<section id="slide-org81cddde">
+<h3 id="org81cddde">The p.d.f. of F distributions</h3>
+
+<div id="org35e3b6f" class="figure">
+<p><img src="figure/fisher_f_pdf.png" alt="fisher_f_pdf.png" width="700" />
+</p>
+<p><span class="figure-number">Figure 9: </span>The probability density function of F distributions</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga139986">
+<h2 id="orga139986"><span class="section-number-2">5</span> Random Sampling and the Distribution of the Sample Average</h2>
+<div class="outline-text-2" id="text-5">
+</div></section>
+<section id="slide-orga28f66d">
+<h3 id="orga28f66d">Random sampling</h3>
+<div class="outline-text-3" id="text-orga28f66d">
+</div><ul class="org-ul"><li><a id="org8df8007"></a>Simple random sampling&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>A <b>population</b> is a set of similar items or events which
+is of interest for some question or experiment.</li>
+
+<li><b>Simple random sampling</b> is a procedure in which \(n\) objects are
+selected at random from a population, and each member of the
+population is equally likely to be included in the sample.</li>
+
+<li>Let \(Y_1, Y_2, \ldots Y_n\) be the first \(n\) observations in a random
+sample. Since they are randomly drawn from a population, \(Y_1, \ldots,
+  Y_n\) are random variables.</li>
+
+</ul></li>
+
+<li><a id="orgfb7c0c6"></a>i.i.d draws&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>Since \(Y_1, Y_2, \ldots, Y_n\) are drawn from the same population,
+the marginal distribution of \(Y_i\) is the same for each \(i=1,
+  \ldots, n\), which are said to be <b>identically distributed</b>.</li>
+
+<li>With simple random sampling, the value of \(Y_i\) does not depend on
+that of \(Y_j\) for \(i \neq j\), which are said to <b>independent
+distributed</b>.</li>
+
+<li>Therefore, when \(Y_1, \ldots, Y_n\) are drawn with simple random
+sampling from the same distribution of \(Y\), we say that they are
+<b>independently and identically distributed</b> or <b>i.i.d</b>, which is
+denoted as 
+\[ Y_i \sim IID(\mu_Y, \sigma^2_Y) \text{ for } i = 1, 2, \ldots, n\]
+given that the population expectation is \(\mu_Y\) and the variance
+is \(\sigma^2_Y\).</li>
+
+</ul></li></ul>
+
+
+</section>
+<section id="slide-orgf56a55b">
+<h3 id="orgf56a55b">The sampling distribution of the sample average</h3>
+<div class="outline-text-3" id="text-orgf56a55b">
+</div><ul class="org-ul"><li><a id="orgd759302"></a>The sample average&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>The <b>sample average</b> or <b>sample mean</b>, \(\overline{Y}\), of the \(n\)
+observations \(Y_1, Y_2, \ldots, Y_n\) is
+\[ \overline{Y} = \frac{1}{n}\sum^n_{i=1} Y_i \]</li>
+
+<li>When \(Y_1, \ldots, Y_n\) are randomly drawn, \(\overline{Y}\) is also a
+random variable that should have its own distribution, called the
+<b>sampling distribution</b>.</li>
+
+</ul></li>
+
+<li><a id="orgcae4532"></a>The mean and variance of \(\overline{Y}\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>Suppose that \(Y_i \sim IID(\mu_Y, \sigma^2_{Y})\) for all \(i = 1,
+  \ldots, n\). Then
+\[
+  \mathrm{E}(\overline{Y}) = \mu_{\overline{Y}} =
+  \frac{1}{n}\sum^n_{i=1}\mathrm{E}(Y_i) = \frac{1}{n} n \mu_Y = \mu_Y
+  \]
+and
+\[
+  \mathrm{Var}(\overline{Y}) = \sigma^2_{\overline{Y}} =  \frac{1}{n^2}\sum^n_{i=1}\mathrm{Var}(Y_i) +
+  \frac{1}{n^2}\sum^n_{i=1}\sum^n_{j=1}\mathrm{Cov}(Y_i, Y_j) =
+  \frac{\sigma^2_Y}{n}
+  \]</li>
+<li>The standard deviation of the sample mean is
+\(\sigma_{\overline{Y}} = \sigma_Y / \sqrt{n}\).</li>
+
+</ul></li>
+
+<li><a id="org7ea4d03"></a>Sampling distribution of \(\overline{Y}\) when \(Y\) is normally distributed&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>When \(Y_1, \ldots, Y_n\) are i.i.d. draws from \(N(\mu_Y,
+  \sigma^2_Y)\), from the properties of the multivariate normal
+distribution, \(\overline{Y}\) is normally distributed. That is 
+\[ \overline{Y} \sim N(\mu_Y, \sigma^2_Y/n) \]</li>
+
+</ul></li></ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org80496cb">
+<h2 id="org80496cb"><span class="section-number-2">6</span> Large Sample Approximations to Sampling Distributions</h2>
+<div class="outline-text-2" id="text-6">
+</div></section>
+<section id="slide-org49a5d16">
+<h3 id="org49a5d16">The exact distribution and the asymptotic distribution</h3>
+<ul>
+<li>The sampling distribution that exactly describes the distribution of
+\(\overline{Y}\) for any \(n\) is called the <b>exact distribution</b> or
+<b>finite-sample distribution</b>.</li>
+
+<li>However, in most cases, we cannot obtain an exact distribution of
+\(\overline{Y}\), for which we can only get an approximation.</li>
+
+<li>The large-sample approximation to the sampling distribution is called the
+<b>asymptotic distribution</b>.</li>
+
+</ul>
+
+</section>
+<section id="slide-org4b5753b">
+<h3 id="org4b5753b">The law of large numbers</h3>
+<div class="outline-text-3" id="text-org4b5753b">
+</div><ul class="org-ul"><li><a id="orged5cdcc"></a>Convergence in probability&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>Let \(S_1, \ldots, S_n\) be a sequence of random variables,
+denoted as \(\{S_n\}\). \(\{S_n\}\) is said to converge in probability to a
+limit &mu; (denoted as \(S_n \xrightarrow{\text{p}} \mu\)), if and only if
+\[ \mathrm{Pr} \left(|S_n-\mu| < \delta \right) \rightarrow 1 \]
+as \(n \rightarrow \infty\) for every \(\delta > 0\).</li>
+
+<li>For example, \(S_n = \overline{Y}\). That is, \(S_1=Y_1\), \(S_2=1/2(Y_1+Y_2)\),
+\(S_n=1/n\sum_i Y_i\), and so forth.</li>
+
+</ul></li>
+
+<li><a id="orgf0f1c8a"></a>The law of large numbers&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li>The law of large numbers (LLN) states that if \(Y_1, \ldots, Y_n\) are i.i.d. with
+\(\mathrm{E}(Y_i)=\mu_Y\) and \(\mathrm{Var}(Y_i) < \infty\), then
+\(\overline{Y} \xrightarrow{\text{p}} \mu_Y\).</li>
+
+<li>The conditions for the LLN to be held is \(Y_i\) for \(i=1, \ldots, n\)
+are i.i.d., and the variance of \(Y_i\) is finite. The latter says that
+there is no extremely large outliers in the random samples.</li>
+
+</ul></li>
+
+<li><a id="orgc57a994"></a>The LLN illustrated&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div id="orga23abda" class="figure">
+<p><img src="figure/fig-2-8.png" alt="fig-2-8.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 10: </span>An illustration of the law of large numbers</p>
+</div></li></ul>
+
+</section>
+<section id="slide-org3829e10">
+<h3 id="org3829e10">The central limit theorem</h3>
+<div class="outline-text-3" id="text-org3829e10">
+</div><ul class="org-ul"><li><a id="org6c3a9d8"></a>Convergence in distribution&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li><p>
+Let \(F_1, F_2, \ldots, F_n\) be a sequence of cumulative distribution
+functions corresponding to a sequence of random variables, \(S_1, S_2,
+  \ldots, S_n\). Then the sequence of random variables \({S_n}\) is said to
+<b>converge in distribution</b> to a random variable \(S\) (denoted as \(S_n
+  \xrightarrow{\text{d}} S\)), if the distribution functions \(\{F_n\}\)
+converge to \(F\) that is the distribution function of \(S\). We can write
+it as
+</p>
+
+<p>
+\[ S_n \xrightarrow{\text{d}} S \text{ if and only if } \lim_{n
+  \rightarrow \infty}F_n(x)=F(x) \]
+</p></li>
+
+<li>The distribution \(F\) is called the <b>asymptotic distribution</b> of \(S_n\).</li>
+
+</ul></li>
+
+<li><a id="org68dbefd"></a>The central limit theorem (Lindeberg-Levy CLT)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><ul>
+<li><p>
+The CLT states that if \(Y_1, Y_2, \ldots, Y_n\) are i.i.d. random samples from a
+probability distribution with finite mean \(\mu_Y\) and finite variance
+\(\sigma^2_Y\), i.e., \(0 < \sigma^2_Y < \infty\) and \(\overline{Y} =
+  (1/n)\sum_i^nY_i\). Then
+</p>
+
+<p>
+\[ \sqrt{n}(\overline{Y}-\mu_Y) \xrightarrow{\text{d}} N(0,
+  \sigma^2_Y) \]
+</p></li>
+
+<li><p>
+It follows that since \(\sigma_{\overline{Y}} =
+  \sqrt{\mathrm{Var}(\overline{Y})} = \sigma_Y/\sqrt{n}\),
+</p>
+
+<p>
+\[ \frac{\overline{Y} - \mu_Y}{\sigma_{\overline{Y}}}
+  \xrightarrow{\text{ d}} N(0, 1) \]
+</p></li>
+
+</ul></li>
+
+<li><a id="orgdb9d3fb"></a>The CLT illustrated&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_frame">B_frame</span></span><br  /><div id="orge540da0" class="figure">
+<p><img src="figure/fig-2-9.png" alt="fig-2-9.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 11: </span>An illustration of the central limit theorem</p>
+</div></li></ul>
+
+</section>
+<section id="slide-org7e6e9df">
+<h3 id="org7e6e9df">Illustrations with Wolfram CDF player</h3>
+<ul>
+<li>To view the following demonstrations,
+first you need to download them by saving into your disk, then open
+them with Wolfram CDF Player that can be downloaded from
+<a href="http://www.wolfram.com/cdf-player/">http://www.wolfram.com/cdf-player/</a>.</li>
+
+<li>Here is another demonstration of the law of large number,
+<a href="IllustratingTheLawOfLargeNumbers.cdf">IllustratingTheLawOfLargeNumbers.cdf</a>.</li>
+
+<li>Here is the demonstration of the CLT with Wolfram CDF Player,
+<a href="IllustratingTheCentralLimitTheoremWithSumsOfBernoulliRandomV.cdf">IllustratingTheCentralLimitTheoremWithSumsOfBernoulliRandomV.cdf</a>.</li>
 
 </ul>
 </section>

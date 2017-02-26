@@ -2,7 +2,7 @@
 #+AUTHOR: Zheng Tian
 #+EMAIL: zngtian@gmail.com
 #+DATE:
-#+OPTIONS: H:2 num:1 toc:1 ^:{} tex:dvipng
+#+OPTIONS: H:2 num:1 toc:1 ^:{}
 
 #+STARTUP: beamer
 #+LATEX_CLASS: beamer

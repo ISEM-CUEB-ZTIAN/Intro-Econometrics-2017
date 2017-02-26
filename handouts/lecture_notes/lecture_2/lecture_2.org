@@ -1,7 +1,7 @@
 #+TITLE: Lecture 2: Review of Probability
 #+AUTHOR: Zheng Tian
 #+DATE:
-#+OPTIONS: toc:1 H:3 num:2
+#+OPTIONS: toc:2 H:3 num:2
 # #+OPTIONS: tex:dvipng
 #+PROPERTY: header-args:R  :session my-r-session
 
