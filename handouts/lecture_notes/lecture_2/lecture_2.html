@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-26 Sun 15:05 -->
+<!-- 2017-02-27 Mon 10:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lecture 2: Review of Probability</title>
@@ -256,45 +256,45 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1e660ea">1. Random Variables and Probability Distributions</a>
+<li><a href="#orge1d44b5">1. Random Variables and Probability Distributions</a>
 <ul>
-<li><a href="#org1679e35">1.1. Defining probabilities and random variables</a></li>
-<li><a href="#orgf502285">1.2. Probability distributions</a></li>
+<li><a href="#org7ebadd5">1.1. Defining probabilities and random variables</a></li>
+<li><a href="#orgc63a10a">1.2. Probability distributions</a></li>
 </ul>
 </li>
-<li><a href="#orga58186e">2. Expectation, Variance, and Other Moments</a>
+<li><a href="#org1cf58f2">2. Expectation, Variance, and Other Moments</a>
 <ul>
-<li><a href="#orgb47e57b">2.1. The expected value of a random variable</a></li>
-<li><a href="#org9a11c2a">2.2. The variance and standard deviation</a></li>
-<li><a href="#org1e4cf38">2.3. Moments of a random variable, skewness and kurtosis</a></li>
+<li><a href="#org4e8cc09">2.1. The expected value of a random variable</a></li>
+<li><a href="#org507a13f">2.2. The variance and standard deviation</a></li>
+<li><a href="#org799daff">2.3. Moments of a random variable, skewness and kurtosis</a></li>
 </ul>
 </li>
-<li><a href="#org1b480a3">3. Two Random Variables</a>
+<li><a href="#orgc6d58c2">3. Two Random Variables</a>
 <ul>
-<li><a href="#orgdbb4c4c">3.1. The joint and marginal distributions</a></li>
-<li><a href="#org2bcb1ba">3.2. Conditional distributions</a></li>
-<li><a href="#org805b706">3.3. Covariance and Correlation</a></li>
+<li><a href="#orgf8b569c">3.1. The joint and marginal distributions</a></li>
+<li><a href="#org0833375">3.2. Conditional distributions</a></li>
+<li><a href="#orgfbc9529">3.3. Covariance and Correlation</a></li>
 </ul>
 </li>
-<li><a href="#org39893a6">4. Four Specific Distributions</a>
+<li><a href="#org9282a16">4. Four Specific Distributions</a>
 <ul>
-<li><a href="#org57cb16f">4.1. The normal distribution</a></li>
-<li><a href="#org5013511">4.2. The chi-squared distribution</a></li>
-<li><a href="#org0eebb82">4.3. The student t distribution</a></li>
-<li><a href="#orgd9e1b76">4.4. The F distribution</a></li>
+<li><a href="#orge34024a">4.1. The normal distribution</a></li>
+<li><a href="#org643dfc7">4.2. The chi-squared distribution</a></li>
+<li><a href="#org764b71e">4.3. The student t distribution</a></li>
+<li><a href="#org5762eb8">4.4. The F distribution</a></li>
 </ul>
 </li>
-<li><a href="#orgd7977f0">5. Random Sampling and the Distribution of the Sample Average</a>
+<li><a href="#org70dacae">5. Random Sampling and the Distribution of the Sample Average</a>
 <ul>
-<li><a href="#orgb5fcc9f">5.1. Random sampling</a></li>
-<li><a href="#org705b7d1">5.2. The sampling distribution of the sample average</a></li>
+<li><a href="#orga98bab1">5.1. Random sampling</a></li>
+<li><a href="#org6258289">5.2. The sampling distribution of the sample average</a></li>
 </ul>
 </li>
-<li><a href="#org96f296b">6. Large Sample Approximations to Sampling Distributions</a>
+<li><a href="#org1be73ef">6. Large Sample Approximations to Sampling Distributions</a>
 <ul>
-<li><a href="#orgbe6e46e">6.1. The exact distribution and the asymptotic distribution</a></li>
-<li><a href="#orgdef5a77">6.2. The law of large numbers</a></li>
-<li><a href="#org478c3da">6.3. The central limit theorem</a></li>
+<li><a href="#org1cc51bb">6.1. The exact distribution and the asymptotic distribution</a></li>
+<li><a href="#orgfb3a54a">6.2. The law of large numbers</a></li>
+<li><a href="#org115448e">6.3. The central limit theorem</a></li>
 </ul>
 </li>
 </ul>
@@ -306,15 +306,15 @@ is by no means comprehensive. We will just refresh our mind with the
 concepts that will be used the lectures that follow.
 </p>
 
-<div id="outline-container-org1e660ea" class="outline-2">
-<h2 id="org1e660ea"><span class="section-number-2">1</span> Random Variables and Probability Distributions</h2>
+<div id="outline-container-orge1d44b5" class="outline-2">
+<h2 id="orge1d44b5"><span class="section-number-2">1</span> Random Variables and Probability Distributions</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org1679e35" class="outline-3">
-<h3 id="org1679e35"><span class="section-number-3">1.1</span> Defining probabilities and random variables</h3>
+</div><div id="outline-container-org7ebadd5" class="outline-3">
+<h3 id="org7ebadd5"><span class="section-number-3">1.1</span> Defining probabilities and random variables</h3>
 <div class="outline-text-3" id="text-1-1">
-</div><div id="outline-container-org1a59c16" class="outline-4">
-<h4 id="org1a59c16">Experiments, outcomes, sample space, and events</h4>
-<div class="outline-text-4" id="text-org1a59c16">
+</div><div id="outline-container-org70071ba" class="outline-4">
+<h4 id="org70071ba">Experiments, outcomes, sample space, and events</h4>
+<div class="outline-text-4" id="text-org70071ba">
 <p>
 Probabilities are defined with respect to things whose occurrence are
 random. We use the idea of an <b>experiment</b> to symbolize the processes
@@ -334,9 +334,9 @@ space. Getting a head is an event, which is \(\{H\} \subset \{H, T\}\).
 </div>
 </div>
 
-<div id="outline-container-orga6b0da6" class="outline-4">
-<h4 id="orga6b0da6">Probability</h4>
-<div class="outline-text-4" id="text-orga6b0da6">
+<div id="outline-container-org96df7d0" class="outline-4">
+<h4 id="org96df7d0">Probability</h4>
+<div class="outline-text-4" id="text-org96df7d0">
 <p>
 The <b>probability</b> of an event is the proportion of the time that the
 event will occur in the long run. For example, we toss a coin for \(n\)
@@ -348,9 +348,9 @@ always repeat an experiment with infinite times. So we need a general
 </div>
 </div>
 
-<div id="outline-container-orga1b2c5a" class="outline-4">
-<h4 id="orga1b2c5a">An axiomatic definition of probability</h4>
-<div class="outline-text-4" id="text-orga1b2c5a">
+<div id="outline-container-orgfd1df83" class="outline-4">
+<h4 id="orgfd1df83">An axiomatic definition of probability</h4>
+<div class="outline-text-4" id="text-orgfd1df83">
 <p>
 A probability of an event \(A\) in the sample space \(S\), denoted as
 \(\mathrm{Pr}(A)\), is a function that assign \(A\) a real number in \([0,
@@ -372,20 +372,20 @@ sets, that is, \(A \cap B\) is an empty set.
 </div>
 </div>
 
-<div id="outline-container-orgcc60f12" class="outline-4">
-<h4 id="orgcc60f12">Random variables</h4>
-<div class="outline-text-4" id="text-orgcc60f12">
+<div id="outline-container-org3840953" class="outline-4">
+<h4 id="org3840953">Random variables</h4>
+<div class="outline-text-4" id="text-org3840953">
 <p>
 Instead of using words or a set symbol to represent an event or an
 outcome, we can use numeric value to do so. A <b>random variable</b> is
 thus a numerical summary associated with the outcomes of an
 experiment. You can also think of a random variable as a function
 mapping from an event \(\omega\) in the sample space \(\Omega\) to the
-real line, as illustrated in Figure <a href="#orgf37e6fa">1</a>.
+real line, as illustrated in Figure <a href="#org436b048">1</a>.
 </p>
 
 
-<div id="orgf37e6fa" class="figure">
+<div id="org436b048" class="figure">
 <p><img src="figure/random_variable_demo1.png" alt="random_variable_demo1.png" width="600" />
 </p>
 <p><span class="figure-number">Figure 1: </span>An illustration of random variable</p>
@@ -402,12 +402,12 @@ values, like any value in the interval \((a, b)\).
 </div>
 
 
-<div id="outline-container-orgf502285" class="outline-3">
-<h3 id="orgf502285"><span class="section-number-3">1.2</span> Probability distributions</h3>
+<div id="outline-container-orgc63a10a" class="outline-3">
+<h3 id="orgc63a10a"><span class="section-number-3">1.2</span> Probability distributions</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-org87ea9ef" class="outline-4">
-<h4 id="org87ea9ef">The probability distribution for a discrete random variable</h4>
-<div class="outline-text-4" id="text-org87ea9ef">
+</div><div id="outline-container-orge8ca469" class="outline-4">
+<h4 id="orge8ca469">The probability distribution for a discrete random variable</h4>
+<div class="outline-text-4" id="text-orge8ca469">
 <p>
 The probability distribution of a discrete random variable is the list
 of all possible values of the variable and the probability that each
@@ -415,7 +415,7 @@ value will occur. These probabilities sum to 1.
 </p>
 </div>
 
-<ul class="org-ul"><li><a id="orge45c1df"></a>The probability mass function<br  /><div class="outline-text-5" id="text-orge45c1df">
+<ul class="org-ul"><li><a id="org6325a1d"></a>The probability mass function<br  /><div class="outline-text-5" id="text-org6325a1d">
 <p>
 Let \(X\) be a discrete random variable. The probability distribution of
 \(X\) (or the probability mass function), \(p(x)\), is
@@ -434,7 +434,7 @@ The axioms of probability require that (1) \(0 \leq p(x) \leq
 1\) and (2) \( \sum_{i=1}^n p(x_i) = 1\).
 </p>
 
-<table id="orgd1937a4" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org86a0386" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> An illustration of the probability distribution of a discrete random variable</caption>
 
 <colgroup>
@@ -469,7 +469,7 @@ The axioms of probability require that (1) \(0 \leq p(x) \leq
 </table>
 </div></li>
 
-<li><a id="org8c80cdc"></a>The cumulative probability distribution<br  /><div class="outline-text-5" id="text-org8c80cdc">
+<li><a id="org3cc3019"></a>The cumulative probability distribution<br  /><div class="outline-text-5" id="text-org3cc3019">
 <p>
 The <b>cumulative probability distribution</b> (or the cumulative
 distribution function, c.d.f.) is the probability that the random variable is
@@ -478,11 +478,11 @@ less than or equal to a particular value. Let \(F(x)\) be the c.d.f of
 </p>
 
 <p>
-Table <a href="#orgdd88e3f">2</a> and Figure <a href="#orgb8e389d">2</a> show that the
+Table <a href="#orgd96c7ac">2</a> and Figure <a href="#org7c8253c">2</a> show that the
 c.d.f. of a discrete random variable is a step function of \(x\).
 </p>
 
-<table id="orgdd88e3f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgd96c7ac" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> An illustration of the c.d.f. of a discrete random variable</caption>
 
 <colgroup>
@@ -525,14 +525,14 @@ c.d.f. of a discrete random variable is a step function of \(x\).
 </table>
 
 
-<div id="orgb8e389d" class="figure">
+<div id="org7c8253c" class="figure">
 <p><img src="figure/cdf_discrete_example.png" alt="cdf_discrete_example.png" width="500" height="330" />
 </p>
 <p><span class="figure-number">Figure 2: </span>The c.d.f. of a discrete random variable</p>
 </div>
 </div></li>
 
-<li><a id="org7dbf94f"></a>Bernouli distribution<br  /><div class="outline-text-5" id="text-org7dbf94f">
+<li><a id="orga3f855c"></a>Bernouli distribution<br  /><div class="outline-text-5" id="text-orga3f855c">
 <p>
 Many experiments like tossing a coin generate two outcomes: 1
 with the probability of \(p\) and 0 with the probability of \(1-p\). The
@@ -553,9 +553,9 @@ The Bernoulli distribution
 </div></li></ul>
 </div>
 
-<div id="outline-container-org9018926" class="outline-4">
-<h4 id="org9018926">The probability distribution of a continuous random variable</h4>
-<div class="outline-text-4" id="text-org9018926">
+<div id="outline-container-org7da8e8c" class="outline-4">
+<h4 id="org7da8e8c">The probability distribution of a continuous random variable</h4>
+<div class="outline-text-4" id="text-org7da8e8c">
 <p>
 Unlike a discrete random variable that we can enumerate its values for
 each corresponding event, a specific value of a continuous random
@@ -575,7 +575,7 @@ continous random variable, \(X\), the c.d.f. is \(F(x) = \mathrm{Pr}(X
 </p>
 
 
-<div id="org26bd272" class="figure">
+<div id="org5bbffb7" class="figure">
 <p><img src="figure/norm1.png" alt="norm1.png" width="500" height="450" />
 </p>
 <p><span class="figure-number">Figure 3: </span>The p.d.f. and c.d.f. of a continuous random variable (the normal distribution)</p>
@@ -611,15 +611,15 @@ subscript.
 </div>
 
 
-<div id="outline-container-orga58186e" class="outline-2">
-<h2 id="orga58186e"><span class="section-number-2">2</span> Expectation, Variance, and Other Moments</h2>
+<div id="outline-container-org1cf58f2" class="outline-2">
+<h2 id="org1cf58f2"><span class="section-number-2">2</span> Expectation, Variance, and Other Moments</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgb47e57b" class="outline-3">
-<h3 id="orgb47e57b"><span class="section-number-3">2.1</span> The expected value of a random variable</h3>
+</div><div id="outline-container-org4e8cc09" class="outline-3">
+<h3 id="org4e8cc09"><span class="section-number-3">2.1</span> The expected value of a random variable</h3>
 <div class="outline-text-3" id="text-2-1">
-</div><div id="outline-container-org4bf5d50" class="outline-4">
-<h4 id="org4bf5d50">Definition</h4>
-<div class="outline-text-4" id="text-org4bf5d50">
+</div><div id="outline-container-orgc00bf25" class="outline-4">
+<h4 id="orgc00bf25">Definition</h4>
+<div class="outline-text-4" id="text-orgc00bf25">
 <p>
 The <b>expected value</b> of a random variable, X, denoted as \(\mathrm{E}(X)\), is
 the long-run average of the random variable over many repeated
@@ -646,8 +646,8 @@ e.g. The expectation of a Bernoulli random variable, G
 </div>
 </div>
 
-<div id="outline-container-org9a11c2a" class="outline-3">
-<h3 id="org9a11c2a"><span class="section-number-3">2.2</span> The variance and standard deviation</h3>
+<div id="outline-container-org507a13f" class="outline-3">
+<h3 id="org507a13f"><span class="section-number-3">2.2</span> The variance and standard deviation</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 The <b>variance</b> of a random variable \(X\) measures its average
@@ -693,8 +693,8 @@ bX\), then
 </div>
 
 
-<div id="outline-container-org1e4cf38" class="outline-3">
-<h3 id="org1e4cf38"><span class="section-number-3">2.3</span> Moments of a random variable, skewness and kurtosis</h3>
+<div id="outline-container-org799daff" class="outline-3">
+<h3 id="org799daff"><span class="section-number-3">2.3</span> Moments of a random variable, skewness and kurtosis</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 The expectation and variance are two special cases of the <b>moments</b> of
@@ -702,9 +702,9 @@ a distribution.
 </p>
 </div>
 
-<div id="outline-container-orgd7bfbbe" class="outline-4">
-<h4 id="orgd7bfbbe">Definition of the moments of a distribution</h4>
-<div class="outline-text-4" id="text-orgd7bfbbe">
+<div id="outline-container-org395e7b0" class="outline-4">
+<h4 id="org395e7b0">Definition of the moments of a distribution</h4>
+<div class="outline-text-4" id="text-org395e7b0">
 <dl class="org-dl">
 <dt>k<sup>th</sup> moment</dt><dd>The k<sup>th</sup> <b>moment</b> of the distribution of \(X\) is
 \(\mathrm{E}(X^{k})\). So, the expectation is the "first"
@@ -723,16 +723,16 @@ which the integral to compute the moments may not converge.
 </div>
 </div>
 
-<div id="outline-container-org29de748" class="outline-4">
-<h4 id="org29de748">Skewness and kurtosis</h4>
-<div class="outline-text-4" id="text-org29de748">
+<div id="outline-container-org289af29" class="outline-4">
+<h4 id="org289af29">Skewness and kurtosis</h4>
+<div class="outline-text-4" id="text-org289af29">
 <p>
 We also use the third and fourth central moments to measure how a
 distribution looks like asymmetric and how thick are its tails.
 </p>
 </div>
 
-<ul class="org-ul"><li><a id="orgd5d4407"></a>Skewness<br  /><div class="outline-text-5" id="text-orgd5d4407">
+<ul class="org-ul"><li><a id="orgec77c5f"></a>Skewness<br  /><div class="outline-text-5" id="text-orgec77c5f">
 <p>
 The skewness of a distribution provides a mathematical way to describe
 how much a distribution deviates from symmetry. It is defined as
@@ -748,7 +748,7 @@ not change its skewness.</li>
 </ul>
 </div></li>
 
-<li><a id="org7a88d59"></a>Kurtosis<br  /><div class="outline-text-5" id="text-org7a88d59">
+<li><a id="org1fb7b3c"></a>Kurtosis<br  /><div class="outline-text-5" id="text-org1fb7b3c">
 <p>
 The kurtosis of the distribution of a random variable \(X\) measures how
 much of the variance of \(X\) arises from extreme values, which makes
@@ -769,14 +769,14 @@ has its kurtosis exceeding 3 is called heavy-tailed, or
 </ul>
 
 <p>
-Figure <a href="#orgdc8be7d">4</a> displays four distributions with different
+Figure <a href="#org5638a4d">4</a> displays four distributions with different
 skewness and kurtosis. All four distributions have a mean of zero and
 a variance of one, while (a) and (b) are symmetric and (b)-(d) are
 heavy-tailed.
 </p>
 
 
-<div id="orgdc8be7d" class="figure">
+<div id="org5638a4d" class="figure">
 <p><img src="figure/fig-2-3.png" alt="fig-2-3.png" width="600" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Four distributions with different skewness and kurtosis</p>
@@ -787,8 +787,8 @@ heavy-tailed.
 </div>
 
 
-<div id="outline-container-org1b480a3" class="outline-2">
-<h2 id="org1b480a3"><span class="section-number-2">3</span> Two Random Variables</h2>
+<div id="outline-container-orgc6d58c2" class="outline-2">
+<h2 id="orgc6d58c2"><span class="section-number-2">3</span> Two Random Variables</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Econometrics in most cases considers the relations between two or
@@ -797,12 +797,12 @@ conditional distributions to describe such relations.
 </p>
 </div>
 
-<div id="outline-container-orgdbb4c4c" class="outline-3">
-<h3 id="orgdbb4c4c"><span class="section-number-3">3.1</span> The joint and marginal distributions</h3>
+<div id="outline-container-orgf8b569c" class="outline-3">
+<h3 id="orgf8b569c"><span class="section-number-3">3.1</span> The joint and marginal distributions</h3>
 <div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-org8b2db41" class="outline-4">
-<h4 id="org8b2db41">The joint probability functions</h4>
-<div class="outline-text-4" id="text-org8b2db41">
+</div><div id="outline-container-org5f4aba8" class="outline-4">
+<h4 id="org5f4aba8">The joint probability functions</h4>
+<div class="outline-text-4" id="text-org5f4aba8">
 <p>
 For two discrete random variables, \(X\) and \(Y\), the joint probability
 distribution of \(X\) and \(Y\) is the probability that \(X\) and \(Y\)
@@ -827,9 +827,9 @@ the joint probability density function, \(f(x, y)\), such that
 </div>
 </div>
 
-<div id="outline-container-orgbea3a16" class="outline-4">
-<h4 id="orgbea3a16">The marginal probability distribution</h4>
-<div class="outline-text-4" id="text-orgbea3a16">
+<div id="outline-container-org8283b65" class="outline-4">
+<h4 id="org8283b65">The marginal probability distribution</h4>
+<div class="outline-text-4" id="text-org8283b65">
 <p>
 The marginal probability distribution of a random variable \(X\) is
 simply the probability distribution of its own. Since it is computed
@@ -852,9 +852,9 @@ probability distribution of \(X\) of its own.
 </div>
 </div>
 
-<div id="outline-container-org9ba540f" class="outline-4">
-<h4 id="org9ba540f">An example of joint and marginal distributions</h4>
-<div class="outline-text-4" id="text-org9ba540f">
+<div id="outline-container-org49e44c5" class="outline-4">
+<h4 id="org49e44c5">An example of joint and marginal distributions</h4>
+<div class="outline-text-4" id="text-org49e44c5">
 <p>
 Suppose we have two random variables: \(X\) and \(Y\). \(X\) equals 1 if
 today is not raining and 0 otherwise, and \(Y\) equals 1 if it takes a short
@@ -864,7 +864,7 @@ value of 1 or 0 at the same time \(Y\) takes the value of 1 or 0, which
 can be represented in the following table.
 </p>
 
-<table id="org2956eff" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgf11267d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 3:</span> Joint distribution of raining and commuting time</caption>
 
 <colgroup>
@@ -923,12 +923,12 @@ distribution of \(Y\), which is also a Bernoulli distribution.
 </div>
 
 
-<div id="outline-container-org2bcb1ba" class="outline-3">
-<h3 id="org2bcb1ba"><span class="section-number-3">3.2</span> Conditional distributions</h3>
+<div id="outline-container-org0833375" class="outline-3">
+<h3 id="org0833375"><span class="section-number-3">3.2</span> Conditional distributions</h3>
 <div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-org32d9379" class="outline-4">
-<h4 id="org32d9379">The conditional probability</h4>
-<div class="outline-text-4" id="text-org32d9379">
+</div><div id="outline-container-orgb43177e" class="outline-4">
+<h4 id="orgb43177e">The conditional probability</h4>
+<div class="outline-text-4" id="text-orgb43177e">
 <p>
 We often say that given one thing happens, what is the probability of
 another thing to happen? To answer this question, we need the concept
@@ -944,7 +944,7 @@ B is defined as
 \end{equation*}
 
 <p>
-Figure <a href="#orgf77dd05">5</a><sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> helps us understand the
+Figure <a href="#org388bbb3">5</a><sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> helps us understand the
 meaning of conditional probability. When we condition on the set B,
 the sample space shrink from the original sample space, S, to a new
 sample space, B. Since \(\mathrm{Pr}(A \cap B)\) is defined over S, so
@@ -952,7 +952,7 @@ we need to divide it by \(\mathrm{Pr}(B)\) to get \(\mathrm{Pr}(A|B)\).
 </p>
 
 
-<div id="orgf77dd05" class="figure">
+<div id="org388bbb3" class="figure">
 <p><img src="figure/conditional_probability.png" alt="conditional_probability.png" width="400" height="400" />
 </p>
 <p><span class="figure-number">Figure 5: </span>An illustration of conditional probability</p>
@@ -960,9 +960,9 @@ we need to divide it by \(\mathrm{Pr}(B)\) to get \(\mathrm{Pr}(A|B)\).
 </div>
 </div>
 
-<div id="outline-container-org375e003" class="outline-4">
-<h4 id="org375e003">The conditional probability distribution</h4>
-<div class="outline-text-4" id="text-org375e003">
+<div id="outline-container-orgdd0699b" class="outline-4">
+<h4 id="orgdd0699b">The conditional probability distribution</h4>
+<div class="outline-text-4" id="text-orgdd0699b">
 <p>
 The conditional distribution of a random variable \(Y\) given another
 random variable \(X\) is the distribution of \(Y\) conditional on X taking
@@ -1014,10 +1014,10 @@ follows
 </div>
 </div>
 
-<div id="outline-container-org4b550cb" class="outline-4">
-<h4 id="org4b550cb">The conditional expectation</h4>
-<div class="outline-text-4" id="text-org4b550cb">
-</div><ul class="org-ul"><li><a id="org59f6664"></a>Definition<br  /><div class="outline-text-5" id="text-org59f6664">
+<div id="outline-container-org63f66a7" class="outline-4">
+<h4 id="org63f66a7">The conditional expectation</h4>
+<div class="outline-text-4" id="text-org63f66a7">
+</div><ul class="org-ul"><li><a id="org9be2a72"></a>Definition<br  /><div class="outline-text-5" id="text-org9be2a72">
 <p>
 The <b>conditional expectation</b> of \(Y\) given \(X\) is the expected value
 of the conditional distribution of \(Y\) given \(X\).
@@ -1043,7 +1043,7 @@ For continuous random variables, it is computed as
 </ul>
 </div></li>
 
-<li><a id="org74975a0"></a>The law of iterated expectation<br  /><div class="outline-text-5" id="text-org74975a0">
+<li><a id="orgf2f58d3"></a>The law of iterated expectation<br  /><div class="outline-text-5" id="text-orgf2f58d3">
 <p>
 Conditional expectations have a special property called <b>the law of
 iterated expectation</b>, \(\mathrm{E}(Y) = E \left[ \mathrm{E}(Y|X) \right]\).
@@ -1065,7 +1065,7 @@ If \(\mathrm{E}(X|Y) = 0\), then \(\mathrm{E}(X)=E\left[\mathrm{E}(X|Y)\right]=0
 </p>
 </div></li>
 
-<li><a id="org10c6a74"></a>Conditional variance<br  /><div class="outline-text-5" id="text-org10c6a74">
+<li><a id="org9d2dc90"></a>Conditional variance<br  /><div class="outline-text-5" id="text-org9d2dc90">
 <p>
 With the conditional mean of \(Y\) given \(X\), we can compute the
 conditional variance as
@@ -1081,10 +1081,10 @@ X)) \]
 </div></li></ul>
 </div>
 
-<div id="outline-container-orgc1397b0" class="outline-4">
-<h4 id="orgc1397b0">Independence</h4>
-<div class="outline-text-4" id="text-orgc1397b0">
-</div><ul class="org-ul"><li><a id="orgcf4be29"></a>The definition of independent random variables<br  /><div class="outline-text-5" id="text-orgcf4be29">
+<div id="outline-container-org909ad40" class="outline-4">
+<h4 id="org909ad40">Independence</h4>
+<div class="outline-text-4" id="text-org909ad40">
+</div><ul class="org-ul"><li><a id="org4953a27"></a>The definition of independent random variables<br  /><div class="outline-text-5" id="text-org4953a27">
 <p>
 Two random variables \(X\) and \(Y\) are <b>independently distributed</b>, or
 <b>independent</b>, if knowing the value of one of the variable provides no
@@ -1112,12 +1112,12 @@ It follows that if \(X\) and \(Y\) are independent
 </div>
 
 
-<div id="outline-container-org805b706" class="outline-3">
-<h3 id="org805b706"><span class="section-number-3">3.3</span> Covariance and Correlation</h3>
+<div id="outline-container-orgfbc9529" class="outline-3">
+<h3 id="orgfbc9529"><span class="section-number-3">3.3</span> Covariance and Correlation</h3>
 <div class="outline-text-3" id="text-3-3">
-</div><div id="outline-container-orgff46c9f" class="outline-4">
-<h4 id="orgff46c9f">Covariance</h4>
-<div class="outline-text-4" id="text-orgff46c9f">
+</div><div id="outline-container-orged0bfeb" class="outline-4">
+<h4 id="orged0bfeb">Covariance</h4>
+<div class="outline-text-4" id="text-orged0bfeb">
 <p>
 Covariance and correlation measure the co-movement of two random
 variables. The covariance of two random variables \(X\) and \(Y\) is
@@ -1141,9 +1141,9 @@ The covariance can also be computed as
 </div>
 </div>
 
-<div id="outline-container-org21f17de" class="outline-4">
-<h4 id="org21f17de">Correlation coefficient</h4>
-<div class="outline-text-4" id="text-org21f17de">
+<div id="outline-container-orgf8fe5b8" class="outline-4">
+<h4 id="orgf8fe5b8">Correlation coefficient</h4>
+<div class="outline-text-4" id="text-orgf8fe5b8">
 <p>
 Since the unit of the covariance of \(X\) and \(Y\) is the product of the
 unit of \(X\) and that of \(Y\), its meaning is hard to be interpreted. We
@@ -1171,9 +1171,9 @@ and \(Y\) are uncorrelated. Since \(\mathrm{Cov}(X, Y) = \mathrm{E}(XY) -
 </div>
 </div>
 
-<div id="outline-container-org326b91a" class="outline-4">
-<h4 id="org326b91a">Independence and uncorrelation</h4>
-<div class="outline-text-4" id="text-org326b91a">
+<div id="outline-container-org54e1c15" class="outline-4">
+<h4 id="org54e1c15">Independence and uncorrelation</h4>
+<div class="outline-text-4" id="text-org54e1c15">
 <p>
 There is an important relationship between the two concepts of
 independence and uncorrelation. If \(X\) and \(Y\) are independent, then
@@ -1226,9 +1226,9 @@ on \(X\). (See Exercise 2.23 at the end of Chapter 2.)
 </div>
 </div>
 
-<div id="outline-container-org120c95b" class="outline-4">
-<h4 id="org120c95b">Some useful operations</h4>
-<div class="outline-text-4" id="text-org120c95b">
+<div id="outline-container-org8af9a29" class="outline-4">
+<h4 id="org8af9a29">Some useful operations</h4>
+<div class="outline-text-4" id="text-org8af9a29">
 <p>
 Let \(X\) and \(Y\) be two random variables, with the means \(\mu_{X}\) and
 \(\mu_{Y}\), the variance \(\sigma^{2}_{X}\) and \(\sigma^{2}_{Y}\), and the
@@ -1248,8 +1248,8 @@ of \(\mathrm{E}(\cdot)\), \(\mathrm{Var}(\cdot)\) and
 </div>
 
 
-<div id="outline-container-org39893a6" class="outline-2">
-<h2 id="org39893a6"><span class="section-number-2">4</span> Four Specific Distributions</h2>
+<div id="outline-container-org9282a16" class="outline-2">
+<h2 id="org9282a16"><span class="section-number-2">4</span> Four Specific Distributions</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 There are a variety of statistical distributions. In this course, we
@@ -1259,12 +1259,12 @@ distribution, and the F distribution.
 </p>
 </div>
 
-<div id="outline-container-org57cb16f" class="outline-3">
-<h3 id="org57cb16f"><span class="section-number-3">4.1</span> The normal distribution</h3>
+<div id="outline-container-orge34024a" class="outline-3">
+<h3 id="orge34024a"><span class="section-number-3">4.1</span> The normal distribution</h3>
 <div class="outline-text-3" id="text-4-1">
-</div><div id="outline-container-orgba28417" class="outline-4">
-<h4 id="orgba28417">Definition</h4>
-<div class="outline-text-4" id="text-orgba28417">
+</div><div id="outline-container-org9c33401" class="outline-4">
+<h4 id="org9c33401">Definition</h4>
+<div class="outline-text-4" id="text-org9c33401">
 <p>
 The p.d.f. of a normally distributed random variable \(X\) is
 \[ f(x) =
@@ -1277,7 +1277,7 @@ distribution with mean \(\mu\) and variance \(\sigma^2\).
 
 <p>
 The standard normal distribution is a special case of the normal
-distribution, for which \(\mu = 0\) and \(\sigma = 0\). The p.d.f of the
+distribution, for which \(\mu = 0\) and \(\sigma = 1\). The p.d.f of the
 standard normal distribution is
 \[
 \phi(x) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)
@@ -1290,12 +1290,12 @@ The c.d.f of the standard normal distribution is often denoted as
 The normal distribution is symmetric around its mean, \(\mu\), with the
 skewness equal 0, and has 95% of its probability between
 \(\mu-1.96\sigma\) and \(\mu+1.96\sigma\), with the kurtosis
-equal 3. Figure <a href="#org4a514a0">6</a> displays the probability density of a
+equal 3. Figure <a href="#org161ca56">6</a> displays the probability density of a
 normal distribution.<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
 </p>
 
 
-<div id="org4a514a0" class="figure">
+<div id="org161ca56" class="figure">
 <p><img src="figure/Normal-distribution-curve.png" alt="Normal-distribution-curve.png" />
 </p>
 <p><span class="figure-number">Figure 6: </span>The normal probability density</p>
@@ -1303,9 +1303,9 @@ normal distribution.<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
 </div>
 </div>
 
-<div id="outline-container-org4f8ea7a" class="outline-4">
-<h4 id="org4f8ea7a">Transforming a normally distributed random variable to the standard normal distribution</h4>
-<div class="outline-text-4" id="text-org4f8ea7a">
+<div id="outline-container-orgf61b1aa" class="outline-4">
+<h4 id="orgf61b1aa">Transforming a normally distributed random variable to the standard normal distribution</h4>
+<div class="outline-text-4" id="text-orgf61b1aa">
 <p>
 Let \(X\) be a random variable with a normal distribution, i.e., \(X \sim
 N(\mu, \sigma^2)\). Then, we can easily compute the probability of \(X\)
@@ -1332,9 +1332,9 @@ Generally, for any two number \(c_1 < c_2\) and let \(d_1 = (c_1 - \mu)/\sigma\)
 </div>
 </div>
 
-<div id="outline-container-orgdc2acd4" class="outline-4">
-<h4 id="orgdc2acd4">The multivariate normal distribution</h4>
-<div class="outline-text-4" id="text-orgdc2acd4">
+<div id="outline-container-org991163e" class="outline-4">
+<h4 id="org991163e">The multivariate normal distribution</h4>
+<div class="outline-text-4" id="text-org991163e">
 <p>
 The normal distribution can be generalized to describe the joint
 distribution of a set of random variables, which have the multivariate
@@ -1344,7 +1344,7 @@ distribution.)
 </p>
 </div>
 
-<ul class="org-ul"><li><a id="orgb3f7f97"></a>Important properties of the multivariate normal distribution<br  /><div class="outline-text-5" id="text-orgb3f7f97">
+<ul class="org-ul"><li><a id="orga90ae86"></a>Important properties of the multivariate normal distribution<br  /><div class="outline-text-5" id="text-orga90ae86">
 <ol class="org-ol">
 <li><p>
 If \(X\) and \(Y\) have a bivariate normal distribution with covariance
@@ -1395,8 +1395,8 @@ where \(a\) and \(b\) are constants.</li>
 </div>
 
 
-<div id="outline-container-org5013511" class="outline-3">
-<h3 id="org5013511"><span class="section-number-3">4.2</span> The chi-squared distribution</h3>
+<div id="outline-container-org643dfc7" class="outline-3">
+<h3 id="org643dfc7"><span class="section-number-3">4.2</span> The chi-squared distribution</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Let \(Z_1, \ldots, Z_n\) be n indepenent standard normal distribution,
@@ -1413,12 +1413,12 @@ If \(Z \sim N(0, 1)\), then \(W = Z^2 \sim \chi^2(1)\) with \(\mathrm{E}(W) =
 </p>
 
 <p>
-Figure <a href="#org22eda8e">7</a> shows the p.d.f. of chi-squared distributions
+Figure <a href="#orga56656d">7</a> shows the p.d.f. of chi-squared distributions
 with different degrees of freedom. 
 </p>
 
 
-<div id="org22eda8e" class="figure">
+<div id="orga56656d" class="figure">
 <p><img src="figure/chi_squared_pdf.png" alt="chi_squared_pdf.png" width="500" />
 </p>
 <p><span class="figure-number">Figure 7: </span>The probability density function of chi-squared distributions</p>
@@ -1427,8 +1427,8 @@ with different degrees of freedom.
 </div>
 
 
-<div id="outline-container-org0eebb82" class="outline-3">
-<h3 id="org0eebb82"><span class="section-number-3">4.3</span> The student t distribution</h3>
+<div id="outline-container-org764b71e" class="outline-3">
+<h3 id="org764b71e"><span class="section-number-3">4.3</span> The student t distribution</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 Let \(Z \sim N(0, 1)\), \(W \sim \chi^2(m)\), and \(Z\) and \(W\) be
@@ -1443,12 +1443,12 @@ As \(n\) increases, \(t\) gets close to a standard normal distribution.
 </p>
 
 <p>
-Figure <a href="#orgd600822">8</a> shows the p.d.f. of student t distributions
+Figure <a href="#org09368da">8</a> shows the p.d.f. of student t distributions
 with different degrees of freedom. 
 </p>
 
 
-<div id="orgd600822" class="figure">
+<div id="org09368da" class="figure">
 <p><img src="figure/students_t_pdf.png" alt="students_t_pdf.png" width="500" />
 </p>
 <p><span class="figure-number">Figure 8: </span>The probability density function of student t distributions</p>
@@ -1457,8 +1457,8 @@ with different degrees of freedom.
 </div>
 
 
-<div id="outline-container-orgd9e1b76" class="outline-3">
-<h3 id="orgd9e1b76"><span class="section-number-3">4.4</span> The F distribution</h3>
+<div id="outline-container-org5762eb8" class="outline-3">
+<h3 id="org5762eb8"><span class="section-number-3">4.4</span> The F distribution</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 Let \(W_1 \sim \chi^2(n_1)\), \(W_2 \sim \chi^2(n_2)\), and \(W_1\) and
@@ -1475,12 +1475,12 @@ same as the \(\chi^2(n_1)\) distribution divided by \(n_1\).</li>
 </ul>
 
 <p>
-Figure <a href="#org6e8a4c3">9</a> shows the p.d.f. of F distributions
+Figure <a href="#org56b5c8c">9</a> shows the p.d.f. of F distributions
 with different degrees of freedom. 
 </p>
 
 
-<div id="org6e8a4c3" class="figure">
+<div id="org56b5c8c" class="figure">
 <p><img src="figure/fisher_f_pdf.png" alt="fisher_f_pdf.png" width="500" />
 </p>
 <p><span class="figure-number">Figure 9: </span>The probability density function of F distributions</p>
@@ -1490,11 +1490,11 @@ with different degrees of freedom.
 </div>
 
 
-<div id="outline-container-orgd7977f0" class="outline-2">
-<h2 id="orgd7977f0"><span class="section-number-2">5</span> Random Sampling and the Distribution of the Sample Average</h2>
+<div id="outline-container-org70dacae" class="outline-2">
+<h2 id="org70dacae"><span class="section-number-2">5</span> Random Sampling and the Distribution of the Sample Average</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgb5fcc9f" class="outline-3">
-<h3 id="orgb5fcc9f"><span class="section-number-3">5.1</span> Random sampling</h3>
+</div><div id="outline-container-orga98bab1" class="outline-3">
+<h3 id="orga98bab1"><span class="section-number-3">5.1</span> Random sampling</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Almost all the statistical and econometric procedures involve averages
@@ -1505,9 +1505,9 @@ averages.
 </p>
 </div>
 
-<div id="outline-container-orgcfb81c8" class="outline-4">
-<h4 id="orgcfb81c8">Simple random sampling</h4>
-<div class="outline-text-4" id="text-orgcfb81c8">
+<div id="outline-container-org9c393eb" class="outline-4">
+<h4 id="org9c393eb">Simple random sampling</h4>
+<div class="outline-text-4" id="text-org9c393eb">
 <p>
 In statistics, a <b>population</b> is a set of similar items or events which
 is of interest for some question or experiment. A statistical
@@ -1533,9 +1533,9 @@ variable.
 </div>
 </div>
 
-<div id="outline-container-org8de2d7b" class="outline-4">
-<h4 id="org8de2d7b">i.i.d draws</h4>
-<div class="outline-text-4" id="text-org8de2d7b">
+<div id="outline-container-org3a4414d" class="outline-4">
+<h4 id="org3a4414d">i.i.d draws</h4>
+<div class="outline-text-4" id="text-org3a4414d">
 <p>
 Since \(Y_1, Y_2, \ldots, Y_n\) are drawn from the same population, the
 marginal distribution of \(Y_i\) is the same for each \(i=1, \ldots,
@@ -1565,12 +1565,12 @@ is \(\sigma^2_Y\).
 </div>
 
 
-<div id="outline-container-org705b7d1" class="outline-3">
-<h3 id="org705b7d1"><span class="section-number-3">5.2</span> The sampling distribution of the sample average</h3>
+<div id="outline-container-org6258289" class="outline-3">
+<h3 id="org6258289"><span class="section-number-3">5.2</span> The sampling distribution of the sample average</h3>
 <div class="outline-text-3" id="text-5-2">
-</div><div id="outline-container-org85d112d" class="outline-4">
-<h4 id="org85d112d">The sample average</h4>
-<div class="outline-text-4" id="text-org85d112d">
+</div><div id="outline-container-orga5b7ab0" class="outline-4">
+<h4 id="orga5b7ab0">The sample average</h4>
+<div class="outline-text-4" id="text-orga5b7ab0">
 <p>
 The <b>sample average</b> or <b>sample mean</b>, \(\overline{Y}\), of the \(n\)
 observations \(Y_1, Y_2, \ldots, Y_n\) is
@@ -1586,9 +1586,9 @@ variance, and the form of the sampling distribution.
 </div>
 </div>
 
-<div id="outline-container-org7e36437" class="outline-4">
-<h4 id="org7e36437">The mean and variance of \(\overline{Y}\)</h4>
-<div class="outline-text-4" id="text-org7e36437">
+<div id="outline-container-org29117e2" class="outline-4">
+<h4 id="org29117e2">The mean and variance of \(\overline{Y}\)</h4>
+<div class="outline-text-4" id="text-org29117e2">
 <p>
 Suppose that \(Y_i \sim IID(\mu_Y, \sigma^2_{Y})\) for all \(i = 1,
 \ldots, n\). Then, by the definition of \(\overline{Y}\) and the fact
@@ -1610,9 +1610,9 @@ And the standard deviation of the sample mean is
 </div>
 </div>
 
-<div id="outline-container-orgc3b6acb" class="outline-4">
-<h4 id="orgc3b6acb">Sampling distribution of \(\overline{Y}\) when \(Y\) is normally distributed</h4>
-<div class="outline-text-4" id="text-orgc3b6acb">
+<div id="outline-container-org0a87863" class="outline-4">
+<h4 id="org0a87863">Sampling distribution of \(\overline{Y}\) when \(Y\) is normally distributed</h4>
+<div class="outline-text-4" id="text-org0a87863">
 <p>
 The sample average \(\overline{Y}\) is a linear combination of \(Y_1,
 \ldots, Y_n\). When \(Y_1, \ldots, Y_n\) are i.i.d. draws from \(N(\mu_Y,
@@ -1626,11 +1626,11 @@ distribution, \(\overline{Y}\) is normally distributed. That is
 </div>
 
 
-<div id="outline-container-org96f296b" class="outline-2">
-<h2 id="org96f296b"><span class="section-number-2">6</span> Large Sample Approximations to Sampling Distributions</h2>
+<div id="outline-container-org1be73ef" class="outline-2">
+<h2 id="org1be73ef"><span class="section-number-2">6</span> Large Sample Approximations to Sampling Distributions</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgbe6e46e" class="outline-3">
-<h3 id="orgbe6e46e"><span class="section-number-3">6.1</span> The exact distribution and the asymptotic distribution</h3>
+</div><div id="outline-container-org1cc51bb" class="outline-3">
+<h3 id="org1cc51bb"><span class="section-number-3">6.1</span> The exact distribution and the asymptotic distribution</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 The sampling distribution that exactly describes the distribution of
@@ -1653,12 +1653,12 @@ numbers</b> and the <b>central limit theorem</b>.
 </div>
 
 
-<div id="outline-container-orgdef5a77" class="outline-3">
-<h3 id="orgdef5a77"><span class="section-number-3">6.2</span> The law of large numbers</h3>
+<div id="outline-container-orgfb3a54a" class="outline-3">
+<h3 id="orgfb3a54a"><span class="section-number-3">6.2</span> The law of large numbers</h3>
 <div class="outline-text-3" id="text-6-2">
-</div><div id="outline-container-org4f37a4b" class="outline-4">
-<h4 id="org4f37a4b">Convergence in probability</h4>
-<div class="outline-text-4" id="text-org4f37a4b">
+</div><div id="outline-container-org2c6bf15" class="outline-4">
+<h4 id="org2c6bf15">Convergence in probability</h4>
+<div class="outline-text-4" id="text-org2c6bf15">
 <p>
 Let \(S_1, \ldots, S_n\) be a sequence of random variables,
 denoted as \(\{S_n\}\). \(\{S_n\}\) is said to converge in probability to a
@@ -1674,9 +1674,9 @@ For example, \(S_n = \overline{Y}\). That is, \(S_1=Y_1\), \(S_2=1/2(Y_1+Y_2)\),
 </div>
 </div>
 
-<div id="outline-container-org218c994" class="outline-4">
-<h4 id="org218c994">The law of large numbers</h4>
-<div class="outline-text-4" id="text-org218c994">
+<div id="outline-container-orgf499ade" class="outline-4">
+<h4 id="orgf499ade">The law of large numbers</h4>
+<div class="outline-text-4" id="text-orgf499ade">
 <p>
 The law of large numbers (LLN) states that if \(Y_1, \ldots, Y_n\) are i.i.d. with
 \(\mathrm{E}(Y_i)=\mu_Y\) and \(\mathrm{Var}(Y_i) < \infty\), then
@@ -1692,14 +1692,14 @@ sample mean, rendering its convergence to be unachievable.
 </p>
 
 <p>
-Figure <a href="#orgf74955b">10</a> shows that the convergence sample mean of random
+Figure <a href="#org9e0ca15">10</a> shows that the convergence sample mean of random
 samples from a Bernoulli distribution that \(\mathrm{Pr}(Y_i = 1) =
 0.78\). As the number of sample increases, the sample mean (i.e., the
 proportion that \(Y_i = 1\)) get close to the true mean of 0.78. 
 </p>
 
 
-<div id="orgf74955b" class="figure">
+<div id="org9e0ca15" class="figure">
 <p><img src="figure/fig-2-8.png" alt="fig-2-8.png" width="600" />
 </p>
 <p><span class="figure-number">Figure 10: </span>An illustration of the law of large numbers</p>
@@ -1717,8 +1717,8 @@ them with Wolfram CDF Player that can be downloaded from
 </div>
 
 
-<div id="outline-container-org478c3da" class="outline-3">
-<h3 id="org478c3da"><span class="section-number-3">6.3</span> The central limit theorem</h3>
+<div id="outline-container-org115448e" class="outline-3">
+<h3 id="org115448e"><span class="section-number-3">6.3</span> The central limit theorem</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 The LLN ensures the convergence of the sample mean from the sampling
@@ -1727,9 +1727,9 @@ convergence of the sampling distribution itself.
 </p>
 </div>
 
-<div id="outline-container-org3ba33ac" class="outline-4">
-<h4 id="org3ba33ac">Convergence in distribution</h4>
-<div class="outline-text-4" id="text-org3ba33ac">
+<div id="outline-container-orgb738690" class="outline-4">
+<h4 id="orgb738690">Convergence in distribution</h4>
+<div class="outline-text-4" id="text-orgb738690">
 <p>
 Let \(F_1, F_2, \ldots, F_n\) be a sequence of cumulative distribution
 functions corresponding to a sequence of random variables, \(S_1, S_2,
@@ -1753,9 +1753,9 @@ distribution \(F\) is continuous. The distribution \(F\) is called the
 </div>
 </div>
 
-<div id="outline-container-org6e3ae82" class="outline-4">
-<h4 id="org6e3ae82">The central limit theorem (Lindeberg-Levy CLT)</h4>
-<div class="outline-text-4" id="text-org6e3ae82">
+<div id="outline-container-orgd4ed625" class="outline-4">
+<h4 id="orgd4ed625">The central limit theorem (Lindeberg-Levy CLT)</h4>
+<div class="outline-text-4" id="text-orgd4ed625">
 <p>
 The CLT states that if \(Y_1, Y_2, \ldots, Y_n\) are i.i.d. random samples from a
 probability distribution with finite mean \(\mu_Y\) and finite variance
@@ -1776,13 +1776,13 @@ It follows that since \(\sigma_{\overline{Y}} =
 </p>
 
 <p>
-Figure <a href="#org55f9a08">11</a> shows that as \(n\) increases, the standardized sample
+Figure <a href="#org0d40cd5">11</a> shows that as \(n\) increases, the standardized sample
 average of the samples from a Bernoulli distribution get close to a
 normal distribution. 
 </p>
 
 
-<div id="org55f9a08" class="figure">
+<div id="org0d40cd5" class="figure">
 <p><img src="figure/fig-2-9.png" alt="fig-2-9.png" width="600" />
 </p>
 <p><span class="figure-number">Figure 11: </span>An illustration of the central limit theorem</p>
@@ -1801,7 +1801,7 @@ Here is the demonstration of the CLT with Wolfram CDF Player,
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-Source of Figure <a href="#orgf77dd05">5</a>: Pishro-Nik, Hossein. (2017). Introduction to
+Source of Figure <a href="#org388bbb3">5</a>: Pishro-Nik, Hossein. (2017). Introduction to
 Probability &amp; Statistics. Retrieved from
 <a href="https://www.probabilitycourse.com/">https://www.probabilitycourse.com/</a>.
 </p></div></div>
@@ -1813,7 +1813,7 @@ vs. Independent. Retrieved from
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
-Source of Figure <a href="#org4a514a0">6</a>: Characteristics of the
+Source of Figure <a href="#org161ca56">6</a>: Characteristics of the
 Normal Distribution. Retrieved from
 <a href="http://howmed.net/community-medicine/normal-distribution-curve/">http://howmed.net/community-medicine/normal-distribution-curve/</a>. 
 </p></div></div>
@@ -1839,7 +1839,7 @@ This example and the one for the CLT are both retrieved from
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-02-26 Sun 15:05</p>
+<p class="date">Created: 2017-02-27 Mon 10:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

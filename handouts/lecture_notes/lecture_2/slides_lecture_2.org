@@ -548,7 +548,7 @@ $\mathrm{Cov}(\cdot)$ are useful in calculation,
 *** The standard normal distribution
 
 - The standard normal distribution is a special case of the normal
-  distribution, for which $\mu = 0$ and $\sigma = 0$.
+  distribution, for which $\mu = 0$ and $\sigma = 1$.
 
 - The p.d.f of the
   standard normal distribution is

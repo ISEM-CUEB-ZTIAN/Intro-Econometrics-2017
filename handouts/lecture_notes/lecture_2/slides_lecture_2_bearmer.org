@@ -609,7 +609,7 @@ $\mathrm{Cov}(\cdot)$ are useful in calculation,
 
 *** The standard normal distribution
 
-- The standard normal distribution has $\mu = 0$ and $\sigma = 0$. The p.d.f of the
+- The standard normal distribution has $\mu = 0$ and $\sigma = 1$. The p.d.f of the
   standard normal distribution is
   \[
   \phi(x) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)
