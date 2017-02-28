@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Lecture 4: Review of Linear Algebra</title>
+<meta name="author" content="(Zheng Tian)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../../reveal.js/css/theme/beige.css" id="theme"/>
+
+<link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Lecture 4: Review of Linear Algebra</h1><h2 class="author">Zheng Tian</h2><p class="date">Created: 2017-02-28 Tue 10:45</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org695aefb">Vectors and Matrices</a></li>
+<li><a href="#/slide-org87f37b5">Matrix Operations</a></li>
+<li><a href="#/slide-org01bc21c">Matrix Inverse</a></li>
+<li><a href="#/slide-org223b605">Linear Independence</a></li>
+<li><a href="#/slide-orgbf2add6">Positive definite matrices</a></li>
+<li><a href="#/slide-orgaa6b50d">Calculus with Vectors and Matrices</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+
+<section>
+<section id="slide-org695aefb">
+<h2 id="org695aefb">Vectors and Matrices</h2>
+<div class="outline-text-2" id="text-org695aefb">
+</div></section>
+</section>
+<section>
+<section id="slide-orgbf3f972">
+<h3 id="orgbf3f972">Vectors</h3>
+<ul>
+<li><p>
+A <b>vector</b> is an ordered set of numbers arranged in a column. An
+n-dimensional column vector \(\mathbf{a}\) is 
+</p>
+
+<div>
+\begin{equation*}
+\mathbf{a} =
+ \begin{bmatrix}
+ a_1 \\ a_2 \\ \vdots \\ a_n
+ \end{bmatrix}
+\end{equation*}
+
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org284a53b">
+<h3 id="org284a53b">Matrices</h3>
+<ul>
+<li><p>
+A <b>matrix</b> is a set of column vectors. An \(n \times k\) matrix
+\(\mathbf{A}\) is
+</p>
+
+<div>
+\begin{equation*}
+\mathbf{A} = 
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1k} \\
+a_{21} & a_{22} & \cdots & a_{2k} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nk}
+\end{bmatrix}
+\end{equation*} 
+
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org55ff8a1">
+<h3 id="org55ff8a1">Types of Matrices</h3>
+<div class="outline-text-3" id="text-org55ff8a1">
+</div></section>
+<section id="slide-org34c8927">
+<h4 id="org34c8927">Square and symmetric matrix</h4>
+<dl>
+<dt>A <b>square</b> matrix</dt><dd>the number of rows equal the number
+of columns, that is, \(n = k\)</dd>
+
+<dt>A <b>symmetric</b> matrix</dt><dd>the \((i,j)\) element equal to the \((j, i)\)
+element.</dd>
+
+</dl>
+
+</section>
+<section id="slide-orgd892fa1">
+<h4 id="orgd892fa1">Diagonal matrix</h4>
+<ul>
+<li><p>
+A <b>diagonal</b> matrix: a square matrix in which all off-diagonal
+elements equal zero, that is, 
+</p>
+<div>
+\begin{equation*}  
+\mathbf{A} = 
+\begin{bmatrix}
+a_{11} & 0 & \cdots & 0 \\
+0 & a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & a_{nn}
+\end{bmatrix}
+\end{equation*}
+
+</div></li>
+
+</ul>
+
+</section>
+<section id="slide-orgeca46e4">
+<h4 id="orgeca46e4">Identity matrix</h4>
+<ul>
+<li><p>
+An <b>identity</b> matrix: a diagonal matrix in which all diagonal
+elements are 1. A subscript is sometimes included to indicate its
+size, e.g. \(\mathbf{I}_4\) indicate a \(4 \times 4\) identity matrix.
+</p>
+<div>
+\begin{equation*}
+\mathbf{I}_4 = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+
+</div></li>
+
+</ul>
+
+</section>
+<section id="slide-org7f46923">
+<h4 id="org7f46923">Triangular matrix</h4>
+<ul>
+<li><p>
+A <b>triangular</b> matrix: have only zeros either above or below the
+main diagonal. A <b>lower triangular</b> matrix looks like
+</p>
+<div>
+\begin{equation*}  
+\mathbf{A} = 
+\begin{bmatrix}
+a_{11} & 0 & \cdots & 0 \\
+a_{21} & a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{bmatrix}
+\end{equation*}
+
+</div></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org87f37b5">
+<h2 id="org87f37b5">Matrix Operations</h2>
+<div class="outline-text-2" id="text-org87f37b5">
+</div></section>
+</section>
+<section>
+<section id="slide-org9c0fea9">
+<h3 id="org9c0fea9">Transpose</h3>
+<ul>
+<li><p>
+The <b>transpose</b> of a matrix \(\mathbf{A}\), denoted
+\(\mathbf{A}^{\prime}\), is obtained by creating the matrix whose kth
+row is the kth column of the original matrix. That is,
+</p>
+
+<p>
+\[ \mathbf{B} = \mathbf{A}^{\prime} \Leftrightarrow b_{ik} = a_{ki}
+  \text{ for all } i \text{ and } k \]
+</p></li>
+
+<li>For any \(\mathbf{A}\), we have \((\mathbf{A}^{\prime})^{\prime} = \mathbf{A}\)</li>
+<li>If \(\mathbf{A}\) is symmetric, then \(\mathbf{A} = \mathbf{A}^{\prime}\).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0b7016d">
+<h3 id="org0b7016d">Addition</h3>
+<ul>
+<li><p>
+For two matrices \(\mathbf{A}\) and \(\mathbf{B}\) with the same
+dimensions, that is both are \(n \times k\). 
+</p>
+
+<p>
+\[\mathbf{A} + \mathbf{B} = [a_{ij} + b_{ij}] \text{ for all } i \text{
+  and } j\]
+</p></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdef7b1f">
+<h3 id="orgdef7b1f">Multiplication</h3>
+<div class="outline-text-3" id="text-orgdef7b1f">
+</div></section>
+<section id="slide-org1881572">
+<h4 id="org1881572">Vector multiplication</h4>
+<ul>
+<li><p>
+The <b>inner product</b> of two \(n \times 1\)
+column vector \(\mathbf{a}\) and \(\mathbf{b}\) is
+\[ \mathbf{a}^{\prime} \mathbf{b} = \sum^n_{i=1} a_i b_i \]
+</p>
+
+<p>
+Since both \(\mathbf{a}\) and \(\mathbf{b}\) are \(n \times 1\) vectors,
+it must hold that \(\mathbf{a}^{\prime} \mathbf{b} =
+  \mathbf{b}^{\prime} \mathbf{a}\).
+</p></li>
+
+</ul>
+
+</section>
+<section id="slide-org24bf66f">
+<h4 id="org24bf66f">Matrix multiplication</h4>
+<ul>
+<li><p>
+Suppose that \(\mathbf{A}\) is an \(n \times m\) matrix and
+\(\mathbf{B}\) is an \(m \times k\) matrix, then the product
+\(\mathbf{C} = \mathbf{AB}\) is an \(n \times k\) matrix, where the
+\((i,j)\) element of \(\mathbf{C}\) is \(c_{ij} = \sum_{l=1}^m a_{il}
+  b_{lj}\). 
+</p>
+
+<p>
+In other words, if we write \(\mathbf{A}\) and \(\mathbf{B}\) with
+vectors, that is,
+</p>
+<div>
+\begin{equation*}
+\mathbf{A} = 
+\begin{bmatrix}
+\mathbf{a}_1^{\prime} \\ \mathbf{a}_2^{\prime} \\ \vdots \\ \mathbf{a}_{n}^{\prime}
+\end{bmatrix}
+\text{ and }
+\mathbf{B} = 
+\begin{bmatrix}
+\mathbf{b}_1 & \mathbf{b}_2 & \cdots & \mathbf{b}_k
+\end{bmatrix}
+\end{equation*}
+
+</div>
+<p>
+where \(\mathbf{a}_i = [a_{i1}, a_{i2}, \cdots, a_{im}]^{\prime}\) is the i<sup>th</sup>
+row of \(\mathbf{A}\) for \(i = 1, 2, \ldots, n\), and \(\mathbf{b}_j =
+  [b_{1j}, b_{2j}, \ldots, b_{mj}]^{\prime}\) is the j<sup>th</sup> column of
+\(\mathbf{B}\) for \(j = 1, 2, \ldots, k\). 
+</p></li>
+
+</ul>
+
+</section>
+<section id="slide-orge6ddc4c">
+<h4 id="orge6ddc4c">Matrix multiplication (cont'd)</h4>
+<div>
+\begin{equation*}
+\mathbf{AB} = 
+\begin{bmatrix}
+\mathbf{a}_1^{\prime} \mathbf{b}_1 & \cdots & \mathbf{a}_1^{\prime} \mathbf{b}_k \\
+\mathbf{a}_2^{\prime} \mathbf{b}_1 & \cdots & \mathbf{a}_2^{\prime} \mathbf{b}_k \\
+\vdots & \ddots & \vdots \\
+\mathbf{a}_n^{\prime} \mathbf{b}_1 & \cdots & \mathbf{a}_n^{\prime} \mathbf{b}_k
+\end{bmatrix}
+\end{equation*}
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgeee82f6">
+<h3 id="orgeee82f6">Properties of matrix addition and multiplication</h3>
+<ul>
+<li><b>Commutative law</b>: \(\mathbf{A} + \mathbf{B} = \mathbf{B} +
+     \mathbf{A}\). No commutative law for matrix multiplication.</li>
+
+<li><b>Associative law</b>: \((\mathbf{A} + \mathbf{B}) + \mathbf{C} =
+     \mathbf{A} + (\mathbf{B} + \mathbf{C})\) and \((\mathbf{AB})
+     \mathbf{C} = \mathbf{A} (\mathbf{BC})\)</li>
+
+<li><b>Distributive law</b>: \(\mathbf{A} (\mathbf{B} + \mathbf{C}) =
+     \mathbf{AB} + \mathbf{AC}\)</li>
+
+<li><b>Transpose of a sum and a product</b>: \((\mathbf{A} +
+  \mathbf{B})^{\prime} = \mathbf{A}^{\prime} + \mathbf{B}^{\prime}\)
+and \((\mathbf{A} \mathbf{B})^{\prime} = \mathbf{B}^{\prime}
+  \mathbf{A}^{\prime}\).</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org01bc21c">
+<h2 id="org01bc21c">Matrix Inverse</h2>
+<div class="outline-text-2" id="text-org01bc21c">
+</div></section>
+</section>
+<section>
+<section id="slide-org3d4a5e9">
+<h3 id="org3d4a5e9">Definition</h3>
+<ul>
+<li>Let \(\mathbf{A}\) be an \(n \times n\) square matrix. \(\mathbf{A}\) is
+said to be <b>invertible</b> or <b>nonsingular</b> if such a matrix
+\(\mathbf{A}^{-1}\) exists that \(\mathbf{A}^{-1} \mathbf{A} =
+  \mathbf{I}_n\). \(\mathbf{A}^{-1}\) is the inverse of \(\mathbf{A}\).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org428ba12">
+<h3 id="org428ba12">Calculation</h3>
+<ul>
+<li><p>
+Let \(a^{ik}\) be the ik<sup>th</sup> element of \(\mathbf{A}^{-1}\). The general
+formula for computing an inverse matrix is 
+</p>
+
+<p>
+\[ a^{ik} =
+  \frac{|\mathbf{C}_{ki}|}{|\mathbf{A}|} \] 
+</p>
+
+<p>
+where \(| \mathbf{A} |\) is the determinant of \(\mathbf{A}\), \(|
+  \mathbf{C}_{ki} |\) is the ki<sup>th</sup> cofactor of \(\mathbf{A}\), that is,
+the determinant of the matrix \(\mathbf{A}_{ki}\) obtained from
+\(\mathbf{A}\) by deleting row \(k\) and column \(i\), pre-multiplied by
+\((-1)^{(k + i)}\).
+</p></li>
+
+</ul>
+
+</section>
+<section id="slide-orge3b01d4">
+<h4 id="orge3b01d4">Example 1: The inverser of a \(2 \times 2\) matrix</h4>
+<div>
+\begin{equation*}
+ \begin{bmatrix}
+  a_{11} & a_{12} \\ 
+  a_{21} & a_{22}
+  \end{bmatrix}^{-1}
+ =\frac{1}{a_{11}a_{22} - a_{12}a_{21}}
+ \begin{bmatrix}
+  a_{22} & -a_{12} \\ 
+  -a_{21} & a_{11}
+  \end{bmatrix}
+\end{equation*}
+
+</div>
+
+</section>
+<section id="slide-orgbc35358">
+<h4 id="orgbc35358">Example 2: The inverse of a diagonal matrix</h4>
+<div>
+\begin{equation*}  
+\begin{bmatrix}
+a_{11} & 0 & \cdots & 0 \\
+0 & a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & a_{nn}
+\end{bmatrix}^{-1}
+=
+\begin{bmatrix}
+1/a_{11} & 0 & \cdots & 0 \\
+0 & 1/a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1/a_{nn}
+\end{bmatrix}
+\end{equation*}
+
+</div>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org223b605">
+<h2 id="org223b605">Linear Independence</h2>
+<div class="outline-text-2" id="text-org223b605">
+</div></section>
+</section>
+<section>
+<section id="slide-org1e1f493">
+<h3 id="org1e1f493">Linear independence</h3>
+<ul>
+<li>The set of \(k\) \(n \times 1\) vectors, \(\mathbf{a}_1, \mathbf{a}_2,
+  \ldots, \mathbf{a}_k\) are <b>linearly independent</b> if there do not exist
+nonzero scalars \(c_1, c_2, \ldots, c_k\) such that \(c_1 \mathbf{a}_1 +
+  c_2 \mathbf{a}_2 + \cdots + c_k \mathbf{a}_k = \mathbf{0}_{n \times
+  1}\).</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org5e3085d">
+<h3 id="org5e3085d">The rank of a matrix</h3>
+<ul>
+<li>The <b>rank</b> of the \(n \times k\) matrix \(\mathbf{A}\) is the number of
+linearly independent column vectors of \(\mathbf{A}\), denoted as
+\(\mathrm{rank}(\mathbf{A})\).</li>
+
+<li>If \(\mathrm{rank}(\mathbf{A}) = k\), then \(\mathbf{A}\) is said to
+have full column rank. Then, there do not exist a nonzero \(k \times
+  1\) vector \(\mathbf{c}\) such that \(\mathbf{A} \mathbf{c} =
+  \mathbf{0}\).</li>
+
+<li>If \(\mathbf{A}\) is an \(n \times n\) square matrix and
+\(\mathrm{rank}(\mathbf{A}) = n\), then \(\mathbf{A}\) is nonsingular.</li>
+
+<li>If \(\mathbf{A}\) has full column rank, then \(\mathbf{A}^{\prime}
+  \mathbf{A}\) is nonsingular.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgbf2add6">
+<h2 id="orgbf2add6">Positive definite matrices</h2>
+<ul>
+<li>Let \(\mathbf{V}\) be an \(n \times n\) square matrix. Then \(\mathbf{V}\)
+is <b>positive definite</b> if 
+\(\mathbf{c}^{\prime} \mathbf{V} \mathbf{c} > 0\) 
+for all nonzero \(n \times 1\) vector \(\mathbf{c}\).</li>
+
+<li>\(\mathbf{V}\)
+is <b>positive semidefinite</b> if 
+\(\mathbf{c}^{\prime} \mathbf{V} \mathbf{c} \geq 0\) for all nonzero 
+\(n \times 1\) vector \(\mathbf{c}\).</li>
+
+<li>If \(\mathbf{V}\) is positive definite, then it is nonsingular.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgaa6b50d">
+<h2 id="orgaa6b50d">Calculus with Vectors and Matrices</h2>
+<ul>
+<li><p>
+We need to use the following results of matrix calculus in the future
+lectures. 
+</p>
+<div>
+\begin{align*}
+& \frac{\partial \mathbf{a}^{\prime} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a},\; 
+\frac{\partial \mathbf{x}^{\prime} \mathbf{a}}{\partial \mathbf{x}} = \mathbf{a},\; \text{ and } \\
+& \frac{\partial \mathbf{x}^{\prime} \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = (\mathbf{A} + \mathbf{A}^{\prime}) \mathbf{x}
+\end{align*}
+
+</div>
+
+<p>
+When \(\mathbf{A}\) is symmetric, then \((\partial \mathbf{x}^{\prime}
+  \mathbf{A} \mathbf{x}) / (\partial \mathbf{x}) = 2\mathbf{A}
+  \mathbf{x}\)
+</p></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="../../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1000,
+height: 800,
+margin: 0.20,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: '../../../reveal.js/plugin/menu/menu.js' },
+ { src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: '../../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

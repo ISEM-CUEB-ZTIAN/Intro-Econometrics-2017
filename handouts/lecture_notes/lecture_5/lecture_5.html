@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-02-27 Mon 12:38 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lecture 5: A Short R Tutorial</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Zheng Tian" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Lecture 5: A Short R Tutorial</h1>
+
+
+<div id="outline-container-org0e85fac" class="outline-2">
+<h2 id="org0e85fac"><span class="section-number-2">1</span> Getting Started with R</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org01b7422" class="outline-3">
+<h3 id="org01b7422"><span class="section-number-3">1.1</span> Installation</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-org4f37214" class="outline-4">
+<h4 id="org4f37214">Install the base system of R</h4>
+<div class="outline-text-4" id="text-org4f37214">
+<p>
+The installation files can be downloaded from
+<a href="http://cran.r-project.org/mirrors.html">http://cran.r-project.org/mirrors.html</a>. You can download for Windows,
+OS X, or Linux(ubuntu).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org34e5f73" class="outline-4">
+<h4 id="org34e5f73">Install RStudio</h4>
+<div class="outline-text-4" id="text-org34e5f73">
+<p>
+The base R comes with a simple GUI environment, while RStudio is more
+user-friendly and provides many powerful functionalities.
+</p>
+
+<p>
+RStudio can be downloaded from
+<a href="http://www.rstudio.com/products/rstudio/download/">http://www.rstudio.com/products/rstudio/download/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1040ec8" class="outline-4">
+<h4 id="org1040ec8">The environment of RStudio</h4>
+<div class="outline-text-4" id="text-org1040ec8">
+<p>
+The window of RStudio looks like Figure <a href="#orgfb0b279">1</a>
+</p>
+
+
+<div id="orgfb0b279" class="figure">
+<p><img src="RStudio_001.png" alt="RStudio_001.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>The Window of RStudio</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb6caf1b" class="outline-3">
+<h3 id="orgb6caf1b"><span class="section-number-3">1.2</span> Packages</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+The base R system only installs the core packages that support very
+basic functions. One of the strength of R is that there are many
+contributed packages written by the community of R users.
+</p>
+
+<p>
+To install a contributed package, we use the command
+<code>install.packages("names of packages")</code>. After installing a package,
+we need to invoke it every time we use it by the command
+<code>library(name of a package)</code>.
+</p>
+
+<p>
+For example, we need to install a package called AER, which include
+some other packages that are used in the book <i>Applied Econometrics
+With R</i>. To install it, type
+</p>
+</div>
+</div>
+
+<div id="outline-container-org844e567" class="outline-3">
+<h3 id="org844e567"><span class="section-number-3">1.3</span> Help</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+R is well-documented software. Help on any function may be accessed
+using either <code>help()</code> or <code>?</code>.
+</p>
+
+<p>
+If you can not remember the accurate name of a function, you can even
+guess by using <code>help.search()</code> or <code>??</code> or <code>apropos()</code>.
+</p>
+
+<p>
+Any time you encounter a problem using R which cannot be solved by
+<code>help</code> command, there are at least two places you can resort to.
+</p>
+<ul class="org-ul">
+<li>the mailing list of R: <a href="http://www.r-project.org/mail.html">http://www.r-project.org/mail.html</a></li>
+<li>google, yahoo, or bing: quite often you will get an answer to your
+question in a website called <code>stackoverflow</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4926433" class="outline-2">
+<h2 id="org4926433"><span class="section-number-2">2</span> Basics</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org9b49a2e" class="outline-3">
+<h3 id="org9b49a2e"><span class="section-number-3">2.1</span> R as a calculator</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-org58c55b1" class="outline-4">
+<h4 id="org58c55b1">Standard arithmetic operators</h4>
+<div class="outline-text-4" id="text-org58c55b1">
+<p>
+R supports the following arithmetic operators
+</p>
+<pre class="example">
++, -, *, /, ^, %%, %/%
+</pre>
+
+<p>
+Hence,
+</p>
+<pre class="example">
+&gt; 1 + 1
+[1] 2
+&gt; 2^3
+[1] 8
+&gt; 5 %% 2
+[1] 1
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb91ac60" class="outline-4">
+<h4 id="orgb91ac60">Mathematical functions</h4>
+<div class="outline-text-4" id="text-orgb91ac60">
+<p>
+R also have many built-in mathematical functions, such as, <code>log()</code>,
+<code>exp()</code>, <code>sin()</code>, <code>sqrt()</code>, <code>min()</code>, etc.
+</p>
+<pre class="example">
+&gt; log(exp(sin(pi/4)^2) * exp(cos(pi/4)^2))
+[1] 1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7bcec6c" class="outline-3">
+<h3 id="org7bcec6c"><span class="section-number-3">2.2</span> Vector operations</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Vector is the basic unit in R, from which other data structure,
+<code>matrix</code>, <code>factor</code>, <code>list</code>, <code>data.frame</code>.
+</p>
+</div>
+
+<div id="outline-container-org8230c82" class="outline-4">
+<h4 id="org8230c82">Generate a vector</h4>
+<div class="outline-text-4" id="text-org8230c82">
+<p>
+A vector can be generated by the function <code>c()</code>, which can also be
+used to concatenate two vectors
+</p>
+<pre class="example">
+&gt; x &lt;- c(0.3, 1.5, 7.3, 2)
+&gt; y &lt;- c(3, 2, 1)
+&gt; (z &lt;- c(x, y))
+[1] 0.3 1.5 7.3 2.0 3.0 2.0 1.0
+</pre>
+<p>
+Note that by concatenating <code>x</code> and <code>y</code>, integers are converted to
+floating point numbers.
+</p>
+
+<p>
+The symbol <code>&lt;-</code> is to assign a value to a variable, for instance, <code>x</code>
+in this case.
+</p>
+
+<p>
+The elements in a vector must have the same mode (data types),
+including <code>numeric</code>, <code>character</code>, and <code>logical</code>.
+</p>
+<pre class="example">
+student.names &lt;- c("John", "Mary", "Bob", "Ann")
+student.male &lt;- c(TRUE, FALSE, TRUE, FALSE)
+</pre>
+
+<p>
+We can get the length of a vector by <code>length()</code>.
+</p>
+<pre class="example">
+&gt; length(x)
+[1] 4
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org38fc2b5" class="outline-4">
+<h4 id="org38fc2b5">Patterned vectors</h4>
+<div class="outline-text-4" id="text-org38fc2b5">
+<p>
+A vector can also be generated by the functions <code>rep()</code>, <code>seq()</code>, and
+<code>:</code>.
+</p>
+<pre class="example">
+ones &lt;- rep(1, times = 3)
+even &lt;- seq(from = 2, to = 20, by = 2)
+years &lt;- 1985:2005
+rep13 &lt;- rep(1:3, times = 3)
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org3650506" class="outline-4">
+<h4 id="org3650506">Vector arithmetic</h4>
+<div class="outline-text-4" id="text-org3650506">
+<p>
+Arithmetic operators and mathematical functions can be applied to
+vector in a element-by-element fashion in R.
+</p>
+<pre class="example">
+&gt; x
+[1] 0.3 1.5 7.3 2.0
+&gt; 2 * x + 3
+[1]  3.6  6.0 17.6  7.0
+&gt; log(x)
+[1] -1.2039728  0.4054651  1.9878743  0.6931472
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgbce6650" class="outline-4">
+<h4 id="orgbce6650">Subsetting vectors</h4>
+<div class="outline-text-4" id="text-orgbce6650">
+<p>
+Element(s) in a vector can be accessed by referring to the indices of
+these elements.
+</p>
+<pre class="example">
+&gt; x &lt; c(0.3 1.5 7.3 2.0)
+&gt; x[c(1, 3)] # basic subsetting
+[1] 0.3 7.3
+&gt; x[-4]      # excluding the 4th element
+[1] 0.3 1.5 7.3
+&gt; x[x &gt; 1]   # using logical expression
+[1] 1.5 7.3 2.0
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0d0e01d" class="outline-3">
+<h3 id="org0d0e01d"><span class="section-number-3">2.3</span> Matrix operations</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-orge686e1a" class="outline-4">
+<h4 id="orge686e1a">Create a matrix</h4>
+<div class="outline-text-4" id="text-orge686e1a">
+<pre class="example">
+&gt; A &lt;- matrix(1:12, nrow = 3, ncol = 4)
+&gt; A
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
+&gt; x &lt;- 1:3; y &lt;- 4:6; z &lt;- 7:9
+&gt; B &lt;- cbind(x, y, z)
+&gt; B
+     x y z
+[1,] 1 4 7
+[2,] 2 5 8
+[3,] 3 6 9
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8885d3e" class="outline-4">
+<h4 id="org8885d3e">Subsetting a matrix</h4>
+<div class="outline-text-4" id="text-org8885d3e">
+<pre class="example">
+&gt; A
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
+&gt; A[1, 3]
+[1] 7
+&gt; A[1:2, c(2, 4)]
+     [,1] [,2]
+[1,]    4   10
+[2,]    5   11
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org360c688" class="outline-4">
+<h4 id="org360c688">Matrix operations</h4>
+<div class="outline-text-4" id="text-org360c688">
+<ul class="org-ul">
+<li><p>
+transpose
+</p>
+
+<pre class="example">
+&gt; t(A)
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+[3,]    7    8    9
+[4,]   10   11   12
+</pre></li>
+
+<li><p>
+matrix multiplication
+</p>
+
+<pre class="example">
+&gt; B &lt;- matrix(1:8, nrow = 4)
+&gt; A * B
+Error in A * B : non-conformable arrays
+&gt; dim(A)
+[1] 3 4
+&gt; dim(B)
+[1] 4 2
+&gt; A %*% B
+     [,1] [,2]
+[1,]   70  158
+[2,]   80  184
+[3,]   90  210
+</pre></li>
+
+<li><p>
+inverse matrix
+</p>
+
+<pre class="example">
+&gt; A &lt;- matrix(rnorm(9), 3)
+&gt; B &lt;- solve(A)
+&gt; A %*% B
+              [,1]          [,2]          [,3]
+[1,]  1.000000e+00 -1.110223e-16  5.551115e-17
+[2,] -1.110223e-16  1.000000e+00 -2.775558e-17
+[3,]  0.000000e+00  0.000000e+00  1.000000e+00
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdd96c64" class="outline-4">
+<h4 id="orgdd96c64">Special matrices</h4>
+<div class="outline-text-4" id="text-orgdd96c64">
+<ul class="org-ul">
+<li><p>
+diagonal matrix
+</p>
+
+<pre class="example">
+&gt; A &lt;- diag(1:3)
+&gt; A
+     [,1] [,2] [,3]
+[1,]    1    0    0
+[2,]    0    2    0
+[3,]    0    0    3
+</pre></li>
+
+<li><p>
+identity matrix
+</p>
+
+<pre class="example">
+&gt; diag(3)
+     [,1] [,2] [,3]
+[1,]    1    0    0
+[2,]    0    1    0
+[3,]    0    0    1
+</pre></li>
+
+<li><p>
+other useful functions on matrices
+</p>
+
+<p>
+<code>nrow()</code>, <code>ncol()</code>, <code>eigen()</code>, <code>rowSums</code>, <code>colSums</code>
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org50202c5" class="outline-3">
+<h3 id="org50202c5"><span class="section-number-3">2.4</span> Data Management in R</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+A data frame is more general than a matrix in that different columns
+can contain different modes of data (numeric, character, etc.)
+</p>
+</div>
+
+<div id="outline-container-org52dc4d9" class="outline-4">
+<h4 id="org52dc4d9">Create a data frame</h4>
+<div class="outline-text-4" id="text-org52dc4d9">
+<pre class="example">
+&gt; mydata &lt;- data.frame(x = 1:3, y = 4:6, z = letters[1:3])
+&gt; mydata
+  x y z
+1 1 4 a
+2 2 5 b
+3 3 6 c
+&gt; A &lt;- matrix(1:9, ncol=3)
+&gt; A.mat &lt;- as.data.frame(A)
+&gt; A.mat
+  V1 V2 V3
+1  1  4  7
+2  2  5  8
+3  3  6  9
+&gt; names(A.mat) &lt;- c("X", "Y", "Z")
+&gt; A.mat
+  X Y Z
+1 1 4 7
+2 2 5 8
+3 3 6 9
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org9061822" class="outline-4">
+<h4 id="org9061822">Read data from a file</h4>
+<div class="outline-text-4" id="text-org9061822">
+<p>
+Suppose we have a data file, mydata.txt
+</p>
+<pre class="example">
+x  y  z
+1  2  a
+4  5  b
+7  8  c
+9  10 d
+</pre>
+
+<p>
+We can read the data directly from the file using <code>read.table</code>
+</p>
+<pre class="example">
+&gt; mydata &lt;- read.table("mydata.txt", header=TRUE)
+&gt; mydata
+  x  y z
+1 1  2 a
+2 4  5 b
+3 7  8 c
+4 9 10 d
+</pre>
+
+<p>
+We can also read data from an excel file or a Stata file
+</p>
+<pre class="example">
+library(gdata)
+read.xls(mydata.xls)
+
+library(foreign)
+read.dta(mydata.dta)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgcc8b1bb" class="outline-4">
+<h4 id="orgcc8b1bb">Select variables</h4>
+<div class="outline-text-4" id="text-orgcc8b1bb">
+<p>
+We can select a variable in a data frame by using "<code>$</code>" or "<code>[[]]</code>".
+</p>
+
+<pre class="example">
+&gt; x &lt;- mydata$x
+&gt; y &lt;- mydata[[1]]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc88c9ea" class="outline-3">
+<h3 id="orgc88c9ea"><span class="section-number-3">2.5</span> Graphics</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+R is very powerful in creating graphics. <code>plot()</code> is the very basic
+plotting function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">x <span style="color: #D0372D;">&lt;-</span> rnorm(100)
+y <span style="color: #D0372D;">&lt;-</span> 1 + 2*x + rnorm(100, mean=0, sd=2)
+plot(x, y, main=<span style="color: #008000;">"the scatterplot between x and y"</span>, col=<span style="color: #008000;">"red"</span>)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./fig1.png" alt="fig1.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org05126c4" class="outline-3">
+<h3 id="org05126c4"><span class="section-number-3">2.6</span> Basic data analysis</h3>
+<div class="outline-text-3" id="text-2-6">
+</div><div id="outline-container-orgfcdcd21" class="outline-4">
+<h4 id="orgfcdcd21">Empirical exercise</h4>
+<div class="outline-text-4" id="text-orgfcdcd21">
+<div class="org-src-container">
+<pre class="src src-R" id="orge76d39f"><span style="color: #D0372D;">library</span>(foreign)
+rawdata <span style="color: #D0372D;">&lt;-</span> read.dta(<span style="color: #008000;">"cps92_08.dta"</span>)
+summary(rawdata)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-org">Error in read.dta("cps92_08.dta") :
+  unable to open file: 'No such file or directory'
+Error in summary(rawdata) : object 'rawdata' not found
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-org">     year           ahe            bachelor          female
+Min.   :1992   Min.   : 1.314   Min.   :0.0000   Min.   :0.0000
+1st Qu.:1992   1st Qu.: 9.177   1st Qu.:0.0000   1st Qu.:0.0000
+Median :2008   Median :13.462   Median :0.0000   Median :0.0000
+Mean   :2000   Mean   :15.327   Mean   :0.4356   Mean   :0.4295
+3rd Qu.:2008   3rd Qu.:19.231   3rd Qu.:1.0000   3rd Qu.:1.0000
+Max.   :2008   Max.   :82.418   Max.   :1.0000   Max.   :1.0000
+     age
+Min.   :25.00
+1st Qu.:27.00
+Median :30.00
+Mean   :29.64
+3rd Qu.:32.00
+Max.   :34.00
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-R" id="org5db1969"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">extract the data for average hourly earnings in 1992 and 2008</span>
+ahe.92 <span style="color: #D0372D;">&lt;-</span> with(rawdata, ahe[year == 1992])
+ahe.08 <span style="color: #D0372D;">&lt;-</span> with(rawdata, ahe[year == 2008])
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the sample size</span>
+n.92 <span style="color: #D0372D;">&lt;-</span> length(ahe.92)
+n.08 <span style="color: #D0372D;">&lt;-</span> length(ahe.08)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">mean</span>
+mean.ahe.92 <span style="color: #D0372D;">&lt;-</span> mean(ahe.92)
+mean.ahe.08 <span style="color: #D0372D;">&lt;-</span> mean(ahe.08)
+
+s <span style="color: #D0372D;">&lt;-</span> paste(<span style="color: #008000;">"The mean average hourly earnings in 1992 is"</span>,
+           round(mean.ahe.92, digits = 4), <span style="color: #008000;">"\n"</span>)
+cat(s)
+s <span style="color: #D0372D;">&lt;-</span> paste(<span style="color: #008000;">"The mean average hourly earnings in 2008 is"</span>,
+           round(mean.ahe.08, digits = 4), <span style="color: #008000;">"\n"</span>)
+cat(s)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-org">Error in with(rawdata, ahe[year == 1992]) : object 'rawdata' not found
+Error in with(rawdata, ahe[year == 2008]) : object 'rawdata' not found
+Error: object 'ahe.92' not found
+Error: object 'ahe.08' not found
+Error in mean(ahe.92) : object 'ahe.92' not found
+Error in mean(ahe.08) : object 'ahe.08' not found
+Error in paste("The mean average hourly earnings in 1992 is", round(mean.ahe.92,  :
+  object 'mean.ahe.92' not found
+Error in cat(s) : object 's' not found
+Error in paste("The mean average hourly earnings in 2008 is", round(mean.ahe.08,  :
+  object 'mean.ahe.08' not found
+Error in cat(s) : object 's' not found
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-R" id="org2884f45"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the sample variance</span>
+sd.ahe.92 <span style="color: #D0372D;">&lt;-</span> sd(ahe.92)
+sd.ahe.08 <span style="color: #D0372D;">&lt;-</span> sd(ahe.08)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the standard error</span>
+se.ahe.92 <span style="color: #D0372D;">&lt;-</span> sd.ahe.92 / sqrt(n.92)
+se.ahe.08 <span style="color: #D0372D;">&lt;-</span> sd.ahe.08 / sqrt(n.08)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">95% confidence interval</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the 95% critical value from a normal distribution</span>
+cv.95 <span style="color: #D0372D;">&lt;-</span> qnorm(0.975)
+lower.lim.92 <span style="color: #D0372D;">&lt;-</span> mean.ahe.92 - cv.95 * se.ahe.92
+lower.lim.08 <span style="color: #D0372D;">&lt;-</span> mean.ahe.08 - cv.95 * se.ahe.08
+
+upper.lim.92 <span style="color: #D0372D;">&lt;-</span> mean.ahe.92 + cv.95 * se.ahe.92
+upper.lim.08 <span style="color: #D0372D;">&lt;-</span> mean.ahe.08 + cv.95 * se.ahe.08
+
+s <span style="color: #D0372D;">&lt;-</span> paste(<span style="color: #008000;">"The 95% confidence interval in 1992 is\n"</span>, <span style="color: #008000;">"("</span>,
+          round(lower.lim.92, digits = 4), <span style="color: #008000;">", "</span>,
+          round(upper.lim.92, digits = 4), <span style="color: #008000;">")\n"</span>, sep = <span style="color: #008000;">""</span>)
+cat(s)
+s <span style="color: #D0372D;">&lt;-</span> paste(<span style="color: #008000;">"The 95% confidence interval in 2008 is\n"</span>, <span style="color: #008000;">"("</span>,
+          round(lower.lim.08, digits = 4), <span style="color: #008000;">", "</span>,
+          round(upper.lim.08, digits = 4), <span style="color: #008000;">")\n"</span>, sep = <span style="color: #008000;">""</span>)
+cat(s)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-org">Error in is.data.frame(x) : object 'ahe.92' not found
+Error in is.data.frame(x) : object 'ahe.08' not found
+Error: object 'sd.ahe.92' not found
+Error: object 'sd.ahe.08' not found
+Error: object 'mean.ahe.92' not found
+Error: object 'mean.ahe.08' not found
+Error: object 'mean.ahe.92' not found
+Error: object 'mean.ahe.08' not found
+Error in paste("The 95% confidence interval in 1992 is\n", "(", round(lower.lim.92,  :
+  object 'lower.lim.92' not found
+Error in cat(s) : object 's' not found
+Error in paste("The 95% confidence interval in 2008 is\n", "(", round(lower.lim.08,  :
+  object 'lower.lim.08' not found
+Error in cat(s) : object 's' not found
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-org">The 95% confidence interval in 1992 is
+(11.5002, 11.7525)
+The 95% confidence interval in 2008 is
+(18.7498, 19.2024)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Zheng Tian</p>
+<p class="date">Created: 2017-02-27 Mon 12:38</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

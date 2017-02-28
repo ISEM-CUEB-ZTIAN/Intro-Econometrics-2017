@@ -1,0 +1,376 @@
+% Created 2017-02-27 Mon 11:03
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{parskip}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+\DeclareMathOperator*{\plim}{plim}
+\newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+\setcounter{secnumdepth}{2}
+\author{Zheng Tian}
+\date{}
+\title{Lecture 4: Review of Linear Algebra}
+\hypersetup{
+ pdfauthor={Zheng Tian},
+ pdftitle={Lecture 4: Review of Linear Algebra},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+In this part, we will go over some very basic knowledge of linear algebra, which
+will be used in this course. The main references are Appendix 18.1 in
+Stock and Watson's book. 
+
+\section{Vectors and Matrices}
+\label{sec:orgb246dbc}
+
+\subsection{Vectors}
+\label{sec:orgb879950}
+
+A \textbf{vector} is an ordered set of numbers arranged either in a row or in
+a column. An n-dimensional column vector \(\mathbf{a}\) and an n-dimensional
+row vector \(\mathbf{b}\) are
+\begin{equation*}
+ \mathbf{a} = 
+ \begin{bmatrix}
+ a_1 \\ a_2 \\ \vdots \\ a_n
+ \end{bmatrix}
+\text{ and }
+ \mathbf{b} = 
+ \begin{bmatrix}
+ b_1, b_2, \ldots, b_n
+ \end{bmatrix}
+\end{equation*}
+
+
+\subsection{Matrices}
+\label{sec:org828ecad}
+
+A \textbf{matrix} is a set of column vectors or a set of row vectors. An
+\(n \times k\) matrix \(\mathbf{A}\) is
+\begin{equation*}
+\mathbf{A} = 
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1k} \\
+a_{21} & a_{22} & \cdots & a_{2k} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nk}
+\end{bmatrix}
+\end{equation*} 
+
+
+\subsection{Types of Matrices}
+\label{sec:orga1c1340}
+
+\begin{itemize}
+\item A \textbf{square} matrix: the number of rows equal the number
+of columns, that is, \(n = k\)
+
+\item A \textbf{symmetric} matrix: the \((i,j)\) element equal to the \((j, i)\)
+element.
+
+\item A \textbf{diagonal} matrix: a square matrix in which all off-diagonal
+elements equal zero, that is, 
+\begin{equation*}  
+\mathbf{A} = 
+\begin{bmatrix}
+a_{11} & 0 & \cdots & 0 \\
+0 & a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & a_{nn}
+\end{bmatrix}
+\end{equation*}
+
+\item An \textbf{identity} matrix: a diagonal matrix in which all diagonal
+elements are 1. A subscript is sometimes included to indicate its
+size, e.g. \(\mathbf{I}_4\) indicate a \(4 \times 4\) identity matrix.
+\begin{equation*}
+\mathbf{I}_4 = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+
+\item A \textbf{triangular} matrix: have only zeros either above or below the
+main diagonal. A \textbf{lower triangular} matrix looks like
+\begin{equation*}  
+\mathbf{A} = 
+\begin{bmatrix}
+a_{11} & 0 & \cdots & 0 \\
+a_{21} & a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{bmatrix}
+\end{equation*}
+\end{itemize}
+
+
+\section{Matrix Operations}
+\label{sec:org8be46b1}
+
+\subsection{Transpose}
+\label{sec:orgef103b1}
+
+The \textbf{transpose} of a matrix \(\mathbf{A}\), denoted
+\(\mathbf{A}^{\prime}\), is obtained by creating the matrix whose kth
+row is the kth column of the original matrix. That is,
+\[ \mathbf{B} = \mathbf{A}^{\prime} \Leftrightarrow b_{ik} = a_{ki}
+\text{ for all } i \text{ and } k \]
+
+\begin{itemize}
+\item For any \(\mathbf{A}\), we have \((\mathbf{A}^{\prime})^{\prime} = \mathbf{A}\)
+\item If \(\mathbf{A}\) is symmetric, then \(\mathbf{A} = \mathbf{A}^{\prime}\).
+\end{itemize}
+
+
+\subsection{Addition}
+\label{sec:org6cf8971}
+
+For two matrices \(\mathbf{A}\) and \(\mathbf{B}\) with the same
+dimensions, that is both are \(n \times k\). 
+
+\[\mathbf{A} + \mathbf{B} = [a_{ij} + b_{ij}] \text{ for all } i \text{
+and } j\]
+
+
+\subsection{Multiplication}
+\label{sec:org19fa8e6}
+
+\begin{itemize}
+\item \textbf{Vector multiplication}. The \textbf{inner product} of two \(n \times 1\)
+column vector \(\mathbf{a}\) and \(\mathbf{b}\) is
+\[ \mathbf{a}^{\prime} \mathbf{b} = \sum^n_{i=1} a_i b_i \]
+
+Since both \(\mathbf{a}\) and \(\mathbf{b}\) are \(n \times 1\) vectors,
+it must hold that \(\mathbf{a}^{\prime} \mathbf{b} =
+  \mathbf{b}^{\prime} \mathbf{a}\).
+
+\item \textbf{Matrix multiplication}. The matrices \(\mathbf{A}\) and \(\mathbf{B}\)
+can be multiplied if they are conformable, that is, if the number of
+columns of \(\mathbf{A}\) equals the number of rows of \(\mathbf{B}\). 
+
+Suppose that \(\mathbf{A}\) is an \(n \times m\) matrix and
+\(\mathbf{B}\) is an \(m \times k\) matrix, then the product
+\(\mathbf{C} = \mathbf{AB}\) is an \(n \times k\) matrix, where the
+\((i,j)\) element of \(\mathbf{C}\) is \(c_{ij} = \sum_{l=1}^m a_{il}
+  b_{lj}\). 
+
+In other words, if we write \(\mathbf{A}\) and \(\mathbf{B}\) with
+vectors, that is,
+\begin{equation*}
+\mathbf{A} = 
+\begin{bmatrix}
+\mathbf{a}_1^{\prime} \\ \mathbf{a}_2^{\prime} \\ \vdots \\ \mathbf{a}_{n}^{\prime}
+\end{bmatrix}
+\text{ and }
+\mathbf{B} = 
+\begin{bmatrix}
+\mathbf{b}_1 & \mathbf{b}_2 & \cdots & \mathbf{b}_k
+\end{bmatrix}
+\end{equation*}
+where \(\mathbf{a}_i = [a_{i1}, a_{i2}, \cdots, a_{im}]^{\prime}\) is the i\(^{\text{th}}\)
+row of \(\mathbf{A}\) for \(i = 1, 2, \ldots, n\), and \(\mathbf{b}_j =
+  [b_{1j}, b_{2j}, \ldots, b_{mj}]^{\prime}\) is the j\(^{\text{th}}\) column of
+\(\mathbf{B}\) for \(j = 1, 2, \ldots, k\). Then,
+\begin{equation*}
+\mathbf{AB} = 
+\begin{bmatrix}
+\mathbf{a}_1^{\prime} \mathbf{b}_1 & \cdots & \mathbf{a}_1^{\prime} \mathbf{b}_k \\
+\mathbf{a}_2^{\prime} \mathbf{b}_1 & \cdots & \mathbf{a}_2^{\prime} \mathbf{b}_k \\
+\vdots & \ddots & \vdots \\
+\mathbf{a}_n^{\prime} \mathbf{b}_1 & \cdots & \mathbf{a}_n^{\prime} \mathbf{b}_k
+\end{bmatrix}
+\end{equation*}
+\end{itemize}
+
+
+\subsection{Properties of matrix addition and multiplication}
+\label{sec:orgf70ad29}
+
+\begin{itemize}
+\item \textbf{Commutative law}: \(\mathbf{A} + \mathbf{B} = \mathbf{B} +
+     \mathbf{A}\). No commutative law for matrix multiplication.
+
+\item \textbf{Associative law}: \((\mathbf{A} + \mathbf{B}) + \mathbf{C} =
+     \mathbf{A} + (\mathbf{B} + \mathbf{C})\) and \((\mathbf{AB})
+     \mathbf{C} = \mathbf{A} (\mathbf{BC})\)
+
+\item \textbf{Distributive law}: \(\mathbf{A} (\mathbf{B} + \mathbf{C}) =
+     \mathbf{AB} + \mathbf{AC}\)
+
+\item \textbf{Transpose of a sum and a product}: \((\mathbf{A} +
+  \mathbf{B})^{\prime} = \mathbf{A}^{\prime} + \mathbf{B}^{\prime}\)
+and \((\mathbf{A} \mathbf{B})^{\prime} = \mathbf{B}^{\prime}
+  \mathbf{A}^{\prime}\).
+\end{itemize}
+
+
+\section{Matrix Inverse}
+\label{sec:org21481d8}
+
+\subsection{Definition}
+\label{sec:orgd377cc4}
+
+Let \(\mathbf{A}\) be an \(n \times n\) square matrix. \(\mathbf{A}\) is
+said to be \textbf{invertible} or \textbf{nonsingular} if such a matrix
+\(\mathbf{A}^{-1}\) exists that \(\mathbf{A}^{-1} \mathbf{A} =
+\mathbf{I}_n\). \(\mathbf{A}^{-1}\) is the inverse of \(\mathbf{A}\).
+
+
+\subsection{Calculation}
+\label{sec:orgd1b0bdb}
+
+Let \(a^{ik}\) be the ik\(^{\text{th}}\) element of \(\mathbf{A}^{-1}\). The general
+formula for computing an inverse matrix is \[ a^{ik} =
+\frac{|\mathbf{C}_{ki}|}{|\mathbf{A}|} \] where \(| \mathbf{A} |\) is
+the determinant of \(\mathbf{A}\), \(| \mathbf{C}_{ki} |\) is the ki\(^{\text{th}}\)
+cofactor of \(\mathbf{A}\), that is, the determinant of the matrix
+\(\mathbf{A}_{ki}\) obtained from \(\mathbf{A}\) by deleting row \(k\) and
+column \(i\), pre-multiplied by \((-1)^{(k + i)}\).
+
+\begin{itemize}
+\item Example 1. Calculate the inverse of a \(2 \times 2\) matrix. 
+\begin{equation*}
+ \begin{bmatrix}
+  a_{11} & a_{12} \\ 
+  a_{21} & a_{22}
+  \end{bmatrix}^{-1}
+ =\frac{1}{a_{11}a_{22} - a_{12}a_{21}}
+ \begin{bmatrix}
+  a_{22} & -a_{12} \\ 
+  -a_{21} & a_{11}
+  \end{bmatrix}
+\end{equation*}
+
+\item Example 2. The inverse of a diagonal matrix. 
+\begin{equation*}  
+\begin{bmatrix}
+a_{11} & 0 & \cdots & 0 \\
+0 & a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & a_{nn}
+\end{bmatrix}^{-1}
+=
+\begin{bmatrix}
+1/a_{11} & 0 & \cdots & 0 \\
+0 & 1/a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1/a_{nn}
+\end{bmatrix}
+\end{equation*}
+\end{itemize}
+
+
+\section{Linear Independence}
+\label{sec:org32324a3}
+
+\subsection{Linear independence}
+\label{sec:org42e743f}
+
+The set of \(k\) \(n \times 1\) vectors, \(\mathbf{a}_1, \mathbf{a}_2,
+\ldots, \mathbf{a}_k\) are \textbf{linearly independent} if there do not exist
+nonzero scalars \(c_1, c_2, \ldots, c_k\) such that \(c_1 \mathbf{a}_1 +
+c_2 \mathbf{a}_2 + \cdots + c_k \mathbf{a}_k = \mathbf{0}_{n \times
+1}\). 
+
+
+\subsection{The rank of a matrix}
+\label{sec:org03806a8}
+
+The \textbf{rank} of the \(n \times k\) matrix \(\mathbf{A}\) is the number of
+linearly independent column vectors of \(\mathbf{A}\), denoted as
+\(\mathrm{rank}(\mathbf{A})\). 
+\begin{itemize}
+\item If \(\mathrm{rank}(\mathbf{A}) = k\), then \(\mathbf{A}\) is said to
+have full column rank. Then, there do not exist a nonzero \(k \times
+  1\) vector \(\mathbf{c}\) such that \(\mathbf{A} \mathbf{c} =
+  \mathbf{0}\).
+\item If \(\mathbf{A}\) is an \(n \times n\) square matrix and
+\(\mathrm{rank}(\mathbf{A}) = n\), then \(\mathbf{A}\) is nonsingular.
+\item If \(\mathbf{A}\) has full column rank, then \(\mathbf{A}^{\prime}
+  \mathbf{A}\) is nonsingular.
+\end{itemize}
+
+
+\section{Positive Definite and Eigenvalues}
+\label{sec:orgb17665b}
+
+\subsection{Positive definite matrices}
+\label{sec:orgf68beb3}
+
+Let \(\mathbf{V}\) be an \(n \times n\) square matrix. Then \(\mathbf{V}\)
+is \textbf{positive definite} if 
+\(\mathbf{c}^{\prime} \mathbf{V} \mathbf{c} > 0\) 
+for all nonzero \(n \times 1\) vector \(\mathbf{c}\). And \(\mathbf{V}\)
+is positive semidefinite if 
+\(\mathbf{c}^{\prime} \mathbf{V} \mathbf{c} \geq 0\) for all nonzero 
+\(n \times 1\) vector \(\mathbf{c}\).
+
+\begin{itemize}
+\item If \(\mathbf{V}\) is positive definite, then it is nonsingular.
+\end{itemize}
+
+\subsection{Eigenvalues and eigenvectors}
+\label{sec:orgf982349}
+
+Let \(\mathbf{A}\) be an \(n \times n\) square matrix. If the \(n \times 1\)
+vector \(\mathbf{q}\) and the scalar \(\lambda\) satisfy \(\mathbf{A}
+\mathbf{q} = \lambda \mathbf{q}\), where \(\mathbf{q}^{\prime}
+\mathbf{q} = 1\), then \(\lambda\) is the \textbf{eigenvalue} of \(\mathbf{A}\) and
+\(\mathbf{q}\) is the \textbf{eigenvector} of \(\mathbf{A}\) associated with
+\(\lambda\). 
+
+\begin{itemize}
+\item If \(\mathbf{V}\) is an \(n \times n\) symmetric positive definite
+matrix, then all the eigenvalues of \(\mathbf{V}\) are positive real
+numbers.
+\end{itemize}
+
+\section{Calculus with Vectors and Matrix}
+\label{sec:org053b924}
+
+We need to use the following results of matrix calculus in the future
+lectures. 
+\begin{align*}
+& \frac{\partial \mathbf{a}^{\prime} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a},\; 
+\frac{\partial \mathbf{x}^{\prime} \mathbf{a}}{\partial \mathbf{x}} = \mathbf{a},\; \text{ and } \\
+& \frac{\partial \mathbf{x}^{\prime} \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = (\mathbf{A} + \mathbf{A}^{\prime}) \mathbf{x}
+\end{align*}
+when \(\mathbf{A}\) is symmetric, then \((\partial \mathbf{x}^{\prime}
+\mathbf{A} \mathbf{x}) / (\partial \mathbf{x}) = 2\mathbf{A}
+\mathbf{x}\)
+\end{document}

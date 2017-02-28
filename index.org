@@ -16,13 +16,17 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 * Lecture notes
 
 ** Lecture 1: What is Econometrics?
-- The lecture notes ([[file:handouts/lecture_notes/lecture_1/lecture_1.org][html]] or [[file:handouts/lecture_notes/lecture_1/lecture_1.pdf][pdf]])
+- The lecture notes ([[file:handouts/lecture_notes/lecture_1/lecture_1.html][html]] or [[file:handouts/lecture_notes/lecture_1/lecture_1.pdf][pdf]])
 - The slides ([[file:handouts/lecture_notes/lecture_1/slides_lecture_1.html][html]] or [[file:handouts/lecture_notes/lecture_1/slides_lecture_1_beamer.pdf][pdf]])
 
 ** Lecture 2: Review of Probability 
-- The lecture notes ([[file:handouts/lecture_notes/lecture_2/lecture_2.org][html]] or [[file:handouts/lecture_notes/lecture_2/lecture_2.pdf][pdf]])
+- The lecture notes ([[file:handouts/lecture_notes/lecture_2/lecture_2.html][html]] or [[file:handouts/lecture_notes/lecture_2/lecture_2.pdf][pdf]])
 - The slides ([[file:handouts/lecture_notes/lecture_2/slides_lecture_2.html][html]] or [[file:handouts/lecture_notes/lecture_2/slides_lecture_2_bearmer.pdf][pdf]])
 
 ** Lecture 3: Review of Statistics
-- The lecture notes ([[file:handouts/lecture_notes/lecture_3/lecture_3.org][html]] or [[file:handouts/lecture_notes/lecture_3/lecture_3.pdf][pdf]])
+- The lecture notes ([[file:handouts/lecture_notes/lecture_3/lecture_3.html][html]] or [[file:handouts/lecture_notes/lecture_3/lecture_3.pdf][pdf]])
 - The slides ([[file:handouts/lecture_notes/lecture_3/slide_lecture_3.html][html]] or [[file:handouts/lecture_notes/lecture_3/slide_lecture_3_beamer.pdf][pdf]])
+
+** Lecture 4: Review of Linear Algebra
+- The lecture notes ([[file:handouts/lecture_notes/lecture_4/lecture_4.html][html]] or [[file:handouts/lecture_notes/lecture_4/lecture_4.pdf][pdf]])
+- The slides ([[file:handouts/lecture_notes/lecture_4/slides_lecture_4.html][html]] or [[file:handouts/lecture_notes/lecture_4/slides_lecture_4_beamer.pdf][pdf]])
