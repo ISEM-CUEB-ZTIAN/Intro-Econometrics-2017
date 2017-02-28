@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-27 Mon 12:38 -->
+<!-- 2017-02-28 Tue 11:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Lecture 5: A Short R Tutorial</title>
+<title>Lecture 5: An Introduction to R</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Zheng Tian" />
 <style type="text/css">
@@ -179,6 +179,8 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/htmlize.css" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -228,18 +230,42 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Lecture 5: A Short R Tutorial</h1>
+<h1 class="title">Lecture 5: An Introduction to R</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4ff6d13">1. Getting Started with R</a>
+<ul>
+<li><a href="#orge741c29">1.1. Installation</a></li>
+<li><a href="#orgf453513">1.2. Packages</a></li>
+<li><a href="#orgcdfef25">1.3. Help</a></li>
+</ul>
+</li>
+<li><a href="#org36d464b">2. Basics</a>
+<ul>
+<li><a href="#orgd0daace">2.1. R as a calculator</a></li>
+<li><a href="#org060ad2e">2.2. Vector operations</a></li>
+<li><a href="#orge75af68">2.3. Matrix operations</a></li>
+<li><a href="#orgf6c0f2d">2.4. Data Management in R</a></li>
+<li><a href="#orgec44ef5">2.5. Graphics</a></li>
+<li><a href="#org627b357">2.6. Basic data analysis</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 
 
-<div id="outline-container-org0e85fac" class="outline-2">
-<h2 id="org0e85fac"><span class="section-number-2">1</span> Getting Started with R</h2>
+<div id="outline-container-org4ff6d13" class="outline-2">
+<h2 id="org4ff6d13"><span class="section-number-2">1</span> Getting Started with R</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org01b7422" class="outline-3">
-<h3 id="org01b7422"><span class="section-number-3">1.1</span> Installation</h3>
+</div><div id="outline-container-orge741c29" class="outline-3">
+<h3 id="orge741c29"><span class="section-number-3">1.1</span> Installation</h3>
 <div class="outline-text-3" id="text-1-1">
-</div><div id="outline-container-org4f37214" class="outline-4">
-<h4 id="org4f37214">Install the base system of R</h4>
-<div class="outline-text-4" id="text-org4f37214">
+</div><div id="outline-container-orgd763dd2" class="outline-4">
+<h4 id="orgd763dd2">Install the base system of R</h4>
+<div class="outline-text-4" id="text-orgd763dd2">
 <p>
 The installation files can be downloaded from
 <a href="http://cran.r-project.org/mirrors.html">http://cran.r-project.org/mirrors.html</a>. You can download for Windows,
@@ -248,9 +274,9 @@ OS X, or Linux(ubuntu).
 </div>
 </div>
 
-<div id="outline-container-org34e5f73" class="outline-4">
-<h4 id="org34e5f73">Install RStudio</h4>
-<div class="outline-text-4" id="text-org34e5f73">
+<div id="outline-container-orgf5a0b9c" class="outline-4">
+<h4 id="orgf5a0b9c">Install RStudio</h4>
+<div class="outline-text-4" id="text-orgf5a0b9c">
 <p>
 The base R comes with a simple GUI environment, while RStudio is more
 user-friendly and provides many powerful functionalities.
@@ -263,15 +289,15 @@ RStudio can be downloaded from
 </div>
 </div>
 
-<div id="outline-container-org1040ec8" class="outline-4">
-<h4 id="org1040ec8">The environment of RStudio</h4>
-<div class="outline-text-4" id="text-org1040ec8">
+<div id="outline-container-org4e41796" class="outline-4">
+<h4 id="org4e41796">The environment of RStudio</h4>
+<div class="outline-text-4" id="text-org4e41796">
 <p>
-The window of RStudio looks like Figure <a href="#orgfb0b279">1</a>
+The window of RStudio looks like Figure <a href="#org9ad920d">1</a>
 </p>
 
 
-<div id="orgfb0b279" class="figure">
+<div id="org9ad920d" class="figure">
 <p><img src="RStudio_001.png" alt="RStudio_001.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>The Window of RStudio</p>
@@ -281,8 +307,8 @@ The window of RStudio looks like Figure <a href="#orgfb0b279">1</a>
 </div>
 
 
-<div id="outline-container-orgb6caf1b" class="outline-3">
-<h3 id="orgb6caf1b"><span class="section-number-3">1.2</span> Packages</h3>
+<div id="outline-container-orgf453513" class="outline-3">
+<h3 id="orgf453513"><span class="section-number-3">1.2</span> Packages</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The base R system only installs the core packages that support very
@@ -305,8 +331,8 @@ With R</i>. To install it, type
 </div>
 </div>
 
-<div id="outline-container-org844e567" class="outline-3">
-<h3 id="org844e567"><span class="section-number-3">1.3</span> Help</h3>
+<div id="outline-container-orgcdfef25" class="outline-3">
+<h3 id="orgcdfef25"><span class="section-number-3">1.3</span> Help</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 R is well-documented software. Help on any function may be accessed
@@ -331,15 +357,15 @@ question in a website called <code>stackoverflow</code>.</li>
 </div>
 </div>
 
-<div id="outline-container-org4926433" class="outline-2">
-<h2 id="org4926433"><span class="section-number-2">2</span> Basics</h2>
+<div id="outline-container-org36d464b" class="outline-2">
+<h2 id="org36d464b"><span class="section-number-2">2</span> Basics</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org9b49a2e" class="outline-3">
-<h3 id="org9b49a2e"><span class="section-number-3">2.1</span> R as a calculator</h3>
+</div><div id="outline-container-orgd0daace" class="outline-3">
+<h3 id="orgd0daace"><span class="section-number-3">2.1</span> R as a calculator</h3>
 <div class="outline-text-3" id="text-2-1">
-</div><div id="outline-container-org58c55b1" class="outline-4">
-<h4 id="org58c55b1">Standard arithmetic operators</h4>
-<div class="outline-text-4" id="text-org58c55b1">
+</div><div id="outline-container-org55d71d7" class="outline-4">
+<h4 id="org55d71d7">Standard arithmetic operators</h4>
+<div class="outline-text-4" id="text-org55d71d7">
 <p>
 R supports the following arithmetic operators
 </p>
@@ -361,9 +387,9 @@ Hence,
 </div>
 </div>
 
-<div id="outline-container-orgb91ac60" class="outline-4">
-<h4 id="orgb91ac60">Mathematical functions</h4>
-<div class="outline-text-4" id="text-orgb91ac60">
+<div id="outline-container-org13b7b19" class="outline-4">
+<h4 id="org13b7b19">Mathematical functions</h4>
+<div class="outline-text-4" id="text-org13b7b19">
 <p>
 R also have many built-in mathematical functions, such as, <code>log()</code>,
 <code>exp()</code>, <code>sin()</code>, <code>sqrt()</code>, <code>min()</code>, etc.
@@ -376,8 +402,8 @@ R also have many built-in mathematical functions, such as, <code>log()</code>,
 </div>
 </div>
 
-<div id="outline-container-org7bcec6c" class="outline-3">
-<h3 id="org7bcec6c"><span class="section-number-3">2.2</span> Vector operations</h3>
+<div id="outline-container-org060ad2e" class="outline-3">
+<h3 id="org060ad2e"><span class="section-number-3">2.2</span> Vector operations</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Vector is the basic unit in R, from which other data structure,
@@ -385,9 +411,9 @@ Vector is the basic unit in R, from which other data structure,
 </p>
 </div>
 
-<div id="outline-container-org8230c82" class="outline-4">
-<h4 id="org8230c82">Generate a vector</h4>
-<div class="outline-text-4" id="text-org8230c82">
+<div id="outline-container-org6bf761d" class="outline-4">
+<h4 id="org6bf761d">Generate a vector</h4>
+<div class="outline-text-4" id="text-org6bf761d">
 <p>
 A vector can be generated by the function <code>c()</code>, which can also be
 used to concatenate two vectors
@@ -427,9 +453,9 @@ We can get the length of a vector by <code>length()</code>.
 </div>
 </div>
 
-<div id="outline-container-org38fc2b5" class="outline-4">
-<h4 id="org38fc2b5">Patterned vectors</h4>
-<div class="outline-text-4" id="text-org38fc2b5">
+<div id="outline-container-org2e5db50" class="outline-4">
+<h4 id="org2e5db50">Patterned vectors</h4>
+<div class="outline-text-4" id="text-org2e5db50">
 <p>
 A vector can also be generated by the functions <code>rep()</code>, <code>seq()</code>, and
 <code>:</code>.
@@ -444,9 +470,9 @@ rep13 &lt;- rep(1:3, times = 3)
 </div>
 
 
-<div id="outline-container-org3650506" class="outline-4">
-<h4 id="org3650506">Vector arithmetic</h4>
-<div class="outline-text-4" id="text-org3650506">
+<div id="outline-container-org07c4c08" class="outline-4">
+<h4 id="org07c4c08">Vector arithmetic</h4>
+<div class="outline-text-4" id="text-org07c4c08">
 <p>
 Arithmetic operators and mathematical functions can be applied to
 vector in a element-by-element fashion in R.
@@ -463,9 +489,9 @@ vector in a element-by-element fashion in R.
 </div>
 
 
-<div id="outline-container-orgbce6650" class="outline-4">
-<h4 id="orgbce6650">Subsetting vectors</h4>
-<div class="outline-text-4" id="text-orgbce6650">
+<div id="outline-container-org0766ceb" class="outline-4">
+<h4 id="org0766ceb">Subsetting vectors</h4>
+<div class="outline-text-4" id="text-org0766ceb">
 <p>
 Element(s) in a vector can be accessed by referring to the indices of
 these elements.
@@ -484,12 +510,12 @@ these elements.
 </div>
 
 
-<div id="outline-container-org0d0e01d" class="outline-3">
-<h3 id="org0d0e01d"><span class="section-number-3">2.3</span> Matrix operations</h3>
+<div id="outline-container-orge75af68" class="outline-3">
+<h3 id="orge75af68"><span class="section-number-3">2.3</span> Matrix operations</h3>
 <div class="outline-text-3" id="text-2-3">
-</div><div id="outline-container-orge686e1a" class="outline-4">
-<h4 id="orge686e1a">Create a matrix</h4>
-<div class="outline-text-4" id="text-orge686e1a">
+</div><div id="outline-container-org48329f8" class="outline-4">
+<h4 id="org48329f8">Create a matrix</h4>
+<div class="outline-text-4" id="text-org48329f8">
 <pre class="example">
 &gt; A &lt;- matrix(1:12, nrow = 3, ncol = 4)
 &gt; A
@@ -508,9 +534,9 @@ these elements.
 </div>
 </div>
 
-<div id="outline-container-org8885d3e" class="outline-4">
-<h4 id="org8885d3e">Subsetting a matrix</h4>
-<div class="outline-text-4" id="text-org8885d3e">
+<div id="outline-container-org4479dc3" class="outline-4">
+<h4 id="org4479dc3">Subsetting a matrix</h4>
+<div class="outline-text-4" id="text-org4479dc3">
 <pre class="example">
 &gt; A
      [,1] [,2] [,3] [,4]
@@ -527,9 +553,9 @@ these elements.
 </div>
 </div>
 
-<div id="outline-container-org360c688" class="outline-4">
-<h4 id="org360c688">Matrix operations</h4>
-<div class="outline-text-4" id="text-org360c688">
+<div id="outline-container-orgfd404aa" class="outline-4">
+<h4 id="orgfd404aa">Matrix operations</h4>
+<div class="outline-text-4" id="text-orgfd404aa">
 <ul class="org-ul">
 <li><p>
 transpose
@@ -580,9 +606,9 @@ inverse matrix
 </div>
 </div>
 
-<div id="outline-container-orgdd96c64" class="outline-4">
-<h4 id="orgdd96c64">Special matrices</h4>
-<div class="outline-text-4" id="text-orgdd96c64">
+<div id="outline-container-org22b576c" class="outline-4">
+<h4 id="org22b576c">Special matrices</h4>
+<div class="outline-text-4" id="text-org22b576c">
 <ul class="org-ul">
 <li><p>
 diagonal matrix
@@ -621,8 +647,8 @@ other useful functions on matrices
 </div>
 </div>
 
-<div id="outline-container-org50202c5" class="outline-3">
-<h3 id="org50202c5"><span class="section-number-3">2.4</span> Data Management in R</h3>
+<div id="outline-container-orgf6c0f2d" class="outline-3">
+<h3 id="orgf6c0f2d"><span class="section-number-3">2.4</span> Data Management in R</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 A data frame is more general than a matrix in that different columns
@@ -630,9 +656,9 @@ can contain different modes of data (numeric, character, etc.)
 </p>
 </div>
 
-<div id="outline-container-org52dc4d9" class="outline-4">
-<h4 id="org52dc4d9">Create a data frame</h4>
-<div class="outline-text-4" id="text-org52dc4d9">
+<div id="outline-container-orgdfe72d7" class="outline-4">
+<h4 id="orgdfe72d7">Create a data frame</h4>
+<div class="outline-text-4" id="text-orgdfe72d7">
 <pre class="example">
 &gt; mydata &lt;- data.frame(x = 1:3, y = 4:6, z = letters[1:3])
 &gt; mydata
@@ -657,9 +683,9 @@ can contain different modes of data (numeric, character, etc.)
 </div>
 </div>
 
-<div id="outline-container-org9061822" class="outline-4">
-<h4 id="org9061822">Read data from a file</h4>
-<div class="outline-text-4" id="text-org9061822">
+<div id="outline-container-org66f2082" class="outline-4">
+<h4 id="org66f2082">Read data from a file</h4>
+<div class="outline-text-4" id="text-org66f2082">
 <p>
 Suppose we have a data file, mydata.txt
 </p>
@@ -697,9 +723,9 @@ read.dta(mydata.dta)
 </div>
 </div>
 
-<div id="outline-container-orgcc8b1bb" class="outline-4">
-<h4 id="orgcc8b1bb">Select variables</h4>
-<div class="outline-text-4" id="text-orgcc8b1bb">
+<div id="outline-container-org73eb509" class="outline-4">
+<h4 id="org73eb509">Select variables</h4>
+<div class="outline-text-4" id="text-org73eb509">
 <p>
 We can select a variable in a data frame by using "<code>$</code>" or "<code>[[]]</code>".
 </p>
@@ -712,8 +738,8 @@ We can select a variable in a data frame by using "<code>$</code>" or "<code>[[]
 </div>
 </div>
 
-<div id="outline-container-orgc88c9ea" class="outline-3">
-<h3 id="orgc88c9ea"><span class="section-number-3">2.5</span> Graphics</h3>
+<div id="outline-container-orgec44ef5" class="outline-3">
+<h3 id="orgec44ef5"><span class="section-number-3">2.5</span> Graphics</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 R is very powerful in creating graphics. <code>plot()</code> is the very basic
@@ -735,14 +761,14 @@ plot(x, y, main=<span style="color: #008000;">"the scatterplot between x and y"<
 </div>
 </div>
 
-<div id="outline-container-org05126c4" class="outline-3">
-<h3 id="org05126c4"><span class="section-number-3">2.6</span> Basic data analysis</h3>
+<div id="outline-container-org627b357" class="outline-3">
+<h3 id="org627b357"><span class="section-number-3">2.6</span> Basic data analysis</h3>
 <div class="outline-text-3" id="text-2-6">
-</div><div id="outline-container-orgfcdcd21" class="outline-4">
-<h4 id="orgfcdcd21">Empirical exercise</h4>
-<div class="outline-text-4" id="text-orgfcdcd21">
+</div><div id="outline-container-org55ae7e2" class="outline-4">
+<h4 id="org55ae7e2">Empirical exercise</h4>
+<div class="outline-text-4" id="text-org55ae7e2">
 <div class="org-src-container">
-<pre class="src src-R" id="orge76d39f"><span style="color: #D0372D;">library</span>(foreign)
+<pre class="src src-R" id="orgf38ada1"><span style="color: #D0372D;">library</span>(foreign)
 rawdata <span style="color: #D0372D;">&lt;-</span> read.dta(<span style="color: #008000;">"cps92_08.dta"</span>)
 summary(rawdata)
 </pre>
@@ -775,7 +801,7 @@ Max.   :34.00
 
 
 <div class="org-src-container">
-<pre class="src src-R" id="org5db1969"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">extract the data for average hourly earnings in 1992 and 2008</span>
+<pre class="src src-R" id="orga005e9b"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">extract the data for average hourly earnings in 1992 and 2008</span>
 ahe.92 <span style="color: #D0372D;">&lt;-</span> with(rawdata, ahe[year == 1992])
 ahe.08 <span style="color: #D0372D;">&lt;-</span> with(rawdata, ahe[year == 2008])
 
@@ -813,7 +839,7 @@ Error in cat(s) : object 's' not found
 </div>
 
 <div class="org-src-container">
-<pre class="src src-R" id="org2884f45"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the sample variance</span>
+<pre class="src src-R" id="org5545b69"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the sample variance</span>
 sd.ahe.92 <span style="color: #D0372D;">&lt;-</span> sd(ahe.92)
 sd.ahe.08 <span style="color: #D0372D;">&lt;-</span> sd(ahe.08)
 
@@ -873,7 +899,7 @@ The 95% confidence interval in 2008 is
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-02-27 Mon 12:38</p>
+<p class="date">Created: 2017-02-28 Tue 11:15</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

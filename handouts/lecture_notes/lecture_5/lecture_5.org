@@ -1,20 +1,49 @@
-#+TITLE:Lecture 5: A Short R Tutorial
+#+TITLE: Lecture 5: An Introduction to R
 #+AUTHOR: Zheng Tian
-#+OPTIONS: toc:nil H:3 num:2
-#+PROPERTY: header-args:R :session r-tutor
+#+DATE:
+#+OPTIONS: toc:2 H:3 num:2
+# #+OPTIONS: tex:dvipng
+#+PROPERTY: header-args:R  :session my-r-session
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../../css/htmlize.css" />
+
+
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]
-#+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \usepackage{setspace}
-#+LATEX_HEADER: \singlespacing
+#+LATEX_HEADER: \onehalfspacing
 #+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+#+LATEX_HEADER: \newtheorem{definition}{Definition}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}
+#+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+#+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
+#+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
 
 
 * Getting Started with R
 
+** TODO What is R?
+
+R is a free software environment and programming language for
+statistical computing and graphics.
+
+*** TODO A brief history of development of R
+
+*** TODO Why do we choose R other than other econometric software?
+
 ** Installation
 
-*** Install the base system of R
+*** Install R
 
 The installation files can be downloaded from
 http://cran.r-project.org/mirrors.html. You can download for Windows,
@@ -53,6 +82,7 @@ For example, we need to install a package called AER, which include
 some other packages that are used in the book /Applied Econometrics
 With R/. To install it, type
 
+
 ** Help
 
 R is well-documented software. Help on any function may be accessed
@@ -66,6 +96,7 @@ Any time you encounter a problem using R which cannot be solved by
 - the mailing list of R: http://www.r-project.org/mail.html
 - google, yahoo, or bing: quite often you will get an answer to your
   question in a website called =stackoverflow=.
+
 
 * Basics
 
@@ -96,6 +127,7 @@ R also have many built-in mathematical functions, such as, =log()=,
 > log(exp(sin(pi/4)^2) * exp(cos(pi/4)^2))
 [1] 1
 #+END_EXAMPLE
+
 
 ** Vector operations
 
@@ -275,12 +307,13 @@ these elements.
 
   =nrow()=, =ncol()=, =eigen()=, =rowSums=, =colSums=
 
-** Data Management in R
+
+* Data Management in R
 
 A data frame is more general than a matrix in that different columns
 can contain different modes of data (numeric, character, etc.)
 
-*** Create a data frame
+** Create a data frame
 
 #+BEGIN_EXAMPLE
 > mydata <- data.frame(x = 1:3, y = 4:6, z = letters[1:3])
@@ -304,7 +337,8 @@ can contain different modes of data (numeric, character, etc.)
 3 3 6 9
 #+END_EXAMPLE
 
-*** Read data from a file
+
+** Read data from a file
 
 Suppose we have a data file, mydata.txt
 #+BEGIN_EXAMPLE
@@ -335,7 +369,8 @@ library(foreign)
 read.dta(mydata.dta)
 #+END_EXAMPLE
 
-*** Select variables
+
+** Select variables
 
 We can select a variable in a data frame by using "=$=" or "=[[]]=".
 
@@ -344,7 +379,8 @@ We can select a variable in a data frame by using "=$=" or "=[[]]=".
 > y <- mydata[[1]]
 #+END_EXAMPLE
 
-** Graphics
+
+* Graphics
 
 R is very powerful in creating graphics. =plot()= is the very basic
 plotting function.
@@ -359,8 +395,12 @@ plot(x, y, main="the scatterplot between x and y", col="red")
 #+RESULTS:
 [[file:./fig1.png]]
 
-** Basic data analysis
-*** Empirical exercise
+** TODO Introduce ggplot
+
+
+* Statistical analysis
+
+** TODO Rewrite this part in rmarkdown Empirical exercise
 
 #+NAME: Empirical exercise 3.1: read the data
 #+BEGIN_SRC R :exports both :results output org
