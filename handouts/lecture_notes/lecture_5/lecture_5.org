@@ -1,9 +1,9 @@
 #+TITLE: Lecture 5: An Introduction to R
 #+AUTHOR: Zheng Tian
 #+DATE:
-#+OPTIONS: toc:2 H:3 num:2
+#+OPTIONS: toc:1 H:3 num:2
 # #+OPTIONS: tex:dvipng
-#+PROPERTY: header-args:R  :session my-r-session
+#+PROPERTY: header-args:R  :session *R-demo* :tangle yes :eval yes
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../../css/htmlize.css" />
@@ -32,70 +32,137 @@
 
 * Getting Started with R
 
-** TODO What is R?
+** What is R?
 
 R is a free software environment and programming language for
-statistical computing and graphics.
+statistical computing and graphics. The website for the R project is
+https://www.r-project.org/.
 
-*** TODO A brief history of development of R
+*** A brief history of development of R
 
-*** TODO Why do we choose R other than other econometric software?
+- It originated from Bell Laboratories in the 1970s, as the S
+  language, from which the commercial version S-Plus was developed
+  in 1987.
+
+- R was initially developed by Robert Gentleman and Ross Ihaka at the
+  University of Auckland, New Zealand in 1996.
+
+- Since its first release in 2000, the development of the R project
+  has been tremendous in the last two decades.
+
+*** Why do we choose R other than other econometric software?
+
+- It is open source, free to download.
+- It has a huge number of packages that can implement almost all
+  state-of-art statistical techniques.
+- It has a powerful and flexible capabilities of making graphs.
+- It is a programming language designed specifically for
+  statistics, enabling you to accomplish almost anything a programming
+  language can do for statistics.
+
 
 ** Installation
 
 *** Install R
 
 The installation files can be downloaded from
-http://cran.r-project.org/mirrors.html. You can download for Windows,
-OS X, or Linux(ubuntu).
+https://mirrors.tuna.tsinghua.edu.cn/CRAN/. You can download the
+installation files for Windows, OS X, and Linux(ubuntu).
 
 *** Install RStudio
 
-The base R comes with a simple GUI environment, while RStudio is more
-user-friendly and provides many powerful functionalities.
+The base R comes with a simple Graphic User Interface (GUI). RStudio
+supplies with a more user-friendly GUI and provides other powerful
+functionalities, such as writing dynamic documents with nitro and
+rmarkdown.
 
-RStudio can be downloaded from
-http://www.rstudio.com/products/rstudio/download/
+- RStudio can be downloaded from
+  https://www.rstudio.com/products/rstudio/download/
 
-*** The environment of RStudio
+- The window of RStudio looks like Figure [[fig-rstudio]]
 
-The window of RStudio looks like Figure [[fig:rstudio]]
-
-#+NAME: fig:rstudio
-#+CAPTION: The Window of RStudio
-#+ATTR_LATEX: :width 0.95\textwidth
-[[file:RStudio_001.png]]
+  #+NAME: fig-rstudio
+  #+CAPTION: The Window of RStudio
+  #+ATTR_LATEX: :width 0.95\textwidth
+  #+ATTR_HTML: :width 600
+  [[file:figure/rstudio.png]]
 
 
 ** Packages
 
-The base R system only installs the core packages that support very
+The R installation files install the core packages that support very
 basic functions. One of the strength of R is that there are many
-contributed packages written by the community of R users.
+contributed packages written by the huge community of R users.
 
 To install a contributed package, we use the command
-=install.packages("names of packages")=. After installing a package,
-we need to invoke it every time we use it by the command
-=library(name of a package)=.
+~install.packages("names of packages")~. After installing a package,
+we need to invoke it every time we use it by the command =library(name
+of a package)=. In this course, for example, we need to install a
+package called =AER= (Applied Econometrics with R).
 
-For example, we need to install a package called AER, which include
-some other packages that are used in the book /Applied Econometrics
-With R/. To install it, type
+Type the following code in the "Console" window in RStudio.
+
+#+BEGIN_SRC R :exports code :results output :eval no :tangle no
+  # Install packages
+  install.packages("AER")
+#+END_SRC
+
+Upon typing this command, a window jumps up for you to choose a
+mirror. From the list, choose China[Beijing]. R will automatically
+download and install this package from the server. Very likely, when
+this is the first package you install in R, R will also download other
+packages on which installing the =AER= package depends. In the
+console, you should see the following messages.
+
+#+RESULTS[16090037eaccacdef2b673f5fe61038cfc06f058]:
+: trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/mavericks/contrib/3.3/AER_1.2-5.tgz'
+: Content type 'application/octet-stream' length 2442603 bytes (2.3 MB)
+: ==================================================
+: downloaded 2.3 MB
+:
+:
+: The downloaded binary packages are in
+: 	/var/folders/rd/53x_sgqd3yj6wghsyyy4n0vh0000gn/T//RtmpF3tVDW/downloaded_packages
+
+In RStudio, you can install packages from the "Tools" menu and click
+"Install Packages".
+
+When we need to use the =AER= package, type =library(AER)= in the
+console. And we can check whether this package is loaded using
+=search()=.
+
+#+BEGIN_SRC R :exports both :results output
+# Load packages
+library(AER)
+
+# Check packages loaded
+search()
+#+END_SRC
+
+#+RESULTS[7f804c13cc604c7619de5cd264dce89a7afcc9bb]:
+:  [1] ".GlobalEnv"        "package:animation" "package:foreign"
+:  [4] "package:AER"       "package:survival"  "package:sandwich"
+:  [7] "package:lmtest"    "package:zoo"       "package:car"
+: [10] "ESSR"              "package:stats"     "package:graphics"
+: [13] "package:grDevices" "package:utils"     "package:datasets"
+: [16] "package:methods"   "Autoloads"         "package:base"
+
+It shows that besides the =AER= package, there are other packages
+in the "global" environment, which are the core packages loaded
+automatically when opening R.
 
 
 ** Help
 
-R is well-documented software. Help on any function may be accessed
-using either =help()= or =?=.
-
-If you can not remember the accurate name of a function, you can even
-guess by using =help.search()= or =??= or =apropos()=.
-
-Any time you encounter a problem using R which cannot be solved by
-=help= command, there are at least two places you can resort to.
-- the mailing list of R: http://www.r-project.org/mail.html
-- google, yahoo, or bing: quite often you will get an answer to your
-  question in a website called =stackoverflow=.
+- R has easy helping facilities. The help information of any function
+  can be found by type either =help()= or =?=.
+- If you cannot remember the accurate name of a function, you can even
+  guess by using =help.search()= or =??= or =apropos()=.
+- Any time you encounter a problem using R which cannot be solved by
+  =help= command, there are at least two places you can resort to.
+  - The mailing list of R: http://www.r-project.org/mail.html
+  - Google or bing: quite often you will get an answer to your
+    question in the website of http://stackoverflow.com/.
 
 
 * Basics
@@ -110,257 +177,630 @@ R supports the following arithmetic operators
 #+END_EXAMPLE
 
 Hence,
-#+BEGIN_EXAMPLE
-> 1 + 1
-[1] 2
-> 2^3
-[1] 8
-> 5 %% 2
-[1] 1
-#+END_EXAMPLE
+#+BEGIN_SRC R :exports both :results output
+## R as a calculator ------------------------------
+
+#+ Binary operations
+1 + 2; 2*3; 2^3; 5/2;
+5 %% 2  # get x mod y
+5 %/% 2 # get the integer division
+#+END_SRC
+
+#+RESULTS[bdd16e4b6e4fe6126fc8dfa727202340d9b0b052]:
+: [1] 3
+: [1] 6
+: [1] 8
+: [1] 2.5
+: [1] 1
+: [1] 2
 
 *** Mathematical functions
 
 R also have many built-in mathematical functions, such as, =log()=,
 =exp()=, =sin()=, =sqrt()=, =min()=, etc.
-#+BEGIN_EXAMPLE
-> log(exp(sin(pi/4)^2) * exp(cos(pi/4)^2))
-[1] 1
-#+END_EXAMPLE
+
+#+BEGIN_SRC R :exports both :results output
+# Use built-in functions
+log(exp(sin(pi/2)^2) * exp(cos(pi/3)^2))
+#+END_SRC
+
+#+RESULTS[768d7ce023a9c69cc2057edb1720f9666caba05e]:
+: [1] 1.25
 
 
 ** Vector operations
 
-Vector is the basic unit in R, from which other data structure,
-=matrix=, =factor=, =list=, =data.frame=.
+Vector is the basic unit in R, from which other data structures,
+for example, =matrix=, =factor=, =list=, =data.frame=, are built upon.
 
 *** Generate a vector
 
 A vector can be generated by the function =c()=, which can also be
 used to concatenate two vectors
-#+BEGIN_EXAMPLE
-> x <- c(0.3, 1.5, 7.3, 2)
-> y <- c(3, 2, 1)
-> (z <- c(x, y))
-[1] 0.3 1.5 7.3 2.0 3.0 2.0 1.0
-#+END_EXAMPLE
+
+#+BEGIN_SRC R :exports both :results output
+## Vector operations ------------------------------
+
+# Create a vector with c()
+x <- c(0.3, 1.5, 7.3, 2)
+y <- c(3, 2, 1)
+z <- c(x, y)
+z
+#+END_SRC
+
+#+RESULTS[7bb04b160358446ae7797f28848c4d07fcb143d5]:
+: [1] 0.3 1.5 7.3 2.0 3.0 2.0 1.0
+
+The symbol =<-= is to assign a value to a variable. You can also use
+~=~ to assign values, but =<-= is more commonly used by convention and
+~=~ is used within a function calling for assigning values to the
+arguments of the function.
+
 Note that by concatenating =x= and =y=, integers are converted to
-floating point numbers.
+floating point numbers. That means the elements in a vector must have
+the same mode (data types), including =numeric=, =character=, and
+=logical=.
 
-The symbol =<-= is to assign a value to a variable, for instance, =x=
-in this case.
+#+BEGIN_SRC R :exports both :results output
+  # Vectors with different data types
+  student.names <- c("John", "Mary", "Bob", "Ann")
+  student.male <- c(TRUE, FALSE, TRUE, FALSE)
+  student.age <- c(20, 19, 21, 20)
 
-The elements in a vector must have the same mode (data types),
-including =numeric=, =character=, and =logical=.
-#+BEGIN_EXAMPLE
-student.names <- c("John", "Mary", "Bob", "Ann")
-student.male <- c(TRUE, FALSE, TRUE, FALSE)
-#+END_EXAMPLE
+  class(student.names)
+  class(student.male)
+  class(student.age)
 
-We can get the length of a vector by =length()=.
-#+BEGIN_EXAMPLE
-> length(x)
-[1] 4
-#+END_EXAMPLE
+  students <- c(student.names, student.male, student.age)
+  students
+#+END_SRC
+
+#+RESULTS[0cf93677cf213ca8e022eb8c284f466e4b57e010]:
+: [1] "character"
+: [1] "logical"
+: [1] "numeric"
+:  [1] "John"  "Mary"  "Bob"   "Ann"   "TRUE"  "FALSE" "TRUE"  "FALSE" "20"
+: [10] "19"    "21"    "20"
 
 *** Patterned vectors
 
-A vector can also be generated by the functions =rep()=, =seq()=, and
+A vector can also be generated by the functions, like =rep()=, =seq()=, and
 =:=.
-#+BEGIN_EXAMPLE
-ones <- rep(1, times = 3)
-even <- seq(from = 2, to = 20, by = 2)
-years <- 1985:2005
-rep13 <- rep(1:3, times = 3)
-#+END_EXAMPLE
 
+- =seq()= generates a vector by some patterns and =a:b= is a shorthand
+  for ~seq(from=a, to=b, by=1)~.
 
-*** Vector arithmetic
+  #+BEGIN_SRC R :exports both :results output
+  # Create a sequence
+  even <- seq(from = 2, to = 20, by = 2)
+  even
+  years <- 1995:2005
+  years
+  #+END_SRC
+
+  #+RESULTS[8b8a4e248cb5b241e5b632a6158d3bc9dd50f860]:
+  :  [1]  2  4  6  8 10 12 14 16 18 20
+  :  [1] 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005
+
+- =rep()= generates a vector by repeating some values
+
+  #+BEGIN_SRC R :exports both :results output
+  # Create repetition
+  ones <- rep(1, times = 10)
+  ones
+  rep13 <- rep(1:3, times = 3, each = 2)
+  rep13
+  #+END_SRC
+
+  #+RESULTS[5e9c0c0aec2bf5ab665d8a2788686ddc4a0f7df2]:
+  :  [1] 1 1 1 1 1 1 1 1 1 1
+  :  [1] 1 1 2 2 3 3 1 1 2 2 3 3 1 1 2 2 3 3
+
+*** Vector operations
+
 Arithmetic operators and mathematical functions can be applied to
-vector in a element-by-element fashion in R.
-#+BEGIN_EXAMPLE
-> x
-[1] 0.3 1.5 7.3 2.0
-> 2 * x + 3
-[1]  3.6  6.0 17.6  7.0
-> log(x)
-[1] -1.2039728  0.4054651  1.9878743  0.6931472
-#+END_EXAMPLE
+vector in an element-by-element way in R.
+
+Let's first draw random numbers for the uniform distribution
+$x \sim Uniform(0, 1)$. The length of $x$ is 10. We can use the
+=length()= function to check the length of a vector.
+
+#+BEGIN_SRC R :exports both :results output
+  # Draw a random vector
+  x <- runif(10); x
+  length(x)
+#+END_SRC
+
+#+RESULTS[f771fe47578c92e59cfbd5b1cedc6d807d14255c]:
+:  [1] 0.7717939 0.9479161 0.5060915 0.9123343 0.5928502 0.3862797 0.9296219
+:  [8] 0.5086938 0.0604831 0.2147782
+: [1] 10
+
+The arithmetic operations and built-in math functions are all applied
+for each element of a vector.
+#+BEGIN_SRC R :exports both :results output
+2 * x + 3
+log(x)
+#+END_SRC
+
+#+RESULTS[091ee5bbf602090af5b8d89fee93a34ebfa1522f]:
+:  [1] 3.472317 3.021155 4.210926 4.397172 3.225711 3.388186 4.389702 4.317706
+:  [9] 4.476348 4.660572
+:  [1] -1.4432526 -4.5490388 -0.5017620 -0.3586969 -2.1816462 -1.6394183
+:  [7] -0.3640577 -0.4172547 -0.3035756 -0.1859848
+
+If two vectors with different lengths are computed within one
+operation, the elements of the vector with a shorter length will be
+used in an iterated way. We must keep in mind this feature of R, which
+in some cases may give rise to unintended results.
+
+#+BEGIN_SRC R :exports both :results output
+  y <- runif(5)
+  x + y
+#+END_SRC
+
+#+RESULTS[81c0a49c39065555e1b7dd8e494bca639389b477]:
+:  [1] 0.8153612 0.7323944 0.8785977 1.0753113 1.2315194 0.7738876 0.6436717
+:  [8] 0.5781489 0.7324795 1.3473926
+
+*** Selecting elements in a vector
+
+Element(s) in a vector can be selected by ~[position]~, in which
+~position~ can be a vector indicating the position of each element in
+a vector, a negative value to exclude an element with the
+corresponding position, and a condition to select elements satisfying
+the condition.
+
+#+BEGIN_SRC R :exports both :results output
+# Selecting elements in a vector
+x[1:5]
+x[c(1, length(x))]
+x[-4]
+x[x > 0.5]
+#+END_SRC
+
+#+RESULTS[7b0cc5604ae7eae933e045823a8e7afc3a7f3d3c]:
+: [1] 0.7717939 0.9479161 0.5060915 0.9123343 0.5928502
+: [1] 0.7717939 0.2147782
+: [1] 0.7717939 0.9479161 0.5060915 0.5928502 0.3862797 0.9296219 0.5086938
+: [8] 0.0604831 0.2147782
+: [1] 0.7717939 0.9479161 0.5060915 0.9123343 0.5928502 0.9296219 0.5086938
+
+Instead of selecting elements in a vector by their positions, we can
+also give each element a particular name so that we can use their
+names to choose elements.
+
+#+BEGIN_SRC R :results output :exports both
+student.names
+student.age
+# Give elements names
+names(student.age) <- student.names
+student.age
+student.age[c("John", "Bob")]
+#+END_SRC
+
+#+RESULTS[3062477f140e06e1c33674eecc173ec4524d11d8]:
+: [1] "John" "Mary" "Bob"  "Ann"
+: [1] 20 19 21 20
+: John Mary  Bob  Ann
+:   20   19   21   20
+: John  Bob
+:   20   21
 
 
-*** Subsetting vectors
+** Matrices
 
-Element(s) in a vector can be accessed by referring to the indices of
-these elements.
-#+BEGIN_EXAMPLE
-> x < c(0.3 1.5 7.3 2.0)
-> x[c(1, 3)] # basic subsetting
-[1] 0.3 7.3
-> x[-4]      # excluding the 4th element
-[1] 0.3 1.5 7.3
-> x[x > 1]   # using logical expression
-[1] 1.5 7.3 2.0
-#+END_EXAMPLE
-
-
-** Matrix operations
 *** Create a matrix
 
-#+BEGIN_EXAMPLE
-> A <- matrix(1:12, nrow = 3, ncol = 4)
-> A
-     [,1] [,2] [,3] [,4]
-[1,]    1    4    7   10
-[2,]    2    5    8   11
-[3,]    3    6    9   12
-> x <- 1:3; y <- 4:6; z <- 7:9
-> B <- cbind(x, y, z)
-> B
-     x y z
-[1,] 1 4 7
-[2,] 2 5 8
-[3,] 3 6 9
-#+END_EXAMPLE
+We can create a matrix with the =matrix()= function, in which the
+first argument is a vector. We specify the
+two dimensions by the arguments of =nrow= and =ncol=. By default,
+=matrix()= arranges all the elements of the vector in its first
+argument into a matrix by column. We can change it by adding
+~byrow=TRUE~.
 
-*** Subsetting a matrix
+#+BEGIN_SRC R :exports both :results output
+  # Create a matrix
+  A <- matrix(1:12, nrow = 3, ncol = 4); A
+  matrix(1:12, nrow = 3, ncol = 4, byrow = TRUE)
+#+END_SRC
 
-#+BEGIN_EXAMPLE
-> A
-     [,1] [,2] [,3] [,4]
-[1,]    1    4    7   10
-[2,]    2    5    8   11
-[3,]    3    6    9   12
-> A[1, 3]
+#+RESULTS[e89cbaa8bf67dc97ce2fc9e90e77d3e9ff0035d0]:
+:      [,1] [,2] [,3] [,4]
+: [1,]    1    4    7   10
+: [2,]    2    5    8   11
+: [3,]    3    6    9   12
+:      [,1] [,2] [,3] [,4]
+: [1,]    1    2    3    4
+: [2,]    5    6    7    8
+: [3,]    9   10   11   12
+
+We can also juxtapose vectors of the same length to create a matrix by
+=cbind()=, or stack over vectors by =rbind()=.
+
+#+BEGIN_SRC R :exports both :results output
+  # Create a matrix by combining vectors
+  a <- 1:4; b <- 2:5; c <- 3:6
+  cbind(a, b, c)
+  rbind(a, b, c)
+#+END_SRC
+
+#+RESULTS[f6542eb17ac3da6d59a15f48032013f6e1faf823]:
+:      a b c
+: [1,] 1 2 3
+: [2,] 2 3 4
+: [3,] 3 4 5
+: [4,] 4 5 6
+:   [,1] [,2] [,3] [,4]
+: a    1    2    3    4
+: b    2    3    4    5
+: c    3    4    5    6
+
+Like vectors, we can also give each row and each column in a matrix
+their specific names. Here we use the function of =paste()= to combine
+two (character) vectors together to generate a new character vector.
+
+#+BEGIN_SRC R :exports both :results output
+  # Give names to rows and columns
+  rownames(A) <- paste("X", 1:3, sep = "")
+  colnames(A) <- paste("Y", 1:4, sep = "")
+  A
+#+END_SRC
+
+#+RESULTS[f21b93de2289dcb424cff715d232a192be8c2d34]:
+:    Y1 Y2 Y3 Y4
+: X1  1  4  7 10
+: X2  2  5  8 11
+: X3  3  6  9 12
+
+*** Select elements
+
+We select elements from a matrix using =[rows, cols]=. =rows= and
+=cols= are two vectors to set the rows and columns of elements to be
+selected.
+
+#+BEGIN_SRC R :exports both :results output
+# Selecting elements in a matrix
+A[1, 3]
+A["X1", "Y3"]
+A[1:3, c(2, 4)]
+A[, 2]
+A[3, ]
+#+END_SRC
+
+#+RESULTS[7113d20c45e56d0308de47d867da6bf3f5206a5d]:
+#+begin_example
 [1] 7
-> A[1:2, c(2, 4)]
-     [,1] [,2]
-[1,]    4   10
-[2,]    5   11
-#+END_EXAMPLE
+[1] 7
+   Y2 Y4
+X1  4 10
+X2  5 11
+X3  6 12
+X1 X2 X3
+ 4  5  6
+Y1 Y2 Y3 Y4
+ 3  6  9 12
+#+end_example
 
 *** Matrix operations
 
-- transpose
+We can do all matrix operations that we have reviewed in Lecture 4.
 
-  #+BEGIN_EXAMPLE
-  > t(A)
-       [,1] [,2] [,3]
-  [1,]    1    2    3
-  [2,]    4    5    6
-  [3,]    7    8    9
-  [4,]   10   11   12
-  #+END_EXAMPLE
+**** Transpose
 
-- matrix multiplication
+#+BEGIN_SRC R :exports both :results output
+t(A)
+#+END_SRC
 
-  #+BEGIN_EXAMPLE
-  > B <- matrix(1:8, nrow = 4)
-  > A * B
-  Error in A * B : non-conformable arrays
-  > dim(A)
-  [1] 3 4
-  > dim(B)
-  [1] 4 2
-  > A %*% B
-       [,1] [,2]
-  [1,]   70  158
-  [2,]   80  184
-  [3,]   90  210
-  #+END_EXAMPLE
+#+RESULTS[449908aa2c75cd2f626c7745c0d2fabaaa93790c]:
+:    X1 X2 X3
+: Y1  1  2  3
+: Y2  4  5  6
+: Y3  7  8  9
+: Y4 10 11 12
 
-- inverse matrix
+**** Matrix multiplication
 
-  #+BEGIN_EXAMPLE
-  > A <- matrix(rnorm(9), 3)
-  > B <- solve(A)
-  > A %*% B
-                [,1]          [,2]          [,3]
-  [1,]  1.000000e+00 -1.110223e-16  5.551115e-17
-  [2,] -1.110223e-16  1.000000e+00 -2.775558e-17
-  [3,]  0.000000e+00  0.000000e+00  1.000000e+00
-  #+END_EXAMPLE
+There are two types of matrix multiplication. The ~*~ operator
+computes the element-by-element multiplication (Hadamard product),
+while the operator ~%*%~ computes matrix multiplication in the form of
+inner products of row and column vectors.
 
-*** Special matrices
+When we do either type of matrix multiplication, we should always
+check whether the two matrices are conformable to do so. If not, R
+will give you an error message. We can use the function =dim()= to see
+the dimensions of a matrix.
 
-- diagonal matrix
+#+BEGIN_SRC R :exports both :results output :tangle no
+  B <- matrix(1:8, nrow = 4)
+  A * B # element-by-element multiplication
+  dim(A)
+  dim(B)
+#+END_SRC
 
-  #+BEGIN_EXAMPLE
-  > A <- diag(1:3)
-  > A
-       [,1] [,2] [,3]
-  [1,]    1    0    0
-  [2,]    0    2    0
-  [3,]    0    0    3
-  #+END_EXAMPLE
+#+RESULTS[454a016b8378fb95832c793a25f2df529fcef68f]:
+: Error in A * B : non-conformable arrays
+: [1] 3 4
+: [1] 4 2
 
-- identity matrix
+#+BEGIN_SRC R :exports both :results output
+A %*% B
+#+END_SRC
 
-  #+BEGIN_EXAMPLE
-  > diag(3)
-       [,1] [,2] [,3]
-  [1,]    1    0    0
-  [2,]    0    1    0
-  [3,]    0    0    1
-  #+END_EXAMPLE
+#+RESULTS[4446ad61ebf9b57d41e5c2a49d45ac1f29f0b07a]:
+:    [,1] [,2]
+: X1   70  158
+: X2   80  184
+: X3   90  210
 
-- other useful functions on matrices
+**** Inverse matrix
 
-  =nrow()=, =ncol()=, =eigen()=, =rowSums=, =colSums=
+We use the function =solve(A)= to get the inverse matrix of
+$\mathbf{A}$.
+
+#+BEGIN_SRC R :exports both :results output
+ A <- matrix(rnorm(9), nrow = 3)
+ B <- solve(A)
+ A %*% B
+#+END_SRC
+
+#+RESULTS[b92a352d5d027b73e0643cd94b3ff82df566ceff]:
+:      [,1]          [,2]          [,3]
+: [1,]    1  1.665335e-16 -6.938894e-17
+: [2,]    0  1.000000e+00 -4.857226e-17
+: [3,]    0 -4.163336e-17  1.000000e+00
+
+Notice that the resultant matrix is not exactly an identity matrix, in
+which some off-diagonal elements are very small non-zero
+numbers. These are the rounding errors stemming from conversion
+between binary bits (a sequence of 0 and 1) to floating point
+numbers.
+
+=solve()= can also be used to solve a system of linear equations, such
+as,
+\begin{align*}
+3x &+ 2y - z   = 1 \\
+2x &- 2y + 4z  = -2 \\
+-x &+ \frac{1}{2}y - z  = 0
+\end{align*}
+to which the solution is $x=1, y=-2, z=-2$.
+
+The system of equations can be written in matrix notation as
+\begin{equation*}
+\begin{bmatrix}
+3 & 2 & -1 \\
+2 & -2 & 4 \\
+-1 & \frac{1}{2} & -1
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\
+-2 \\
+0
+\end{bmatrix}
+\end{equation*}
+
+#+BEGIN_SRC R :exports both :results output
+  A <- cbind(c(3, 2, -1),
+             c(2, -2, 0.5),
+             c(-1, 4, -1))
+  B <- c(1, -2, 0)
+  solve(A, B)
+#+END_SRC
+
+#+RESULTS[9afed81e01f98e727e2a7245b3a6263b9b2e512a]:
+: [1]  1 -2 -2
+
+*** Diagonal matrix
+
+The function =diag()= can create a diagonal matrix.
+
+#+BEGIN_SRC R :exports both :results output
+ diag(1:3)
+#+END_SRC
+
+#+RESULTS[3e10ea29095cf5dc0a578bacbf81760c27d70937]:
+:      [,1] [,2] [,3]
+: [1,]    1    0    0
+: [2,]    0    2    0
+: [3,]    0    0    3
+
+An identity matrix is a special case of a diagonal matrix.
+
+#+BEGIN_SRC R :exports both :results output
+diag(3)
+#+END_SRC
+
+#+RESULTS[f178ce9843e1f7d2237171b38d9836f87f250805]:
+:      [,1] [,2] [,3]
+: [1,]    1    0    0
+: [2,]    0    1    0
+: [3,]    0    0    1
+
+*** Higher-dimensional array
+
+Vectors and matrices are special cases of arrays. The former is
+one-dimensional array, and the latter is two-dimensional. We can also
+create higher-dimensional arrays by =array()=.
+
+#+BEGIN_SRC R :exports both :results output
+  array(1:18, dim = c(3, 3, 2))
+#+END_SRC
+
+#+RESULTS[ef79b780e4d42e5aa551eb52a7f256b540a85834]:
+#+begin_example
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]   10   13   16
+[2,]   11   14   17
+[3,]   12   15   18
+#+end_example
+
+
+** List
+
+Vectors, matrices, and arrays are all the ways of R to store
+data. However, their limitation is obvious, all elements in a vector
+or a matrix must be of the same type. To overcome this limitation, R
+uses another way to store data, called a =list=.
+
+Here is how we create a list, which consists of three components, a
+character vector =chr=, a numeric vector =num=, and a logical vector
+=boo=. Note that the lengths of all components do not need to be
+equal.
+
+#+BEGIN_SRC R :exports both :results output
+  mylist <- list(chr = c("a", "b", "c", "d"),
+		 num = 1:10,
+		 boo = c(TRUE, FALSE, FALSE, TRUE))
+  mylist
+#+END_SRC
+
+#+RESULTS[f4a3764fd93752904a24775ad1ad6f08e2dd1752]:
+: $chr
+: [1] "a" "b" "c" "d"
+:
+: $num
+:  [1]  1  2  3  4  5  6  7  8  9 10
+:
+: $boo
+: [1]  TRUE FALSE FALSE  TRUE
+
+To select a component, we use the =$=operator or =[[]]=.
+
+#+BEGIN_SRC R :exports both :results output
+mylist$chr
+mylist[[2]][3:6]
+mylist[["boo"]][-1]
+#+END_SRC
+
+#+RESULTS[d9f2fabe8dfe36022326e0cab25503237f32a219]:
+: [1] "a" "b" "c" "d"
+: [1] 3 4 5 6
+: [1] FALSE FALSE  TRUE
 
 
 * Data Management in R
 
-A data frame is more general than a matrix in that different columns
-can contain different modes of data (numeric, character, etc.)
+R use data frames as its main device to save a whole data set,
+especially data read from an external file. A data frame is a mixture
+of a list and a matrix. As a list, a data frame can include different
+types of data and use the =$= or =[[]]= operator to select a component
+that is a variable in the data set. As a matrix, all variables in a
+data frame should have the same length and are arranged in a matrix
+format.
 
 ** Create a data frame
 
-#+BEGIN_EXAMPLE
-> mydata <- data.frame(x = 1:3, y = 4:6, z = letters[1:3])
-> mydata
-  x y z
-1 1 4 a
-2 2 5 b
-3 3 6 c
-> A <- matrix(1:9, ncol=3)
-> A.mat <- as.data.frame(A)
-> A.mat
-  V1 V2 V3
-1  1  4  7
-2  2  5  8
-3  3  6  9
-> names(A.mat) <- c("X", "Y", "Z")
-> A.mat
-  X Y Z
-1 1 4 7
-2 2 5 8
-3 3 6 9
-#+END_EXAMPLE
+We can manually create a data frame object, convert a matrix to a data
+frame object, or read data in an external file into R and save them in
+a data frame object.
+
+*** Create a data frame manually
+#+BEGIN_SRC R :exports both :results output
+ mydata <- data.frame(X = 1:5, Y = letters[1:5], Z = rep(c(TRUE, FALSE), length = 5)); mydata
+#+END_SRC
+
+#+RESULTS[f2267b48525102da38dc8bcb6e608537c92a1675]:
+:   X Y     Z
+: 1 1 a  TRUE
+: 2 2 b FALSE
+: 3 3 c  TRUE
+: 4 4 d FALSE
+: 5 5 e  TRUE
+
+*** Convert a matrix to a data frame
+
+We use =as.data.frame()= to convert a matrix to a data frame. In
+creating the matrix, we use =sample.int()= that is a special case of
+the function =sample()= to draw random samples from a vector.
+#+BEGIN_SRC R :exports both :results output
+  A <- matrix(sample.int(100, size = 20), nrow = 5)
+  A.df <- as.data.frame(A); A.df
+#+END_SRC
+
+#+RESULTS[7281d120eddbc8d7288825f53c4c5d9eaa37c16a]:
+:   V1 V2 V3 V4
+: 1 12 28 75 44
+: 2 99 46 15 35
+: 3 95 13 98 73
+: 4  8 21 56 85
+: 5 27  9 94 80
+
+We can assign each variable (column) a name. Here we use the function
+=paste()= to combine a string =VAR= with each element of the vector
+=1:4=, joined with ~_~.
+#+BEGIN_SRC R :exports both :results output
+  names(A.df) <- paste("VAR", 1:4, sep = "_"); A.df
+#+END_SRC
+
+#+RESULTS[4493abc43cae7954652d6cfd9ae74b3699efbcf6]:
+:   VAR_1 VAR_2 VAR_3 VAR_4
+: 1    12    28    75    44
+: 2    99    46    15    35
+: 3    95    13    98    73
+: 4     8    21    56    85
+: 5    27     9    94    80
 
 
 ** Read data from a file
 
-Suppose we have a data file, mydata.txt
-#+BEGIN_EXAMPLE
-x  y  z
-1  2  a
-4  5  b
-7  8  c
-9  10 d
-#+END_EXAMPLE
+Suppose we have a data file, [[file:mydata.txt]]. We can read the data
+directly from the file using the function =read.table()=. Upon reading
+the data into R, we should check whether data are correctly using the
+function =head()= to check the first few (default is six)
+observations. (or )
 
-We can read the data directly from the file using =read.table=
-#+BEGIN_EXAMPLE
-> mydata <- read.table("mydata.txt", header=TRUE)
-> mydata
-  x  y z
-1 1  2 a
-2 4  5 b
-3 7  8 c
-4 9 10 d
-#+END_EXAMPLE
+#+BEGIN_SRC R :exports both :results output
+  mydata <- read.table("mydata.txt", header = TRUE, sep = "")
+  head(mydata)
+  # tail(mydata)
+#+END_SRC
 
-We can also read data from an excel file or a Stata file
+#+RESULTS[50d33ba047ae415fc5c081d425399c9f3d903f60]:
+:   Names Gender Weight Overweight
+: 1   Bob      M   72.5      FALSE
+: 2  John      M   83.1      FALSE
+: 3  Anne      F   60.8      FALSE
+: 4   Dan      M   89.7       TRUE
+: 5  Juan      M   93.2       TRUE
+: 6  Jane      F   76.9       TRUE
+
+Often we may encounter data files ending with =.csv=, which is a
+special type of a text file, with commas separating each value. And we
+use the function =read.csv()= to read a =.csv= file.
+
+#+BEGIN_SRC R :exports both :results output
+tail(read.csv("mydata.csv", header = TRUE))
+#+END_SRC
+
+#+RESULTS[46548473676164c7d6433e46770b36b018b0b2e2]:
+:   Names Gender Weight Overweight
+: 2  John      M   83.1      FALSE
+: 3  Anne      F   60.8      FALSE
+: 4   Dan      M   89.7       TRUE
+: 5  Juan      M   93.2       TRUE
+: 6  Jane      F   76.9       TRUE
+: 7 Doris      F   56.3      FALSE
+
+We can also read data from an excel file or a Stata file that we will
+see in the final section of this tutorial. To read these types of
+files, we need to load the packages of =gdata=, =foreign= (for Stata
+12 and prior version), or =readstata13= (for Stata 13 and newer
+version).
 #+BEGIN_EXAMPLE
 library(gdata)
 read.xls(mydata.xls)
@@ -372,118 +812,123 @@ read.dta(mydata.dta)
 
 ** Select variables
 
-We can select a variable in a data frame by using "=$=" or "=[[]]=".
+Since a data frame is a special case of list, we can select a variable
+in a data frame by using "=$=" or "=[[]]=". Here is an example of
+computing the average weight of students.
 
-#+BEGIN_EXAMPLE
-> x <- mydata$x
-> y <- mydata[[1]]
-#+END_EXAMPLE
+#+BEGIN_SRC R :exports both :results output
+mean(mydata$Weight)
+#+END_SRC
+
+#+RESULTS[52b475a67159ac1ae380e9330413102502949b70]:
+: [1] 76.07143
+
+
+** Get summary information
+
+After reading data into R, besides using =head()= or =tail()= to see
+the first and last few observations, we need also use =str()= and
+=summary()= to get some summary information of the data set.
+
+#+BEGIN_SRC R :exports both :results output
+str(mydata)
+summary(mydata)
+#+END_SRC
+
+#+RESULTS[09f55fd218e4013ea1b6edcb0393db99075c3b98]:
+#+begin_example
+'data.frame':	7 obs. of  4 variables:
+ $ Names     : Factor w/ 7 levels "Anne","Bob","Dan",..: 2 6 1 3 7 5 4
+ $ Gender    : Factor w/ 2 levels "F","M": 2 2 1 2 2 1 1
+ $ Weight    : num  72.5 83.1 60.8 89.7 93.2 76.9 56.3
+ $ Overweight: logi  FALSE FALSE FALSE TRUE TRUE TRUE ...
+   Names   Gender     Weight      Overweight
+ Anne :1   F:3    Min.   :56.30   Mode :logical
+ Bob  :1   M:4    1st Qu.:66.65   FALSE:4
+ Dan  :1          Median :76.90   TRUE :3
+ Doris:1          Mean   :76.07   NA's :0
+ Jane :1          3rd Qu.:86.40
+ John :1          Max.   :93.20
+ Juan :1
+#+end_example
+
+The results of running =str()= show that the variables ~Names~ and
+~Gender~ have the type of ~Factor~. In default, when reading
+character variables from a file, R will convert them into factors that
+are categorical variables. We can preserve the type of character by
+including ~stringsAsFactors=FALSE~ in =read.table()= or =read.csv()=.
 
 
 * Graphics
 
-R is very powerful in creating graphics. =plot()= is the very basic
-plotting function.
+R is very powerful in creating graphics. In this tutorial, we will learn
+base graphics systems in R.
 
-#+BEGIN_SRC R :exports both :results output graphics :file ./fig1.png
-x <- rnorm(100)
-y <- 1 + 2*x + rnorm(100, mean=0, sd=2)
-plot(x, y, main="the scatterplot between x and y", col="red")
+We use a database, =mtcars=, in the =datasets= package in R to show
+how to draw different types of graphics. This data set contain the
+data that was extracted from the 1974 Motor Trend US magazine, and
+comprises fuel consumption and 10 aspects of automobile design and
+performance for 32 automobiles (1973–74
+models).(Read https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html)
+
+#+BEGIN_SRC R :exports both :results output
+data(mtcars)
+head(mtcars)
+# str(mtcars)
 #+END_SRC
 
-#+ATTR_LATEX: :width 0.75\textwidth
-#+RESULTS:
-[[file:./fig1.png]]
+#+RESULTS[78cf99c0538455893527dcc69acad4640bd9359c]:
+:                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+: Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+: Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+: Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+: Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+: Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+: Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
-** TODO Introduce ggplot
 
+** The barchart
 
-* Statistical analysis
+First, Let's see the mpg (miles per gallon) among different models by
+the bar chart.
 
-** TODO Rewrite this part in rmarkdown Empirical exercise
-
-#+NAME: Empirical exercise 3.1: read the data
-#+BEGIN_SRC R :exports both :results output org
-library(foreign)
-rawdata <- read.dta("cps92_08.dta")
-summary(rawdata)
+#+BEGIN_SRC R :exports both :results value graphics :file figure/barplot.png
+  barplot(sort(mtcars$mpg, decreasing = TRUE),
+          col = "blue",
+          main = "The mpg among car models",
+          xlab = "car models", ylab = "mpg")
 #+END_SRC
 
-#+RESULTS: Empirical
-#+BEGIN_SRC org
-      year           ahe            bachelor          female
- Min.   :1992   Min.   : 1.314   Min.   :0.0000   Min.   :0.0000
- 1st Qu.:1992   1st Qu.: 9.177   1st Qu.:0.0000   1st Qu.:0.0000
- Median :2008   Median :13.462   Median :0.0000   Median :0.0000
- Mean   :2000   Mean   :15.327   Mean   :0.4356   Mean   :0.4295
- 3rd Qu.:2008   3rd Qu.:19.231   3rd Qu.:1.0000   3rd Qu.:1.0000
- Max.   :2008   Max.   :82.418   Max.   :1.0000   Max.   :1.0000
-      age
- Min.   :25.00
- 1st Qu.:27.00
- Median :30.00
- Mean   :29.64
- 3rd Qu.:32.00
- Max.   :34.00
+#+ATTR_LATEX: :width 0.8\textwidth
+#+ATTR_HTML: :width 500
+#+RESULTS[dbb3ccf552d60ad22e55b4d42f72e4a87db52c97]:
+[[file:barplot.png]]
+
+
+** The scatterplot
+
+We know in Lecture 3 that a scatterplot is often used to see the
+association between two variables. Let's see the relationship between
+miles per gallon, =mpg=, and car weights, =disp=.
+
+#+BEGIN_SRC R :exports both :results value graphics :file figure/scatterplot.png
+    plot(mtcars$wt, mtcars$mpg,
+	 main = "The scatterplot between mpg and displacement",
+	 xlab = "Car weights (lbs/1000)",
+	 ylab = "Miles per gallon",
+	 pch = 19, col = "red")
 #+END_SRC
 
+#+ATTR_LATEX: :width 0.8\textwidth
+#+ATTR_HTML: :width 500
+#+RESULTS[9a5f5090652c0cf57dc9d79d86ccc576dae6c541]:
+[[file:scatterplot.png]]
 
-#+NAME: compute the mean
-#+BEGIN_SRC R :exports both :results output org
-# extract the data for average hourly earnings in 1992 and 2008
-ahe.92 <- with(rawdata, ahe[year == 1992])
-ahe.08 <- with(rawdata, ahe[year == 2008])
+We will explore more graphic capabilities of R in the lectures to
+come.
 
-# the sample size
-n.92 <- length(ahe.92)
-n.08 <- length(ahe.08)
 
-# mean
-mean.ahe.92 <- mean(ahe.92)
-mean.ahe.08 <- mean(ahe.08)
 
-s <- paste("The mean average hourly earnings in 1992 is",
-           round(mean.ahe.92, digits = 4), "\n")
-cat(s)
-s <- paste("The mean average hourly earnings in 2008 is",
-           round(mean.ahe.08, digits = 4), "\n")
-cat(s)
-#+END_SRC
+* Statistical Analysis
 
-#+NAME: compute the 95% confidence interval
-#+BEGIN_SRC R :exports both :results output org
-# the sample variance
-sd.ahe.92 <- sd(ahe.92)
-sd.ahe.08 <- sd(ahe.08)
-
-# the standard error
-se.ahe.92 <- sd.ahe.92 / sqrt(n.92)
-se.ahe.08 <- sd.ahe.08 / sqrt(n.08)
-
-# 95% confidence interval
-# the 95% critical value from a normal distribution
-cv.95 <- qnorm(0.975)
-lower.lim.92 <- mean.ahe.92 - cv.95 * se.ahe.92
-lower.lim.08 <- mean.ahe.08 - cv.95 * se.ahe.08
-
-upper.lim.92 <- mean.ahe.92 + cv.95 * se.ahe.92
-upper.lim.08 <- mean.ahe.08 + cv.95 * se.ahe.08
-
-s <- paste("The 95% confidence interval in 1992 is\n", "(",
-          round(lower.lim.92, digits = 4), ", ",
-          round(upper.lim.92, digits = 4), ")\n", sep = "")
-cat(s)
-s <- paste("The 95% confidence interval in 2008 is\n", "(",
-          round(lower.lim.08, digits = 4), ", ",
-          round(upper.lim.08, digits = 4), ")\n", sep = "")
-cat(s)
-#+END_SRC
-
-#+RESULTS: compute
-#+BEGIN_SRC org
-The 95% confidence interval in 1992 is
-(11.5002, 11.7525)
-The 95% confidence interval in 2008 is
-(18.7498, 19.2024)
-#+END_SRC
-
+[[file:emp_ex_3_1.org]]

@@ -1,0 +1,8 @@
+Names,Gender,Weight,Overweight
+Bob,M,72.5,FALSE
+John,M,83.1,FALSE
+Anne,F,60.8,FALSE
+Dan,M,89.7,TRUE
+Juan,M,93.2,TRUE
+Jane,F,76.9,TRUE
+Doris,F,56.3,FALSE

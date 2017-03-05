@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-03-05 Sun 22:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Empirical Exercise 3.1</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Zheng Tian" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/htmlize.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Empirical Exercise 3.1</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4b49119">1. A description of the problem</a></li>
+<li><a href="#org6ffd172">2. Answers to the questions</a>
+<ul>
+<li><a href="#orgb37d882">Question (a)</a>
+<ul>
+<li><a href="#orgc642f37">Read the data</a></li>
+<li><a href="#orga2fd4e6">Calculate the sample means of average hourly earnings in 1992 and 2008</a></li>
+<li><a href="#orga9dc19b">Construct the confidence intervals</a></li>
+<li><a href="#org205c849">Alternative methods to calculate the sample means and confidence intervals</a></li>
+</ul>
+</li>
+<li><a href="#org39551c7">Question (b)</a></li>
+<li><a href="#org166fe19">Question (c)</a></li>
+<li><a href="#org6d3e671">Question (d)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+Now we can show how to use R to do some statistical
+analysis. This demonstration answers the questions of Empirical
+Exercise 3.1 at the end
+of Chapter 3. Furthermore, we carry out this exercise in the format of
+<b>reproducible research</b>. That means, we should accomplish they
+following tasks in answering the problem:
+</p>
+<ol class="org-ol">
+<li>using R to compute the statistics
+asked in the questions</li>
+<li>including R code and the results of running the code in the answer, and</li>
+<li>describing our work and answers in plain language along with code
+and numerical answers.</li>
+</ol>
+
+
+<div id="outline-container-org4b49119" class="outline-2">
+<h2 id="org4b49119"><span class="section-number-2">1</span> A description of the problem</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Empirical exercise 3.1 concerns the relationship between average
+earnings and education levels, using the data set from the 1992 and
+2008 Current Population Survey (CPS). Specifically, we want to see
+whether the average hourly earnings (<code>ahe</code>) are different between
+workers with a bachelor degree and those with only high school
+diploma (<code>bachelor</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6ffd172" class="outline-2">
+<h2 id="org6ffd172"><span class="section-number-2">2</span> Answers to the questions</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgb37d882" class="outline-3">
+<h3 id="orgb37d882">Question (a)</h3>
+<div class="outline-text-3" id="text-orgb37d882">
+<p class="verse">
+Compute the sample mean for average hourly earnings (<code>ahe</code>) in 1992 and<br  />
+in 2008. Construct a 95% confidence interval for the population means<br  />
+for <code>ahe</code> in 1992 and 2008 and the change between 1992 and 2008<br  />
+</p>
+</div>
+
+<div id="outline-container-orgc642f37" class="outline-4">
+<h4 id="orgc642f37">Read the data</h4>
+<div class="outline-text-4" id="text-orgc642f37">
+<p>
+The first thing first is of course read the data correctly from the
+Stata file <a href="data/cps92_08.dta">data/cps92_08.dta</a>, which can be read by the function
+<code>read.dta()</code> in the package of <code>foreign</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R" id="org3a83725"><span style="color: #D0372D;">library</span>(foreign)
+cpsdat <span style="color: #D0372D;">&lt;-</span> read.dta(<span style="color: #008000;">"data/cps92_08.dta"</span>)
+head(cpsdat)
+</pre>
+</div>
+
+<pre class="example">
+  year       ahe bachelor female age
+1 1992 11.188811        1      0  29
+2 1992 10.000000        1      0  33
+3 1992  5.769231        0      0  30
+4 1992  1.562500        0      0  32
+5 1992 14.957265        1      0  31
+6 1992  8.660096        1      1  26
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga2fd4e6" class="outline-4">
+<h4 id="orga2fd4e6">Calculate the sample means of average hourly earnings in 1992 and 2008</h4>
+<div class="outline-text-4" id="text-orga2fd4e6">
+<p>
+There are many ways to compute the sample means in 1992 and 2008,
+respectively. First, to make you more familiar with the  R
+language, we compute them in a very basic way. Then, we show how to
+get the same results with some powerful functions.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">extract the data for average hourly earnings in 1992 and 2008</span>
+ahe.92 <span style="color: #D0372D;">&lt;-</span> cpsdat$ahe[cpsdat$year == 1992]
+ahe.08 <span style="color: #D0372D;">&lt;-</span> cpsdat$ahe[cpsdat$year == 2008]
+mean.ahe.92 <span style="color: #D0372D;">&lt;-</span> mean(ahe.92); mean.ahe.92
+mean.ahe.08 <span style="color: #D0372D;">&lt;-</span> mean(ahe.08); mean.ahe.08
+</pre>
+</div>
+
+<pre class="example">
+[1] 11.62637
+[1] 18.97609
+</pre>
+
+<p>
+The average hourly earnings are <code>11.63</code> dollars
+in 1992 and <code>18.98</code> dollars in 2008.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga9dc19b" class="outline-4">
+<h4 id="orga9dc19b">Construct the confidence intervals</h4>
+<div class="outline-text-4" id="text-orga9dc19b">
+<p>
+Recall that a 95% confidence interval for the population mean can be
+constructed as \(\overline{Y} \pm 1.96 SE(\overline{Y})\) and
+\(SE(\overline{Y})\) is computed as \(s_Y / \sqrt{n}\).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R" id="orgb22b8a0"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the sample variance</span>
+sd.ahe.92 <span style="color: #D0372D;">&lt;-</span> sd(ahe.92)
+sd.ahe.08 <span style="color: #D0372D;">&lt;-</span> sd(ahe.08)
+
+n.92 <span style="color: #D0372D;">&lt;-</span> length(ahe.92)
+n.08 <span style="color: #D0372D;">&lt;-</span> length(ahe.08)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the standard error</span>
+se.ahe.92 <span style="color: #D0372D;">&lt;-</span> sd.ahe.92 / sqrt(n.92)
+se.ahe.08 <span style="color: #D0372D;">&lt;-</span> sd.ahe.08 / sqrt(n.08)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">95% confidence interval</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the 95% critical value from a normal distribution</span>
+cv.95 <span style="color: #D0372D;">&lt;-</span> qnorm(0.975)
+
+lower.lim.92 <span style="color: #D0372D;">&lt;-</span> mean.ahe.92 - cv.95 * se.ahe.92
+lower.lim.08 <span style="color: #D0372D;">&lt;-</span> mean.ahe.08 - cv.95 * se.ahe.08
+
+upper.lim.92 <span style="color: #D0372D;">&lt;-</span> mean.ahe.92 + cv.95 * se.ahe.92
+upper.lim.08 <span style="color: #D0372D;">&lt;-</span> mean.ahe.08 + cv.95 * se.ahe.08
+</pre>
+</div>
+
+<pre class="example">
+[1] 11.63
+[1] 18.98
+</pre>
+
+<p>
+The 95% confidence interval for <code>ahe</code> in 1992 is
+(<code>11.5</code>, <code>11.75</code>), and
+that in 2008 is (<code>18.75</code>,
+<code>19.2</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org205c849" class="outline-4">
+<h4 id="org205c849">Alternative methods to calculate the sample means and confidence intervals</h4>
+<div class="outline-text-4" id="text-org205c849">
+<p>
+In the above example, to compute the sample averages in 1992 and 2008,
+we write code separately for each year, which can be done more easily
+in R.
+</p>
+
+<p>
+We can compute the averages for each year using the function
+<code>aggregate()</code>, which splits the whole data base into two parts by the
+values of <code>year</code>. Then, for each part we compute the average by
+specifying the argument <code>FUN</code> to be <code>mean</code>, i.e., specifying the
+function to be used for each part as the <code>mean()</code> function. Also, in
+this case, we use <code>~</code> to specify a <b>formula</b> that means that we split
+<code>ahe</code> by <code>year</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Use aggregate() to compute the means in both years</span>
+ahe.means <span style="color: #D0372D;">&lt;-</span> aggregate(ahe ~ year, FUN = mean, data = cpsdat)
+ahe.means
+</pre>
+</div>
+
+<pre class="example">
+[1] 11.5
+[1] 11.75
+[1] 18.75
+[1] 19.2
+  year      ahe
+1 1992 11.62637
+2 2008 18.97609
+</pre>
+
+<p>
+The confidence interval can be extracted from the results of the
+<code>t.test()</code> function, which is a list.
+</p>
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">t test for ahe in 1992</span>
+t.ahe.92 <span style="color: #D0372D;">&lt;-</span> t.test(ahe.92); t.ahe.92$conf.int
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">t test for ahe in 2008</span>
+t.ahe.08 <span style="color: #D0372D;">&lt;-</span> t.test(ahe.08); t.ahe.08$conf.int
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">test for the change between 1992 and 2008</span>
+t.ahe.diff <span style="color: #D0372D;">&lt;-</span> t.test(ahe.08, ahe.92); t.ahe.diff
+</pre>
+</div>
+
+<pre class="example">
+[1] 11.50019 11.75254
+attr(,"conf.level")
+[1] 0.95
+[1] 18.74975 19.20244
+attr(,"conf.level")
+[1] 0.95
+
+	Welch Two Sample t-test
+
+data:  ahe.08 and ahe.92
+t = 55.597, df = 12065, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 7.090601 7.608853
+sample estimates:
+mean of x mean of y
+ 18.97609  11.62637
+</pre>
+
+<p>
+The confidence interval of the change in average hourly earnings
+between 1992 and 2008 is (<code>7.09</code>,
+<code>7.61</code>).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org39551c7" class="outline-3">
+<h3 id="org39551c7">Question (b)</h3>
+<div class="outline-text-3" id="text-org39551c7">
+<p>
+Now we need to adjust the average hourly earnings in the 1992 dollars
+to the 2008 dollars with the inflation rate, computed as
+<code>CPI2008/CPI1992</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">CPI in 1992 and 2008</span>
+cpi.92 <span style="color: #D0372D;">&lt;-</span> 140.3
+cpi.08 <span style="color: #D0372D;">&lt;-</span> 215.2
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Inflation adjustment</span>
+inflator <span style="color: #D0372D;">&lt;-</span> cpi.08 / cpi.92
+cpsdat$ahe.adj <span style="color: #D0372D;">&lt;-</span> with(cpsdat, ifelse(year == 1992, ahe * inflator, ahe))
+</pre>
+</div>
+
+<p>
+In the code block above, we first use the function <code>with()</code> to attach
+the data frame <code>cpsdat</code> within its own environment so that when we
+refer to variables in <code>cpsdat</code>, such as <code>ahe</code> and <code>year</code>, we do not
+need to write <code>cpsdat$</code> and every time we use its variables.
+</p>
+
+<p>
+The function <code>ifesle()</code> set the values of <code>ahe</code> based on the
+condition <code>year == 1992</code>. If the condition is true, we do <code>ahe *
+inflator</code>; if not, leave <code>ahe</code> as it is.
+</p>
+
+<p>
+Then we repeat what we've done in Question (a) with the
+inflation-adjusted earnings in 1992.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">ahe.92.adj <span style="color: #D0372D;">&lt;-</span> with(cpsdat, ahe.adj[year == 1992])
+mean.ahe.92.adj <span style="color: #D0372D;">&lt;-</span> mean(ahe.92.adj)
+t.ahe.92.adj <span style="color: #D0372D;">&lt;-</span> t.test(ahe.92.adj)
+t.ahe.diff.adj <span style="color: #D0372D;">&lt;-</span> t.test(ahe.08, ahe.92.adj)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>The sample average of the inflation-adjusted earnings in 1992 is
+<code>17.83</code> in the 2008 dollars.</li>
+
+<li>The confidence interval for the inflation-adjusted average hourly earnings in 1992 is
+(<code>17.64, 18.03</code>).</li>
+
+<li>The confidence interval for the change between 1992 and 2008 is
+(<code>0.85, 1.44</code>).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org166fe19" class="outline-3">
+<h3 id="org166fe19">Question (c)</h3>
+<div class="outline-text-3" id="text-org166fe19">
+<p>
+If we are interested in the change in workers' purchasing power, the
+results with the inflation-adjusted earnings should be used in
+comparison.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6d3e671" class="outline-3">
+<h3 id="org6d3e671">Question (d)</h3>
+<div class="outline-text-3" id="text-org6d3e671">
+<p>
+Now let's compute the average earnings for high school graduates and
+college graduates with the 2008 data. First thing to do is to select
+the 2008 data from <code>cpsdat</code> using the function <code>subset()</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">select data in 2008</span>
+cps08 <span style="color: #D0372D;">&lt;-</span> subset(cpsdat, year == 2008, select = c(year, ahe, bachelor))
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">calculate means</span>
+ahe.educ.08 <span style="color: #D0372D;">&lt;-</span> aggregate(ahe ~ bachelor, FUN = mean, data = cps08)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">select ahe and filter by bachelor</span>
+ahe.high.08 <span style="color: #D0372D;">&lt;-</span> with(cps08, ahe[bachelor == 0])
+ahe.bach.08 <span style="color: #D0372D;">&lt;-</span> with(cps08, ahe[bachelor == 1])
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">construct confindence interval</span>
+t.ahe.high.08 <span style="color: #D0372D;">&lt;-</span> t.test(ahe.high.08)
+t.ahe.bach.08 <span style="color: #D0372D;">&lt;-</span> t.test(ahe.bach.08)
+t.ahe.gap.08  <span style="color: #D0372D;">&lt;-</span> t.test(ahe.bach.08, ahe.high.08)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>The mean of the average hourly earnings of high school graduates in
+2008 is
+<code>15.33</code>
+dollars with the 95% confidence interval
+(<code>15.09, 15.57</code>)</li>
+
+<li>The mean of the average hourly earnings of college graduates is
+<code>22.91</code>
+dollars with the 95%
+confidence interval
+(<code>22.56, 23.26</code></li>
+
+<li>The 95% confidence interval of the gap in earnings between the two
+groups is
+(<code>7.15, 8</code>)</li>
+</ul>
+
+<p>
+We can create a boxplot to compare the means and confidence intervals
+of average hourly earnings between high school graduates and college
+graduates.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">boxplot(ahe ~ bachelor, data = cps08,
+        main = <span style="color: #008000;">"Average Hourly Earnings by Education"</span>,
+        col = c(<span style="color: #008000;">"red"</span>, <span style="color: #008000;">"orange"</span>),
+        xlab = <span style="color: #008000;">"Bachelor degres = 1, high school = 0"</span>,
+        ylab = <span style="color: #008000;">"US$ 2008"</span>)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="figure/boxplot.png" alt="boxplot.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Zheng Tian</p>
+<p class="date">Created: 2017-03-05 Sun 22:36</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
