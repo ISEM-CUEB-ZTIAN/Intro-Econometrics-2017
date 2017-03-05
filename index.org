@@ -1,5 +1,5 @@
 #+TITLE: Econometrics 2017
-#+OPTIONS: toc:2 H:2 num:1
+#+OPTIONS: toc:2 H:2 num:1 ^:{}
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/readtheorg.css" />
 
@@ -7,6 +7,18 @@
 This website contains the course materials for the course of
 Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 2016-2017 academic year.
+
+
+* Announcement
+
+** [2017-03-06 Mon]
+
+- I create a survey, https://www.diaochapai.com/survey2500285, to
+  inquire your understanding of probability and statistics and ask for
+  your suggestion to this course. Please complete the survey in your
+  spare time. Thanks!
+
+- [[*Homework set #1][Homework set #1]] is assigned, which is due on March 13.
 
 * Syllabus
 
@@ -19,7 +31,7 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - The lecture notes ([[file:handouts/lecture_notes/lecture_1/lecture_1.html][html]] or [[file:handouts/lecture_notes/lecture_1/lecture_1.pdf][pdf]])
 - The slides ([[file:handouts/lecture_notes/lecture_1/slides_lecture_1.html][html]] or [[file:handouts/lecture_notes/lecture_1/slides_lecture_1_beamer.pdf][pdf]])
 
-** Lecture 2: Review of Probability 
+** Lecture 2: Review of Probability
 - The lecture notes ([[file:handouts/lecture_notes/lecture_2/lecture_2.html][html]] or [[file:handouts/lecture_notes/lecture_2/lecture_2.pdf][pdf]])
 - The slides ([[file:handouts/lecture_notes/lecture_2/slides_lecture_2.html][html]] or [[file:handouts/lecture_notes/lecture_2/slides_lecture_2_bearmer.pdf][pdf]])
 
@@ -30,3 +42,9 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 ** Lecture 4: Review of Linear Algebra
 - The lecture notes ([[file:handouts/lecture_notes/lecture_4/lecture_4.html][html]] or [[file:handouts/lecture_notes/lecture_4/lecture_4.pdf][pdf]])
 - The slides ([[file:handouts/lecture_notes/lecture_4/slides_lecture_4.html][html]] or [[file:handouts/lecture_notes/lecture_4/slides_lecture_4_beamer.pdf][pdf]])
+
+* Homework
+
+** Homework set #1
+
+- Homework set #1 is here: [[file:assignment/homework/Homework_1.pdf][Homework_1.pdf]].

@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-05 Sun 22:56 -->
+<!-- 2017-03-05 Sun 22:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Econometrics 2017</title>
+<title>Homework Set 1</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Zheng Tian" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -179,7 +178,6 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="css/readtheorg.css" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -226,131 +224,241 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">Econometrics 2017</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org8f624c2">1. Announcement</a>
-<ul>
-<li><a href="#org8d5513a"><span class="timestamp-wrapper"><span class="timestamp">[2017-03-06 Mon]</span></span></a></li>
-</ul>
-</li>
-<li><a href="#orge654b63">2. Syllabus</a></li>
-<li><a href="#orgfd3dfc1">3. Lecture notes</a>
-<ul>
-<li><a href="#orge21bc61">Lecture 1: What is Econometrics?</a></li>
-<li><a href="#org2d23af6">Lecture 2: Review of Probability</a></li>
-<li><a href="#orgdb45332">Lecture 3: Review of Statistics</a></li>
-<li><a href="#orgd4e58a6">Lecture 4: Review of Linear Algebra</a></li>
-</ul>
-</li>
-<li><a href="#org442e577">4. Homework</a>
-<ul>
-<li><a href="#org948ccdc">Homework set #1</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
+<h1 class="title">Homework Set 1</h1>
 <p>
-This website contains the course materials for the course of
-Econometrics offered at ISEM, CUEB, in the 2nd semester of the
-2016-2017 academic year.
+All questions are from the end-of-chapter exercises. The question
+numbers refer to those in the book. The due time is <b>March 13<sup>th</sup></b>.
 </p>
 
-
-<div id="outline-container-org8f624c2" class="outline-2">
-<h2 id="org8f624c2"><span class="section-number-2">1</span> Announcement</h2>
-<div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org8d5513a" class="outline-3">
-<h3 id="org8d5513a"><span class="timestamp-wrapper"><span class="timestamp">[2017-03-06 Mon]</span></span></h3>
-<div class="outline-text-3" id="text-org8d5513a">
-<ul class="org-ul">
-<li>I create a survey, <a href="https://www.diaochapai.com/survey2500285">https://www.diaochapai.com/survey2500285</a>, to
-inquire your understanding of probability and statistics and ask for
-your suggestion to this course. Please complete the survey in your
-spare time. Thanks!</li>
-
-<li><a href="#org948ccdc">Homework set #1</a> is assigned, which is due on March 13.</li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orge654b63" class="outline-2">
-<h2 id="orge654b63"><span class="section-number-2">2</span> Syllabus</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-Read carefully the syllabus (<a href="handouts/syllabus/syllabus_econometrics_2017_web.html">html</a> or <a href="handouts/syllabus/syllabus_econometrics_2017.pdf">pdf</a>).
+<dl class="org-dl">
+<dt>2.6</dt><dd><p>
+The table below gives the joint probability distribution
+between employment status and college graduation among those
+either employed or looking for work (unemployed) in the
+working age U.S. population for 2008.
 </p>
-</div>
-</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
-<div id="outline-container-orgfd3dfc1" class="outline-2">
-<h2 id="orgfd3dfc1"><span class="section-number-2">3</span> Lecture notes</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orge21bc61" class="outline-3">
-<h3 id="orge21bc61">Lecture 1: What is Econometrics?</h3>
-<div class="outline-text-3" id="text-orge21bc61">
-<ul class="org-ul">
-<li>The lecture notes (<a href="handouts/lecture_notes/lecture_1/lecture_1.html">html</a> or <a href="handouts/lecture_notes/lecture_1/lecture_1.pdf">pdf</a>)</li>
-<li>The slides (<a href="handouts/lecture_notes/lecture_1/slides_lecture_1.html">html</a> or <a href="handouts/lecture_notes/lecture_1/slides_lecture_1_beamer.pdf">pdf</a>)</li>
-</ul>
-</div>
-</div>
+<colgroup>
+<col  class="org-left" />
 
-<div id="outline-container-org2d23af6" class="outline-3">
-<h3 id="org2d23af6">Lecture 2: Review of Probability</h3>
-<div class="outline-text-3" id="text-org2d23af6">
-<ul class="org-ul">
-<li>The lecture notes (<a href="handouts/lecture_notes/lecture_2/lecture_2.html">html</a> or <a href="handouts/lecture_notes/lecture_2/lecture_2.pdf">pdf</a>)</li>
-<li>The slides (<a href="handouts/lecture_notes/lecture_2/slides_lecture_2.html">html</a> or <a href="handouts/lecture_notes/lecture_2/slides_lecture_2_bearmer.pdf">pdf</a>)</li>
-</ul>
-</div>
-</div>
+<col  class="org-right" />
 
-<div id="outline-container-orgdb45332" class="outline-3">
-<h3 id="orgdb45332">Lecture 3: Review of Statistics</h3>
-<div class="outline-text-3" id="text-orgdb45332">
-<ul class="org-ul">
-<li>The lecture notes (<a href="handouts/lecture_notes/lecture_3/lecture_3.html">html</a> or <a href="handouts/lecture_notes/lecture_3/lecture_3.pdf">pdf</a>)</li>
-<li>The slides (<a href="handouts/lecture_notes/lecture_3/slide_lecture_3.html">html</a> or <a href="handouts/lecture_notes/lecture_3/slide_lecture_3_beamer.pdf">pdf</a>)</li>
-</ul>
-</div>
-</div>
+<col  class="org-right" />
 
-<div id="outline-container-orgd4e58a6" class="outline-3">
-<h3 id="orgd4e58a6">Lecture 4: Review of Linear Algebra</h3>
-<div class="outline-text-3" id="text-orgd4e58a6">
-<ul class="org-ul">
-<li>The lecture notes (<a href="handouts/lecture_notes/lecture_4/lecture_4.html">html</a> or <a href="handouts/lecture_notes/lecture_4/lecture_4.pdf">pdf</a>)</li>
-<li>The slides (<a href="handouts/lecture_notes/lecture_4/slides_lecture_4.html">html</a> or <a href="handouts/lecture_notes/lecture_4/slides_lecture_4_beamer.pdf">pdf</a>)</li>
-</ul>
-</div>
-</div>
-</div>
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">Unemployed (Y=0)</th>
+<th scope="col" class="org-right">Employed (Y=1)</th>
+<th scope="col" class="org-right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Non-college grads (X=0)</td>
+<td class="org-right">0.037</td>
+<td class="org-right">0.622</td>
+<td class="org-right">0.659</td>
+</tr>
 
-<div id="outline-container-org442e577" class="outline-2">
-<h2 id="org442e577"><span class="section-number-2">4</span> Homework</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org948ccdc" class="outline-3">
-<h3 id="org948ccdc">Homework set #1</h3>
-<div class="outline-text-3" id="text-org948ccdc">
-<ul class="org-ul">
-<li>Homework set #1 is here: <a href="assignment/homework/Homework_1.pdf">Homework_1.pdf</a>.</li>
-</ul>
-</div>
-</div>
-</div>
+<tr>
+<td class="org-left">College grads (X=1)</td>
+<td class="org-right">0.009</td>
+<td class="org-right">0.332</td>
+<td class="org-right">0.341</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Total</td>
+<td class="org-right">0.046</td>
+<td class="org-right">0.954</td>
+<td class="org-right">1.000</td>
+</tr>
+</tbody>
+</table>
+
+<dl class="org-dl">
+<dt>a.</dt><dd>Compute \(E(Y)\).</dd>
+<dt>b.</dt><dd>The unemployment rate is the fraction of the labor force that is
+unemployed. Show that the unemployment rate is given by \(1-E(Y)\).</dd>
+<dt>c.</dt><dd>Calculate the unemployment rate for (i) college graduates and (ii)
+non-college graduates</dd>
+<dt>d.</dt><dd>A randomly selected member of this population reports being
+unemployed. What is the probability that this worker is a college
+graduate? A non-college graduates?</dd>
+<dt>e.</dt><dd>Are educational achievement and employment status independent?
+Explain.</dd>
+</dl></dd>
+</dl>
+
+
+<dl class="org-dl">
+<dt>2.10</dt><dd>Compute the following probabilities:
+<dl class="org-dl">
+<dt>a.</dt><dd>If Y is distributed \(N(1, 4)\), find \(\pr(Y \leq 3)\).</dd>
+<dt>b.</dt><dd>If Y is distributed \(N(3, 9)\), find \(\pr(Y > 0)\).</dd>
+<dt>c.</dt><dd>If Y is distributed \(N(50, 25)\), find \(\pr(40 \leq Y \leq 52)\).</dd>
+<dt>d.</dt><dd>If Y is distributed \(N(5, 2)\), find \(\pr(6 \leq Y \leq 8)\).</dd>
+</dl></dd>
+</dl>
+
+
+<dl class="org-dl">
+<dt>2.13</dt><dd>\(X\) is a Bernoulli random variable with \(\pr(X = 1) = 0.99\),
+\(Y\) is distributed \(N(0, 1)\), \(W\) is distributed \(N(0,
+          100)\), and \(X\), \(Y\), and \(W\) are independent. Let \(S=XY +
+          (1-X)W\). (That is, \(S=Y\) when \(X=1\), and \(S=W\) when \(X=0\))
+<dl class="org-dl">
+<dt>a.</dt><dd>Show that \(E(Y^2) = 1\) and \(E(W^2) = 100\)</dd>
+<dt>b.</dt><dd>show that \(E(Y^3) = 0\) and \(E(W^3) = 0\). (Hint: What is the
+skewness for a symmetric distribution?)</dd>
+<dt>c.</dt><dd>Show that \(E(Y^4) = 3\) and \(E(W^4) = 3 \times 100^2\). (Hint: Use
+the fact that the kurtosis is 3 for a normal distribution.)</dd>
+<dt>d.</dt><dd>Derive \(E(S), E(S^2), E(S^3), \text{ and } E(S^4)\). (Hint: Use
+the law of iterated expectations conditioning on \(X=0 \text{ and
+     } X=1\))</dd>
+<dt>e.</dt><dd>Derive the skewness and kurtosis for \(S\).</dd>
+</dl></dd>
+</dl>
+
+
+<dl class="org-dl">
+<dt>2.23</dt><dd><p>
+This exercise provides an example of a pair of random
+variables \(X\) and \(Y\) for which the conditional mean of \(Y\)
+given \(X\) depends on \(X\) but \(\corr(X, Y)=0\).
+</p>
+
+<p>
+Let \(X\) and \(Z\) be two independently distributed standard
+normal random variables, and let \(Y = X^2 + Z\).
+</p>
+<dl class="org-dl">
+<dt>a.</dt><dd>Show that \(E(Y|X) = X^2\)</dd>
+<dt>b.</dt><dd>Show that \(\mu_Y = 1\).</dd>
+<dt>c.</dt><dd>Show that \(E(XY) = 0\). (Hint: Use the fact that the odd
+moments of a standard normal random variable are all zero.)</dd>
+<dt>d.</dt><dd>Show that \(\cov(X, Y) = 0\) and thus \(\corr(X, Y) = 0\)</dd>
+</dl></dd>
+</dl>
+
+
+<dl class="org-dl">
+<dt>2.26</dt><dd>Suppose that \(Y_1, Y_2, \ldots, Y_n\) are random variables with a
+common mean \(\mu_Y\), a common variance \(\sigma^2_Y\), and the
+same correlation \(\rho\) (so that the correlation between
+\(Y_i\) and \(Y_j\) is equal to \(\rho\) for all pairs \(i\) and \(j\)
+, where \(i \neq j\).)
+<dl class="org-dl">
+<dt>a.</dt><dd>Show that \(\cov(Y_i, Y_j) = \rho\sigma^2_Y\) for \(i \neq j\).</dd>
+<dt>b.</dt><dd>Suppose that \(n=2\). Show that \(E(\overline{Y})=\mu_Y\) and
+\(\var(\overline{Y}) = \frac{1}{2}\sigma^2_Y +
+          \frac{1}{2}\rho\sigma^2_Y\).</dd>
+<dt>c.</dt><dd>For \(n \geq 2\), show that \(E(\overline{Y}) = \mu_Y\) and
+\(\var(\overline{Y}) = \sigma^2_Y/n +
+          [(n-1)/n]\rho\sigma^2_Y\).</dd>
+<dt>d.</dt><dd>When \(n\) is very large, show that \(\var(\overline{Y})
+          \approx \rho\sigma^2_Y\).</dd>
+</dl></dd>
+</dl>
+
+
+<dl class="org-dl">
+<dt>3.3</dt><dd>In a survey of 400 likely voters,215 responded that they
+would vote for the incumbent and 185 responded that they
+would vote for the challenger. Let \(p\) denote the fraction of
+all likely voters who preferred to incumbent at the time of
+the survey, and let \(\hat{p}\) be the fraction of survey
+respondents who preferred the incumbent.
+<dl class="org-dl">
+<dt>a.</dt><dd>Use the survey results to estimate \(p\).</dd>
+<dt>b.</dt><dd>Use the estimator of the variance of \(\hat{p}\),
+\(\hat{p}(1-\hat{p})/n\), to calculate the standard error of
+your estimator.</dd>
+<dt>c.</dt><dd>What is the p-value for the test \(H_0: p=0.5\) v.s. \(H_1: p
+          \neq 0.5\)?</dd>
+<dt>d.</dt><dd>What is the p-value for the test \(H_0: p=0.5\) v.s. \(H_1: p > 0.5\)?</dd>
+<dt>e.</dt><dd>Why do the results from (<b>c</b>) and (<b>d</b>) differ?</dd>
+<dt>f.</dt><dd>Did the survey contain statistically significant evidence
+that the incumbent was ahead of the challenger at the time
+of the survey? Explain.</dd>
+</dl></dd>
+</dl>
+
+
+<dl class="org-dl">
+<dt>3.9</dt><dd>Suppose that a lightbulb manufacturing plant produces bulbs
+with a mean life of 2000 hours and a standard deviation of
+200 hours. An inventor claims to have developed an improved
+process that produces bulbs with a longer mean life and the
+same standard deviation. The plant manager randomly selects
+100 bulbs produced by the process. She says that she will
+believe the inventor's claim if the sample mean life of the
+bulbs is greater than 2100 hours; otherwise, she will
+conclude that the new process is no better than the old
+process. Let &mu; denote the mean of the new process. Consider
+the null and alternative hypothesis \(H_0: \mu = 2000\)
+v.s. \(H_1: \mu > 2000\).
+<dl class="org-dl">
+<dt>a.</dt><dd>What is the size of the plant manager's testing procedure?</dd>
+<dt>b.</dt><dd>Suppose the new process is in fact better and has a mean
+bulb life of 2150 hours. What is the power of the plant
+manager's testing procedure?</dd>
+<dt>c.</dt><dd>What testing procedure should the plant manager use if she
+wants the size of her test to be 5%?</dd>
+</dl></dd>
+</dl>
+
+
+<dl class="org-dl">
+<dt>3.10</dt><dd><p>
+Consider the estimator \(\tilde{Y}\), defined in Equation
+(3.1). Show that (a) \(E(\tilde{Y}) = \mu_Y\) and (b)
+\(\var(\tilde{Y}) = 1.25\sigma^2_Y/n\).
+</p>
+
+<p>
+Equation (3.1) is
+\[ \tilde{Y} = \frac{1}{n}(\frac{1}{2}Y_1 + \frac{3}{2}Y_2 +
+          \frac{1}{2}Y_3 + \frac{3}{2}Y_4 + \cdots +
+          \frac{1}{2}Y_{n-1} + \frac{3}{2}Y_n) \]
+where \(n\) is assumed to be even for convenience.
+</p></dd>
+</dl>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-03-05 Sun 22:56</p>
+<p class="date">Created: 2017-03-05 Sun 22:51</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
