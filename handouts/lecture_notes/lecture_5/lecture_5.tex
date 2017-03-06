@@ -1,4 +1,4 @@
-% Created 2017-03-05 Sun 14:44
+% Created 2017-03-06 Mon 14:33
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -31,13 +31,25 @@
 \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
 \DeclareMathOperator*{\plim}{plim}
 \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{parskip}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
 \setcounter{secnumdepth}{2}
-\author{Zheng Tian}
+\author{Zheng Tian Zheng Tian}
 \date{}
-\title{Lecture 5: An Introduction to R}
+\title{Lecture 5: An Introduction to R Empirical Exercise 3.1}
 \hypersetup{
- pdfauthor={Zheng Tian},
- pdftitle={Lecture 5: An Introduction to R},
+ pdfauthor={Zheng Tian Zheng Tian},
+ pdftitle={Lecture 5: An Introduction to R Empirical Exercise 3.1},
  pdfkeywords={},
  pdfsubject={},
  pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)},
@@ -51,17 +63,17 @@
 
 
 \section{Getting Started with R}
-\label{sec:orgac9c02a}
+\label{sec:orgae11015}
 
 \subsection{What is R?}
-\label{sec:org0aeebe0}
+\label{sec:org924c20f}
 
 R is a free software environment and programming language for
 statistical computing and graphics. The website for the R project is
 \url{https://www.r-project.org/}.
 
 \subsubsection*{A brief history of development of R}
-\label{sec:orge317d72}
+\label{sec:org0a74503}
 
 \begin{itemize}
 \item It originated from Bell Laboratories in the 1970s, as the S
@@ -76,7 +88,7 @@ has been tremendous in the last two decades.
 \end{itemize}
 
 \subsubsection*{Why do we choose R other than other econometric software?}
-\label{sec:orge589ef7}
+\label{sec:org8f8985c}
 
 \begin{itemize}
 \item It is open source, free to download.
@@ -90,17 +102,17 @@ language can do for statistics.
 
 
 \subsection{Installation}
-\label{sec:orgc0c4461}
+\label{sec:org0151d7d}
 
 \subsubsection*{Install R}
-\label{sec:orgc3aae3a}
+\label{sec:orgce30785}
 
 The installation files can be downloaded from
 \url{https://mirrors.tuna.tsinghua.edu.cn/CRAN/}. You can download the
 installation files for Windows, OS X, and Linux(ubuntu).
 
 \subsubsection*{Install RStudio}
-\label{sec:org6532a0a}
+\label{sec:org349d4fa}
 
 The base R comes with a simple Graphic User Interface (GUI). RStudio
 supplies with a more user-friendly GUI and provides other powerful
@@ -111,19 +123,19 @@ rmarkdown.
 \item RStudio can be downloaded from
 \url{https://www.rstudio.com/products/rstudio/download/}
 
-\item The window of RStudio looks like Figure \ref{fig:org480c960}
+\item The window of RStudio looks like Figure \ref{fig:orgc66a6e6}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{figure/rstudio.png}
-\caption{\label{fig:org480c960}
+\caption{\label{fig:orgc66a6e6}
 The Window of RStudio}
 \end{figure}
 \end{itemize}
 
 
 \subsection{Packages}
-\label{sec:orgc27cc56}
+\label{sec:org2c769af}
 
 The R installation files install the core packages that support very
 basic functions. One of the strength of R is that there are many
@@ -176,9 +188,9 @@ search()
 \end{verbatim}
 
 \begin{verbatim}
- [1] ".GlobalEnv"        "package:foreign"   "package:AER"
- [4] "package:survival"  "package:sandwich"  "package:lmtest"
- [7] "package:zoo"       "package:car"       "ESSR"
+ [1] ".GlobalEnv"        "package:AER"       "package:survival"
+ [4] "package:sandwich"  "package:lmtest"    "package:zoo"
+ [7] "package:car"       "package:foreign"   "ESSR"
 [10] "package:stats"     "package:graphics"  "package:grDevices"
 [13] "package:utils"     "package:datasets"  "package:methods"
 [16] "Autoloads"         "package:base"
@@ -190,7 +202,7 @@ automatically when opening R.
 
 
 \subsection{Help}
-\label{sec:org26e4465}
+\label{sec:org58bb39c}
 
 \begin{itemize}
 \item R has easy helping facilities. The help information of any function
@@ -208,13 +220,13 @@ question in the website of \url{http://stackoverflow.com/}.
 
 
 \section{Basics}
-\label{sec:orgef9daff}
+\label{sec:org803fac9}
 
 \subsection{R as a calculator}
-\label{sec:org9aa2964}
+\label{sec:org8da9543}
 
 \subsubsection*{Standard arithmetic operators}
-\label{sec:orgb98581e}
+\label{sec:org0402dbf}
 
 R supports the following arithmetic operators
 \begin{verbatim}
@@ -241,7 +253,7 @@ Hence,
 \end{verbatim}
 
 \subsubsection*{Mathematical functions}
-\label{sec:orgbc1c2bf}
+\label{sec:org8ad50c9}
 
 R also have many built-in mathematical functions, such as, \texttt{log()},
 \texttt{exp()}, \texttt{sin()}, \texttt{sqrt()}, \texttt{min()}, etc.
@@ -257,13 +269,13 @@ log(exp(sin(pi/2)^2) * exp(cos(pi/3)^2))
 
 
 \subsection{Vector operations}
-\label{sec:org53d1264}
+\label{sec:org5f62bda}
 
 Vector is the basic unit in R, from which other data structures,
 for example, \texttt{matrix}, \texttt{factor}, \texttt{list}, \texttt{data.frame}, are built upon.
 
 \subsubsection*{Generate a vector}
-\label{sec:orgc6e229a}
+\label{sec:org46087c5}
 
 A vector can be generated by the function \texttt{c()}, which can also be
 used to concatenate two vectors
@@ -315,7 +327,7 @@ students
 \end{verbatim}
 
 \subsubsection*{Patterned vectors}
-\label{sec:org4e4692a}
+\label{sec:org18517cc}
 
 A vector can also be generated by the functions, like \texttt{rep()}, \texttt{seq()}, and
 \texttt{:}.
@@ -354,7 +366,7 @@ rep13
 \end{itemize}
 
 \subsubsection*{Vector operations}
-\label{sec:org0822306}
+\label{sec:orgee63d64}
 
 Arithmetic operators and mathematical functions can be applied to
 vector in an element-by-element way in R.
@@ -370,8 +382,8 @@ length(x)
 \end{verbatim}
 
 \begin{verbatim}
- [1] 0.8989976 0.3790876 0.1517783 0.2911032 0.2584624 0.8115274 0.9040788
- [8] 0.3398781 0.9128209 0.7798568
+ [1] 0.7509281 0.5274957 0.2658100 0.8538053 0.1332318 0.6500801 0.3687549
+ [8] 0.4117108 0.2145863 0.1970263
 [1] 10
 \end{verbatim}
 
@@ -383,10 +395,10 @@ log(x)
 \end{verbatim}
 
 \begin{verbatim}
-[1] 4.797995 3.758175 3.303557 3.582206 3.516925 4.623055 4.808158 3.679756
-[9] 4.825642 4.559714
-[1] -0.10647489 -0.96998803 -1.88533422 -1.23407732 -1.35300493 -0.20883708
-[7] -0.10083871 -1.07916819 -0.09121557 -0.24864499
+[1] 4.501856 4.054991 3.531620 4.707611 3.266464 4.300160 3.737510 3.823422
+[9] 3.429173 3.394053
+[1] -0.2864454 -0.6396146 -1.3249734 -0.1580521 -2.0156646 -0.4306598
+[7] -0.9976230 -0.8874342 -1.5390434 -1.6244179
 \end{verbatim}
 
 If two vectors with different lengths are computed within one
@@ -400,12 +412,12 @@ x + y
 \end{verbatim}
 
 \begin{verbatim}
-[1] 1.7309175 0.6074456 0.7557025 0.9749965 0.9575640 1.6434473 1.1324368
-[8] 0.9438023 1.5967141 1.4789583
+[1] 0.8556952 1.2264015 0.9013787 1.3446773 0.4927895 0.7548471 1.0676607
+[8] 1.0472795 0.7054582 0.5565840
 \end{verbatim}
 
 \subsubsection*{Selecting elements in a vector}
-\label{sec:orgbc5fae4}
+\label{sec:org1911752}
 
 Element(s) in a vector can be selected by \texttt{[position]}, in which
 \texttt{position} can be a vector indicating the position of each element in
@@ -422,11 +434,11 @@ x[x > 0.5]
 \end{verbatim}
 
 \begin{verbatim}
-[1] 0.8989976 0.3790876 0.1517783 0.2911032 0.2584624
-[1] 0.8989976 0.7798568
-[1] 0.8989976 0.3790876 0.1517783 0.2584624 0.8115274 0.9040788 0.3398781
-[8] 0.9128209 0.7798568
-[1] 0.8989976 0.8115274 0.9040788 0.9128209 0.7798568
+[1] 0.7509281 0.5274957 0.2658100 0.8538053 0.1332318
+[1] 0.7509281 0.1970263
+[1] 0.7509281 0.5274957 0.2658100 0.1332318 0.6500801 0.3687549 0.4117108
+[8] 0.2145863 0.1970263
+[1] 0.7509281 0.5274957 0.8538053 0.6500801
 \end{verbatim}
 
 Instead of selecting elements in a vector by their positions, we can
@@ -453,10 +465,10 @@ John  Bob
 
 
 \subsection{Matrices}
-\label{sec:org7c8965d}
+\label{sec:org389889b}
 
 \subsubsection*{Create a matrix}
-\label{sec:org6bae4a7}
+\label{sec:org333a288}
 
 We can create a matrix with the \texttt{matrix()} function, in which the
 first argument is a vector. We specify the
@@ -523,7 +535,7 @@ X3  3  6  9 12
 \end{verbatim}
 
 \subsubsection*{Select elements}
-\label{sec:org15bf518}
+\label{sec:orgc0425b1}
 
 We select elements from a matrix using \texttt{[rows, cols]}. \texttt{rows} and
 \texttt{cols} are two vectors to set the rows and columns of elements to be
@@ -552,13 +564,13 @@ Y1 Y2 Y3 Y4
 \end{verbatim}
 
 \subsubsection*{Matrix operations}
-\label{sec:org50a4e09}
+\label{sec:org0f3a9d3}
 
 We can do all matrix operations that we have reviewed in Lecture 4.
 
 \begin{itemize}
 \item Transpose
-\label{sec:org73b6b9f}
+\label{sec:org6714e0b}
 
 \begin{verbatim}
 t(A)
@@ -573,7 +585,7 @@ Y4 10 11 12
 \end{verbatim}
 
 \item Matrix multiplication
-\label{sec:org3f88bf5}
+\label{sec:org1e3d403}
 
 There are two types of matrix multiplication. The \texttt{*} operator
 computes the element-by-element multiplication (Hadamard product),
@@ -610,7 +622,7 @@ X3   90  210
 \end{verbatim}
 
 \item Inverse matrix
-\label{sec:orgd921156}
+\label{sec:orgde5d808}
 
 We use the function \texttt{solve(A)} to get the inverse matrix of
 \(\mathbf{A}\).
@@ -622,10 +634,10 @@ A %*% B
 \end{verbatim}
 
 \begin{verbatim}
-              [,1] [,2]          [,3]
-[1,]  1.000000e+00    0 -1.110223e-15
-[2,]  0.000000e+00    1  0.000000e+00
-[3,] -4.440892e-16    0  1.000000e+00
+             [,1]         [,2]          [,3]
+[1,] 1.000000e+00 0.000000e+00  0.000000e+00
+[2,] 0.000000e+00 1.000000e+00 -2.220446e-16
+[3,] 3.330669e-16 2.775558e-17  1.000000e+00
 \end{verbatim}
 
 Notice that the resultant matrix is not exactly an identity matrix, in
@@ -677,7 +689,7 @@ solve(A, B)
 \end{itemize}
 
 \subsubsection*{Diagonal matrix}
-\label{sec:org218515c}
+\label{sec:org4c85be1}
 
 The function \texttt{diag()} can create a diagonal matrix.
 
@@ -706,7 +718,7 @@ diag(3)
 \end{verbatim}
 
 \subsubsection*{Higher-dimensional array}
-\label{sec:orgc841b03}
+\label{sec:org51cf395}
 
 Vectors and matrices are special cases of arrays. The former is
 one-dimensional array, and the latter is two-dimensional. We can also
@@ -734,7 +746,7 @@ array(1:18, dim = c(3, 3, 2))
 
 
 \subsection{List}
-\label{sec:org8bc53b1}
+\label{sec:org0ee932c}
 
 Vectors, matrices, and arrays are all the ways of R to store
 data. However, their limitation is obvious, all elements in a vector
@@ -780,7 +792,7 @@ mylist[["boo"]][-1]
 
 
 \section{Data Management in R}
-\label{sec:orgd77da1f}
+\label{sec:org4649e4d}
 
 R use data frames as its main device to save a whole data set,
 especially data read from an external file. A data frame is a mixture
@@ -791,14 +803,14 @@ data frame should have the same length and are arranged in a matrix
 format.
 
 \subsection{Create a data frame}
-\label{sec:orgd10c318}
+\label{sec:org9a66545}
 
 We can manually create a data frame object, convert a matrix to a data
 frame object, or read data in an external file into R and save them in
 a data frame object.
 
 \subsubsection*{Create a data frame manually}
-\label{sec:org87019d1}
+\label{sec:org2d3e169}
 \begin{verbatim}
 mydata <- data.frame(X = 1:5, Y = letters[1:5], Z = rep(c(TRUE, FALSE), length = 5)); mydata
 \end{verbatim}
@@ -813,7 +825,7 @@ mydata <- data.frame(X = 1:5, Y = letters[1:5], Z = rep(c(TRUE, FALSE), length =
 \end{verbatim}
 
 \subsubsection*{Convert a matrix to a data frame}
-\label{sec:org5ad5633}
+\label{sec:orgbca290f}
 
 We use \texttt{as.data.frame()} to convert a matrix to a data frame. In
 creating the matrix, we use \texttt{sample.int()} that is a special case of
@@ -824,12 +836,12 @@ A.df <- as.data.frame(A); A.df
 \end{verbatim}
 
 \begin{verbatim}
-  V1 V2  V3 V4
-1 94 40 100 64
-2 14 62  78 48
-3 44  6  63 31
-4  8 68  42 54
-5 57 96  53 98
+  V1 V2 V3 V4
+1 39 69 96 16
+2 91 77 98 26
+3 73 36 40 95
+4 24 21 15  4
+5 65 33 37  8
 \end{verbatim}
 
 We can assign each variable (column) a name. Here we use the function
@@ -841,16 +853,16 @@ names(A.df) <- paste("VAR", 1:4, sep = "_"); A.df
 
 \begin{verbatim}
   VAR_1 VAR_2 VAR_3 VAR_4
-1    94    40   100    64
-2    14    62    78    48
-3    44     6    63    31
-4     8    68    42    54
-5    57    96    53    98
+1    39    69    96    16
+2    91    77    98    26
+3    73    36    40    95
+4    24    21    15     4
+5    65    33    37     8
 \end{verbatim}
 
 
 \subsection{Read data from a file}
-\label{sec:orgd6cde62}
+\label{sec:org19bd2eb}
 
 Suppose we have a data file, \url{mydata.txt}. We can read the data
 directly from the file using the function \texttt{read.table()}. Upon reading
@@ -907,7 +919,7 @@ read.dta(mydata.dta)
 
 
 \subsection{Select variables}
-\label{sec:org9ef8aab}
+\label{sec:org5cccfbc}
 
 Since a data frame is a special case of list, we can select a variable
 in a data frame by using "\texttt{\$}" or "\texttt{[[]]}". Here is an example of
@@ -923,7 +935,7 @@ mean(mydata$Weight)
 
 
 \subsection{Get summary information}
-\label{sec:org68ec328}
+\label{sec:orgeb7951d}
 
 After reading data into R, besides using \texttt{head()} or \texttt{tail()} to see
 the first and last few observations, we need also use \texttt{str()} and
@@ -958,7 +970,7 @@ including \texttt{stringsAsFactors=FALSE} in \texttt{read.table()} or \texttt{re
 
 
 \section{Graphics}
-\label{sec:org446e989}
+\label{sec:org49a1899}
 
 R is very powerful in creating graphics. In this tutorial, we will learn
 base graphics systems in R.
@@ -988,7 +1000,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
 
 \subsection{The barchart}
-\label{sec:org0dccab0}
+\label{sec:org87373d5}
 
 First, Let's see the mpg (miles per gallon) among different models by
 the bar chart.
@@ -1006,7 +1018,7 @@ barplot(sort(mtcars$mpg, decreasing = TRUE),
 
 
 \subsection{The scatterplot}
-\label{sec:org797dbe3}
+\label{sec:org2e513fa}
 
 We know in Lecture 3 that a scatterplot is often used to see the
 association between two variables. Let's see the relationship between
@@ -1028,14 +1040,15 @@ We will explore more graphic capabilities of R in the lectures to
 come.
 
 
+
 \section{Statistical Analysis}
-\label{sec:orgb6d8b2c}
+\label{sec:org11c63a1}
 
 Now we can show how to use R to do some statistical
 analysis. This demonstration answers the questions of Empirical
 Exercise 3.1 at the end
 of Chapter 3. Furthermore, we carry out this exercise in the format of
-\textbf{reproducible research}. That means, we should accomplish the
+\textbf{reproducible research}. That means, we should accomplish they
 following tasks in answering the problem:
 \begin{enumerate}
 \item using R to compute the statistics
@@ -1047,7 +1060,7 @@ and numerical answers.
 
 
 \subsection{A description of the problem}
-\label{sec:orga83388f}
+\label{sec:orgc3372da}
 
 Empirical exercise 3.1 concerns the relationship between average
 earnings and education levels, using the data set from the 1992 and
@@ -1056,12 +1069,11 @@ whether the average hourly earnings (\texttt{ahe}) are different between
 workers with a bachelor degree and those with only high school
 diploma (\texttt{bachelor}).
 
-
 \subsection{Answers to the questions}
-\label{sec:orgb40d96e}
+\label{sec:org2ee93e6}
 
 \subsubsection*{Question (a)}
-\label{sec:org06d12ea}
+\label{sec:org5bb9dc0}
 
 \begin{verse}
 Compute the sample mean for average hourly earnings (\texttt{ahe}) in 1992 and\\
@@ -1071,7 +1083,7 @@ for \texttt{ahe} in 1992 and 2008 and the change between 1992 and 2008\\
 
 \begin{itemize}
 \item Read the data
-\label{sec:org32be625}
+\label{sec:orgb4bc8f0}
 
 The first thing first is of course read the data correctly from the
 Stata file \url{data/cps92\_08.dta}, which can be read by the function
@@ -1093,8 +1105,8 @@ head(cpsdat)
 6 1992  8.660096        1      1  26
 \end{verbatim}
 
-\item Calculate the sample mean for \texttt{ahe} in 1992 and 2008
-\label{sec:orgb46c018}
+\item Calculate the sample means of average hourly earnings in 1992 and 2008
+\label{sec:orgbc0eb9d}
 
 There are many ways to compute the sample means in 1992 and 2008,
 respectively. First, to make you more familiar with the  R
@@ -1118,7 +1130,7 @@ The average hourly earnings are \texttt{11.63} dollars
 in 1992 and \texttt{18.98} dollars in 2008.
 
 \item Construct the confidence intervals
-\label{sec:org8e4622b}
+\label{sec:orgeecdc6b}
 
 Recall that a 95\% confidence interval for the population mean can be
 constructed as \(\overline{Y} \pm 1.96 SE(\overline{Y})\) and
@@ -1152,8 +1164,8 @@ The 95\% confidence interval for \texttt{ahe} in 1992 is
 that in 2008 is (\texttt{18.75},
 \texttt{19.2}).
 
-\item Alternative methods to calculate the sample means and confidence interval
-\label{sec:org02acbfb}
+\item Alternative methods to calculate the sample means and confidence intervals
+\label{sec:orgacb4dd7}
 
 In the above example, to compute the sample averages in 1992 and 2008,
 we write code separately for each year, which can be done more easily
@@ -1164,10 +1176,11 @@ We can compute the averages for each year using the function
 values of \texttt{year}. Then, for each part we compute the average by
 specifying the argument \texttt{FUN} to be \texttt{mean}, i.e., specifying the
 function to be used for each part as the \texttt{mean()} function. Also, in
-this case, we use \texttt{\textasciitilde{}} to specify a formula that means that we split
+this case, we use \texttt{\textasciitilde{}} to specify a \textbf{formula} that means that we split
 \texttt{ahe} by \texttt{year}.
 
 \begin{verbatim}
+# Use aggregate() to compute the means in both years
 ahe.means <- aggregate(ahe ~ year, FUN = mean, data = cpsdat)
 ahe.means
 \end{verbatim}
@@ -1181,9 +1194,12 @@ ahe.means
 The confidence interval can be extracted from the results of the
 \texttt{t.test()} function, which is a list.
 \begin{verbatim}
-t.ahe.92 <- t.test(ahe.92); t.ahe.92$conf.int # t test for ahe in 1992
-t.ahe.08 <- t.test(ahe.08); t.ahe.08$conf.int # t test for ahe in 2008
-t.ahe.diff <- t.test(ahe.08, ahe.92); t.ahe.diff # test for the change between 1992 and 2008
+# t test for ahe in 1992
+t.ahe.92 <- t.test(ahe.92); t.ahe.92$conf.int
+# t test for ahe in 2008
+t.ahe.08 <- t.test(ahe.08); t.ahe.08$conf.int
+# test for the change between 1992 and 2008
+t.ahe.diff <- t.test(ahe.08, ahe.92); t.ahe.diff
 \end{verbatim}
 
 \begin{verbatim}
@@ -1212,76 +1228,118 @@ between 1992 and 2008 is (\texttt{7.09},
 \end{itemize}
 
 \subsubsection*{Question (b)}
-\label{sec:org9ce3934}
+\label{sec:org8f6512b}
 
 Now we need to adjust the average hourly earnings in the 1992 dollars
 to the 2008 dollars with the inflation rate, computed as
 \texttt{CPI2008/CPI1992}.
 
 \begin{verbatim}
-cpi.92 <- 140.3; cpi.08 <- 215.2
+# CPI in 1992 and 2008
+cpi.92 <- 140.3
+cpi.08 <- 215.2
+# Inflation adjustment
 inflator <- cpi.08 / cpi.92
-ahe.92.adj <- ahe.92 * inflator
+cpsdat$ahe.adj <- with(cpsdat, ifelse(year == 1992, ahe * inflator, ahe))
 \end{verbatim}
 
-Then we repeat what is done in Question (a).
+In the code block above, we first use the function \texttt{with()} to attach
+the data frame \texttt{cpsdat} within its own environment so that when we
+refer to variables in \texttt{cpsdat}, such as \texttt{ahe} and \texttt{year}, we do not
+need to write \texttt{cpsdat\$} and every time we use its variables.
+
+The function \texttt{ifesle()} set the values of \texttt{ahe} based on the
+condition \texttt{year == 1992}. If the condition is true, we do \texttt{ahe *
+inflator}; if not, leave \texttt{ahe} as it is.
+
+Then we repeat what we've done in Question (a) with the
+inflation-adjusted earnings in 1992.
 
 \begin{verbatim}
+ahe.92.adj <- with(cpsdat, ahe.adj[year == 1992])
 mean.ahe.92.adj <- mean(ahe.92.adj)
 t.ahe.92.adj <- t.test(ahe.92.adj)
 t.ahe.diff.adj <- t.test(ahe.08, ahe.92.adj)
 \end{verbatim}
 
-The sample average of the 1992 inflation-adjusted earnings is
-\texttt{17.83} in the 2008 dollars, the confidence
-interval for the 1992 mean is
-(\texttt{17.64},
-\texttt{18.03}), and the confidence
-interval for the change between 1992 and 2008 is
-(\texttt{0.85},
-\texttt{1.44})
+\begin{itemize}
+\item The sample average of the inflation-adjusted earnings in 1992 is
+\texttt{17.83} in the 2008 dollars.
+
+\item The confidence interval for the inflation-adjusted average hourly earnings in 1992 is
+(\texttt{17.64, 18.03}).
+
+\item The confidence interval for the change between 1992 and 2008 is
+(\texttt{0.85, 1.44}).
+\end{itemize}
 
 \subsubsection*{Question (c)}
-\label{sec:org9efd6bb}
+\label{sec:org43f90bf}
 
 If we are interested in the change in workers' purchasing power, the
 results with the inflation-adjusted earnings should be used in
 comparison.
 
 \subsubsection*{Question (d)}
-\label{sec:orgbcf0759}
+\label{sec:org2b78704}
 
 Now let's compute the average earnings for high school graduates and
-college graduates with the 2008 data.
+college graduates with the 2008 data. First thing to do is to select
+the 2008 data from \texttt{cpsdat} using the function \texttt{subset()}
 
 \begin{verbatim}
 # select data in 2008
-cps08 <- subset(cpsdat, year == 2008)
+cps08 <- subset(cpsdat, year == 2008, select = c(year, ahe, bachelor))
 
 # calculate means
-ahe.educ <- aggregate(ahe ~ bachelor, FUN = mean, data = cps08)
+ahe.educ.08 <- aggregate(ahe ~ bachelor, FUN = mean, data = cps08)
 
 # select ahe and filter by bachelor
-ahe.high.08 <- subset(cps08, bachelor == 0, select = ahe)
-ahe.bach.08 <- subset(cps08, bachelor == 1, select = ahe)
+ahe.high.08 <- with(cps08, ahe[bachelor == 0])
+ahe.bach.08 <- with(cps08, ahe[bachelor == 1])
 
 # construct confindence interval
-t.ahe.high <- t.test(ahe.high.08)
-t.ahe.bach <- t.test(ahe.bach.08)
-t.ahe.gap <- t.test(ahe.bach.08, ahe.high.08)
+t.ahe.high.08 <- t.test(ahe.high.08)
+t.ahe.bach.08 <- t.test(ahe.bach.08)
+t.ahe.gap.08  <- t.test(ahe.bach.08, ahe.high.08)
 \end{verbatim}
 
 \begin{itemize}
-\item The mean of the average hourly earnings of high school graduates is
-\texttt{15.33} dollars with the 95\%
-confidence interval (\texttt{15.09},
-\texttt{15.57}).
+\item The mean of the average hourly earnings of high school graduates in
+2008 is
+\texttt{15.33}
+dollars with the 95\% confidence interval
+(\texttt{15.09, 15.57})
+
 \item The mean of the average hourly earnings of college graduates is
-\texttt{22.91} dollars with the 95\%
-confidence interval (\texttt{22.56},
-\texttt{23.26}).
+\texttt{22.91}
+dollars with the 95\%
+confidence interval
+(\texttt{22.56, 23.26})
+
 \item The 95\% confidence interval of the gap in earnings between the two
-groups is (\texttt{7.15},
-\texttt{8}).
+groups is
+(\texttt{7.15, 8})
 \end{itemize}
+
+We can create a boxplot to compare the means and confidence intervals
+of average hourly earnings between high school graduates and college
+graduates.
+
+\begin{verbatim}
+boxplot(ahe ~ bachelor, data = cps08,
+	main = "Average Hourly Earnings by Education",
+	col = c("red", "orange"),
+	xlab = "Bachelor degres = 1, high school = 0",
+	ylab = "US$ 2008")
+\end{verbatim}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{figure/boxplot.png}
+\end{center}
+
+We leave Question (e)-(g) to students as exercises.
+
+I include a \texttt{Rmd} file that can generate an html or pdf file from
+RStudio. \url{mdfiles/emp\_3\_1.Rmd}
 \end{document}

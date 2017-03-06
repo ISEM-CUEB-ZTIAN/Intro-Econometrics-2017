@@ -931,4 +931,5 @@ come.
 
 * Statistical Analysis
 
-[[file:emp_ex_3_1.org]]
+#+INCLUDE: emp_3_1.org
+

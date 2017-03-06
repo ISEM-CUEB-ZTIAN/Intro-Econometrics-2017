@@ -1,7 +1,7 @@
 #+TITLE: Empirical Exercise 3.1
 #+AUTHOR: Zheng Tian
 #+DATE:
-#+OPTIONS: toc:t H:3 num:1
+# #+OPTIONS: toc:t H:3 num:1
 # #+OPTIONS: tex:dvipng
 #+PROPERTY: header-args:R  :session *R-emp* :tangle yes :eval yes
 
@@ -280,7 +280,7 @@ the 2008 data from =cpsdat= using the function =subset()=
   src_R{round(ahe.educ.08$ahe[2], 2)}
   dollars with the 95%
   confidence interval
-  (src_R{paste0(round(t.ahe.bach.08$conf.int, 2), collapse=", ")}
+  (src_R{paste0(round(t.ahe.bach.08$conf.int, 2), collapse=", ")})
 
 - The 95% confidence interval of the gap in earnings between the two
   groups is
@@ -300,6 +300,11 @@ graduates.
 
 #+RESULTS:
 [[file:figure/boxplot.png]]
+
+We leave Question (e)-(g) to students as exercises.
+
+I include a ~Rmd~ file that can generate an html or pdf file from
+RStudio. [[file:mdfiles/emp_3_1.Rmd]]
 
 ** COMMENT Question (e)
 
@@ -351,13 +356,95 @@ To answer this question, we need to compare the following pairs:
 - =ahe.bach.08 - ahe.high.08= v.s. =ahe.bach.92 - ahe.high.92=:
   compute the average of the gap, and the 95% confidence interval.
 
-#+BEGIN_SRC R :exports code :results silent
+However, there is a problem in such comparison. Namely, the length of
+=ahe.high.92= and =ahe.high.08= are not the same. So are =ahe.bach.92=
+and =ahe.bach.08=.
+
+#+BEGIN_SRC R :exports both :results output
   # High school earnings increase
   change.ahe.high <- ahe.high.08 - ahe.high.92
+  length(ahe.high.08)
+  length(ahe.high.92)
 #+END_SRC
 
+#+RESULTS:
+: Warning message:
+: In ahe.high.08 - ahe.high.92 :
+:   longer object length is not a multiple of shorter object length
+: [1] 4002
+: [1] 4643
 
+To circumvent this problem, we can select a subset the samples in 1992
+and 2008 so that the length of data in each year is the same. Let's
+randomly draw 1000 of samples from each year, and compute the gap in
+earnings of high school graduates between the 2008 and 1992.
 
+#+BEGIN_SRC R :exports code
+  # Draw random samples from 1992 and 2008
 
+  nsmp.high.92 <- sample.int(length(ahe.high.92), 1000, replace = TRUE)
+  nsmp.high.08 <- sample.int(length(ahe.high.08), 1000, replace = TRUE)
 
+  ahe.high.08.smp <- ahe.high.08[nsmp.high.08]
+  ahe.high.92.smp <- ahe.high.92[nsmp.high.92]
 
+  gap.high.0892 <- ahe.high.08.smp - ahe.high.92.smp
+#+END_SRC
+
+#+RESULTS:
+
+With these random samples, we can compute the mean and the confidence
+interval.
+
+#+BEGIN_SRC R :exports code :results output
+  mean.gap.high.0892 <- mean(gap.high.0892)
+  t.gap.high.0892 <- t.test(gap.high.0892)
+  ci.gap.high.0892 <- t.gap.high.0892$conf.int
+#+END_SRC
+
+#+RESULTS:
+
+The story does not end here. How come we trust the results from one
+set of random samples of the data? To alleviate the doubt, we can
+randomly choose another 1000 random samples and calculate the mean and
+confidence interval, and do it again for another set of 1000 random
+samples, and repeat the same steps for thousands of times. That is, we
+do an iteration of the same procedure comprising random sampling and
+computing the mean and the confidence interval in each step.
+
+In R, we can do a =for= loop or a =while= loop. In this case, let's
+start with a =for= loop.
+
+#+BEGIN_SRC R :exports code :results output
+  niter <- 9999
+  mean.gap.high <- NULL
+  ci.gap.high <- NULL
+
+  for (i in 1:niter) {
+
+      nsmp.high.92 <- sample.int(length(ahe.high.92), 1000, replace = TRUE)
+      nsmp.high.08 <- sample.int(length(ahe.high.08), 1000, replace = TRUE)
+
+      ahe.high.08.smp <- ahe.high.08[nsmp.high.08]
+      ahe.high.92.smp <- ahe.high.92[nsmp.high.92]
+
+      gap.high.0892 <- ahe.high.08.smp - ahe.high.92.smp
+
+      mean.gap.high.0892 <- mean(gap.high.0892)
+      t.gap.high.0892 <- t.test(gap.high.0892)
+      ci.gap.high.0892 <- t.gap.high.0892$conf.int
+
+      mean.gap.high <- c(mean.gap.high, mean.gap.high.0892)
+      ci.gap.high <- rbind(ci.gap.high, ci.gap.high.0892)
+  }
+
+  mean.gap.high.smp <- mean(mean.gap.high)
+  ci.gap.high.smp <- apply(ci.gap.high, MARGIN = 2, FUN = mean)
+#+END_SRC
+
+#+RESULTS:
+
+- The mean of the gap in earnings of high school graduates between
+  1992 and 2008 is src_R{round(mean.gap.high.smp, 2)} dollars.
+- The confidence interval of the gap is
+  (src_R{paste0(round(ci.gap.high.smp, 2), collapse = ", ")}).

@@ -1,0 +1,1848 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-03-06 Mon 14:33 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lecture 5: An Introduction to R Empirical Exercise 3.1</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Zheng Tian Zheng Tian" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/htmlize.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<link rel="stylesheet" type="text/css" href="../../../css/htmlize.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Lecture 5: An Introduction to R Empirical Exercise 3.1</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9f1d998">1. Getting Started with R</a></li>
+<li><a href="#org861a6fc">2. Basics</a></li>
+<li><a href="#orga720520">3. Data Management in R</a></li>
+<li><a href="#org4565add">4. Graphics</a></li>
+<li><a href="#org0f21e96">5. Statistical Analysis</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org9f1d998" class="outline-2">
+<h2 id="org9f1d998"><span class="section-number-2">1</span> Getting Started with R</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org3675e37" class="outline-3">
+<h3 id="org3675e37"><span class="section-number-3">1.1</span> What is R?</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+R is a free software environment and programming language for
+statistical computing and graphics. The website for the R project is
+<a href="https://www.r-project.org/">https://www.r-project.org/</a>.
+</p>
+</div>
+
+<div id="outline-container-org42b0c19" class="outline-4">
+<h4 id="org42b0c19">A brief history of development of R</h4>
+<div class="outline-text-4" id="text-org42b0c19">
+<ul class="org-ul">
+<li>It originated from Bell Laboratories in the 1970s, as the S
+language, from which the commercial version S-Plus was developed
+in 1987.</li>
+
+<li>R was initially developed by Robert Gentleman and Ross Ihaka at the
+University of Auckland, New Zealand in 1996.</li>
+
+<li>Since its first release in 2000, the development of the R project
+has been tremendous in the last two decades.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org270e22b" class="outline-4">
+<h4 id="org270e22b">Why do we choose R other than other econometric software?</h4>
+<div class="outline-text-4" id="text-org270e22b">
+<ul class="org-ul">
+<li>It is open source, free to download.</li>
+<li>It has a huge number of packages that can implement almost all
+state-of-art statistical techniques.</li>
+<li>It has a powerful and flexible capabilities of making graphs.</li>
+<li>It is a programming language designed specifically for
+statistics, enabling you to accomplish almost anything a programming
+language can do for statistics.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga5865bb" class="outline-3">
+<h3 id="orga5865bb"><span class="section-number-3">1.2</span> Installation</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-org8e3fccf" class="outline-4">
+<h4 id="org8e3fccf">Install R</h4>
+<div class="outline-text-4" id="text-org8e3fccf">
+<p>
+The installation files can be downloaded from
+<a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/">https://mirrors.tuna.tsinghua.edu.cn/CRAN/</a>. You can download the
+installation files for Windows, OS X, and Linux(ubuntu).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8fa3b93" class="outline-4">
+<h4 id="org8fa3b93">Install RStudio</h4>
+<div class="outline-text-4" id="text-org8fa3b93">
+<p>
+The base R comes with a simple Graphic User Interface (GUI). RStudio
+supplies with a more user-friendly GUI and provides other powerful
+functionalities, such as writing dynamic documents with nitro and
+rmarkdown.
+</p>
+
+<ul class="org-ul">
+<li>RStudio can be downloaded from
+<a href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/</a></li>
+
+<li><p>
+The window of RStudio looks like Figure <a href="#orgb6cf13c">1</a>
+</p>
+
+
+<div id="orgb6cf13c" class="figure">
+<p><img src="figure/rstudio.png" alt="rstudio.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 1: </span>The Window of RStudio</p>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org431ccff" class="outline-3">
+<h3 id="org431ccff"><span class="section-number-3">1.3</span> Packages</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+The R installation files install the core packages that support very
+basic functions. One of the strength of R is that there are many
+contributed packages written by the huge community of R users.
+</p>
+
+<p>
+To install a contributed package, we use the command
+<code>install.packages("names of packages")</code>. After installing a package,
+we need to invoke it every time we use it by the command <code>library(name
+of a package)</code>. In this course, for example, we need to install a
+package called <code>AER</code> (Applied Econometrics with R).
+</p>
+
+<p>
+Type the following code in the "Console" window in RStudio.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Install packages</span>
+install.packages(<span style="color: #008000;">"AER"</span>)
+</pre>
+</div>
+
+<p>
+Upon typing this command, a window jumps up for you to choose a
+mirror. From the list, choose China[Beijing]. R will automatically
+download and install this package from the server. Very likely, when
+this is the first package you install in R, R will also download other
+packages on which installing the <code>AER</code> package depends. In the
+console, you should see the following messages.
+</p>
+
+<pre class="example">
+trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/mavericks/contrib/3.3/AER_1.2-5.tgz'
+Content type 'application/octet-stream' length 2442603 bytes (2.3 MB)
+==================================================
+downloaded 2.3 MB
+
+
+The downloaded binary packages are in
+	/var/folders/rd/53x_sgqd3yj6wghsyyy4n0vh0000gn/T//RtmpF3tVDW/downloaded_packages
+</pre>
+
+<p>
+In RStudio, you can install packages from the "Tools" menu and click
+"Install Packages".
+</p>
+
+<p>
+When we need to use the <code>AER</code> package, type <code>library(AER)</code> in the
+console. And we can check whether this package is loaded using
+<code>search()</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Load packages</span>
+<span style="color: #D0372D;">library</span>(AER)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Check packages loaded</span>
+search()
+</pre>
+</div>
+
+<pre class="example">
+ [1] ".GlobalEnv"        "package:AER"       "package:survival"
+ [4] "package:sandwich"  "package:lmtest"    "package:zoo"
+ [7] "package:car"       "package:foreign"   "ESSR"
+[10] "package:stats"     "package:graphics"  "package:grDevices"
+[13] "package:utils"     "package:datasets"  "package:methods"
+[16] "Autoloads"         "package:base"
+</pre>
+
+<p>
+It shows that besides the <code>AER</code> package, there are other packages
+in the "global" environment, which are the core packages loaded
+automatically when opening R.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org66cc0c9" class="outline-3">
+<h3 id="org66cc0c9"><span class="section-number-3">1.4</span> Help</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>R has easy helping facilities. The help information of any function
+can be found by type either <code>help()</code> or <code>?</code>.</li>
+<li>If you cannot remember the accurate name of a function, you can even
+guess by using <code>help.search()</code> or <code>??</code> or <code>apropos()</code>.</li>
+<li>Any time you encounter a problem using R which cannot be solved by
+<code>help</code> command, there are at least two places you can resort to.
+<ul class="org-ul">
+<li>The mailing list of R: <a href="http://www.r-project.org/mail.html">http://www.r-project.org/mail.html</a></li>
+<li>Google or bing: quite often you will get an answer to your
+question in the website of <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org861a6fc" class="outline-2">
+<h2 id="org861a6fc"><span class="section-number-2">2</span> Basics</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org4b20f74" class="outline-3">
+<h3 id="org4b20f74"><span class="section-number-3">2.1</span> R as a calculator</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-org087774c" class="outline-4">
+<h4 id="org087774c">Standard arithmetic operators</h4>
+<div class="outline-text-4" id="text-org087774c">
+<p>
+R supports the following arithmetic operators
+</p>
+<pre class="example">
++, -, *, /, ^, %%, %/%
+</pre>
+
+<p>
+Hence,
+</p>
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">R as a calculator ------------------------------</span>
+
+<span style="color: #8D8D84;">#</span><span style="color: #8D8D84; font-style: italic;">+ Binary operations</span>
+1 + 2; 2*3; 2^3; 5/2;
+5 <span style="color: #D0372D;">%%</span> 2  <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">get x mod y</span>
+5 <span style="color: #D0372D;">%/%</span> 2 <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">get the integer division</span>
+</pre>
+</div>
+
+<pre class="example">
+[1] 3
+[1] 6
+[1] 8
+[1] 2.5
+[1] 1
+[1] 2
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc7d735b" class="outline-4">
+<h4 id="orgc7d735b">Mathematical functions</h4>
+<div class="outline-text-4" id="text-orgc7d735b">
+<p>
+R also have many built-in mathematical functions, such as, <code>log()</code>,
+<code>exp()</code>, <code>sin()</code>, <code>sqrt()</code>, <code>min()</code>, etc.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Use built-in functions</span>
+log(exp(sin(pi/2)^2) * exp(cos(pi/3)^2))
+</pre>
+</div>
+
+<pre class="example">
+[1] 1.25
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orge68efc5" class="outline-3">
+<h3 id="orge68efc5"><span class="section-number-3">2.2</span> Vector operations</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Vector is the basic unit in R, from which other data structures,
+for example, <code>matrix</code>, <code>factor</code>, <code>list</code>, <code>data.frame</code>, are built upon.
+</p>
+</div>
+
+<div id="outline-container-org05746ca" class="outline-4">
+<h4 id="org05746ca">Generate a vector</h4>
+<div class="outline-text-4" id="text-org05746ca">
+<p>
+A vector can be generated by the function <code>c()</code>, which can also be
+used to concatenate two vectors
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">Vector operations ------------------------------</span>
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a vector with c()</span>
+x <span style="color: #D0372D;">&lt;-</span> c(0.3, 1.5, 7.3, 2)
+y <span style="color: #D0372D;">&lt;-</span> c(3, 2, 1)
+z <span style="color: #D0372D;">&lt;-</span> c(x, y)
+z
+</pre>
+</div>
+
+<pre class="example">
+[1] 0.3 1.5 7.3 2.0 3.0 2.0 1.0
+</pre>
+
+<p>
+The symbol <code>&lt;-</code> is to assign a value to a variable. You can also use
+<code>=</code> to assign values, but <code>&lt;-</code> is more commonly used by convention and
+<code>=</code> is used within a function calling for assigning values to the
+arguments of the function.
+</p>
+
+<p>
+Note that by concatenating <code>x</code> and <code>y</code>, integers are converted to
+floating point numbers. That means the elements in a vector must have
+the same mode (data types), including <code>numeric</code>, <code>character</code>, and
+<code>logical</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Vectors with different data types</span>
+student.names <span style="color: #D0372D;">&lt;-</span> c(<span style="color: #008000;">"John"</span>, <span style="color: #008000;">"Mary"</span>, <span style="color: #008000;">"Bob"</span>, <span style="color: #008000;">"Ann"</span>)
+student.male <span style="color: #D0372D;">&lt;-</span> c(<span style="color: #6434A3;">TRUE</span>, <span style="color: #6434A3;">FALSE</span>, <span style="color: #6434A3;">TRUE</span>, <span style="color: #6434A3;">FALSE</span>)
+student.age <span style="color: #D0372D;">&lt;-</span> c(20, 19, 21, 20)
+
+class(student.names)
+class(student.male)
+class(student.age)
+
+students <span style="color: #D0372D;">&lt;-</span> c(student.names, student.male, student.age)
+students
+</pre>
+</div>
+
+<pre class="example">
+[1] "character"
+[1] "logical"
+[1] "numeric"
+ [1] "John"  "Mary"  "Bob"   "Ann"   "TRUE"  "FALSE" "TRUE"  "FALSE" "20"
+[10] "19"    "21"    "20"
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga37d8dc" class="outline-4">
+<h4 id="orga37d8dc">Patterned vectors</h4>
+<div class="outline-text-4" id="text-orga37d8dc">
+<p>
+A vector can also be generated by the functions, like <code>rep()</code>, <code>seq()</code>, and
+<code>:</code>.
+</p>
+
+<ul class="org-ul">
+<li><p>
+<code>seq()</code> generates a vector by some patterns and <code>a:b</code> is a shorthand
+for <code>seq(from=a, to=b, by=1)</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a sequence</span>
+even <span style="color: #D0372D;">&lt;-</span> seq(from = 2, to = 20, by = 2)
+even
+years <span style="color: #D0372D;">&lt;-</span> 1995:2005
+years
+</pre>
+</div>
+
+<pre class="example">
+[1]  2  4  6  8 10 12 14 16 18 20
+[1] 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005
+</pre></li>
+
+<li><p>
+<code>rep()</code> generates a vector by repeating some values
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create repetition</span>
+ones <span style="color: #D0372D;">&lt;-</span> rep(1, times = 10)
+ones
+rep13 <span style="color: #D0372D;">&lt;-</span> rep(1:3, times = 3, each = 2)
+rep13
+</pre>
+</div>
+
+<pre class="example">
+[1] 1 1 1 1 1 1 1 1 1 1
+[1] 1 1 2 2 3 3 1 1 2 2 3 3 1 1 2 2 3 3
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org70ead99" class="outline-4">
+<h4 id="org70ead99">Vector operations</h4>
+<div class="outline-text-4" id="text-org70ead99">
+<p>
+Arithmetic operators and mathematical functions can be applied to
+vector in an element-by-element way in R.
+</p>
+
+<p>
+Let's first draw random numbers for the uniform distribution
+\(x \sim Uniform(0, 1)\). The length of \(x\) is 10. We can use the
+<code>length()</code> function to check the length of a vector.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Draw a random vector</span>
+x <span style="color: #D0372D;">&lt;-</span> runif(10); x
+length(x)
+</pre>
+</div>
+
+<pre class="example">
+ [1] 0.14148308 0.51161683 0.38662609 0.69438119 0.72135122 0.32643191
+ [7] 0.04846838 0.56549473 0.54377350 0.64866843
+[1] 10
+</pre>
+
+<p>
+The arithmetic operations and built-in math functions are all applied
+for each element of a vector.
+</p>
+<div class="org-src-container">
+<pre class="src src-R">2 * x + 3
+log(x)
+</pre>
+</div>
+
+<pre class="example">
+[1] 3.282966 4.023234 3.773252 4.388762 4.442702 3.652864 3.096937 4.130989
+[9] 4.087547 4.297337
+[1] -1.9555752 -0.6701793 -0.9502972 -0.3647342 -0.3266291 -1.1195339
+[7] -3.0268436 -0.5700543 -0.6092225 -0.4328336
+</pre>
+
+<p>
+If two vectors with different lengths are computed within one
+operation, the elements of the vector with a shorter length will be
+used in an iterated way. We must keep in mind this feature of R, which
+in some cases may give rise to unintended results.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">y <span style="color: #D0372D;">&lt;-</span> runif(5)
+x + y
+</pre>
+</div>
+
+<pre class="example">
+[1] 0.3199726 1.3925365 0.6171758 0.9719376 0.8902731 0.5049215 0.9293881
+[8] 0.7960445 0.8213299 0.8175903
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf65a46f" class="outline-4">
+<h4 id="orgf65a46f">Selecting elements in a vector</h4>
+<div class="outline-text-4" id="text-orgf65a46f">
+<p>
+Element(s) in a vector can be selected by <code>[position]</code>, in which
+<code>position</code> can be a vector indicating the position of each element in
+a vector, a negative value to exclude an element with the
+corresponding position, and a condition to select elements satisfying
+the condition.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Selecting elements in a vector</span>
+x[1:5]
+x[c(1, length(x))]
+x[-4]
+x[x &gt; 0.5]
+</pre>
+</div>
+
+<pre class="example">
+[1] 0.1414831 0.5116168 0.3866261 0.6943812 0.7213512
+[1] 0.1414831 0.6486684
+[1] 0.14148308 0.51161683 0.38662609 0.72135122 0.32643191 0.04846838 0.56549473
+[8] 0.54377350 0.64866843
+[1] 0.5116168 0.6943812 0.7213512 0.5654947 0.5437735 0.6486684
+</pre>
+
+<p>
+Instead of selecting elements in a vector by their positions, we can
+also give each element a particular name so that we can use their
+names to choose elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">student.names
+student.age
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Give elements names</span>
+names(student.age) <span style="color: #D0372D;">&lt;-</span> student.names
+student.age
+student.age[c(<span style="color: #008000;">"John"</span>, <span style="color: #008000;">"Bob"</span>)]
+</pre>
+</div>
+
+<pre class="example">
+[1] "John" "Mary" "Bob"  "Ann"
+[1] 20 19 21 20
+John Mary  Bob  Ann
+  20   19   21   20
+John  Bob
+  20   21
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org13162b9" class="outline-3">
+<h3 id="org13162b9"><span class="section-number-3">2.3</span> Matrices</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-org790b835" class="outline-4">
+<h4 id="org790b835">Create a matrix</h4>
+<div class="outline-text-4" id="text-org790b835">
+<p>
+We can create a matrix with the <code>matrix()</code> function, in which the
+first argument is a vector. We specify the
+two dimensions by the arguments of <code>nrow</code> and <code>ncol</code>. By default,
+<code>matrix()</code> arranges all the elements of the vector in its first
+argument into a matrix by column. We can change it by adding
+<code>byrow=TRUE</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a matrix</span>
+A <span style="color: #D0372D;">&lt;-</span> matrix(1:12, nrow = 3, ncol = 4); A
+matrix(1:12, nrow = 3, ncol = 4, byrow = <span style="color: #6434A3;">TRUE</span>)
+</pre>
+</div>
+
+<pre class="example">
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
+     [,1] [,2] [,3] [,4]
+[1,]    1    2    3    4
+[2,]    5    6    7    8
+[3,]    9   10   11   12
+</pre>
+
+<p>
+We can also juxtapose vectors of the same length to create a matrix by
+<code>cbind()</code>, or stack over vectors by <code>rbind()</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Create a matrix by combining vectors</span>
+a <span style="color: #D0372D;">&lt;-</span> 1:4; b <span style="color: #D0372D;">&lt;-</span> 2:5; c <span style="color: #D0372D;">&lt;-</span> 3:6
+cbind(a, b, c)
+rbind(a, b, c)
+</pre>
+</div>
+
+<pre class="example">
+     a b c
+[1,] 1 2 3
+[2,] 2 3 4
+[3,] 3 4 5
+[4,] 4 5 6
+  [,1] [,2] [,3] [,4]
+a    1    2    3    4
+b    2    3    4    5
+c    3    4    5    6
+</pre>
+
+<p>
+Like vectors, we can also give each row and each column in a matrix
+their specific names. Here we use the function of <code>paste()</code> to combine
+two (character) vectors together to generate a new character vector.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Give names to rows and columns</span>
+rownames(A) <span style="color: #D0372D;">&lt;-</span> paste(<span style="color: #008000;">"X"</span>, 1:3, sep = <span style="color: #008000;">""</span>)
+colnames(A) <span style="color: #D0372D;">&lt;-</span> paste(<span style="color: #008000;">"Y"</span>, 1:4, sep = <span style="color: #008000;">""</span>)
+A
+</pre>
+</div>
+
+<pre class="example">
+   Y1 Y2 Y3 Y4
+X1  1  4  7 10
+X2  2  5  8 11
+X3  3  6  9 12
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgaa2250b" class="outline-4">
+<h4 id="orgaa2250b">Select elements</h4>
+<div class="outline-text-4" id="text-orgaa2250b">
+<p>
+We select elements from a matrix using <code>[rows, cols]</code>. <code>rows</code> and
+<code>cols</code> are two vectors to set the rows and columns of elements to be
+selected.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Selecting elements in a matrix</span>
+A[1, 3]
+A[<span style="color: #008000;">"X1"</span>, <span style="color: #008000;">"Y3"</span>]
+A[1:3, c(2, 4)]
+A[, 2]
+A[3, ]
+</pre>
+</div>
+
+<pre class="example">
+[1] 7
+[1] 7
+   Y2 Y4
+X1  4 10
+X2  5 11
+X3  6 12
+X1 X2 X3
+ 4  5  6
+Y1 Y2 Y3 Y4
+ 3  6  9 12
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf7882ce" class="outline-4">
+<h4 id="orgf7882ce">Matrix operations</h4>
+<div class="outline-text-4" id="text-orgf7882ce">
+<p>
+We can do all matrix operations that we have reviewed in Lecture 4.
+</p>
+</div>
+
+<ul class="org-ul"><li><a id="org5947062"></a>Transpose<br  /><div class="outline-text-5" id="text-org5947062">
+<div class="org-src-container">
+<pre class="src src-R">t(A)
+</pre>
+</div>
+
+<pre class="example">
+   X1 X2 X3
+Y1  1  2  3
+Y2  4  5  6
+Y3  7  8  9
+Y4 10 11 12
+</pre>
+</div></li>
+
+<li><a id="org7a945e0"></a>Matrix multiplication<br  /><div class="outline-text-5" id="text-org7a945e0">
+<p>
+There are two types of matrix multiplication. The <code>*</code> operator
+computes the element-by-element multiplication (Hadamard product),
+while the operator <code>%*%</code> computes matrix multiplication in the form of
+inner products of row and column vectors.
+</p>
+
+<p>
+When we do either type of matrix multiplication, we should always
+check whether the two matrices are conformable to do so. If not, R
+will give you an error message. We can use the function <code>dim()</code> to see
+the dimensions of a matrix.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">B <span style="color: #D0372D;">&lt;-</span> matrix(1:8, nrow = 4)
+A * B <span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">element-by-element multiplication</span>
+dim(A)
+dim(B)
+</pre>
+</div>
+
+<pre class="example">
+Error in A * B : non-conformable arrays
+[1] 3 4
+[1] 4 2
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-R">A <span style="color: #D0372D;">%*%</span> B
+</pre>
+</div>
+
+<pre class="example">
+   [,1] [,2]
+X1   70  158
+X2   80  184
+X3   90  210
+</pre>
+</div></li>
+
+<li><a id="org214fbaf"></a>Inverse matrix<br  /><div class="outline-text-5" id="text-org214fbaf">
+<p>
+We use the function <code>solve(A)</code> to get the inverse matrix of
+\(\mathbf{A}\).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">A <span style="color: #D0372D;">&lt;-</span> matrix(rnorm(9), nrow = 3)
+B <span style="color: #D0372D;">&lt;-</span> solve(A)
+A <span style="color: #D0372D;">%*%</span> B
+</pre>
+</div>
+
+<pre class="example">
+     [,1]          [,2]          [,3]
+[1,]    1 -4.440892e-16 -4.440892e-16
+[2,]    0  1.000000e+00  4.440892e-16
+[3,]    0  1.332268e-15  1.000000e+00
+</pre>
+
+<p>
+Notice that the resultant matrix is not exactly an identity matrix, in
+which some off-diagonal elements are very small non-zero
+numbers. These are the rounding errors stemming from conversion
+between binary bits (a sequence of 0 and 1) to floating point
+numbers.
+</p>
+
+<p>
+<code>solve()</code> can also be used to solve a system of linear equations, such
+as,
+</p>
+\begin{align*}
+3x &+ 2y - z   = 1 \\
+2x &- 2y + 4z  = -2 \\
+-x &+ \frac{1}{2}y - z  = 0
+\end{align*}
+<p>
+to which the solution is \(x=1, y=-2, z=-2\).
+</p>
+
+<p>
+The system of equations can be written in matrix notation as
+</p>
+\begin{equation*}
+\begin{bmatrix}
+3 & 2 & -1 \\
+2 & -2 & 4 \\
+-1 & \frac{1}{2} & -1
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\
+-2 \\
+0
+\end{bmatrix}
+\end{equation*}
+
+<div class="org-src-container">
+<pre class="src src-R">A <span style="color: #D0372D;">&lt;-</span> cbind(c(3, 2, -1),
+           c(2, -2, 0.5),
+           c(-1, 4, -1))
+B <span style="color: #D0372D;">&lt;-</span> c(1, -2, 0)
+solve(A, B)
+</pre>
+</div>
+
+<pre class="example">
+[1]  1 -2 -2
+</pre>
+</div></li></ul>
+</div>
+
+<div id="outline-container-org4587d0e" class="outline-4">
+<h4 id="org4587d0e">Diagonal matrix</h4>
+<div class="outline-text-4" id="text-org4587d0e">
+<p>
+The function <code>diag()</code> can create a diagonal matrix.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">diag(1:3)
+</pre>
+</div>
+
+<pre class="example">
+     [,1] [,2] [,3]
+[1,]    1    0    0
+[2,]    0    2    0
+[3,]    0    0    3
+</pre>
+
+<p>
+An identity matrix is a special case of a diagonal matrix.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">diag(3)
+</pre>
+</div>
+
+<pre class="example">
+     [,1] [,2] [,3]
+[1,]    1    0    0
+[2,]    0    1    0
+[3,]    0    0    1
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgbdd14b7" class="outline-4">
+<h4 id="orgbdd14b7">Higher-dimensional array</h4>
+<div class="outline-text-4" id="text-orgbdd14b7">
+<p>
+Vectors and matrices are special cases of arrays. The former is
+one-dimensional array, and the latter is two-dimensional. We can also
+create higher-dimensional arrays by <code>array()</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">array(1:18, dim = c(3, 3, 2))
+</pre>
+</div>
+
+<pre class="example">
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]   10   13   16
+[2,]   11   14   17
+[3,]   12   15   18
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4021a62" class="outline-3">
+<h3 id="org4021a62"><span class="section-number-3">2.4</span> List</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Vectors, matrices, and arrays are all the ways of R to store
+data. However, their limitation is obvious, all elements in a vector
+or a matrix must be of the same type. To overcome this limitation, R
+uses another way to store data, called a <code>list</code>.
+</p>
+
+<p>
+Here is how we create a list, which consists of three components, a
+character vector <code>chr</code>, a numeric vector <code>num</code>, and a logical vector
+<code>boo</code>. Note that the lengths of all components do not need to be
+equal.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">mylist <span style="color: #D0372D;">&lt;-</span> list(chr = c(<span style="color: #008000;">"a"</span>, <span style="color: #008000;">"b"</span>, <span style="color: #008000;">"c"</span>, <span style="color: #008000;">"d"</span>),
+               num = 1:10,
+               boo = c(<span style="color: #6434A3;">TRUE</span>, <span style="color: #6434A3;">FALSE</span>, <span style="color: #6434A3;">FALSE</span>, <span style="color: #6434A3;">TRUE</span>))
+mylist
+</pre>
+</div>
+
+<pre class="example">
+$chr
+[1] "a" "b" "c" "d"
+
+$num
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$boo
+[1]  TRUE FALSE FALSE  TRUE
+</pre>
+
+<p>
+To select a component, we use the <code>$=operator or =[[]]</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">mylist$chr
+mylist[[2]][3:6]
+mylist[[<span style="color: #008000;">"boo"</span>]][-1]
+</pre>
+</div>
+
+<pre class="example">
+[1] "a" "b" "c" "d"
+[1] 3 4 5 6
+[1] FALSE FALSE  TRUE
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga720520" class="outline-2">
+<h2 id="orga720520"><span class="section-number-2">3</span> Data Management in R</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+R use data frames as its main device to save a whole data set,
+especially data read from an external file. A data frame is a mixture
+of a list and a matrix. As a list, a data frame can include different
+types of data and use the <code>$</code> or <code>[[]]</code> operator to select a component
+that is a variable in the data set. As a matrix, all variables in a
+data frame should have the same length and are arranged in a matrix
+format.
+</p>
+</div>
+
+<div id="outline-container-org47edb1c" class="outline-3">
+<h3 id="org47edb1c"><span class="section-number-3">3.1</span> Create a data frame</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+We can manually create a data frame object, convert a matrix to a data
+frame object, or read data in an external file into R and save them in
+a data frame object.
+</p>
+</div>
+
+<div id="outline-container-orgd0d0799" class="outline-4">
+<h4 id="orgd0d0799">Create a data frame manually</h4>
+<div class="outline-text-4" id="text-orgd0d0799">
+<div class="org-src-container">
+<pre class="src src-R">mydata <span style="color: #D0372D;">&lt;-</span> data.frame(X = 1:5, Y = letters[1:5], Z = rep(c(<span style="color: #6434A3;">TRUE</span>, <span style="color: #6434A3;">FALSE</span>), length = 5)); mydata
+</pre>
+</div>
+
+<pre class="example">
+  X Y     Z
+1 1 a  TRUE
+2 2 b FALSE
+3 3 c  TRUE
+4 4 d FALSE
+5 5 e  TRUE
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgcd54ca8" class="outline-4">
+<h4 id="orgcd54ca8">Convert a matrix to a data frame</h4>
+<div class="outline-text-4" id="text-orgcd54ca8">
+<p>
+We use <code>as.data.frame()</code> to convert a matrix to a data frame. In
+creating the matrix, we use <code>sample.int()</code> that is a special case of
+the function <code>sample()</code> to draw random samples from a vector.
+</p>
+<div class="org-src-container">
+<pre class="src src-R">A <span style="color: #D0372D;">&lt;-</span> matrix(sample.int(100, size = 20), nrow = 5)
+A.df <span style="color: #D0372D;">&lt;-</span> as.data.frame(A); A.df
+</pre>
+</div>
+
+<pre class="example">
+  V1 V2 V3 V4
+1 83 58 79 59
+2 96 33 91 12
+3 23 55 35  6
+4 75 47 46 25
+5 67 49 37 36
+</pre>
+
+<p>
+We can assign each variable (column) a name. Here we use the function
+<code>paste()</code> to combine a string <code>VAR</code> with each element of the vector
+<code>1:4</code>, joined with <code>_</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-R">names(A.df) <span style="color: #D0372D;">&lt;-</span> paste(<span style="color: #008000;">"VAR"</span>, 1:4, sep = <span style="color: #008000;">"_"</span>); A.df
+</pre>
+</div>
+
+<pre class="example">
+  VAR_1 VAR_2 VAR_3 VAR_4
+1    83    58    79    59
+2    96    33    91    12
+3    23    55    35     6
+4    75    47    46    25
+5    67    49    37    36
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9cbfb14" class="outline-3">
+<h3 id="org9cbfb14"><span class="section-number-3">3.2</span> Read data from a file</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Suppose we have a data file, <a href="mydata.txt">mydata.txt</a>. We can read the data
+directly from the file using the function <code>read.table()</code>. Upon reading
+the data into R, we should check whether data are correctly using the
+function <code>head()</code> to check the first few (default is six)
+observations. (or )
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">mydata <span style="color: #D0372D;">&lt;-</span> read.table(<span style="color: #008000;">"mydata.txt"</span>, header = <span style="color: #6434A3;">TRUE</span>, sep = <span style="color: #008000;">""</span>)
+head(mydata)
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">tail(mydata)</span>
+</pre>
+</div>
+
+<pre class="example">
+  Names Gender Weight Overweight
+1   Bob      M   72.5      FALSE
+2  John      M   83.1      FALSE
+3  Anne      F   60.8      FALSE
+4   Dan      M   89.7       TRUE
+5  Juan      M   93.2       TRUE
+6  Jane      F   76.9       TRUE
+</pre>
+
+<p>
+Often we may encounter data files ending with <code>.csv</code>, which is a
+special type of a text file, with commas separating each value. And we
+use the function <code>read.csv()</code> to read a <code>.csv</code> file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">tail(read.csv(<span style="color: #008000;">"mydata.csv"</span>, header = <span style="color: #6434A3;">TRUE</span>))
+</pre>
+</div>
+
+<pre class="example">
+  Names Gender Weight Overweight
+2  John      M   83.1      FALSE
+3  Anne      F   60.8      FALSE
+4   Dan      M   89.7       TRUE
+5  Juan      M   93.2       TRUE
+6  Jane      F   76.9       TRUE
+7 Doris      F   56.3      FALSE
+</pre>
+
+<p>
+We can also read data from an excel file or a Stata file that we will
+see in the final section of this tutorial. To read these types of
+files, we need to load the packages of <code>gdata</code>, <code>foreign</code> (for Stata
+12 and prior version), or <code>readstata13</code> (for Stata 13 and newer
+version).
+</p>
+<pre class="example">
+library(gdata)
+read.xls(mydata.xls)
+
+library(foreign)
+read.dta(mydata.dta)
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgfc602d2" class="outline-3">
+<h3 id="orgfc602d2"><span class="section-number-3">3.3</span> Select variables</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Since a data frame is a special case of list, we can select a variable
+in a data frame by using "<code>$</code>" or "<code>[[]]</code>". Here is an example of
+computing the average weight of students.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">mean(mydata$Weight)
+</pre>
+</div>
+
+<pre class="example">
+[1] 76.07143
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org86c2943" class="outline-3">
+<h3 id="org86c2943"><span class="section-number-3">3.4</span> Get summary information</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+After reading data into R, besides using <code>head()</code> or <code>tail()</code> to see
+the first and last few observations, we need also use <code>str()</code> and
+<code>summary()</code> to get some summary information of the data set.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">str(mydata)
+summary(mydata)
+</pre>
+</div>
+
+<pre class="example">
+'data.frame':	7 obs. of  4 variables:
+ $ Names     : Factor w/ 7 levels "Anne","Bob","Dan",..: 2 6 1 3 7 5 4
+ $ Gender    : Factor w/ 2 levels "F","M": 2 2 1 2 2 1 1
+ $ Weight    : num  72.5 83.1 60.8 89.7 93.2 76.9 56.3
+ $ Overweight: logi  FALSE FALSE FALSE TRUE TRUE TRUE ...
+   Names   Gender     Weight      Overweight
+ Anne :1   F:3    Min.   :56.30   Mode :logical
+ Bob  :1   M:4    1st Qu.:66.65   FALSE:4
+ Dan  :1          Median :76.90   TRUE :3
+ Doris:1          Mean   :76.07   NA's :0
+ Jane :1          3rd Qu.:86.40
+ John :1          Max.   :93.20
+ Juan :1
+</pre>
+
+<p>
+The results of running <code>str()</code> show that the variables <code>Names</code> and
+<code>Gender</code> have the type of <code>Factor</code>. In default, when reading
+character variables from a file, R will convert them into factors that
+are categorical variables. We can preserve the type of character by
+including <code>stringsAsFactors=FALSE</code> in <code>read.table()</code> or <code>read.csv()</code>.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4565add" class="outline-2">
+<h2 id="org4565add"><span class="section-number-2">4</span> Graphics</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+R is very powerful in creating graphics. In this tutorial, we will learn
+base graphics systems in R.
+</p>
+
+<p>
+We use a database, <code>mtcars</code>, in the <code>datasets</code> package in R to show
+how to draw different types of graphics. This data set contain the
+data that was extracted from the 1974 Motor Trend US magazine, and
+comprises fuel consumption and 10 aspects of automobile design and
+performance for 32 automobiles (1973–74
+models).(Read <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html">https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html</a>)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">data(mtcars)
+head(mtcars)
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">str(mtcars)</span>
+</pre>
+</div>
+
+<pre class="example">
+                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</pre>
+</div>
+
+
+<div id="outline-container-org82a2266" class="outline-3">
+<h3 id="org82a2266"><span class="section-number-3">4.1</span> The barchart</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+First, Let's see the mpg (miles per gallon) among different models by
+the bar chart.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">barplot(sort(mtcars$mpg, decreasing = <span style="color: #6434A3;">TRUE</span>),
+        col = <span style="color: #008000;">"blue"</span>,
+        main = <span style="color: #008000;">"The mpg among car models"</span>,
+        xlab = <span style="color: #008000;">"car models"</span>, ylab = <span style="color: #008000;">"mpg"</span>)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="figure/barplot.png" alt="barplot.png" width="500" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org5de2e03" class="outline-3">
+<h3 id="org5de2e03"><span class="section-number-3">4.2</span> The scatterplot</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+We know in Lecture 3 that a scatterplot is often used to see the
+association between two variables. Let's see the relationship between
+miles per gallon, <code>mpg</code>, and car weights, <code>disp</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">plot(mtcars$wt, mtcars$mpg,
+     main = <span style="color: #008000;">"The scatterplot between mpg and displacement"</span>,
+     xlab = <span style="color: #008000;">"Car weights (lbs/1000)"</span>,
+     ylab = <span style="color: #008000;">"Miles per gallon"</span>,
+     pch = 19, col = <span style="color: #008000;">"red"</span>)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="figure/scatterplot.png" alt="scatterplot.png" width="500" />
+</p>
+</div>
+
+<p>
+We will explore more graphic capabilities of R in the lectures to
+come.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org0f21e96" class="outline-2">
+<h2 id="org0f21e96"><span class="section-number-2">5</span> Statistical Analysis</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Now we can show how to use R to do some statistical
+analysis. This demonstration answers the questions of Empirical
+Exercise 3.1 at the end
+of Chapter 3. Furthermore, we carry out this exercise in the format of
+<b>reproducible research</b>. That means, we should accomplish they
+following tasks in answering the problem:
+</p>
+<ol class="org-ol">
+<li>using R to compute the statistics
+asked in the questions</li>
+<li>including R code and the results of running the code in the answer, and</li>
+<li>describing our work and answers in plain language along with code
+and numerical answers.</li>
+</ol>
+</div>
+
+
+<div id="outline-container-org066ba6c" class="outline-3">
+<h3 id="org066ba6c"><span class="section-number-3">5.1</span> A description of the problem</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Empirical exercise 3.1 concerns the relationship between average
+earnings and education levels, using the data set from the 1992 and
+2008 Current Population Survey (CPS). Specifically, we want to see
+whether the average hourly earnings (<code>ahe</code>) are different between
+workers with a bachelor degree and those with only high school
+diploma (<code>bachelor</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd3871f7" class="outline-3">
+<h3 id="orgd3871f7"><span class="section-number-3">5.2</span> Answers to the questions</h3>
+<div class="outline-text-3" id="text-5-2">
+</div><div id="outline-container-orgab1b5ff" class="outline-4">
+<h4 id="orgab1b5ff">Question (a)</h4>
+<div class="outline-text-4" id="text-orgab1b5ff">
+<p class="verse">
+Compute the sample mean for average hourly earnings (<code>ahe</code>) in 1992 and<br  />
+in 2008. Construct a 95% confidence interval for the population means<br  />
+for <code>ahe</code> in 1992 and 2008 and the change between 1992 and 2008<br  />
+</p>
+</div>
+
+<ul class="org-ul"><li><a id="org9e5e565"></a>Read the data<br  /><div class="outline-text-5" id="text-org9e5e565">
+<p>
+The first thing first is of course read the data correctly from the
+Stata file <a href="data/cps92_08.dta">data/cps92_08.dta</a>, which can be read by the function
+<code>read.dta()</code> in the package of <code>foreign</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R" id="orga7f1ed2"><span style="color: #D0372D;">library</span>(foreign)
+cpsdat <span style="color: #D0372D;">&lt;-</span> read.dta(<span style="color: #008000;">"data/cps92_08.dta"</span>)
+head(cpsdat)
+</pre>
+</div>
+
+<pre class="example">
+  year       ahe bachelor female age
+1 1992 11.188811        1      0  29
+2 1992 10.000000        1      0  33
+3 1992  5.769231        0      0  30
+4 1992  1.562500        0      0  32
+5 1992 14.957265        1      0  31
+6 1992  8.660096        1      1  26
+</pre>
+</div></li>
+
+<li><a id="orgb49d310"></a>Calculate the sample means of average hourly earnings in 1992 and 2008<br  /><div class="outline-text-5" id="text-orgb49d310">
+<p>
+There are many ways to compute the sample means in 1992 and 2008,
+respectively. First, to make you more familiar with the  R
+language, we compute them in a very basic way. Then, we show how to
+get the same results with some powerful functions.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">extract the data for average hourly earnings in 1992 and 2008</span>
+ahe.92 <span style="color: #D0372D;">&lt;-</span> cpsdat$ahe[cpsdat$year == 1992]
+ahe.08 <span style="color: #D0372D;">&lt;-</span> cpsdat$ahe[cpsdat$year == 2008]
+mean.ahe.92 <span style="color: #D0372D;">&lt;-</span> mean(ahe.92); mean.ahe.92
+mean.ahe.08 <span style="color: #D0372D;">&lt;-</span> mean(ahe.08); mean.ahe.08
+</pre>
+</div>
+
+<pre class="example">
+[1] 11.62637
+[1] 18.97609
+</pre>
+
+<p>
+The average hourly earnings are <code>11.63</code> dollars
+in 1992 and <code>18.98</code> dollars in 2008.
+</p>
+</div></li>
+
+<li><a id="org705d826"></a>Construct the confidence intervals<br  /><div class="outline-text-5" id="text-org705d826">
+<p>
+Recall that a 95% confidence interval for the population mean can be
+constructed as \(\overline{Y} \pm 1.96 SE(\overline{Y})\) and
+\(SE(\overline{Y})\) is computed as \(s_Y / \sqrt{n}\).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R" id="org6b29f45"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the sample variance</span>
+sd.ahe.92 <span style="color: #D0372D;">&lt;-</span> sd(ahe.92)
+sd.ahe.08 <span style="color: #D0372D;">&lt;-</span> sd(ahe.08)
+
+n.92 <span style="color: #D0372D;">&lt;-</span> length(ahe.92)
+n.08 <span style="color: #D0372D;">&lt;-</span> length(ahe.08)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the standard error</span>
+se.ahe.92 <span style="color: #D0372D;">&lt;-</span> sd.ahe.92 / sqrt(n.92)
+se.ahe.08 <span style="color: #D0372D;">&lt;-</span> sd.ahe.08 / sqrt(n.08)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">95% confidence interval</span>
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the 95% critical value from a normal distribution</span>
+cv.95 <span style="color: #D0372D;">&lt;-</span> qnorm(0.975)
+
+lower.lim.92 <span style="color: #D0372D;">&lt;-</span> mean.ahe.92 - cv.95 * se.ahe.92
+lower.lim.08 <span style="color: #D0372D;">&lt;-</span> mean.ahe.08 - cv.95 * se.ahe.08
+
+upper.lim.92 <span style="color: #D0372D;">&lt;-</span> mean.ahe.92 + cv.95 * se.ahe.92
+upper.lim.08 <span style="color: #D0372D;">&lt;-</span> mean.ahe.08 + cv.95 * se.ahe.08
+</pre>
+</div>
+
+<pre class="example">
+[1] 11.63
+[1] 18.98
+</pre>
+
+<p>
+The 95% confidence interval for <code>ahe</code> in 1992 is
+(<code>11.5</code>, <code>11.75</code>), and
+that in 2008 is (<code>18.75</code>,
+<code>19.2</code>).
+</p>
+</div></li>
+
+<li><a id="org3102199"></a>Alternative methods to calculate the sample means and confidence intervals<br  /><div class="outline-text-5" id="text-org3102199">
+<p>
+In the above example, to compute the sample averages in 1992 and 2008,
+we write code separately for each year, which can be done more easily
+in R.
+</p>
+
+<p>
+We can compute the averages for each year using the function
+<code>aggregate()</code>, which splits the whole data base into two parts by the
+values of <code>year</code>. Then, for each part we compute the average by
+specifying the argument <code>FUN</code> to be <code>mean</code>, i.e., specifying the
+function to be used for each part as the <code>mean()</code> function. Also, in
+this case, we use <code>~</code> to specify a <b>formula</b> that means that we split
+<code>ahe</code> by <code>year</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Use aggregate() to compute the means in both years</span>
+ahe.means <span style="color: #D0372D;">&lt;-</span> aggregate(ahe ~ year, FUN = mean, data = cpsdat)
+ahe.means
+</pre>
+</div>
+
+<pre class="example">
+[1] 11.5
+[1] 11.75
+[1] 18.75
+[1] 19.2
+  year      ahe
+1 1992 11.62637
+2 2008 18.97609
+</pre>
+
+<p>
+The confidence interval can be extracted from the results of the
+<code>t.test()</code> function, which is a list.
+</p>
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">t test for ahe in 1992</span>
+t.ahe.92 <span style="color: #D0372D;">&lt;-</span> t.test(ahe.92); t.ahe.92$conf.int
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">t test for ahe in 2008</span>
+t.ahe.08 <span style="color: #D0372D;">&lt;-</span> t.test(ahe.08); t.ahe.08$conf.int
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">test for the change between 1992 and 2008</span>
+t.ahe.diff <span style="color: #D0372D;">&lt;-</span> t.test(ahe.08, ahe.92); t.ahe.diff
+</pre>
+</div>
+
+<pre class="example">
+[1] 11.50019 11.75254
+attr(,"conf.level")
+[1] 0.95
+[1] 18.74975 19.20244
+attr(,"conf.level")
+[1] 0.95
+
+	Welch Two Sample t-test
+
+data:  ahe.08 and ahe.92
+t = 55.597, df = 12065, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 7.090601 7.608853
+sample estimates:
+mean of x mean of y
+ 18.97609  11.62637
+</pre>
+
+<p>
+The confidence interval of the change in average hourly earnings
+between 1992 and 2008 is (<code>7.09</code>,
+<code>7.61</code>).
+</p>
+</div></li></ul>
+</div>
+
+<div id="outline-container-orgba58fbf" class="outline-4">
+<h4 id="orgba58fbf">Question (b)</h4>
+<div class="outline-text-4" id="text-orgba58fbf">
+<p>
+Now we need to adjust the average hourly earnings in the 1992 dollars
+to the 2008 dollars with the inflation rate, computed as
+<code>CPI2008/CPI1992</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">CPI in 1992 and 2008</span>
+cpi.92 <span style="color: #D0372D;">&lt;-</span> 140.3
+cpi.08 <span style="color: #D0372D;">&lt;-</span> 215.2
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Inflation adjustment</span>
+inflator <span style="color: #D0372D;">&lt;-</span> cpi.08 / cpi.92
+cpsdat$ahe.adj <span style="color: #D0372D;">&lt;-</span> with(cpsdat, ifelse(year == 1992, ahe * inflator, ahe))
+</pre>
+</div>
+
+<p>
+In the code block above, we first use the function <code>with()</code> to attach
+the data frame <code>cpsdat</code> within its own environment so that when we
+refer to variables in <code>cpsdat</code>, such as <code>ahe</code> and <code>year</code>, we do not
+need to write <code>cpsdat$</code> and every time we use its variables.
+</p>
+
+<p>
+The function <code>ifesle()</code> set the values of <code>ahe</code> based on the
+condition <code>year == 1992</code>. If the condition is true, we do <code>ahe *
+inflator</code>; if not, leave <code>ahe</code> as it is.
+</p>
+
+<p>
+Then we repeat what we've done in Question (a) with the
+inflation-adjusted earnings in 1992.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">ahe.92.adj <span style="color: #D0372D;">&lt;-</span> with(cpsdat, ahe.adj[year == 1992])
+mean.ahe.92.adj <span style="color: #D0372D;">&lt;-</span> mean(ahe.92.adj)
+t.ahe.92.adj <span style="color: #D0372D;">&lt;-</span> t.test(ahe.92.adj)
+t.ahe.diff.adj <span style="color: #D0372D;">&lt;-</span> t.test(ahe.08, ahe.92.adj)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>The sample average of the inflation-adjusted earnings in 1992 is
+<code>17.83</code> in the 2008 dollars.</li>
+
+<li>The confidence interval for the inflation-adjusted average hourly earnings in 1992 is
+(<code>17.64, 18.03</code>).</li>
+
+<li>The confidence interval for the change between 1992 and 2008 is
+(<code>0.85, 1.44</code>).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7e8f76d" class="outline-4">
+<h4 id="org7e8f76d">Question (c)</h4>
+<div class="outline-text-4" id="text-org7e8f76d">
+<p>
+If we are interested in the change in workers' purchasing power, the
+results with the inflation-adjusted earnings should be used in
+comparison.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb5731fb" class="outline-4">
+<h4 id="orgb5731fb">Question (d)</h4>
+<div class="outline-text-4" id="text-orgb5731fb">
+<p>
+Now let's compute the average earnings for high school graduates and
+college graduates with the 2008 data. First thing to do is to select
+the 2008 data from <code>cpsdat</code> using the function <code>subset()</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">select data in 2008</span>
+cps08 <span style="color: #D0372D;">&lt;-</span> subset(cpsdat, year == 2008, select = c(year, ahe, bachelor))
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">calculate means</span>
+ahe.educ.08 <span style="color: #D0372D;">&lt;-</span> aggregate(ahe ~ bachelor, FUN = mean, data = cps08)
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">select ahe and filter by bachelor</span>
+ahe.high.08 <span style="color: #D0372D;">&lt;-</span> with(cps08, ahe[bachelor == 0])
+ahe.bach.08 <span style="color: #D0372D;">&lt;-</span> with(cps08, ahe[bachelor == 1])
+
+<span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">construct confindence interval</span>
+t.ahe.high.08 <span style="color: #D0372D;">&lt;-</span> t.test(ahe.high.08)
+t.ahe.bach.08 <span style="color: #D0372D;">&lt;-</span> t.test(ahe.bach.08)
+t.ahe.gap.08  <span style="color: #D0372D;">&lt;-</span> t.test(ahe.bach.08, ahe.high.08)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>The mean of the average hourly earnings of high school graduates in
+2008 is
+<code>15.33</code>
+dollars with the 95% confidence interval
+(<code>15.09, 15.57</code>)</li>
+
+<li>The mean of the average hourly earnings of college graduates is
+<code>22.91</code>
+dollars with the 95%
+confidence interval
+(<code>22.56, 23.26</code>)</li>
+
+<li>The 95% confidence interval of the gap in earnings between the two
+groups is
+(<code>7.15, 8</code>)</li>
+</ul>
+
+<p>
+We can create a boxplot to compare the means and confidence intervals
+of average hourly earnings between high school graduates and college
+graduates.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">boxplot(ahe ~ bachelor, data = cps08,
+        main = <span style="color: #008000;">"Average Hourly Earnings by Education"</span>,
+        col = c(<span style="color: #008000;">"red"</span>, <span style="color: #008000;">"orange"</span>),
+        xlab = <span style="color: #008000;">"Bachelor degres = 1, high school = 0"</span>,
+        ylab = <span style="color: #008000;">"US$ 2008"</span>)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="figure/boxplot.png" alt="boxplot.png" />
+</p>
+</div>
+
+<p>
+We leave Question (e)-(g) to students as exercises.
+</p>
+
+<p>
+I include a <code>Rmd</code> file that can generate an html or pdf file from
+RStudio. <a href="mdfiles/emp_3_1.Rmd">mdfiles/emp_3_1.Rmd</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Zheng Tian Zheng Tian</p>
+<p class="date">Created: 2017-03-06 Mon 14:33</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

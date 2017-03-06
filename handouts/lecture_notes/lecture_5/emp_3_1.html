@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-05 Sun 22:36 -->
+<!-- 2017-03-06 Mon 12:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Empirical Exercise 3.1</title>
@@ -257,20 +257,20 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4b49119">1. A description of the problem</a></li>
-<li><a href="#org6ffd172">2. Answers to the questions</a>
+<li><a href="#org811e48c">1. A description of the problem</a></li>
+<li><a href="#org4353881">2. Answers to the questions</a>
 <ul>
-<li><a href="#orgb37d882">Question (a)</a>
+<li><a href="#org6e1f865">Question (a)</a>
 <ul>
-<li><a href="#orgc642f37">Read the data</a></li>
-<li><a href="#orga2fd4e6">Calculate the sample means of average hourly earnings in 1992 and 2008</a></li>
-<li><a href="#orga9dc19b">Construct the confidence intervals</a></li>
-<li><a href="#org205c849">Alternative methods to calculate the sample means and confidence intervals</a></li>
+<li><a href="#orgdbfa82f">Read the data</a></li>
+<li><a href="#orgdc83c99">Calculate the sample means of average hourly earnings in 1992 and 2008</a></li>
+<li><a href="#org89f474b">Construct the confidence intervals</a></li>
+<li><a href="#orgccff01d">Alternative methods to calculate the sample means and confidence intervals</a></li>
 </ul>
 </li>
-<li><a href="#org39551c7">Question (b)</a></li>
-<li><a href="#org166fe19">Question (c)</a></li>
-<li><a href="#org6d3e671">Question (d)</a></li>
+<li><a href="#org60a5262">Question (b)</a></li>
+<li><a href="#org397f4a5">Question (c)</a></li>
+<li><a href="#org2538bc3">Question (d)</a></li>
 </ul>
 </li>
 </ul>
@@ -293,8 +293,8 @@ and numerical answers.</li>
 </ol>
 
 
-<div id="outline-container-org4b49119" class="outline-2">
-<h2 id="org4b49119"><span class="section-number-2">1</span> A description of the problem</h2>
+<div id="outline-container-org811e48c" class="outline-2">
+<h2 id="org811e48c"><span class="section-number-2">1</span> A description of the problem</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Empirical exercise 3.1 concerns the relationship between average
@@ -307,12 +307,12 @@ diploma (<code>bachelor</code>).
 </div>
 </div>
 
-<div id="outline-container-org6ffd172" class="outline-2">
-<h2 id="org6ffd172"><span class="section-number-2">2</span> Answers to the questions</h2>
+<div id="outline-container-org4353881" class="outline-2">
+<h2 id="org4353881"><span class="section-number-2">2</span> Answers to the questions</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgb37d882" class="outline-3">
-<h3 id="orgb37d882">Question (a)</h3>
-<div class="outline-text-3" id="text-orgb37d882">
+</div><div id="outline-container-org6e1f865" class="outline-3">
+<h3 id="org6e1f865">Question (a)</h3>
+<div class="outline-text-3" id="text-org6e1f865">
 <p class="verse">
 Compute the sample mean for average hourly earnings (<code>ahe</code>) in 1992 and<br  />
 in 2008. Construct a 95% confidence interval for the population means<br  />
@@ -320,9 +320,9 @@ for <code>ahe</code> in 1992 and 2008 and the change between 1992 and 2008<br  /
 </p>
 </div>
 
-<div id="outline-container-orgc642f37" class="outline-4">
-<h4 id="orgc642f37">Read the data</h4>
-<div class="outline-text-4" id="text-orgc642f37">
+<div id="outline-container-orgdbfa82f" class="outline-4">
+<h4 id="orgdbfa82f">Read the data</h4>
+<div class="outline-text-4" id="text-orgdbfa82f">
 <p>
 The first thing first is of course read the data correctly from the
 Stata file <a href="data/cps92_08.dta">data/cps92_08.dta</a>, which can be read by the function
@@ -330,7 +330,7 @@ Stata file <a href="data/cps92_08.dta">data/cps92_08.dta</a>, which can be read 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R" id="org3a83725"><span style="color: #D0372D;">library</span>(foreign)
+<pre class="src src-R" id="org520917d"><span style="color: #D0372D;">library</span>(foreign)
 cpsdat <span style="color: #D0372D;">&lt;-</span> read.dta(<span style="color: #008000;">"data/cps92_08.dta"</span>)
 head(cpsdat)
 </pre>
@@ -348,9 +348,9 @@ head(cpsdat)
 </div>
 </div>
 
-<div id="outline-container-orga2fd4e6" class="outline-4">
-<h4 id="orga2fd4e6">Calculate the sample means of average hourly earnings in 1992 and 2008</h4>
-<div class="outline-text-4" id="text-orga2fd4e6">
+<div id="outline-container-orgdc83c99" class="outline-4">
+<h4 id="orgdc83c99">Calculate the sample means of average hourly earnings in 1992 and 2008</h4>
+<div class="outline-text-4" id="text-orgdc83c99">
 <p>
 There are many ways to compute the sample means in 1992 and 2008,
 respectively. First, to make you more familiar with the  R
@@ -379,9 +379,9 @@ in 1992 and <code>18.98</code> dollars in 2008.
 </div>
 </div>
 
-<div id="outline-container-orga9dc19b" class="outline-4">
-<h4 id="orga9dc19b">Construct the confidence intervals</h4>
-<div class="outline-text-4" id="text-orga9dc19b">
+<div id="outline-container-org89f474b" class="outline-4">
+<h4 id="org89f474b">Construct the confidence intervals</h4>
+<div class="outline-text-4" id="text-org89f474b">
 <p>
 Recall that a 95% confidence interval for the population mean can be
 constructed as \(\overline{Y} \pm 1.96 SE(\overline{Y})\) and
@@ -389,7 +389,7 @@ constructed as \(\overline{Y} \pm 1.96 SE(\overline{Y})\) and
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R" id="orgb22b8a0"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the sample variance</span>
+<pre class="src src-R" id="orgc5cf47f"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">the sample variance</span>
 sd.ahe.92 <span style="color: #D0372D;">&lt;-</span> sd(ahe.92)
 sd.ahe.08 <span style="color: #D0372D;">&lt;-</span> sd(ahe.08)
 
@@ -412,11 +412,6 @@ upper.lim.08 <span style="color: #D0372D;">&lt;-</span> mean.ahe.08 + cv.95 * se
 </pre>
 </div>
 
-<pre class="example">
-[1] 11.63
-[1] 18.98
-</pre>
-
 <p>
 The 95% confidence interval for <code>ahe</code> in 1992 is
 (<code>11.5</code>, <code>11.75</code>), and
@@ -426,9 +421,9 @@ that in 2008 is (<code>18.75</code>,
 </div>
 </div>
 
-<div id="outline-container-org205c849" class="outline-4">
-<h4 id="org205c849">Alternative methods to calculate the sample means and confidence intervals</h4>
-<div class="outline-text-4" id="text-org205c849">
+<div id="outline-container-orgccff01d" class="outline-4">
+<h4 id="orgccff01d">Alternative methods to calculate the sample means and confidence intervals</h4>
+<div class="outline-text-4" id="text-orgccff01d">
 <p>
 In the above example, to compute the sample averages in 1992 and 2008,
 we write code separately for each year, which can be done more easily
@@ -453,10 +448,6 @@ ahe.means
 </div>
 
 <pre class="example">
-[1] 11.5
-[1] 11.75
-[1] 18.75
-[1] 19.2
   year      ahe
 1 1992 11.62637
 2 2008 18.97609
@@ -505,9 +496,9 @@ between 1992 and 2008 is (<code>7.09</code>,
 </div>
 </div>
 
-<div id="outline-container-org39551c7" class="outline-3">
-<h3 id="org39551c7">Question (b)</h3>
-<div class="outline-text-3" id="text-org39551c7">
+<div id="outline-container-org60a5262" class="outline-3">
+<h3 id="org60a5262">Question (b)</h3>
+<div class="outline-text-3" id="text-org60a5262">
 <p>
 Now we need to adjust the average hourly earnings in the 1992 dollars
 to the 2008 dollars with the inflation rate, computed as
@@ -563,9 +554,9 @@ t.ahe.diff.adj <span style="color: #D0372D;">&lt;-</span> t.test(ahe.08, ahe.92.
 </div>
 </div>
 
-<div id="outline-container-org166fe19" class="outline-3">
-<h3 id="org166fe19">Question (c)</h3>
-<div class="outline-text-3" id="text-org166fe19">
+<div id="outline-container-org397f4a5" class="outline-3">
+<h3 id="org397f4a5">Question (c)</h3>
+<div class="outline-text-3" id="text-org397f4a5">
 <p>
 If we are interested in the change in workers' purchasing power, the
 results with the inflation-adjusted earnings should be used in
@@ -574,9 +565,9 @@ comparison.
 </div>
 </div>
 
-<div id="outline-container-org6d3e671" class="outline-3">
-<h3 id="org6d3e671">Question (d)</h3>
-<div class="outline-text-3" id="text-org6d3e671">
+<div id="outline-container-org2538bc3" class="outline-3">
+<h3 id="org2538bc3">Question (d)</h3>
+<div class="outline-text-3" id="text-org2538bc3">
 <p>
 Now let's compute the average earnings for high school graduates and
 college graduates with the 2008 data. First thing to do is to select
@@ -645,7 +636,7 @@ graduates.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-03-05 Sun 22:36</p>
+<p class="date">Created: 2017-03-06 Mon 12:32</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
