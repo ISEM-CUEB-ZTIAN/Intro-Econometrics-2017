@@ -1,5 +1,5 @@
 library(foreign)
-cpsdat <- read.dta("data/cps92_08.dta")
+cpsdat <- read.dta("cps92_08.dta")
 head(cpsdat)
 
 # extract the data for average hourly earnings in 1992 and 2008

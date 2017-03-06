@@ -141,7 +141,7 @@ for <code>ahe</code> in 1992 and 2008 and the change between 1992 and 2008</p>
 <h3>Read the data</h3>
 <p>The first thing first is of course read the data correctly from the Stata file <a href="data/cps92_08.dta">file:../data/cps92_08.dta</a>, which can be read by the function <code>read.dta()</code> in the package of <code>foreign</code>.</p>
 <pre class="r"><code>  library(foreign)
-  cpsdat &lt;- read.dta(&quot;../data/cps92_08.dta&quot;)
+  cpsdat &lt;- read.dta(&quot;cps92_08.dta&quot;)
   head(cpsdat)</code></pre>
 <p>year ahe bachelor female age 1 1992 11.188811 1 0 29 2 1992 10.000000 1 0 33 3 1992 5.769231 0 0 30 4 1992 1.562500 0 0 32 5 1992 14.957265 1 0 31 6 1992 8.660096 1 1 26</p>
 </div>

@@ -17,7 +17,7 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
   your suggestion to this course. Please complete the survey in your
   spare time. Thanks!
 
-- [[*Homework set #1][Homework set #1]] is assigned, which is due on *March 13*. 
+- [[*Homework set #1][Homework set #1]] is assigned, which is due on *March 13*.
 
 
 * Syllabus
@@ -47,10 +47,10 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - The lecture notes ([[file:handouts/lecture_notes/lecture_5/lecture_5.html][html]] or [[file:handouts/lecture_notes/lecture_5/lecture_5.pdf][pdf]])
 - The R file that contains all the code in the lecture notes ([[file:handouts/lecture_notes/lecture_5/lecture_5.R][R
   file]]).
-- The Rmarkdown file that can generate a complete an answer to
-  Empirical exercise 3.1 [[file:handouts/lecture_notes/lecture_5/mdfiles/emp_3_1.Rmd][Rmarkdown file]].
+- The whole package that can generate a complete an answer to
+  Empirical exercise 3.1, [[file:handouts/lecture_notes/lecture_5/rfiles.zip][rfiles.zip]].
 - I also upload a file as a tutorial for Econometrics with R
-  ([[file:handouts/lecture_notes/lecture_5/Farnsworth-EconometricsInR.pdf][pdf]]). 
+  ([[file:handouts/lecture_notes/lecture_5/Farnsworth-EconometricsInR.pdf][pdf]]).
 
 
 * Homework

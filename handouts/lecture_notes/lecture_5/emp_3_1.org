@@ -41,6 +41,7 @@ whether the average hourly earnings (=ahe=) are different between
 workers with a bachelor degree and those with only high school
 diploma (=bachelor=).
 
+
 * Answers to the questions
 
 ** Question (a)
@@ -298,8 +299,11 @@ graduates.
 
 We leave Question (e)-(g) to students as exercises.
 
-I include a ~Rmd~ file that can generate an html or pdf file from
-RStudio. [[file:mdfiles/emp_3_1.Rmd]]
+I include all the files to generate a complete answer to Empirical
+exercise 3.1 in the following package, [[file:rfiles.zip]], including the
+R code file, Rmarkdown file, the data file, and the html and pdf files
+containing the answers.
+
 
 ** COMMENT Question (e)
 
