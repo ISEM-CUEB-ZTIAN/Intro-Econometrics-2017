@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-03-12 Sun 11:26 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Replication of Examples in Chapter 4</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Zheng Tian" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Replication of Examples in Chapter 4</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9d25206">1. Introduction</a></li>
+<li><a href="#org2de2c97">2. Reading the data and basic summary statistics</a></li>
+<li><a href="#orgb4a4c00">3. The OLS estimation</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9d25206" class="outline-2">
+<h2 id="org9d25206"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This document is to show how to estimate a simple regression model and
+perform linear hypothesis testing. The application concerns the test
+scores of the California school districts. We will use R to estimate
+the simple regression model with the data set in Chapter 4.
+</p>
+
+<p>
+Before running all R codes, we may first load the package <code>AER</code> for
+loading several particular packages of regression.
+</p>
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #D0372D;">library</span>(AER)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2de2c97" class="outline-2">
+<h2 id="org2de2c97"><span class="section-number-2">2</span> Reading the data and basic summary statistics</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Let's first read the data into R and show some basic statistics.
+</p>
+</div>
+<div id="outline-container-org4a1d9e1" class="outline-3">
+<h3 id="org4a1d9e1"><span class="section-number-3">2.1</span> Read the data file</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The textbook comes with two files for the California test score data
+set, <code>caschool.xlsx</code> and <code>caschool.dta</code>, the former of which is an
+Excel file and the latter is a Stata file. We need to read either one
+of these two files into R so that we can use the data set.
+</p>
+
+<p>
+R has several built-in functions that can read an ASCII data file,
+which can have such an extension as <code>.txt</code>, <code>.csv</code>, <code>dat</code>, to name a
+few. However, these built-in functions cannot handle an Excel file or
+a Stata file. So, in order to read <code>caschool.xlsx</code> or <code>caschool.dta</code>
+in to R, we need additional packages.
+</p>
+
+<p>
+To read a State file with an extension of <code>.dta</code>, we use the function,
+<code>read.dta</code>, in the library of <code>foreign</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #D0372D;">library</span>(foreign)
+classdata <span style="color: #D0372D;">&lt;-</span> read.dta(<span style="color: #008000;">"./data/caschool.dta"</span>)
+</pre>
+</div>
+
+<p>
+<code>classdata</code> is a dataframe object in R. If you want to check whether
+your reading is correct, you can type  <code>head(classdata)</code>, which, by
+default, displays the first six observations of all variables in the
+data frame object.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">head(classdata[c(<span style="color: #008000;">"observat"</span>, <span style="color: #008000;">"district"</span>, <span style="color: #008000;">"testscr"</span>, <span style="color: #008000;">"str"</span>)])
+</pre>
+</div>
+
+<pre class="example">
+  observat                        district testscr      str
+1        1              Sunol Glen Unified  690.80 17.88991
+2        2            Manzanita Elementary  661.20 21.52466
+3        3     Thermalito Union Elementary  643.60 18.69723
+4        4 Golden Feather Union Elementary  647.70 17.35714
+5        5        Palermo Union Elementary  640.85 18.67133
+6        6         Burrel Union Elementary  605.55 21.40625
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgaa0edac" class="outline-3">
+<h3 id="orgaa0edac"><span class="section-number-3">2.2</span> Summary</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Upon reading the data, we often use <code>summary()</code> to see some basic
+statistics. Here we are not going to show summary statistics of all
+variables in the data set for the purpose of saving space, but only to
+select several variables of interest in Chapters 4, including
+test scores, <code>testscr</code>, student-teacher ratio, <code>str</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">df <span style="color: #D0372D;">&lt;-</span> classdata[c(<span style="color: #008000;">"testscr"</span>, <span style="color: #008000;">"str"</span>)]
+summary(df)
+</pre>
+</div>
+
+<pre class="example">
+   testscr           str
+Min.   :605.5   Min.   :14.00
+1st Qu.:640.0   1st Qu.:18.58
+Median :654.5   Median :19.72
+Mean   :654.2   Mean   :19.64
+3rd Qu.:666.7   3rd Qu.:20.87
+Max.   :706.8   Max.   :25.80
+</pre>
+
+<p>
+Formally, we can create a table showing important summary statistics,
+like the following table (Table 4.1 in the book).<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">Replicate the summary statistics in Table 4.1</span>
+<span style="color: #006699;">summary4.1</span> <span style="color: #D0372D;">&lt;-</span> <span style="color: #0000FF;">function</span>(df){
+    ave <span style="color: #D0372D;">&lt;-</span> sapply(df, mean)
+    std <span style="color: #D0372D;">&lt;-</span> sapply(df, sd)
+    perctile <span style="color: #D0372D;">&lt;-</span> sapply(df, <span style="color: #0000FF;">function</span>(x)
+        quantile(x, probs=c(0.1, 0.25, 0.4, 0.5, 0.6, 0.75, 0.9)))
+    <span style="color: #0000FF;">return</span>(rbind(ave, std, perctile))
+}
+<span style="color: #D0372D;">library</span>(xtable)
+sumtab <span style="color: #D0372D;">&lt;-</span> xtable(t(summary4.1(df)))
+print(sumtab, type = <span style="color: #008000;">"html"</span>)
+</pre>
+</div>
+
+<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
+<!-- Sun Mar 12 11:26:22 2017 -->
+<table border=1>
+<tr> <th>  </th> <th> ave </th> <th> std </th> <th> 10% </th> <th> 25% </th> <th> 40% </th> <th> 50% </th> <th> 60% </th> <th> 75% </th> <th> 90% </th>  </tr>
+  <tr> <td align="right"> testscr </td> <td align="right"> 654.16 </td> <td align="right"> 19.05 </td> <td align="right"> 630.40 </td> <td align="right"> 640.05 </td> <td align="right"> 649.07 </td> <td align="right"> 654.45 </td> <td align="right"> 659.40 </td> <td align="right"> 666.66 </td> <td align="right"> 678.86 </td> </tr>
+  <tr> <td align="right"> str </td> <td align="right"> 19.64 </td> <td align="right"> 1.89 </td> <td align="right"> 17.35 </td> <td align="right"> 18.58 </td> <td align="right"> 19.27 </td> <td align="right"> 19.72 </td> <td align="right"> 20.08 </td> <td align="right"> 20.87 </td> <td align="right"> 21.87 </td> </tr>
+   </table>
+</div>
+</div>
+
+<div id="outline-container-orgc968eec" class="outline-3">
+<h3 id="orgc968eec"><span class="section-number-3">2.3</span> Create a scatterplot using <code>plot()</code></h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+It is always a good practice to make a scatterplot between an
+independent variable and a dependent variable before setting up a
+regression model. Let's draw a scatterplot of student-teacher ratios
+and test scores. <code>plot</code> is the most basic function in R to draw
+figures. Here I use it to draw the scatterplot as follows.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">plot(df$str, df$testscr, col = <span style="color: #008000;">"blue"</span>, pch =16, cex = 0.7, bty = <span style="color: #008000;">"l"</span>,
+     main = <span style="color: #008000;">"Scatterplot of Test Score vs. Student-Teacher Ratio"</span>,
+     xlab = <span style="color: #008000;">"Student-teacher ratio"</span>, ylab = <span style="color: #008000;">"Test scores"</span>)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="fig42.png" alt="fig42.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>The scatterplot between student-teacher ratios and test scores</p>
+</div>
+
+<p>
+We can compute the correlation coefficient
+between the two variables, using the function <code>cor</code>. Typing the
+command <code>cor(df$str), df$testscr}</code> yield the value of
+<code>-0.23</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb4a4c00" class="outline-2">
+<h2 id="orgb4a4c00"><span class="section-number-2">3</span> The OLS estimation</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org11e8455" class="outline-3">
+<h3 id="org11e8455"><span class="section-number-3">3.1</span> Set up the linear regression model</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+We establish the following linear regression model for the relationship between
+test scores and class sizes
+</p>
+\begin{equation}
+\label{eq:testscr-str-1}
+TestScore_i = \beta_0 + \beta_1 STR_i + u_i
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orgf969fc2" class="outline-3">
+<h3 id="orgf969fc2"><span class="section-number-3">3.2</span> Estimate in R</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The OLS estimation can be implemented in R with the function <code>lm</code>. The
+most important argument in this function is the model to be estimated,
+which is called a <b>formula</b> object in R. A formula is defined using
+the format <code>y ~ x1 + x2</code>, in which the symbol of <code>~</code> links the
+left-hand side variable, <code>y</code>, and the right-hand side variables, <code>x1,
+x2</code>. We can add more independent variables in the right-hand side with
+each being appended to the formula by the symbol of <code>+</code>. The constant
+term is by default included in the model. After estimation, we use
+<code>summary</code> to see the results.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">mod1 <span style="color: #D0372D;">&lt;-</span> lm(testscr ~ str, data = df)
+summary(mod1)
+</pre>
+</div>
+
+<pre class="example">
+Call:
+lm(formula = testscr ~ str, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-47.727 -14.251   0.483  12.822  48.540
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept) 698.9330     9.4675  73.825  &lt; 2e-16 ***
+str          -2.2798     0.4798  -4.751 2.78e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 18.58 on 418 degrees of freedom
+Multiple R-squared:  0.05124,	Adjusted R-squared:  0.04897
+F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06
+</pre>
+
+<p>
+For now, we just pay attention to the estimates of the two
+coefficients, which is <code>698.93</code> for the
+intercept, &beta;<sub>0</sub>, and <code>-2.28</code> for the slope.
+</p>
+
+<p>
+\[\widehat{TestScore} = 698.93 - 2.28 \times STR\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org02c57dc" class="outline-3">
+<h3 id="org02c57dc"><span class="section-number-3">3.3</span> Plot the sample regression line</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+The sample regression line can be added to the scatterplot by using
+the function <code>abline</code>. And an annotation can be added by using the
+function <code>text</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">plot(df$str, df$testscr, col = <span style="color: #008000;">"blue"</span>, pch =16, cex = 0.7, bty = <span style="color: #008000;">"l"</span>,
+     xlab = <span style="color: #008000;">"Student-teacher ratio"</span>, ylab = <span style="color: #008000;">"Test scores"</span>)
+abline(coef(mod1)[1], coef(mod1)[2], col=<span style="color: #008000;">"red"</span>)
+text(23.5, 655, <span style="color: #008000;">"TestScore = 698.9 - 2.28 STR"</span>, cex.lab = 0.9, font.lab = 3)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="fig43.png" alt="fig43.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>The estimated regression line for the California data</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+To create such a table, I use the function <code>xtable</code> in the
+package of <code>xtable</code>, which generates a LaTex table. Also, I modified
+the format of the LaTex table using the LaTex package
+<code>booktabs</code>. LaTex is a typsetting system, like Microsfot Word, that is
+capable of creating professional looking-like documents. Though LaTex
+is not required for this course, learning it would be a great benefit
+for your future career development, especially in academia
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Zheng Tian</p>
+<p class="date">Created: 2017-03-12 Sun 11:26</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

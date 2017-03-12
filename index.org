@@ -52,6 +52,10 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - I also upload a file as a tutorial for Econometrics with R
   ([[file:handouts/lecture_notes/lecture_5/Farnsworth-EconometricsInR.pdf][pdf]]).
 
+** Lecture 6: Linear Regression with One Regressor
+- The lecture notes ([[file:handouts/lecture_notes/lecture_6/lecture_6.html][html]] or [[file:handouts/lecture_notes/lecture_6/lecture_6.pdf][pdf]])
+- The slides ([[file:handouts/lecture_notes/lecture_6/slides_lecture_6.html][html]] or [[file:handouts/lecture_notes/lecture_6/slides_lecture_6_beamer.pdf][pdf]])
+
 
 * Homework
 

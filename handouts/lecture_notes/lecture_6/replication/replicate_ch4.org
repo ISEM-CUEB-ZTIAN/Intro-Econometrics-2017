@@ -1,0 +1,246 @@
+#+TITLE: Replication of Examples in Chapter 4
+#+AUTHOR: Zheng Tian
+#+EMAIL: zngtian@gmail.com
+#+DATE:
+#+OPTIONS: H:3 num:2 toc:1
+#+PROPERTY: header-args:R :session *myR* :cache yes
+#+STARTUP: content indent align
+#+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{booktabs}
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../../../css/readtheorg.css" />
+
+* Introduction
+This document is to show how to estimate a simple regression model and
+perform linear hypothesis testing. The application concerns the test
+scores of the California school districts. We will use R to estimate
+the simple regression model with the data set in Chapter 4.
+
+Before running all R codes, we may first load the package =AER= for
+loading several particular packages of regression.
+#+BEGIN_SRC R :results output silent :exports code
+library(AER)
+#+END_SRC
+
+* Reading the data and basic summary statistics
+Let's first read the data into R and show some basic statistics.
+** Read the data file
+The textbook comes with two files for the California test score data
+set, =caschool.xlsx= and =caschool.dta=, the former of which is an
+Excel file and the latter is a Stata file. We need to read either one
+of these two files into R so that we can use the data set.
+
+R has several built-in functions that can read an ASCII data file,
+which can have such an extension as =.txt=, =.csv=, =dat=, to name a
+few. However, these built-in functions cannot handle an Excel file or
+a Stata file. So, in order to read =caschool.xlsx= or =caschool.dta=
+in to R, we need additional packages.
+
+To read a State file with an extension of =.dta=, we use the function,
+=read.dta=, in the library of =foreign=.
+
+#+BEGIN_SRC R :results output silent :exports code
+library(foreign)
+classdata <- read.dta("./data/caschool.dta")
+#+END_SRC
+
+=classdata= is a dataframe object in R. If you want to check whether
+your reading is correct, you can type  =head(classdata)=, which, by
+default, displays the first six observations of all variables in the
+data frame object.
+
+#+BEGIN_SRC R :results output :exports both
+head(classdata[c("observat", "district", "testscr", "str")])
+#+END_SRC
+
+#+RESULTS:
+:   observat                        district testscr      str
+: 1        1              Sunol Glen Unified  690.80 17.88991
+: 2        2            Manzanita Elementary  661.20 21.52466
+: 3        3     Thermalito Union Elementary  643.60 18.69723
+: 4        4 Golden Feather Union Elementary  647.70 17.35714
+: 5        5        Palermo Union Elementary  640.85 18.67133
+: 6        6         Burrel Union Elementary  605.55 21.40625
+
+
+** Summary
+
+Upon reading the data, we often use =summary()= to see some basic
+statistics. Here we are not going to show summary statistics of all
+variables in the data set for the purpose of saving space, but only to
+select several variables of interest in Chapters 4, including
+test scores, =testscr=, student-teacher ratio, =str=.
+
+#+BEGIN_SRC R :results output :exports both :eval
+df <- classdata[c("testscr", "str")]
+summary(df)
+#+END_SRC
+
+#+RESULTS:
+:     testscr           str
+:  Min.   :605.5   Min.   :14.00
+:  1st Qu.:640.0   1st Qu.:18.58
+:  Median :654.5   Median :19.72
+:  Mean   :654.2   Mean   :19.64
+:  3rd Qu.:666.7   3rd Qu.:20.87
+:  Max.   :706.8   Max.   :25.80
+
+Formally, we can create a table showing important summary statistics,
+like the following table (Table 4.1 in the book).[fn:1]
+
+#+BEGIN_SRC R :results output html :exports both :eval
+  # Replicate the summary statistics in Table 4.1
+  summary4.1 <- function(df){
+      ave <- sapply(df, mean)
+      std <- sapply(df, sd)
+      perctile <- sapply(df, function(x)
+          quantile(x, probs=c(0.1, 0.25, 0.4, 0.5, 0.6, 0.75, 0.9)))
+      return(rbind(ave, std, perctile))
+  }
+  library(xtable)
+  sumtab <- xtable(t(summary4.1(df)))
+  print(sumtab, type = "html")
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
+<!-- Sun Mar 12 09:31:18 2017 -->
+<table border=1>
+<tr> <th>  </th> <th> ave </th> <th> std </th> <th> 10% </th> <th> 25% </th> <th> 40% </th> <th> 50% </th> <th> 60% </th> <th> 75% </th> <th> 90% </th>  </tr>
+  <tr> <td align="right"> testscr </td> <td align="right"> 654.16 </td> <td align="right"> 19.05 </td> <td align="right"> 630.40 </td> <td align="right"> 640.05 </td> <td align="right"> 649.07 </td> <td align="right"> 654.45 </td> <td align="right"> 659.40 </td> <td align="right"> 666.66 </td> <td align="right"> 678.86 </td> </tr>
+  <tr> <td align="right"> str </td> <td align="right"> 19.64 </td> <td align="right"> 1.89 </td> <td align="right"> 17.35 </td> <td align="right"> 18.58 </td> <td align="right"> 19.27 </td> <td align="right"> 19.72 </td> <td align="right"> 20.08 </td> <td align="right"> 20.87 </td> <td align="right"> 21.87 </td> </tr>
+   </table>
+#+END_EXPORT
+
+*** COMMENT Latex table
+
+#+BEGIN_SRC R :exports results :results output latex
+print(sumtab, type = "latex")
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Mar 10 19:51:30 2017
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrrr}
+  \hline
+ & ave & std & 10\% & 25\% & 40\% & 50\% & 60\% & 75\% & 90\% \\
+  \hline
+testscr & 654.16 & 19.05 & 630.40 & 640.05 & 649.07 & 654.45 & 659.40 & 666.66 & 678.86 \\
+  str & 19.64 & 1.89 & 17.35 & 18.58 & 19.27 & 19.72 & 20.08 & 20.87 & 21.87 \\
+   \hline
+\end{tabular}
+\end{table}
+#+END_EXPORT
+
+
+** Create a scatterplot using =plot()=
+It is always a good practice to make a scatterplot between an
+independent variable and a dependent variable before setting up a
+regression model. Let's draw a scatterplot of student-teacher ratios
+and test scores. =plot= is the most basic function in R to draw
+figures. Here I use it to draw the scatterplot as follows.
+
+#+BEGIN_SRC R :exports both :results output graphics :file fig42.png
+plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
+     main = "Scatterplot of Test Score vs. Student-Teacher Ratio",
+     xlab = "Student-teacher ratio", ylab = "Test scores")
+#+END_SRC
+
+#+CAPTION: The scatterplot between student-teacher ratios and test scores
+#+ATTR_LATEX: :width 0.85\textwidth
+#+RESULTS:
+[[file:./img/fig42.png]]
+
+We can compute the correlation coefficient
+between the two variables, using the function =cor=. Typing the
+command =cor(df$str), df$testscr}= yield the value of
+src_R{round(cor(df$str, df$testscr), 2)}.
+
+* The OLS estimation
+** Set up the linear regression model
+
+We establish the following linear regression model for the relationship between
+test scores and class sizes
+\begin{equation}
+\label{eq:testscr-str-1}
+TestScore_i = \beta_0 + \beta_1 STR_i + u_i
+\end{equation}
+
+** Estimate in R
+The OLS estimation can be implemented in R with the function =lm=. The
+most important argument in this function is the model to be estimated,
+which is called a *formula* object in R. A formula is defined using
+the format =y ~ x1 + x2=, in which the symbol of =~= links the
+left-hand side variable, =y=, and the right-hand side variables, =x1,
+x2=. We can add more independent variables in the right-hand side with
+each being appended to the formula by the symbol of =+=. The constant
+term is by default included in the model. After estimation, we use
+=summary= to see the results.
+
+#+BEGIN_SRC R :results output :exports both :cache yes
+mod1 <- lm(testscr ~ str, data = df)
+summary(mod1)
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+
+Call:
+lm(formula = testscr ~ str, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-47.727 -14.251   0.483  12.822  48.540
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept) 698.9330     9.4675  73.825  < 2e-16 ***
+str          -2.2798     0.4798  -4.751 2.78e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 18.58 on 418 degrees of freedom
+Multiple R-squared:  0.05124,	Adjusted R-squared:  0.04897
+F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06
+#+end_example
+
+For now, we just pay attention to the estimates of the two
+coefficients, which is src_R{round(coef(mod1)[1], 2)} for the
+intercept, \beta_0, and src_R{round(coef(mod1)[2], 2)} for the slope.
+
+\[\widehat{TestScore} = 698.93 - 2.28 \times STR\]
+
+** Plot the sample regression line
+The sample regression line can be added to the scatterplot by using
+the function =abline=. And an annotation can be added by using the
+function =text=
+
+#+BEGIN_SRC R :exports both :results output graphics :file fig43.png :eval
+plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
+     xlab = "Student-teacher ratio", ylab = "Test scores")
+abline(coef(mod1)[1], coef(mod1)[2], col="red")
+text(23.5, 655, "TestScore = 698.9 - 2.28 STR", cex.lab = 0.9, font.lab = 3)
+#+END_SRC
+
+#+CAPTION: The estimated regression line for the California data
+#+ATTR_LATEX: :width 0.75\textwidth :float t
+#+RESULTS:
+[[file:fig43.png]]
+
+* Footnotes
+
+[fn:1] To create such a table, I use the function =xtable= in the
+package of =xtable=, which generates a LaTex table. Also, I modified
+the format of the LaTex table using the LaTex package
+=booktabs=. LaTex is a typsetting system, like Microsfot Word, that is
+capable of creating professional looking-like documents. Though LaTex
+is not required for this course, learning it would be a great benefit
+for your future career development, especially in academia
+
