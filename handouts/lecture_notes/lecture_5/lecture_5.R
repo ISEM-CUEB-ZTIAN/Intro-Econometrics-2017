@@ -1,7 +1,7 @@
 ## This file contains all code to generate Lecture notes 5.
 
 # Install packages
-install.packages(c("AER", "foreign"))
+# install.packages(c("AER", "foreign"))
 
 # Load packages
 library(AER)
