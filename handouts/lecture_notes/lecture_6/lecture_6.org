@@ -27,6 +27,14 @@
 #+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
 
 
+#+BEGIN_EXPORT html
+\(
+\DeclareMathOperator*{\plim}{plim}
+\newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+\)
+#+END_EXPORT
+
+
 * Introduction
 
 This lecture introduces a linear regression model with one regressor
@@ -244,7 +252,7 @@ line, and the errors (other factors) are illustrated in Figure [[fig:reg-line]].
 [[file:figure/fig-4-1.png]]
 
 
-* COMMENT The OLS Estimation Method for a Linear Regression Model
+* The OLS Estimation Method for a Linear Regression Model
 
 ** The intuition for the OLS and minimization
 
@@ -318,11 +326,11 @@ For the numerator in Equation \ref{eq:bhat-1}, we can show the following
 &= \sum_i X_iY_i - \overline{X}\sum_iY_i - \overline{Y}\sum_iX_i + \sum_i \overline{X}\overline{Y} \\
 &= \sum_i X_iY_i - 2n\overline{X}\overline{Y} + n\overline{X}\overline{Y} \\
 &= \sum_i X_iY_i - n\overline{X}\overline{Y} \\
-&= \frac{1}{n} (n\sum_i X_iY_i - \sum_i X_i \sum_i Y_i)
+&= \frac{1}{n} \left(n\sum_i X_iY_i - \sum_i X_i \sum_i Y_i\right)
 \end{align*}
 
-Similarly, we can show that $\sum_i (X_i - \overline{X})^2 = \frac{1}{n} (n\sum_i X_i^2 - (\sum_i X_i)^2)$
-}
+Similarly, we can show that $\sum_i (X_i - \overline{X})^2 =
+\frac{1}{n} \left[n\sum_i X_i^2 - (\sum_i X_i)^2\right]$.
 
 \begin{equation*}
 \hat{\beta}_1 = \frac{\sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i=1}^n (X_i - \overline{X})^2}
@@ -344,20 +352,66 @@ $\beta_1$ as
 
 
 ** The predicted values, residuals, and the sample regression line
+*** The predicted values
 
-After obtaining the estimator, we can compute the *predicted values*
-$\hat{Y}_i$ and *residuals* $\hat{u}_i$ for $i = 1, \ldots, n$ as
-\begin{align}
-\hat{Y}_i & = \hat{\beta}_0 + \hat{\beta}_1 X_i \label{eq:predict-y} \\
-\hat{u}_i & = Y_i - \hat{Y}_i \label{eq:residual}
-\end{align}
-And the line represented by Equation \ref{eq:predict-y} is called *the
-sample regression line*.
+- After obtaining the estimators, we can compute the *predicted values*
+  $\hat{Y}_i$ for $i=1, \ldots, n$
+  \[\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i\]
 
-Rearranging Equation \ref{eq:betahat-0}, we have
-\[ \overline{Y} = \hat{\beta}_0 + \hat{\beta}_1 \overline{X} \]
-That is, the sample average point $(\overline{X}, \overline{Y})$ is
-always on the sample regression line.
+- The line represented by the above equation is called *the sample
+  regression line*.
+
+- The sample average point $(\overline{X}, \overline{Y})$ is
+  always on the sample regression line because, from Equation
+  \ref{eq:betahat-0}, we have
+  \[ \overline{Y} = \hat{\beta}_0 + \hat{\beta}_1 \overline{X} \]
+
+*** The residuals
+
+- The *residuals* $\hat{u}_i$ for $i = 1, \ldots, n$ are
+  \[\hat{u}_i = Y_i - \hat{Y}_i\]
+
+- The residuals are the difference between the observed values of
+  $Y_i$ and its predicted value. That is, they are the actual
+  prediction errors we make when using the OLS estimators.
+
+
+** A comparison between the population regression model and the sample counterparts
+
+We should pause here to make a clear distinction between the
+population regression function and model and their counterparts.
+
+*** The population regression function versus the sample regression function
+
+- The population regression function is a function between the
+  conditional mean of $Y$ given $X$ and $X$, that is,
+  \[ E(Y \mid X) = \beta_0 + \beta_1 X_i \]
+  where $\beta_0$ and $\beta_1$ are the population parameters.
+- The sample regression function is a function between the predicted
+  value and $X$, that is,
+  \[ \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i \]
+
+*** The regression errors versus residuals
+
+- The error term, $u_i$, in the population regression model represents the
+  other factors that the population regression function does not take
+  into account. It is the difference between $Y_i$ and $E(Y_i \mid
+  X_i)$. Thus, we have
+  \[Y_i = \beta_0 + \beta_1 X_i + u_i \]
+- The residuals, $\hat{u}_i$, represent the actual mistakes we make with a set of
+  estimators. It is the difference between $Y_i$ and its predicted
+  value $\hat{Y}_i$. Thus, we have
+  \[Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_i + \hat{u}_{i}\]
+
+#+CAPTION: A comparison between the population regression and its sample counterparts
+|                      | Population                          | Sample                                                  |
+|----------------------+-------------------------------------+---------------------------------------------------------|
+| Regression functions | $\beta_{0} + \beta_{1}X_{i}$        | $\hat{\beta}_0 + \hat{\beta}_1 X_i$                     |
+| Parameters           | $\beta_{0}$, $\beta_{1}$            | $\hat{\beta}_{0}$, $\hat{\beta}_{1}$                    |
+| Errors vs residuals  | $u_{i}$                             | $\hat{u}_{i}$                                           |
+| The regression model | $Y_i = \beta_0 + \beta_1 X_i + u_i$ | $Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_i + \hat{u}_{i}$ |
+|----------------------+-------------------------------------+---------------------------------------------------------|
+
 
 
 ** The OLS estimates of the relationship between test scores and the student-teacher ratio
@@ -451,7 +505,7 @@ correctly interpret the estimation results.
   paragraphs in Page 117.)
 
 
-* COMMENT Algebraic Properties of the OLS Estimator
+* Algebraic Properties of the OLS Estimator
 
 The OLS estimator has many good properties. Let's first look at some
 of its algebraic properties. That is, these properties are the results
@@ -536,11 +590,11 @@ TSS &= \sum_{i=1}^n (Y_i - \overline{Y})^2 = \sum_{i=1}^n (Y_i - \hat{Y}_i + \ha
 where the final equality follows from Equations \ref{eq:algebra-ols-1} and \ref{eq:algebra-ols-3}.
 
 
-* TODO COMMENT Measures of Fit
+* Measures of Fit
 
 ** Goodness of Fit: R^{2}
 
-$R^{2}$ is one of the commonly used measures of how well the OLS
+$R^{2}$ is one of the commonly used measures for how well the OLS
 regression line fits the data. $R^{2}$ is the fraction of the sample
 variance of $Y_i$ explained by $X_i$. The sample variance can be
 represented with $TSS$ and the part of sample variance explained by $X$
@@ -552,9 +606,13 @@ $R^{2}$ as
 R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 \end{equation}
 
+$R^2$ is often called the coefficient of determination. It indicates
+the proportion of the variance in the dependent variable that is
+predictable from the independent variable(s).
+
 *** Properties of R^{2}
 
-(1) $R^2 \in [0, 1]$
+**** $R^2 \in [0, 1]$
 
   $R^2 = 0$ when $\hat{\beta}_1 = 0$, that is, $X$ cannot explain the
   variance in $Y$.
@@ -568,29 +626,45 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
   \[ \hat{u}_i = 0 \Rightarrow ESS = \sum_i^n \hat{u}_i^2 = 0
   \Rightarrow R^2 = 1 \]
 
-(2) $R^2 = r^2_{XY}$
+**** $R^2 = r^2_{XY}$
 
   $r_{XY}$ is the sample correlation coefficient, that is,
   \[ r_{XY} = \frac{S_{XY}}{S_X S_Y} = \frac{\sum_i^n(X_i -
-  \overline{X})(Y_i - \overline{Y})}{(\sum_i^n (X_i - \overline{X})^2 \sum_i^n (Y_i -
-  \overline{Y})^2)^{1/2}} \]
+  \overline{X})(Y_i - \overline{Y})}{\left[\sum_i^n (X_i - \overline{X})^2 \sum_i^n (Y_i -
+  \overline{Y})^2 \right]^{1/2}} \]
+
+  To prove $R^2 = r^2_{XY}$, let's look at $SSR$.
+
+  \begin{align*}
+  SSR &= \sum_{i=1}^n (\hat{Y}_i - \overline{Y})^2 = \sum_{i=1}^n (\hat{\beta}_0 + \hat{\beta}_1 X_i - \overline{Y})^2 \\
+  &= \sum_{i=1}^n (\overline{Y} - \hat{\beta}_1 \overline{X} + \hat{\beta}_1 X_i - \overline{Y})^2 \\
+  &= \sum_{i=1}^n \left[ \hat{\beta}_1 (X_i - \overline{X}) \right]^2 = \hat{\beta}_1^2 \sum_{i=1}^n (X_i - \overline{X})^2 \\
+  &= \left[\frac{\sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i=1}^n (X_i - \overline{X})^2}\right]^2 \sum_{i=1}^n (X_i - \overline{X})^2 \\
+  &= \frac{\left[ \sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y}) \right]^2}{\sum_{i=1}^n (X_i - \overline{X})^2}
+  \end{align*}
+
+  It follows that
+  \[
+  R^2 = \frac{SSR}{TSS} = \frac{\left[ \sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y}) \right]^2}{\sum_{i=1}^n (X_i - \overline{X})^2 \sum_{i=1}^n (Y_i - \overline{Y})^2} = r^2_{XY}
+  \]
 
   /Note/: This property holds only for the linear regression model
-  with a regressor and an *intercept*.
+  with *one regressor and an intercept*.
 
-*** The use of R^{2}
-- R^{2} is usually the first statistics that we look at for judging
+*** The use of $R^2$
+
+- $R^2$ is usually the first statistics that we look at for judging
   how well the regression model fits the data.
-- Most computer programs for econometrics and statistics report R^{2}
+- Most computer programs for econometrics and statistics report $R^2$
   in their estimation results.
-- However, we cannot merely rely on R^{2} for judge whether the
+- However, we cannot merely rely on $R^2$ for judge whether the
   regression model is "good" or "bad". For that, we have to use some
   statistics that will be taught soon.
 
 
 ** The standard error of regression (SER) as a measure of fit
 
-Like R^{2}, the standard error of regression (SER) is another measure
+Like $R^2$, the standard error of regression (SER) is another measure
 of fit for the OLS regression.
 
 \begin{equation}
@@ -598,15 +672,16 @@ of fit for the OLS regression.
 \mathrm{SER} = \sqrt{\frac{1}{n-2}\sum^n_{i=1} \hat{u}_i^2} = s
 \end{equation}
 
-- SER has the units of u, which are the units of Y.
+- SER has the same unit of $u_i$, which are the unit of $Y_i$.
 - SER measures the average “size” of the OLS residual (the average “mistake” made by the OLS regression line).
 - The root mean squared error (RMSE) is closely related to the SER:
   \[ \mathrm{RMSE} = \sqrt{\frac{1}{n}\sum^n_{i=2} \hat{u}_i^2} \]
-  As $n \rightarrow \infty$, SER = RMSE.
+  As $n \rightarrow \infty$, $SER = RMSE$.
 
 
-** R^{2} and SER for the application of test scores v.s. class sizes
-- In the application of test scores v.s. class sizes, R^{2} is 0.051
+** $R^2$ and SER for the application of test scores v.s. class sizes
+
+- In the application of test scores v.s. class sizes, $R^2$ is 0.051
   or 5.1%, which implies that the regressor /STR/ explains only 5.1%
   of the variance of the dependent variable /TestScore/.
 - SER is 18.6, which means that standard deviation of the regression
@@ -615,7 +690,12 @@ of fit for the OLS regression.
   model does not fit the data well.
 
 
-* TODO COMMENT The Least Squares Assumptions
+* The Least Squares Assumptions
+
+The last two sections regard the algebraic properties of the OLS
+estimators. Now let's turn to their statistical properties, which are
+built on the following assumptions.
+
 ** Assumption 1: The conditional mean of $u_i$ given $X_i$ is zero
 
 \begin{equation}
@@ -624,7 +704,7 @@ E(u_i | X_i) = 0
 \end{equation}
 
 If Equation \ref{eq:Eu} is satisfied, then $X_i$ is called
-*exogenous*. This assumption can be a little stronger as $E(u|X=x) = 0$
+*exogenous*. This assumption can be stated a little stronger as $E(u|X=x) = 0$
 for any value $x$, that is $E(u_i | X_1, \ldots, X_n) = 0$.
 
 Since $E(u|X=x)=0$, it follows that $E(u)=E(E(u|X))=E(0)=0$. The
@@ -633,85 +713,106 @@ unconditional mean of $u$ is also zero.
 - A benchmark for thinking about this assumption is to consider an
   ideal randomized controlled experiment.
 
-  Because X is assigned randomly, all other individual characteristics –
-  the things that make up u – are distributed independently of X, so u
-  and X are independent Thus, in an ideal randomized controlled
-  experiment, $E(u|X = x) = 0$
+  Because $X$ is assigned randomly, all other individual characteristics –
+  the things that make up $u$ – are distributed independently of $X$, so $u$
+  and $X$ are independent. Thus, in an ideal randomized controlled
+  experiment, $E(u|X = x) = 0$.
 
 - In actual experiments, or with observational data, we will need to
-  think hard about whether $E(u|X = x) = 0$ holds
+  think hard about whether $E(u|X = x) = 0$ holds.
 
-Assumption 1 can be illustrated by Figure [[fig:fig-4-4]].
+Assumption 1 can be illustrated by Figure [[fig:fig-4-4]]. The conditional
+mean, $E(Y \mid X)$, of the conditional density distribution, $f(y
+\mid x)$, is vertically projected right on the population regression
+line $\beta_0 + \beta_1 X$ because $E(Y\mid X) = \beta_0 + \beta_1 X +
+E(u \mid X) = \beta_0 + \beta_1 X$.
 
 #+NAME: fig:fig-4-4
+#+ATTR_HTML: :width 600
+#+ATTR_LATEX: :width 0.7\textwidth
 #+CAPTION: An illustration of $E(u|X=x)=0$
-[[file:img/fig-4-4.png]]
+[[file:figure/fig-4-4.png]]
 
 **** Correlation and conditional mean
 
-\[ E(u_i | X_i) = 0 \Rightarrow \cov(u_i, X_i) = 0 \]
+\[ E(u_i | X_i) = 0 \Rightarrow \mathrm{Cov}(u_i, X_i) = 0 \]
 
-\begin{proof}
+That is, the zero conditional mean of $u_i$ given $X_i$ means that
+they are uncorrelated.
+
 \begin{equation*}
 \begin{split}
-\cov(u_i, X_i) &= E(u_i X_i) - E(u_i) E(X_i) \\
-&= E(E(u_i X_i|X_i)) - E(E(u_i|X_i)) E(X_i) \\
+\mathrm{Cov}(u_i, X_i) &= E(u_i X_i) - E(u_i) E(X_i) \\
 &= E(X_i E(u_i|X_i)) - 0 \cdot E(X_i) \\
 &= 0
 \end{split}
 \end{equation*}
 where the law of iterated expectation is used twice at the second equality.
-\end{proof}
 
-It follows that $\cov(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0$.
+It follows that $\mathrm{Cov}(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0$.
+
 
 ** Assumption 2: $(X_i, Y_i)$ for $i = 1, \ldots, n$ are i.i.d.
-- The individual sample $i$, with which $(X_i, Y_i)$ is associated, is
-  selected randomly from the same joint distribution
-- Since $u_i = Y_i - \beta_0 - \beta_1 X_i$, $u_{i}$ is i.i.d.
-- The violation of the i.i.d. assumption: time series data, $\cov(Y_t,
-  Y_{t-1}) \neq 0$
+
+- Each pair of $X$ and $Y$, i.e., $(X_i, Y_i)$ for $i=1, \ldots, n$, is
+  selected randomly from the same joint distribution of $X$ and $Y$.
+- Since $u_i = Y_i - \beta_0 - \beta_1 X_i$, $u_{i}$ is i.i.d., too.
+- The cases that may violate of the i.i.d. assumption:
+  - Time series data, $\mathrm{Cov}(Y_t, Y_{t-1}) \neq 0$. That is, when
+    we try to regress $Y_t$ on $Y_{t-1}$, and if the current value
+    $Y_t$ depends on $Y_{t-1}$, which is very likely, the independence
+    is violated. We call this violation as serial correlation.
+  - Spatial data, $\mathrm{Cov}(Y_r, Y_s) \neq 0$, where $s$ and $r$
+    refer to two neighboring regions. That is, when we try to regress
+    $Y_r$ on $Y_s$, they may well be correlated because they are
+    adjacent. We call this violation as spatial correlation.
+
 
 ** Assumption 3: large outliers are unlikely
+
 *** $0 < E(X^4_i) < \infty \text{ and } 0 < E(Y_i^4) < \infty$
 
-- A large outlier is an extreme value of X or Y
-- On a technical level, if X and Y are bounded, then they have finite
-  fourth moments.
-- The substance of this assumption is that a large outlier can
-  strongly influence the results – so we need to rule out large
-  outliers.
+- A large outlier is an extreme value of $X$ or $Y$.
+- On a technical level, if $X$ and $Y$ are bounded, then they have finite
+  fourth moments, i.e., finite kurtosis.
+- The essence of this assumption is to say that a large outlier can
+  strongly influence the results. So we need to rule out large
+  outliers in estimation.
 
 *** The influential observations and the leverage effects
 
 - An outlier can be detected by a scatterplot. See Figure [[fig:fig-4-5]].
 
-#+NAME: fig:fig-4-5
-#+CAPTION: How an outlier can influence the OLS estimates
-[[file:img/fig-4-5.png]]
+  #+NAME: fig:fig-4-5
+  #+ATTR_LATEX: :width 0.7\textwidth
+  #+ATTR_HTML: :width 600
+  #+CAPTION: How an outlier can influence the OLS estimates
+  [[file:figure/fig-4-5.png]]
 
 - There are also formal tests for the existence of the influential
   observations, some of which are coded in econometric software, like
   R and Stata.
 
 
+* Sampling Distribution of the OLS Estimators
 
-* TODO COMMENT Sampling Distribution of the OLS Estimators
 ** Unbiasedness and consistency
+
 *** The unbiasedness of $\hat{\beta}_0$ and $\hat{\beta}_1$
-- The randomness of $\hat{\beta}_0$ and $\hat{\beta}_1$
+
+**** The randomness of $\hat{\beta}_0$ and $\hat{\beta}_1$
 
   Since $(X_i, Y_i)$ for $i = 1, \ldots, n$ are randomly drawn from a
   population, different draws can render different estimates, giving
   rise to the randomness of $\hat{\beta}_0$ and $\hat{\beta}_1$.
 
-- The unbiasedness of $\hat{\beta}_0$ and $\hat{\beta}_1$
+**** The unbiasedness of $\hat{\beta}_0$ and $\hat{\beta}_1$
 
   Let the true values of the intercept and the slope be $\beta_0$ and $\beta_1$. Based on the least squares assumption #1: $E(u_i|X_i) = 0$
   \[ E(\hat{\beta}_0) = \beta_0 \text{ and } E(\hat{\beta}_1) =
   \beta_1 \]
 
-- Show that $\hat{\beta}_1$ is unbiased
+**** Show that $\hat{\beta}_1$ is unbiased
 
   Let's rewrite the formula of $\hat{\beta}_1$ here
   \begin{equation}
@@ -719,12 +820,11 @@ It follows that $\cov(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0$.
   \hat{\beta}_1  = \frac{\sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i=1}^n (X_i - \overline{X})^2}
   \end{equation}
 
-  \begin{proof}
-  We first represent $\hat{\beta_1}$ with $\beta_1, X_i, \text{ and } u_i$
-
-  Because $Y_i = \beta_0 + \beta_1 X_i + u_i$, $Y_i - \overline{Y} =
-  \beta_1 (X_i - \overline{X}) + u_i - \overline{u}$, which is then plugged in
-  the numerator in Equation (\ref{eq:betahat-1a}). Then,
+  Given the random samples $(X_i, Y_i)$ for $i=1, \ldots, n$, from
+  $Y_i = \beta_0 + \beta_1 X_i + u_i$, We know that $\overline{Y} =
+  \beta_0 + \beta_1 \overline{X} + \bar{u}$. It follows that $Y_i -
+  \overline{Y} = \beta_1 (X_i - \overline{X}) + u_i - \overline{u}$,
+  Plugging it in the numerator in Equation (\ref{eq:betahat-1a}). Then,
   \begin{equation*}
   \begin{split}
   \sum_i (X_i - \overline{X})(Y_i - \overline{Y}) &= \sum_i (X_i - \overline{X})\left[\beta_1(X_i - \overline{X}) + (u_i - \overline{u}) \right] \\
@@ -732,6 +832,11 @@ It follows that $\cov(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0$.
   &= \beta_1 \sum_i(X_i - \overline{X})^2 + \sum_i (X_i - \overline{X})u_i
   \end{split}
   \end{equation*}
+  
+  In the second equality, we use the fact that $\sum_i (X_i -
+  \overline{X}) = 0$. Note that although we know from the first OLS
+  assumption, $E(u_i) = 0$, we cannot guarantee that $\bar{u} = 0$
+  since $u_1, \ldots, u_n$ are simply random draws of $u_i$. 
 
   Substituting this expression in Equation (\ref{eq:betahat-1a}) yields
 
@@ -744,7 +849,7 @@ It follows that $\cov(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0$.
   the unconditional unbiasedness follows naturally.
   \begin{equation*}
   \begin{split}
-  E(\hat{\beta}_1 | X_1, \ldots, X_n) &= \beta_1 + E\left\lbrace \left[\frac{\frac{1}{n}\sum_i (X_i - \overline{X})u_i}{\frac{1}{n}\sum_i (X_i - \overline{X})^2} \right] | X_1, \ldots, X_n \right\rbrace \\
+  E(\hat{\beta}_1 | X_1, \ldots, X_n) &= \beta_1 + E\left\lbrace \left[\frac{\frac{1}{n}\sum_i (X_i - \overline{X})u_i}{\frac{1}{n}\sum_i (X_i - \overline{X})^2} \right] \mid X_1, \ldots, X_n \right\rbrace \\
   &= \beta_1 + \frac{\frac{1}{n}\sum_i (X_i - \overline{X})E(u_i|X_1, \ldots, X_n)}{\frac{1}{n}\sum_i (X_i - \overline{X})^2} \\
   &= \beta_1\: \text{ (by assumption 1)}
   \end{split}
@@ -753,15 +858,16 @@ It follows that $\cov(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0$.
   It follows that \[E(\hat{\beta}_1) = E(E(\hat{\beta}_1 | X_1, \ldots, X_n)) = \beta_1\]
 
   Therefore, $\hat{\beta}_1$ is an unbiased estimator of $\beta_1$.
-  \end{proof}
 
   The proof of unbiasedness of $\hat{\beta}_0$ is left for exercise.
 
+
 *** The consistency of $\hat{\beta}_0$ and $\hat{\beta}_1$
+
 $\hat{\beta}$ is said to be a consistent estimator
 of $\beta$ if as $n$ goes to infinity, $\hat{\beta}$ is in probability
 close to $\beta$, which can be denoted as $n \rightarrow \infty,
-\hat{\beta} \rarrowd{p} \beta$, or simply as $\plim_{n \rightarrow
+\hat{\beta} \xrightarrow{p} \beta$, or simply as $\plim_{n \rightarrow
 \infty} \hat{\beta} = \beta$.
 
 And the law of large number states that for random i.i.d. samples $x_1,
@@ -771,9 +877,11 @@ $\plim_{n \rightarrow \infty} \frac{1}{n}\sum_i x_i = \mu$.
 Then we can show that $\plim_{n \rightarrow \infty} \hat{\beta}_1 =
 \beta_1$.
 
-*The proof is not required to understand for this course.*
+**** A proof of consistency
 
-\begin{proof}
+*The proof is not required to understand for this course. Therefore,
+you can skip it when you first read the notes.*
+
 From Equation (\ref{eq:betahat-1b}) we can have
 \[
 \plim_{n \rightarrow \infty} (\hat{\beta}_1 -\beta_1) = \plim_{n \rightarrow \infty} \frac{\frac{1}{n}\sum_i (X_i - \overline{X})u_i}{\frac{1}{n}\sum_i (X_i - \overline{X})^2}
@@ -801,12 +909,13 @@ Since $E((X_i - \overline{X})u_i) = 0$, $\mathrm{Var}((X_i - \overline{X})u_i) <
 by the law of large numbers, we have
 \[ \plim_{n \rightarrow \infty} \frac{1}{n} \sum_i (X_i - \overline{X}) u_i = 0 \]
 Therefore, $\plim_{n \rightarrow \infty} \hat{\beta}_1 = \beta_1$.
-\end{proof}
 
 Similarly, we can also prove that $\hat{\beta}_0$ is consistent, that
 is $\plim_{n \rightarrow \infty} \hat{\beta}_0 = \beta_0$.
 
+
 ** The asymptotic normal distribution
+
 The central limit theory states that if $X_1, \ldots, X_n$ with the mean
 $\mu$ and the variance $0 < \sigma^2 < \infty$. Then,
 $\frac{1}{n}\sum_i X_i \xrightarrow{\text{ d }}
@@ -816,33 +925,35 @@ From the proof of consistency, we have already seen that $E((X_i -
 \overline{X})u_i) = 0$, $\mathrm{Var}((X_i - \overline{X})u_i) <\infty$,
 and $X_i, u_i$ for $i=1, \ldots, n$ are i.i.d. By the central limit
 theory, we know that
-\[\frac{1}{n}\sum_i (X_i - \overline{X})u_i \rarrowd{d} N \left(0, \frac{1}{n}\mathrm{Var}\left((X_i - \overline{X})u_i\right) \right) \]
+\[\frac{1}{n}\sum_i (X_i - \overline{X})u_i \xrightarrow{d} N \left(0, \frac{1}{n}\mathrm{Var}\left((X_i - \overline{X})u_i\right) \right) \]
 It follows that from Equation (\ref{eq:betahat-1b}) and the fact that
 $\plim_{n \rightarrow \infty} \frac{1}{n}\sum_i (X_i - \overline{X})^2 = \mathrm{Var}(X_i)$,
 $\hat{\beta}_1$ is asymptotically normally distributed as
-\[ \hat{\beta}_1 \rarrowd{d} N\left( \beta_1, \sigma^2_{\hat{\beta}_1}\right) \]
+\[ \hat{\beta}_1 \xrightarrow{d} N\left( \beta_1, \sigma^2_{\hat{\beta}_1}\right) \]
 where
 \begin{equation}
 \label{eq:sigmabeta-1}
 \sigma^2_{\hat{\beta}_1} = \frac{1}{n}\frac{\mathrm{Var}\left((X_i - \overline{X})u_i\right)}{\mathrm{Var}(X_i)^2}
 \end{equation}
 
-Similarly, we can show that $\hat{\beta}_0 \rarrowd{d} N(\beta_0,
+Similarly, we can show that $\hat{\beta}_0 \xrightarrow{d} N(\beta_0,
 \sigma^2_{\hat{\beta}_0})$, where
 \begin{equation}
 \label{eq:sigmabeta-2}
-\sigma^2_{\hat{\beta}_0} = \frac{1}{n}\frac{\mathrm{Var}(H_i u_i)}{\left( E(H^2_i) \right)^2}, \text{ where }
+\sigma^2_{\hat{\beta}_0} = \frac{1}{n}\frac{\mathrm{Var}(H_i u_i)}{\left( E(H^2_i) \right)^2}, \text{ and }
 H_i = 1 - \left( \frac{\mu_X}{E(X_i^2)} \right)X_i
 \end{equation}
 
 - As $\mathrm{Var}(X_i)$ increases, $\mathrm{Var}(\hat{\beta}_1)$ decreases.
 
+- As $\mathrm{Var}(u_i)$ increases, $\mathrm{Var}(\hat{\beta}_1)$
+  increases.
+
   #+NAME: fig:fig-4-6
   #+CAPTION: The Variance of $\hat{\beta}_1$ and the variance of $X_i$
   #+ATTR_LATEX: :width 0.85\textwidth
-  [[file:img/fig-4-6.png]]
-
-- As $\mathrm{Var}(u_i)$ increases, $\mathrm{Var}(\hat{\beta}_1)$ increases.
+  #+ATTR_HTML: :width 600
+  [[file:figure/fig-4-6.png]]
 
 
 * Footnotes

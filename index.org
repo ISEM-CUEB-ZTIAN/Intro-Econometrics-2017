@@ -61,4 +61,4 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 
 ** Homework set #1
 
-- Homework set #1: [[file:assignment/homework/Homework_1.pdf][Homework_1.pdf]].
+- Homework set #1: [[file:assignment/homework/homework_1/homework_1.pdf][homework_1.pdf]]. Answer: [[file:assignment/homework/homework_1/ans_hw_1.pdf][ans_hw_1.pdf]]

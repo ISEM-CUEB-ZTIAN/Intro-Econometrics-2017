@@ -53,7 +53,7 @@ respectively. First, to make you more familiar with the R language, we
 compute them in a very basic way. Then, we show how to get the same
 results with some powerful functions.
 
-```{r echo=TRUE, results='hide', include=TRUE}
+```{r echo=TRUE, include=TRUE, results='hide'}
   # extract the data for average hourly earnings in 1992 and 2008
   ahe.92 <- cpsdat$ahe[cpsdat$year == 1992]
   ahe.08 <- cpsdat$ahe[cpsdat$year == 2008]

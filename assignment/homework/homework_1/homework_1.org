@@ -134,7 +134,7 @@ numbers refer to those in the book. The due time is *March 13^{th}*.
           wants the size of her test to be 5%?
 
 
-- 3.10 :: Consider the estimator $\tilde{Y}$, defined in Equation
+- 3.11 :: Consider the estimator $\tilde{Y}$, defined in Equation
           (3.1). Show that (a) $E(\tilde{Y}) = \mu_Y$ and (b)
           $\var(\tilde{Y}) = 1.25\sigma^2_Y/n$.
 

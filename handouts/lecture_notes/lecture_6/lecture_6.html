@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-12 Sun 14:55 -->
+<!-- 2017-03-17 Fri 13:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lecture 6: Linear Regression with One Regressor</title>
@@ -256,15 +256,24 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5248180">1. Introduction</a></li>
-<li><a href="#orgafcbe4b">2. The Linear Regression Model</a></li>
+<li><a href="#org63efd99">1. Introduction</a></li>
+<li><a href="#org70f0298">2. The Linear Regression Model</a></li>
+<li><a href="#orgcaafddc">3. The OLS Estimation Method for a Linear Regression Model</a></li>
+<li><a href="#org20686d6">4. Algebraic Properties of the OLS Estimator</a></li>
+<li><a href="#org143f123">5. Measures of Fit</a></li>
+<li><a href="#orgb0a82ff">6. The Least Squares Assumptions</a></li>
+<li><a href="#org9a59ef8">7. Sampling Distribution of the OLS Estimators</a></li>
 </ul>
 </div>
 </div>
+\(
+\DeclareMathOperator*{\plim}{plim}
+\newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+\)
 
 
-<div id="outline-container-org5248180" class="outline-2">
-<h2 id="org5248180"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-org63efd99" class="outline-2">
+<h2 id="org63efd99"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This lecture introduces a linear regression model with one regressor
@@ -288,15 +297,15 @@ multiple regressors.
 </div>
 
 
-<div id="outline-container-orgafcbe4b" class="outline-2">
-<h2 id="orgafcbe4b"><span class="section-number-2">2</span> The Linear Regression Model</h2>
+<div id="outline-container-org70f0298" class="outline-2">
+<h2 id="org70f0298"><span class="section-number-2">2</span> The Linear Regression Model</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgb0fd99e" class="outline-3">
-<h3 id="orgb0fd99e"><span class="section-number-3">2.1</span> What is regression?</h3>
+</div><div id="outline-container-org2f41cb0" class="outline-3">
+<h3 id="org2f41cb0"><span class="section-number-3">2.1</span> What is regression?</h3>
 <div class="outline-text-3" id="text-2-1">
-</div><div id="outline-container-org249ed41" class="outline-4">
-<h4 id="org249ed41">Definition of <b>regress</b> in Merriam-Webster's dictionary</h4>
-<div class="outline-text-4" id="text-org249ed41">
+</div><div id="outline-container-org61445e6" class="outline-4">
+<h4 id="org61445e6">Definition of <b>regress</b> in Merriam-Webster's dictionary</h4>
+<div class="outline-text-4" id="text-org61445e6">
 <p>
 Merriam-Webster gives the following definition of the word "regress":
 </p>
@@ -309,9 +318,9 @@ primitive state or condition</li>
 </div>
 </div>
 
-<div id="outline-container-orgc224da0" class="outline-4">
-<h4 id="orgc224da0">The meaning of regression in statistics?</h4>
-<div class="outline-text-4" id="text-orgc224da0">
+<div id="outline-container-org69c3730" class="outline-4">
+<h4 id="org69c3730">The meaning of regression in statistics?</h4>
+<div class="outline-text-4" id="text-org69c3730">
 <p>
 In statistical modeling, regression analysis is a statistical process
 for estimating the relationships among variables.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> Specifically,
@@ -337,8 +346,8 @@ function</b>.
 </div>
 
 
-<div id="outline-container-orgf67dd18" class="outline-3">
-<h3 id="orgf67dd18"><span class="section-number-3">2.2</span> An example: Test scores versus class size</h3>
+<div id="outline-container-orgc25aa64" class="outline-3">
+<h3 id="orgc25aa64"><span class="section-number-3">2.2</span> An example: Test scores versus class size</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Let's go back to the example of California school districts,
@@ -346,9 +355,9 @@ introduced in Lecture 1.
 </p>
 </div>
 
-<div id="outline-container-org6b6b010" class="outline-4">
-<h4 id="org6b6b010">Research question:</h4>
-<div class="outline-text-4" id="text-org6b6b010">
+<div id="outline-container-orgcbe2b6b" class="outline-4">
+<h4 id="orgcbe2b6b">Research question:</h4>
+<div class="outline-text-4" id="text-orgcbe2b6b">
 <p>
 The research question of this application is: Can reducing class size
 increase students' test scores?
@@ -356,9 +365,9 @@ increase students' test scores?
 </div>
 </div>
 
-<div id="outline-container-org2dccfe3" class="outline-4">
-<h4 id="org2dccfe3">How can we answer the question?</h4>
-<div class="outline-text-4" id="text-org2dccfe3">
+<div id="outline-container-org3ec2e4f" class="outline-4">
+<h4 id="org3ec2e4f">How can we answer the question?</h4>
+<div class="outline-text-4" id="text-org3ec2e4f">
 <ul class="org-ul">
 <li>We randomly choose 42 students and divide them into two classes,
 with one having 20 students and another having 22. And they are
@@ -390,9 +399,9 @@ can improve students' test performance.</li>
 </div>
 </div>
 
-<div id="outline-container-orga89e8ab" class="outline-4">
-<h4 id="orga89e8ab">A simple linear regression model of test scores v.s. class size</h4>
-<div class="outline-text-4" id="text-orga89e8ab">
+<div id="outline-container-org4c43f77" class="outline-4">
+<h4 id="org4c43f77">A simple linear regression model of test scores v.s. class size</h4>
+<div class="outline-text-4" id="text-org4c43f77">
 <p>
 As mentioned above, a simple linear regression function can be used to
 describe the relationship between test scores and class sizes. Since
@@ -428,9 +437,9 @@ becomes the population regression line
 </div>
 </div>
 
-<div id="outline-container-org4c702ef" class="outline-4">
-<h4 id="org4c702ef">A distinction between the population regression function and the population regression model</h4>
-<div class="outline-text-4" id="text-org4c702ef">
+<div id="outline-container-org18e0da7" class="outline-4">
+<h4 id="org18e0da7">A distinction between the population regression function and the population regression model</h4>
+<div class="outline-text-4" id="text-org18e0da7">
 <p>
 Note that here we have two concepts: the population regression
 function and the population regression model. What's their difference?
@@ -455,9 +464,9 @@ deterministic, depending on the value of other factors.</li>
 </div>
 </div>
 
-<div id="outline-container-org41f1850" class="outline-4">
-<h4 id="org41f1850">An interpretation of the population regression model</h4>
-<div class="outline-text-4" id="text-org41f1850">
+<div id="outline-container-org4b7eec9" class="outline-4">
+<h4 id="org4b7eec9">An interpretation of the population regression model</h4>
+<div class="outline-text-4" id="text-org4b7eec9">
 <p>
 Now we have set up the simple linear regression model,
 </p>
@@ -469,7 +478,7 @@ What is \(\beta_1\) and \(\beta_0\) represent in the model?
 </p>
 </div>
 
-<ul class="org-ul"><li><a id="orga61d419"></a>Interpret \(\beta_1\)<br  /><div class="outline-text-5" id="text-orga61d419">
+<ul class="org-ul"><li><a id="org8e4df71"></a>Interpret \(\beta_1\)<br  /><div class="outline-text-5" id="text-org8e4df71">
 <p>
 Let's first look at \(\beta_1\). When we hold other factors constant,
 the only reason for a change in test scores is a change in class
@@ -495,7 +504,7 @@ as the notion of <b>ceteris paribus</b>.
 </p>
 </div></li>
 
-<li><a id="orgc0efb91"></a>Interpret \(\beta_0\)<br  /><div class="outline-text-5" id="text-orgc0efb91">
+<li><a id="orgb2a6375"></a>Interpret \(\beta_0\)<br  /><div class="outline-text-5" id="text-orgb2a6375">
 <p>
 \(\beta_0\) is the intercept in the model. Sometimes it bears real
 meanings, but sometimes it merely presents as an intercept. In this
@@ -510,8 +519,8 @@ axis.
 </div>
 
 
-<div id="outline-container-org0dd3af1" class="outline-3">
-<h3 id="org0dd3af1"><span class="section-number-3">2.3</span> The general linear regression model</h3>
+<div id="outline-container-org4883ff0" class="outline-3">
+<h3 id="org4883ff0"><span class="section-number-3">2.3</span> The general linear regression model</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Let's generalize test scores and class sizes to be two random
@@ -551,20 +560,1105 @@ function(or the population regression line).</li>
 </div>
 
 
-<div id="outline-container-org0971483" class="outline-3">
-<h3 id="org0971483"><span class="section-number-3">2.4</span> An graphical illustration of a linear regression model</h3>
+<div id="outline-container-org95e0d6e" class="outline-3">
+<h3 id="org95e0d6e"><span class="section-number-3">2.4</span> An graphical illustration of a linear regression model</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 The relationship between the data points, the population regression
-line, and the errors (other factors) are illustrated in Figure <a href="#orgc2f4165">1</a>.
+line, and the errors (other factors) are illustrated in Figure <a href="#org73529cd">1</a>.
 </p>
 
 
-<div id="orgc2f4165" class="figure">
+<div id="org73529cd" class="figure">
 <p><img src="figure/fig-4-1.png" alt="fig-4-1.png" width="600" />
 </p>
 <p><span class="figure-number">Figure 1: </span>The Population Regression Line</p>
 </div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgcaafddc" class="outline-2">
+<h2 id="orgcaafddc"><span class="section-number-2">3</span> The OLS Estimation Method for a Linear Regression Model</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org9b18b7e" class="outline-3">
+<h3 id="org9b18b7e"><span class="section-number-3">3.1</span> The intuition for the OLS and minimization</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The most commonly used method to estimate a linear regression model, like
+Equation \ref{eq:single-regress}, is the ordinary least squares (OLS)
+estimation.
+</p>
+
+<p>
+Let's explain the basic idea of the OLS by dissecting its name.
+</p>
+
+<dl class="org-dl">
+<dt>Ordinary</dt><dd>It means that the OLS estimator is a very basic method,
+from which we may derive some variations of the OLS
+estimator, such as the weighted least squares (WLS), and the
+generalized least squares (GLS).</dd>
+
+<dt>Least</dt><dd>It means that the OLS estimator tries to minimize
+something. The "something" is the mistakes we
+make when we try to guess (estimate) the values of the
+parameters in the model. From Equation
+\ref{eq:single-regress}, if our guess for \(\beta_0\) and
+\(\beta_1\) is \(b_0\) and \(b_1\), then the mistake of our guess
+is \(\hat{u}_{i} = Y_{i} - b_0 - b_1 X_i\).</dd>
+
+<dt>Squares</dt><dd>It represent the actual thing (a quantity) that we
+minimize. The OLS does not attempt to minimize each
+\(\hat{u}_{i}\) but to minimize the sum of the squared
+mistakes, \(\sum_{i=1}^n \hat{u}_i^2\). Taking square is to
+avoid possible offsetting between positive and negative values of
+\(\hat{u}_i\) in \(\sum_i \hat{u}_i\).</dd>
+</dl>
+</div>
+</div>
+
+
+<div id="outline-container-org2403dec" class="outline-3">
+<h3 id="org2403dec"><span class="section-number-3">3.2</span> The OLS estimators for \(\beta_0\) and \(\beta_1\)</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Let \(b_0\) and \(b_1\) be some estimators of \(\beta_0\) and \(\beta_1\),
+respectively. <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> Then, the OLS estimator is the
+solution to the following minimization problem.
+</p>
+
+\begin{equation}
+\operatorname*{min}_{b_0, b_1}\: S(b_0, b_1) = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (Y_i - b_0 - b_1 X_i)^2 \label{eq:min-ols}
+\end{equation}
+
+<p>
+where \(S(b_0, b_1)\) is a function of \(b_0\) and \(b_1\), measuring the
+sum of the squared prediction mistakes over all \(n\) observation.
+</p>
+</div>
+
+<div id="outline-container-org2b54183" class="outline-4">
+<h4 id="org2b54183">The mathematical derivation of the OLS estimators for \(\beta_0\) and \(\beta_1\)</h4>
+<div class="outline-text-4" id="text-org2b54183">
+<p>
+We solve the problem by taking the derivative of \(S(b_0, b_1)\) with respect to \(b_0\) and \(b_1\),
+respectively. Suppose \(b_0^*=\hat{\beta}_0\) and \(b^*_1=\hat{\beta}_1\) are the
+solution to the minimization problem. Then the first order conditions
+evaluated at \((\hat{\beta}_0, \hat{\beta}_1)\) are
+</p>
+\begin{align}
+& \frac{\partial S}{\partial b_0}(\hat{\beta}_0, \hat{\beta}_1) = \sum_{i=1}^n (-2)(Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0  \label{eq:b-0} \\
+& \frac{\partial S}{\partial b_1}(\hat{\beta}_0, \hat{\beta}_1) = \sum_{i=1}^n (-2)(Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0 \label{eq:b-1}
+\end{align}
+
+<p>
+Rearranging Equation \ref{eq:b-0}, we get
+</p>
+\begin{gather}
+\sum_{i=1}^n Y_i - n \hat{\beta}_0 - \hat{\beta}_1 \sum_{i=1}^n X_i = 0 \notag  \\
+\hat{\beta}_0 = \frac{1}{n} \sum_{i=1}^n Y_i - \frac{\hat{\beta}_1}{n}\sum_{i=1}^n X_i = \overline{Y} - \hat{\beta}_1 \overline{X} \label{eq:bhat-0}
+\end{gather}
+
+<p>
+Rearranging Equation \ref{eq:b-1} and plugging Equation \ref{eq:bhat-0}, we get
+</p>
+\begin{gather}
+\sum_{i=1}^n X_i Y_i - \hat{\beta}_0 \sum_{i=1}^n X_i - \hat{\beta}_1 \sum_{i=1}^n X^2_i = 0  \notag \\
+\sum_{i=1}^n X_i Y_i - \frac{1}{n}\sum_{i=1}^n X_i \sum_{i=1}^n Y_i + \hat{\beta}_1 \frac{1}{n} \left(\sum_{i=1}^n X_i\right)^2 - \hat{\beta}_1 \sum_{i=1}^n X_i^2 = 0 \notag \\
+\hat{\beta}_1 = \frac{n\sum_{i=1}^n X_i Y_i - \sum_{i=1}^n X_i \sum_{i=1}^n Y_i}{n\sum_{i=1}^n X_i^2 - (\sum_{i=1}^n X_i)^2} \label{eq:bhat-1}
+\end{gather}
+
+<p>
+For the numerator in Equation \ref{eq:bhat-1}, we can show the following
+</p>
+\begin{align*}
+\sum_i(X_i - \overline{X})(Y_i - \overline{Y})
+&= \sum_i X_iY_i - \overline{X}\sum_iY_i - \overline{Y}\sum_iX_i + \sum_i \overline{X}\overline{Y} \\
+&= \sum_i X_iY_i - 2n\overline{X}\overline{Y} + n\overline{X}\overline{Y} \\
+&= \sum_i X_iY_i - n\overline{X}\overline{Y} \\
+&= \frac{1}{n} \left(n\sum_i X_iY_i - \sum_i X_i \sum_i Y_i\right)
+\end{align*}
+
+<p>
+Similarly, we can show that \(\sum_i (X_i - \overline{X})^2 =
+\frac{1}{n} \left[n\sum_i X_i^2 - (\sum_i X_i)^2\right]\).
+</p>
+
+\begin{equation*}
+\hat{\beta}_1 = \frac{\sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i=1}^n (X_i - \overline{X})^2}
+\end{equation*}
+
+<p>
+Since we know that the sample covariance of \(X\) and \(Y\) is \(s_{XY} =
+\frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})\)
+and the sample variance of \(X\) is \(s_X^2 = \frac{1}{n-1} \sum_{i=1}^n
+(X_i - \overline{X})^2\), the equation above can also be written as
+\[ \hat{\beta}_1 = \frac{s_{XY}}{s^2_X}  \]
+</p>
+
+<p>
+In sum, solving the minimization problem (Equation
+\ref{eq:min-ols}), we obtain the OLS estimators for \(\beta_0\) and
+\(\beta_1\) as
+</p>
+\begin{align}
+\hat{\beta}_1 & = \frac{\sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i=1}^n (X_i - \overline{X})^2} = \frac{s_{XY}}{s^2_X}  \label{eq:betahat-1} \\
+\hat{\beta}_0 & = \overline{Y} - \hat{\beta}_1 \overline{X}  \label{eq:betahat-0}
+\end{align}
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org62905ef" class="outline-3">
+<h3 id="org62905ef"><span class="section-number-3">3.3</span> The predicted values, residuals, and the sample regression line</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-orgc9b2ba7" class="outline-4">
+<h4 id="orgc9b2ba7">The predicted values</h4>
+<div class="outline-text-4" id="text-orgc9b2ba7">
+<ul class="org-ul">
+<li>After obtaining the estimators, we can compute the <b>predicted values</b>
+\(\hat{Y}_i\) for \(i=1, \ldots, n\)
+\[\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i\]</li>
+
+<li>The line represented by the above equation is called <b>the sample
+regression line</b>.</li>
+
+<li>The sample average point \((\overline{X}, \overline{Y})\) is
+always on the sample regression line because, from Equation
+\ref{eq:betahat-0}, we have
+\[ \overline{Y} = \hat{\beta}_0 + \hat{\beta}_1 \overline{X} \]</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org792bdf1" class="outline-4">
+<h4 id="org792bdf1">The residuals</h4>
+<div class="outline-text-4" id="text-org792bdf1">
+<ul class="org-ul">
+<li>The <b>residuals</b> \(\hat{u}_i\) for \(i = 1, \ldots, n\) are
+\[\hat{u}_i = Y_i - \hat{Y}_i\]</li>
+
+<li>The residuals are the difference between the observed values of
+\(Y_i\) and its predicted value. That is, they are the actual
+prediction errors we make when using the OLS estimators.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org5c98b23" class="outline-3">
+<h3 id="org5c98b23"><span class="section-number-3">3.4</span> A comparison between the population regression model and the sample counterparts</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+We should pause here to make a clear distinction between the
+population regression function and model and their counterparts.
+</p>
+</div>
+
+<div id="outline-container-org4221b48" class="outline-4">
+<h4 id="org4221b48">The population regression function versus the sample regression function</h4>
+<div class="outline-text-4" id="text-org4221b48">
+<ul class="org-ul">
+<li>The population regression function is a function between the
+conditional mean of \(Y\) given \(X\) and \(X\), that is,
+\[ E(Y \mid X) = \beta_0 + \beta_1 X_i \]
+where \(\beta_0\) and \(\beta_1\) are the population parameters.</li>
+<li>The sample regression function is a function between the predicted
+value and \(X\), that is,
+\[ \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i \]</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6d461f9" class="outline-4">
+<h4 id="org6d461f9">The regression errors versus residuals</h4>
+<div class="outline-text-4" id="text-org6d461f9">
+<ul class="org-ul">
+<li>The error term, \(u_i\), in the population regression model represents the
+other factors that the population regression function does not take
+into account. It is the difference between \(Y_i\) and \(E(Y_i \mid
+  X_i)\). Thus, we have
+\[Y_i = \beta_0 + \beta_1 X_i + u_i \]</li>
+<li>The residuals, \(\hat{u}_i\), represent the actual mistakes we make with a set of
+estimators. It is the difference between \(Y_i\) and its predicted
+value \(\hat{Y}_i\). Thus, we have
+\[Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_i + \hat{u}_{i}\]</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> A comparison between the population regression and its sample counterparts</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Population</th>
+<th scope="col" class="org-left">Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Regression functions</td>
+<td class="org-left">\(\beta_{0} + \beta_{1}X_{i}\)</td>
+<td class="org-left">\(\hat{\beta}_0 + \hat{\beta}_1 X_i\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Parameters</td>
+<td class="org-left">\(\beta_{0}\), \(\beta_{1}\)</td>
+<td class="org-left">\(\hat{\beta}_{0}\), \(\hat{\beta}_{1}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Errors vs residuals</td>
+<td class="org-left">\(u_{i}\)</td>
+<td class="org-left">\(\hat{u}_{i}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">The regression model</td>
+<td class="org-left">\(Y_i = \beta_0 + \beta_1 X_i + u_i\)</td>
+<td class="org-left">\(Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_i + \hat{u}_{i}\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org42fe51b" class="outline-3">
+<h3 id="org42fe51b"><span class="section-number-3">3.5</span> The OLS estimates of the relationship between test scores and the student-teacher ratio</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+Let's come back to the application of test scores versus the
+student-teacher ratios in California school districts. The goal is to
+estimate the effect of class sizes, measured by the student-teacher
+ratios, on test scores. Before setting up a formal regression model,
+it is always a good practice to glance over the data using some
+exploratory data analysis techniques.
+</p>
+</div>
+
+<div id="outline-container-orgc257a65" class="outline-4">
+<h4 id="orgc257a65">Exploratory analysis</h4>
+<div class="outline-text-4" id="text-orgc257a65">
+</div><ul class="org-ul"><li><a id="orgf876264"></a>Basic summary statistics<br  /><div class="outline-text-5" id="text-orgf876264">
+<p>
+We first need to compute basic summary statistics to see the sample
+distribution of the data. Some commonly used summary statistics
+include mean, standard deviation, median, minimum, maximum, and
+quantile (percentile), etc. Table <a href="#org3aa23d4">2</a> summarizes the
+distribution of test scores and class sizes for the sample.
+</p>
+
+<table id="org3aa23d4" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Summary Of distributions of student-teacher ratios and test scores</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">Average</th>
+<th scope="col" class="org-right">S.t.d.</th>
+<th scope="col" class="org-right">10%</th>
+<th scope="col" class="org-right">25%</th>
+<th scope="col" class="org-right">40%</th>
+<th scope="col" class="org-right">50%</th>
+<th scope="col" class="org-right">60%</th>
+<th scope="col" class="org-right">75%</th>
+<th scope="col" class="org-right">90%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><i>TestScore</i></td>
+<td class="org-right">654.16</td>
+<td class="org-right">19.05</td>
+<td class="org-right">630.4</td>
+<td class="org-right">640.05</td>
+<td class="org-right">649.07</td>
+<td class="org-right">654.45</td>
+<td class="org-right">659.4</td>
+<td class="org-right">666.66</td>
+<td class="org-right">678.86</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>STR</i></td>
+<td class="org-right">19.64</td>
+<td class="org-right">1.89</td>
+<td class="org-right">17.35</td>
+<td class="org-right">18.58</td>
+<td class="org-right">19.27</td>
+<td class="org-right">19.72</td>
+<td class="org-right">20.08</td>
+<td class="org-right">20.87</td>
+<td class="org-right">21.87</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+
+<li><a id="org825b437"></a>Scatterplot<br  /><div class="outline-text-5" id="text-org825b437">
+<p>
+A scatterplot visualizes the relationship between two variables
+straightforwardly, which is helpful for us to decide what a functional
+form a regression model should properly take. Figure <a href="#orge4eca9b">2</a>
+shows that test scores and student-teacher ratios may be negatively
+related. The correlation coefficient between the two variables is
+-0.23, verifying the existence of a weak negative relationship.
+</p>
+
+
+<div id="orge4eca9b" class="figure">
+<p><img src="figure/fig-4-2.png" alt="fig-4-2.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 2: </span>The scatterplot between student-teacher ratios and test scores</p>
+</div>
+</div></li></ul>
+</div>
+
+<div id="outline-container-org58ba2e1" class="outline-4">
+<h4 id="org58ba2e1">Regression analysis</h4>
+<div class="outline-text-4" id="text-org58ba2e1">
+<p>
+After exploratory analysis, we can estimate the linear model. Although
+the formula of computing \(\beta_1\) and \(\beta_0\) (Equations
+\ref{eq:betahat-1} and \ref{eq:betahat-0}) seems complicated, the
+practical estimation procedure is simplified by using computer
+software, like R. For now, let's simply present the estimation
+results in the following equation,
+</p>
+
+\begin{equation}
+\label{eq:testscr-str-1e}
+\widehat{TestScore} = 698.93 - 2.28 \times STR
+\end{equation}
+
+<p>
+We can draw the sample regression line represented by Equation
+\ref{eq:testscr-str-1e} in the scatterplot to eyeball how well the
+regression model fits the data.
+</p>
+
+
+<div class="figure">
+<p><img src="figure/fig-4-3.png" alt="fig-4-3.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 3: </span>The estimated regression line for the California data</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbbc2b6c" class="outline-4">
+<h4 id="orgbbc2b6c">Interpretation of the estimated coefficients</h4>
+<div class="outline-text-4" id="text-orgbbc2b6c">
+<p>
+Upon obtaining the coefficient estimates, what we need to do next
+includes hypothesis tests, model specification tests, robustness (or
+sensitivity) test, and interpretation. Let's first see how to
+correctly interpret the estimation results.
+</p>
+
+<ul class="org-ul">
+<li>Our main interest is in the slope that tell us how much a unit
+change in student-teacher ratios will cause test scores to
+change. The slope of -2.28 means that an increase in the
+student-teacher ratio by one student per class is, on average,
+associated with a decline in district-wide test scores by 2.28
+points on the test.</li>
+<li>The intercept literally means that if the student-teacher ratio is
+zero, the average district-wide test scores will be 698.9. However,
+it is nonsense for having some positive test scores when the
+student-teacher ratio is zero. Therefore, the intercept term in this
+case merely serves as determining the level of the sample regression
+line.</li>
+<li>The mere number of -2.28 really does not make much sense for the
+readers of your research. We have to put it into the context of
+California school district to avoid ridiculous results even though
+the estimation itself is correct. (Read the discussion in the
+paragraphs in Page 117.)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org20686d6" class="outline-2">
+<h2 id="org20686d6"><span class="section-number-2">4</span> Algebraic Properties of the OLS Estimator</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The OLS estimator has many good properties. Let's first look at some
+of its algebraic properties. That is, these properties are the results
+of the minimization problem in Equation \eqref{eq:min-ols}, regardless of any
+statistical assumptions we will introduce in the next sections.
+</p>
+</div>
+
+<div id="outline-container-orgea7b540" class="outline-3">
+<h3 id="orgea7b540"><span class="section-number-3">4.1</span> TSS, ESS, and SSR</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>From \(Y_i = \hat{Y}_i + \hat{u}_i\), we can define
+<ul class="org-ul">
+<li><b>The total sum of squares</b>: \(TSS = \sum_{i=1}^n (Y_i - \overline{Y})^2\)</li>
+<li><b>The explained sum of squares</b>: \(ESS = \sum_{i=1}^n (\hat{Y}_i - \overline{Y})^2\)</li>
+<li><b>The sum of squared residuals</b>: \(SSR = \sum_{i=1}^n \hat{u}_i^2\)</li>
+</ul></li>
+</ul>
+
+<p>
+Note that TSS, ESS, and SSR all take the form of "deviation from
+the mean". This form is only valid when an intercept is included in the
+regression model.<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgc1720da" class="outline-3">
+<h3 id="orgc1720da"><span class="section-number-3">4.2</span> Some algebraic properties among \(\hat{u}_i\), \(\hat{Y}_i\), \(Y_i\), and \(X_i\)</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+The OLS residuals and the predicted values satisfy the following
+equations:<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>
+</p>
+
+\begin{gather}
+\sum_{i=1}^n \hat{u}_i = 0 \label{eq:algebra-ols-1} \\
+\frac{1}{n} \sum_{i=1}^n \hat{Y}_i = \overline{Y} \label{eq:algebra-ols-2} \\
+\sum_{i=1}^n \hat{u}_i X_i = 0 \label{eq:algebra-ols-3} \\
+TSS = ESS + SSR \label{eq:tss-ess}
+\end{gather}
+</div>
+</div>
+
+
+<div id="outline-container-orgb8fec18" class="outline-3">
+<h3 id="orgb8fec18"><span class="section-number-3">4.3</span> The proof of these properties</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Here, I just prove Equation \ref{eq:tss-ess}. The proofs for the other
+equations above are in Appendix 4.3 in the textbook.
+</p>
+</div>
+
+<div id="outline-container-orgdc4d6fb" class="outline-4">
+<h4 id="orgdc4d6fb">Proof of Equation \ref{eq:algebra-ols-1}</h4>
+<div class="outline-text-4" id="text-orgdc4d6fb">
+<p>
+From Equation \ref{eq:betahat-0} we can write the OLS residuals as
+\[\hat{u}_i = Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i = (Y_i -
+\overline{Y}) - \hat{\beta}_1 (X_i - \overline{X})\]
+Thus
+</p>
+\begin{equation*}
+\sum_{i=1}^n \hat{u}_i = \sum_{i=1}^n (Y_i - \overline{Y}) - \hat{\beta}_1 \sum_{i=1}^n (X_i - \overline{X})
+\end{equation*}
+
+<p>
+By definition of the sample average, we have
+\[\sum_{i=1}^n (Y_i - \overline{Y})=0 \text{ and } \sum_{i=1}^n (X_i - \overline{X})=0\]
+It follows that \(\sum_{i=1}^n \hat{u}_i = 0\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org509ef4c" class="outline-4">
+<h4 id="org509ef4c">Proof of Equation \ref{eq:algebra-ols-2}</h4>
+<div class="outline-text-4" id="text-org509ef4c">
+<p>
+Note that \(Y_i = \hat{Y}_i + \hat{u}_i\). So
+\[\sum_{i=1}^n Y_i =
+\sum_{i=1}^n \hat{Y}_i + \sum_{i=1}^n \hat{u}_i = \sum_{i=1}^n
+\hat{Y}_i\]
+It follows that \(\overline{\hat{Y}} = (1/n)\sum_{i=1}^n \hat{Y}_i = \overline{Y}\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2d9ecab" class="outline-4">
+<h4 id="org2d9ecab">Proof of Equation \ref{eq:algebra-ols-3}</h4>
+<div class="outline-text-4" id="text-org2d9ecab">
+<p>
+\(\sum_{i=1}^n \hat{u}_i = 0\) implies that
+</p>
+
+\begin{align*}
+& \sum_{i=1}^n \hat{u}_i X_i \\
+=& \sum_{i=1}^n \hat{u}_i (X_i - \overline{X}) \\
+=& \sum_{i=1}^n \left[ (Y_i - \overline{Y}) - \hat{\beta}_1 (X_i - \overline{X}) \right] (X_i - \overline{X}) \\
+=& \sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y}) - \hat{\beta}_1 \sum_{i=1}^n (X_i -\overline{X})^2 = 0
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-org713e236" class="outline-4">
+<h4 id="org713e236">Proof of \(TSS = ESS + SSR\)</h4>
+<div class="outline-text-4" id="text-org713e236">
+\begin{equation*}
+\begin{split}
+TSS &= \sum_{i=1}^n (Y_i - \overline{Y})^2 = \sum_{i=1}^n (Y_i - \hat{Y}_i + \hat{Y}_i - \overline{Y})^2 \\
+&= \sum_{i=1}^n (Y_i - \hat{Y}_i)^2 + \sum_{i=1}^n (\hat{Y}_i - \overline{Y})^2 + 2\sum_{i=1}^n (Y_i - \hat{Y}_i)(\hat{Y}_i - \overline{Y}) \\
+&= SSR + ESS + 2\sum_{i=1}^n \hat{u}_i \hat{Y}_i \\
+&= SSR + ESS + 2\sum_{i=1}^n \hat{u}_i(\hat{\beta}_0 + \hat{\beta}_1 X_i) \\
+&= SSR + ESS + 2(\hat{\beta}_0 \sum_{i=1}^n \hat{u}_i + \hat{\beta}_1\sum_{i=1}^n \hat{u}_i X_i) \\
+&= SSR + ESS
+\end{split}
+\end{equation*}
+<p>
+where the final equality follows from Equations \ref{eq:algebra-ols-1} and \ref{eq:algebra-ols-3}.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org143f123" class="outline-2">
+<h2 id="org143f123"><span class="section-number-2">5</span> Measures of Fit</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgb496ed0" class="outline-3">
+<h3 id="orgb496ed0"><span class="section-number-3">5.1</span> Goodness of Fit: R<sup>2</sup></h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+\(R^{2}\) is one of the commonly used measures for how well the OLS
+regression line fits the data. \(R^{2}\) is the fraction of the sample
+variance of \(Y_i\) explained by \(X_i\). The sample variance can be
+represented with \(TSS\) and the part of sample variance explained by \(X\)
+can be represented by \(ESS\). Therefore, mathematically, we can define
+\(R^{2}\) as
+</p>
+
+\begin{equation}
+\label{eq:rsquared}
+R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
+\end{equation}
+
+<p>
+\(R^2\) is often called the coefficient of determination. It indicates
+the proportion of the variance in the dependent variable that is
+predictable from the independent variable(s).
+</p>
+</div>
+
+<div id="outline-container-orgcb02101" class="outline-4">
+<h4 id="orgcb02101">Properties of R<sup>2</sup></h4>
+<div class="outline-text-4" id="text-orgcb02101">
+</div><ul class="org-ul"><li><a id="org4007c9b"></a>\(R^2 \in [0, 1]\)<br  /><div class="outline-text-5" id="text-org4007c9b">
+<p>
+\(R^2 = 0\) when \(\hat{\beta}_1 = 0\), that is, \(X\) cannot explain the
+variance in \(Y\).
+</p>
+\begin{equation*}
+\hat{\beta}_1 = 0 \Rightarrow Y_i = \hat{\beta}_0 + \hat{u}_i
+\Rightarrow \hat{Y}_i = \overline{Y} = \hat{\beta}_0 \Rightarrow ESS
+= \sum_i^n (\hat{Y}_i - \overline{Y})^2 = 0 \Rightarrow R^2 = 0
+\end{equation*}
+<p>
+\(R^2 = 1\) when \(\hat{u}_i = 0\) for all \(i = 1, \ldots, n\), that is,
+the regression line fits all the sample data perfectly.
+\[ \hat{u}_i = 0 \Rightarrow ESS = \sum_i^n \hat{u}_i^2 = 0
+  \Rightarrow R^2 = 1 \]
+</p>
+</div></li>
+
+<li><a id="org20e0c83"></a>\(R^2 = r^2_{XY}\)<br  /><div class="outline-text-5" id="text-org20e0c83">
+<p>
+\(r_{XY}\) is the sample correlation coefficient, that is,
+\[ r_{XY} = \frac{S_{XY}}{S_X S_Y} = \frac{\sum_i^n(X_i -
+  \overline{X})(Y_i - \overline{Y})}{\left[\sum_i^n (X_i - \overline{X})^2 \sum_i^n (Y_i -
+  \overline{Y})^2 \right]^{1/2}} \]
+</p>
+
+<p>
+To prove \(R^2 = r^2_{XY}\), let's look at \(SSR\).
+</p>
+
+\begin{align*}
+SSR &= \sum_{i=1}^n (\hat{Y}_i - \overline{Y})^2 = \sum_{i=1}^n (\hat{\beta}_0 + \hat{\beta}_1 X_i - \overline{Y})^2 \\
+&= \sum_{i=1}^n (\overline{Y} - \hat{\beta}_1 \overline{X} + \hat{\beta}_1 X_i - \overline{Y})^2 \\
+&= \sum_{i=1}^n \left[ \hat{\beta}_1 (X_i - \overline{X}) \right]^2 = \hat{\beta}_1^2 \sum_{i=1}^n (X_i - \overline{X})^2 \\
+&= \left[\frac{\sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i=1}^n (X_i - \overline{X})^2}\right]^2 \sum_{i=1}^n (X_i - \overline{X})^2 \\
+&= \frac{\left[ \sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y}) \right]^2}{\sum_{i=1}^n (X_i - \overline{X})^2}
+\end{align*}
+
+<p>
+It follows that
+\[
+  R^2 = \frac{SSR}{TSS} = \frac{\left[ \sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y}) \right]^2}{\sum_{i=1}^n (X_i - \overline{X})^2 \sum_{i=1}^n (Y_i - \overline{Y})^2} = r^2_{XY}
+  \]
+</p>
+
+<p>
+<i>Note</i>: This property holds only for the linear regression model
+with <b>one regressor and an intercept</b>.
+</p>
+</div></li></ul>
+</div>
+
+<div id="outline-container-orgd833064" class="outline-4">
+<h4 id="orgd833064">The use of \(R^2\)</h4>
+<div class="outline-text-4" id="text-orgd833064">
+<ul class="org-ul">
+<li>\(R^2\) is usually the first statistics that we look at for judging
+how well the regression model fits the data.</li>
+<li>Most computer programs for econometrics and statistics report \(R^2\)
+in their estimation results.</li>
+<li>However, we cannot merely rely on \(R^2\) for judge whether the
+regression model is "good" or "bad". For that, we have to use some
+statistics that will be taught soon.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org41af4a4" class="outline-3">
+<h3 id="org41af4a4"><span class="section-number-3">5.2</span> The standard error of regression (SER) as a measure of fit</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Like \(R^2\), the standard error of regression (SER) is another measure
+of fit for the OLS regression.
+</p>
+
+\begin{equation}
+\label{eq:ser}
+\mathrm{SER} = \sqrt{\frac{1}{n-2}\sum^n_{i=1} \hat{u}_i^2} = s
+\end{equation}
+
+<ul class="org-ul">
+<li>SER has the same unit of \(u_i\), which are the unit of \(Y_i\).</li>
+<li>SER measures the average “size” of the OLS residual (the average “mistake” made by the OLS regression line).</li>
+<li>The root mean squared error (RMSE) is closely related to the SER:
+\[ \mathrm{RMSE} = \sqrt{\frac{1}{n}\sum^n_{i=2} \hat{u}_i^2} \]
+As \(n \rightarrow \infty\), \(SER = RMSE\).</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org266840e" class="outline-3">
+<h3 id="org266840e"><span class="section-number-3">5.3</span> \(R^2\) and SER for the application of test scores v.s. class sizes</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>In the application of test scores v.s. class sizes, \(R^2\) is 0.051
+or 5.1%, which implies that the regressor <i>STR</i> explains only 5.1%
+of the variance of the dependent variable <i>TestScore</i>.</li>
+<li>SER is 18.6, which means that standard deviation of the regression
+residuals is 18.6 points on the test. The magnitude of SER is so
+large that, in another way, shows that the simple linear regression
+model does not fit the data well.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb0a82ff" class="outline-2">
+<h2 id="orgb0a82ff"><span class="section-number-2">6</span> The Least Squares Assumptions</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+The last two sections regard the algebraic properties of the OLS
+estimators. Now let's turn to their statistical properties, which are
+built on the following assumptions.
+</p>
+</div>
+
+<div id="outline-container-org6c896f0" class="outline-3">
+<h3 id="org6c896f0"><span class="section-number-3">6.1</span> Assumption 1: The conditional mean of \(u_i\) given \(X_i\) is zero</h3>
+<div class="outline-text-3" id="text-6-1">
+\begin{equation}
+\label{eq:Eu}
+E(u_i | X_i) = 0
+\end{equation}
+
+<p>
+If Equation \ref{eq:Eu} is satisfied, then \(X_i\) is called
+<b>exogenous</b>. This assumption can be stated a little stronger as \(E(u|X=x) = 0\)
+for any value \(x\), that is \(E(u_i | X_1, \ldots, X_n) = 0\).
+</p>
+
+<p>
+Since \(E(u|X=x)=0\), it follows that \(E(u)=E(E(u|X))=E(0)=0\). The
+unconditional mean of \(u\) is also zero.
+</p>
+
+<ul class="org-ul">
+<li><p>
+A benchmark for thinking about this assumption is to consider an
+ideal randomized controlled experiment.
+</p>
+
+<p>
+Because \(X\) is assigned randomly, all other individual characteristics –
+the things that make up \(u\) – are distributed independently of \(X\), so \(u\)
+and \(X\) are independent. Thus, in an ideal randomized controlled
+experiment, \(E(u|X = x) = 0\).
+</p></li>
+
+<li>In actual experiments, or with observational data, we will need to
+think hard about whether \(E(u|X = x) = 0\) holds.</li>
+</ul>
+
+<p>
+Assumption 1 can be illustrated by Figure <a href="#org89dc4db">4</a>. The conditional
+mean, \(E(Y \mid X)\), of the conditional density distribution, \(f(y
+\mid x)\), is vertically projected right on the population regression
+line \(\beta_0 + \beta_1 X\) because \(E(Y\mid X) = \beta_0 + \beta_1 X +
+E(u \mid X) = \beta_0 + \beta_1 X\).
+</p>
+
+
+<div id="org89dc4db" class="figure">
+<p><img src="figure/fig-4-4.png" alt="fig-4-4.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 4: </span>An illustration of \(E(u|X=x)=0\)</p>
+</div>
+</div>
+
+<ul class="org-ul"><li><a id="org18a2364"></a>Correlation and conditional mean<br  /><div class="outline-text-5" id="text-org18a2364">
+<p>
+\[ E(u_i | X_i) = 0 \Rightarrow \mathrm{Cov}(u_i, X_i) = 0 \]
+</p>
+
+<p>
+That is, the zero conditional mean of \(u_i\) given \(X_i\) means that
+they are uncorrelated.
+</p>
+
+\begin{equation*}
+\begin{split}
+\mathrm{Cov}(u_i, X_i) &= E(u_i X_i) - E(u_i) E(X_i) \\
+&= E(X_i E(u_i|X_i)) - 0 \cdot E(X_i) \\
+&= 0
+\end{split}
+\end{equation*}
+<p>
+where the law of iterated expectation is used twice at the second equality.
+</p>
+
+<p>
+It follows that \(\mathrm{Cov}(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0\).
+</p>
+</div></li></ul>
+</div>
+
+
+<div id="outline-container-orge4bef6a" class="outline-3">
+<h3 id="orge4bef6a"><span class="section-number-3">6.2</span> Assumption 2: \((X_i, Y_i)\) for \(i = 1, \ldots, n\) are i.i.d.</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Each pair of \(X\) and \(Y\), i.e., \((X_i, Y_i)\) for \(i=1, \ldots, n\), is
+selected randomly from the same joint distribution of \(X\) and \(Y\).</li>
+<li>Since \(u_i = Y_i - \beta_0 - \beta_1 X_i\), \(u_{i}\) is i.i.d., too.</li>
+<li>The cases that may violate of the i.i.d. assumption:
+<ul class="org-ul">
+<li>Time series data, \(\mathrm{Cov}(Y_t, Y_{t-1}) \neq 0\). That is, when
+we try to regress \(Y_t\) on \(Y_{t-1}\), and if the current value
+\(Y_t\) depends on \(Y_{t-1}\), which is very likely, the independence
+is violated. We call this violation as serial correlation.</li>
+<li>Spatial data, \(\mathrm{Cov}(Y_r, Y_s) \neq 0\), where \(s\) and \(r\)
+refer to two neighboring regions. That is, when we try to regress
+\(Y_r\) on \(Y_s\), they may well be correlated because they are
+adjacent. We call this violation as spatial correlation.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org2d0c7ab" class="outline-3">
+<h3 id="org2d0c7ab"><span class="section-number-3">6.3</span> Assumption 3: large outliers are unlikely</h3>
+<div class="outline-text-3" id="text-6-3">
+</div><div id="outline-container-org5590bd7" class="outline-4">
+<h4 id="org5590bd7">\(0 < E(X^4_i) < \infty \text{ and } 0 < E(Y_i^4) < \infty\)</h4>
+<div class="outline-text-4" id="text-org5590bd7">
+<ul class="org-ul">
+<li>A large outlier is an extreme value of \(X\) or \(Y\).</li>
+<li>On a technical level, if \(X\) and \(Y\) are bounded, then they have finite
+fourth moments, i.e., finite kurtosis.</li>
+<li>The essence of this assumption is to say that a large outlier can
+strongly influence the results. So we need to rule out large
+outliers in estimation.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org840d185" class="outline-4">
+<h4 id="org840d185">The influential observations and the leverage effects</h4>
+<div class="outline-text-4" id="text-org840d185">
+<ul class="org-ul">
+<li><p>
+An outlier can be detected by a scatterplot. See Figure <a href="#orgb4dc3c6">5</a>.
+</p>
+
+
+<div id="orgb4dc3c6" class="figure">
+<p><img src="figure/fig-4-5.png" alt="fig-4-5.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 5: </span>How an outlier can influence the OLS estimates</p>
+</div></li>
+
+<li>There are also formal tests for the existence of the influential
+observations, some of which are coded in econometric software, like
+R and Stata.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org9a59ef8" class="outline-2">
+<h2 id="org9a59ef8"><span class="section-number-2">7</span> Sampling Distribution of the OLS Estimators</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-org7abaabc" class="outline-3">
+<h3 id="org7abaabc"><span class="section-number-3">7.1</span> Unbiasedness and consistency</h3>
+<div class="outline-text-3" id="text-7-1">
+</div><div id="outline-container-org99d079e" class="outline-4">
+<h4 id="org99d079e">The unbiasedness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)</h4>
+<div class="outline-text-4" id="text-org99d079e">
+</div><ul class="org-ul"><li><a id="org865cc9a"></a>The randomness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)<br  /><div class="outline-text-5" id="text-org865cc9a">
+<p>
+Since \((X_i, Y_i)\) for \(i = 1, \ldots, n\) are randomly drawn from a
+population, different draws can render different estimates, giving
+rise to the randomness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\).
+</p>
+</div></li>
+
+<li><a id="orga504b43"></a>The unbiasedness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)<br  /><div class="outline-text-5" id="text-orga504b43">
+<p>
+Let the true values of the intercept and the slope be \(\beta_0\) and \(\beta_1\). Based on the least squares assumption #1: \(E(u_i|X_i) = 0\)
+\[ E(\hat{\beta}_0) = \beta_0 \text{ and } E(\hat{\beta}_1) =
+  \beta_1 \]
+</p>
+</div></li>
+
+<li><a id="org4346e13"></a>Show that \(\hat{\beta}_1\) is unbiased<br  /><div class="outline-text-5" id="text-org4346e13">
+<p>
+Let's rewrite the formula of \(\hat{\beta}_1\) here
+</p>
+\begin{equation}
+\label{eq:betahat-1a}
+\hat{\beta}_1  = \frac{\sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i=1}^n (X_i - \overline{X})^2}
+\end{equation}
+
+<p>
+Given the random samples \((X_i, Y_i)\) for \(i=1, \ldots, n\), from
+\(Y_i = \beta_0 + \beta_1 X_i + u_i\), We know that \(\overline{Y} =
+  \beta_0 + \beta_1 \overline{X} + \bar{u}\). It follows that \(Y_i -
+  \overline{Y} = \beta_1 (X_i - \overline{X}) + u_i - \overline{u}\),
+Plugging it in the numerator in Equation (\ref{eq:betahat-1a}). Then,
+</p>
+\begin{equation*}
+\begin{split}
+\sum_i (X_i - \overline{X})(Y_i - \overline{Y}) &= \sum_i (X_i - \overline{X})\left[\beta_1(X_i - \overline{X}) + (u_i - \overline{u}) \right] \\
+&= \beta_1 \sum_i(X_i - \overline{X})^2 + \sum_i (X_i - \overline{X})u_i - \overline{u}\sum_i (X_i - \overline{X}) \\
+&= \beta_1 \sum_i(X_i - \overline{X})^2 + \sum_i (X_i - \overline{X})u_i
+\end{split}
+\end{equation*}
+
+<p>
+In the second equality, we use the fact that \(\sum_i (X_i -
+  \overline{X}) = 0\). Note that although we know from the first OLS
+assumption, \(E(u_i) = 0\), we cannot guarantee that \(\bar{u} = 0\)
+since \(u_1, \ldots, u_n\) are simply random draws of \(u_i\). 
+</p>
+
+<p>
+Substituting this expression in Equation (\ref{eq:betahat-1a}) yields
+</p>
+
+\begin{equation}
+\label{eq:betahat-1b}
+\hat{\beta}_1 = \beta_1 + \frac{\frac{1}{n}\sum_i (X_i - \overline{X})u_i}{\frac{1}{n}\sum_i (X_i - \overline{X})^2}
+\end{equation}
+
+<p>
+We prove that \(\hat{\beta}_1\) is conditionally unbiased, from which
+the unconditional unbiasedness follows naturally.
+</p>
+\begin{equation*}
+\begin{split}
+E(\hat{\beta}_1 | X_1, \ldots, X_n) &= \beta_1 + E\left\lbrace \left[\frac{\frac{1}{n}\sum_i (X_i - \overline{X})u_i}{\frac{1}{n}\sum_i (X_i - \overline{X})^2} \right] \mid X_1, \ldots, X_n \right\rbrace \\
+&= \beta_1 + \frac{\frac{1}{n}\sum_i (X_i - \overline{X})E(u_i|X_1, \ldots, X_n)}{\frac{1}{n}\sum_i (X_i - \overline{X})^2} \\
+&= \beta_1\: \text{ (by assumption 1)}
+\end{split}
+\end{equation*}
+
+<p>
+It follows that \[E(\hat{\beta}_1) = E(E(\hat{\beta}_1 | X_1, \ldots, X_n)) = \beta_1\]
+</p>
+
+<p>
+Therefore, \(\hat{\beta}_1\) is an unbiased estimator of \(\beta_1\).
+</p>
+
+<p>
+The proof of unbiasedness of \(\hat{\beta}_0\) is left for exercise.
+</p>
+</div></li></ul>
+</div>
+
+
+<div id="outline-container-org08b2539" class="outline-4">
+<h4 id="org08b2539">The consistency of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)</h4>
+<div class="outline-text-4" id="text-org08b2539">
+<p>
+\(\hat{\beta}\) is said to be a consistent estimator
+of \(\beta\) if as \(n\) goes to infinity, \(\hat{\beta}\) is in probability
+close to \(\beta\), which can be denoted as \(n \rightarrow \infty,
+\hat{\beta} \xrightarrow{p} \beta\), or simply as \(\plim_{n \rightarrow
+\infty} \hat{\beta} = \beta\).
+</p>
+
+<p>
+And the law of large number states that for random i.i.d. samples \(x_1,
+\ldots, x_n\), if \(E(x_i) = \mu\) and \(\mathrm{Var}(x_i) < \infty\), then
+\(\plim_{n \rightarrow \infty} \frac{1}{n}\sum_i x_i = \mu\).
+</p>
+
+<p>
+Then we can show that \(\plim_{n \rightarrow \infty} \hat{\beta}_1 =
+\beta_1\).
+</p>
+</div>
+
+<ul class="org-ul"><li><a id="orgbbe9c77"></a>A proof of consistency<br  /><div class="outline-text-5" id="text-orgbbe9c77">
+<p>
+<b>The proof is not required to understand for this course. Therefore,
+you can skip it when you first read the notes.</b>
+</p>
+
+<p>
+From Equation (\ref{eq:betahat-1b}) we can have
+\[
+\plim_{n \rightarrow \infty} (\hat{\beta}_1 -\beta_1) = \plim_{n \rightarrow \infty} \frac{\frac{1}{n}\sum_i (X_i - \overline{X})u_i}{\frac{1}{n}\sum_i (X_i - \overline{X})^2}
+= \frac{\plim_{n \rightarrow \infty} \frac{1}{n}\sum_i (X_i - \overline{X})u_i}{\plim_{n \rightarrow \infty} \frac{1}{n}\sum_i (X_i - \overline{X})^2}
+\]
+The denominator of the last equality is just a consistent estimator of the sample variance of \(X_i\), that is,
+\(\plim_{n \rightarrow \infty} \frac{1}{n}\sum_i (X_i - \overline{X})^2 = \sigma^2_X\)
+</p>
+
+<p>
+Now we need to focus on \(\plim_{n \rightarrow \infty} \frac{1}{n}\sum_i (X_i - \overline{X}) u_i\). To apply the law of large numbers,
+we need to find the expectation of \((X_i - \overline{X})u_i\). Given that
+\(E(X_i u_i) = E(E(X_i u_i |X_i)) = E(X_i E(u_i |X_i)) = 0\), we have
+\[ E((X_i - \overline{X})u_i) = E(X_i u_i) + \frac{1}{n} \sum_i E(X_i u_i)
+= 0 + 0 = 0  \]
+So the variance of \((X_i - \overline{X})u_i\) can be expressed as
+</p>
+\begin{equation*}
+\begin{split}
+\mathrm{Var}((X_i - \overline{X})u_i) &= E((X-\overline{X})^2 u_i^2) \\
+&= E(E((X - \overline{X})^2 u_i^2|X)) \\
+&= E((X-\overline{X})^2 E(u_i^2|X)) \\
+&= E((X-\overline{X})^2 \sigma_u^2)\; \text{ (by the extended assumption 4. See Chapter 17)} \\
+&< \infty\; \text{ (by assumption 3)}
+\end{split}
+\end{equation*}
+<p>
+Since \(E((X_i - \overline{X})u_i) = 0\), \(\mathrm{Var}((X_i - \overline{X})u_i) < \infty\), and \(X_i, u_i\) for \(i=1, \ldots, n\) are i.i.d,
+by the law of large numbers, we have
+\[ \plim_{n \rightarrow \infty} \frac{1}{n} \sum_i (X_i - \overline{X}) u_i = 0 \]
+Therefore, \(\plim_{n \rightarrow \infty} \hat{\beta}_1 = \beta_1\).
+</p>
+
+<p>
+Similarly, we can also prove that \(\hat{\beta}_0\) is consistent, that
+is \(\plim_{n \rightarrow \infty} \hat{\beta}_0 = \beta_0\).
+</p>
+</div></li></ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgc5fc3c8" class="outline-3">
+<h3 id="orgc5fc3c8"><span class="section-number-3">7.2</span> The asymptotic normal distribution</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+The central limit theory states that if \(X_1, \ldots, X_n\) with the mean
+\(\mu\) and the variance \(0 < \sigma^2 < \infty\). Then,
+\(\frac{1}{n}\sum_i X_i \xrightarrow{\text{ d }}
+N(\mu, \frac{\sigma^2}{n})\).
+</p>
+
+<p>
+From the proof of consistency, we have already seen that \(E((X_i -
+\overline{X})u_i) = 0\), \(\mathrm{Var}((X_i - \overline{X})u_i) <\infty\),
+and \(X_i, u_i\) for \(i=1, \ldots, n\) are i.i.d. By the central limit
+theory, we know that
+\[\frac{1}{n}\sum_i (X_i - \overline{X})u_i \xrightarrow{d} N \left(0, \frac{1}{n}\mathrm{Var}\left((X_i - \overline{X})u_i\right) \right) \]
+It follows that from Equation (\ref{eq:betahat-1b}) and the fact that
+\(\plim_{n \rightarrow \infty} \frac{1}{n}\sum_i (X_i - \overline{X})^2 = \mathrm{Var}(X_i)\),
+\(\hat{\beta}_1\) is asymptotically normally distributed as
+\[ \hat{\beta}_1 \xrightarrow{d} N\left( \beta_1, \sigma^2_{\hat{\beta}_1}\right) \]
+where
+</p>
+\begin{equation}
+\label{eq:sigmabeta-1}
+\sigma^2_{\hat{\beta}_1} = \frac{1}{n}\frac{\mathrm{Var}\left((X_i - \overline{X})u_i\right)}{\mathrm{Var}(X_i)^2}
+\end{equation}
+
+<p>
+Similarly, we can show that \(\hat{\beta}_0 \xrightarrow{d} N(\beta_0,
+\sigma^2_{\hat{\beta}_0})\), where
+</p>
+\begin{equation}
+\label{eq:sigmabeta-2}
+\sigma^2_{\hat{\beta}_0} = \frac{1}{n}\frac{\mathrm{Var}(H_i u_i)}{\left( E(H^2_i) \right)^2}, \text{ and }
+H_i = 1 - \left( \frac{\mu_X}{E(X_i^2)} \right)X_i
+\end{equation}
+
+<ul class="org-ul">
+<li>As \(\mathrm{Var}(X_i)\) increases, \(\mathrm{Var}(\hat{\beta}_1)\) decreases.</li>
+
+<li><p>
+As \(\mathrm{Var}(u_i)\) increases, \(\mathrm{Var}(\hat{\beta}_1)\)
+increases.
+</p>
+
+
+<div id="orgf3d6175" class="figure">
+<p><img src="figure/fig-4-6.png" alt="fig-4-6.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 6: </span>The Variance of \(\hat{\beta}_1\) and the variance of \(X_i\)</p>
+</div></li>
+</ul>
 </div>
 </div>
 </div>
@@ -576,12 +1670,32 @@ line, and the errors (other factors) are illustrated in Figure <a href="#orgc2f4
 Wikipedia, the free encyclopedia. Regression analysis. Retrieved from <a href="https://en.wikipedia.org/wiki/Regression_analysis">https://en.wikipedia.org/wiki/Regression_analysis</a>
 </p></div></div>
 
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Recall that an <b>estimator</b> is a function of a sample of
+data. An <b>estimate</b> is the numerical value of the estimator when it is
+computed using data from a sample.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+We are not going to prove this because it
+involves higher level knowledge of linear algebra. You can estimate a
+linear regression model of \(Y_i = \beta_1 X_i + u_i\), for which TSS is
+simply \(\sum_i^n Y_i^2\) and ESS is \(\sum_i^n \hat{Y}_i^2\). Also, for
+this model, \(\sum_i^n \hat{u}_i \neq 0\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+Equation \ref{eq:algebra-ols-1} holds only for a
+linear regression model with an intercept, but Equation
+\ref{eq:algebra-ols-3} holds regardless of the presence of an intercept.
+</p></div></div>
+
 
 </div>
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-03-12 Sun 14:55</p>
+<p class="date">Created: 2017-03-17 Fri 13:01</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
