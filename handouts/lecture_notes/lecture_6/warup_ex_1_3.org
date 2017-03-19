@@ -1,0 +1,83 @@
+#+TITLE: Warm-up exercise: Lecture 1-5
+#+AUTHOR: Zheng Tian
+#+DATE: April 11, 2016
+#+STARTUP: beamer
+#+OPTIONS: toc:nil H:1
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation,10pt]
+#+BEAMER_THEME:
+#+BEAMER_COLOR_THEME: beaver
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \newtheorem{mydef}{Definition}
+#+LATEX_HEADER: \newtheorem{mythm}{Theorem}
+#+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
+#+LATEX_HEADER: \newcommand{\var}{\mathrm{var}}
+#+LATEX_HEADER: \newcommand{\cov}{\mathrm{cov}}
+#+LATEX_HEADER: \newcommand{\corr}{\mathrm{corr}}
+#+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
+#+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+#+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
+#+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{color}
+#+LATEX_HEADER: \usepackage{caption}
+#+LATEX_HEADER: \usepackage{subcaption}
+
+
+
+* Question 1
+
+** Econometrics can be defined as follows with the exception of
+
+- A :: the science of testing economic theory.
+- B :: fitting mathematical economic models to real-world data.
+- C :: a set of tools used for forecasting future values of economic variables.
+- D :: measuring the height of economists.
+\vspace{1cm}
+\pause
+*Answer: D*
+
+
+* Question 2
+
+** The conditional expectation of $Y$ given $X$, $E(Y\mid X=x)$, is calculated as follows:
+- A :: $\sum_{i=1}^n Y_i Pr(X=x_i \mid Y=y)$
+- B :: $E(E(Y \mid X))$
+- C :: $\sum_{i=1}^n y_i Pr(Y=y_i) \mid X=x)$
+- D :: $\sum_{i=1}^n E(Y \mid X=x_i) Pr(X=x_i)$
+\vspace{1cm}
+\pause
+*Answer: C*
+
+
+* Question 3
+
+** Assume that Y is normally distributed $N(\mu, \sigma^2)$. Moving from the mean ($\mu$) 1.96 standard deviations to the left and 1.96 standard deviations to the right, then the area under the normal p.d.f. is
+- A :: 0.67
+- B :: 0.05
+- C :: 0.95
+- D :: 0.33
+\vspace{1cm}
+\pause
+*Answer: C*
+
+* Question 4
+
+** A large p-value implies
+- A :: rejection of the null hypothesis.
+- B :: a large t-statistic.
+- C :: a large $\overline{Y}^{act}$.
+- D :: that the observed value $\overline{Y}^{act}$ is consistent with
+       the null hypothesis.
+\vspace{1cm}
+\pause
+*Answer: D*
+
+
+
+
+

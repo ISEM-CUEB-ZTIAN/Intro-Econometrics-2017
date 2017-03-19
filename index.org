@@ -10,6 +10,12 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 
 * Announcement
 
+** [2017-03-20 Mon]
+
+You can download the following files, [[file:handouts/lecture_notes/r_docs/Reference%20Card.pdf][Rreferencecard.pdf]] and
+[[file:handouts/lecture_notes/r_docs/r-cheat-sheet-3.pdf][Rcheatsheet.pdf]], which can help you quickly find relevant R commands. 
+
+
 ** [2017-03-06 Mon]
 
 - I create a survey, https://www.diaochapai.com/survey2500285, to
