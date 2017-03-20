@@ -13,7 +13,7 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 ** [2017-03-20 Mon]
 
 You can download the following files, [[file:handouts/lecture_notes/r_docs/Reference%20Card.pdf][Rreferencecard.pdf]] and
-[[file:handouts/lecture_notes/r_docs/r-cheat-sheet-3.pdf][Rcheatsheet.pdf]], which can help you quickly find relevant R commands. 
+[[file:handouts/lecture_notes/r_docs/r-cheat-sheet-3.pdf][Rcheatsheet.pdf]], which can help you quickly find relevant R commands.
 
 
 ** [2017-03-06 Mon]
@@ -61,7 +61,7 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 ** Lecture 6: Linear Regression with One Regressor
 - The lecture notes ([[file:handouts/lecture_notes/lecture_6/lecture_6.html][html]] or [[file:handouts/lecture_notes/lecture_6/lecture_6.pdf][pdf]])
 - The slides ([[file:handouts/lecture_notes/lecture_6/slides_lecture_6.html][html]] or [[file:handouts/lecture_notes/lecture_6/slides_lecture_6_beamer.pdf][pdf]])
-
+- The R files
 
 * Homework
 

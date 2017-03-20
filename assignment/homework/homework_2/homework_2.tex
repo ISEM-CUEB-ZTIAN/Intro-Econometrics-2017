@@ -1,0 +1,206 @@
+% Created 2017-03-20 Mon 11:02
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{setspace}
+\singlespacing
+\usepackage{parskip}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\var}{\mathrm{var}}
+\newcommand{\cov}{\mathrm{cov}}
+\newcommand{\corr}{\mathrm{corr}}
+\newcommand{\pr}{\mathrm{Pr}}
+\setcounter{secnumdepth}{0}
+\date{Due on April 3\(^{\text{rd}}\)}
+\title{Homework Set 2}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Homework Set 2},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+All questions are from the end-of-chapter exercises. The question
+numbers refer to those in the book. I highly recommend you reading the
+textbook and lecture notes before completing the homework
+questions. When reading the textbook, please pay attention to the
+sections on how to interpret the estimated coefficients.
+
+\section*{Exercises}
+\label{sec:org946a368}
+
+\begin{description}
+\item[{4.2}] Suppose that a random sample of 200 twenty-year-old mean is
+selected from a population and that these men's height and
+weight are recorded. A regression of weight on height yields
+\begin{equation*}
+\widehat{Weight} = -99.41 + 3.94 \times Height, R^2 = 0.81, SER = 10.2
+\end{equation*}
+where \(Weight\) is measured in pounds and \(Height\) is measured
+in inches.
+\begin{description}
+\item[{a.}] What is the regression's weight prediction for someone who
+is 70 in. tall? 65 in. tall? 74 in. tall?
+\item[{b.}] A man has a late growth spurt and grows 1.5 in. over the
+course of a year. What is the regression's prediction for
+the increase in this man's weight?
+\item[{c.}] Suppose that instead of measuring weight and height in
+pounds and inches these variables are measured in
+centimeters and kilograms. What are the regression estimates
+from this new centimeter-kilogram regression? (Give all
+results, estimated coefficients, \emph{R\(^{\text{2}}\)}, and \emph{SER})
+\end{description}
+\end{description}
+
+\vspace{0.5cm}
+
+\begin{description}
+\item[{4.3}] A regression of average weekly earning (AWE, measured in
+dollars) on age (measured in years) using a random sample of
+college-educated full-time worker aged 25-65 yields the
+following:
+\begin{equation*}
+\widehat{AWE} = 696.7+ 9.6 \times Age, R^2 = 0.023, SER = 624.1
+\end{equation*}
+\begin{description}
+\item[{a.}] Explain what the coefficient values 696.7 and 9.6 mean.
+\item[{b.}] The standard error of the regression (\emph{SER}) is 624.1. What
+are the units of measurement for the \emph{SER}? (Dollars? Years?
+Or is \emph{SER} unit-free?)
+\item[{c.}] The regression \emph{R\(^{\text{2}}\)} is 0.023. What are the units of
+measurement for the \emph{R\(^{\text{2}}\)}? (Dollars? Years? Or is \emph{R\(^{\text{2}}\)} unit-free)
+\item[{d.}] What is the regression's predicted earnings for a
+25-year-old worker? A 45-year-old worker?
+\item[{e.}] Will the regression give reliable predictions for a
+99-year-old worker? Why or why not?
+\item[{f.}] Give what you know about the distribution of earnings, do
+you think it is plausible that the distribution of errors in
+the regression is normal? (\emph{Hint}: Do you think that the
+distribution is symmetric or skewed? What is the smallest
+value of earnings, and is it consistent with a normal
+distribution?)
+\item[{g.}] The average age in this sample is 41.6 years. What is the
+average value of \emph{AWE} in the sample? (\emph{Hint}: Review Key
+Concept 4.2)
+\end{description}
+\end{description}
+
+\vspace{0.5cm}
+
+\begin{description}
+\item[{4.5}] A professor decides to run an experiment to measure the
+effect of time pressure on final exam scores. He gives each
+of the 400 students in his course the same final exam, but
+some students have 90 minutes to complete the exam while
+others have 120 minutes. Each students is randomly assigned
+one of the examination times based on the flip of a coin. Let
+\(Y_i\) denote the number of points scored on the exam by the
+i\(^{\text{th}}\) student \((0 \leq Y_i \leq 100)\), let \(X_i\) denote
+the amount of time that the student has to complete the exam
+\((X_i = 90 or 120)\), and consider the regression model \(Y_i =
+         \beta_0 + \beta_1 X_i + u_i\).
+\begin{description}
+\item[{a.}] Explain what the term \(u_i\) represents. Why will different
+students have different values of \(u_i\)?
+\item[{b.}] Explain why \(E(u_i | X_i) = 0\) for this regression model.
+\item[{c.}] Are the other assumptions in Key Concept 4.3 satisfied? Explain.
+\item[{d.}] The estimated regression is \(\hat{Y}_i = 49 + 0.24 X_i\).
+\begin{description}
+\item[{i.}] Compute the estimated regression's prediction for the
+average score of students given 90 minutes to complete the
+exam. Repeat for 120 minutes and 150 minutes.
+\item[{ii.}] Compute the estimated gain in score for a student who is
+given an additional 10 minutes on the exam.
+\end{description}
+\end{description}
+\end{description}
+
+\vspace{0.5cm}
+
+\begin{description}
+\item[{4.10}] Suppose that \(Y_i = \beta_0 + \beta_1 X_i + u_i\), where
+\((X_i, u_i)\) are i.i.d., and \(X_i\) is a Bernoulli random
+variable with \(\pr(X=1) = 0.20\). When \(X=1, u_i \text{ is }
+          N(0, 4)\); when \(X=0, u_i \text{ is } N(0, 1)\).
+\begin{description}
+\item[{a.}] Show that the regression assumptions in Key Concept 4.3 are satisfied.
+\item[{b.}] Derive an expression for the large-sample variance of
+\(\hat{\beta}_1\). (\emph{Hint}: Evaluate the terms in Equation
+(4.21))
+\end{description}
+\end{description}
+
+\vspace{0.5cm}
+
+\begin{description}
+\item[{4.12}] \begin{description}
+\item[{a.}] Show that the regression \(R^2\) in the regression of \(Y\) on
+\(X\) is the squared value of the sample correlation between
+\(X\) and \(Y\). That is show that \(R^2 = r^2_{XY}\).
+\item[{b.}] Show that the \(R^2\) from the regression of \(Y\) on \(X\) is the
+same as the \(R^2\) from the regression of \(X\) on \(Y\).
+\item[{c.}] Show that \(\hat{\beta}_1 = r_{XY}(s_Y/s_X)\), where \(r_{XY}\)
+is the sample correlation between \(X\) and \(Y\), and \(s_Y\) and
+\(s_Y\) are the sample standard deviations of \(X\) and \(Y\).
+\end{description}
+\end{description}
+
+\section*{Empirical Exercise}
+\label{sec:orgba8e8a2}
+
+For the empirical exercise, you need to include the table for
+regression results, the graphs, like the scatterplot, and the R or
+STATA codes. The program codes should be appended at the end of all
+answers.
+
+\begin{description}
+\item[{E4.2}] On the text Web site
+\url{http:://www.pearsonhighered.com/stock\_watson/}, you will find
+a data file \textbf{TeachingRatings} that contains data on course
+evaluations, course characteristics, and professor
+characteristics for 463 courses at the University of Texas
+at Austin. A detailed description is given in
+\textbf{TeachingRatings\_Description}, also available on the Web
+site. One of the characteristics is an index of the
+professor's "beauty" as rated by a panel of six judges. In
+this exercise, you will investigate how course evaluations
+are related to the professor's beauty.
+\begin{description}
+\item[{a.}] Construct a scatterplot of average course evaluations
+(\emph{Course\_Eval}) on the professor's beauty (\emph{Beauty}). Does
+there appear to be a relationship between the variables?
+\item[{b.}] Run a regression of average course evaluations
+(\emph{Course\_Eval}) on the professor's beauty (\emph{Beauty}). What
+is the estimated intercept? What is the estimated slope?
+Explain why the estimated intercept is equal to the sample
+mean of \emph{Course\_Eval}. (\emph{Hint}: What is the sample mean of \emph{Beauty}?)
+\item[{c.}] Professor Watson has an average value of \emph{Beauty}, while
+Professor Stock's value of \emph{Beauty} is one standard
+deviation above the average. Predict Professor Stock's and
+Professor Watson's course evaluations.
+\item[{d.}] Comment on the size of the regression's slope. Is the
+estimated effect of \emph{Beauty} on \emph{Course\_Eval} large or
+small? Explain what you mean by "large" and "small".
+\item[{e.}] Does \emph{Beauty} explain a large fraction of the variance in
+evaluations across courses? Explain.
+\end{description}
+\end{description}
+\end{document}

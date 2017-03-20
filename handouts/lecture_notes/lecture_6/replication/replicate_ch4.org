@@ -91,7 +91,7 @@ summary(df)
 Formally, we can create a table showing important summary statistics,
 like the following table (Table 4.1 in the book).[fn:1]
 
-#+BEGIN_SRC R :results output html :exports both :eval
+#+BEGIN_SRC R :results output silent :exports both :eval
   # Replicate the summary statistics in Table 4.1
   summary4.1 <- function(df){
       ave <- sapply(df, mean)
@@ -102,30 +102,31 @@ like the following table (Table 4.1 in the book).[fn:1]
   }
   library(xtable)
   sumtab <- xtable(t(summary4.1(df)))
-  print(sumtab, type = "html")
 #+END_SRC
 
-#+RESULTS:
-#+BEGIN_EXPORT html
-<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Sun Mar 12 09:31:18 2017 -->
-<table border=1>
-<tr> <th>  </th> <th> ave </th> <th> std </th> <th> 10% </th> <th> 25% </th> <th> 40% </th> <th> 50% </th> <th> 60% </th> <th> 75% </th> <th> 90% </th>  </tr>
-  <tr> <td align="right"> testscr </td> <td align="right"> 654.16 </td> <td align="right"> 19.05 </td> <td align="right"> 630.40 </td> <td align="right"> 640.05 </td> <td align="right"> 649.07 </td> <td align="right"> 654.45 </td> <td align="right"> 659.40 </td> <td align="right"> 666.66 </td> <td align="right"> 678.86 </td> </tr>
-  <tr> <td align="right"> str </td> <td align="right"> 19.64 </td> <td align="right"> 1.89 </td> <td align="right"> 17.35 </td> <td align="right"> 18.58 </td> <td align="right"> 19.27 </td> <td align="right"> 19.72 </td> <td align="right"> 20.08 </td> <td align="right"> 20.87 </td> <td align="right"> 21.87 </td> </tr>
-   </table>
-#+END_EXPORT
+In the above code, I defined a function called =summary4.1=. In R, we
+use =function()= to define a custom function. In this case, the
+function =summary4.1= takes one argument =df=. The code within the
+function is enclosed with the curly braces, ~{ }~, and what the
+function yields is controlled by =return()= in the last line.
 
-*** COMMENT Latex table
+Within the function =summary4.1=, I use a special function in R,
+=sapply()=. It takes each component in a list object, which is =df= in
+this case, and impose a function on this component, and return a
+simplified object. Check the help information for =apply()=,
+=lapply()=, =sapply()=, =mapply()=, and =tapply()=.
 
-#+BEGIN_SRC R :exports results :results output latex
+Finally, the function =xtable()= writes the matrix that contains the
+summary statistics into a table in either a LaTeX or an HTML file.
+
+#+BEGIN_SRC R :results output latex :exports both
 print(sumtab, type = "latex")
 #+END_SRC
 
-#+RESULTS:
+#+RESULTS[89b3f5ffe9d62436931b7ae6b02165a0d39ea8e9]:
 #+BEGIN_EXPORT latex
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Fri Mar 10 19:51:30 2017
+% Mon Mar 20 10:47:49 2017
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrr}
@@ -137,6 +138,21 @@ testscr & 654.16 & 19.05 & 630.40 & 640.05 & 649.07 & 654.45 & 659.40 & 666.66 &
    \hline
 \end{tabular}
 \end{table}
+#+END_EXPORT
+
+#+BEGIN_SRC R :exports results :results output html
+print(sumtab, type = "html")
+#+END_SRC
+
+#+RESULTS[01e53a2ff11c8e8142f3c3da74d7aa550dc5924f]:
+#+BEGIN_EXPORT html
+<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
+<!-- Mon Mar 20 10:48:34 2017 -->
+<table border=1>
+<tr> <th>  </th> <th> ave </th> <th> std </th> <th> 10% </th> <th> 25% </th> <th> 40% </th> <th> 50% </th> <th> 60% </th> <th> 75% </th> <th> 90% </th>  </tr>
+  <tr> <td align="right"> testscr </td> <td align="right"> 654.16 </td> <td align="right"> 19.05 </td> <td align="right"> 630.40 </td> <td align="right"> 640.05 </td> <td align="right"> 649.07 </td> <td align="right"> 654.45 </td> <td align="right"> 659.40 </td> <td align="right"> 666.66 </td> <td align="right"> 678.86 </td> </tr>
+  <tr> <td align="right"> str </td> <td align="right"> 19.64 </td> <td align="right"> 1.89 </td> <td align="right"> 17.35 </td> <td align="right"> 18.58 </td> <td align="right"> 19.27 </td> <td align="right"> 19.72 </td> <td align="right"> 20.08 </td> <td align="right"> 20.87 </td> <td align="right"> 21.87 </td> </tr>
+   </table>
 #+END_EXPORT
 
 

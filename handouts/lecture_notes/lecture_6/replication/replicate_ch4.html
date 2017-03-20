@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-12 Sun 11:26 -->
+<!-- 2017-03-20 Mon 11:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Replication of Examples in Chapter 4</title>
@@ -256,15 +256,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9d25206">1. Introduction</a></li>
-<li><a href="#org2de2c97">2. Reading the data and basic summary statistics</a></li>
-<li><a href="#orgb4a4c00">3. The OLS estimation</a></li>
+<li><a href="#orgbc7a117">1. Introduction</a></li>
+<li><a href="#orgb8f4892">2. Reading the data and basic summary statistics</a></li>
+<li><a href="#orgabdcc14">3. The OLS estimation</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9d25206" class="outline-2">
-<h2 id="org9d25206"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-orgbc7a117" class="outline-2">
+<h2 id="orgbc7a117"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This document is to show how to estimate a simple regression model and
@@ -284,15 +284,15 @@ loading several particular packages of regression.
 </div>
 </div>
 
-<div id="outline-container-org2de2c97" class="outline-2">
-<h2 id="org2de2c97"><span class="section-number-2">2</span> Reading the data and basic summary statistics</h2>
+<div id="outline-container-orgb8f4892" class="outline-2">
+<h2 id="orgb8f4892"><span class="section-number-2">2</span> Reading the data and basic summary statistics</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Let's first read the data into R and show some basic statistics.
 </p>
 </div>
-<div id="outline-container-org4a1d9e1" class="outline-3">
-<h3 id="org4a1d9e1"><span class="section-number-3">2.1</span> Read the data file</h3>
+<div id="outline-container-org4cbc464" class="outline-3">
+<h3 id="org4cbc464"><span class="section-number-3">2.1</span> Read the data file</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 The textbook comes with two files for the California test score data
@@ -345,8 +345,8 @@ data frame object.
 </div>
 
 
-<div id="outline-container-orgaa0edac" class="outline-3">
-<h3 id="orgaa0edac"><span class="section-number-3">2.2</span> Summary</h3>
+<div id="outline-container-org7a62ef7" class="outline-3">
+<h3 id="org7a62ef7"><span class="section-number-3">2.2</span> Summary</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Upon reading the data, we often use <code>summary()</code> to see some basic
@@ -388,12 +388,37 @@ like the following table (Table 4.1 in the book).<sup><a id="fnr.1" class="footr
 }
 <span style="color: #D0372D;">library</span>(xtable)
 sumtab <span style="color: #D0372D;">&lt;-</span> xtable(t(summary4.1(df)))
-print(sumtab, type = <span style="color: #008000;">"html"</span>)
+</pre>
+</div>
+
+<p>
+In the above code, I defined a function called <code>summary4.1</code>. In R, we
+use <code>function()</code> to define a custom function. In this case, the
+function <code>summary4.1</code> takes one argument <code>df</code>. The code within the
+function is enclosed with the curly braces, <code>{ }</code>, and what the
+function yields is controlled by <code>return()</code> in the last line.
+</p>
+
+<p>
+Within the function <code>summary4.1</code>, I use a special function in R,
+<code>sapply()</code>. It takes each component in a list object, which is <code>df</code> in
+this case, and impose a function on this component, and return a
+simplified object. Check the help information for <code>apply()</code>,
+<code>lapply()</code>, <code>sapply()</code>, <code>mapply()</code>, and <code>tapply()</code>.
+</p>
+
+<p>
+Finally, the function <code>xtable()</code> writes the matrix that contains the
+summary statistics into a table in either a LaTeX or an HTML file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">print(sumtab, type = <span style="color: #008000;">"html"</span>)
 </pre>
 </div>
 
 <!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Sun Mar 12 11:26:22 2017 -->
+<!-- Mon Mar 20 11:05:53 2017 -->
 <table border=1>
 <tr> <th>  </th> <th> ave </th> <th> std </th> <th> 10% </th> <th> 25% </th> <th> 40% </th> <th> 50% </th> <th> 60% </th> <th> 75% </th> <th> 90% </th>  </tr>
   <tr> <td align="right"> testscr </td> <td align="right"> 654.16 </td> <td align="right"> 19.05 </td> <td align="right"> 630.40 </td> <td align="right"> 640.05 </td> <td align="right"> 649.07 </td> <td align="right"> 654.45 </td> <td align="right"> 659.40 </td> <td align="right"> 666.66 </td> <td align="right"> 678.86 </td> </tr>
@@ -402,8 +427,9 @@ print(sumtab, type = <span style="color: #008000;">"html"</span>)
 </div>
 </div>
 
-<div id="outline-container-orgc968eec" class="outline-3">
-<h3 id="orgc968eec"><span class="section-number-3">2.3</span> Create a scatterplot using <code>plot()</code></h3>
+
+<div id="outline-container-org4b4a783" class="outline-3">
+<h3 id="org4b4a783"><span class="section-number-3">2.3</span> Create a scatterplot using <code>plot()</code></h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 It is always a good practice to make a scatterplot between an
@@ -437,11 +463,11 @@ command <code>cor(df$str), df$testscr}</code> yield the value of
 </div>
 </div>
 
-<div id="outline-container-orgb4a4c00" class="outline-2">
-<h2 id="orgb4a4c00"><span class="section-number-2">3</span> The OLS estimation</h2>
+<div id="outline-container-orgabdcc14" class="outline-2">
+<h2 id="orgabdcc14"><span class="section-number-2">3</span> The OLS estimation</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org11e8455" class="outline-3">
-<h3 id="org11e8455"><span class="section-number-3">3.1</span> Set up the linear regression model</h3>
+</div><div id="outline-container-orgcf86570" class="outline-3">
+<h3 id="orgcf86570"><span class="section-number-3">3.1</span> Set up the linear regression model</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 We establish the following linear regression model for the relationship between
@@ -454,8 +480,8 @@ TestScore_i = \beta_0 + \beta_1 STR_i + u_i
 </div>
 </div>
 
-<div id="outline-container-orgf969fc2" class="outline-3">
-<h3 id="orgf969fc2"><span class="section-number-3">3.2</span> Estimate in R</h3>
+<div id="outline-container-org76ef9e2" class="outline-3">
+<h3 id="org76ef9e2"><span class="section-number-3">3.2</span> Estimate in R</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 The OLS estimation can be implemented in R with the function <code>lm</code>. The
@@ -507,8 +533,8 @@ intercept, &beta;<sub>0</sub>, and <code>-2.28</code> for the slope.
 </div>
 </div>
 
-<div id="outline-container-org02c57dc" class="outline-3">
-<h3 id="org02c57dc"><span class="section-number-3">3.3</span> Plot the sample regression line</h3>
+<div id="outline-container-org9aa82d9" class="outline-3">
+<h3 id="org9aa82d9"><span class="section-number-3">3.3</span> Plot the sample regression line</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 The sample regression line can be added to the scatterplot by using
@@ -552,7 +578,7 @@ for your future career development, especially in academia
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-03-12 Sun 11:26</p>
+<p class="date">Created: 2017-03-20 Mon 11:05</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
