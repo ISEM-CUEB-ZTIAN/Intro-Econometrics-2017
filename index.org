@@ -10,6 +10,10 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 
 * Announcement
 
+** [2017-03-22 Wed]
+
+- [[*Homework set #2][Homework set #2]] is assigned, due on *April 1st*.
+
 ** [2017-03-20 Mon]
 
 You can download the following files, [[file:handouts/lecture_notes/r_docs/Reference%20Card.pdf][Rreferencecard.pdf]] and
@@ -23,7 +27,7 @@ You can download the following files, [[file:handouts/lecture_notes/r_docs/Refer
   your suggestion to this course. Please complete the survey in your
   spare time. Thanks!
 
-- [[*Homework set #1][Homework set #1]] is assigned, which is due on *March 13*.
+- [[*Homework set #1][Homework set #1]] is assigned, due on *March 13*.
 
 
 * Syllabus
@@ -61,10 +65,16 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 ** Lecture 6: Linear Regression with One Regressor
 - The lecture notes ([[file:handouts/lecture_notes/lecture_6/lecture_6.html][html]] or [[file:handouts/lecture_notes/lecture_6/lecture_6.pdf][pdf]])
 - The slides ([[file:handouts/lecture_notes/lecture_6/slides_lecture_6.html][html]] or [[file:handouts/lecture_notes/lecture_6/slides_lecture_6_beamer.pdf][pdf]])
-- The R files
+- The R demonstration ([[file:handouts/lecture_notes/lecture_6/replication/replicate_ch4.html][html]] or [[file:handouts/lecture_notes/lecture_6/replication/replicate_ch4.pdf][pdf]])
+- The R replication package ([[file:handouts/lecture_notes/lecture_6/replication/replicate_ch4_rmd/replicate_ch4_rmd.zip][the zip file]])
+
 
 * Homework
 
 ** Homework set #1
 
 - Homework set #1: [[file:assignment/homework/homework_1/homework_1.pdf][homework_1.pdf]]. Answer: [[file:assignment/homework/homework_1/ans_hw_1.pdf][ans_hw_1.pdf]]
+
+** Homework set #2
+
+- Homework set #2: [[file:assignment/homework/homework_2/homework_2.pdf][homework_2.pdf]].

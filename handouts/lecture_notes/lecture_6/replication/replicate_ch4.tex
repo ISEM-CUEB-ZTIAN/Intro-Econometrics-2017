@@ -1,4 +1,4 @@
-% Created 2017-03-20 Mon 11:06
+% Created 2017-03-21 Tue 10:57
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -38,7 +38,7 @@
 
 
 \section{Introduction}
-\label{sec:orge5a86ff}
+\label{sec:org62f25a1}
 This document is to show how to estimate a simple regression model and
 perform linear hypothesis testing. The application concerns the test
 scores of the California school districts. We will use R to estimate
@@ -46,15 +46,19 @@ the simple regression model with the data set in Chapter 4.
 
 Before running all R codes, we may first load the package \texttt{AER} for
 loading several particular packages of regression.
+
 \begin{verbatim}
 library(AER)
 \end{verbatim}
 
+
 \section{Reading the data and basic summary statistics}
-\label{sec:org0412e52}
+\label{sec:orgd0546b8}
 Let's first read the data into R and show some basic statistics.
+
 \subsection{Read the data file}
-\label{sec:orgb27d5b6}
+\label{sec:org67ec3be}
+
 The textbook comes with two files for the California test score data
 set, \texttt{caschool.xlsx} and \texttt{caschool.dta}, the former of which is an
 Excel file and the latter is a Stata file. We need to read either one
@@ -95,7 +99,7 @@ head(classdata[c("observat", "district", "testscr", "str")])
 
 
 \subsection{Summary}
-\label{sec:orgacf70f1}
+\label{sec:org2c1df22}
 
 Upon reading the data, we often use \texttt{summary()} to see some basic
 statistics. Here we are not going to show summary statistics of all
@@ -175,7 +179,7 @@ testscr & 654.16 & 19.05 & 630.40 & 640.05 & 649.07 & 654.45 & 659.40 & 666.66 &
 
 
 \subsection{Create a scatterplot using \texttt{plot()}}
-\label{sec:orgc1eac20}
+\label{sec:org91e42a0}
 It is always a good practice to make a scatterplot between an
 independent variable and a dependent variable before setting up a
 regression model. Let's draw a scatterplot of student-teacher ratios
@@ -190,8 +194,9 @@ plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{fig42.png}
-\caption{The scatterplot between student-teacher ratios and test scores}
+\includegraphics[width=0.75\textwidth]{fig42.png}
+\caption{\label{fig:orga544336}
+The scatterplot of test score vs student-teacher raio}
 \end{figure}
 
 We can compute the correlation coefficient
@@ -199,10 +204,12 @@ between the two variables, using the function \texttt{cor}. Typing the
 command \texttt{cor(df\$str), df\$testscr\}} yield the value of
 \texttt{-0.23}.
 
+
 \section{The OLS estimation}
-\label{sec:org1657707}
+\label{sec:orge87ed43}
+
 \subsection{Set up the linear regression model}
-\label{sec:org6918b90}
+\label{sec:orgae553ce}
 
 We establish the following linear regression model for the relationship between
 test scores and class sizes
@@ -211,8 +218,9 @@ test scores and class sizes
 TestScore_i = \beta_0 + \beta_1 STR_i + u_i
 \end{equation}
 
+
 \subsection{Estimate in R}
-\label{sec:orga7b75df}
+\label{sec:org1b42cb8}
 The OLS estimation can be implemented in R with the function \texttt{lm}. The
 most important argument in this function is the model to be estimated,
 which is called a \textbf{formula} object in R. A formula is defined using
@@ -254,8 +262,10 @@ intercept, \(\beta_{\text{0}}\), and \texttt{-2.28} for the slope.
 
 \[\widehat{TestScore} = 698.93 - 2.28 \times STR\]
 
+
 \subsection{Plot the sample regression line}
-\label{sec:org5984265}
+\label{sec:orgd1d6989}
+
 The sample regression line can be added to the scatterplot by using
 the function \texttt{abline}. And an annotation can be added by using the
 function \texttt{text}

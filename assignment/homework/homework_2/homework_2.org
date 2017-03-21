@@ -1,6 +1,6 @@
 #+TITLE: Homework Set 2
 #+AUTHOR:
-#+DATE: Due on April 3^{rd}
+#+DATE: Due on April 1^{st}
 #+OPTIONS: toc:nil H:1 num:0 ^:{}
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]

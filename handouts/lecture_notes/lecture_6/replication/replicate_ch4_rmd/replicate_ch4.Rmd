@@ -1,0 +1,142 @@
+---
+title: "Replication of Examples in Chapter 4"
+author: "Zheng Tian"
+date: "3/21/2017"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Introduction
+
+This document is to show how to estimate a simple regression model and perform linear hypothesis testing. The application concerns the test scores of the California school districts. We will use R to estimate the simple regression model with the data set in Chapter 4.
+
+Before running all R codes, we may first load the package `AER` by running `library(AER)`. 
+
+```{r, include=FALSE, results='hide'}
+  library(AER)
+```
+
+
+# Reading the data and basic summary statistics
+
+Let's first read the data into R and show some basic statistics.
+
+## Read the data file
+
+The textbook comes with two files for the California test score data set, `caschool.xlsx` and `caschool.dta`, the former of which is an Excel file and the latter is a Stata file. We need to read either one of these two files into R so that we can use the data set.
+
+R has several built-in functions that can read an ASCII data file, which can have such an extension as `.txt`, `.csv`, `dat`, to name a few. However, these built-in functions cannot handle an Excel file or a Stata file. So, in order to read `caschool.xlsx` or `caschool.dta` in to R, we need additional packages.
+
+To read a State file with an extension of `.dta`, we use the function, `read.dta`, in the library of `foreign`.
+
+```{r readdata, echo=TRUE, results='hide'}
+    library(foreign)
+    classdata <- read.dta("caschool.dta")
+```
+
+`classdata` is a dataframe object in R. If you want to check whether your reading is correct, you can type `head(classdata)`, which, by default, displays the first six observations of all variables in the data frame object.
+
+```{r, echo=TRUE}
+  head(classdata[c("observat", "district", "testscr", "str")])
+```
+
+
+## Summary
+
+Upon reading the data, we often use `summary()` to see some basic statistics. Here we are not going to show summary statistics of all variables in the data set for the purpose of saving space, but only to select several variables of interest in Chapters 4, including test scores, `testscr`, student-teacher ratio, `str`.
+
+```{r}
+  df <- classdata[c("testscr", "str")]
+  summary(df)
+```
+
+Formally, we can create a table showing important summary statistics, like the following table (Table 4.1 in the book).
+
+```{r, echo=TRUE, results='hide'}
+  # Replicate the summary statistics in Table 4.1
+  summary4.1 <- function(df) {
+    ave <- sapply(df, mean)
+    std <- sapply(df, sd)
+    perctile <- sapply(df, function(x)
+    quantile(x, probs = c(0.1, 0.25, 0.4, 0.5, 0.6, 0.75, 0.9)))
+    return(rbind(ave, std, perctile))
+  }
+  library(xtable)
+  sumtab <- xtable(t(summary4.1(df)))
+```
+
+In the above code, I defined a function called `summary4.1`. In R, we use `function()` to define a custom function. In this case, the function `summary4.1` takes one argument `df`. The code within the function is enclosed with the curly braces, `{ }`, and what the function yields is controlled by `return()` in the last line.
+
+Within the function `summary4.1`, I use a special function in R, `sapply()`. It takes each component in a list object, which is `df` in this case, and impose a function on this component, and return a simplified object. Check the help information for `apply()`, `lapply()`, `sapply()`, `mapply()`, and `tapply()`.
+
+Finally, the function `xtable()` writes the matrix that contains the summary statistics into a table in either a LaTeX or an HTML file.
+
+```{r, results='asis', include=TRUE}
+  # print as a latex table
+  print(sumtab, type = "latex")
+```
+
+```{r, results='asis', include=FALSE}
+  # print out as an html table
+  print(sumtab, type = "html")
+```
+
+## Create a scatterplot using `plot()`
+
+It is always a good practice to make a scatterplot between an independent variable and a dependent variable before setting up a regression model. Let's draw a scatterplot of student-teacher ratios and test scores. `plot` is the most basic function in R to draw figures. Here I use it to draw the scatterplot as follows.
+
+```{r, fig.align='center'}
+  # generate a scatterplot
+  plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
+       main = "Scatterplot of Test Score vs. Student-Teacher Ratio",
+       xlab = "Student-teacher ratio", ylab = "Test scores")
+```
+
+
+We can compute the correlation coefficient between the two variables, using the function `cor`.
+
+```{r}
+  # calculate correlation coefficient
+  cor(df$str, df$testscr)
+```
+
+
+# The OLS estimation
+
+## Set up the linear regression model
+
+We establish the following linear regression model for the relationship between test scores and class sizes
+
+$$TestScore_i = \beta_0 + \beta_1 STR_i + u_i$$
+
+
+## Estimate in R
+
+The OLS estimation can be implemented in R with the function `lm`. The most important argument in this function is the model to be estimated, which is called a **formula** object in R. A formula is defined using the format `y ~ x1 + x2`, in which the symbol of `~` links the left-hand side variable, `y`, and the right-hand side variables, `x1, x2`. 
+
+We can add more independent variables in the right-hand side with each being appended to the formula by the symbol of `+`. The constant term is by default included in the model. After estimation, we use `summary` to see the results.
+
+```{r}
+  mod1 <- lm(testscr ~ str, data = df)
+  summary(mod1)
+```
+
+For now, we just pay attention to the estimates of the two coefficients, which is `r round(coef(mod1)[1], 2)` for the intercept, $\beta$, and `r round(coef(mod1)[2], 2)` for the slope.
+
+$$\widehat{TestScore} = 698.93 - 2.28 \times STR$$
+
+## Plot the sample regression line
+
+The sample regression line can be added to the scatterplot by using the function `abline`. And an annotation can be added by using the function `text`
+
+```{r, fig.align='center'}
+    plot(df$str, df$testscr, 
+         col = "blue", pch =16, cex = 0.7, bty = "l",
+         xlab = "Student-teacher ratio", ylab = "Test scores")
+    # add a straight line with an intercept a and slop b
+    abline(coef(mod1)[1], coef(mod1)[2], col="red")
+    # add a text on the plot
+    text(23, 660, "TestScore = 698.9 - 2.28 STR", 
+         cex.lab = 0.9, font.lab = 3)
+```

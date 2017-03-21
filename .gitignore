@@ -1,5 +1,7 @@
 ## R-related ignore
 
+/admin/
+
 # History files
 .Rhistory
 .Rapp.history

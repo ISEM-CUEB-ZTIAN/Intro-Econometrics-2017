@@ -39,7 +39,7 @@ The first thing first is of course read the data correctly from the
 Stata file [file:../data/cps92\_08.dta](data/cps92_08.dta), which can be
 read by the function `read.dta()` in the package of `foreign`.
 
-``` {r echo=TRUE, results='asis', include=TRUE}
+``` {r, echo=TRUE, results='asis', include=TRUE}
   library(foreign)
   cpsdat <- read.dta("cps92_08.dta")
   head(cpsdat)

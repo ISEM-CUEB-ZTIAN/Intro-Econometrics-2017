@@ -21,13 +21,17 @@ the simple regression model with the data set in Chapter 4.
 
 Before running all R codes, we may first load the package =AER= for
 loading several particular packages of regression.
+
 #+BEGIN_SRC R :results output silent :exports code
 library(AER)
 #+END_SRC
 
+
 * Reading the data and basic summary statistics
 Let's first read the data into R and show some basic statistics.
+
 ** Read the data file
+
 The textbook comes with two files for the California test score data
 set, =caschool.xlsx= and =caschool.dta=, the former of which is an
 Excel file and the latter is a Stata file. We need to read either one
@@ -56,7 +60,7 @@ data frame object.
 head(classdata[c("observat", "district", "testscr", "str")])
 #+END_SRC
 
-#+RESULTS:
+#+RESULTS[8fadc56cafa0ece6c86ba7a7798d3367fb064aae]:
 :   observat                        district testscr      str
 : 1        1              Sunol Glen Unified  690.80 17.88991
 : 2        2            Manzanita Elementary  661.20 21.52466
@@ -163,23 +167,27 @@ regression model. Let's draw a scatterplot of student-teacher ratios
 and test scores. =plot= is the most basic function in R to draw
 figures. Here I use it to draw the scatterplot as follows.
 
-#+BEGIN_SRC R :exports both :results output graphics :file fig42.png
-plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
-     main = "Scatterplot of Test Score vs. Student-Teacher Ratio",
-     xlab = "Student-teacher ratio", ylab = "Test scores")
+#+BEGIN_SRC R :exports both :results value graphics :file fig42.png
+  plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
+       main = "Scatterplot of Test Score vs. Student-Teacher Ratio",
+       xlab = "Student-teacher ratio", ylab = "Test scores")
 #+END_SRC
 
-#+CAPTION: The scatterplot between student-teacher ratios and test scores
-#+ATTR_LATEX: :width 0.85\textwidth
-#+RESULTS:
-[[file:./img/fig42.png]]
+#+NAME: fig-4-2
+#+CAPTION: The scatterplot of test score vs student-teacher raio
+#+ATTR_LATEX: :width 0.75\textwidth
+#+ATTR_HTML: :width 600
+#+RESULTS[d7554086f38fee46d4ddcba78478b0b91c384ccb]:
+[[file:fig42.png]]
 
 We can compute the correlation coefficient
 between the two variables, using the function =cor=. Typing the
 command =cor(df$str), df$testscr}= yield the value of
 src_R{round(cor(df$str, df$testscr), 2)}.
 
+
 * The OLS estimation
+
 ** Set up the linear regression model
 
 We establish the following linear regression model for the relationship between
@@ -188,6 +196,7 @@ test scores and class sizes
 \label{eq:testscr-str-1}
 TestScore_i = \beta_0 + \beta_1 STR_i + u_i
 \end{equation}
+
 
 ** Estimate in R
 The OLS estimation can be implemented in R with the function =lm=. The
@@ -233,7 +242,9 @@ intercept, \beta_0, and src_R{round(coef(mod1)[2], 2)} for the slope.
 
 \[\widehat{TestScore} = 698.93 - 2.28 \times STR\]
 
+
 ** Plot the sample regression line
+
 The sample regression line can be added to the scatterplot by using
 the function =abline=. And an annotation can be added by using the
 function =text=
@@ -246,9 +257,11 @@ text(23.5, 655, "TestScore = 698.9 - 2.28 STR", cex.lab = 0.9, font.lab = 3)
 #+END_SRC
 
 #+CAPTION: The estimated regression line for the California data
-#+ATTR_LATEX: :width 0.75\textwidth :float t
+#+ATTR_LATEX: :width 0.75\textwidth
+#+ATTR_HTML: :width 600
 #+RESULTS:
 [[file:fig43.png]]
+
 
 * Footnotes
 

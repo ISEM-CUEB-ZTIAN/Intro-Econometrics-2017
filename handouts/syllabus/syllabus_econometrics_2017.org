@@ -254,7 +254,7 @@ notes.
 
 #+NAME: tab-course-schedule
 #+CAPTION: Tentative Course Schedule
-#+ATTR_LATEX: :environment longtable :float t :align p{2.8cm}p{9cm}p{3cm} :center t :font \small
+#+ATTR_LATEX: :environment longtable :float t :align p{2.8cm}p{9cm}p{2.8cm} :center t :font \small
 |                  |                                                           |                |
 | Dates            | Contents                                                  | Due dates      |
 |------------------+-----------------------------------------------------------+----------------|
@@ -274,45 +274,45 @@ notes.
 |------------------+-----------------------------------------------------------+----------------|
 | Week 5           |                                                           |                |
 | [2017-03-20 Mon] | Continue on single regression estimation                  |                |
-| [2017-03-22 Wed] | Single regression: hypothesis tests (chapters 5 and 17)   |                |
+| [2017-03-22 Wed] | Single regression with R and introduction to rmarkdown    |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 6           |                                                           |                |
-| [2017-04-03 Mon] | Continue on single regression hypothesis tests            | Homework 2 due |
+| [2017-03-27 Mon] | Single regression: hypothesis tests (chapters 5 and 17)   | Homework 2 due |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 7           |                                                           |                |
-| [2017-04-10 Mon] | Single regression with R and introduction to rmarkdown    |                |
-| [2017-04-12 Wed] | Multiple regression: estimation (chapters 6 and 18)       |                |
+| [2017-04-03 Mon] | Continue on single regression hypothesis tests            |                |
+| [2017-04-05 Wed] | Multiple regression: estimation (chapters 6 and 18)       |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 8           |                                                           |                |
-| [2017-04-17 Mon] | Continue on multiple regression estimation                | Homework 3 due |
+| [2017-04-10 Mon] | Continue on multiple regression estimation                |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 9           |                                                           |                |
-| [2017-04-24 Mon] | Mid-term examination                                      |                |
-| [2017-04-26 Wed] | Multiple regression: hypothesis tests (chapters 7 and 18) |                |
+| [2017-04-17 Mon] | Multiple regression: hypothesis tests (chapters 7 and 18) | Homework 3 due |
+| [2017-04-19 Wed] | Continue on multiple regression hypothesis tests          |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 10          |                                                           |                |
-| [2017-05-01 Mon] | Labor Day break                                           | Homework 4 due |
+| [2017-04-24 Mon] | Mid-term examination                                      |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 11          |                                                           |                |
-| [2017-05-08 Mon] | Continue on multiple regression hypothesis tests          |                |
-| [2017-05-10 Wed] | Multiple regression with R                                |                |
+| [2017-05-01 Mon] | Labor Day break                                           | Homework 4 due |
+| [2017-05-03 Wed] | Multiple regression with R                                |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 12          |                                                           |                |
-| [2017-05-15 Mon] | Nonlinear regressions (chapter 8)                         | Homework 5 due |
+| [2017-05-08 Mon] | Nonlinear regressions (chapter 8)                         |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 13          |                                                           |                |
-| [2017-05-22 Mon] | Continue on nonlinear regressions and R                   |                |
-| [2017-05-24 Wed] | Assessing multiple regression (chapter 9)                 |                |
+| [2017-05-15 Mon] | Continue on nonlinear regressions and R                   | Homework 5 due |
+| [2017-05-17 Wed] | Assessing multiple regression (chapter 9)                 |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 14          |                                                           |                |
-| [2017-05-29 Mon] | Continue on assessing multiple regression                 | Homework 6 due |
+| [2017-05-22 Mon] | Continue on assessing multiple regression                 |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 15          |                                                           |                |
-| [2017-06-05 Mon] | Regression with panel data (chapter 10)                   |                |
-| [2017-06-07 Wed] | Continue on panel data model and R                        |                |
+| [2017-05-29 Mon] | Regression with panel data (chapter 10)                   | Homework 6 due |
+| [2017-05-31 Wed] | Continue on panel data model and R                        |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 16          |                                                           |                |
-| [2017-06-12 Mon] | Review and Q&A                                            | Homework 7 due |
+| [2017-06-05 Mon] | Review and Q&A                                            |                |
 |------------------+-----------------------------------------------------------+----------------|
 | Week 17          |                                                           |                |
 | TBA              | Final examination                                         |                |
