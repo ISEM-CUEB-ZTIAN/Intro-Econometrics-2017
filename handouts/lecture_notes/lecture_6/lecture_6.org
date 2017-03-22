@@ -517,7 +517,8 @@ statistical assumptions we will introduce in the next sections.
 - From $Y_i = \hat{Y}_i + \hat{u}_i$, we can define
   - *The total sum of squares*: $TSS = \sum_{i=1}^n (Y_i - \overline{Y})^2$
   - *The explained sum of squares*: $ESS = \sum_{i=1}^n (\hat{Y}_i - \overline{Y})^2$
-  - *The sum of squared residuals*: $SSR = \sum_{i=1}^n \hat{u}_i^2$
+  - *The sum of squared residuals*: $SSR = \sum_{i=1}^n (Y_i -
+    \hat{Y}_i)^2 = \sum_{i=1}^n \hat{u}_i^2$
 
 Note that TSS, ESS, and SSR all take the form of "deviation from
 the mean". This form is only valid when an intercept is included in the
@@ -623,7 +624,7 @@ predictable from the independent variable(s).
   \end{equation*}
   $R^2 = 1$ when $\hat{u}_i = 0$ for all $i = 1, \ldots, n$, that is,
   the regression line fits all the sample data perfectly.
-  \[ \hat{u}_i = 0 \Rightarrow ESS = \sum_i^n \hat{u}_i^2 = 0
+  \[ \hat{u}_i = 0 \Rightarrow SSR = \sum_i^n \hat{u}_i^2 = 0
   \Rightarrow R^2 = 1 \]
 
 **** $R^2 = r^2_{XY}$

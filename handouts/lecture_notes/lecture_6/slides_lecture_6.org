@@ -416,7 +416,9 @@ $$\widehat{TestScore} = 698.93 - 2.28 \times STR$$
 - From $Y_i = \hat{Y}_i + \hat{u}_i$, we can define
 - *The total sum of squares*: $TSS = \sum_{i=1}^n (Y_i - \overline{Y})^2$
 - *The explained sum of squares*: $ESS = \sum_{i=1}^n (\hat{Y}_i - \overline{Y})^2$
-- *The sum of squared residuals*: $SSR = \sum_{i=1}^n \hat{u}_i^2$
+- *The sum of squared residuals*: $SSR = \sum_{i=1}^n (Y_i -
+  \hat{Y}_i)^2 = \sum_{i=1}^n \hat{u}_i^2$
+
 - The "deviation from the mean" form is only valid when an intercept
   is included in the regression model.
 
@@ -491,7 +493,7 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
   = \sum_i^n (\hat{Y}_i - \overline{Y})^2 = 0 \Rightarrow R^2 = 0
   \end{equation*}
 - $R^2 = 1$ when $\hat{u}_i = 0$ for all $i = 1, \ldots, n$.
-  \[ \hat{u}_i = 0 \Rightarrow ESS = \sum_i^n \hat{u}_i^2 = 0
+  \[ \hat{u}_i = 0 \Rightarrow SSR = \sum_i^n \hat{u}_i^2 = 0
   \Rightarrow R^2 = 1 \]
 
 *** $R^2 = r^2_{XY}$

@@ -1,4 +1,4 @@
-% Created 2017-03-21 Tue 20:17
+% Created 2017-03-22 Wed 08:59
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -14,7 +14,7 @@
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
-\usepackage[margin=1.2in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 \onehalfspacing
 \usepackage{parskip}
@@ -60,9 +60,8 @@
 
 
 \section{Introduction}
-\label{sec:org3d83c1b}
-\subsection{Overview}
-\label{sec:orgd91a752}
+\label{sec:orgca67df3}
+
 This chapter consists of two parts. The first part concerns hypothesis
 testing for a single coefficient in a simple linear regression
 model. The basic concepts and ideas of hypothesis testing in this
@@ -81,85 +80,69 @@ case. This is contrary to the common layouts of an Econometrics
 textbook that often first gives the assumption of homoskedasticity,
 which is a component of the classical OLS assumptions (equivalent to
 the three least squares assumptions plus the assumption of the
-homoskedastic and conditionally normally distributed errors), 
-and considers heteroskedasticity as a violation of these
-assumptions. Also, please be aware that most discussions of the sample
-distributions in this textbook are in the context of a large sample,
-while the small sample properties are not the focus.
+homoskedastic and conditionally normally distributed errors). Then
+treat heteroskedasticity as a violation to these assumptions. Also,
+you should be aware that most discussions of the sample distributions
+in this textbook are in the context of a large sample, while the small
+sample statistical properties are not the focus.
 
-\subsection{Learning goals}
-\label{sec:orgc86992d}
-\begin{itemize}
-\item Grasp the basic concepts and techniques of hypothesis testing: the
-null vs alternative hypotheses, the p-value, the significance level,
-the critical value, the confidence intervals, the t-statistics.
-\item Be able to create a binary variable to represent two categories, and
-know how to correctly interpret the coefficient.
-\item Understand homoskedasticity and heteroskedasticity and their
-implications.
-\item Understand the Gauss-Markov theorem.
-\end{itemize}
-\subsection{Readings}
-\label{sec:orgb54f3c7}
-\begin{itemize}
-\item \emph{Introduction to Econometrics} by Stock and Watson. Read thoroughly
-Chapter 5.
-\item \emph{Introductory Econometrics: a Modern Approach} by
-J. Wooldridge. Read Section 2.5 for the OLS assumptions, and Section
-4.2 and 4.3 for hypothesis testing and confidence intervals for a
-simple regression model.
-\end{itemize}
 
 \section{Testing Hypotheses about One of the Regression Coefficients}
-\label{sec:orgffe4718}
+\label{sec:orgb06cc80}
+
 \subsection{A brief review of basic concepts in hypothesis tests}
-\label{sec:orgdc57329}
-Let's quickly review what we have learned in Lecture 3 concerning
-hypothesis testing with an example of testing the true value of the
-population mean from a random sample. 
+\label{sec:org81c1e0c}
+
+Let's quickly review what we have learned in Lecture 3 about
+hypothesis tests, taking an example of testing the true value of the
+population mean from a random sample.
+
 \subsubsection*{The null versus alternative hypotheses}
-\label{sec:org2526068}
+\label{sec:org5f5bfde}
+
 We want to test two contrasting hypotheses, the null hypothesis versus
 the alternative hypothesis. 
+
 \begin{itemize}
-\item Two-sided tests
+\item Two-sided tests: 
+$$H_0:\; E(Y) = \mu_{Y,0}$ v.s. $H_1:\; E(Y) \neq \mu_{Y,0}$$
 
-\(H_0:\; E(Y) = \mu_{Y,0}\) v.s. \(H_1:\; E(Y) \neq \mu_{Y,0}\)
-
-\item One-sided test
-
-\(H_0:\; E(Y) = \mu_{Y,0}\) v.s. \(H_1:\; E(Y) > \mu_{Y,0}\)
+\item One-sided test: 
+$$H_0:\; E(Y) = \mu_{Y,0}$ v.s. $H_1:\; E(Y) > \mu_{Y,0}$$
 \end{itemize}
 
-What follows only concerns the two-sided test. 
-
 \subsubsection*{Test statistics}
-\label{sec:orgbb33536}
-We need some tool to be used in the test, which is referred to as test
-statistics. 
+\label{sec:orgdc50b8a}
+
+We need some tools for the testing, which is referred to as test
+statistics.
 
 \begin{itemize}
 \item When \(\sigma_Y\) is known, we use the z-statistics
 \[ z = \frac{\overline{Y} -
   \mu_{Y,0}}{\sigma_{\overline{Y}}} = \frac{\overline{Y} -
-  \mu_{Y,0}}{\sigma_Y/\sqrt{n}} \xrightarrow{\text{ \textit d }} N(0, 1)\]
+  \mu_{Y,0}}{\sigma_Y/\sqrt{n}} \xrightarrow{\text{ d }} N(0, 1)\]
 
-\item When \(\sigma_Y\) is unknown, we use the t-statistics\footnote{In a small
-sample case, the exact distribution of the t-statistics is the
-student-t distribution with \(n-1\) degree of freedom.}
+\item When \(\sigma_Y\) is unknown, we use the standard error of
+\(\overline{Y}\) and compute the t-statistic\footnote{In a small sample case, the exact distribution of the
+t-statistics is the Student-t distribution with \(n-1\) degree of
+freedom.}
+
 \[ t = \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})} =
-  \frac{\overline{Y} - \mu_{Y,0}}{s_Y/\sqrt{n}} \xrightarrow{ \text{
-  \textit d } } N(0, 1) \]
+  \frac{\overline{Y} - \mu_{Y,0}}{s_Y/\sqrt{n}} \xrightarrow{ \text{ d } } N(0, 1) \]
 \end{itemize}
 
 \subsubsection*{The rules for hypothesis testing}
-\label{sec:orgb3841a1}
+\label{sec:org2561717}
+
 We need to set up some rules for judging that under what
-circumstances, the null hypothesis can be rejected or fail
+circumstances, the null hypothesis is rejected or fails
 to be rejected. 
+
 \begin{itemize}
 \item Type I and type II errors
-\label{sec:orgbc73d89}
+\label{sec:org27d15c7}
+
 \begin{itemize}
 \item \textbf{Type I error}. The null hypothesis is rejected when in fact it is
 true.
@@ -168,7 +151,8 @@ is false.
 \end{itemize}
 
 \item The significance level, the critical value, and the p-value
-\label{sec:org125a391}
+\label{sec:org545fa5b}
+
 \begin{itemize}
 \item \textbf{The significance level}. The pre-specified probability of type I
 error.  \(\alpha = 0.05, 0.10, \text{ or } 0.01\)
@@ -177,7 +161,7 @@ error.  \(\alpha = 0.05, 0.10, \text{ or } 0.01\)
 test rejects the null hypothesis at the given significance level.
 
 For example. In a two-sided test, with the z statistic. The critical
-value at the 5$\backslash$% significance level is \(c_{\alpha}\) such that
+value at the 5\% significance level is \(c_{\alpha}\) such that
 \(\varPhi(c_{\alpha}) = 0.975\). Accordingly, we know \(c_{\alpha}
   \approx 1.96\).
 
@@ -188,42 +172,46 @@ correct.
 
 Equivalently, the p-value is the smallest significance
 level at which the null hypothesis could be rejected, based on the
-test statistic actually observed.
+test statistic actually computed. 
 
 Mathematically, the p-value is 
-\[  \pr_{H_0}\left( \left| \overline{Y} - \mu_{Y,0}
-  \right| > \left| \overline{Y}^{act} - \mu_{Y,0} \right| \right) =
+\[  \pr_{H_0}\left( \left| \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})}
+  \right| > \left| \frac{\overline{Y}^{act} - \mu_{Y,0}}{SE(\overline{Y})} \right| \right) =
   2\varPhi(-|t^{act}|) \text{ .} \]
 \end{itemize}
 
 \item Rejection rules
-\label{sec:orgc755ea2}
+\label{sec:org030d7f6}
 
 The following two statements are equivalent in terms of rejecting the
 null hypothesis at the 5\% significance level. 
 
 \begin{itemize}
 \item We can reject the null if the test statistics falls into the
-rejection region set by the critical values at the 5\% significance
-level, that is, when \(|t^{act}| > c_{\alpha} = 1.96\),
+rejection region delimited by the critical values at the 5\%
+significance level, that is, when \(|t^{act}| > c_{\alpha} = 1.96\),
+
 \item We can reject the null if the p-value is less than the significance
 level that is 5\% in this case.
 \end{itemize}
 
-The rejection rule can be illustrated using Figure \ref{fig:orgf9bfd90}.
+The rejection rule can be illustrated using Figure \ref{fig:org313a2fc}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{./figure/fig9_1.png}
-\caption{\label{fig:orgf9bfd90}
+\caption{\label{fig:org313a2fc}
 An illustration of a two-sided test}
 \end{figure}
 \end{itemize}
 
+
 \subsection{Two-sided hypotheses concerning \(\beta_1\)}
-\label{sec:orgac15208}
+\label{sec:orgc272b67}
+
 \subsubsection*{Application to test scores}
-\label{sec:orgaeeafd2}
+\label{sec:org7d4ed86}
+
 In the last lecture, we estimate a simple linear regression model for test
 scores and class sizes, which yields the following estimated sample
 regression function,
@@ -239,41 +227,42 @@ elementary school districts is whether the estimated coefficient on
 whether \(\beta_1\) is statistically significantly different from zero. 
 
 \subsubsection*{Testing hypotheses about the slope \(\beta_1\)}
-\label{sec:org5736b08}
-\begin{LaTeX}
-\textcolor{red}\{Note: all discussions about hypothesis testing that
+\label{sec:org3bb4787}
+
+Note that all discussions about hypothesis testing that
 follows involve only the regression with a large sample size. The
 last section of this lecture touches upon the small sample properties
-of the test statistics.\}
-\end{LaTeX}
+of the test statistics.
+
 \begin{itemize}
 \item The two-sided hypothesis
-\label{sec:org2b720dd}
+\label{sec:org3b9ba12}
+
 \[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 \neq \beta_{1,0} \]
 
-\item The t-statistic
-\label{sec:orgf223ad5}
-\begin{itemize}
-\item The general form of the t-statistic
-\label{sec:org2e2d015}
+The null hypothesis is that \(\beta_1\) is equal to a specific value
+\(\beta_{1,0}\), and the alternative hypothesis is the opposite. 
 
-In general, the t-statisitc has the form
+\item The t-statistic
+\label{sec:org38c85a9}
+
+The general form of the t-statistic is
+
 \begin{equation}
 \label{eq:general-t}
 t = \frac{\text{estimator} - \text{hypothesized value}}{\text{standard error of the estimator}}
 \end{equation}
 
-\item The t-statistics for testing \(\beta_1\)
-\label{sec:org0ac507d}
+The t-statistics for testing \(\beta_1\) is then
 
 \begin{equation}
 \label{eq:t-stat-b1}
 t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}
 \end{equation}
-\end{itemize}
 
 \item The standard error of \(\hat{\beta}_1\) is calculated as
-\label{sec:orgcd44438}
+\label{sec:org1e31c37}
+
 \begin{equation}
 \label{eq:se-b-1}
 SE(\hat{\beta}_1) = \sqrt{\hat{\sigma}^2_{\hat{\beta}_1}}
@@ -285,7 +274,8 @@ where
 \end{equation}
 
 \item How to understand Equation \ref{eq:sigma-b-1}
-\label{sec:orgf854442}
+\label{sec:org9fac894}
+
 \begin{itemize}
 \item The population variance of \(\beta_1\) is 
 \[ \sigma^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\var\left( (X_i - \mu_X)u_i \right)}{\left( \var(X_i) \right)^2} \]
@@ -303,25 +293,14 @@ explained in detail shortly in this lecture.
 \end{itemize}
 
 \item Compute the p-value
-\label{sec:org039395e}
+\label{sec:org3068a96}
 
-Let's reiterate the two equivalent definitions of the p-value:
+The p-value is the probability of observing a value of \(\hat{\beta}_1\)
+at least as different from \(\beta_{1,0}\) as the estimate actually
+computed (\(\hat{\beta}^{act}_1\)), assuming that the null hypothesis is
+correct. Accordingly, under the null hypothesis, the p-value for
+testing \(\beta_1\) can be expressed with a probability function as
 
-\begin{enumerate}
-\item The p-value is the probability of observing a value of
-\(\hat{\beta}_1\) at least as different from \(\beta_{1,0}\) as the
-estimate actually computed (\(\hat{\beta}^{act}_1\)), assuming that
-the null hypothesis is correct.
-
-\item The p-value is the smallest significance level at which the null
-hypothesis could be rejected, based on the test statistic
-actually observed.
-\end{enumerate}
-
-According to the first definition, the p-value for testing \(\beta_1\)
-can be expressed with a probability function under the null
-hypothesis as
-\begin{LaTeX}
 \begin{equation*}
 \begin{split}
 p\text{-value} &= \pr_{H_0} \left( | \hat{\beta}_1 - \beta_{1,0} | > | \hat{\beta}^{act}_1 - \beta_{1,0} | \right) \\
@@ -329,27 +308,24 @@ p\text{-value} &= \pr_{H_0} \left( | \hat{\beta}_1 - \beta_{1,0} | > | \hat{\bet
 &= \pr_{H_0} \left( |t| > |t^{act}| \right)
 \end{split}
 \end{equation*}
-\end{LaTeX}
 
-In large samples, the \(p\text{-value} = \pr\left(|t| > |t^{act}|
+With a large sample, \(p\text{-value} = \pr\left(|t| > |t^{act}|
 \right) = 2 \varPhi(-|t^{act}|)\).
 
 The null hypothesis is rejected at the 5\% significance level if the
-\(p\text{-value} < 0.05\) or \(|t^{act}| > 1.96\), which is the critical
-value at the 5\% significant level. 
+\(p\text{-value} < 0.05\) or, equivalently, \(|t^{act}| > 1.96\). 
 
 \item Application to test scores
-\label{sec:orgfbd8a8c}
+\label{sec:orgb210dc3}
 
 The OLS estimation of the linear regression model of test scores
 against student-teacher ratios, together with the standard errors of
 all parameters in the model, can be represented using the following
 equation, 
-\begin{LaTeX}
+
 \begin{equation*}
 \widehat{TestScore} = \underset{\displaystyle (10.4)}{698.9} - \underset{\displaystyle (0.52)}{2.28} \times STR,\; R^2 = 0.051,\; SER = 1.86
 \end{equation*}
-\end{LaTeX}
 
 The \textbf{heteroskedasticity-robust} standard errors are reported in the
 parentheses, that is, \(SE(\hat{\beta}_0) = 10.4\) and
@@ -374,28 +350,32 @@ test scores.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figure/fig-5-1.png}
-\caption{\label{fig:orgc041c8e}
+\caption{\label{fig:org8d8f514}
 Calculating the p-value of a two-sided test when \(t^{act}=-4.38\)}
 \end{figure}
 \end{itemize}
 
+
 \subsection{The one-sided alternative hypothesis}
-\label{sec:org183e3d3}
+\label{sec:orgb607691}
+
 \subsubsection*{The one-sided hypotheses}
-\label{sec:orgdaf9a76}
+\label{sec:orgd33ede2}
+
 In some cases, it is appropriate to use a one-sided hypothesis
 test. For example, the superintendent of the California school
 districts want to know whether class sizes have a negative effect on
 test scores, that is, \(\beta_1 < 0\). 
 
 For a one-sided test, the null hypothesis and the one-sided
-alternative hypothesis are\footnote{Note that the trick here is we put the
-desired hypothesis to the alternative place.}  
+alternative hypothesis are \footnote{Note that the trick here is we put the
+desired hypothesis to the alternative place.}
 
 \[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 < \beta_{1,0} \]
 
 \subsubsection*{The one-sided left-tail test}
-\label{sec:orgf1118f0}
+\label{sec:org1c8b3b3}
+
 \begin{itemize}
 \item The t-statistic is the same as in a two-sided test
 \[ t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)} \]
@@ -410,56 +390,64 @@ test with a 1\% significance level). Thus, the null hypothesis is
 rejected at the 1\% level.
 \end{itemize}
 
+
 \section{Confidence Intervals for a Regression Coefficient}
-\label{sec:org535b841}
+\label{sec:org6a72baa}
+
 \subsection{Two equivalent definitions of confidence intervals}
-\label{sec:orga5b2cdc}
-A 95\% \textbf{confidence interval} for \(\beta_1\) has two equivalent
-definitions. 
+\label{sec:org1b140eb}
+
+Recall that a 95\% \textbf{confidence interval} for \(\beta_1\) has two equivalent
+definitions:
 \begin{enumerate}
-\item It is the set of values that cannot be rejected using a \uline{two-sided}
+\item It is the set of values that cannot be rejected using a two-sided
 hypothesis test with a 5\% significance level.
 \item It is an interval that has a 95\% probability of containing the true
-value of \(\beta_1\); that is, in 95\% of possible samples that might be
-drawn, the confidence interval will contain the true value of
-\(\beta_1\).
+value of \(\beta_1\).
 \end{enumerate}
 
-Let's go back to Figure \ref{fig:orgf9bfd90}. According to the first
+Let's go back to Figure \ref{fig:org313a2fc}. According to the first
 definition, the acceptance region contains the values of the
 test statistics that fail to reject the null hypothesis,
 which corresponds to the values of \(\beta_1\) that cannot be rejected. 
 
+
 \subsection{Construct the 95\% confidence interval for \(\beta_1\)}
-\label{sec:orgb7fb720}
+\label{sec:org57bc5c6}
+
 The 95\% confidence interval for \(\beta_1\) can be constructed using the
 t-statistic, assuming that with large samples, the t-statistic is
 approximately normally distributed. The 95\% critical value of a
 standard normal distribution is 1.96. Therefore, we can obtain the 95\%
 confidence interval for \(\beta_1\) by the following steps
-\begin{LaTeX}
+
 \begin{gather*}
 -1.96 \leq \frac{\hat{\beta}_1 - \beta_1}{SE(\hat{\beta}_1)} \leq 1.96 \\
 \hat{\beta}_1 - 1.96 SE(\hat{\beta}_1) \leq \beta_1 \leq \hat{\beta}_1 + 1.96 SE(\hat{\beta}_1)
 \end{gather*}
-\end{LaTeX}
 
 The 95\% confidence interval for \(\beta_1\) is 
 \[ \left[ \hat{\beta}_1 - 1.96 SE(\hat{\beta}_1),\; \hat{\beta}_1 + 1.96
 SE(\hat{\beta}_1) \right] \]
 
+
 \subsection{The application to test scores}
-\label{sec:org5f88049}
+\label{sec:org62bfc60}
+
 In the application to test scores, given that \(\hat{\beta}_1 = -2.28\)
 and \(SE(\hat{\beta}_1) = 0.52\), the 95\% confidence interval for
 \(\beta_1\) is \({-2.28 \pm 1.96 \times 0.52}\), or \(-3.30 \leq \beta_1
-\leq -1.26\). Notice that the confidence interval only spans over the
-negative region without going beyond zero, which implies that the null
-hypothesis of \(\beta_1 = 0\) can be rejected at the 5\% significance
-level. 
+\leq -1.26\). 
+
+Note that the confidence interval only spans over the negative
+region with zero leaving outside the interval, which implies that the
+null hypothesis of \(\beta_1 = 0\) can be rejected at the 5\%
+significance level.
+
 
 \subsection{Confidence intervals for predicted effects of changing \(X\)}
-\label{sec:org898bb1c}
+\label{sec:org649c380}
+
 \(\beta_1\) is the marginal effect of \(X\) on \(Y\), that is, 
 \[ \beta_1 = \frac{\dx Y}{ \dx X} \Rightarrow \dx Y = \beta_1 \dx X \]
 When \(X\) changes by \(\Delta X\), \(Y\) changes by \(\beta_1 \Delta X\). 
@@ -468,35 +456,40 @@ So the 95\% confidence interval for \(\beta_1 \Delta X\) is
 \[ \left[ \hat{\beta}_1 \Delta X - 1.96 SE(\hat{\beta}_1) \Delta X,\;
 \hat{\beta}_1 \Delta X + 1.96SE(\hat{\beta}_1) \Delta X \right] \]
 
+
 \section{Regression When \(X\) is a Binary Variable}
-\label{sec:org7455dc7}
+\label{sec:orgad71cca}
+
 \subsection{A binary variable}
-\label{sec:org2c84394}
-A \textbf{binary variable}  takes on values of one if some condition is true or zero
-otherwise, which is also called a \textbf{dummy variable}, a \textbf{categorical
-variable}, or an \textbf{indicator variable}. 
+\label{sec:org57c6f1f}
+
+A \textbf{binary variable} takes on values of one if some condition is true
+and zero otherwise, which is also called a \textbf{dummy variable}, a
+\textbf{categorical variable}, or an \textbf{indicator variable}.
 
 For example, 
 \begin{equation*}
 D_i = 
 \begin{cases}
-1,\; &\text{if the i\textsuperscript{th} subject is female} \\
-0,\; &\text{if the i\textsuperscript{th} subject is male} 
+1,\; &\text{if the } i^{th} \text{ subject is female} \\
+0,\; &\text{if the } i^{th} \text{ subject is male} 
 \end{cases}
 \end{equation*}
 
-The linear regression model with a dummy variable as the regressor is
+The linear regression model with a dummy variable as a regressor is
 \begin{equation}
 \label{eq:dummy-1}
 Y_i = \beta_0 + \beta_1 D_i + u_i,\; i = 1, \ldots, n
 \end{equation}
 
-The coefficient on \(\beta_1\) is estimated by the OLS estimation method
+The coefficient on \(D_i\) is estimated by the OLS estimation method
 in the same way as a continuous regressor. The difference lies in how
 we interpret \(\beta_1\). 
 
+
 \subsection{Interpretation of the regression coefficients}
-\label{sec:org4996dee}
+\label{sec:orgf04ae68}
+
 Given that the assumption \(E(u_i | D_i) = 0\) holds in Equation
 (\ref{eq:dummy-1}), we have two population regression functions for
 the two cases, that is,
@@ -505,12 +498,14 @@ the two cases, that is,
 \item When \(D_i = 0\), \(E(Y_i|D_i = 0) = \beta_0\)
 \end{itemize}
 
-Therefore, \(\beta_1 = E(Y_i | D_i = 1) - E(Y_i |D_i = 0)\), \textbf{the
-difference in the population means} between two groups represented by
+Therefore, \(\beta_1 = E(Y_i | D_i = 1) - E(Y_i |D_i = 0)\), that is,
+\textbf{the difference in the population means} between two groups represented by
 \(D_i = 1\) and \(D_i = 0\), respectively.
 
+
 \subsection{Hypothesis tests and confidence intervals}
-\label{sec:org818d01d}
+\label{sec:orga4ab873}
+
 The hypothesis tests and confidence intervals for the coefficient on a
 binary variable follows the same procedure of those for a continuous
 variable \(X\). 
@@ -522,20 +517,24 @@ Therefore, the t-statistic is
 And the 95\% confidence interval is
 \[ \hat{\beta}_1 \pm 1.96 SE(\hat{\beta}_1) \]
 
+
 \section{Heteroskedasticity and Homoskedasticity}
-\label{sec:orgb731b06}
+\label{sec:orga06e261}
+
 \subsection{What are heteroskedasticity and homoskedasticity?}
-\label{sec:orgb91b4a6}
+\label{sec:orgfdd948d}
+
 \subsubsection*{Homoskedasticity}
-\label{sec:org65d88d8}
+\label{sec:orgb42775d}
+
 The error term \(u_i\) is \textbf{homoskedastic} if the conditional variance of
 \(u_i\) given \(X_i\) is constant for \(i = 1, \ldots, n\). Mathematically,
 it says \(\var(u_i | X_i) = \sigma^2,\, \text{ for } i = 1, \ldots, n\),
-i.e., the variance of \(u_i\) for all \$i\$'s is a constant and does not
+i.e., the variance of \(u_i\) for all \emph{i} is a constant and does not
 depend on \(X_i\).
 
 \subsubsection*{Heteroskedasticity}
-\label{sec:org03e1e95}
+\label{sec:orgccb6b65}
 In contrast, the error term \(u_i\) is \textbf{heteroskedastic} if the conditional variance of
 \(u_i\) given \(X_i\) changes on \(X_i\) for \(i = 1, \ldots, n\). That is,
 \(\var(u_i | X_i) = \sigma^2_i,\, \text{ for } i = 1, \ldots, n\). 
@@ -544,10 +543,9 @@ e.g.. A multiplicative form of heteroskedasticity is \(\var(u_i|X_i)
 = \sigma^2 f(X_i)\) where \(f(X_i)\) is a function of \(X_i\), for
 example, \(f(X_i) = X_i\) as a simplest case. 
 
-See Figure \ref{fig:homovshetero} for a visual comparison between
+Figure \ref{fig:homovshetero} for a visual comparison between
 homoskedasticity and heteroskedasticity. 
 
-\begin{LaTeX}
 \begin{figure}
     \centering
     \begin{subfigure}[!ht]{0.85\textwidth}
@@ -564,12 +562,14 @@ homoskedasticity and heteroskedasticity.
     \end{subfigure}
     \caption{Homoskedasticity Versus Heteroskedasticity}\label{fig:homovshetero}
 \end{figure}
-\end{LaTeX}
+
 
 \subsection{Mathematical implications of homoskedasticity}
-\label{sec:org581cf68}
+\label{sec:org93c84e8}
+
 \subsubsection*{Unbiasedness, consistency, and the asymptotic distribution}
-\label{sec:org9691749}
+\label{sec:orge43d4c2}
+
 As long as the least squares assumptions holds, whether the error
 term, \(u_i\), is homoskedastic or heteroskedastic does not affect
 unbiasedness, consistency, and the asymptotic normal distribution
@@ -582,11 +582,10 @@ of the OLS estimators.
 \(\var((X_i-\mu_X)u_i) < \infty\), which still holds as long as
 Assumption 3 holds, that is, no extreme outliers of \(X_i\).
 \end{itemize}
+
 \subsubsection*{Efficiency}
-\label{sec:org6afd926}
-\begin{itemize}
-\item What means "being efficient"
-\label{sec:orgca89143}
+\label{sec:orgf1fc015}
+
 The existence of heteroskedasticity affects the efficiency of the
 OLS estimator
 \begin{itemize}
@@ -601,60 +600,52 @@ conditional on \(X_1, \ldots, X_n\).
 
 \item See the Gauss-Markov Theorem below.
 \end{itemize}
-\end{itemize}
+
 
 \subsection{The homoskedasticity-only variance formula}
-\label{sec:org9d21e4a}
+\label{sec:org7fa009d}
 
 Recall that we can write \(\hat{\beta}_1\) as
-\begin{LaTeX}
 \begin{equation*}
 \hat{\beta}_1 = \beta_1 + \frac{\sum_i (X_i - \bar{X})u_i}{\sum_i
 (X_i - \bar{X})^2} 
 \end{equation*} 
-\end{LaTeX}
 
-Therefore, if \$u\_i\$'s are
+Therefore, if \(u_i\) for \(i=1, \ldots, n\) is
 homoskedastic and \(\sigma^2\) is known, then
-\begin{LaTeX}
 \begin{equation}
 \label{eq:vbeta-1a} \var(\hat{\beta}_1 | X_i) = \frac{\sum_i (X_i -
 \bar{X})^2 \var(u_i|X_i)}{\left[\sum_i (X_i - \bar{X})^2\right]^2} =
 \frac{\sigma^2}{\sum_i (X_i - \bar{X})^2} 
 \end{equation} 
-\end{LaTeX}
 
 When \(\sigma^2\) is unknown, then we use \(s^2_u = 1/(n-2) \sum_i
 \hat{u}_i^2\) as an estimator of \(\sigma^2\). Thus, the
 homoskedasticity-only estimator of the variance of \(\hat{\beta}_1\) is
-\begin{LaTeX}
 \begin{equation}
 \label{eq:vbeta-1b} \tilde{\sigma}^2_{\hat{\beta}_1} =
 \frac{s^2_u}{\sum_i (X_i - \bar{X})^2} 
 \end{equation} 
-\end{LaTeX}
 
 And the homoskedasticity-only standard error is \(SE(\hat{\beta}_1) =
 \sqrt{\tilde{\sigma}^2_{\hat{\beta}_1}}\).
 
 Recall that the heteroskedasticity-robust standard error is
-\begin{LaTeX}
 \begin{equation*}
 SE(\hat{\beta}_1) = \sqrt{\hat{\sigma}^2_{\hat{\beta}_1}}
 \end{equation*} 
-\end{LaTeX}
 where
-\begin{LaTeX}
 \begin{equation*}
 \hat{\sigma}^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\frac{1}{n-2}
 \sum_{i=1}^n (X_i - \bar{X})^2 \hat{u}^2_i}{\left[ \frac{1}{n}
 \sum_{i=1}^n (X_i - \bar{X})^2 \right]^2} 
 \end{equation*} 
-\end{LaTeX}
 which is also referred to as Eicker-Huber-White standard errors.
 
+
 \subsection{What does this mean in practice?}
-\label{sec:orgd7b529b}
+\label{sec:org72a5d02}
+
 \begin{itemize}
 \item Heteroskedasticity is common in cross-sectional data. If you do not
 have strong beliefs in homoskedasticity, then it is always safer to
@@ -667,7 +658,7 @@ manually add the option for the robust estimation.
 \begin{itemize}
 \item In R, you can use the following codes
 \begin{verbatim}
-library(AER)
+library(lmtest)
 model1 <- lm(testscr ~ str, data = classdata)
 coeftest(model1, vcov = vcovHC(model1, type="HC1"))
 \end{verbatim}
@@ -679,10 +670,11 @@ regress testscr str, robust
 \end{itemize}
 \end{itemize}
 
+
 \section{The Theoretical Foundations of Ordinary Least Squares}
-\label{sec:orge5e6956}
+\label{sec:org30925e8}
 \subsection{The Gauss-Markov conditions}
-\label{sec:org78b6f40}
+\label{sec:orgb4f28ba}
 We have already known the least squares assumptions: for \(i = 1,
 \ldots, n\), (1) \(E(u_i|X_i) =
 0\), (2) \((X_i, Y_i)\) are i.i.d., and (3) large outliers are unlikely. 
@@ -691,7 +683,7 @@ The Gauss-Markov conditions provide anther version of these
 assumptions plus the assumption of homoskedastic errors. 
 
 \subsubsection*{The Gauss-Markov conditions}
-\label{sec:orgaa5cc02}
+\label{sec:org4a00d01}
 For \(\mathbf{X} = [X_1, \ldots, X_n]\) \footnote{Here I use the vector
 notation to represent all observations of \(X_i\) for \(i=1, \ldots,
 n\). We will formally introduce the matrix notation for a linear
@@ -703,7 +695,7 @@ regression model and the OLS estimation in the next lecture.}
 \end{enumerate}
 
 \subsubsection*{From the three Least Squares Assumptions and the homoskedasticity assumption to the Gauss-Markov conditions}
-\label{sec:org2727c8d}
+\label{sec:org9bcb6e8}
 Note that the conditional expectations in the G-M conditions are in
 terms of all observations \(\mathbf{X}\), not just one observation,
 \(X_i\). However, all the G-M conditions can be derived from the least
@@ -720,9 +712,9 @@ squares assumptions plus the homoskedasticity assumption. Specifically,
 \end{itemize}
 
 \subsection{Linear conditionally unbiased estimator}
-\label{sec:org37c792c}
+\label{sec:org186b0ff}
 \subsubsection*{The general form of a linear conditionally unbiased estimator of \(\beta_1\)}
-\label{sec:orgee99a63}
+\label{sec:orgbf571b9}
 
 The class of linear conditionally unbiased estimators consists of all
 estimators of \(\beta_1\) that are linear function of \(Y_i, \ldots, Y_n\)
@@ -755,7 +747,7 @@ For Equation (\ref{eq:e-beta1-tilde}) being satisfied with any
 \[ \sum_i a_i = 0 \text{ and } \sum_i a_iX_i = 1 \]
 
 \subsubsection*{The OLS esimator \(\hat{\beta}_1\) is a linear conditionally unbiased estimator}
-\label{sec:org30ba6bd}
+\label{sec:org7311d3e}
 
 We have known that \(\hat{\beta}_1\) is unbiased both conditionally and
 unconditionally. Next, we show that it is linear. 
@@ -771,10 +763,10 @@ must have
 which can be simply verified.
 
 \subsection{The Gauss-Markov Theorem}
-\label{sec:org1778ccf}
+\label{sec:org430ff29}
 The Gauss-Markov Theorem for \(\hat{\beta}_1\) states
 \phantomsection
-\label{org6158aea}
+\label{org2c15ec0}
 \begin{quote}
 If the Gauss-Markov conditions hold, then the OLS estimator
 \(\hat{\beta}_1\) is the *B*est (most efficient) *L*inear conditionally
@@ -795,7 +787,7 @@ the proof is to show that
 The equality holds only when \(\tilde{\beta}_1 = \hat{\beta}_1\). 
 
 \subsection{The limitations of the Gauss-Markov theorem}
-\label{sec:orgc0dd810}
+\label{sec:org520d753}
 \begin{enumerate}
 \item The Gauss-Markov conditions may hold in practice. Any violation of
 the Gauss-Markov conditions will result in the OLS estimator not
@@ -824,9 +816,9 @@ more efficient than the OLS estimators.
 \end{enumerate}
 
 \section{Using the t-Statistic in Regression When the Sample Size is Small}
-\label{sec:org45ea3d1}
+\label{sec:org0b6b9b7}
 \subsection{The classical assumptions of the least squares estimation}
-\label{sec:org581dc01}
+\label{sec:org923f997}
 We first expand the OLS assumptions by two additional ones. One is the
 assumption of the homoskedastic errors, and another one is the
 assumption that the conditional distribution of \(u_i\) given \(X_i\) is
@@ -848,13 +840,13 @@ For \(i = 1, 2, \ldots, n\)
 \end{itemize}
 
 \subsection{The t-Statistic and the Student-t Distribution}
-\label{sec:org5ad4bf1}
+\label{sec:org69b372d}
 Under all the classical assumptions, we can construct the
 t-statistic for hypothesis testing of a single coefficient. Even with
 a small samples, the t-statistic has an exact Student-t distribution. 
 
 \subsubsection*{The t-statistic is for \(\beta_1\)}
-\label{sec:org2611d8c}
+\label{sec:org503fd5d}
 
 \[H_0: \beta_1 = \beta_{1,0} \text{ vs } H_1: \beta_1 \neq \beta_{1,0}\]
 \begin{equation}
@@ -869,7 +861,7 @@ the former of which is the homoskedasticity-only standard error of
 regression. 
 
 \subsubsection*{The Student-t distribution of \(t\)}
-\label{sec:orgf23cbdf}
+\label{sec:org86d2817}
 
 The t statistic can be rewritten as
 \begin{equation}

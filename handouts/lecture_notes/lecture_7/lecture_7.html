@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-21 Tue 20:16 -->
+<!-- 2017-03-22 Wed 08:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lecture 7: Hypothesis Test and Confidence Intervals of Linear Regression with a Single Regressor</title>
@@ -256,13 +256,13 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgef35215">1. Introduction</a></li>
-<li><a href="#orgee5ef20">2. Testing Hypotheses about One of the Regression Coefficients</a></li>
-<li><a href="#org4e8995a">3. Confidence Intervals for a Regression Coefficient</a></li>
-<li><a href="#org02e0f9d">4. Regression When \(X\) is a Binary Variable</a></li>
-<li><a href="#org645f3ba">5. Heteroskedasticity and Homoskedasticity</a></li>
-<li><a href="#org570d704">6. The Theoretical Foundations of Ordinary Least Squares</a></li>
-<li><a href="#orgac99434">7. Using the t-Statistic in Regression When the Sample Size is Small</a></li>
+<li><a href="#org43decdb">1. Introduction</a></li>
+<li><a href="#org240e8fc">2. Testing Hypotheses about One of the Regression Coefficients</a></li>
+<li><a href="#orgca0f7a5">3. Confidence Intervals for a Regression Coefficient</a></li>
+<li><a href="#orgcad772a">4. Regression When \(X\) is a Binary Variable</a></li>
+<li><a href="#orgec751cf">5. Heteroskedasticity and Homoskedasticity</a></li>
+<li><a href="#org9346ae3">6. The Theoretical Foundations of Ordinary Least Squares</a></li>
+<li><a href="#org6a9feaf">7. Using the t-Statistic in Regression When the Sample Size is Small</a></li>
 </ul>
 </div>
 </div>
@@ -279,12 +279,9 @@ for the JavaScript code in this tag.
 \)
 
 
-<div id="outline-container-orgef35215" class="outline-2">
-<h2 id="orgef35215"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-org43decdb" class="outline-2">
+<h2 id="org43decdb"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org8d3a5a0" class="outline-3">
-<h3 id="org8d3a5a0"><span class="section-number-3">1.1</span> Overview</h3>
-<div class="outline-text-3" id="text-1-1">
 <p>
 This chapter consists of two parts. The first part concerns hypothesis
 testing for a single coefficient in a simple linear regression
@@ -306,120 +303,85 @@ case. This is contrary to the common layouts of an Econometrics
 textbook that often first gives the assumption of homoskedasticity,
 which is a component of the classical OLS assumptions (equivalent to
 the three least squares assumptions plus the assumption of the
-homoskedastic and conditionally normally distributed errors), 
-and considers heteroskedasticity as a violation of these
-assumptions. Also, please be aware that most discussions of the sample
-distributions in this textbook are in the context of a large sample,
-while the small sample properties are not the focus.
+homoskedastic and conditionally normally distributed errors). Then
+treat heteroskedasticity as a violation to these assumptions. Also,
+you should be aware that most discussions of the sample distributions
+in this textbook are in the context of a large sample, while the small
+sample statistical properties are not the focus.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc12ce73" class="outline-3">
-<h3 id="orgc12ce73"><span class="section-number-3">1.2</span> Learning goals</h3>
-<div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li>Grasp the basic concepts and techniques of hypothesis testing: the
-null vs alternative hypotheses, the p-value, the significance level,
-the critical value, the confidence intervals, the t-statistics.</li>
-<li>Be able to create a binary variable to represent two categories, and
-know how to correctly interpret the coefficient.</li>
-<li>Understand homoskedasticity and heteroskedasticity and their
-implications.</li>
-<li>Understand the Gauss-Markov theorem.</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orgf87d637" class="outline-3">
-<h3 id="orgf87d637"><span class="section-number-3">1.3</span> Readings</h3>
-<div class="outline-text-3" id="text-1-3">
-<ul class="org-ul">
-<li><i>Introduction to Econometrics</i> by Stock and Watson. Read thoroughly
-Chapter 5.</li>
-<li><i>Introductory Econometrics: a Modern Approach</i> by
-J. Wooldridge. Read Section 2.5 for the OLS assumptions, and Section
-4.2 and 4.3 for hypothesis testing and confidence intervals for a
-simple regression model.</li>
-</ul>
-</div>
-</div>
-</div>
 
-<div id="outline-container-orgee5ef20" class="outline-2">
-<h2 id="orgee5ef20"><span class="section-number-2">2</span> Testing Hypotheses about One of the Regression Coefficients</h2>
+<div id="outline-container-org240e8fc" class="outline-2">
+<h2 id="org240e8fc"><span class="section-number-2">2</span> Testing Hypotheses about One of the Regression Coefficients</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org21c2d4a" class="outline-3">
-<h3 id="org21c2d4a"><span class="section-number-3">2.1</span> A brief review of basic concepts in hypothesis tests</h3>
+</div><div id="outline-container-orgd362eb0" class="outline-3">
+<h3 id="orgd362eb0"><span class="section-number-3">2.1</span> A brief review of basic concepts in hypothesis tests</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-Let's quickly review what we have learned in Lecture 3 concerning
-hypothesis testing with an example of testing the true value of the
-population mean from a random sample. 
+Let's quickly review what we have learned in Lecture 3 about
+hypothesis tests, taking an example of testing the true value of the
+population mean from a random sample.
 </p>
 </div>
-<div id="outline-container-org95b0cf2" class="outline-4">
-<h4 id="org95b0cf2">The null versus alternative hypotheses</h4>
-<div class="outline-text-4" id="text-org95b0cf2">
+
+<div id="outline-container-org5e6e74a" class="outline-4">
+<h4 id="org5e6e74a">The null versus alternative hypotheses</h4>
+<div class="outline-text-4" id="text-org5e6e74a">
 <p>
 We want to test two contrasting hypotheses, the null hypothesis versus
 the alternative hypothesis. 
 </p>
+
 <ul class="org-ul">
-<li><p>
-Two-sided tests
-</p>
+<li>Two-sided tests: 
+\[H_0:\; E(Y) = \mu_{Y,0}$ v.s. $H_1:\; E(Y) \neq \mu_{Y,0}\]</li>
 
-<p>
-\(H_0:\; E(Y) = \mu_{Y,0}\) v.s. \(H_1:\; E(Y) \neq \mu_{Y,0}\)
-</p></li>
-
-<li><p>
-One-sided test
-</p>
-
-<p>
-\(H_0:\; E(Y) = \mu_{Y,0}\) v.s. \(H_1:\; E(Y) > \mu_{Y,0}\)
-</p></li>
+<li>One-sided test: 
+\[H_0:\; E(Y) = \mu_{Y,0}$ v.s. $H_1:\; E(Y) > \mu_{Y,0}\]</li>
 </ul>
-
-<p>
-What follows only concerns the two-sided test. 
-</p>
 </div>
 </div>
 
-<div id="outline-container-orgc51254e" class="outline-4">
-<h4 id="orgc51254e">Test statistics</h4>
-<div class="outline-text-4" id="text-orgc51254e">
+<div id="outline-container-org211a1d7" class="outline-4">
+<h4 id="org211a1d7">Test statistics</h4>
+<div class="outline-text-4" id="text-org211a1d7">
 <p>
-We need some tool to be used in the test, which is referred to as test
-statistics. 
+We need some tools for the testing, which is referred to as test
+statistics.
 </p>
 
 <ul class="org-ul">
 <li>When \(\sigma_Y\) is known, we use the z-statistics
 \[ z = \frac{\overline{Y} -
   \mu_{Y,0}}{\sigma_{\overline{Y}}} = \frac{\overline{Y} -
-  \mu_{Y,0}}{\sigma_Y/\sqrt{n}} \xrightarrow{\text{ \textit d }} N(0, 1)\]</li>
+  \mu_{Y,0}}{\sigma_Y/\sqrt{n}} \xrightarrow{\text{ d }} N(0, 1)\]</li>
 
-<li>When \(\sigma_Y\) is unknown, we use the t-statistics<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+<li><p>
+When \(\sigma_Y\) is unknown, we use the standard error of
+\(\overline{Y}\) and compute the t-statistic<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+
+<p>
 \[ t = \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})} =
-  \frac{\overline{Y} - \mu_{Y,0}}{s_Y/\sqrt{n}} \xrightarrow{ \text{
-  \textit d } } N(0, 1) \]</li>
+  \frac{\overline{Y} - \mu_{Y,0}}{s_Y/\sqrt{n}} \xrightarrow{ \text{ d } } N(0, 1) \] 
+</p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf4d7a1f" class="outline-4">
-<h4 id="orgf4d7a1f">The rules for hypothesis testing</h4>
-<div class="outline-text-4" id="text-orgf4d7a1f">
+<div id="outline-container-orgd50d15f" class="outline-4">
+<h4 id="orgd50d15f">The rules for hypothesis testing</h4>
+<div class="outline-text-4" id="text-orgd50d15f">
 <p>
 We need to set up some rules for judging that under what
-circumstances, the null hypothesis can be rejected or fail
+circumstances, the null hypothesis is rejected or fails
 to be rejected. 
 </p>
 </div>
-<ul class="org-ul"><li><a id="org61fc814"></a>Type I and type II errors<br  /><div class="outline-text-5" id="text-org61fc814">
+
+<ul class="org-ul"><li><a id="org3b15be5"></a>Type I and type II errors<br  /><div class="outline-text-5" id="text-org3b15be5">
 <ul class="org-ul">
 <li><b>Type I error</b>. The null hypothesis is rejected when in fact it is
 true.</li>
@@ -428,7 +390,7 @@ is false.</li>
 </ul>
 </div></li>
 
-<li><a id="orgf5eaf7f"></a>The significance level, the critical value, and the p-value<br  /><div class="outline-text-5" id="text-orgf5eaf7f">
+<li><a id="orga1f41d0"></a>The significance level, the critical value, and the p-value<br  /><div class="outline-text-5" id="text-orga1f41d0">
 <ul class="org-ul">
 <li><b>The significance level</b>. The pre-specified probability of type I
 error.  \(\alpha = 0.05, 0.10, \text{ or } 0.01\)</li>
@@ -440,7 +402,7 @@ test rejects the null hypothesis at the given significance level.
 
 <p>
 For example. In a two-sided test, with the z statistic. The critical
-value at the 5\% significance level is \(c_{\alpha}\) such that
+value at the 5% significance level is \(c_{\alpha}\) such that
 \(\varPhi(c_{\alpha}) = 0.975\). Accordingly, we know \(c_{\alpha}
   \approx 1.96\).
 </p></li>
@@ -455,19 +417,19 @@ correct.
 <p>
 Equivalently, the p-value is the smallest significance
 level at which the null hypothesis could be rejected, based on the
-test statistic actually observed.
+test statistic actually computed. 
 </p>
 
 <p>
 Mathematically, the p-value is 
-\[  \pr_{H_0}\left( \left| \overline{Y} - \mu_{Y,0}
-  \right| > \left| \overline{Y}^{act} - \mu_{Y,0} \right| \right) =
+\[  \pr_{H_0}\left( \left| \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})}
+  \right| > \left| \frac{\overline{Y}^{act} - \mu_{Y,0}}{SE(\overline{Y})} \right| \right) =
   2\varPhi(-|t^{act}|) \text{ .} \]
 </p></li>
 </ul>
 </div></li>
 
-<li><a id="org18a6851"></a>Rejection rules<br  /><div class="outline-text-5" id="text-org18a6851">
+<li><a id="org169d94f"></a>Rejection rules<br  /><div class="outline-text-5" id="text-org169d94f">
 <p>
 The following two statements are equivalent in terms of rejecting the
 null hypothesis at the 5% significance level. 
@@ -475,18 +437,19 @@ null hypothesis at the 5% significance level.
 
 <ul class="org-ul">
 <li>We can reject the null if the test statistics falls into the
-rejection region set by the critical values at the 5% significance
-level, that is, when \(|t^{act}| > c_{\alpha} = 1.96\),</li>
+rejection region delimited by the critical values at the 5%
+significance level, that is, when \(|t^{act}| > c_{\alpha} = 1.96\),</li>
+
 <li>We can reject the null if the p-value is less than the significance
 level that is 5% in this case.</li>
 </ul>
 
 <p>
-The rejection rule can be illustrated using Figure <a href="#org440a34c">1</a>.
+The rejection rule can be illustrated using Figure <a href="#org73d5b0b">1</a>.
 </p>
 
 
-<div id="org440a34c" class="figure">
+<div id="org73d5b0b" class="figure">
 <p><img src="./figure/fig9_1.png" alt="fig9_1.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>An illustration of a two-sided test</p>
@@ -495,12 +458,13 @@ The rejection rule can be illustrated using Figure <a href="#org440a34c">1</a>.
 </div>
 </div>
 
-<div id="outline-container-org5192873" class="outline-3">
-<h3 id="org5192873"><span class="section-number-3">2.2</span> Two-sided hypotheses concerning \(\beta_1\)</h3>
+
+<div id="outline-container-org08a2ea9" class="outline-3">
+<h3 id="org08a2ea9"><span class="section-number-3">2.2</span> Two-sided hypotheses concerning \(\beta_1\)</h3>
 <div class="outline-text-3" id="text-2-2">
-</div><div id="outline-container-org0c34a83" class="outline-4">
-<h4 id="org0c34a83">Application to test scores</h4>
-<div class="outline-text-4" id="text-org0c34a83">
+</div><div id="outline-container-orgfdc848e" class="outline-4">
+<h4 id="orgfdc848e">Application to test scores</h4>
+<div class="outline-text-4" id="text-orgfdc848e">
 <p>
 In the last lecture, we estimate a simple linear regression model for test
 scores and class sizes, which yields the following estimated sample
@@ -521,43 +485,49 @@ whether \(\beta_1\) is statistically significantly different from zero.
 </div>
 </div>
 
-<div id="outline-container-orgef60a99" class="outline-4">
-<h4 id="orgef60a99">Testing hypotheses about the slope \(\beta_1\)</h4>
-<div class="outline-text-4" id="text-orgef60a99">
-<div class="LaTeX">
+<div id="outline-container-orgfc28592" class="outline-4">
+<h4 id="orgfc28592">Testing hypotheses about the slope \(\beta_1\)</h4>
+<div class="outline-text-4" id="text-orgfc28592">
 <p>
-\textcolor{red}{Note: all discussions about hypothesis testing that
+Note that all discussions about hypothesis testing that
 follows involve only the regression with a large sample size. The
 last section of this lecture touches upon the small sample properties
-of the test statistics.}
+of the test statistics.
 </p>
+</div>
 
-</div>
-</div>
-<ul class="org-ul"><li><a id="orgbb8470f"></a>The two-sided hypothesis<br  /><div class="outline-text-5" id="text-orgbb8470f">
+<ul class="org-ul"><li><a id="org7e0e689"></a>The two-sided hypothesis<br  /><div class="outline-text-5" id="text-org7e0e689">
 <p>
 \[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 \neq \beta_{1,0} \]
 </p>
+
+<p>
+The null hypothesis is that \(\beta_1\) is equal to a specific value
+\(\beta_{1,0}\), and the alternative hypothesis is the opposite. 
+</p>
 </div></li>
 
-<li><a id="org0550aa9"></a>The t-statistic<br  /><ul class="org-ul"><li><a id="org82d7986"></a>The general form of the t-statistic<br  /><div class="outline-text-6" id="text-org82d7986">
+<li><a id="org5550c9e"></a>The t-statistic<br  /><div class="outline-text-5" id="text-org5550c9e">
 <p>
-In general, the t-statisitc has the form
+The general form of the t-statistic is
 </p>
+
 \begin{equation}
 \label{eq:general-t}
 t = \frac{\text{estimator} - \text{hypothesized value}}{\text{standard error of the estimator}}
 \end{equation}
-</div></li>
 
-<li><a id="orgebca4ac"></a>The t-statistics for testing \(\beta_1\)<br  /><div class="outline-text-6" id="text-orgebca4ac">
+<p>
+The t-statistics for testing \(\beta_1\) is then
+</p>
+
 \begin{equation}
 \label{eq:t-stat-b1}
 t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}
 \end{equation}
-</div></li></ul></li>
+</div></li>
 
-<li><a id="org72c30a5"></a>The standard error of \(\hat{\beta}_1\) is calculated as<br  /><div class="outline-text-5" id="text-org72c30a5">
+<li><a id="org7c84c6d"></a>The standard error of \(\hat{\beta}_1\) is calculated as<br  /><div class="outline-text-5" id="text-org7c84c6d">
 \begin{equation}
 \label{eq:se-b-1}
 SE(\hat{\beta}_1) = \sqrt{\hat{\sigma}^2_{\hat{\beta}_1}}
@@ -571,7 +541,7 @@ where
 \end{equation}
 </div></li>
 
-<li><a id="orgd441223"></a>How to understand Equation \ref{eq:sigma-b-1}<br  /><div class="outline-text-5" id="text-orgd441223">
+<li><a id="orgcf17bc7"></a>How to understand Equation \ref{eq:sigma-b-1}<br  /><div class="outline-text-5" id="text-orgcf17bc7">
 <ul class="org-ul">
 <li>The population variance of \(\beta_1\) is 
 \[ \sigma^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\var\left( (X_i - \mu_X)u_i \right)}{\left( \var(X_i) \right)^2} \]</li>
@@ -589,28 +559,15 @@ explained in detail shortly in this lecture.</li>
 </ul>
 </div></li>
 
-<li><a id="orgd431b53"></a>Compute the p-value<br  /><div class="outline-text-5" id="text-orgd431b53">
+<li><a id="org91efe44"></a>Compute the p-value<br  /><div class="outline-text-5" id="text-org91efe44">
 <p>
-Let's reiterate the two equivalent definitions of the p-value:
+The p-value is the probability of observing a value of \(\hat{\beta}_1\)
+at least as different from \(\beta_{1,0}\) as the estimate actually
+computed (\(\hat{\beta}^{act}_1\)), assuming that the null hypothesis is
+correct. Accordingly, under the null hypothesis, the p-value for
+testing \(\beta_1\) can be expressed with a probability function as
 </p>
 
-<ol class="org-ol">
-<li>The p-value is the probability of observing a value of
-\(\hat{\beta}_1\) at least as different from \(\beta_{1,0}\) as the
-estimate actually computed (\(\hat{\beta}^{act}_1\)), assuming that
-the null hypothesis is correct.</li>
-
-<li>The p-value is the smallest significance level at which the null
-hypothesis could be rejected, based on the test statistic
-actually observed.</li>
-</ol>
-
-<p>
-According to the first definition, the p-value for testing \(\beta_1\)
-can be expressed with a probability function under the null
-hypothesis as
-</p>
-<div class="LaTeX">
 \begin{equation*}
 \begin{split}
 p\text{-value} &= \pr_{H_0} \left( | \hat{\beta}_1 - \beta_{1,0} | > | \hat{\beta}^{act}_1 - \beta_{1,0} | \right) \\
@@ -619,33 +576,28 @@ p\text{-value} &= \pr_{H_0} \left( | \hat{\beta}_1 - \beta_{1,0} | > | \hat{\bet
 \end{split}
 \end{equation*}
 
-</div>
-
 <p>
-In large samples, the \(p\text{-value} = \pr\left(|t| > |t^{act}|
+With a large sample, \(p\text{-value} = \pr\left(|t| > |t^{act}|
 \right) = 2 \varPhi(-|t^{act}|)\).
 </p>
 
 <p>
 The null hypothesis is rejected at the 5% significance level if the
-\(p\text{-value} < 0.05\) or \(|t^{act}| > 1.96\), which is the critical
-value at the 5% significant level. 
+\(p\text{-value} < 0.05\) or, equivalently, \(|t^{act}| > 1.96\). 
 </p>
 </div></li>
 
-<li><a id="org18f3518"></a>Application to test scores<br  /><div class="outline-text-5" id="text-org18f3518">
+<li><a id="orge345729"></a>Application to test scores<br  /><div class="outline-text-5" id="text-orge345729">
 <p>
 The OLS estimation of the linear regression model of test scores
 against student-teacher ratios, together with the standard errors of
 all parameters in the model, can be represented using the following
 equation, 
 </p>
-<div class="LaTeX">
+
 \begin{equation*}
 \widehat{TestScore} = \underset{\displaystyle (10.4)}{698.9} - \underset{\displaystyle (0.52)}{2.28} \times STR,\; R^2 = 0.051,\; SER = 1.86
 \end{equation*}
-
-</div>
 
 <p>
 The <b>heteroskedasticity-robust</b> standard errors are reported in the
@@ -678,8 +630,8 @@ test scores.
 </p>
 
 
-<div id="orge12e653" class="figure">
-<p><img src="figure/fig-5-1.png" alt="fig-5-1.png" />
+<div id="orgea45c28" class="figure">
+<p><img src="figure/fig-5-1.png" alt="fig-5-1.png" width="600" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Calculating the p-value of a two-sided test when \(t^{act}=-4.38\)</p>
 </div>
@@ -687,12 +639,13 @@ test scores.
 </div>
 </div>
 
-<div id="outline-container-org4876f78" class="outline-3">
-<h3 id="org4876f78"><span class="section-number-3">2.3</span> The one-sided alternative hypothesis</h3>
+
+<div id="outline-container-org155c9ef" class="outline-3">
+<h3 id="org155c9ef"><span class="section-number-3">2.3</span> The one-sided alternative hypothesis</h3>
 <div class="outline-text-3" id="text-2-3">
-</div><div id="outline-container-org975c763" class="outline-4">
-<h4 id="org975c763">The one-sided hypotheses</h4>
-<div class="outline-text-4" id="text-org975c763">
+</div><div id="outline-container-org786e100" class="outline-4">
+<h4 id="org786e100">The one-sided hypotheses</h4>
+<div class="outline-text-4" id="text-org786e100">
 <p>
 In some cases, it is appropriate to use a one-sided hypothesis
 test. For example, the superintendent of the California school
@@ -702,7 +655,7 @@ test scores, that is, \(\beta_1 < 0\).
 
 <p>
 For a one-sided test, the null hypothesis and the one-sided
-alternative hypothesis are<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>  
+alternative hypothesis are <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
 </p>
 
 <p>
@@ -711,9 +664,9 @@ alternative hypothesis are<sup><a id="fnr.2" class="footref" href="#fn.2">2</a><
 </div>
 </div>
 
-<div id="outline-container-orge473dae" class="outline-4">
-<h4 id="orge473dae">The one-sided left-tail test</h4>
-<div class="outline-text-4" id="text-orge473dae">
+<div id="outline-container-org82e9dfd" class="outline-4">
+<h4 id="org82e9dfd">The one-sided left-tail test</h4>
+<div class="outline-text-4" id="text-org82e9dfd">
 <ul class="org-ul">
 <li>The t-statistic is the same as in a two-sided test
 \[ t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)} \]</li>
@@ -732,27 +685,26 @@ rejected at the 1% level.</li>
 </div>
 </div>
 
-<div id="outline-container-org4e8995a" class="outline-2">
-<h2 id="org4e8995a"><span class="section-number-2">3</span> Confidence Intervals for a Regression Coefficient</h2>
+
+<div id="outline-container-orgca0f7a5" class="outline-2">
+<h2 id="orgca0f7a5"><span class="section-number-2">3</span> Confidence Intervals for a Regression Coefficient</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org440dcad" class="outline-3">
-<h3 id="org440dcad"><span class="section-number-3">3.1</span> Two equivalent definitions of confidence intervals</h3>
+</div><div id="outline-container-org5512acb" class="outline-3">
+<h3 id="org5512acb"><span class="section-number-3">3.1</span> Two equivalent definitions of confidence intervals</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-A 95% <b>confidence interval</b> for \(\beta_1\) has two equivalent
-definitions. 
+Recall that a 95% <b>confidence interval</b> for \(\beta_1\) has two equivalent
+definitions:
 </p>
 <ol class="org-ol">
-<li>It is the set of values that cannot be rejected using a <span class="underline">two-sided</span>
+<li>It is the set of values that cannot be rejected using a two-sided
 hypothesis test with a 5% significance level.</li>
 <li>It is an interval that has a 95% probability of containing the true
-value of \(\beta_1\); that is, in 95% of possible samples that might be
-drawn, the confidence interval will contain the true value of
-\(\beta_1\).</li>
+value of \(\beta_1\).</li>
 </ol>
 
 <p>
-Let's go back to Figure <a href="#org440a34c">1</a>. According to the first
+Let's go back to Figure <a href="#org73d5b0b">1</a>. According to the first
 definition, the acceptance region contains the values of the
 test statistics that fail to reject the null hypothesis,
 which corresponds to the values of \(\beta_1\) that cannot be rejected. 
@@ -760,8 +712,9 @@ which corresponds to the values of \(\beta_1\) that cannot be rejected.
 </div>
 </div>
 
-<div id="outline-container-org0108e8d" class="outline-3">
-<h3 id="org0108e8d"><span class="section-number-3">3.2</span> Construct the 95% confidence interval for \(\beta_1\)</h3>
+
+<div id="outline-container-orgaffd03e" class="outline-3">
+<h3 id="orgaffd03e"><span class="section-number-3">3.2</span> Construct the 95% confidence interval for \(\beta_1\)</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 The 95% confidence interval for \(\beta_1\) can be constructed using the
@@ -770,13 +723,11 @@ approximately normally distributed. The 95% critical value of a
 standard normal distribution is 1.96. Therefore, we can obtain the 95%
 confidence interval for \(\beta_1\) by the following steps
 </p>
-<div class="LaTeX">
+
 \begin{gather*}
 -1.96 \leq \frac{\hat{\beta}_1 - \beta_1}{SE(\hat{\beta}_1)} \leq 1.96 \\
 \hat{\beta}_1 - 1.96 SE(\hat{\beta}_1) \leq \beta_1 \leq \hat{\beta}_1 + 1.96 SE(\hat{\beta}_1)
 \end{gather*}
-
-</div>
 
 <p>
 The 95% confidence interval for \(\beta_1\) is 
@@ -786,23 +737,29 @@ SE(\hat{\beta}_1) \right] \]
 </div>
 </div>
 
-<div id="outline-container-orgf9f49b6" class="outline-3">
-<h3 id="orgf9f49b6"><span class="section-number-3">3.3</span> The application to test scores</h3>
+
+<div id="outline-container-orgee831bc" class="outline-3">
+<h3 id="orgee831bc"><span class="section-number-3">3.3</span> The application to test scores</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 In the application to test scores, given that \(\hat{\beta}_1 = -2.28\)
 and \(SE(\hat{\beta}_1) = 0.52\), the 95% confidence interval for
 \(\beta_1\) is \({-2.28 \pm 1.96 \times 0.52}\), or \(-3.30 \leq \beta_1
-\leq -1.26\). Notice that the confidence interval only spans over the
-negative region without going beyond zero, which implies that the null
-hypothesis of \(\beta_1 = 0\) can be rejected at the 5% significance
-level. 
+\leq -1.26\). 
+</p>
+
+<p>
+Note that the confidence interval only spans over the negative
+region with zero leaving outside the interval, which implies that the
+null hypothesis of \(\beta_1 = 0\) can be rejected at the 5%
+significance level.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf03f2e9" class="outline-3">
-<h3 id="orgf03f2e9"><span class="section-number-3">3.4</span> Confidence intervals for predicted effects of changing \(X\)</h3>
+
+<div id="outline-container-org76ad6e4" class="outline-3">
+<h3 id="org76ad6e4"><span class="section-number-3">3.4</span> Confidence intervals for predicted effects of changing \(X\)</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 \(\beta_1\) is the marginal effect of \(X\) on \(Y\), that is, 
@@ -819,16 +776,17 @@ So the 95% confidence interval for \(\beta_1 \Delta X\) is
 </div>
 </div>
 
-<div id="outline-container-org02e0f9d" class="outline-2">
-<h2 id="org02e0f9d"><span class="section-number-2">4</span> Regression When \(X\) is a Binary Variable</h2>
+
+<div id="outline-container-orgcad772a" class="outline-2">
+<h2 id="orgcad772a"><span class="section-number-2">4</span> Regression When \(X\) is a Binary Variable</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orge51d6a2" class="outline-3">
-<h3 id="orge51d6a2"><span class="section-number-3">4.1</span> A binary variable</h3>
+</div><div id="outline-container-org0796d09" class="outline-3">
+<h3 id="org0796d09"><span class="section-number-3">4.1</span> A binary variable</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-A <b>binary variable</b>  takes on values of one if some condition is true or zero
-otherwise, which is also called a <b>dummy variable</b>, a <b>categorical
-variable</b>, or an <b>indicator variable</b>. 
+A <b>binary variable</b> takes on values of one if some condition is true
+and zero otherwise, which is also called a <b>dummy variable</b>, a
+<b>categorical variable</b>, or an <b>indicator variable</b>.
 </p>
 
 <p>
@@ -837,13 +795,13 @@ For example,
 \begin{equation*}
 D_i = 
 \begin{cases}
-1,\; &\text{if the i\textsuperscript{th} subject is female} \\
-0,\; &\text{if the i\textsuperscript{th} subject is male} 
+1,\; &\text{if the } i^{th} \text{ subject is female} \\
+0,\; &\text{if the } i^{th} \text{ subject is male} 
 \end{cases}
 \end{equation*}
 
 <p>
-The linear regression model with a dummy variable as the regressor is
+The linear regression model with a dummy variable as a regressor is
 </p>
 \begin{equation}
 \label{eq:dummy-1}
@@ -851,15 +809,16 @@ Y_i = \beta_0 + \beta_1 D_i + u_i,\; i = 1, \ldots, n
 \end{equation}
 
 <p>
-The coefficient on \(\beta_1\) is estimated by the OLS estimation method
+The coefficient on \(D_i\) is estimated by the OLS estimation method
 in the same way as a continuous regressor. The difference lies in how
 we interpret \(\beta_1\). 
 </p>
 </div>
 </div>
 
-<div id="outline-container-org29d557b" class="outline-3">
-<h3 id="org29d557b"><span class="section-number-3">4.2</span> Interpretation of the regression coefficients</h3>
+
+<div id="outline-container-org552cc99" class="outline-3">
+<h3 id="org552cc99"><span class="section-number-3">4.2</span> Interpretation of the regression coefficients</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Given that the assumption \(E(u_i | D_i) = 0\) holds in Equation
@@ -872,15 +831,16 @@ the two cases, that is,
 </ul>
 
 <p>
-Therefore, \(\beta_1 = E(Y_i | D_i = 1) - E(Y_i |D_i = 0)\), <b>the
-difference in the population means</b> between two groups represented by
+Therefore, \(\beta_1 = E(Y_i | D_i = 1) - E(Y_i |D_i = 0)\), that is,
+<b>the difference in the population means</b> between two groups represented by
 \(D_i = 1\) and \(D_i = 0\), respectively.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org74e44c1" class="outline-3">
-<h3 id="org74e44c1"><span class="section-number-3">4.3</span> Hypothesis tests and confidence intervals</h3>
+
+<div id="outline-container-orge8456ad" class="outline-3">
+<h3 id="orge8456ad"><span class="section-number-3">4.3</span> Hypothesis tests and confidence intervals</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 The hypothesis tests and confidence intervals for the coefficient on a
@@ -900,28 +860,29 @@ And the 95% confidence interval is
 </div>
 </div>
 
-<div id="outline-container-org645f3ba" class="outline-2">
-<h2 id="org645f3ba"><span class="section-number-2">5</span> Heteroskedasticity and Homoskedasticity</h2>
+
+<div id="outline-container-orgec751cf" class="outline-2">
+<h2 id="orgec751cf"><span class="section-number-2">5</span> Heteroskedasticity and Homoskedasticity</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgaaecacd" class="outline-3">
-<h3 id="orgaaecacd"><span class="section-number-3">5.1</span> What are heteroskedasticity and homoskedasticity?</h3>
+</div><div id="outline-container-org414e8e1" class="outline-3">
+<h3 id="org414e8e1"><span class="section-number-3">5.1</span> What are heteroskedasticity and homoskedasticity?</h3>
 <div class="outline-text-3" id="text-5-1">
-</div><div id="outline-container-org6561c65" class="outline-4">
-<h4 id="org6561c65">Homoskedasticity</h4>
-<div class="outline-text-4" id="text-org6561c65">
+</div><div id="outline-container-org2f1d6c8" class="outline-4">
+<h4 id="org2f1d6c8">Homoskedasticity</h4>
+<div class="outline-text-4" id="text-org2f1d6c8">
 <p>
 The error term \(u_i\) is <b>homoskedastic</b> if the conditional variance of
 \(u_i\) given \(X_i\) is constant for \(i = 1, \ldots, n\). Mathematically,
 it says \(\var(u_i | X_i) = \sigma^2,\, \text{ for } i = 1, \ldots, n\),
-i.e., the variance of \(u_i\) for all $i$'s is a constant and does not
+i.e., the variance of \(u_i\) for all <i>i</i> is a constant and does not
 depend on \(X_i\).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org92048f0" class="outline-4">
-<h4 id="org92048f0">Heteroskedasticity</h4>
-<div class="outline-text-4" id="text-org92048f0">
+<div id="outline-container-org3574a2a" class="outline-4">
+<h4 id="org3574a2a">Heteroskedasticity</h4>
+<div class="outline-text-4" id="text-org3574a2a">
 <p>
 In contrast, the error term \(u_i\) is <b>heteroskedastic</b> if the conditional variance of
 \(u_i\) given \(X_i\) changes on \(X_i\) for \(i = 1, \ldots, n\). That is,
@@ -933,41 +894,17 @@ e.g.. A multiplicative form of heteroskedasticity is \(\var(u_i|X_i)
 = \sigma^2 f(X_i)\) where \(f(X_i)\) is a function of \(X_i\), for
 example, \(f(X_i) = X_i\) as a simplest case. 
 </p>
-
-<p>
-See Figure \ref{fig:homovshetero} for a visual comparison between
-homoskedasticity and heteroskedasticity. 
-</p>
-
-<div class="LaTeX">
-\begin{figure}
-    \centering
-    \begin{subfigure}[!ht]{0.85\textwidth}
-        \includegraphics[width=\textwidth]{./figure/fig-4-4}
-        \caption{Homoskedasticity}
-        \label{fig:homo1}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[!ht]{0.85\textwidth}
-        \includegraphics[width=\textwidth]{./figure/fig-5-2}
-        \caption{Heteroskedasticity}
-        \label{fig:hetero1}
-    \end{subfigure}
-    \caption{Homoskedasticity Versus Heteroskedasticity}\label{fig:homovshetero}
-\end{figure}
-
-</div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6f35f7a" class="outline-3">
-<h3 id="org6f35f7a"><span class="section-number-3">5.2</span> Mathematical implications of homoskedasticity</h3>
+
+<div id="outline-container-orgb742a67" class="outline-3">
+<h3 id="orgb742a67"><span class="section-number-3">5.2</span> Mathematical implications of homoskedasticity</h3>
 <div class="outline-text-3" id="text-5-2">
-</div><div id="outline-container-org424f6ce" class="outline-4">
-<h4 id="org424f6ce">Unbiasedness, consistency, and the asymptotic distribution</h4>
-<div class="outline-text-4" id="text-org424f6ce">
+</div><div id="outline-container-orgd14df12" class="outline-4">
+<h4 id="orgd14df12">Unbiasedness, consistency, and the asymptotic distribution</h4>
+<div class="outline-text-4" id="text-orgd14df12">
 <p>
 As long as the least squares assumptions holds, whether the error
 term, \(u_i\), is homoskedastic or heteroskedastic does not affect
@@ -984,10 +921,10 @@ Assumption 3 holds, that is, no extreme outliers of \(X_i\).</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd5d7d7e" class="outline-4">
-<h4 id="orgd5d7d7e">Efficiency</h4>
-<div class="outline-text-4" id="text-orgd5d7d7e">
-</div><ul class="org-ul"><li><a id="orgf476e66"></a>What means "being efficient"<br  /><div class="outline-text-5" id="text-orgf476e66">
+
+<div id="outline-container-org0335d99" class="outline-4">
+<h4 id="org0335d99">Efficiency</h4>
+<div class="outline-text-4" id="text-org0335d99">
 <p>
 The existence of heteroskedasticity affects the efficiency of the
 OLS estimator
@@ -1004,49 +941,41 @@ conditional on \(X_1, \ldots, X_n\).</li>
 
 <li>See the Gauss-Markov Theorem below.</li>
 </ul>
-</div></li></ul>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org895a525" class="outline-3">
-<h3 id="org895a525"><span class="section-number-3">5.3</span> The homoskedasticity-only variance formula</h3>
+
+<div id="outline-container-org9a75b12" class="outline-3">
+<h3 id="org9a75b12"><span class="section-number-3">5.3</span> The homoskedasticity-only variance formula</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 Recall that we can write \(\hat{\beta}_1\) as
 </p>
-<div class="LaTeX">
 \begin{equation*}
 \hat{\beta}_1 = \beta_1 + \frac{\sum_i (X_i - \bar{X})u_i}{\sum_i
 (X_i - \bar{X})^2} 
 \end{equation*} 
 
-</div>
-
 <p>
-Therefore, if $u_i$'s are
+Therefore, if \(u_i\) for \(i=1, \ldots, n\) is
 homoskedastic and \(\sigma^2\) is known, then
 </p>
-<div class="LaTeX">
 \begin{equation}
 \label{eq:vbeta-1a} \var(\hat{\beta}_1 | X_i) = \frac{\sum_i (X_i -
 \bar{X})^2 \var(u_i|X_i)}{\left[\sum_i (X_i - \bar{X})^2\right]^2} =
 \frac{\sigma^2}{\sum_i (X_i - \bar{X})^2} 
 \end{equation} 
 
-</div>
-
 <p>
 When \(\sigma^2\) is unknown, then we use \(s^2_u = 1/(n-2) \sum_i
 \hat{u}_i^2\) as an estimator of \(\sigma^2\). Thus, the
 homoskedasticity-only estimator of the variance of \(\hat{\beta}_1\) is
 </p>
-<div class="LaTeX">
 \begin{equation}
 \label{eq:vbeta-1b} \tilde{\sigma}^2_{\hat{\beta}_1} =
 \frac{s^2_u}{\sum_i (X_i - \bar{X})^2} 
 \end{equation} 
-
-</div>
 
 <p>
 And the homoskedasticity-only standard error is \(SE(\hat{\beta}_1) =
@@ -1056,31 +985,26 @@ And the homoskedasticity-only standard error is \(SE(\hat{\beta}_1) =
 <p>
 Recall that the heteroskedasticity-robust standard error is
 </p>
-<div class="LaTeX">
 \begin{equation*}
 SE(\hat{\beta}_1) = \sqrt{\hat{\sigma}^2_{\hat{\beta}_1}}
 \end{equation*} 
-
-</div>
 <p>
 where
 </p>
-<div class="LaTeX">
 \begin{equation*}
 \hat{\sigma}^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\frac{1}{n-2}
 \sum_{i=1}^n (X_i - \bar{X})^2 \hat{u}^2_i}{\left[ \frac{1}{n}
 \sum_{i=1}^n (X_i - \bar{X})^2 \right]^2} 
 \end{equation*} 
-
-</div>
 <p>
 which is also referred to as Eicker-Huber-White standard errors.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org2c602c8" class="outline-3">
-<h3 id="org2c602c8"><span class="section-number-3">5.4</span> What does this mean in practice?</h3>
+
+<div id="outline-container-org141a111" class="outline-3">
+<h3 id="org141a111"><span class="section-number-3">5.4</span> What does this mean in practice?</h3>
 <div class="outline-text-3" id="text-5-4">
 <ul class="org-ul">
 <li>Heteroskedasticity is common in cross-sectional data. If you do not
@@ -1113,11 +1037,12 @@ regress testscr str, robust
 </div>
 </div>
 
-<div id="outline-container-org570d704" class="outline-2">
-<h2 id="org570d704"><span class="section-number-2">6</span> The Theoretical Foundations of Ordinary Least Squares</h2>
+
+<div id="outline-container-org9346ae3" class="outline-2">
+<h2 id="org9346ae3"><span class="section-number-2">6</span> The Theoretical Foundations of Ordinary Least Squares</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgf06f215" class="outline-3">
-<h3 id="orgf06f215"><span class="section-number-3">6.1</span> The Gauss-Markov conditions</h3>
+</div><div id="outline-container-orga349887" class="outline-3">
+<h3 id="orga349887"><span class="section-number-3">6.1</span> The Gauss-Markov conditions</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 We have already known the least squares assumptions: for \(i = 1,
@@ -1131,9 +1056,9 @@ assumptions plus the assumption of homoskedastic errors.
 </p>
 </div>
 
-<div id="outline-container-orgc145065" class="outline-4">
-<h4 id="orgc145065">The Gauss-Markov conditions</h4>
-<div class="outline-text-4" id="text-orgc145065">
+<div id="outline-container-org395d830" class="outline-4">
+<h4 id="org395d830">The Gauss-Markov conditions</h4>
+<div class="outline-text-4" id="text-org395d830">
 <p>
 For \(\mathbf{X} = [X_1, \ldots, X_n]\) <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
 </p>
@@ -1145,9 +1070,9 @@ For \(\mathbf{X} = [X_1, \ldots, X_n]\) <sup><a id="fnr.3" class="footref" href=
 </div>
 </div>
 
-<div id="outline-container-org0343bf2" class="outline-4">
-<h4 id="org0343bf2">From the three Least Squares Assumptions and the homoskedasticity assumption to the Gauss-Markov conditions</h4>
-<div class="outline-text-4" id="text-org0343bf2">
+<div id="outline-container-org2312bd3" class="outline-4">
+<h4 id="org2312bd3">From the three Least Squares Assumptions and the homoskedasticity assumption to the Gauss-Markov conditions</h4>
+<div class="outline-text-4" id="text-org2312bd3">
 <p>
 Note that the conditional expectations in the G-M conditions are in
 terms of all observations \(\mathbf{X}\), not just one observation,
@@ -1168,12 +1093,12 @@ squares assumptions plus the homoskedasticity assumption. Specifically,
 </div>
 </div>
 
-<div id="outline-container-org96461c2" class="outline-3">
-<h3 id="org96461c2"><span class="section-number-3">6.2</span> Linear conditionally unbiased estimator</h3>
+<div id="outline-container-orgb8f8728" class="outline-3">
+<h3 id="orgb8f8728"><span class="section-number-3">6.2</span> Linear conditionally unbiased estimator</h3>
 <div class="outline-text-3" id="text-6-2">
-</div><div id="outline-container-org3537fc0" class="outline-4">
-<h4 id="org3537fc0">The general form of a linear conditionally unbiased estimator of \(\beta_1\)</h4>
-<div class="outline-text-4" id="text-org3537fc0">
+</div><div id="outline-container-org9f63fe6" class="outline-4">
+<h4 id="org9f63fe6">The general form of a linear conditionally unbiased estimator of \(\beta_1\)</h4>
+<div class="outline-text-4" id="text-org9f63fe6">
 <p>
 The class of linear conditionally unbiased estimators consists of all
 estimators of \(\beta_1\) that are linear function of \(Y_i, \ldots, Y_n\)
@@ -1218,9 +1143,9 @@ For Equation (\ref{eq:e-beta1-tilde}) being satisfied with any
 </div>
 </div>
 
-<div id="outline-container-org8eccb1b" class="outline-4">
-<h4 id="org8eccb1b">The OLS esimator \(\hat{\beta}_1\) is a linear conditionally unbiased estimator</h4>
-<div class="outline-text-4" id="text-org8eccb1b">
+<div id="outline-container-orge336a07" class="outline-4">
+<h4 id="orge336a07">The OLS esimator \(\hat{\beta}_1\) is a linear conditionally unbiased estimator</h4>
+<div class="outline-text-4" id="text-orge336a07">
 <p>
 We have known that \(\hat{\beta}_1\) is unbiased both conditionally and
 unconditionally. Next, we show that it is linear. 
@@ -1239,8 +1164,8 @@ which can be simply verified.
 </div>
 </div>
 
-<div id="outline-container-org78695f7" class="outline-3">
-<h3 id="org78695f7"><span class="section-number-3">6.3</span> The Gauss-Markov Theorem</h3>
+<div id="outline-container-org05fe335" class="outline-3">
+<h3 id="org05fe335"><span class="section-number-3">6.3</span> The Gauss-Markov Theorem</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 The Gauss-Markov Theorem for \(\hat{\beta}_1\) states
@@ -1272,8 +1197,8 @@ The equality holds only when \(\tilde{\beta}_1 = \hat{\beta}_1\).
 </div>
 </div>
 
-<div id="outline-container-org798e613" class="outline-3">
-<h3 id="org798e613"><span class="section-number-3">6.4</span> The limitations of the Gauss-Markov theorem</h3>
+<div id="outline-container-org771fd28" class="outline-3">
+<h3 id="org771fd28"><span class="section-number-3">6.4</span> The limitations of the Gauss-Markov theorem</h3>
 <div class="outline-text-3" id="text-6-4">
 <ol class="org-ol">
 <li><p>
@@ -1336,11 +1261,11 @@ more efficient than the OLS estimators.</li>
 </div>
 </div>
 
-<div id="outline-container-orgac99434" class="outline-2">
-<h2 id="orgac99434"><span class="section-number-2">7</span> Using the t-Statistic in Regression When the Sample Size is Small</h2>
+<div id="outline-container-org6a9feaf" class="outline-2">
+<h2 id="org6a9feaf"><span class="section-number-2">7</span> Using the t-Statistic in Regression When the Sample Size is Small</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-orgd8f1153" class="outline-3">
-<h3 id="orgd8f1153"><span class="section-number-3">7.1</span> The classical assumptions of the least squares estimation</h3>
+</div><div id="outline-container-org1da5463" class="outline-3">
+<h3 id="org1da5463"><span class="section-number-3">7.1</span> The classical assumptions of the least squares estimation</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 We first expand the OLS assumptions by two additional ones. One is the
@@ -1368,8 +1293,8 @@ For \(i = 1, 2, \ldots, n\)
 </div>
 </div>
 
-<div id="outline-container-org253ab03" class="outline-3">
-<h3 id="org253ab03"><span class="section-number-3">7.2</span> The t-Statistic and the Student-t Distribution</h3>
+<div id="outline-container-org531b0b2" class="outline-3">
+<h3 id="org531b0b2"><span class="section-number-3">7.2</span> The t-Statistic and the Student-t Distribution</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 Under all the classical assumptions, we can construct the
@@ -1378,9 +1303,9 @@ a small samples, the t-statistic has an exact Student-t distribution.
 </p>
 </div>
 
-<div id="outline-container-orgd3664a4" class="outline-4">
-<h4 id="orgd3664a4">The t-statistic is for \(\beta_1\)</h4>
-<div class="outline-text-4" id="text-orgd3664a4">
+<div id="outline-container-org7117f0c" class="outline-4">
+<h4 id="org7117f0c">The t-statistic is for \(\beta_1\)</h4>
+<div class="outline-text-4" id="text-org7117f0c">
 <p>
 \[H_0: \beta_1 = \beta_{1,0} \text{ vs } H_1: \beta_1 \neq \beta_{1,0}\]
 </p>
@@ -1401,9 +1326,9 @@ regression.
 </div>
 </div>
 
-<div id="outline-container-orgc6fa66f" class="outline-4">
-<h4 id="orgc6fa66f">The Student-t distribution of \(t\)</h4>
-<div class="outline-text-4" id="text-orgc6fa66f">
+<div id="outline-container-org489f82e" class="outline-4">
+<h4 id="org489f82e">The Student-t distribution of \(t\)</h4>
+<div class="outline-text-4" id="text-org489f82e">
 <p>
 The t statistic can be rewritten as
 </p>
@@ -1463,12 +1388,16 @@ chi-squared distribution with \((n-2)\) degrees of freedom. That is, \(W
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara">In a small
-sample case, the exact distribution of the t-statistics is the
-student-t distribution with \(n-1\) degree of freedom.</div></div>
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+In a small sample case, the exact distribution of the
+t-statistics is the Student-t distribution with \(n-1\) degree of
+freedom.
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara">Note that the trick here is we put the
-desired hypothesis to the alternative place.</div></div>
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Note that the trick here is we put the
+desired hypothesis to the alternative place. 
+</p></div></div>
 
 <div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara">Here I use the vector
 notation to represent all observations of \(X_i\) for \(i=1, \ldots,
@@ -1480,7 +1409,7 @@ regression model and the OLS estimation in the next lecture.</div></div>
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-03-21 Tue 20:16</p>
+<p class="date">Created: 2017-03-22 Wed 08:58</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
