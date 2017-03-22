@@ -77,4 +77,5 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 
 ** Homework set #2
 
-- Homework set #2: [[file:assignment/homework/homework_2/homework_2.pdf][homework_2.pdf]].
+- Homework set #2: [[file:assignment/homework/homework_2/homework_2.pdf][homework_2.pdf]]. The data files are included in this
+  zip file, [[file:assignment/homework/homework_2/TeachingRatings.zip][TeachingRatings.zip]]. 
