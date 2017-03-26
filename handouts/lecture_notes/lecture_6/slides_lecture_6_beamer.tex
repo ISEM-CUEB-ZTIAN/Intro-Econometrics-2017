@@ -1,4 +1,4 @@
-% Created 2017-03-22 Wed 20:07
+% Created 2017-03-26 Sun 15:17
 % Intended LaTeX compiler: pdflatex
 \documentclass[presentation]{beamer}
 \usepackage[utf8]{inputenc}
@@ -38,9 +38,9 @@
 
 
 \section{The Linear Regression Model}
-\label{sec:orgc95fee2}
+\label{sec:orgc6ccd45}
 
-\begin{frame}[label={sec:org9913858}]{Definition of \alert{regress} in Merriam-Webster's dictionary}
+\begin{frame}[label={sec:org7e1ed6d}]{Definition of \alert{regress} in Merriam-Webster's dictionary}
 Merriam-Webster gives the following definition of the word "regress":
 \begin{enumerate}
 \item An act or the privilege of going or coming back
@@ -50,7 +50,7 @@ primitive state or condition
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:org4346fcf}]{The meaning of regression in statistics?}
+\begin{frame}[label={sec:org63e9d84}]{The meaning of regression in statistics?}
 \begin{itemize}
 \item In statistics, regression analysis focus on the conditional mean of the
 dependent variable given the independent variables, which is a
@@ -68,7 +68,7 @@ The above equation is a \alert{simple linear regression function}.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org13e6625}]{Research question:}
+\begin{frame}[label={sec:org10d91ef}]{Research question:}
 \begin{itemize}
 \item Let's introduce a regression analysis with the application of test
 scores versus class sizes in California school districts. 
@@ -80,7 +80,7 @@ Can reducing class sizes increase students' test scores?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org135efae}]{Randomized controlled experiment}
+\begin{frame}[label={sec:orgcc7e67a}]{Randomized controlled experiment}
 \begin{itemize}
 \item Randomly choose 42 students and divide them into two classes,
 with one having 20 students and another having 22.
@@ -91,7 +91,7 @@ the two classes that is the only factor affecting test scores.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgbe54642}]{Compute conditional means}
+\begin{frame}[label={sec:orgb8e5372}]{Compute conditional means}
 \begin{itemize}
 \item Compute the expected values
 of test scores, given the different class sizes.
@@ -107,7 +107,7 @@ of test scores, given the different class sizes.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org766c6d8}]{The population regression function for test scores on class sizes}
+\begin{frame}[label={sec:org8e8d6e3}]{The population regression function for test scores on class sizes}
 \begin{itemize}
 \item We use a linear regression function to describe the relationship
 between test scores and class sizes.
@@ -122,7 +122,7 @@ line}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org2e2f1f2}]{The simple linear regression model for test scores on class sizes}
+\begin{frame}[label={sec:orgdbd28e6}]{The simple linear regression model for test scores on class sizes}
 \begin{itemize}
 \item We can lump all these factors into a single term, and set up a \alert{simple linear
 regression model} as follows,
@@ -137,7 +137,7 @@ simple linear regression model becomes the population regression line.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org2bd2326}]{A distinction between the population regression function and the population regression model}
+\begin{frame}[label={sec:org7a954f3}]{A distinction between the population regression function and the population regression model}
 \begin{itemize}
 \item A population regression function
 \begin{itemize}
@@ -156,7 +156,7 @@ deterministic, depending on the value of other factors.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgf33f8c6}]{An interpretation of the population regression model}
+\begin{frame}[label={sec:org35179ae}]{An interpretation of the population regression model}
 \begin{itemize}
 \item Now we have set up the simple linear regression model,
 \begin{equation*}
@@ -166,7 +166,7 @@ What is \(\beta_1\) and \(\beta_0\) represent in the model?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgefd4a62}]{Interpret \(\beta_1\)}
+\begin{frame}[label={sec:org7312012}]{Interpret \(\beta_1\)}
 \begin{itemize}
 \item Denote \(\Delta TestScore\) and \(\Delta ClassSize\) to
 be their respective change.
@@ -184,7 +184,7 @@ from a \alert{one-unit change} in the class size.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org88c52ad}]{Marginal effect}
+\begin{frame}[label={sec:org1a6aa9c}]{Marginal effect}
 \begin{itemize}
 \item When \(TestScore\) and
 \(ClassSize\) are two continuous variable, we can write \(\beta_1\) as
@@ -196,7 +196,7 @@ size on the test score.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org3f92ad1}]{Holding other things constant}
+\begin{frame}[label={sec:org5b465f4}]{Holding other things constant}
 \begin{itemize}
 \item The phrase of "holding other factors constant" is important. Without
 it, we cannot disentangle the effect of class sizes on test scores
@@ -206,7 +206,7 @@ as the notion of \alert{ceteris paribus}.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org5fe956b}]{Interpret \(\beta_0\)}
+\begin{frame}[label={sec:org7b0d139}]{Interpret \(\beta_0\)}
 \begin{itemize}
 \item \(\beta_0\) is the intercept in the model.
 \item Sometimes it bears real
@@ -217,7 +217,7 @@ is obviously nonsensical.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org51331bc}]{The general linear regression model}
+\begin{frame}[label={sec:orga71101b}]{The general linear regression model}
 \begin{itemize}
 \item Consider two random variables \(Y\) and \(X\). For both, there are \(n\) observations so that
 each observation \(i = 1, 2, 3, \ldots\) is associated with a pair of
@@ -237,7 +237,7 @@ Y_i = \beta_0 + \beta_1 X_i + u_i, \text{ for } i = 1, \ldots, n
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org58b4bc7}]{The general linear regression model (cont'd)}
+\begin{frame}[label={sec:org44a70a6}]{The general linear regression model (cont'd)}
 \begin{itemize}
 \item \(\beta_{0}\) is the intercept, or the constant term. It can either have
 economic meaning or have merely mathematical sense, which determines
@@ -255,11 +255,11 @@ function(or the population regression line).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org8c6877b}]{An graphical illustration of a linear regression model}
+\begin{frame}[label={sec:orge00c558}]{An graphical illustration of a linear regression model}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{figure/fig-4-1.png}
-\caption{\label{fig:org0026493}
+\caption{\label{fig:org9da6d31}
 The Population Regression Line}
 \end{figure}
 \end{frame}
@@ -267,9 +267,9 @@ The Population Regression Line}
 
 
 \section{The OLS Estimation Method for a Linear Regression Model}
-\label{sec:org50e220c}
+\label{sec:org9a1a5e3}
 
-\begin{frame}[label={sec:orgb13f47f}]{The intuition for the OLS and minimization}
+\begin{frame}[label={sec:org439bbc6}]{The intuition for the OLS and minimization}
 \begin{itemize}
 \item We use the ordinary least squares (OLS) estimation method to estimate
 the simple linear regression model. 
@@ -277,7 +277,7 @@ $$Y_i = \beta_0 + \beta_1 X_i + u_i, \text{ for } i = 1, \ldots, n$$
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org730b56e}]{Ordinary}
+\begin{frame}[label={sec:org82b29d7}]{Ordinary}
 \begin{itemize}
 \item It means that the OLS estimator is a very basic method,
 from which we may derive some variations of the OLS
@@ -288,7 +288,7 @@ and the generalized least squares (GLS).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org0e56d08}]{Least}
+\begin{frame}[label={sec:org53d019e}]{Least}
 \begin{itemize}
 \item It means that the OLS estimator tries to minimize something. The
 "something" is the mistakes we make when we try to guess
@@ -300,7 +300,7 @@ $$\hat{u}_{i} = Y_{i} - b_0 - b_1 X_i$$
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org55afaf7}]{Squares}
+\begin{frame}[label={sec:orgb6c196f}]{Squares}
 \begin{itemize}
 \item It represent the actual thing (a quantity) that we minimize. The
 OLS does not attempt to minimize each \(\hat{u}_{i}\).
@@ -313,7 +313,7 @@ between positive and negative values of \(\hat{u}_i\) in \(\sum_i
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org7d52f3d}]{The OLS estimators for \(\beta_0\) and \(\beta_1\)}
+\begin{frame}[label={sec:org1e71358}]{The OLS estimators for \(\beta_0\) and \(\beta_1\)}
 \begin{itemize}
 \item Let \(b_0\) and \(b_1\) be some estimators of \(\beta_0\) and \(\beta_1\),
 respectively.
@@ -326,7 +326,7 @@ where \(S(b_0, b_1)\) is a function of \(b_0\) and \(b_1\)
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org27818db}]{The first order conditions}
+\begin{frame}[label={sec:orga1b21c9}]{The first order conditions}
 \begin{itemize}
 \item Evaluated at the optimal solution \((\hat{\beta}_0, \hat{\beta}_1)\),
 the FOCs are
@@ -338,7 +338,7 @@ the FOCs are
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgbf45fde}]{Get the OLS estimator \(\hat{\beta}_0\)}
+\begin{frame}[label={sec:orgbfba5fc}]{Get the OLS estimator \(\hat{\beta}_0\)}
 \begin{itemize}
 \item From the first condition, we have
 \begin{gather}
@@ -348,7 +348,7 @@ the FOCs are
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org8d08432}]{Get the OLS estimator \(\hat{\beta}_1\)}
+\begin{frame}[label={sec:orgdead564}]{Get the OLS estimator \(\hat{\beta}_1\)}
 \begin{itemize}
 \item From the second condition, we have
 \begin{gather}
@@ -359,7 +359,7 @@ the FOCs are
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org66273a1}]{A trick of collecting terms}
+\begin{frame}[label={sec:org5ae007e}]{A trick of collecting terms}
 \begin{align*}
 \sum_i(X_i - \overline{X})(Y_i - \overline{Y})
 &= \sum_i X_iY_i - \overline{X}\sum_iY_i - \overline{Y}\sum_iX_i + \sum_i \overline{X}\overline{Y} \\
@@ -374,7 +374,7 @@ the FOCs are
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org8dbfc7b}]{Concise expressions of \(\hat{\beta}_1\)}
+\begin{frame}[label={sec:org7246723}]{Concise expressions of \(\hat{\beta}_1\)}
 \begin{itemize}
 \item Collecting terms in the expression in \(\hat{\beta}_1\), we have
 \begin{equation*}
@@ -392,7 +392,7 @@ the FOCs are
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org7c68cf8}]{Summary of the OLS estimators}
+\begin{frame}[label={sec:org9becb49}]{Summary of the OLS estimators}
 \begin{itemize}
 \item In sum, the OLS estimators for \(\beta_0\) and \(\beta_1\) as
 
@@ -403,7 +403,7 @@ the FOCs are
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org0173a25}]{The predicted values, residuals, and the sample regression line}
+\begin{frame}[label={sec:org044f250}]{The predicted values, residuals, and the sample regression line}
 $$\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i$$
 
 \begin{itemize}
@@ -418,7 +418,7 @@ always on the sample regression line because
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1b4661b}]{A comparison between the population regression model and the sample counterparts}
+\begin{frame}[label={sec:orge928208}]{A comparison between the population regression model and the sample counterparts}
 \begin{center}
 \begin{tabular}{lll}
  & Population & Sample\\
@@ -432,7 +432,7 @@ The regression model & \(Y_i = \beta_0 + \beta_1 X_i + u_i\) & \(Y_i = \hat{\bet
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org94b310a}]{The OLS estimates of the relationship between test scores and the student-teacher ratio}
+\begin{frame}[label={sec:org28bc1a3}]{The OLS estimates of the relationship between test scores and the student-teacher ratio}
 $$TestScore = \beta_0 + \beta_1 ClassSize + OtherFactors$$
 
 \begin{itemize}
@@ -441,14 +441,14 @@ regression analysis.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org2bbf242}]{Basic summary statistics}
+\begin{frame}[label={sec:org3f89c7f}]{Basic summary statistics}
 \begin{itemize}
 \item Some commonly used summary statistics are computed, including the mean,
 standard deviation, median, minimum, maximum, and quantiles
 (percentiles), etc.
 
 \begin{table}[htbp]
-\caption{\label{tab:org4eacb3b}
+\caption{\label{tab:orgb423037}
 Summary Of distributions of student-teacher ratios and test scores}
 \centering
 \begin{tabular}{lrrrrr}
@@ -463,7 +463,7 @@ Summary Of distributions of student-teacher ratios and test scores}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1693874}]{Scatterplot}
+\begin{frame}[label={sec:org3767e25}]{Scatterplot}
 \begin{center}
 \includegraphics[width=1.0\textwidth]{figure/fig-4-2.png}
 \end{center}
@@ -473,7 +473,7 @@ Summary Of distributions of student-teacher ratios and test scores}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org321a586}]{Regression analysis}
+\begin{frame}[label={sec:org411521b}]{Regression analysis}
 $$\widehat{TestScore} = 698.93 - 2.28 \times STR$$
 
 \begin{figure}[htbp]
@@ -482,7 +482,7 @@ $$\widehat{TestScore} = 698.93 - 2.28 \times STR$$
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org52a7dd3}]{Interpretation of the estimated coefficients}
+\begin{frame}[label={sec:org6be993c}]{Interpretation of the estimated coefficients}
 \begin{itemize}
 \item What does the slope tell us?
 
@@ -494,9 +494,9 @@ $$\widehat{TestScore} = 698.93 - 2.28 \times STR$$
 
 
 \section{The Algebraic Properties of the OLS Estimator}
-\label{sec:orgaeafd08}
+\label{sec:org19d523f}
 
-\begin{frame}[label={sec:orgbe61641}]{The algebraic properties of the ols estimator}
+\begin{frame}[label={sec:org7f077f8}]{The algebraic properties of the ols estimator}
 \begin{itemize}
 \item Let's first look at some of the algebraic properties of the OLS
 estimators.
@@ -504,7 +504,7 @@ estimators.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org34481d2}]{TSS, ESS, and SSR}
+\begin{frame}[label={sec:org635b856}]{TSS, ESS, and SSR}
 \begin{itemize}
 \item From \(Y_i = \hat{Y}_i + \hat{u}_i\), we can define
 \item \alert{The total sum of squares}: \(TSS = \sum_{i=1}^n (Y_i - \overline{Y})^2\)
@@ -516,7 +516,7 @@ is included in the regression model.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1aedfbf}]{Some algebraic properties among \(\hat{u}_i\), \(\hat{Y}_i\), and \(Y_i\)}
+\begin{frame}[label={sec:org1a69c24}]{Some algebraic properties among \(\hat{u}_i\), \(\hat{Y}_i\), and \(Y_i\)}
 \begin{gather}
 \sum_{i=1}^n \hat{u}_i = 0 \label{eq:algebra-ols-1} \\
 \frac{1}{n} \sum_{i=1}^n \hat{Y}_i = \overline{Y} \label{eq:algebra-ols-2} \\
@@ -525,7 +525,7 @@ TSS = ESS + SSR \label{eq:tss-ess}
 \end{gather}
 \end{frame}
 
-\begin{frame}[label={sec:org21ef9d3}]{Proof of \(\sum_{i=1}^n \hat{u}_i = 0\)}
+\begin{frame}[label={sec:org225c69d}]{Proof of \(\sum_{i=1}^n \hat{u}_i = 0\)}
 \[\hat{u}_i = Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i = (Y_i -
 \overline{Y}) - \hat{\beta}_1 (X_i - \overline{X})\]
 
@@ -533,7 +533,7 @@ TSS = ESS + SSR \label{eq:tss-ess}
 \hat{\beta}_1 \sum_{i=1}^n (X_i - \overline{X}) = 0\]
 \end{frame}
 
-\begin{frame}[label={sec:org4e9928f}]{Proof of \(\frac{1}{n} \sum_{i=1}^n \hat{Y}_i = \overline{Y}\)}
+\begin{frame}[label={sec:orgad4116a}]{Proof of \(\frac{1}{n} \sum_{i=1}^n \hat{Y}_i = \overline{Y}\)}
 Note that \(Y_i = \hat{Y}_i + \hat{u}_i\). So
 \[\sum_{i=1}^n Y_i =
 \sum_{i=1}^n \hat{Y}_i + \sum_{i=1}^n \hat{u}_i = \sum_{i=1}^n
@@ -541,7 +541,7 @@ Note that \(Y_i = \hat{Y}_i + \hat{u}_i\). So
 It follows that \(\overline{\hat{Y}} = (1/n)\sum_{i=1}^n \hat{Y}_i = \overline{Y}\).
 \end{frame}
 
-\begin{frame}[label={sec:org28d3841}]{Proof of \(\sum_{i=1}^n \hat{u}_i X_i = 0\)}
+\begin{frame}[label={sec:orgdfe4cf2}]{Proof of \(\sum_{i=1}^n \hat{u}_i X_i = 0\)}
 \begin{align*}
 & \sum_{i=1}^n \hat{u}_i X_i \\
 =& \sum_{i=1}^n \hat{u}_i (X_i - \overline{X}) \\
@@ -550,7 +550,7 @@ It follows that \(\overline{\hat{Y}} = (1/n)\sum_{i=1}^n \hat{Y}_i = \overline{Y
 \end{align*}
 \end{frame}
 
-\begin{frame}[label={sec:org07aa692}]{Proof of \(TSS = ESS + SSR\)}
+\begin{frame}[label={sec:orgabf18c7}]{Proof of \(TSS = ESS + SSR\)}
 \begin{equation*}
 \begin{split}
 TSS &= \sum_{i=1}^n (Y_i - \overline{Y})^2 = \sum_{i=1}^n (Y_i - \hat{Y}_i + \hat{Y}_i - \overline{Y})^2 \\
@@ -570,9 +570,9 @@ TSS &= \sum_{i=1}^n (Y_i - \overline{Y})^2 = \sum_{i=1}^n (Y_i - \hat{Y}_i + \ha
 
 
 \section{Measures of Fit}
-\label{sec:org2f06e59}
+\label{sec:org6997efc}
 
-\begin{frame}[label={sec:org2fd339b}]{Goodness of Fit: R\(^{\text{2}}\)}
+\begin{frame}[label={sec:org4a8c303}]{Goodness of Fit: R\(^{\text{2}}\)}
 \begin{equation}
 \label{eq:rsquared}
 R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
@@ -585,7 +585,7 @@ variable that is predictable from the independent variable(s).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgdb12c94}]{\(R^2 \in [0, 1]\)}
+\begin{frame}[label={sec:org5455802}]{\(R^2 \in [0, 1]\)}
 \begin{itemize}
 \item \(R^2 = 0\) when \(\hat{\beta}_1 = 0\).
 \begin{align*}
@@ -600,7 +600,7 @@ variable that is predictable from the independent variable(s).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgce96dc9}]{\(R^2 = r^2_{XY}\)}
+\begin{frame}[label={sec:org94ce40d}]{\(R^2 = r^2_{XY}\)}
 \begin{itemize}
 \item \(r_{XY}\) is the sample correlation coefficient
 \[ r_{XY} = \frac{S_{XY}}{S_X S_Y} = \frac{\sum_i^n(X_i -
@@ -609,7 +609,7 @@ variable that is predictable from the independent variable(s).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org03a1aa8}]{\(R^2 = r^2_{XY}\) (cont'd)}
+\begin{frame}[label={sec:org64475ad}]{\(R^2 = r^2_{XY}\) (cont'd)}
 \begin{align*}
 ESS &= \sum_{i=1}^n (\hat{Y}_i - \overline{Y})^2 = \sum_{i=1}^n (\hat{\beta}_0 + \hat{\beta}_1 X_i - \overline{Y})^2 \\
 &= \sum_{i=1}^n (\overline{Y} - \hat{\beta}_1 \overline{X} + \hat{\beta}_1 X_i - \overline{Y})^2 \\
@@ -619,7 +619,7 @@ ESS &= \sum_{i=1}^n (\hat{Y}_i - \overline{Y})^2 = \sum_{i=1}^n (\hat{\beta}_0 +
 \end{align*}
 \end{frame}
 
-\begin{frame}[label={sec:orgf10fd61}]{\(R^2 = r^2_{XY}\) (cont'd)}
+\begin{frame}[label={sec:org03fa826}]{\(R^2 = r^2_{XY}\) (cont'd)}
 \begin{itemize}
 \item It follows that
 \[
@@ -631,7 +631,7 @@ with \alert{one regressor and an intercept}.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orga8f8e18}]{The use of \(R^2\)}
+\begin{frame}[label={sec:orga9d02c6}]{The use of \(R^2\)}
 \begin{itemize}
 \item \(R^2\) is usually the first statistics that we look at for judging
 how well the regression model fits the data.
@@ -641,7 +641,7 @@ regression model is "good" or "bad".
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgd1a92a7}]{The standard error of regression (SER) as a measure of fit}
+\begin{frame}[label={sec:orgb4f6b90}]{The standard error of regression (SER) as a measure of fit}
 \begin{equation}
 \label{eq:ser}
 \mathrm{SER} = \sqrt{\frac{1}{n-2}\sum^n_{i=1} \hat{u}_i^2} = s
@@ -656,7 +656,7 @@ As \(n \rightarrow \infty\), \(SER = RMSE\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgc9129e1}]{\(R^2\) and SER for the application of test scores v.s. class sizes}
+\begin{frame}[label={sec:orge517cad}]{\(R^2\) and SER for the application of test scores v.s. class sizes}
 \begin{itemize}
 \item In the application of test scores v.s. class sizes, \(R^2\) is 0.051
 or 5.1\%, which implies that the regressor \emph{STR} explains only 5.1\%
@@ -670,9 +670,9 @@ residuals is 18.6 points on the test.
 
 
 \section{The Least Squares Assumptions}
-\label{sec:orgd5e4111}
+\label{sec:org3cc35b0}
 
-\begin{frame}[label={sec:org182b352}]{Assumption 1: The conditional mean of \(u_i\) given \(X_i\) is zero}
+\begin{frame}[label={sec:org8a1264c}]{Assumption 1: The conditional mean of \(u_i\) given \(X_i\) is zero}
 \begin{equation}
 \label{eq:Eu}
 E(u_i | X_i) = 0
@@ -687,16 +687,16 @@ for any value \(x\), that is \(E(u_i | X_1, \ldots, X_n) = 0\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgffc035b}]{An illustration of Assumption 1}
+\begin{frame}[label={sec:orge4436c9}]{An illustration of Assumption 1}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figure/fig-4-4.png}
-\caption{\label{fig:orga68ad0c}
+\caption{\label{fig:orgf27d164}
 An illustration of \(E(u|X=x)=0\)}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org44ca875}]{Correlation and conditional mean}
+\begin{frame}[label={sec:orga4ecbd3}]{Correlation and conditional mean}
 \[ E(u_i | X_i) = 0 \Rightarrow \mathrm{Cov}(u_i, X_i) = 0 \]
 
 \begin{itemize}
@@ -714,11 +714,11 @@ It follows that $$\mathrm{Cov}(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0$$
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgb2805b5}]{Assumption 2: \((X_i, Y_i)\) for \(i = 1, \ldots, n\) are i.i.d.}
+\begin{frame}[label={sec:org33198a9}]{Assumption 2: \((X_i, Y_i)\) for \(i = 1, \ldots, n\) are i.i.d.}
 \begin{itemize}
 \item Each pair of \(X\) and \(Y\), i.e., \((X_i, Y_i)\) for \(i=1, \ldots, n\), is
 selected randomly from the same joint distribution of \(X\) and \(Y\).
-\item Since \(u_i = Y_i - \beta_0 - \beta_1 X_i\), \(u_{i}\) is i.i.d., too.
+
 \item The cases that may violate of the i.i.d. assumption:
 \begin{itemize}
 \item Time series data, \(\mathrm{Cov}(Y_t, Y_{t-1}) \neq 0\). Serial
@@ -729,7 +729,7 @@ refer to two neighboring regions. Spatial correlation problem.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orga31eb50}]{Assumption 3: large outliers are unlikely}
+\begin{frame}[label={sec:org1ff894b}]{Assumption 3: large outliers are unlikely}
 $$0 < E(X^4_i) < \infty \text{ and } 0 < E(Y_i^4) < \infty$$
 
 \begin{itemize}
@@ -742,20 +742,20 @@ outliers in estimation.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org30db89c}]{The influential observations and the leverage effects}
+\begin{frame}[label={sec:orgdd4b775}]{The influential observations and the leverage effects}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figure/fig-4-5.png}
-\caption{\label{fig:org2249728}
+\caption{\label{fig:org01e1b35}
 How an outlier can influence the OLS estimates}
 \end{figure}
 \end{frame}
 
 
 \section{Sampling Distribution of the OLS Estimators}
-\label{sec:orgab79fe2}
+\label{sec:orgcde7251}
 
-\begin{frame}[label={sec:orgb26fc70}]{Unbiasedness}
+\begin{frame}[label={sec:org9300ac9}]{Unbiasedness}
 \begin{block}{The randomness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)}
 Since \((X_i, Y_i)\) for \(i = 1, \ldots, n\) are randomly drawn from a
 population, different draws can render different estimates, giving
@@ -771,7 +771,7 @@ rise to the randomness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\).
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org7e358a0}]{Show that \(\hat{\beta}_1\) is unbiased}
+\begin{frame}[label={sec:orga5540d4}]{Show that \(\hat{\beta}_1\) is unbiased}
 \[\hat{\beta}_1  = \frac{\sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i=1}^n (X_i - \overline{X})^2}\]
 
 \begin{itemize}
@@ -784,7 +784,7 @@ $$Y_i - \overline{Y} = \beta_1 (X_i - \overline{X}) + u_i - \overline{u}$$
 \end{itemize}
 \end{frame}
 
-\begin{frame}[shrink,label={sec:orgec871ca}]{Show that \(\hat{\beta}_1\) is unbiased (cont'd)}
+\begin{frame}[shrink,label={sec:org0447e0d}]{Show that \(\hat{\beta}_1\) is unbiased (cont'd)}
 \begin{itemize}
 \item The numerator in \(\hat{\beta}_1\) is
 \begin{equation*}
@@ -805,7 +805,7 @@ since \(u_1, \ldots, u_n\) are simply random draws of \(u_i\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgc3b8360}]{Show that \(\hat{\beta}_1\) is unbiased (cont'd)}
+\begin{frame}[label={sec:org5904213}]{Show that \(\hat{\beta}_1\) is unbiased (cont'd)}
 \begin{equation}
 \label{eq:betahat-1b}
 \hat{\beta}_1 = \beta_1 + \frac{\frac{1}{n}\sum_i (X_i - \overline{X})u_i}{\frac{1}{n}\sum_i (X_i - \overline{X})^2}
@@ -823,7 +823,7 @@ E(\hat{\beta}_1 | X_1, \ldots, X_n) &= \beta_1 + E\left\lbrace \left[\frac{\frac
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org72a424c}]{Show that \(\hat{\beta}_1\) is unbiased (cont'd)}
+\begin{frame}[label={sec:org3dae169}]{Show that \(\hat{\beta}_1\) is unbiased (cont'd)}
 \begin{itemize}
 \item It follows that \[E(\hat{\beta}_1) = E(E(\hat{\beta}_1 | X_1, \ldots, X_n)) = \beta_1\]
 
@@ -833,7 +833,7 @@ E(\hat{\beta}_1 | X_1, \ldots, X_n) &= \beta_1 + E\left\lbrace \left[\frac{\frac
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org9b36b7b}]{The consistency of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)}
+\begin{frame}[label={sec:org3a1e01f}]{The consistency of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)}
 \begin{itemize}
 \item \(\hat{\beta}\) is said to be a consistent estimator
 of \(\beta\) if as \(n\) goes to infinity, \(\hat{\beta}\) is in probability
@@ -850,16 +850,16 @@ consistent estimator of \(\beta_1\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgd8335d5}]{The asymptotic normal distribution of \(\hat{\beta}_1\)}
+\begin{frame}[label={sec:org2628e9e}]{The asymptotic normal distribution of \(\hat{\beta}_1\)}
 \begin{itemize}
 \item Recall the central limit theory states that if \(X_1, \ldots, X_n\) with the mean
 \(\mu\) and the variance \(0 < \sigma^2 < \infty\). Then,
-$$\frac{1}{n}\sum_i X_i \xrightarrow{\text{d}}
+$$\frac{1}{n}\sum_i X_i \xrightarrow{\text{ d }}
   N(\mu, \frac{\sigma^2}{n})$$
 
 \item We can prove that \(\hat{\beta}_1\) is asymptotically normally
 distributed as 
-\[ \hat{\beta}_1 \xrightarrow{ \text{d}} N\left( \beta_1,
+\[ \hat{\beta}_1 \xrightarrow{ \text{ d }} N\left( \beta_1,
   \sigma^2_{\hat{\beta}_1}\right) \] 
 where
 \begin{equation*}
@@ -872,10 +872,10 @@ where
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgfe5295c}]{The asymptotic normal distribution of \(\hat{\beta}_0\)}
+\begin{frame}[label={sec:org8ceb39a}]{The asymptotic normal distribution of \(\hat{\beta}_0\)}
 \begin{itemize}
 \item Similarly, we can show that 
-$$\hat{\beta}_0 \xrightarrow{\text{d}} N(\beta_0,
+$$\hat{\beta}_0 \xrightarrow{\text{ d }} N(\beta_0,
   \sigma^2_{\hat{\beta}_0})$$
  where
 \begin{equation*}

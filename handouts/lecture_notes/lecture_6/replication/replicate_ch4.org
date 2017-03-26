@@ -3,7 +3,7 @@
 #+EMAIL: zngtian@gmail.com
 #+DATE:
 #+OPTIONS: H:3 num:2 toc:1
-#+PROPERTY: header-args:R :session *myR* :cache yes
+#+PROPERTY: header-args:R :session *myR* :cache yes :tangle yes
 #+STARTUP: content indent align
 #+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
 #+LATEX_HEADER: \usepackage{setspace}
@@ -250,10 +250,14 @@ the function =abline=. And an annotation can be added by using the
 function =text=
 
 #+BEGIN_SRC R :exports both :results output graphics :file fig43.png :eval
-plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
-     xlab = "Student-teacher ratio", ylab = "Test scores")
-abline(coef(mod1)[1], coef(mod1)[2], col="red")
-text(23.5, 655, "TestScore = 698.9 - 2.28 STR", cex.lab = 0.9, font.lab = 3)
+    plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
+	 xlab = "Student-teacher ratio", ylab = "Test scores")
+    intercept <- coef(mod1)[1]
+    slope <- coef(mod1)[2]
+    abline(intercept, slope, col="red")
+    texteq <- paste("TestScore = ", round(intercept, 1), " + ",
+                    round(slope, 2), "STR", sep = "")
+    text(23.5, 655, texteq, cex.lab = 0.9, font.lab = 3)
 #+END_SRC
 
 #+CAPTION: The estimated regression line for the California data

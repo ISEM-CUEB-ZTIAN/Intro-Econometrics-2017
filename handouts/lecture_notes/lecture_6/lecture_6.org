@@ -757,7 +757,7 @@ It follows that $\mathrm{Cov}(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0$.
 
 - Each pair of $X$ and $Y$, i.e., $(X_i, Y_i)$ for $i=1, \ldots, n$, is
   selected randomly from the same joint distribution of $X$ and $Y$.
-- Since $u_i = Y_i - \beta_0 - \beta_1 X_i$, $u_{i}$ is i.i.d., too.
+
 - The cases that may violate of the i.i.d. assumption:
   - Time series data, $\mathrm{Cov}(Y_t, Y_{t-1}) \neq 0$. That is, when
     we try to regress $Y_t$ on $Y_{t-1}$, and if the current value

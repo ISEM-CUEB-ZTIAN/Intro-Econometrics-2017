@@ -1,17 +1,9 @@
-# This file contains the R commands for replicating the application of
-# California school district test scores.
-
 library(AER)
 
-# Read the Excel file
-library(gdata)
-classdata <- read.xls("./data/caschool.xlsx", sheet = "caschool")
+library(foreign)
+classdata <- read.dta("./data/caschool.dta")
 
-# Read the stata file
-# library(foreign)
-# classdata <- read.dta("./data/caschool.dta")
-
-head(classdata)
+head(classdata[c("observat", "district", "testscr", "str")])
 
 df <- classdata[c("testscr", "str")]
 summary(df)
@@ -24,24 +16,25 @@ summary4.1 <- function(df){
         quantile(x, probs=c(0.1, 0.25, 0.4, 0.5, 0.6, 0.75, 0.9)))
     return(rbind(ave, std, perctile))
 }
-
-sumtab <- t(summary4.1(df))
-
 library(xtable)
-xtable(sumtab)
+sumtab <- xtable(t(summary4.1(df)))
 
-# Scatterplot
+print(sumtab, type = "latex")
+
+print(sumtab, type = "html")
+
 plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
      main = "Scatterplot of Test Score vs. Student-Teacher Ratio",
      xlab = "Student-teacher ratio", ylab = "Test scores")
 
-# correlation coefficient
-cor(df$str, df$testscr)
-
-# OLS
 mod1 <- lm(testscr ~ str, data = df)
 summary(mod1)
 
-abline(coef(mod1)[1], coef(mod1)[2], col="red")
-text(23.5, 655, "TestScore = 698.9 - 2.28 STR", cex.lab = 0.9, font.lab = 3)
-
+plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
+     xlab = "Student-teacher ratio", ylab = "Test scores")
+intercept <- coef(mod1)[1]
+slope <- coef(mod1)[2]
+abline(intercept, slope, col="red")
+texteq <- paste("TestScore = ", round(intercept, 1), " + ",
+                round(slope, 2), "STR", sep = "")
+text(23.5, 655, texteq, cex.lab = 0.9, font.lab = 3)

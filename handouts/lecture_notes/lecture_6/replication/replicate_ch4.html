@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-21 Tue 10:57 -->
+<!-- 2017-03-26 Sun 15:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Replication of Examples in Chapter 4</title>
@@ -256,15 +256,15 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcd2184b">1. Introduction</a></li>
-<li><a href="#org80307a8">2. Reading the data and basic summary statistics</a></li>
-<li><a href="#orge199d25">3. The OLS estimation</a></li>
+<li><a href="#org542a692">1. Introduction</a></li>
+<li><a href="#org4aa64ea">2. Reading the data and basic summary statistics</a></li>
+<li><a href="#orgc42f8bf">3. The OLS estimation</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgcd2184b" class="outline-2">
-<h2 id="orgcd2184b"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-org542a692" class="outline-2">
+<h2 id="org542a692"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This document is to show how to estimate a simple regression model and
@@ -286,16 +286,16 @@ loading several particular packages of regression.
 </div>
 
 
-<div id="outline-container-org80307a8" class="outline-2">
-<h2 id="org80307a8"><span class="section-number-2">2</span> Reading the data and basic summary statistics</h2>
+<div id="outline-container-org4aa64ea" class="outline-2">
+<h2 id="org4aa64ea"><span class="section-number-2">2</span> Reading the data and basic summary statistics</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Let's first read the data into R and show some basic statistics.
 </p>
 </div>
 
-<div id="outline-container-orgddde67d" class="outline-3">
-<h3 id="orgddde67d"><span class="section-number-3">2.1</span> Read the data file</h3>
+<div id="outline-container-org82de592" class="outline-3">
+<h3 id="org82de592"><span class="section-number-3">2.1</span> Read the data file</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 The textbook comes with two files for the California test score data
@@ -348,8 +348,8 @@ data frame object.
 </div>
 
 
-<div id="outline-container-org9c1fca7" class="outline-3">
-<h3 id="org9c1fca7"><span class="section-number-3">2.2</span> Summary</h3>
+<div id="outline-container-orge93785f" class="outline-3">
+<h3 id="orge93785f"><span class="section-number-3">2.2</span> Summary</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Upon reading the data, we often use <code>summary()</code> to see some basic
@@ -431,8 +431,8 @@ summary statistics into a table in either a LaTeX or an HTML file.
 </div>
 
 
-<div id="outline-container-orga8f4924" class="outline-3">
-<h3 id="orga8f4924"><span class="section-number-3">2.3</span> Create a scatterplot using <code>plot()</code></h3>
+<div id="outline-container-orgbd080c0" class="outline-3">
+<h3 id="orgbd080c0"><span class="section-number-3">2.3</span> Create a scatterplot using <code>plot()</code></h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 It is always a good practice to make a scatterplot between an
@@ -450,7 +450,7 @@ figures. Here I use it to draw the scatterplot as follows.
 </div>
 
 
-<div id="org46c4afa" class="figure">
+<div id="orgefe2167" class="figure">
 <p><img src="fig42.png" alt="fig42.png" width="600" />
 </p>
 <p><span class="figure-number">Figure 1: </span>The scatterplot of test score vs student-teacher raio</p>
@@ -467,11 +467,11 @@ command <code>cor(df$str), df$testscr}</code> yield the value of
 </div>
 
 
-<div id="outline-container-orge199d25" class="outline-2">
-<h2 id="orge199d25"><span class="section-number-2">3</span> The OLS estimation</h2>
+<div id="outline-container-orgc42f8bf" class="outline-2">
+<h2 id="orgc42f8bf"><span class="section-number-2">3</span> The OLS estimation</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org1df2794" class="outline-3">
-<h3 id="org1df2794"><span class="section-number-3">3.1</span> Set up the linear regression model</h3>
+</div><div id="outline-container-orgf548c24" class="outline-3">
+<h3 id="orgf548c24"><span class="section-number-3">3.1</span> Set up the linear regression model</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 We establish the following linear regression model for the relationship between
@@ -485,8 +485,8 @@ TestScore_i = \beta_0 + \beta_1 STR_i + u_i
 </div>
 
 
-<div id="outline-container-org345546e" class="outline-3">
-<h3 id="org345546e"><span class="section-number-3">3.2</span> Estimate in R</h3>
+<div id="outline-container-org2ec8250" class="outline-3">
+<h3 id="org2ec8250"><span class="section-number-3">3.2</span> Estimate in R</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 The OLS estimation can be implemented in R with the function <code>lm</code>. The
@@ -539,8 +539,8 @@ intercept, &beta;<sub>0</sub>, and <code>-2.28</code> for the slope.
 </div>
 
 
-<div id="outline-container-org7ad23af" class="outline-3">
-<h3 id="org7ad23af"><span class="section-number-3">3.3</span> Plot the sample regression line</h3>
+<div id="outline-container-org23186de" class="outline-3">
+<h3 id="org23186de"><span class="section-number-3">3.3</span> Plot the sample regression line</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 The sample regression line can be added to the scatterplot by using
@@ -551,8 +551,12 @@ function <code>text</code>
 <div class="org-src-container">
 <pre class="src src-R">plot(df$str, df$testscr, col = <span style="color: #008000;">"blue"</span>, pch =16, cex = 0.7, bty = <span style="color: #008000;">"l"</span>,
      xlab = <span style="color: #008000;">"Student-teacher ratio"</span>, ylab = <span style="color: #008000;">"Test scores"</span>)
-abline(coef(mod1)[1], coef(mod1)[2], col=<span style="color: #008000;">"red"</span>)
-text(23.5, 655, <span style="color: #008000;">"TestScore = 698.9 - 2.28 STR"</span>, cex.lab = 0.9, font.lab = 3)
+intercept <span style="color: #D0372D;">&lt;-</span> coef(mod1)[1]
+slope <span style="color: #D0372D;">&lt;-</span> coef(mod1)[2]
+abline(intercept, slope, col=<span style="color: #008000;">"red"</span>)
+texteq <span style="color: #D0372D;">&lt;-</span> paste(<span style="color: #008000;">"TestScore = "</span>, round(intercept, 1), <span style="color: #008000;">" + "</span>,
+                round(slope, 2), <span style="color: #008000;">"STR"</span>, sep = <span style="color: #008000;">""</span>)
+text(23.5, 655, texteq, cex.lab = 0.9, font.lab = 3)
 </pre>
 </div>
 
@@ -584,7 +588,7 @@ for your future career development, especially in academia
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Zheng Tian</p>
-<p class="date">Created: 2017-03-21 Tue 10:57</p>
+<p class="date">Created: 2017-03-26 Sun 15:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

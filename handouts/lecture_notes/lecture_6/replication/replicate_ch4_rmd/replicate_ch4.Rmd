@@ -3,8 +3,8 @@ title: "Replication of Examples in Chapter 4"
 author: "Zheng Tian"
 date: "3/21/2017"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 # Introduction
@@ -72,12 +72,12 @@ Within the function `summary4.1`, I use a special function in R, `sapply()`. It 
 
 Finally, the function `xtable()` writes the matrix that contains the summary statistics into a table in either a LaTeX or an HTML file.
 
-```{r, results='asis', include=TRUE}
+```{r, results='asis', include=FALSE}
   # print as a latex table
   print(sumtab, type = "latex")
 ```
 
-```{r, results='asis', include=FALSE}
+```{r, results='asis', include=TRUE}
   # print out as an html table
   print(sumtab, type = "html")
 ```
@@ -130,13 +130,13 @@ $$\widehat{TestScore} = 698.93 - 2.28 \times STR$$
 
 The sample regression line can be added to the scatterplot by using the function `abline`. And an annotation can be added by using the function `text`
 
-```{r, fig.align='center'}
-    plot(df$str, df$testscr, 
-         col = "blue", pch =16, cex = 0.7, bty = "l",
-         xlab = "Student-teacher ratio", ylab = "Test scores")
-    # add a straight line with an intercept a and slop b
-    abline(coef(mod1)[1], coef(mod1)[2], col="red")
-    # add a text on the plot
-    text(23, 660, "TestScore = 698.9 - 2.28 STR", 
-         cex.lab = 0.9, font.lab = 3)
+```{r, echo = TRUE, fig.align='center'}
+    plot(df$str, df$testscr, col = "blue", pch =16, cex = 0.7, bty = "l",
+      	 xlab = "Student-teacher ratio", ylab = "Test scores")
+    intercept <- coef(mod1)[1]
+    slope <- coef(mod1)[2]
+    abline(intercept, slope, col="red")
+    texteq <- paste("TestScore = ", round(intercept, 1), " + ",
+                    round(slope, 2), "STR", sep = "")
+    text(23.5, 655, texteq, cex.lab = 0.9, font.lab = 3)
 ```

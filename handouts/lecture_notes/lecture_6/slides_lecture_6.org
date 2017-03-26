@@ -597,7 +597,7 @@ E(u_i | X_i) = 0
 
 - Each pair of $X$ and $Y$, i.e., $(X_i, Y_i)$ for $i=1, \ldots, n$, is
   selected randomly from the same joint distribution of $X$ and $Y$.
-- Since $u_i = Y_i - \beta_0 - \beta_1 X_i$, $u_{i}$ is i.i.d., too.
+
 - The cases that may violate of the i.i.d. assumption:
   - Time series data, $\mathrm{Cov}(Y_t, Y_{t-1}) \neq 0$. 
     - Serial correlation problem.
@@ -631,7 +631,7 @@ $$0 < E(X^4_i) < \infty \text{ and } 0 < E(Y_i^4) < \infty$$
 
 *** The randomness of $\hat{\beta}_0$ and $\hat{\beta}_1$
 
-  Since $(X_i, Y_i)$ for $i = 1, \ldots, n$ are randomly drawn from a
+- Since $(X_i, Y_i)$ for $i = 1, \ldots, n$ are randomly drawn from a
   population, different draws can render different estimates, giving
   rise to the randomness of $\hat{\beta}_0$ and $\hat{\beta}_1$.
 
@@ -707,9 +707,11 @@ $$0 < E(X^4_i) < \infty \text{ and } 0 < E(Y_i^4) < \infty$$
   \ldots, x_n$, if $E(x_i) = \mu$ and $\mathrm{Var}(x_i) < \infty$, then
   $\bar{x} \xrightarrow{\text{ p }} \mu$ as $n \rightarrow \infty$. 
 
-- Then we can show that $n \rightarrow \infty$,  $\hat{\beta}
-  \xrightarrow{ \text{ p } } \beta$, i.e., $\hat{\beta}_1$ is a
-  consistent estimator of $\beta_1$. 
+- Then we can show that as $n \rightarrow \infty$,  $\hat{\beta}_1
+  \xrightarrow{ \text{ p } } \beta_1$, i.e., $\hat{\beta}_1$ is a
+  consistent estimator of $\beta_1$.
+
+- $\hat{\beta}_0$ is also a consistent estimator of $\beta_0$. 
 
 *** COMMENT A proof of consistency
 
@@ -752,12 +754,12 @@ is $\plim_{n \rightarrow \infty} \hat{\beta}_0 = \beta_0$.
 
 - Recall the central limit theory states that if $X_1, \ldots, X_n$ with the mean
   $\mu$ and the variance $0 < \sigma^2 < \infty$. Then,
-  $$\frac{1}{n}\sum_i X_i \xrightarrow{\text{d}}
+  $$\frac{1}{n}\sum_i X_i \xrightarrow{\text{ d }}
   N(\mu, \frac{\sigma^2}{n})$$
 
 - We can prove that $\hat{\beta}_1$ is asymptotically normally
   distributed as 
-  \[ \hat{\beta}_1 \xrightarrow{ \text{d}} N\left( \beta_1,
+  \[ \hat{\beta}_1 \xrightarrow{ \text{ d }} N\left( \beta_1,
   \sigma^2_{\hat{\beta}_1}\right) \] 
   where
   \begin{equation*}
@@ -771,7 +773,7 @@ is $\plim_{n \rightarrow \infty} \hat{\beta}_0 = \beta_0$.
 *** The asymptotic normal distribution of $\hat{\beta}_0$
 
 - Similarly, we can show that 
-  $$\hat{\beta}_0 \xrightarrow{\text{d}} N(\beta_0,
+  $$\hat{\beta}_0 \xrightarrow{\text{ d }} N(\beta_0,
   \sigma^2_{\hat{\beta}_0})$$
    where
   \begin{equation*}
