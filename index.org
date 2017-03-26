@@ -67,6 +67,7 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - The slides ([[file:handouts/lecture_notes/lecture_6/slides_lecture_6.html][html]] or [[file:handouts/lecture_notes/lecture_6/slides_lecture_6_beamer.pdf][pdf]])
 - The R demonstration ([[file:handouts/lecture_notes/lecture_6/replication/replicate_ch4.html][html]] or [[file:handouts/lecture_notes/lecture_6/replication/replicate_ch4.pdf][pdf]])
 - The R replication package ([[file:handouts/lecture_notes/lecture_6/replication/replicate_ch4_rmd/replicate_ch4_rmd.zip][the zip file]])
+- The R Markdown tutorial ([[file:handouts/lecture_notes/r_docs/rmarkdown_tutorial/rmarkdown_tutorial.html][html]], [[file:handouts/lecture_notes/r_docs/rmarkdown_tutorial/rmarkdown_cheatsheet.pdf][pdf]], and [[file:handouts/lecture_notes/r_docs/rmarkdown_tutorial/rmarkdown_tutorial.Rmd][Rmd]])
 
 
 * Homework
