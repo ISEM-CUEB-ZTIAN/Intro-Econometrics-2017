@@ -90,12 +90,12 @@ population mean from a random sample.
 
 We want to test two contrasting hypotheses, the null hypothesis versus
 the alternative hypothesis. 
-
 - Two-sided tests: 
-  $$H_0:\; E(Y) = \mu_{Y,0}$ v.s. $H_1:\; E(Y) \neq \mu_{Y,0}$$
+  $$H_0:\; E(Y) = \mu_{Y,0} \text{ v.s. } H_1:\; E(Y) \neq \mu_{Y,0}$$
 
 - One-sided test: 
-  $$H_0:\; E(Y) = \mu_{Y,0}$ v.s. $H_1:\; E(Y) > \mu_{Y,0}$$
+  $$H_0:\; E(Y) = \mu_{Y,0} \text{ v.s. } H_1:\; E(Y) > \mu_{Y,0}$$
+
 
 *** Test statistics
 
@@ -459,7 +459,7 @@ And the 95% confidence interval is
 *** Homoskedasticity
 
 The error term $u_i$ is *homoskedastic* if the conditional variance of
-$u_i$ given $X_i$ is constant for $i = 1, \ldots, n$. Mathematically,
+$u_i$ given $X_i$ is constant for all $i = 1, \ldots, n$. Mathematically,
 it says $\var(u_i | X_i) = \sigma^2,\, \text{ for } i = 1, \ldots, n$,
 i.e., the variance of $u_i$ for all /i/ is a constant and does not
 depend on $X_i$.
@@ -591,28 +591,37 @@ which is also referred to as Eicker-Huber-White standard errors.
 
 
 * The Theoretical Foundations of Ordinary Least Squares
-** The Gauss-Markov conditions
-We have already known the least squares assumptions: for $i = 1,
-\ldots, n$, (1) $E(u_i|X_i) =
-0$, (2) $(X_i, Y_i)$ are i.i.d., and (3) large outliers are unlikely. 
 
-The Gauss-Markov conditions provide anther version of these
-assumptions plus the assumption of homoskedastic errors. 
+In this section, we are going to show that under some conditions, the
+OLS estimators are the Best Linear Unbiased Estimators (BLUE). 
+
+** The Gauss-Markov conditions
+
+We have already known the least squares assumptions: for $i = 1,
+\ldots, n$, (1) $E(u_i|X_i) = 0$, (2) $(X_i, Y_i)$ are i.i.d., and (3)
+large outliers are unlikely. The Gauss-Markov conditions are similar
+to these least squares assumptions and add the assumption of
+homoskedastic errors.
 
 *** The Gauss-Markov conditions
-For $\mathbf{X} = [X_1, \ldots, X_n]$ [fn:: Here I use the vector
+For $\mathbf{X} = [X_1, \ldots, X_n]$ [fn:3]
+
+Here I use the vector
 notation to represent all observations of $X_i$ for $i=1, \ldots,
 n$. We will formally introduce the matrix notation for a linear
-regression model and the OLS estimation in the next lecture.]
+regression model and the OLS estimation in the next lecture.
+
 1. $E(u_i| \mathbf{X}) = 0$
 2. $\var(u_i | \mathbf{X}) = \sigma^2_u,\, 0 < \sigma^2_u < \infty$
 3. $E(u_i u_j | \mathbf{X}) = 0,\, i \neq j$
 
 *** From the three Least Squares Assumptions and the homoskedasticity assumption to the Gauss-Markov conditions
-Note that the conditional expectations in the G-M conditions are in
-terms of all observations $\mathbf{X}$, not just one observation,
-$X_i$. However, all the G-M conditions can be derived from the least
-squares assumptions plus the homoskedasticity assumption. Specifically,
+
+Note that the conditional expectations in the Gauss-Markov conditions
+regard all observations $\mathbf{X}$, not just one observation,
+$X_i$. However, all the Gauss-Markov conditions can be derived from
+the least squares assumptions plus the homoskedasticity
+assumption. Specifically,
 
 - Assumptions (1) and (2) imply $E(u_i | \mathbf{X}) = E(u_i | X_i) =
   0$.
@@ -622,7 +631,9 @@ squares assumptions plus the homoskedasticity assumption. Specifically,
 - Assumptions (1) and (2) imply that $E(u_i u_j | \mathbf{X}) = E(u_i
   u_j | X_i, X_j) = E(u_i|X_i) E(u_j|X_j) = 0$.
 
+
 ** Linear conditionally unbiased estimator
+
 *** The general form of a linear conditionally unbiased estimator of $\beta_1$
 
 The class of linear conditionally unbiased estimators consists of all
@@ -670,13 +681,15 @@ must have
 \[ \sum_i \hat{a}_i = 0 \text{ and } \sum_i \hat{a}_i X_i = 1  \]
 which can be simply verified.
 
+
 ** The Gauss-Markov Theorem
+
 The Gauss-Markov Theorem for $\hat{\beta}_1$ states
 #+NAME: The Gauss-Markov Theorem for $\tilde{\beta}_{1}$
 #+BEGIN_QUOTE
 If the Gauss-Markov conditions hold, then the OLS estimator
-$\hat{\beta}_1$ is the *B*est (most efficient) *L*inear conditionally
-*U*nbiased *E*stimator (BLUE).
+$\hat{\beta}_1$ is the Best (most efficient) Linear conditionally
+Unbiased Estimator (BLUE).
 #+END_QUOTE
 
 The theorem can also be applied to $\hat{\beta}_0$.
@@ -692,18 +705,20 @@ the proof is to show that
 \mathbf{X}) \]
 The equality holds only when $\tilde{\beta}_1 = \hat{\beta}_1$. 
 
+
 ** The limitations of the Gauss-Markov theorem
-1. The Gauss-Markov conditions may hold in practice. Any violation of
-   the Gauss-Markov conditions will result in the OLS estimator not
-   being BLUE. The table below summarizes the cases in which a kind of
-   violation occurs, the consequences of such violation to the OLS
-   estimators, and possible remedies.
+
+1. The Gauss-Markov conditions may not hold in practice. Any violation
+   of the Gauss-Markov conditions will result in the OLS estimators
+   that are not BLUE. The table below summarizes the cases in which a
+   kind of violation occurs, the consequences of such violation to the
+   OLS estimators, and possible remedies.
    
    #+CAPTION: Summary of Violations of the Gauss-Markov Theorem
    #+ATTR_LATEX: :align p{4cm}|p{5.5cm}|p{2.5cm}|p{3.4cm} :booktabs t :center t :font \small
    |  Violation                     | Cases                          | Consequences | Remedies              |
    |--------------------------------+--------------------------------+--------------+-----------------------|
-   | $E(u \mid X) \neq 0$           | omitted variables, endogeneity | biased       | more $X$'s, IV method |
+   | $E(u \mid X) \neq 0$           | omitted variables, endogeneity | biased       | more $X$, IV method   |
    | $\var(u_i\mid X)$ not constant | heteroskedasticity             | inefficient  | WLS, GLS, HCCME       |
    | $E(u_{i}u_{j}\mid X) \neq 0$   | autocorrelation                | inefficient  | GLS, HAC              |
    |--------------------------------+--------------------------------+--------------+-----------------------|
@@ -712,27 +727,31 @@ The equality holds only when $\tilde{\beta}_1 = \hat{\beta}_1$.
    conditionally unbiased; under some conditions, these estimators are
    more efficient than the OLS estimators. 
 
+
 * Using the t-Statistic in Regression When the Sample Size is Small
+
 ** The classical assumptions of the least squares estimation
-We first expand the OLS assumptions by two additional ones. One is the
-assumption of the homoskedastic errors, and another one is the
+
+We first expand the LS assumptions by two additional assumptions. One
+is the assumption of the homoskedastic errors, and another one is the
 assumption that the conditional distribution of $u_i$ given $X_i$ is
-the normal distribution, i.e., $u_i \sim N(0,
-\sigma^2_u) \text{ for } i = 1, \ldots, n$. 
+the normal distribution, i.e., $u_i \mid X_i \sim N(0, \sigma^2_u) \text{ for }
+i = 1, \ldots, n$.
 
 All these assumptions together are often referred to as the classical
-assumptions of the least squares estimation. 
+assumptions of the least squares estimation:
 For $i = 1, 2, \ldots, n$
 - Assumption 1: $E(u_i | X_i) = 0$ (exogeneity of $X$)
-- Assumption 2: $(X_i, Y_i)$ are i.i.d. (IID of $X, Y, \text{ and }
-                   u$)
+- Assumption 2: $(X_i, Y_i)$ are i.i.d. (IID of $X, Y$)
 - Assumption 3: $0 < E(X_i^4) < \infty$ and $0 < E(Y_i^4) < \infty$
                    (No large outliers)
 - Extended Assumption 4: $\var(u_i | X_i) = \sigma^2_u, \text{ and } 0 <
                    \sigma^2_u < \infty$ (homoskedasticity)
 - Extended Assumption 5: $u_i | X_i \sim N(0, \sigma^2_u)$ (normality)
 
+
 ** The t-Statistic and the Student-t Distribution
+
 Under all the classical assumptions, we can construct the
 t-statistic for hypothesis testing of a single coefficient. Even with
 a small samples, the t-statistic has an exact Student-t distribution. 
@@ -745,11 +764,21 @@ t = \frac{\hat{\beta}_1 - \beta_{1,0}}{\hat{\sigma}_{\hat{\beta}_1}}
 \end{equation}
 where
 \begin{equation*}
-\hat{\sigma}^2_{\hat{\beta}_1} = \frac{s^2_u}{\sum_i (X_i - \bar{X})^2} \text{ and } s^2_u = \frac{1}{n-2}\sum_i \hat{u}_i^2
+\hat{\sigma}^2_{\hat{\beta}_1} = \frac{s^2_u}{\sum_i (X_i - \bar{X})^2} \text{ and } s^2_u = \frac{1}{n-2}\sum_i \hat{u}_i^2 = SER^2
 \end{equation*}
 the former of which is the homoskedasticity-only standard error of
 $\hat{\beta}_1$ and the latter is the standard error of the
 regression. 
+
+When the classical least squares assumptions hold, we have the
+t-statistic has the exact distribution of $t(n-2)$, i.e., the
+Student's t distribution with $(n-2)$ degrees of freedom. 
+
+\[ t = \frac{\hat{\beta}_1 -
+\beta_{1,0}}{\hat{\sigma}_{\hat{\beta}_1}} \sim t(n-2) \]
+
+What follows is to show the above equation is true when all classical
+assumptions are true. 
 
 *** The Student-t distribution of $t$
 
@@ -789,7 +818,13 @@ $z_{\hat{\beta}_1}$. Therefore, the t-statistic in Equation
 (\ref{eq:t-stat-b1a}), as the ratio of $z_{\hat{\beta}_1}$ and
 $\sqrt{W/(n-2)}$, is distributed as $t(n-2)$.
 
+
 * Footnotes
+
+[fn:3] Here I use the vector
+notation to represent all observations of $X_i$ for $i=1, \ldots,
+n$. We will formally introduce the matrix notation for a linear
+regression model and the OLS estimation in the next lecture.
 
 [fn:2] Note that the trick here is we put the
 desired hypothesis to the alternative place. 

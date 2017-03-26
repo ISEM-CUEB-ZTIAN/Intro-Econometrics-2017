@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Lecture 7: Hypothesis Test  of Linear Regression with a Single Regressor</title>
+<meta name="author" content="(Zheng Tian)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../../../reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="../../../reveal.js/css/theme/beige.css" id="theme"/>
+
+<link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Lecture 7: Hypothesis Test  of Linear Regression with a Single Regressor</h1><h2 class="author">Zheng Tian</h2><p class="date">Created: 2017-03-24 Fri 11:30</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgb87107b">Testing Hypotheses about One of the Regression Coefficients</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+
+<section>
+<section id="slide-orgb87107b">
+<h2 id="orgb87107b">Testing Hypotheses about One of the Regression Coefficients</h2>
+<div class="outline-text-2" id="text-orgb87107b">
+</div></section>
+</section>
+<section>
+<section id="slide-orgd627186">
+<h3 id="orgd627186">A brief review of basic concepts in hypothesis tests</h3>
+<div class="outline-text-3" id="text-orgd627186">
+</div></section>
+<section id="slide-org7ced170">
+<h4 id="org7ced170">The null versus alternative hypotheses</h4>
+<ul>
+<li>We want to test two contrasting hypotheses, the null hypothesis versus
+the alternative hypothesis. 
+
+<ul>
+<li>Two-sided tests: 
+\[H_0:\; E(Y) = \mu_{Y,0} \text{ v.s. } H_1:\; E(Y) \neq \mu_{Y,0}\]</li>
+
+<li>One-sided test: 
+\[H_0:\; E(Y) = \mu_{Y,0} \text{ v.s. } H_1:\; E(Y) > \mu_{Y,0}\]</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgbe07e2e">
+<h4 id="orgbe07e2e">Test statistics</h4>
+<ul>
+<li>When \(\sigma_Y\) is known, we use the z-statistics
+\[ z = \frac{\overline{Y} -
+  \mu_{Y,0}}{\sigma_{\overline{Y}}} = \frac{\overline{Y} -
+  \mu_{Y,0}}{\sigma_Y/\sqrt{n}} \xrightarrow{\text{ d }} N(0, 1)\]</li>
+
+<li><p>
+When \(\sigma_Y\) is unknown, we use the standard error of
+\(\overline{Y}\) and compute the t-statistic. 
+</p>
+
+<p>
+\[ t = \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})} =
+  \frac{\overline{Y} - \mu_{Y,0}}{s_Y/\sqrt{n}} \xrightarrow{ \text{ d } } N(0, 1) \] 
+</p></li>
+
+</ul>
+
+</section>
+<section id="slide-org91cdbec">
+<h4 id="org91cdbec">The rules for hypothesis testing</h4>
+<div class="outline-text-4" id="text-org91cdbec">
+</div><ul class="org-ul"><li><a id="org4d35f5e"></a>Type I and type II errors<br  /><ul>
+<li><b>Type I error</b>. The null hypothesis is rejected when in fact it is
+true.</li>
+<li><b>Type II error</b>. The null hypothesis is not rejected when in fact it
+is false.</li>
+
+</ul></li>
+
+<li><a id="orgbb9f591"></a>The significance level, the critical value, and the p-value<br  /><ul>
+<li><b>The significance level</b>. The pre-specified probability of type I
+error.  \(\alpha = 0.05, 0.10, \text{ or } 0.01\)</li>
+
+<li><b>The critical value</b>. The value of the test statistic for which the
+test rejects the null hypothesis at the given significance level.</li>
+
+<li><b>The p-value</b>. The p-value is the probability of drawing a statistic
+at least as adverse to the null hypothesis as the one you actually
+computed in your sample, assuming the null hypothesis is
+correct.</li>
+
+</ul></li>
+
+<li><a id="org9717eaf"></a>Rejection rules<br  /><ul>
+<li>The following two statements are equivalent in terms of rejecting the
+null hypothesis at the 5% significance level. 
+
+<ul>
+<li>We can reject the null if the test statistics falls into the
+rejection region delimited by the critical values at the 5%
+significance level, that is, when \(|t^{act}| > c_{\alpha} = 1.96\),</li>
+
+<li>We can reject the null if the p-value is less than the significance
+level that is 5% in this case.</li>
+
+</ul></li>
+
+</ul></li>
+
+
+<li><a id="org08a1f1b"></a>Hypothesis testing illustrated<br  /><div id="org5121f4b" class="figure">
+<p><img src="./figure/fig9_1.png" alt="fig9_1.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 1: </span>An illustration of a two-sided test</p>
+</div></li></ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgb33d130">
+<h3 id="orgb33d130">Two-sided hypotheses concerning \(\beta_1\)</h3>
+<div class="outline-text-3" id="text-orgb33d130">
+</div></section>
+<section id="slide-org7be5ac8">
+<h4 id="org7be5ac8">Application to test scores</h4>
+<p>
+In the last lecture, we estimate a simple linear regression model for test
+scores and class sizes, which yields the following estimated sample
+regression function,
+</p>
+
+<div>
+\begin{equation}
+\label{eq:testscr-str-1e}
+\widehat{TestScore} = 698.93 - 2.28 \times STR
+\end{equation}
+
+</div>
+
+<p>
+Now the question faced by the superintendent of the California
+elementary school districts is whether the estimated coefficient on
+<i>STR</i> is valid. In the terminology of statistics, his question is
+whether \(\beta_1\) is statistically significantly different from zero. 
+</p>
+
+</section>
+<section id="slide-org5ac3fd0">
+<h4 id="org5ac3fd0">Testing hypotheses about the slope \(\beta_1\)</h4>
+<p>
+Note that all discussions about hypothesis testing that
+follows involve only the regression with a large sample size. The
+last section of this lecture touches upon the small sample properties
+of the test statistics.
+</p>
+
+<ul class="org-ul"><li><a id="orgdace0c6"></a>The two-sided hypothesis<br  /><p>
+\[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 \neq \beta_{1,0} \]
+</p>
+
+<p>
+The null hypothesis is that \(\beta_1\) is equal to a specific value
+\(\beta_{1,0}\), and the alternative hypothesis is the opposite. 
+</p></li>
+
+<li><a id="orge90f6b3"></a>The t-statistic<br  /><p>
+The general form of the t-statistic is
+</p>
+
+<div>
+\begin{equation}
+\label{eq:general-t}
+t = \frac{\text{estimator} - \text{hypothesized value}}{\text{standard error of the estimator}}
+\end{equation}
+
+</div>
+
+<p>
+The t-statistics for testing \(\beta_1\) is then
+</p>
+
+<div>
+\begin{equation}
+\label{eq:t-stat-b1}
+t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}
+\end{equation}
+
+</div></li>
+
+<li><a id="org69acd3f"></a>The standard error of \(\hat{\beta}_1\) is calculated as<br  /><div>
+\begin{equation}
+\label{eq:se-b-1}
+SE(\hat{\beta}_1) = \sqrt{\hat{\sigma}^2_{\hat{\beta}_1}}
+\end{equation}
+
+</div>
+<p>
+where
+</p>
+<div>
+\begin{equation}
+\label{eq:sigma-b-1}
+\hat{\sigma}^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\frac{1}{n-2} \sum_{i=1}^n (X_i - \bar{X})^2 \hat{u}^2_i}{\left[ \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \right]^2}
+\end{equation}
+
+</div></li>
+
+<li><a id="org9c42136"></a>How to understand Equation \ref{eq:sigma-b-1}<br  /><ul>
+<li>The population variance of \(\beta_1\) is 
+\[ \sigma^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\var\left( (X_i - \mu_X)u_i \right)}{\left( \var(X_i) \right)^2} \]</li>
+
+<li>The denominator in Equation (\ref{eq:sigma-b-1}) is a consistent
+estimator of \(\var(X_i)^2\).</li>
+
+<li>The numerator in Equation (\ref{eq:sigma-b-1}) is a consistent
+estimator of \(\var((X_i - \mu_X)u_i)\), adjusted by \(n-2\) degrees
+of freedom.</li>
+
+<li>The standard error computed from Equation (\ref{eq:sigma-b-1}) is
+the <b>heteroskedasticity-robust standard error</b>, which will be
+explained in detail shortly in this lecture.</li>
+
+</ul></li>
+
+<li><a id="org12d4776"></a>Compute the p-value<br  /><p>
+The p-value is the probability of observing a value of \(\hat{\beta}_1\)
+at least as different from \(\beta_{1,0}\) as the estimate actually
+computed (\(\hat{\beta}^{act}_1\)), assuming that the null hypothesis is
+correct. Accordingly, under the null hypothesis, the p-value for
+testing \(\beta_1\) can be expressed with a probability function as
+</p>
+
+<div>
+\begin{equation*}
+\begin{split}
+p\text{-value} &= \pr_{H_0} \left( | \hat{\beta}_1 - \beta_{1,0} | > | \hat{\beta}^{act}_1 - \beta_{1,0} | \right) \\
+&= \pr_{H_0} \left( \left| \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)} \right| > \left| \frac{\hat{\beta}^{act}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)} \right| \right) \\
+&= \pr_{H_0} \left( |t| > |t^{act}| \right)
+\end{split}
+\end{equation*}
+
+</div>
+
+<p>
+With a large sample, \(p\text{-value} = \pr\left(|t| > |t^{act}|
+\right) = 2 \varPhi(-|t^{act}|)\).
+</p>
+
+<p>
+The null hypothesis is rejected at the 5% significance level if the
+\(p\text{-value} < 0.05\) or, equivalently, \(|t^{act}| > 1.96\). 
+</p></li>
+
+<li><a id="orgdf3360a"></a>Application to test scores<br  /><p>
+The OLS estimation of the linear regression model of test scores
+against student-teacher ratios, together with the standard errors of
+all parameters in the model, can be represented using the following
+equation, 
+</p>
+
+<div>
+\begin{equation*}
+\widehat{TestScore} = \underset{\displaystyle (10.4)}{698.9} - \underset{\displaystyle (0.52)}{2.28} \times STR,\; R^2 = 0.051,\; SER = 1.86
+\end{equation*}
+
+</div>
+
+<p>
+The <b>heteroskedasticity-robust</b> standard errors are reported in the
+parentheses, that is, \(SE(\hat{\beta}_0) = 10.4\) and
+\(SE(\hat{\beta}_1) = 0.52\). 
+</p>
+
+<p>
+The superintendent's question is whether \(\beta_1\) is significant for
+which we can test the null hypothesis against the alternative one as
+\[ H_0: \beta_1 = 0, H_1: \beta_1 \neq 0 \]
+</p>
+
+<p>
+The t-statistics is
+\[ t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)} = \frac{-2.28}{0.52}
+= -4.38 < -1.96 \] 
+</p>
+
+<p>
+The p-value associated with \(t^{act} = -4.38\) is approximately
+0.00001, which is far less than 0.05. 
+</p>
+
+<p>
+Based on the t-statistics and the p-value, we can say the null
+hypothesis is rejected at the 5% significance level. In English, it
+means that the student-teacher ratios do have a significant effect on
+test scores. 
+</p>
+
+
+<div id="orgc2b3c06" class="figure">
+<p><img src="figure/fig-5-1.png" alt="fig-5-1.png" width="600" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Calculating the p-value of a two-sided test when \(t^{act}=-4.38\)</p>
+</div></li></ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgcd546b1">
+<h3 id="orgcd546b1">The one-sided alternative hypothesis</h3>
+<div class="outline-text-3" id="text-orgcd546b1">
+</div></section>
+<section id="slide-org89bc7f1">
+<h4 id="org89bc7f1">The one-sided hypotheses</h4>
+<p>
+In some cases, it is appropriate to use a one-sided hypothesis
+test. For example, the superintendent of the California school
+districts want to know whether class sizes have a negative effect on
+test scores, that is, \(\beta_1 < 0\). 
+</p>
+
+<p>
+For a one-sided test, the null hypothesis and the one-sided
+alternative hypothesis are 
+</p>
+
+<p>
+\[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 < \beta_{1,0} \]
+</p>
+
+</section>
+<section id="slide-org9308df1">
+<h4 id="org9308df1">The one-sided left-tail test</h4>
+<ul>
+<li>The t-statistic is the same as in a two-sided test
+\[ t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)} \]</li>
+<li>Since we test \(\beta_1 < \beta_{1,0}\), if this is true, the
+t-statistics should be statistically significantly less than zero.</li>
+<li>The p-value is computed as \(\pr(t < t^{act}) = \varPhi(t^{act})\).</li>
+<li>The null hypothesis is rejected at the 5% significance level when
+\(\text{p-value} < 0.05\) or \(t^{act} < -1.645\).</li>
+<li>In the application of test scores, the t-statistics is -4.38, which
+is less than -1.645 and -2.33 (the critical value for a one-sided
+test with a 1% significance level). Thus, the null hypothesis is
+rejected at the 1% level.</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="../../../reveal.js/lib/js/head.min.js"></script>
+<script src="../../../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1000,
+height: 800,
+margin: 0.20,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'convex', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: '../../../reveal.js/plugin/menu/menu.js' },
+ { src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: '../../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

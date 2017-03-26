@@ -1,0 +1,43 @@
+---
+title: "A Brief R Markdown Tutorial"
+author: "Zheng Tian"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# R Markdown
+
+R Markdown provides an authoring framework for data science. You can use a single R Markdown file to both
+
+* save and execute code
+* generate high quality reports that can be shared with an audience
+
+An R Markdown file is a plain text file that has the extension `.Rmd`. In RStudio, you can easily create a new R Markdown file through the following steps:
+
+1. Click `File -> New File -> R Markdown`. 
+2. At the left panel in the window jumping up, choose `Document`, and at the    right panel, enter the title and author name of the document. Then, choose    `HTML` as the default output format and click `OK`. 
+
+A short R Markdown document is generated with some elements in it as a template. 
+
+## How it works
+
+To create an `HTML` document from a R Markdown file, click `Knit` button in RStudio. A built-in HTML browser will be invoked to have a preview of the document. You can also create a PDF file by click the little arrow beside `Knit` button, and choose `Knit to PDF`. 
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
