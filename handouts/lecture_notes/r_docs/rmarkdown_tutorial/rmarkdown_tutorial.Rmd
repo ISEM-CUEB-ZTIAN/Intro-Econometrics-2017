@@ -2,8 +2,8 @@
 title: "A Brief R Markdown Tutorial"
 author: "Zheng Tian"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}

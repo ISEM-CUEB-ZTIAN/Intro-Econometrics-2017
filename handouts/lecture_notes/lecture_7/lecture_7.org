@@ -80,102 +80,7 @@ sample statistical properties are not the focus.
 
 * Testing Hypotheses about One of the Regression Coefficients
 
-** A brief review of basic concepts in hypothesis tests
-
-Let's quickly review what we have learned in Lecture 3 about
-hypothesis tests, taking an example of testing the true value of the
-population mean from a random sample.
-
-*** The null versus alternative hypotheses
-
-We want to test two contrasting hypotheses, the null hypothesis versus
-the alternative hypothesis. 
-- Two-sided tests: 
-  $$H_0:\; E(Y) = \mu_{Y,0} \text{ v.s. } H_1:\; E(Y) \neq \mu_{Y,0}$$
-
-- One-sided test: 
-  $$H_0:\; E(Y) = \mu_{Y,0} \text{ v.s. } H_1:\; E(Y) > \mu_{Y,0}$$
-
-
-*** Test statistics
-
-We need some tools for the testing, which is referred to as test
-statistics.
-
-- When $\sigma_Y$ is known, we use the z-statistics
-  \[ z = \frac{\overline{Y} -
-  \mu_{Y,0}}{\sigma_{\overline{Y}}} = \frac{\overline{Y} -
-  \mu_{Y,0}}{\sigma_Y/\sqrt{n}} \xrightarrow{\text{ d }} N(0, 1)\] 
-
-- When $\sigma_Y$ is unknown, we use the standard error of
-  $\overline{Y}$ and compute the t-statistic[fn:1]
-
-  \[ t = \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})} =
-  \frac{\overline{Y} - \mu_{Y,0}}{s_Y/\sqrt{n}} \xrightarrow{ \text{ d } } N(0, 1) \] 
-
-*** The rules for hypothesis testing
-
-We need to set up some rules for judging that under what
-circumstances, the null hypothesis is rejected or fails
-to be rejected. 
-
-**** Type I and type II errors
-
-- *Type I error*. The null hypothesis is rejected when in fact it is
-  true.
-- *Type II error*. The null hypothesis is not rejected when in fact it
-  is false.
-
-**** The significance level, the critical value, and the p-value
-
-- *The significance level*. The pre-specified probability of type I
-  error.  $\alpha = 0.05, 0.10, \text{ or } 0.01$
-
-- *The critical value*. The value of the test statistic for which the
-  test rejects the null hypothesis at the given significance level.
-  
-  For example. In a two-sided test, with the z statistic. The critical
-  value at the 5% significance level is $c_{\alpha}$ such that
-  $\varPhi(c_{\alpha}) = 0.975$. Accordingly, we know $c_{\alpha}
-  \approx 1.96$.
-
-- *The p-value*. The p-value is the probability of drawing a statistic
-  at least as adverse to the null hypothesis as the one you actually
-  computed in your sample, assuming the null hypothesis is
-  correct. 
-
-  Equivalently, the p-value is the smallest significance
-  level at which the null hypothesis could be rejected, based on the
-  test statistic actually computed. 
-
-  Mathematically, the p-value is 
-  \[  \pr_{H_0}\left( \left| \frac{\overline{Y} - \mu_{Y,0}}{SE(\overline{Y})}
-  \right| > \left| \frac{\overline{Y}^{act} - \mu_{Y,0}}{SE(\overline{Y})} \right| \right) =
-  2\varPhi(-|t^{act}|) \text{ .} \]
-
-**** Rejection rules
-
-The following two statements are equivalent in terms of rejecting the
-null hypothesis at the 5% significance level. 
-
-- We can reject the null if the test statistics falls into the
-  rejection region delimited by the critical values at the 5%
-  significance level, that is, when $|t^{act}| > c_{\alpha} = 1.96$,
-
-- We can reject the null if the p-value is less than the significance
-  level that is 5% in this case. 
-
-The rejection rule can be illustrated using Figure [[fig:hypo-test]].
-
-#+CAPTION: An illustration of a two-sided test
-#+ATTR_LATEX: :width 0.7\textwidth
-#+NAME: fig:hypo-test
-[[file:./figure/fig9_1.png]]
-
-
 ** Two-sided hypotheses concerning $\beta_1$
-
-*** Application to test scores
 
 In the last lecture, we estimate a simple linear regression model for test
 scores and class sizes, which yields the following estimated sample
@@ -189,23 +94,21 @@ regression function,
 Now the question faced by the superintendent of the California
 elementary school districts is whether the estimated coefficient on
 /STR/ is valid. In the terminology of statistics, his question is
-whether $\beta_1$ is statistically significantly different from zero. 
+whether $\beta_1$ is statistically significantly different from
+zero. More often, we simply say whether $\beta_1$ is significant. 
 
-*** Testing hypotheses about the slope $\beta_1$
+Generally, as we did in Lecture 3, we can do a hypothesis test
+regarding whether $\beta_1$ takes on a specific value $\beta_{1,0}$
+through the following steps.
 
-Note that all discussions about hypothesis testing that
-follows involve only the regression with a large sample size. The
-last section of this lecture touches upon the small sample properties
-of the test statistics.
-
-**** The two-sided hypothesis
+*** Step 1: set up the two-sided hypothesis
 
 \[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 \neq \beta_{1,0} \]
 
 The null hypothesis is that $\beta_1$ is equal to a specific value
 $\beta_{1,0}$, and the alternative hypothesis is the opposite. 
 
-**** The t-statistic
+*** Step 2: Compute the t-statistic
 
 The general form of the t-statistic is
 
@@ -233,30 +136,33 @@ where
 \hat{\sigma}^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\frac{1}{n-2} \sum_{i=1}^n (X_i - \bar{X})^2 \hat{u}^2_i}{\left[ \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \right]^2}
 \end{equation}
 
-**** How to understand Equation \ref{eq:sigma-b-1}
+**** How to understand Equation (\ref{eq:sigma-b-1}): 
 
-- The population variance of $\beta_1$ is 
+- $\hat{\sigma}^2_{\hat{\beta}_1}$ is the estimator of the variance of
+  $\hat{\beta}_1$, i.e., $\mathrm{Var}(\hat{\beta}_1)$. 
+
+- In the last lecture, we know that the variance of $\hat{\beta}_1$ is  
   \[ \sigma^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\var\left( (X_i - \mu_X)u_i \right)}{\left( \var(X_i) \right)^2} \]
   
 - The denominator in Equation (\ref{eq:sigma-b-1}) is a consistent
   estimator of $\var(X_i)^2$. 
   
 - The numerator in Equation (\ref{eq:sigma-b-1}) is a consistent
-  estimator of $\var((X_i - \mu_X)u_i)$, adjusted by $n-2$ degrees
-  of freedom.
+  estimator of $\var((X_i - \mu_X)u_i)$.
   
 - The standard error computed from Equation (\ref{eq:sigma-b-1}) is
   the *heteroskedasticity-robust standard error*, which will be
   explained in detail shortly in this lecture. 
 
-**** Compute the p-value
+*** Step 3: Compute the p-value
 
 The p-value is the probability of observing a value of $\hat{\beta}_1$
 at least as different from $\beta_{1,0}$ as the estimate actually
 computed ($\hat{\beta}^{act}_1$), assuming that the null hypothesis is
-correct. Accordingly, under the null hypothesis, the p-value for
-testing $\beta_1$ can be expressed with a probability function as
+correct. 
 
+Accordingly, under the null hypothesis, the p-value for
+testing $\beta_1$ can be expressed with a probability function as
 \begin{equation*}
 \begin{split}
 p\text{-value} &= \pr_{H_0} \left( | \hat{\beta}_1 - \beta_{1,0} | > | \hat{\beta}^{act}_1 - \beta_{1,0} | \right) \\
@@ -265,13 +171,17 @@ p\text{-value} &= \pr_{H_0} \left( | \hat{\beta}_1 - \beta_{1,0} | > | \hat{\bet
 \end{split}
 \end{equation*}
 
-With a large sample, $p\text{-value} = \pr\left(|t| > |t^{act}|
-\right) = 2 \varPhi(-|t^{act}|)$.
+With a large sample, the t statistic is approximately distributed as
+a standard normal random variable. Therefore, we can compute 
+\[p\text{-value} = \pr\left(|t| > |t^{act}|
+\right) = 2 \Phi(-|t^{act}|)\]
+where $\Phi(\cdot)$ is the c.d.f. of the standard normal
+distribution. 
 
 The null hypothesis is rejected at the 5% significance level if the
 $p\text{-value} < 0.05$ or, equivalently, $|t^{act}| > 1.96$. 
 
-**** Application to test scores
+*** Application to test scores
 
 The OLS estimation of the linear regression model of test scores
 against student-teacher ratios, together with the standard errors of
@@ -286,7 +196,7 @@ The *heteroskedasticity-robust* standard errors are reported in the
 parentheses, that is, $SE(\hat{\beta}_0) = 10.4$ and
 $SE(\hat{\beta}_1) = 0.52$. 
 
-The superintendent's question is whether $\beta_1$ is significant for
+The superintendent's question is whether $\beta_1$ is significant, for
 which we can test the null hypothesis against the alternative one as
 \[ H_0: \beta_1 = 0, H_1: \beta_1 \neq 0 \]
 
@@ -315,13 +225,13 @@ test scores.
 
 In some cases, it is appropriate to use a one-sided hypothesis
 test. For example, the superintendent of the California school
-districts want to know whether class sizes have a negative effect on
-test scores, that is, $\beta_1 < 0$. 
+districts want to know whether an increase in class sizes has a
+negative effect on test scores, that is, $\beta_1 < 0$.
 
 For a one-sided test, the null hypothesis and the one-sided
 alternative hypothesis are [fn:2]
 
-\[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 < \beta_{1,0} \]
+\[ H_0: \beta_1 = \beta_{1,0}, H_1: \beta_1 < \beta_{1,0} \]
 
 *** The one-sided left-tail test 
 
@@ -331,7 +241,7 @@ alternative hypothesis are [fn:2]
   t-statistics should be statistically significantly less than zero. 
 - The p-value is computed as $\pr(t < t^{act}) = \varPhi(t^{act})$. 
 - The null hypothesis is rejected at the 5% significance level when
-  $\text{p-value} < 0.05$ or $t^{act} < -1.645$.
+  the $p-\text{value} < 0.05$ or $t^{act} < -1.645$.
 - In the application of test scores, the t-statistics is -4.38, which
   is less than -1.645 and -2.33 (the critical value for a one-sided
   test with a 1% significance level). Thus, the null hypothesis is
@@ -339,6 +249,7 @@ alternative hypothesis are [fn:2]
 
 
 * Confidence Intervals for a Regression Coefficient
+
 
 ** Two equivalent definitions of confidence intervals
 
@@ -348,12 +259,6 @@ definitions:
    hypothesis test with a 5% significance level.
 2) It is an interval that has a 95% probability of containing the true
    value of $\beta_1$. 
-
-Let's go back to Figure [[fig:hypo-test]]. According to the first
-definition, the acceptance region contains the values of the
-test statistics that fail to reject the null hypothesis,
-which corresponds to the values of $\beta_1$ that cannot be rejected. 
-
 
 ** Construct the 95% confidence interval for $\beta_1$
 

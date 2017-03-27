@@ -2,21 +2,15 @@
 #+AUTHOR: Zheng Tian
 #+DATE:
 
-#+OPTIONS: H:3 num:1 toc:1
+#+OPTIONS: H:2 num:1 toc:1 ^:{}
 
-#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
-#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
-#+OPTIONS: reveal_width:1000 reveal_height:800
-
-#+REVEAL_ROOT: ../../../reveal.js
-#+REVEAL_MARGIN: 0.2
-#+REVEAL_MIN_SCALE: 0.5
-#+REVEAL_MAX_SCALE: 2.5
-#+REVEAL_TRANS: convex
-#+REVEAL_THEME: beige
-#+REVEAL_HLEVEL: 2
-#+REVEAL_PLUGINS: (highlight notes zoom)
-#+REVEAL_EXTRA_JS:  { src: '../../../reveal.js/plugin/menu/menu.js' }
+#+STARTUP: beamer
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+BEAMER_THEME: CambridgeUS
+#+BEAMER_COLOR_THEME: beaver
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
 
 
 * Testing Hypotheses about One of the Regression Coefficients
@@ -54,7 +48,7 @@
   t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}
   \end{equation}
   
-*** The standard error of $\hat{\beta}_1$ is calculated as
+** The standard error of $\hat{\beta}_1$ is calculated as
 
 \begin{equation}
 \label{eq:se-b-1}
@@ -66,7 +60,7 @@ where
 \hat{\sigma}^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\frac{1}{n-2} \sum_{i=1}^n (X_i - \bar{X})^2 \hat{u}^2_i}{\left[ \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \right]^2}
 \end{equation}
 
-*** How to understand the equation for $\hat{\sigma}^2_{\hat{\beta}_1}$
+** How to understand the equation for $\hat{\sigma}^2_{\hat{\beta}_1}$
 
 - $\hat{\sigma}^2_{\hat{\beta}_1}$ is the estimator of the variance of
   $\hat{\beta}_1$, i.e., $\mathrm{Var}(\hat{\beta}_1)$. 
@@ -98,7 +92,7 @@ where
   \end{split}
   \end{equation*}
 
-*** Step 3: compute the p-value (cont'd)
+** Step 3: compute the p-value (cont'd)
 
 - With a large sample, the t statistic is approximately distributed as
   a standard normal random variable. Therefore, we can compute 
@@ -130,7 +124,7 @@ where
   0.00001, which is far less than 0.05. So we reject the null
   hypothesis. 
 
-*** Rejecting the null hypothesis 
+** Rejecting the null hypothesis 
 
 #+CAPTION: Calculating the p-value of a two-sided test when $t^{act}=-4.38$
 #+ATTR_LATEX: :width 0.7\textwidth
@@ -138,9 +132,7 @@ where
 #+NAME: fig:fig-5-1
 [[file:figure/fig-5-1.png]]
 
-** The one-sided alternative hypothesis
-
-*** The one-sided hypotheses
+** The one-sided hypotheses
 
 - In some cases, it is appropriate to use a one-sided hypothesis
   test. For example, the superintendent of the California school
@@ -152,7 +144,7 @@ where
 
   \[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 < \beta_{1,0} \]
 
-*** The one-sided left-tail test 
+** The one-sided left-tail test 
 
 - The t-statistic is the same as in a two-sided test
   \[ t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)} \]
