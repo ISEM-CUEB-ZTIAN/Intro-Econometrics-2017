@@ -60,7 +60,7 @@ What will be achieved through this projects include:
 - Exames and quiz.
 
 
-* Plan and Tasks
+* Plan
 
 ** Stage I: Set up basic course skeleton <2017-01-24 Tue>-<2017-02-05 Sun>
 
@@ -73,6 +73,7 @@ minor changes to the contents of course materials.
 - [X] Change classroom.
 - [X] Change course schedule.
 - [X] Add contents for course project.
+
 
 ** Stage II: Revise course materials <2017-02-06 Mon>-<2017-03-05 Sun>
 :PROPERTIES:
@@ -105,11 +106,20 @@ final product is a github page, such as
 http://intro-economtrics-isem-2017.github.io.
 
 
-* Syllabus
+* Tasks
 
-** The file of syllabus
+** TODO Lecture 7 [0/4]
+<2017-03-28 Tue>-<2017-03-31 Fri>
 
-[[file:handouts/syllabus/syllabus_econometrics_2017.org][syllabus_econometrics_2017.org]]
+[[file:handouts/lecture_notes/lecture_7/lecture_7.org][lecture_7.org]]
+
+*** NEXT Revise lecture notes
+
+*** NEXT Revise slides
+
+*** TODO Revise R replication
+
+*** TODO Create plots in ggplot2
 
 
 * My own study notes
@@ -117,34 +127,3 @@ http://intro-economtrics-isem-2017.github.io.
 [[file:~/OneDrive/study/statistics_econometrics/econometrics/learning_econometrics.org]]
 
 
-* Lecture notes and slides
-
-** TODO Lecture 1
-*** TODO Lecture notes
-
-[[file:handouts/lecture_notes/lecture_1/lecture_1.org]]
-
-*** TODO Slides
-
-** TODO Lecture 2
-
-** TODO Lecture 3
-
-** TODO R tutorials
-** TODO Rmarkdown tutorials
-
-
-* Homework sets
-
-** Homework set 1
-
-** Homework set 2
-
-
-* Examination
-
-** Quiz
-
-** Midterm exam
-
-** Final exam

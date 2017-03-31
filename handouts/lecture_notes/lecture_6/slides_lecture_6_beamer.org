@@ -507,7 +507,7 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 
 - It follows that
   \[
-  R^2 = \frac{SSR}{TSS} = \frac{\left[ \sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y}) \right]^2}{\sum_{i=1}^n (X_i - \overline{X})^2 \sum_{i=1}^n (Y_i - \overline{Y})^2} = r^2_{XY}
+  R^2 = \frac{ESS}{TSS} = \frac{\left[ \sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y}) \right]^2}{\sum_{i=1}^n (X_i - \overline{X})^2 \sum_{i=1}^n (Y_i - \overline{Y})^2} = r^2_{XY}
   \]
 
 - /Note/: This property holds only for the linear regression model

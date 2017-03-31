@@ -1,0 +1,380 @@
+% Created 2017-03-31 Fri 21:06
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{parskip}
+\usepackage{booktabs}
+\newcommand{\pr}{\mathrm{Pr}}
+\setcounter{secnumdepth}{2}
+\author{Zheng Tian}
+\date{April 11, 2016}
+\title{Replication of Examples in Chapter 5}
+\hypersetup{
+ pdfauthor={Zheng Tian},
+ pdftitle={Replication of Examples in Chapter 5},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:orgafd8313}
+
+This document is to show how to perform hypothesis testing for a
+single coefficient in a simple linear regression model. I replicate
+examples that occur in Chapter 5.
+
+
+\section{The OLS estimation}
+\label{sec:orge4d5e11}
+
+The linear model is
+\begin{equation}
+\label{eq:testscr-str-1}
+TestScore_i = \beta_0 + \beta_1 STR_i + u_i
+\end{equation}
+
+We first read the data, estimate the linear regression model, and get
+the regression results.
+
+\begin{verbatim}
+library(AER)
+library(foreign)
+classdata <- read.dta("caschool.dta")
+
+df <- classdata[c("testscr", "str")]
+mod1 <- lm(testscr ~ str, data = df)
+summary(mod1)
+\end{verbatim}
+
+\begin{verbatim}
+Loading required package: car
+Loading required package: lmtest
+Loading required package: zoo
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+Loading required package: sandwich
+Loading required package: survival
+
+Call:
+lm(formula = testscr ~ str, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-47.727 -14.251   0.483  12.822  48.540
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept) 698.9330     9.4675  73.825  < 2e-16 ***
+str          -2.2798     0.4798  -4.751 2.78e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 18.58 on 418 degrees of freedom
+Multiple R-squared:  0.05124,	Adjusted R-squared:  0.04897
+F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06
+\end{verbatim}
+
+\texttt{summary(mod1)} reports the estimated coefficients, their standard
+errors, t-statistics, and the p-values. It also reports \(R^2\),
+\(SER\), and other test statistics that we will learn in the next
+chapters.
+
+By default, the standard errors reported are computed using
+the formula of \textbf{the homoskedasticity-only standard errors}, which are
+then used in compute the t-statistics. And the p-values are based on
+the student-t distribution with 418 degrees of freedom.
+
+
+\section{Hypothesis tests}
+\label{sec:org77e4951}
+
+Now we get into testing the zero hypothesis for \(\beta_1\), that is,
+\[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 \neq
+\beta_{1,0} \]
+
+
+\subsection{Get all the quantities used in the test}
+\label{sec:orgcc97ee9}
+
+We use the t-statistic to test such a hypothesis, which has the
+following formula,
+
+\begin{equation}
+\label{eq:t-stat-b1}
+t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}
+\end{equation}
+
+Upon computing the t-statistic, we compare it with the critical value
+at the desired significant level, say 5\%, which is 1.96 from the
+standard normal distribution. Also, we can use the t-statistics to get
+the p-value.
+
+How can we get all the quantities used in this formula? Of course, you
+can simply copy the values in the output of \texttt{summary(mod1)}. But doing
+so is cumbersome, and very subject to mistakes because of manual
+operations. More importantly, we cannot have the
+\textbf{heteroskedasticity-robust standard error} of
+\(\hat{\beta}_1\). Fortunately, you can get all the quantities in
+Equation \lref{eq:t-stat-b1} using R functions.
+
+\subsubsection*{The coefficients}
+\label{sec:orgb9f0e9f}
+
+All estimated coefficients can be extracted using the function of
+\texttt{coef()}, which returns a vector containing all estimated
+coefficients. By default, the first element in the vector is the
+estimated intercept. So in our regression, the slope is the second
+element.
+
+\begin{verbatim}
+b <- coef(mod1)
+(b1 <- b[2])
+\end{verbatim}
+
+\begin{verbatim}
+      str
+-2.279808
+\end{verbatim}
+
+\subsubsection*{The standard errors.}
+\label{sec:orgfe16122}
+
+\begin{itemize}
+\item The homoskedasticity-only standard errors are reported in the output
+of \texttt{summary()} by default in R. They can also be extracted with the
+function, \texttt{vcov()}, which returns a matrix called the covariance
+matrix, with the diagonal elements representing the variances of the
+coefficients. Thus, the standard errors are the square roots of
+the diagonal elements.
+
+\begin{verbatim}
+V <- vcov(mod1)
+(se_b1 <- sqrt(V[2, 2]))
+\end{verbatim}
+
+\begin{verbatim}
+[1] 0.4798256
+\end{verbatim}
+
+\item The heteroskedasticity-robust standard errors are the square roots
+of the diagonal elements in the \textbf{heteroskedasticity-consistent}
+covariance matrix, obtained using the function of \texttt{vcovHC()} in
+the \texttt{sandwich} package that is loaded by default. There are several
+versions of the heteroskedasticity-consistent covariance
+matrix. What we use is the type of \texttt{HC1}.
+
+\begin{verbatim}
+htV <- vcovHC(mod1, type = "HC1")
+(se_b1.rb <- sqrt(htV[2, 2]))
+\end{verbatim}
+
+\begin{verbatim}
+[1] 0.5194892
+\end{verbatim}
+\end{itemize}
+
+\subsubsection*{The t-statistics, the critical value, and the p-value.}
+\label{sec:orgd988d28}
+
+The t-statistics using the heteroskedasticity-robust standard errors
+is then computed by
+\begin{verbatim}
+(t_b1.rb <- b1 / se_b1.rb)
+\end{verbatim}
+
+\begin{verbatim}
+      str
+-4.388557
+\end{verbatim}
+
+Although we know the critical value at the 5\% significant level for a
+two-sided test is 1.96 with a large sample, we prefer getting the
+value from a function in R. The critical value at the 5\% significance
+level is in fact the 97.5\(^{\text{th}}\) percentile of the standard normal
+distribution, which can be got from the \texttt{qnorm()} function.
+
+\begin{verbatim}
+(c.5 <- qnorm(0.975))
+\end{verbatim}
+
+\begin{verbatim}
+[1] 1.959964
+\end{verbatim}
+
+The p-value associated with the actual t-statistics is
+\(\pr\left(|t| > |t^{act}| \right) = 2 \Phi(-|t^{act}|)\). We can
+compute the p-value in R, following this definition and using the
+\texttt{pnorm()} function.
+
+\begin{verbatim}
+(pval <- 2 * pnorm(-abs(t_b1.rb)))
+\end{verbatim}
+
+\begin{verbatim}
+         str
+1.141051e-05
+\end{verbatim}
+
+
+\subsection{Use \texttt{coeftest()}}
+\label{sec:org2b4f23c}
+
+Since hypothesis testing is a very common work in statistics, many R
+functions have been developed to do it. Here I introduce a function,
+\texttt{coeftest()}, which is in the package of \texttt{lmtest}, which is loaded
+through the \texttt{AER} package.
+
+\begin{verbatim}
+coeftest(mod1)
+\end{verbatim}
+
+\begin{verbatim}
+
+t test of coefficients:
+
+             Estimate Std. Error t value  Pr(>|t|)
+(Intercept) 698.93295    9.46749 73.8245 < 2.2e-16 ***
+str          -2.27981    0.47983 -4.7513 2.783e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{verbatim}
+
+By default, it reports the homoskedasticity-only standard errors,
+the corresponding t-statistics, and the p-values. To get the
+heteroskedasticity-robust results, we need to add an argument to this
+function to specify the heteroskedasticity-consistent covariance
+matrix, which has been defined above as \texttt{htV <- vcovHC(mod1, type = "HC1")}.
+
+\begin{verbatim}
+t.tst <- coeftest(mod1, vcov. = htV)
+t.b1 <- t.tst["str", "t value"]
+\end{verbatim}
+
+\begin{verbatim}
+-4.38855724131497
+\end{verbatim}
+
+
+\subsection{{\bfseries\sffamily TODO} Confidence interval}
+\label{sec:org2ce76b3}
+
+Finally, we can construct the 95\% confidence interval of \(\beta_1\)
+using the function of \texttt{confint()}.
+
+
+\subsubsection*{{\bfseries\sffamily TODO} Replace confidence interval with the heteroskedasticity-robust SE}
+\label{sec:org7eb83b4}
+
+\begin{verbatim}
+# confidence interval with the default homoskedasticity-only SE
+confint(mod1, "str")
+\end{verbatim}
+
+\begin{verbatim}
+       2.5 %    97.5 %
+str -3.22298 -1.336637
+\end{verbatim}
+
+Since there is no existing function to report the confidence interval
+with heteroskedasticity-robust SE, we can write a user-defined
+function to do that.
+
+\begin{verbatim}
+conf_interval_robust <- function(lm_obj, param, vcov_ = vcov(lm_obj),
+				 level = 0.05){
+    ## This function generates a two-sided confidence interval for a
+    ## parameter in the linear regression model with a specified
+    ## covariance matrix.  The inputs The output
+
+    ## get all the parameters' names and select one based on param
+    all_param <- attr(lm_obj$coefficients, "names")
+    which_param <- grep(param, all_param)
+
+    ## get the estimated parameter and its standard error
+    bhat_param <- coef(lm_obj)[which_param]
+    sd_param <- sqrt(vcov_[which_param, which_param])
+
+    ## get the critical value
+    cv <- qnorm(1 - level/2)
+
+    ## calculate the confidence interval
+    lower <- bhat_param - cv * sd_param
+    upper <- bhat_param + cv * sd_param
+
+    conf_interval <- c(lower, upper)
+    names(conf_interval) <- c("lower", "upper")
+    return(conf_interval)
+}
+\end{verbatim}
+
+
+\section{{\bfseries\sffamily TODO} Dummy variable}
+\label{sec:orgadd8c4e}
+
+A dummy variable can be represented using a \texttt{factor} object in
+R. There are many ways to create a dummy variable. Here I will create
+a dummy variable
+\begin{equation*}
+D_i =
+\begin{cases}
+1,\; &\text{ if } str < 20 \\
+0,\; &\text{ if } str \geq 20}
+\end{cases}
+\end{equation*}
+
+The R command to create such a dummy variable is as follows
+\begin{verbatim}
+D <- factor(ifelse(df$str < 20, 1, 0))
+\end{verbatim}
+The function \texttt{ifelse()} creates a vector consisting of 1 and 0. The
+first argument in this function is a condition, \texttt{df\$str < 20}. If the
+condition is satisfied for an element in \texttt{df\$str}, the corresponding
+element in \texttt{D} is 1, otherwise 0. The function \texttt{factor()} converts the
+\texttt{numeric} vector to a \texttt{factor} vector.
+
+\subsection{{\bfseries\sffamily TODO} Add a scatterplot with the dummy variable}
+\label{sec:org35b70ce}
+
+Then we can estimate the linear regression of test scores against the
+dummy variable, and do the zero hypothesis test.
+
+\begin{verbatim}
+mod2 <- lm(testscr ~ D, data = df)
+coeftest(mod2, vcov. = vcovHC(mod2, type = "HC1"))
+\end{verbatim}
+
+\begin{verbatim}
+
+t test of coefficients:
+
+            Estimate Std. Error  t value  Pr(>|t|)
+(Intercept) 649.9788     1.3229 491.3317 < 2.2e-16 ***
+D1            7.3724     1.8236   4.0428 6.288e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+\end{document}

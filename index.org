@@ -70,6 +70,9 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - The R replication package ([[file:handouts/lecture_notes/lecture_6/replication/replicate_ch4_rmd/replicate_ch4_rmd.zip][the zip file]])
 - The R Markdown tutorial ([[file:handouts/lecture_notes/r_docs/rmarkdown_tutorial/rmarkdown_tutorial.html][html]], [[file:handouts/lecture_notes/r_docs/rmarkdown_tutorial/rmarkdown_cheatsheet.pdf][pdf]], and [[file:handouts/lecture_notes/r_docs/rmarkdown_tutorial/rmarkdown_tutorial.Rmd][Rmd]])
 
+** Lecture 7: Hypothesis Test and Confidence Intervals of Linear Regression with a Single Regressor
+- Lecture notes ([[file:handouts/lecture_notes/lecture_7/lecture_7.html][html]] or [[file:handouts/lecture_notes/lecture_7/lecture_7.pdf][pdf]])
+- The slides ([[file:handouts/lecture_notes/lecture_7/slides_lecture_7.html][html]] or [[file:handouts/lecture_notes/lecture_7/slides_lecture_7_beamer.pdf][pdf]])
 
 * Homework
 

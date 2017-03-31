@@ -1,0 +1,52 @@
+#+TITLE: Warm-up Exercises
+#+AUTHOR: Zheng Tian
+#+DATE: [2017-04-01 Sat]
+#+STARTUP: beamer
+#+OPTIONS: toc:nil H:1
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation,10pt]
+#+BEAMER_THEME: CambridgeUS
+#+BEAMER_COLOR_THEME: beaver
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
+
+
+* Question 1 
+
+In the simple linear regression model $Y_{i} = \beta_0 + \beta_1 X_1 + u_i$,
+
+ - A :: the intercept is typically small and unimportant.
+ - B :: $\beta_0 + \beta_1 X_1$ represents the population regression function.
+ - C :: the absolute value of the slope is typically between 0 and 1.
+ - D :: $\beta_0 + \beta_1 X_1$ represents the sample regression function.
+
+\pause
+*Answer: B*
+\pause
+
+* Question 2
+
+The OLS estimator is derived by
+
+- A :: connecting the $Y_i$ corresponding to the lowest $X_i$ observation with the $Y_i$ corresponding to the highest $X_i$ observation.
+- B :: making sure that the standard error of the regression equals the standard error of the slope estimator.
+- C :: minimizing the sum of absolute residuals.
+- D :: minimizing the sum of squared residuals.
+
+\pause
+*Answer: D*
+\pause
+
+* Question 3
+
+The following are all least squares assumptions with the exception of:
+
+- A :: The conditional distribution of $u_i$ given $X_i$ has a mean of zero.
+- B :: The explanatory variable in regression model is normally distributed.
+- C :: $(X_i, Y_i), i=1, \ldots, n$ are independently and identically distributed.
+- D :: Large outliers are unlikely.
+
+\pause
+*Answer: B*
+
+

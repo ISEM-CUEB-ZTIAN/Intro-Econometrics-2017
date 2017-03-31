@@ -1,4 +1,4 @@
-% Created 2017-03-30 Thu 08:31
+% Created 2017-03-30 Thu 08:22
 % Intended LaTeX compiler: pdflatex
 \documentclass[presentation]{beamer}
 \usepackage[utf8]{inputenc}
@@ -14,9 +14,7 @@
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
-\usetheme{CambridgeUS}
-\usecolortheme{beaver}
-\setcounter{secnumdepth}{1}
+\usetheme{default}
 \author{Zheng Tian}
 \date{}
 \title{Lecture 7: Hypothesis Test  of Linear Regression with a Single Regressor}
@@ -37,10 +35,12 @@
 
 
 
-\section{Testing Hypotheses about One of the Regression Coefficients}
-\label{sec:org4bb4e40}
+\section*{Testing Hypotheses about One of the Regression Coefficients}
+\label{sec:org2bdafa5}
 
-\begin{frame}[label={sec:orgb2c711b}]{The question after estimation}
+\subsection*{The question after estimation}
+\label{sec:org378f01e}
+
 \begin{equation}
 \label{eq:testscr-str-1e}
 \widehat{TestScore} = 698.93 - 2.28 \times STR
@@ -55,13 +55,15 @@ elementary school districts is whether the estimated coefficient on
 whether \(\beta_1\) is statistically significantly different from
 zero.
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org366f421}]{Step 1: set up the two-sided hypothesis}
+\subsection*{Step 1: set up the two-sided hypothesis}
+\label{sec:org0918119}
+
 \[ H_0: \beta_1 = \beta_{1,0}, H_1: \beta_1 \neq \beta_{1,0} \]
-\end{frame}
 
-\begin{frame}[label={sec:org940e479}]{Step 2: Compute the t-statistic}
+\subsection*{Step 2: Compute the t-statistic}
+\label{sec:org193edb0}
+
 \begin{itemize}
 \item The general form of the t-statistic is
 \begin{equation}
@@ -75,9 +77,8 @@ t = \frac{\text{estimator} - \text{hypothesized value}}{\text{standard error of 
 t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}
 \end{equation}
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org4175e2e}]{The standard error of \(\hat{\beta}_1\) is calculated as}
+\begin{frame}[label={sec:org29883b0}]{The standard error of \(\hat{\beta}_1\) is calculated as}
 \begin{equation}
 \label{eq:se-b-1}
 SE(\hat{\beta}_1) = \sqrt{\hat{\sigma}^2_{\hat{\beta}_1}}
@@ -89,12 +90,12 @@ where
 \end{equation}
 \end{frame}
 
-\begin{frame}[label={sec:orgcd5adab}]{How to understand the equation for \(\hat{\sigma}^2_{\hat{\beta}_1}\)}
+\begin{frame}[label={sec:org5ab5732}]{How to understand the equation for \(\hat{\sigma}^2_{\hat{\beta}_1}\)}
 \begin{itemize}
 \item \(\hat{\sigma}^2_{\hat{\beta}_1}\) is the estimator of the variance of
 \(\hat{\beta}_1\), i.e., \(\mathrm{Var}(\hat{\beta}_1)\).
 
-\item The variance of \(\hat{\beta}_1\) is 
+\item The variance of \(\hat{\beta}_1\) is
 \[ \sigma^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\mathrm{Var}\left( (X_i - \mu_X)u_i \right)}{\left( \mathrm{Var}(X_i) \right)^2} \]
 
 \item The denominator in \(\hat{\sigma}^2_{\hat{\beta}_1}\) is a consistent
@@ -108,12 +109,14 @@ the \alert{heteroskedasticity-robust standard error}.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org81164e8}]{Step 3: compute the p-value}
+\subsection*{Step 3: compute the p-value}
+\label{sec:orgfdf1ab8}
+
 \begin{itemize}
 \item The p-value is the probability of observing a value of \(\hat{\beta}_1\)
 at least as different from \(\beta_{1,0}\) as the estimate actually
 computed (\(\hat{\beta}^{act}_1\)), assuming that the null hypothesis is
-correct. 
+correct.
 
 \begin{equation*}
 \begin{split}
@@ -123,12 +126,11 @@ p\text{-value} &= \mathrm{Pr}_{H_0} \left( | \hat{\beta}_1 - \beta_{1,0} | > | \
 \end{split}
 \end{equation*}
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org42ed240}]{Step 3: compute the p-value (cont'd)}
+\begin{frame}[label={sec:org1a68a02}]{Step 3: compute the p-value (cont'd)}
 \begin{itemize}
 \item With a large sample, the t statistic is approximately distributed as
-a standard normal random variable. Therefore, we can compute 
+a standard normal random variable. Therefore, we can compute
 \[p\text{-value} = \mathrm{Pr}\left(|t| > |t^{act}|
   \right) = 2 \Phi(-|t^{act}|)\]
 where \(\Phi(\cdot)\) is the c.d.f. of the standard normal
@@ -139,7 +141,9 @@ distribution.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org005de27}]{Application to test scores}
+\subsection*{Application to test scores}
+\label{sec:orge20fe23}
+
 \begin{equation*}
 \widehat{TestScore} = \underset{\displaystyle (10.4)}{698.9} - \underset{\displaystyle (0.52)}{2.28} \times STR,\; R^2 = 0.051,\; SER = 1.86
 \end{equation*}
@@ -159,18 +163,20 @@ parentheses.
 0.00001, which is far less than 0.05. So we reject the null
 hypothesis.
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org2082cfe}]{Rejecting the null hypothesis}
+\begin{frame}[label={sec:org3717675}]{Rejecting the null hypothesis}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figure/fig-5-1.png}
-\caption{\label{fig:org8d1fbc2}
+\caption{\label{fig:orgc5a34c7}
 Calculating the p-value of a two-sided test when \(t^{act}=-4.38\)}
 \end{figure}
 \end{frame}
 
-\begin{frame}[label={sec:org13ddc5a}]{The one-sided hypotheses}
+\subsection*{The one-sided alternative hypothesis}
+\label{sec:orga1798dd}
+
+\begin{frame}[label={sec:org6f22138}]{The one-sided hypotheses}
 \begin{itemize}
 \item In some cases, it is appropriate to use a one-sided hypothesis
 test. For example, the superintendent of the California school
@@ -184,7 +190,7 @@ alternative hypothesis as
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org186582a}]{The one-sided left-tail test}
+\begin{frame}[label={sec:org4c22398}]{The one-sided left-tail test}
 \begin{itemize}
 \item The t-statistic is the same as in a two-sided test
 \[ t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)} \]
@@ -205,10 +211,13 @@ at the 1\% level.
 
 
 
-\section{Confidence Intervals for a Regression Coefficient}
-\label{sec:orga3afad2}
 
-\begin{frame}[label={sec:org59faae6}]{Two equivalent definitions of confidence intervals}
+\section*{Confidence Intervals for a Regression Coefficient}
+\label{sec:org1ac622c}
+
+\subsection*{Two equivalent definitions of confidence intervals}
+\label{sec:org62167dd}
+
 \begin{itemize}
 \item Recall that a 95\% \alert{confidence interval} for \(\beta_1\) has two equivalent
 definitions:
@@ -219,26 +228,28 @@ using a two-sided hypothesis test with a 5\% significance level.
 value of \(\beta_1\).
 \end{enumerate}
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:orge267788}]{Construct the 95\% confidence interval for \(\beta_1\)}
+\subsection*{Construct the 95\% confidence interval for \(\beta_1\)}
+\label{sec:org39f1c31}
+
 \begin{itemize}
 \item We can obtain the 95\% confidence interval for \(\beta_1\) using the t
 statistic and the acceptance region at the 5\% significant level.
 
 \item The acceptance region is \(-1.96 \leq \frac{\hat{\beta}_1 - \beta_1}{SE(\hat{\beta}_1)} \leq 1.96\)
 
-\item The 95\% confidence interval for \(\beta_1\) is 
+\item The 95\% confidence interval for \(\beta_1\) is
 \[ \left[ \hat{\beta}_1 - 1.96 SE(\hat{\beta}_1),\; \hat{\beta}_1 + 1.96
   SE(\hat{\beta}_1) \right] \]
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org3c8bf93}]{The application to test scores}
+\subsection*{The application to test scores}
+\label{sec:orgf8980c1}
+
 \begin{itemize}
 \item In the application to test scores, given that \(\hat{\beta}_1 = -2.28\)
 and \(SE(\hat{\beta}_1) = 0.52\), the 95\% confidence interval for
-\(\beta_1\) is 
+\(\beta_1\) is
 $${-2.28 \pm 1.96 \times 0.52}, \text{ or } -3.30 \leq \beta_1
   \leq -1.26$$
 
@@ -246,15 +257,16 @@ $${-2.28 \pm 1.96 \times 0.52}, \text{ or } -3.30 \leq \beta_1
 implying that the null hypothesis of \(\beta_1 = 0\) can be rejected
 at the 5\% significance level.
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org23f4b33}]{Confidence intervals for predicted effects of changing \(X\)}
+\subsection*{Confidence intervals for predicted effects of changing \(X\)}
+\label{sec:org33a0709}
+
 \begin{itemize}
 \item \(\beta_1\) is the marginal effect of \(X\) on \(Y\). That is, when \(X\)
 changes by \(\Delta X\), \(Y\) changes by \(\beta_1 \Delta X\).
 
 \item So the 95\% confidence interval for the change in \(Y\) when \(X\)
-changes by \(\Delta X\) is 
+changes by \(\Delta X\) is
 \begin{gather*}
 \left[ \hat{\beta}_1 - 1.96 SE(\hat{\beta}_1)  ,\;
 \hat{\beta}_1  + 1.96SE(\hat{\beta}_1) \right] \times \Delta X \\
@@ -262,13 +274,14 @@ changes by \(\Delta X\) is
 \hat{\beta}_1 \Delta X + 1.96SE(\hat{\beta}_1) \Delta X \right]
 \end{gather*}
 \end{itemize}
-\end{frame}
 
 
-\section{Regression When \(X\) is a Binary Variable}
-\label{sec:org5457a15}
+\section*{Regression When \(X\) is a Binary Variable}
+\label{sec:org8937ca8}
 
-\begin{frame}[label={sec:orgcb5265d}]{A binary variable}
+\subsection*{A binary variable}
+\label{sec:org47a6f9e}
+
 \begin{itemize}
 \item A \alert{binary variable} takes on values of one if some condition is true
 and zero otherwise, which is also called a \alert{dummy variable}, a
@@ -282,9 +295,10 @@ D_i =
 \end{cases}
 \end{equation*}
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org06f6d67}]{The linear regression model with a binary regressor}
+\subsection*{The linear regression model with a binary regressor}
+\label{sec:org730ff51}
+
 \begin{equation}
 Y_i = \beta_0 + \beta_1 D_i + u_i,\; i = 1, \ldots, n
 \end{equation}
@@ -293,9 +307,10 @@ Y_i = \beta_0 + \beta_1 D_i + u_i,\; i = 1, \ldots, n
 \item \(\beta_1\) is estimated by the OLS estimation method
 in the same way as a continuous regressor.
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org3c8de98}]{Interpretation of the regression coefficients}
+\subsection*{Interpretation of the regression coefficients}
+\label{sec:org19a9077}
+
 \begin{itemize}
 \item Given that the assumption \(E(u_i | D_i) = 0\) holds, we have two
 population regression functions:
@@ -307,9 +322,10 @@ population regression functions:
 \item \(\beta_1 = E(Y_i | D_i = 1) - E(Y_i |D_i = 0)\), i.e.,
 \alert{the difference in the population means} between two groups.
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org4e42dd9}]{Hypothesis tests and confidence intervals}
+\subsection*{Hypothesis tests and confidence intervals}
+\label{sec:org3530403}
+
 \begin{itemize}
 \item The null v.s. alternative hypothesis
 
@@ -323,9 +339,10 @@ population regression functions:
 
 \[ \hat{\beta}_1 \pm 1.96 SE(\hat{\beta}_1) \]
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:orgfbc5d43}]{Application to test scores}
+\subsection*{Application to test scores}
+\label{sec:orge8f68ca}
+
 \begin{itemize}
 \item We use a binary variable \(D\) to represent small and large
 classes. 
@@ -344,9 +361,8 @@ D_i =
 \underset{\displaystyle (1.8)}{7.4} D,\; R^2 = 0.037,\; SER = 18.7
 \end{equation*}
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org5e3ee7b}]{Application to test scores (cont'd)}
+\begin{frame}[label={sec:orgd225677}]{Application to test scores (cont'd)}
 \begin{itemize}
 \item The t-statistic for \(\beta_1\) is \(t = 7.4 / 1.8 = 4.04 > 1.96\) so that
 \(\beta_1\) is significantly different from zero. 
@@ -362,10 +378,12 @@ large classes.
 
 
 
-\section{Heteroskedasticity and Homoskedasticity}
-\label{sec:orge75a531}
+\section*{Heteroskedasticity and Homoskedasticity}
+\label{sec:org4a265d0}
 
-\begin{frame}[label={sec:orge4022f4}]{Homoskedasticity}
+\subsection*{Homoskedasticity}
+\label{sec:orged4d80b}
+
 \begin{itemize}
 \item The error term \(u_i\) is \alert{homoskedastic} if the conditional variance of
 \(u_i\) given \(X_i\) is constant for all \(i = 1, \ldots, n\).
@@ -374,9 +392,10 @@ large classes.
   i = 1, \ldots, n\), i.e., the variance of \(u_i\) for all \emph{i} is a
 constant and does not depend on \(X_i\).
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org489c2ed}]{Heteroskedasticity}
+\subsection*{Heteroskedasticity}
+\label{sec:orgdd8439b}
+
 \begin{itemize}
 \item The error term \(u_i\) is \alert{heteroskedastic} if the conditional variance of
 \(u_i\) given \(X_i\) changes on \(X_i\) for \(i = 1, \ldots, n\).
@@ -387,29 +406,46 @@ constant and does not depend on \(X_i\).
 \(\mathrm{Var}(u_i|X_i) = \sigma^2 f(X_i)\) where \(f(X_i)\) is a
 function of \(X_i\), for example, \(f(X_i) = X_i\) as a simplest case.
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org0a350b9}]{Homoskedasticity and heteroskedasticity compared}
+\subsection*{Homoskedasticity and heteroskedasticity compared}
+\label{sec:org14085d2}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{figure/fig-4-4.png}
+\caption{Homoskedasticity}
+\end{figure} 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{figure/fig-5-2.png}
+\caption{Heteroskedasticity}
+\end{figure}
+
+Figure \ref{fig:homovshetero} for a visual comparison between
+homoskedasticity and heteroskedasticity.
+
 \begin{figure}
     \centering
-    \begin{subfigure}
-        \includegraphics[width=0.5\textwidth]{./figure/fig-4-4}
+    \begin{subfigure}[!ht]{0.85\textwidth}
+        \includegraphics[width=\textwidth]{./figure/fig-4-4}
         \caption{Homoskedasticity}
         \label{fig:homo1}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
       %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}
-        \includegraphics[width=0.5\textwidth]{./figure/fig-5-2}
+    \begin{subfigure}[!ht]{0.85\textwidth}
+        \includegraphics[width=\textwidth]{./figure/fig-5-2}
         \caption{Heteroskedasticity}
         \label{fig:hetero1}
     \end{subfigure}
     \caption{Homoskedasticity Versus Heteroskedasticity}\label{fig:homovshetero}
 \end{figure}
-\end{frame}
 
-\begin{frame}[label={sec:org7686f84}]{Mathematical implications of homoskedasticity}
-\begin{block}{Unbiasedness, consistency, and the asymptotic distribution}
+\subsection*{Mathematical implications of homoskedasticity}
+\label{sec:orgdaaaefe}
+
+\begin{frame}[label={sec:org58612a6}]{Unbiasedness, consistency, and the asymptotic distribution}
 \begin{itemize}
 \item As long as the least squares assumptions holds, whether the error
 term, \(u_i\), is homoskedastic or heteroskedastic does not affect
@@ -424,11 +460,9 @@ of the OLS estimators.
 Assumption 3 holds.
 \end{itemize}
 \end{itemize}
-\end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org4be1ba1}]{Mathematical implications of homoskedasticity (cont'd)}
-\begin{block}{Efficiency}
+\begin{frame}[label={sec:orgc20e26e}]{Efficiency}
 \begin{itemize}
 \item The existence of heteroskedasticity affects the enfficiency of the
 OLS estimator
@@ -445,10 +479,11 @@ all estimators that are linear in \(Y_1, \ldots, Y_n\) and are
 unbiased, conditional on \(X_1, \ldots, X_n\).
 \end{itemize}
 \end{itemize}
-\end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org4d96ce8}]{The homoskedasticity-only variance formula}
+\subsection*{The homoskedasticity-only variance formula}
+\label{sec:org01f5553}
+
 \begin{itemize}
 \item Recall that we can write \(\hat{\beta}_1\) as
 \begin{equation*}
@@ -465,9 +500,8 @@ known, then
 \frac{\sigma^2}{\sum_i (X_i - \bar{X})^2}
 \end{equation}
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:orga170eaf}]{The homoskedasticity-only variance when \(\sigma^2\) is unknown}
+\begin{frame}[label={sec:org97cf9ab}]{The homoskedasticity-only variance when \(\sigma^2\) is unknown}
 \begin{itemize}
 \item When \(\sigma^2\) is unknown, then we use \(s^2_u = 1/(n-2) \sum_i
   \hat{u}_i^2\) as an estimator of \(\sigma^2\).
@@ -483,7 +517,7 @@ known, then
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org903acbd}]{The heteroskedasticity-robust standard error}
+\begin{frame}[label={sec:org4abe2e8}]{The heteroskedasticity-robust standard error}
 \begin{itemize}
 \item The heteroskedasticity-robust standard error is
 \begin{equation*}
@@ -499,8 +533,10 @@ which is also referred to as Eicker-Huber-White standard errors.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile,label={sec:org9d2dfe3}]{What does this mean in practice?}
- \begin{itemize}
+\subsection*{What does this mean in practice?}
+\label{sec:orgffd09b2}
+
+\begin{itemize}
 \item Heteroskedasticity is common in cross-sectional data. It is always
 safer to report the heteroskedasticity-robust standard errors and
 use these to compute the robust t-statistic.
@@ -518,26 +554,17 @@ coeftest(model1, vcov = vcovHC(model1, type="HC1"))
 \end{verbatim}
 \end{itemize}
 \end{itemize}
-\end{frame}
 
 
 
 
-\section{The Theoretical Foundations of Ordinary Least Squares}
-\label{sec:org2b571f5}
+\section*{The Theoretical Foundations of Ordinary Least Squares}
+\label{sec:orgfa112f2}
 
-\begin{frame}[label={sec:orgc16cfd4}]{The Gauss-Markov conditions}
-For \(\mathbf{X} = [X_1, \ldots, X_n]\)
+\subsection*{The Gauss-Markov conditions}
+\label{sec:org2d9de27}
 
-\begin{enumerate}
-\item \(E(u_i| \mathbf{X}) = 0\) (The exogeneity assumption )
-\item \(\mathrm{Var}(u_i | \mathbf{X}) = \sigma^2_u,\, 0 < \sigma^2_u < \infty\)
-(The homoskedasticity assumption)
-\item \(E(u_i u_j | \mathbf{X}) = 0,\, i \neq j\) (The uncorrelation assumption)
-\end{enumerate}
-\end{frame}
-
-\begin{frame}[label={sec:org63b49dc}]{The least squares assumptions}
+\begin{frame}[label={sec:org11d293d}]{The least squares assumptions}
 \begin{itemize}
 \item We have already known the least squares assumptions: 
 
@@ -551,7 +578,18 @@ for \(i = 1, \ldots, n\),
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgf54a680}]{From the three Least Squares Assumptions and the homoskedasticity assumption to the Gauss-Markov conditions}
+\begin{frame}[label={sec:org5ae1fc2}]{The Gauss-Markov conditions}
+For \(\mathbf{X} = [X_1, \ldots, X_n]\)
+
+\begin{enumerate}
+\item \(E(u_i| \mathbf{X}) = 0\) (The exogeneity assumption )
+\item \(\mathrm{Var}(u_i | \mathbf{X}) = \sigma^2_u,\, 0 < \sigma^2_u < \infty\)
+(The homoskedasticity assumption)
+\item \(E(u_i u_j | \mathbf{X}) = 0,\, i \neq j\) (The uncorrelation assumption)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:org8390062}]{From the three Least Squares Assumptions and the homoskedasticity assumption to the Gauss-Markov conditions}
 \begin{itemize}
 \item All the Gauss-Markov conditions, except for  the homoskedasticity
 assumption, can be derived from the least squares assumptions.
@@ -569,7 +607,9 @@ assumption, can be derived from the least squares assumptions.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgdf6622d}]{The Gauss-Markov Theorem}
+\subsection*{The Gauss-Markov Theorem}
+\label{sec:orgf1febcb}
+
 \begin{itemize}
 \item The Gauss-Markov Theorem for \(\hat{\beta}_1\):
 
@@ -579,9 +619,11 @@ Unbiased Estimator (BLUE).
 
 \item The theorem can also be applied to \(\hat{\beta}_0\).
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org195b48d}]{The linear estimators of \(\beta_1\)}
+\subsection*{Linear conditionally unbiased estimator}
+\label{sec:org7e227f9}
+
+\begin{frame}[label={sec:orge81cb9b}]{The linear estimators of \(\beta_1\)}
 \begin{itemize}
 \item Any linear estimator \(\tilde{\beta}_1\), it can be written as
 \begin{equation}
@@ -593,7 +635,7 @@ where the weights \(a_i\) for \(i = 1, \ldots, n\) depend on \(X_1, \ldots,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org81a169d}]{The linear conditionally unbiased estimators}
+\begin{frame}[label={sec:orgf73f69c}]{The linear conditionally unbiased estimators}
 \begin{itemize}
 \item \(\tilde{\beta}_1\) is conditionally unbiased means that
 \begin{equation}
@@ -615,7 +657,7 @@ E(\tilde{\beta}_1 | \mathbf{X}) &= \sum_i a_i E(\beta_0 + \beta_1 X_i + u_i | \m
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org58e7a9a}]{The OLS esimator \(\hat{\beta}_1\) is a linear conditionally unbiased estimator}
+\begin{frame}[label={sec:orgc70bbc0}]{The OLS esimator \(\hat{\beta}_1\) is a linear conditionally unbiased estimator}
 \begin{itemize}
 \item \(\hat{\beta}_1 = \frac{\sum_i (X_i - \bar{X})(Y_i - \bar{Y})}{\sum_i
   (X_i - \bar{X})^2} = \frac{\sum_i (X_i - \bar{X})Y_i}{\sum_i (X_i -
@@ -634,7 +676,9 @@ which can be simply verified.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org790fa8f}]{A scratch of the proof of the Gauss-Markov theorem}
+\subsection*{A scratch of the proof of the Gauss-Markov theorem}
+\label{sec:org0324fe3}
+
 \begin{itemize}
 \item A key in the proof of the Gauss-Markov theorem is that we can
 rewrite the expression of any linear conditionally unbiased
@@ -649,39 +693,40 @@ The equality holds only when \(\tilde{\beta}_1 = \hat{\beta}_1\).
 
 \item The proof of the Gauss-Markov theorem is in Appendix 5.2.
 \end{itemize}
-\end{frame}
 
-\begin{frame}[label={sec:org583cd0f}]{The limitations of the Gauss-Markov theorem}
-The Gauss-Markov conditions may hold in practice.
+\subsection*{The limitations of the Gauss-Markov theorem}
+\label{sec:org938d375}
+
 \begin{itemize}
-\item \(E(u \mid X) \neq 0\)
-\begin{itemize}
-\item Cases: omitted variable, endogeneity
-\item Consequence: the OLS is biased
-\item Solution: adding more X's, IV method
+\item The Gauss-Markov conditions may not hold in practice.
+
+\item Any violation of the Gauss-Markov conditions will result in the OLS
+estimators that are not BLUE.
+
+\begin{table}[htbp]
+\caption{Summary of Violations of the Gauss-Markov Theorem}
+\centering
+\small
+\begin{tabular}{p{4cm}|p{5.5cm}|p{2.5cm}|p{3.4cm}}
+\toprule
+Violation & Cases & Consequences & Remedies\\
+\midrule
+\(E(u \mid X) \neq 0\) & omitted variables, endogeneity & biased & more \(X\), IV method\\
+\(\mathrm{Var}(u_i\mid X)\) not constant & heteroskedasticity & inefficient & WLS, GLS, HCCME\\
+\(E(u_{i}u_{j}\mid X) \neq 0\) & autocorrelation & inefficient & GLS, HAC\\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{itemize}
-\item \(\mathrm{Var}(u_i | X)\) not constant
-\begin{itemize}
-\item Cases: heteroskedasticity
-\item Consequence: the OLS is inefficient
-\item Solution: WLS, GLS, HCCME
-\end{itemize}
-\item \(E(u_i u_j | X) \neq 0\)
-\begin{itemize}
-\item Cases: autocorrelation
-\item Consequence: the OLS is inefficient
-\item Solution: GLS, HAC
-\end{itemize}
-\end{itemize}
-\end{frame}
 
 
 
+\section*{Using the t-Statistic in Regression When the Sample Size is Small}
+\label{sec:orga798250}
 
-\section{Using the t-Statistic in Regression When the Sample Size is Small}
-\label{sec:orgda62a3b}
+\subsection*{The classical assumptions of the least squares estimation}
+\label{sec:org58ce979}
 
-\begin{frame}[label={sec:org766a83f}]{The classical assumptions of the least squares estimation}
 \begin{itemize}
 \item The classical assumptions of the least squares estimation:
 
@@ -691,31 +736,36 @@ For \(i = 1, 2, \ldots, n\)
 \item Assumption 2: \((X_i, Y_i)\) are i.i.d. (IID of \(X, Y\))
 \item Assumption 3: \(0 < E(X_i^4) < \infty\) and \(0 < E(Y_i^4) < \infty\)
 (No large outliers)
-\item Extended Assumption 4: \(\mathrm{Var}(u_i | X_i) = \sigma^2_u, \text{ and } 0 <
+\item Extended Assumption 4: \(\var(u_i | X_i) = \sigma^2_u, \text{ and } 0 <
                      \sigma^2_u < \infty\) (homoskedasticity)
 \item Extended Assumption 5: \(u_i | X_i \sim N(0, \sigma^2_u)\) (normality)
 \end{itemize}
 \end{itemize}
+
+
+\subsection*{The t-Statistic and the Student-t Distribution}
+\label{sec:org4b8dc61}
+
+\begin{frame}[label={sec:orgcc17df0}]{The t-statistic is for \(\beta_1\)}
+\[H_0: \beta_1 = \beta_{1,0} \text{ vs } H_1: \beta_1 \neq \beta_{1,0}\]
+\begin{equation}
+t = \frac{\hat{\beta}_1 - \beta_{1,0}}{\hat{\sigma}_{\hat{\beta}_1}}
+\end{equation}
+where
+\begin{equation*}
+\hat{\sigma}^2_{\hat{\beta}_1} = \frac{s^2_u}{\sum_i (X_i - \bar{X})^2} \text{ and } s^2_u = \frac{1}{n-2}\sum_i \hat{u}_i^2 = SER^2
+\end{equation*}
+the former of which is the homoskedasticity-only standard error of
+\(\hat{\beta}_1\) and the latter is the standard error of the
+regression.
 \end{frame}
 
-\begin{frame}[label={sec:orgc2a4ad2}]{The t-statistic is for \(\beta_1\)}
-\begin{itemize}
-\item The null v.s. alternative hypotheses: \[H_0: \beta_1 = \beta_{1,0} \text{ vs } H_1: \beta_1 \neq \beta_{1,0}\]
 
-\item The t-statistic: 
-\[t = \frac{\hat{\beta}_1 - \beta_{1,0}}{\hat{\sigma}_{\hat{\beta}_1}}\]
 
-where 
-\(\hat{\sigma}^2_{\hat{\beta}_1} = \frac{s^2_u}{\sum_i (X_i -
-  \bar{X})^2}\)
-and \(s^2_u = \frac{1}{n-2}\sum_i \hat{u}_i^2 = SER^2\).
-\end{itemize}
-\end{frame}
-
-\begin{frame}[label={sec:orga985054}]{The Student-t distribution of \(t\)}
+\begin{frame}[label={sec:org6b6c4c1}]{The Student-t distribution of \(t\)}
 \begin{itemize}
 \item When the classical least squares assumptions hold, the
-t-statistic has the exact distribution of the
+t-statistic has the exact distribution of \(t(n-2)\), i.e., the
 Student's t distribution with \((n-2)\) degrees of freedom.
 
 \[ t = \frac{\hat{\beta}_1 -

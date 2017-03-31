@@ -95,7 +95,7 @@ Now the question faced by the superintendent of the California
 elementary school districts is whether the estimated coefficient on
 /STR/ is valid. In the terminology of statistics, his question is
 whether $\beta_1$ is statistically significantly different from
-zero. More often, we simply say whether $\beta_1$ is significant. 
+zero. More often, we simply say whether $\beta_1$ is significant.
 
 Generally, as we did in Lecture 3, we can do a hypothesis test
 regarding whether $\beta_1$ takes on a specific value $\beta_{1,0}$
@@ -106,7 +106,7 @@ through the following steps.
 \[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 \neq \beta_{1,0} \]
 
 The null hypothesis is that $\beta_1$ is equal to a specific value
-$\beta_{1,0}$, and the alternative hypothesis is the opposite. 
+$\beta_{1,0}$, and the alternative hypothesis is the opposite.
 
 *** Step 2: Compute the t-statistic
 
@@ -123,7 +123,7 @@ The t-statistics for testing $\beta_1$ is then
 \label{eq:t-stat-b1}
 t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}
 \end{equation}
-  
+
 **** The standard error of $\hat{\beta}_1$ is calculated as
 
 \begin{equation}
@@ -136,30 +136,30 @@ where
 \hat{\sigma}^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\frac{1}{n-2} \sum_{i=1}^n (X_i - \bar{X})^2 \hat{u}^2_i}{\left[ \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \right]^2}
 \end{equation}
 
-**** How to understand Equation (\ref{eq:sigma-b-1}): 
+**** How to understand Equation (\ref{eq:sigma-b-1}):
 
 - $\hat{\sigma}^2_{\hat{\beta}_1}$ is the estimator of the variance of
-  $\hat{\beta}_1$, i.e., $\mathrm{Var}(\hat{\beta}_1)$. 
+  $\hat{\beta}_1$, i.e., $\mathrm{Var}(\hat{\beta}_1)$.
 
-- In the last lecture, we know that the variance of $\hat{\beta}_1$ is  
+- In the last lecture, we know that the variance of $\hat{\beta}_1$ is
   \[ \sigma^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\var\left( (X_i - \mu_X)u_i \right)}{\left( \var(X_i) \right)^2} \]
-  
+
 - The denominator in Equation (\ref{eq:sigma-b-1}) is a consistent
-  estimator of $\var(X_i)^2$. 
-  
+  estimator of $\var(X_i)^2$.
+
 - The numerator in Equation (\ref{eq:sigma-b-1}) is a consistent
   estimator of $\var((X_i - \mu_X)u_i)$.
-  
+
 - The standard error computed from Equation (\ref{eq:sigma-b-1}) is
   the *heteroskedasticity-robust standard error*, which will be
-  explained in detail shortly in this lecture. 
+  explained in detail shortly in this lecture.
 
 *** Step 3: Compute the p-value
 
 The p-value is the probability of observing a value of $\hat{\beta}_1$
 at least as different from $\beta_{1,0}$ as the estimate actually
 computed ($\hat{\beta}^{act}_1$), assuming that the null hypothesis is
-correct. 
+correct.
 
 Accordingly, under the null hypothesis, the p-value for
 testing $\beta_1$ can be expressed with a probability function as
@@ -172,21 +172,21 @@ p\text{-value} &= \pr_{H_0} \left( | \hat{\beta}_1 - \beta_{1,0} | > | \hat{\bet
 \end{equation*}
 
 With a large sample, the t statistic is approximately distributed as
-a standard normal random variable. Therefore, we can compute 
+a standard normal random variable. Therefore, we can compute
 \[p\text{-value} = \pr\left(|t| > |t^{act}|
 \right) = 2 \Phi(-|t^{act}|)\]
 where $\Phi(\cdot)$ is the c.d.f. of the standard normal
-distribution. 
+distribution.
 
 The null hypothesis is rejected at the 5% significance level if the
-$p\text{-value} < 0.05$ or, equivalently, $|t^{act}| > 1.96$. 
+$p\text{-value} < 0.05$ or, equivalently, $|t^{act}| > 1.96$.
 
 *** Application to test scores
 
 The OLS estimation of the linear regression model of test scores
 against student-teacher ratios, together with the standard errors of
 all parameters in the model, can be represented using the following
-equation, 
+equation,
 
 \begin{equation*}
 \widehat{TestScore} = \underset{\displaystyle (10.4)}{698.9} - \underset{\displaystyle (0.52)}{2.28} \times STR,\; R^2 = 0.051,\; SER = 1.86
@@ -194,7 +194,7 @@ equation,
 
 The *heteroskedasticity-robust* standard errors are reported in the
 parentheses, that is, $SE(\hat{\beta}_0) = 10.4$ and
-$SE(\hat{\beta}_1) = 0.52$. 
+$SE(\hat{\beta}_1) = 0.52$.
 
 The superintendent's question is whether $\beta_1$ is significant, for
 which we can test the null hypothesis against the alternative one as
@@ -202,15 +202,15 @@ which we can test the null hypothesis against the alternative one as
 
 The t-statistics is
 \[ t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)} = \frac{-2.28}{0.52}
-= -4.38 < -1.96 \] 
+= -4.38 < -1.96 \]
 
 The p-value associated with $t^{act} = -4.38$ is approximately
-0.00001, which is far less than 0.05. 
+0.00001, which is far less than 0.05.
 
 Based on the t-statistics and the p-value, we can say the null
 hypothesis is rejected at the 5% significance level. In English, it
 means that the student-teacher ratios do have a significant effect on
-test scores. 
+test scores.
 
 #+CAPTION: Calculating the p-value of a two-sided test when $t^{act}=-4.38$
 #+ATTR_LATEX: :width 0.7\textwidth
@@ -233,47 +233,46 @@ alternative hypothesis are [fn:2]
 
 \[ H_0: \beta_1 = \beta_{1,0}, H_1: \beta_1 < \beta_{1,0} \]
 
-*** The one-sided left-tail test 
+*** The one-sided left-tail test
 
 - The t-statistic is the same as in a two-sided test
   \[ t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)} \]
 - Since we test $\beta_1 < \beta_{1,0}$, if this is true, the
-  t-statistics should be statistically significantly less than zero. 
-- The p-value is computed as $\pr(t < t^{act}) = \varPhi(t^{act})$. 
+  t-statistics should be statistically significantly less than zero.
+- The p-value is computed as $\pr(t < t^{act}) = \varPhi(t^{act})$.
 - The null hypothesis is rejected at the 5% significance level when
   the $p-\text{value} < 0.05$ or $t^{act} < -1.645$.
 - In the application of test scores, the t-statistics is -4.38, which
   is less than -1.645 and -2.33 (the critical value for a one-sided
   test with a 1% significance level). Thus, the null hypothesis is
-  rejected at the 1% level. 
+  rejected at the 1% level.
 
 
 * Confidence Intervals for a Regression Coefficient
-
 
 ** Two equivalent definitions of confidence intervals
 
 Recall that a 95% *confidence interval* for $\beta_1$ has two equivalent
 definitions:
-1) It is the set of values that cannot be rejected using a two-sided
-   hypothesis test with a 5% significance level.
+1) It is the set of values of $\beta_1$ that cannot be rejected using
+   a two-sided hypothesis test with a 5% significance level.
 2) It is an interval that has a 95% probability of containing the true
-   value of $\beta_1$. 
+   value of $\beta_1$.
+
 
 ** Construct the 95% confidence interval for $\beta_1$
 
 The 95% confidence interval for $\beta_1$ can be constructed using the
 t-statistic, assuming that with large samples, the t-statistic is
-approximately normally distributed. The 95% critical value of a
-standard normal distribution is 1.96. Therefore, we can obtain the 95%
-confidence interval for $\beta_1$ by the following steps
-
+approximately normally distributed. Since the 95% critical value of a
+standard normal distribution is 1.96, we can obtain the 95% confidence
+interval for $\beta_1$ as
 \begin{gather*}
 -1.96 \leq \frac{\hat{\beta}_1 - \beta_1}{SE(\hat{\beta}_1)} \leq 1.96 \\
-\hat{\beta}_1 - 1.96 SE(\hat{\beta}_1) \leq \beta_1 \leq \hat{\beta}_1 + 1.96 SE(\hat{\beta}_1)
+\text{Then, } \hat{\beta}_1 - 1.96 SE(\hat{\beta}_1) \leq \beta_1 \leq \hat{\beta}_1 + 1.96 SE(\hat{\beta}_1)
 \end{gather*}
 
-The 95% confidence interval for $\beta_1$ is 
+The 95% confidence interval for $\beta_1$ is
 \[ \left[ \hat{\beta}_1 - 1.96 SE(\hat{\beta}_1),\; \hat{\beta}_1 + 1.96
 SE(\hat{\beta}_1) \right] \]
 
@@ -283,7 +282,7 @@ SE(\hat{\beta}_1) \right] \]
 In the application to test scores, given that $\hat{\beta}_1 = -2.28$
 and $SE(\hat{\beta}_1) = 0.52$, the 95% confidence interval for
 $\beta_1$ is ${-2.28 \pm 1.96 \times 0.52}$, or $-3.30 \leq \beta_1
-\leq -1.26$. 
+\leq -1.26$.
 
 Note that the confidence interval only spans over the negative
 region with zero leaving outside the interval, which implies that the
@@ -293,13 +292,18 @@ significance level.
 
 ** Confidence intervals for predicted effects of changing $X$
 
-$\beta_1$ is the marginal effect of $X$ on $Y$, that is, 
+$\beta_1$ is the marginal effect of $X$ on $Y$, that is,
 \[ \beta_1 = \frac{\dx Y}{ \dx X} \Rightarrow \dx Y = \beta_1 \dx X \]
-When $X$ changes by $\Delta X$, $Y$ changes by $\beta_1 \Delta X$. 
+When $X$ changes by $\Delta X$, $Y$ changes by $\beta_1 \Delta X$.
 
-So the 95% confidence interval for $\beta_1 \Delta X$ is
-\[ \left[ \hat{\beta}_1 \Delta X - 1.96 SE(\hat{\beta}_1) \Delta X,\;
-\hat{\beta}_1 \Delta X + 1.96SE(\hat{\beta}_1) \Delta X \right] \]
+So the 95% confidence interval for the change in $Y$ when the change
+in $X$ is $\Delta X$ is
+\begin{gather*}
+\left[ \hat{\beta}_1 - 1.96 SE(\hat{\beta}_1)  ,\;
+\hat{\beta}_1  + 1.96SE(\hat{\beta}_1)   \right] \times \Delta X \\
+= \left[ \hat{\beta}_1 \Delta X - 1.96 SE(\hat{\beta}_1) \Delta X,\;
+\hat{\beta}_1 \Delta X + 1.96SE(\hat{\beta}_1) \Delta X \right]
+\end{gather*}
 
 
 * Regression When $X$ is a Binary Variable
@@ -310,12 +314,12 @@ A *binary variable* takes on values of one if some condition is true
 and zero otherwise, which is also called a *dummy variable*, a
 *categorical variable*, or an *indicator variable*.
 
-For example, 
+For example,
 \begin{equation*}
-D_i = 
+D_i =
 \begin{cases}
 1,\; &\text{if the } i^{th} \text{ subject is female} \\
-0,\; &\text{if the } i^{th} \text{ subject is male} 
+0,\; &\text{if the } i^{th} \text{ subject is male}
 \end{cases}
 \end{equation*}
 
@@ -327,7 +331,7 @@ Y_i = \beta_0 + \beta_1 D_i + u_i,\; i = 1, \ldots, n
 
 The coefficient on $D_i$ is estimated by the OLS estimation method
 in the same way as a continuous regressor. The difference lies in how
-we interpret $\beta_1$. 
+we interpret $\beta_1$.
 
 
 ** Interpretation of the regression coefficients
@@ -347,14 +351,44 @@ $D_i = 1$ and $D_i = 0$, respectively.
 
 The hypothesis tests and confidence intervals for the coefficient on a
 binary variable follows the same procedure of those for a continuous
-variable $X$. 
+variable $X$.
 
 Usually, the null and alternative hypotheses concerning a dummy variable are
 \[ H_0:\, \beta_1 = 0 \text{ vs. } H_1:\, \beta_1 \neq 0 \]
-Therefore, the t-statistic is 
+Therefore, the t-statistic is
 \[ t = \frac{\hat{\beta}_1}{SE(\hat{\beta}_1)} \]
 And the 95% confidence interval is
 \[ \hat{\beta}_1 \pm 1.96 SE(\hat{\beta}_1) \]
+
+
+** Application to test scores
+
+In the application of the regression of test scores against
+student-teacher ratio, instead of using the continuous variable $STR$,
+we use a binary variable $D$ to represent small and large
+classes. That is,
+
+\begin{equation*}
+D_i =
+\begin{cases}
+1,\; &\text{if } STR_i < 20 \text{ (small classes)} \\
+0,\; &\text{if } STR_i \geq 20 \text{ (large classes)}
+\end{cases}
+\end{equation*}
+
+Using the OLS estimation, the estimated regression function is
+\begin{equation*}
+\widehat{TestScore} = \underset{\displaystyle (1.3)}{650.0} -
+\underset{\displaystyle (1.8)}{7.4} D,\; R^2 = 0.037,\; SER = 18.7
+\end{equation*}
+where the standard errors of the estimated coefficients are reported
+in parentheses.
+
+The t-statistic for $\beta_1$ is $t = 7.4 / 1.8 = 4.04 > 1.96$ so that
+$\beta_1$ is significantly different from zero. Thus, we can say that
+the test score in small classes are on average 7.4 higher than that in
+large classes. The confidence interval for the difference is $7.4 \pm
+1.96 \times 1.8 = (3.9, 10.9)$.
 
 
 * Heteroskedasticity and Homoskedasticity
@@ -372,15 +406,23 @@ depend on $X_i$.
 *** Heteroskedasticity
 In contrast, the error term $u_i$ is *heteroskedastic* if the conditional variance of
 $u_i$ given $X_i$ changes on $X_i$ for $i = 1, \ldots, n$. That is,
-$\var(u_i | X_i) = \sigma^2_i,\, \text{ for } i = 1, \ldots, n$. 
+$\var(u_i | X_i) = \sigma^2_i,\, \text{ for } i = 1, \ldots, n$.
 
 e.g.. A multiplicative form of heteroskedasticity is $\var(u_i|X_i)
 = \sigma^2 f(X_i)$ where $f(X_i)$ is a function of $X_i$, for
-example, $f(X_i) = X_i$ as a simplest case. 
+example, $f(X_i) = X_i$ as a simplest case.
+
+#+CAPTION: Homoskedasticity
+#+ATTR_HTML: :width 600
+[[file:figure/fig-4-4.png]] 
+
+#+CAPTION: Heteroskedasticity
+#+ATTR_HTML: :width 600
+[[file:figure/fig-5-2.png]]
 
 #+BEGIN_EXPORT latex
 Figure \ref{fig:homovshetero} for a visual comparison between
-homoskedasticity and heteroskedasticity. 
+homoskedasticity and heteroskedasticity.
 
 \begin{figure}
     \centering
@@ -389,7 +431,7 @@ homoskedasticity and heteroskedasticity.
         \caption{Homoskedasticity}
         \label{fig:homo1}
     \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[!ht]{0.85\textwidth}
         \includegraphics[width=\textwidth]{./figure/fig-5-2}
@@ -423,13 +465,13 @@ OLS estimator
 - Suppose $\hat{\beta}_1$ and $\tilde{\beta}_1$ are both unbiased
   estimators of $\beta_1$. Then, $\hat{\beta}_1$ is said to be more
   *efficient* than $\tilde{\beta}_1$ if $\var(\hat{\beta}_1) <
-  \var(\tilde{\beta}_1)$. 
+  \var(\tilde{\beta}_1)$.
 - When the errors are homoskedastic, the OLS estimators
-  $\hat{\beta}_0$ and $\hat{\beta}_1$ are efficient among all
+  $\hat{\beta}_0$ and $\hat{\beta}_1$ are the most efficient among all
   estimators that are linear in $Y_1, \ldots, Y_n$ and are unbiased,
   conditional on $X_1, \ldots, X_n$.
 
-- See the Gauss-Markov Theorem below. 
+- See the Gauss-Markov Theorem below.
 
 
 ** The homoskedasticity-only variance formula
@@ -437,24 +479,24 @@ OLS estimator
 Recall that we can write $\hat{\beta}_1$ as
 \begin{equation*}
 \hat{\beta}_1 = \beta_1 + \frac{\sum_i (X_i - \bar{X})u_i}{\sum_i
-(X_i - \bar{X})^2} 
-\end{equation*} 
+(X_i - \bar{X})^2}
+\end{equation*}
 
 Therefore, if $u_i$ for $i=1, \ldots, n$ is
 homoskedastic and $\sigma^2$ is known, then
 \begin{equation}
 \label{eq:vbeta-1a} \var(\hat{\beta}_1 | X_i) = \frac{\sum_i (X_i -
 \bar{X})^2 \var(u_i|X_i)}{\left[\sum_i (X_i - \bar{X})^2\right]^2} =
-\frac{\sigma^2}{\sum_i (X_i - \bar{X})^2} 
-\end{equation} 
+\frac{\sigma^2}{\sum_i (X_i - \bar{X})^2}
+\end{equation}
 
 When $\sigma^2$ is unknown, then we use $s^2_u = 1/(n-2) \sum_i
 \hat{u}_i^2$ as an estimator of $\sigma^2$. Thus, the
 homoskedasticity-only estimator of the variance of $\hat{\beta}_1$ is
 \begin{equation}
 \label{eq:vbeta-1b} \tilde{\sigma}^2_{\hat{\beta}_1} =
-\frac{s^2_u}{\sum_i (X_i - \bar{X})^2} 
-\end{equation} 
+\frac{s^2_u}{\sum_i (X_i - \bar{X})^2}
+\end{equation}
 
 And the homoskedasticity-only standard error is $SE(\hat{\beta}_1) =
 \sqrt{\tilde{\sigma}^2_{\hat{\beta}_1}}$.
@@ -462,13 +504,13 @@ And the homoskedasticity-only standard error is $SE(\hat{\beta}_1) =
 Recall that the heteroskedasticity-robust standard error is
 \begin{equation*}
 SE(\hat{\beta}_1) = \sqrt{\hat{\sigma}^2_{\hat{\beta}_1}}
-\end{equation*} 
+\end{equation*}
 where
 \begin{equation*}
 \hat{\sigma}^2_{\hat{\beta}_1} = \frac{1}{n} \frac{\frac{1}{n-2}
 \sum_{i=1}^n (X_i - \bar{X})^2 \hat{u}^2_i}{\left[ \frac{1}{n}
-\sum_{i=1}^n (X_i - \bar{X})^2 \right]^2} 
-\end{equation*} 
+\sum_{i=1}^n (X_i - \bar{X})^2 \right]^2}
+\end{equation*}
 which is also referred to as Eicker-Huber-White standard errors.
 
 
@@ -480,7 +522,7 @@ which is also referred to as Eicker-Huber-White standard errors.
   to compute the robust t-statistic.
 - In most software, the default setting is to report the
   homoskedasticity-only standard errors. Therefore, you need to
-  manually add the option for the robust estimation. 
+  manually add the option for the robust estimation.
 
   - In R, you can use the following codes
     #+BEGIN_EXAMPLE
@@ -498,7 +540,7 @@ which is also referred to as Eicker-Huber-White standard errors.
 * The Theoretical Foundations of Ordinary Least Squares
 
 In this section, we are going to show that under some conditions, the
-OLS estimators are the Best Linear Unbiased Estimators (BLUE). 
+OLS estimators are the Best Linear Unbiased Estimators (BLUE).
 
 ** The Gauss-Markov conditions
 
@@ -543,7 +585,7 @@ assumption. Specifically,
 
 The class of linear conditionally unbiased estimators consists of all
 estimators of $\beta_1$ that are linear function of $Y_i, \ldots, Y_n$
-and that are unbiased, conditioned on $X_1, \ldots, X_n$. 
+and that are unbiased, conditioned on $X_1, \ldots, X_n$.
 
 For any linear estimator $\tilde{\beta}_1$, it can be written as
 \begin{equation}
@@ -551,7 +593,7 @@ For any linear estimator $\tilde{\beta}_1$, it can be written as
 \tilde{\beta}_1 = \sum_{i=1}^n a_i Y_i\
 \end{equation}
 where the weights $a_i$ for $i = 1, \ldots, n$ depend on $X_1, \ldots,
-X_n$ but not on $Y_1, \ldots, Y_n$. 
+X_n$ but not on $Y_1, \ldots, Y_n$.
 
 $\tilde{\beta}_1$ is conditionally unbiased means that
 \begin{equation}
@@ -574,13 +616,13 @@ $\beta_0$ and $\beta_1$, we must have
 *** The OLS esimator $\hat{\beta}_1$ is a linear conditionally unbiased estimator
 
 We have known that $\hat{\beta}_1$ is unbiased both conditionally and
-unconditionally. Next, we show that it is linear. 
+unconditionally. Next, we show that it is linear.
 \[ \hat{\beta}_1 = \frac{\sum_i (X_i - \bar{X})(Y_i - \bar{Y})}{\sum_i
 (X_i - \bar{X})^2} = \frac{\sum_i (X_i - \bar{X})Y_i}{\sum_i
 (X_i - \bar{X})^2} = \sum_i \hat{a}_i Y_i \]
 where the weights are
 \[ \hat{a}_i = \frac{X_i - \bar{X}}{\sum_i (X_i - \bar{X})^2}, \text{
-for } i = 1, \ldots, n \] 
+for } i = 1, \ldots, n \]
 Since $\hat{\beta}_1$ is a linear conditionally unbiased estimator, we
 must have
 \[ \sum_i \hat{a}_i = 0 \text{ and } \sum_i \hat{a}_i X_i = 1  \]
@@ -608,7 +650,7 @@ And the goal of
 the proof is to show that
 \[ \var(\hat{\beta}_1 | \mathbf{X}) \leq \var(\tilde{\beta}_1 |
 \mathbf{X}) \]
-The equality holds only when $\tilde{\beta}_1 = \hat{\beta}_1$. 
+The equality holds only when $\tilde{\beta}_1 = \hat{\beta}_1$.
 
 
 ** The limitations of the Gauss-Markov theorem
@@ -618,7 +660,7 @@ The equality holds only when $\tilde{\beta}_1 = \hat{\beta}_1$.
    that are not BLUE. The table below summarizes the cases in which a
    kind of violation occurs, the consequences of such violation to the
    OLS estimators, and possible remedies.
-   
+
    #+CAPTION: Summary of Violations of the Gauss-Markov Theorem
    #+ATTR_LATEX: :align p{4cm}|p{5.5cm}|p{2.5cm}|p{3.4cm} :booktabs t :center t :font \small
    |  Violation                     | Cases                          | Consequences | Remedies              |
@@ -630,7 +672,7 @@ The equality holds only when $\tilde{\beta}_1 = \hat{\beta}_1$.
 
 2. There are other candidate estimators that are not linear and
    conditionally unbiased; under some conditions, these estimators are
-   more efficient than the OLS estimators. 
+   more efficient than the OLS estimators.
 
 
 * Using the t-Statistic in Regression When the Sample Size is Small
@@ -659,7 +701,7 @@ For $i = 1, 2, \ldots, n$
 
 Under all the classical assumptions, we can construct the
 t-statistic for hypothesis testing of a single coefficient. Even with
-a small samples, the t-statistic has an exact Student-t distribution. 
+a small samples, the t-statistic has an exact Student-t distribution.
 
 *** The t-statistic is for $\beta_1$
 
@@ -673,47 +715,47 @@ where
 \end{equation*}
 the former of which is the homoskedasticity-only standard error of
 $\hat{\beta}_1$ and the latter is the standard error of the
-regression. 
+regression.
 
-When the classical least squares assumptions hold, we have the
+When the classical least squares assumptions hold, the
 t-statistic has the exact distribution of $t(n-2)$, i.e., the
-Student's t distribution with $(n-2)$ degrees of freedom. 
+Student's t distribution with $(n-2)$ degrees of freedom.
 
 \[ t = \frac{\hat{\beta}_1 -
 \beta_{1,0}}{\hat{\sigma}_{\hat{\beta}_1}} \sim t(n-2) \]
 
 What follows is to show the above equation is true when all classical
-assumptions are true. 
+assumptions are true.
 
 *** The Student-t distribution of $t$
 
 The t statistic can be rewritten as
 \begin{equation}
 \label{eq:t-stat-b1a}
-t = \frac{(\hat{\beta}_1 - \beta_{1,0})/\sigma_{\hat{\beta}_1}}{\sqrt{\frac{\hat{\sigma}^2_{\hat{\beta}_1}}{\sigma^2_{\hat{\beta}_1}}}} 
+t = \frac{(\hat{\beta}_1 - \beta_{1,0})/\sigma_{\hat{\beta}_1}}{\sqrt{\frac{\hat{\sigma}^2_{\hat{\beta}_1}}{\sigma^2_{\hat{\beta}_1}}}}
 = \frac{z_{\hat{\beta}_1}}{\sqrt{\frac{s^2_u}{\sigma^2_u}}} = \frac{z_{\hat{\beta}_1}}{\sqrt{\frac{W}{n-2}}}
 \end{equation}
-where 
+where
 
 \[\sigma^2_{\hat{\beta}_1} = \frac{\sigma^2_u}{\sum_i (X_i -
-\bar{X})^2} \] 
+\bar{X})^2} \]
 
 is the homoskedasticity-only variance of
-$\hat{\beta}_1$ when the variance of errors $\sigma^2_u$ is known.  
+$\hat{\beta}_1$ when the variance of errors $\sigma^2_u$ is known.
 
 \[
 z_{\hat{\beta}_1} =\frac{\hat{\beta}_1 -
-\beta_{1,0}}{\sigma_{\hat{\beta}_1}} 
-\] 
+\beta_{1,0}}{\sigma_{\hat{\beta}_1}}
+\]
 
 is the z-statistic which has a standard normal distribution, that is,
 $z_{\hat{\beta}_1} \sim N(0, 1)$
 
-\[ 
+\[
 W = (n-2)\frac{s^2_u}{\sigma^2_u} =
 \frac{\sum_i\hat{u}_i^2}{\sigma^2_u} = \sum_i
 \left(\frac{\hat{u}_i}{\sigma_u}\right)^2
- \] 
+ \]
 
 It can be shown that W is the sum of squares of $(n-2)$ independent
 standard normally distributed variables, which results in a
@@ -732,7 +774,7 @@ n$. We will formally introduce the matrix notation for a linear
 regression model and the OLS estimation in the next lecture.
 
 [fn:2] Note that the trick here is we put the
-desired hypothesis to the alternative place. 
+desired hypothesis to the alternative place.
 
 [fn:1] In a small sample case, the exact distribution of the
   t-statistics is the Student-t distribution with $n-1$ degree of
