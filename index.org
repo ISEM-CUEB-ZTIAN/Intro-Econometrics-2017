@@ -73,6 +73,9 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 ** Lecture 7: Hypothesis Test and Confidence Intervals of Linear Regression with a Single Regressor
 - Lecture notes ([[file:handouts/lecture_notes/lecture_7/lecture_7.html][html]] or [[file:handouts/lecture_notes/lecture_7/lecture_7.pdf][pdf]])
 - The slides ([[file:handouts/lecture_notes/lecture_7/slides_lecture_7.html][html]] or [[file:handouts/lecture_notes/lecture_7/slides_lecture_7_beamer.pdf][pdf]])
+- The R demonstration ([[file:handouts/lecture_notes/lecture_7/replication/replicate_ch5.html][html]] or [[file:handouts/lecture_notes/lecture_7/replication/replicate_ch5.pdf][pdf]])
+- The R replication package ([[file:handouts/lecture_notes/lecture_7/replication/replicate_ch5.zip][zip]])
+
 
 * Homework
 
@@ -83,4 +86,4 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 ** Homework set #2
 
 - Homework set #2: [[file:assignment/homework/homework_2/homework_2.pdf][homework_2.pdf]]. The data files are included in this
-  zip file, [[file:assignment/homework/homework_2/TeachingRatings.zip][TeachingRatings.zip]]. 
+  zip file, [[file:assignment/homework/homework_2/TeachingRatings.zip][TeachingRatings.zip]].

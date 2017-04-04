@@ -1,0 +1,122 @@
+#+TITLE: Empirical Exercises 4.2
+#+AUTHOR: Zheng Tian
+#+DATE:
+#+OPTIONS: toc:1 H:3 num:1
+#+PROPERTY: header-args:R :session *myR* :eval yes :tangle yes
+
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \singlespacing
+#+LATEX_HEADER: \usepackage{parskip}
+
+This file include answers and R codes for completing Empirical
+Exercise 4.2 in Introduction to Econometrics (3rd edition) by Stock
+and Watson.
+
+* Reading the Data
+
+The first step is to read the data file into R. The data files for
+this problem are =TeachingRatings.dta= and =TeachingRatings.xls=,
+accompanied by a descriptive file ~TeachingRatings_Description.pdf~.
+
+- Read the STATA file
+
+  #+BEGIN_SRC R :results output silent :exports code
+  library(foreign)
+  teachingdata <- read.dta("TeachingRatings.dta")
+  #+END_SRC
+
+- Upon reading the data, we can take a glimpse on the data.
+
+  - Use =head= or =tail= to look at the first or last few observations
+
+    #+BEGIN_SRC R :results output org :exports code :eval
+    head(teachingdata)
+    #+END_SRC
+
+    #+RESULTS:
+    #+BEGIN_SRC org
+      minority age female onecredit     beauty course_eval intro nnenglish
+    1        1  36      1         0  0.2899157         4.3     0         0
+    2        0  59      0         0 -0.7377322         4.5     0         0
+    3        0  51      0         0 -0.5719836         3.7     0         0
+    4        0  40      1         0 -0.6779634         4.3     0         0
+    5        0  31      1         0  1.5097942         4.4     0         0
+    6        0  62      0         0  0.5885687         4.2     0         0
+    #+END_SRC
+
+
+* Summary Statistics
+
+We get the summary statistics of the variables used in the analysis,
+which is ~course_eval~ and ~beauty~
+
+#+BEGIN_SRC R :results output :exports both :eval
+df <- teachingdata[c("course_eval", "beauty")]
+sumdf <- summary(df); sumdf
+#+END_SRC
+
+#+RESULTS:
+:   course_eval        beauty
+:  Min.   :2.100   Min.   :-1.45049
+:  1st Qu.:3.600   1st Qu.:-0.65627
+:  Median :4.000   Median :-0.06801
+:  Mean   :3.998   Mean   : 0.00000
+:  3rd Qu.:4.400   3rd Qu.: 0.54560
+:  Max.   :5.000   Max.   : 1.97002
+
+First, try to use =xtable= to generate the table in html
+#+BEGIN_SRC R :exports both :results output html
+library(xtable)
+print(xtable(sumdf), type = "html")
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
+<!-- Sat Apr  1 11:38:38 2017 -->
+<table border=1>
+<tr> <th>  </th> <th>  course_eval </th> <th>     beauty </th>  </tr>
+  <tr> <td align="right"> 1 </td> <td> Min.   :2.100   </td> <td> Min.   :-1.45049   </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> 1st Qu.:3.600   </td> <td> 1st Qu.:-0.65627   </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> Median :4.000   </td> <td> Median :-0.06801   </td> </tr>
+  <tr> <td align="right"> 4 </td> <td> Mean   :3.998   </td> <td> Mean   : 0.00000   </td> </tr>
+  <tr> <td align="right"> 5 </td> <td> 3rd Qu.:4.400   </td> <td> 3rd Qu.: 0.54560   </td> </tr>
+  <tr> <td align="right"> 6 </td> <td> Max.   :5.000   </td> <td> Max.   : 1.97002   </td> </tr>
+   </table>
+#+END_EXPORT
+
+Second, we can create a table that looks professional using
+=stargazer()=.
+#+BEGIN_SRC R :results output html :exports both :eval
+  library(stargazer)
+  stargazer(df, type = "html",
+    title = "Summary Statistics", label = "tab:sum-stats")
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+
+<table style="text-align:center"><caption><strong>Summary Statistics</strong></caption>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Statistic</td><td>N</td><td>Mean</td><td>St. Dev.</td><td>Min</td><td>Max</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">course_eval</td><td>463</td><td>3.998</td><td>0.555</td><td>2.100</td><td>5.000</td></tr>
+<tr><td style="text-align:left">beauty</td><td>463</td><td>0.00000</td><td>0.789</td><td>-1.450</td><td>1.970</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+#+END_EXPORT
+
+
+** TODO Try with texreg
+Lastly, generate the same table with =texreg()=
+#+BEGIN_SRC R :exports both :results output html
+library(texreg)
+texreg(df)
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+Error in library(texreg) : there is no package called ‘texreg’
+Error: could not find function "texreg"
+#+END_EXPORT
+

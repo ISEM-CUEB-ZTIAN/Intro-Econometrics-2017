@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-04-04 Tue 09:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Replication of Examples in Chapter 5</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Zheng Tian" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Replication of Examples in Chapter 5</h1>
+
+<div id="outline-container-orge22cb4f" class="outline-2">
+<h2 id="orge22cb4f"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+In this document, I will show you how to perform hypothesis testing
+for a single coefficient in a simple linear regression model. I will
+do this through replicating the examples that appear in Chapter 5.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org94bc738" class="outline-2">
+<h2 id="org94bc738"><span class="section-number-2">2</span> The OLS estimation</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The linear model is
+</p>
+\begin{equation}
+\label{eq:testscr-str-1}
+TestScore_i = \beta_0 + \beta_1 STR_i + u_i
+\end{equation}
+
+<p>
+We first read data from the Stata file, <code>caschool.dta</code>, into R.
+</p>
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #D0372D;">library</span>(AER)
+<span style="color: #D0372D;">library</span>(foreign)
+classdata <span style="color: #D0372D;">&lt;-</span> read.dta(<span style="color: #008000;">"caschool.dta"</span>)
+</pre>
+</div>
+
+<p>
+Then, we estimate the linear regression model with the function <code>lm()</code>
+and get the estimation results using the function <code>summary()</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-R">df2use <span style="color: #D0372D;">&lt;-</span> classdata[c(<span style="color: #008000;">"testscr"</span>, <span style="color: #008000;">"str"</span>)]
+mod1 <span style="color: #D0372D;">&lt;-</span> lm(testscr ~ str, data = df2use)
+summary(mod1)
+</pre>
+</div>
+
+<pre class="example">
+Call:
+lm(formula = testscr ~ str, data = df2use)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-47.727 -14.251   0.483  12.822  48.540
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept) 698.9330     9.4675  73.825  &lt; 2e-16 ***
+str          -2.2798     0.4798  -4.751 2.78e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 18.58 on 418 degrees of freedom
+Multiple R-squared:  0.05124,	Adjusted R-squared:  0.04897
+F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06
+</pre>
+
+
+<p>
+The estimation results reported by <code>summary(mod1)</code> include the
+estimated coefficients, their standard errors, t-statistics, and the
+p-values. There are other statistics that we will learn in the next
+two lectures.
+</p>
+
+<p>
+By default, the standard errors reported are computed using
+the formula of <b>the homoskedasticity-only standard errors</b>, which are
+then used to compute the t-statistics. And the p-values are based on
+the Student's t distribution with 418 degrees of freedom.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgcacff70" class="outline-2">
+<h2 id="orgcacff70"><span class="section-number-2">3</span> Hypothesis tests</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Now we get into testing the hypothesis regarding \(\beta_1\), that is,
+\[ H_0: \beta_1 = \beta_{1,0} \text{ vs. } H_1: \beta_1 \neq
+\beta_{1,0} \]
+</p>
+
+<p>
+In this example, we are testing the null hypothesis \(H_0: \beta_1 =
+0\).
+</p>
+</div>
+
+<div id="outline-container-org0fcb9d6" class="outline-3">
+<h3 id="org0fcb9d6">Compute the t-statistic</h3>
+<div class="outline-text-3" id="text-org0fcb9d6">
+<p>
+We compute the t-statistic based on the
+following formula,
+</p>
+
+\begin{equation}
+\label{eq:t-stat-b1}
+t = \frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}
+\end{equation}
+
+<p>
+Upon computing the t-statistic, we compare it with the critical value
+at the desired significant level, say 5%, which is 1.96 for a
+two-sided test with the standard normal distribution. Also, we can use
+the t-statistic to get the p-value.
+</p>
+
+<p>
+How can we get all the quantities used in this formula? Of course, you
+can simply copy them from the output of <code>summary(mod1)</code>. But doing so
+is cumbersome and prone to mistakes. More importantly, we should use
+the <b>heteroskedasticity-robust standard error</b> of \(\hat{\beta}_1\)
+instead of the ones reported by default.
+</p>
+
+<p>
+Next, I will show you two ways to get the t-statistics using the
+heteroskedasticity-robust standard errors. The first way is to get all
+the quantities in Equation (\ref{eq:t-stat-b1}) using R
+functions, and the second way is to get the appropriate t-statistic
+through the function <code>coeftest()</code>. Although the second method is much
+easier than the first one, we can learn how to obtain all the elements
+in the output of the function <code>lm()</code>.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org8598963" class="outline-3">
+<h3 id="org8598963">Get all elements from an <code>lm</code> object</h3>
+<div class="outline-text-3" id="text-org8598963">
+</div><div id="outline-container-orga248284" class="outline-4">
+<h4 id="orga248284">The coefficients</h4>
+<div class="outline-text-4" id="text-orga248284">
+<p>
+The output of the function <code>lm()</code> is an <code>lm</code> object that has the same
+structure as a <code>list</code> object.
+</p>
+<div class="org-src-container">
+<pre class="src src-R">class(mod1)
+str(mod1, max.level=1, give.attr = <span style="color: #6434A3;">FALSE</span>)
+</pre>
+</div>
+
+<pre class="example">
+[1] "lm"
+List of 12
+ $ coefficients : Named num [1:2] 698.93 -2.28
+ $ residuals    : Named num [1:420] 32.7 11.3 -12.7 -11.7 -15.5 ...
+ $ effects      : Named num [1:420] -13406.2 88.3 -14 -12.6 -16.8 ...
+ $ rank         : int 2
+ $ fitted.values: Named num [1:420] 658 650 656 659 656 ...
+ $ assign       : int [1:2] 0 1
+ $ qr           :List of 5
+ $ df.residual  : int 418
+ $ xlevels      : Named list()
+ $ call         : language lm(formula = testscr ~ str, data = df2use)
+ $ terms        :Classes 'terms', 'formula'  language testscr ~ str
+ $ model        :'data.frame':	420 obs. of  2 variables:
+</pre>
+
+<p>
+From an <code>lm()</code> object, all estimated coefficients can be extracted
+using the function <code>coef()</code>, which returns a vector containing all
+estimated coefficients. By default, the first element in the vector is
+the estimated intercept, and the slope is the second.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">b <span style="color: #D0372D;">&lt;-</span> coef(mod1)
+b
+</pre>
+</div>
+
+<pre class="example">
+(Intercept)         str
+ 698.932952   -2.279808
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-R">b1 <span style="color: #D0372D;">&lt;-</span> b[2]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2af68c2" class="outline-4">
+<h4 id="org2af68c2">The standard errors</h4>
+<div class="outline-text-4" id="text-org2af68c2">
+<ul class="org-ul">
+<li><p>
+The homoskedasticity-only standard errors are reported in the output
+of <code>summary()</code> by default in R. They can also be extracted with the
+function, <code>vcov()</code>, which returns a matrix called the covariance
+matrix, with the diagonal elements representing the variances of the
+estimated coefficients. Thus, the standard errors are the square
+roots of the diagonal elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">V <span style="color: #D0372D;">&lt;-</span> vcov(mod1)
+se_b1 <span style="color: #D0372D;">&lt;-</span> sqrt(V[2, 2]); se_b1
+</pre>
+</div>
+
+<pre class="example">
+[1] 0.4798256
+</pre></li>
+
+<li><p>
+The heteroskedasticity-robust standard errors are the square roots
+of the diagonal elements in the <b>heteroskedasticity-consistent</b>
+covariance matrix, obtained using the function of <code>vcovHC()</code> in
+the <code>sandwich</code> package that is loaded by default. There are several
+versions of the heteroskedasticity-consistent covariance
+matrix. What we use is the type of <code>HC1</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">htV <span style="color: #D0372D;">&lt;-</span> vcovHC(mod1, type = <span style="color: #008000;">"HC1"</span>)
+se_b1_rb <span style="color: #D0372D;">&lt;-</span> sqrt(htV[2, 2]); se_b1_rb
+</pre>
+</div>
+
+<pre class="example">
+[1] 0.5194892
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5a80a8c" class="outline-4">
+<h4 id="org5a80a8c">The t-statistic, the critical value, and the p-value</h4>
+<div class="outline-text-4" id="text-org5a80a8c">
+<p>
+The t-statistics using the heteroskedasticity-robust standard error
+is then computed by
+</p>
+<div class="org-src-container">
+<pre class="src src-R">(t_b1_rb <span style="color: #D0372D;">&lt;-</span> b1 / se_b1_rb)
+</pre>
+</div>
+
+<pre class="example">
+      str
+-4.388557
+</pre>
+
+<p>
+Although we know the critical value at the 5% significant level for a
+two-sided test is 1.96 with a large sample, we prefer getting the
+value from a function in R. The critical value at the 5% significance
+level is in fact the 97.5<sup>th</sup> percentile of the standard normal
+distribution, which can be obtained from the <code>qnorm()</code> function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">(c.5 <span style="color: #D0372D;">&lt;-</span> qnorm(0.975))
+</pre>
+</div>
+
+<pre class="example">
+[1] 1.959964
+</pre>
+
+<p>
+The p-value associated with the actual t-statistics is
+\(\mathrm{Pr}\left(|t| > |t^{act}| \right) = 2 \Phi(-|t^{act}|)\). We can
+compute the p-value in R, following this definition and using the
+<code>pnorm()</code> function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">(pval <span style="color: #D0372D;">&lt;-</span> 2 * pnorm(-abs(t_b1_rb)))
+</pre>
+</div>
+
+<pre class="example">
+         str
+1.141051e-05
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1b614c2" class="outline-3">
+<h3 id="org1b614c2">Use <code>coeftest()</code></h3>
+<div class="outline-text-3" id="text-org1b614c2">
+<p>
+Since hypothesis testing is a very common work in statistics, many R
+functions have been developed to do it. Here I introduce a function,
+<code>coeftest()</code>, which is in the package of <code>lmtest</code> loaded automatically
+through loading the <code>AER</code> package.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">coeftest(mod1)
+</pre>
+</div>
+
+<pre class="example">
+t test of coefficients:
+
+             Estimate Std. Error t value  Pr(&gt;|t|)
+(Intercept) 698.93295    9.46749 73.8245 &lt; 2.2e-16 ***
+str          -2.27981    0.47983 -4.7513 2.783e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+</pre>
+
+<p>
+By default, it reports the homoskedasticity-only standard errors,
+the corresponding t-statistics, and the p-values. To get the
+heteroskedasticity-robust results, we need to add an argument to this
+function to specify the heteroskedasticity-consistent covariance
+matrix, which has been defined above as <code>htV &lt;- vcovHC(mod1, type = "HC1")</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">coeftest returns a matrix</span>
+t_tst <span style="color: #D0372D;">&lt;-</span> coeftest(mod1, vcov. = htV); t_tst
+</pre>
+</div>
+
+<pre class="example">
+t test of coefficients:
+
+             Estimate Std. Error t value  Pr(&gt;|t|)
+(Intercept) 698.93295   10.36436 67.4362 &lt; 2.2e-16 ***
+str          -2.27981    0.51949 -4.3886 1.447e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">Get the t-statistic for STR</span>
+t_b1 <span style="color: #D0372D;">&lt;-</span> t_tst[<span style="color: #008000;">"str"</span>, <span style="color: #008000;">"t value"</span>]; t_b1
+</pre>
+</div>
+
+<pre class="example">
+[1] -4.388557
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org06d7c1f" class="outline-3">
+<h3 id="org06d7c1f">Confidence interval</h3>
+<div class="outline-text-3" id="text-org06d7c1f">
+<p>
+Finally, we can construct the 95% confidence interval of \(\beta_1\)
+using the function of <code>confint()</code>, which uses the
+homoskedasticity-only standard errors.
+</p>
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8D8D84;"># </span><span style="color: #8D8D84; font-style: italic;">confidence interval with the default homoskedasticity-only SE</span>
+confint(mod1, <span style="color: #008000;">"str"</span>)
+</pre>
+</div>
+
+<pre class="example">
+       2.5 %    97.5 %
+str -3.22298 -1.336637
+</pre>
+
+<p>
+Since there is no existing function to report the confidence interval
+with heteroskedasticity-robust SE, we can write a user-defined
+function to do that.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #006699;">get_confint_rb</span> <span style="color: #D0372D;">&lt;-</span> <span style="color: #0000FF;">function</span>(lm_obj, param, vcov_ = vcov(lm_obj),
+                           level = 0.05){
+    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">This function generates a two-sided confidence interval for a</span>
+    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">parameter in the linear regression model with a specified</span>
+    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">covariance matrix.  The inputs The output</span>
+
+    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">get all the parameters' names and select one based on param</span>
+    all_param <span style="color: #D0372D;">&lt;-</span> names(coef(lm_obj))
+    which_param <span style="color: #D0372D;">&lt;-</span> grep(param, all_param)
+
+    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">get the estimated parameter and its standard error</span>
+    bhat_param <span style="color: #D0372D;">&lt;-</span> coef(lm_obj)[which_param]
+    sd_param <span style="color: #D0372D;">&lt;-</span> sqrt(vcov_[which_param, which_param])
+
+    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">get the critical value</span>
+    cv <span style="color: #D0372D;">&lt;-</span> qnorm(1 - level/2)
+
+    <span style="color: #8D8D84;">## </span><span style="color: #8D8D84; font-style: italic;">calculate the confidence interval</span>
+    lower <span style="color: #D0372D;">&lt;-</span> bhat_param - cv * sd_param
+    upper <span style="color: #D0372D;">&lt;-</span> bhat_param + cv * sd_param
+
+    conf_interval <span style="color: #D0372D;">&lt;-</span> c(lower, upper)
+    names(conf_interval) <span style="color: #D0372D;">&lt;-</span> c(<span style="color: #008000;">"lower"</span>, <span style="color: #008000;">"upper"</span>)
+    <span style="color: #0000FF;">return</span>(conf_interval)
+}
+</pre>
+</div>
+
+<p>
+Note that we define the default value of <code>vcov_</code> to be the
+homoskedasticity-only covariance matrix in the function
+<code>get_confint_rb()</code>, and the default significant level is 5%. When
+computing the confidence interval with the heteroskedasticity-robust
+standard errors, we need to change <code>vcov_</code> to a
+heteroskedasticity-consistent covariance matrix, which is <code>htV</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">get_confint_rb(mod1, param = <span style="color: #008000;">"str"</span>, vcov = htV)
+</pre>
+</div>
+
+<pre class="example">
+    lower     upper
+-3.297988 -1.261628
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc114019" class="outline-2">
+<h2 id="orgc114019"><span class="section-number-2">4</span> Dummy variable</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org3bb00d8" class="outline-3">
+<h3 id="org3bb00d8">Create a dummy variable</h3>
+<div class="outline-text-3" id="text-org3bb00d8">
+<p>
+We define a dummy variable representing small classes.
+</p>
+\begin{equation*}
+D_i =
+\begin{cases}
+1,\; &\text{ if } str < 20 \\
+0,\; &\text{ if } str \geq 20
+\end{cases}
+\end{equation*}
+
+<div class="org-src-container">
+<pre class="src src-R">smallclass <span style="color: #D0372D;">&lt;-</span> ifelse(df2use$str &lt; 20, 1, 0)
+</pre>
+</div>
+
+<p>
+The function <code>ifelse()</code> creates a vector consisting of 1 and 0. The
+first argument in this function is a condition, <code>df2use$str &lt; 20</code>. If the
+condition is satisfied for an element in <code>df2use$str</code>, the corresponding
+element in <code>D</code> is 1, otherwise 0.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org77aad5b" class="outline-3">
+<h3 id="org77aad5b">Regression with a dummy variable</h3>
+<div class="outline-text-3" id="text-org77aad5b">
+<p>
+Then we can estimate the linear regression of test scores against the
+dummy variable, and do the zero hypothesis test.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">mod2 <span style="color: #D0372D;">&lt;-</span> lm(testscr ~ smallclass, data = df2use)
+coeftest(mod2, vcov. = vcovHC(mod2, type = <span style="color: #008000;">"HC1"</span>))
+</pre>
+</div>
+
+<pre class="example">
+t test of coefficients:
+
+            Estimate Std. Error  t value  Pr(&gt;|t|)
+(Intercept) 649.9788     1.3229 491.3317 &lt; 2.2e-16 ***
+smallclass    7.3724     1.8236   4.0428 6.288e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orga024490" class="outline-3">
+<h3 id="orga024490">Create a scatterplot</h3>
+<div class="outline-text-3" id="text-orga024490">
+<p>
+We can create a scatterplot to visualize the relationship between test
+scores and the dummy variable.
+</p>
+<div class="org-src-container">
+<pre class="src src-R">plot(smallclass, df2use$testscr,
+     xlab = <span style="color: #008000;">"class size"</span>, ylab = <span style="color: #008000;">"test score"</span>)
+</pre>
+</div>
+
+
+<div id="orgb11b953" class="figure">
+<p><img src="scatter_smallclass.png" alt="scatter_smallclass.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>The scatterplot without jittering</p>
+</div>
+
+<p>
+In Figure <a href="#orgb11b953">1</a>, since the variable <code>smallclass</code> takes only
+the value of 1 or 0, many points are overlapped. To make these points
+more visible, we can create a scatterplot with jittered points. I also
+adjust the limit of x-axis so that the clusters of points appear close
+towards the center of the plot.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">smallclass_jittered <span style="color: #D0372D;">&lt;-</span> jitter(smallclass, amount = 0.05)
+plot(smallclass_jittered, df2use$testscr, xlim = c(-0.5, 1.5),
+     xlab = <span style="color: #008000;">"class size"</span>, ylab = <span style="color: #008000;">"test score"</span>)
+abline(coef(mod2)[1], coef(mod2)[2], col = <span style="color: #008000;">"blue"</span>)
+</pre>
+</div>
+
+
+<div id="org5446bc4" class="figure">
+<p><img src="jittered_scatter_smallclass.png" alt="jittered_scatter_smallclass.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>The scatterplot with jittering</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Zheng Tian</p>
+<p class="date">Created: 2017-04-04 Tue 09:36</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
