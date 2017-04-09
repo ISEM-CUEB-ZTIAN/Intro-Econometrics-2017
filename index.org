@@ -76,6 +76,10 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - The R demonstration ([[file:handouts/lecture_notes/lecture_7/replication/replicate_ch5.html][html]] or [[file:handouts/lecture_notes/lecture_7/replication/replicate_ch5.pdf][pdf]])
 - The R replication package ([[file:handouts/lecture_notes/lecture_7/replication/replicate_ch5.zip][zip]])
 
+** Lecture 8: Linear Regression with Multiple Regressors
+- Lecture notes ([[file:handouts/lecture_notes/lecture_8/lecture_8.pdf][pdf]] not completed)
+- Slides ([[file:handouts/lecture_notes/lecture_8/slides_lecture_8.pdf][beamer]] not completed)
+
 
 * Homework
 
@@ -86,4 +90,4 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 ** Homework set #2
 
 - Homework set #2: [[file:assignment/homework/homework_2/homework_2.pdf][homework_2.pdf]]. The data files are included in this
-  zip file, [[file:assignment/homework/homework_2/TeachingRatings.zip][TeachingRatings.zip]].
+  zip file, [[file:assignment/homework/homework_2/TeachingRatings.zip][TeachingRatings.zip]]. Answer: [[file:assignment/homework/homework_2/answers/ans_hw_2.pdf][pdf]]. 

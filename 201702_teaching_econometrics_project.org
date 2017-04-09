@@ -109,17 +109,32 @@ http://intro-economtrics-isem-2017.github.io.
 * Tasks
 
 ** TODO Lecture 7 [0/4]
+:PROPERTIES:
+:ID:       5341FFB3-68F3-4FBC-A356-9878E1C4396C
+:END:
 <2017-03-28 Tue>-<2017-03-31 Fri>
 
 [[file:handouts/lecture_notes/lecture_7/lecture_7.org][lecture_7.org]]
 
 *** NEXT Revise lecture notes
+:PROPERTIES:
+:ID:       F2C6E948-85A0-48B2-A5EF-1CBEA3BFB6ED
+:END:
 
 *** NEXT Revise slides
+:PROPERTIES:
+:ID:       010E60B6-268B-480F-BC98-5F1A011DF8E0
+:END:
 
 *** TODO Revise R replication
+:PROPERTIES:
+:ID:       C2F14AF2-52B0-4EE3-98C5-1C62F39506F6
+:END:
 
 *** TODO Create plots in ggplot2
+:PROPERTIES:
+:ID:       EC6CC8B0-9263-445E-B98B-E5C806978D89
+:END:
 
 
 * My own study notes

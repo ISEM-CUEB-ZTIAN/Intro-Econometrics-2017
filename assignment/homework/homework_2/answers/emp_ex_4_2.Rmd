@@ -1,0 +1,129 @@
+---
+title: Empirical Exercises 4.2
+author: Zheng Tian
+output: 
+  html_document: default
+---
+
+This file include answers and R codes for completing Empirical Exercise 4.2 in Introduction to Econometrics (3rd edition) by Stock and Watson.
+
+Reading the Data
+================
+
+The first step is to read the data file into R. The data files for this problem are `TeachingRatings.dta` and `TeachingRatings.xls`, accompanied by a descriptive file `TeachingRatings_Description.pdf`.
+
+-   Read the STATA file
+
+```{r}
+library(foreign)
+teachingdata <- read.dta("TeachingRatings.dta")
+```
+
+- Upon reading the data, we can take a glimpse on the data. Use `head` or `tail` to look at the first or last few observations
+
+```{r}
+head(teachingdata)
+```
+
+
+Summary Statistics
+==================
+
+We get the summary statistics of the variables used in the analysis, which is `course_eval` and `beauty`
+
+```{r}
+df <- teachingdata[c("course_eval", "beauty")]
+sumdf <- summary(df); sumdf
+```
+
+We can create a table that looks professional using `stargazer()`.
+```{r, results='asis'}
+library(stargazer)
+stargazer(df, type = "html", header = FALSE,
+          title = "Summary Statistics", label = "tab:sum-stats")
+```
+
+
+Scatterplot
+===========
+
+We can make scatterplot using the `plot` function.
+
+```{r}
+  teaching.formula <- course_eval ~ beauty
+  plot(teaching.formula, data = teachingdata,
+     main = "The Scatterplot of Course Evaluation on Professor's Beauty",
+     xlab="Beauty", ylab = "Course evaluation", col = "blue")
+```
+
+
+Regression
+==========
+
+Now let's estimate the regression model. The results is reported in Table
+
+```{r, tidy=TRUE, results='asis'}
+# run a regression of course evaluation on professor's beauty
+teaching.ols <- lm(teaching.formula, data = teachingdata)
+
+# create the table
+stargazer(teaching.ols, type = "html",
+  covariate.labels = c("Beauty"),
+  dep.var.labels = c("Course Evaluations"),
+  title = "The OLS Estimation of the Regression of Course Evaluation on Beauty",
+  label = "tab:ols-1", single.row = TRUE, omit.stat = c("adj.rsq", "f")
+)
+```
+
+
+
+Answers to the questions
+========================
+
+a.  
+The scatterplot is the figure shown above. There appears to be a weak positive relationship between course evaluation and the beauty index.
+
+b.  
+The estimation results are reported in the table above .
+
+We use the following code the get the answers to (b) and (c).
+
+```{r}
+beauty.watson <- mean(teachingdata$beauty)
+beauty.stock <- mean(teachingdata$beauty) + sd(teachingdata$beauty)
+ave.courseval <- mean(teachingdata$course_eval)
+
+# do prediction step by step
+b0 <- teaching.ols$coef[1]
+b1 <- teaching.ols$coef[2]
+courseval.predict <- b0 + b1 * c(beauty.watson, beauty.stock)
+names(courseval.predict) <- c("waston", "stock")
+```
+
+The slope is `r round(b1, 4)` and the intercept is `r round(b0, 3)`. The sample mean of course evaluation is `r round(ave.courseval, 3)`, which coincides with the slope because the sample mean of *Beauty* is `r round(beauty.watson, 4)`.
+
+c.  
+The beauty indices for Professors Stock and Watson are `r round(beauty.stock, 4)` (one standard deviation) and `r round(beauty.watson, 4)` (sample average). Thus, the predicted course evaluations for Professors Stock and Watson are `r round(courseval.predict[2], 4)` and `r round(courseval.predict[1], 4)`, respectively.
+
+d.
+
+The following code is to answer (d)
+
+```{r}
+beauty.sd <- sd(teachingdata$beauty)
+courseval.sd <- sd(teachingdata$course_eval)
+delta.courseval <- b1 * beauty.sd
+```
+
+The standard deviation of course evaluation is `r round(courseval.sd, 4)`, and the standard deviation of beauty is `r round(beauty.sd, 4)`. A one-standard-deviation increase in beauty is expected to increase course evaluation by `r round(delta.courseval, 4)`, or `r round(delta.courseval/courseval.sd, 2)` of standard deviation of course evaluations. The effect is small.
+
+e. 
+
+```{r}
+rsq <- summary(teaching.ols)$r.squared
+```
+
+
+The regression R<sup>2</sup> is `r round(rsq, 4)`, so that *Beauty* explains only `r round(rsq, 3) * 100` percent of the variance in course evaluations.
+
+

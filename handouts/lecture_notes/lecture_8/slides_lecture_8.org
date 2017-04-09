@@ -1,113 +1,81 @@
 #+TITLE: Lecture 8: Linear Regression with Multiple Regressors
 #+AUTHOR: Zheng Tian
 #+DATE:
-#+OPTIONS: toc:1 H:3 num:2 tex:t todo:nil <:nil ^:{}
-#+PROPERTY: header-args:R  :session my-r-session
-#+LATEX_CLASS: article
-#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
-#+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
-#+LATEX_HEADER: \usepackage{setspace}
-#+LATEX_HEADER: \onehalfspacing
-#+LATEX_HEADER: \usepackage{parskip}
+#+STARTUP: beamer
+#+OPTIONS: toc:1 H:2
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation,10pt]
+#+BEAMER_THEME: CambridgeUS
+#+BEAMER_COLOR_THEME: beaver
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
 #+LATEX_HEADER: \usepackage{amsthm}
 #+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{amssymb}
 #+LATEX_HEADER: \usepackage{mathtools}
-#+LATEX_HEADER: \usepackage{hyperref}
-#+LATEX_HEADER: \usepackage{graphicx}
-#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \newtheorem{mydef}{Definition}
+#+LATEX_HEADER: \newtheorem{mythm}{Theorem}
+#+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
+#+LATEX_HEADER: \newcommand{\var}{\mathrm{var}}
+#+LATEX_HEADER: \newcommand{\cov}{\mathrm{cov}}
+#+LATEX_HEADER: \newcommand{\corr}{\mathrm{corr}}
+#+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
+#+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+#+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
+#+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
 #+LATEX_HEADER: \usepackage{booktabs}
 #+LATEX_HEADER: \usepackage{color}
 #+LATEX_HEADER: \usepackage{caption}
 #+LATEX_HEADER: \usepackage{subcaption}
-#+LATEX_HEADER: \hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
-#+LATEX_HEADER: \newtheorem{mydef}{Definition}
-#+LATEX_HEADER: \newtheorem{mythm}{Theorem}
-#+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
-#+LATEX_HEADER: \newcommand{\var}{\mathrm{Var}}
-#+LATEX_HEADER: \newcommand{\cov}{\mathrm{Cov}}
-#+LATEX_HEADER: \newcommand{\corr}{\mathrm{Corr}}
-#+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
-#+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
-#+LATEX_HEADER: \renewcommand\chaptername{Lecture}
-#+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
-#+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
 #+LATEX_HEADER: \def\mathbi#1{\textbf{\em #1}}
 
 
-* Introduction
-** Overview
-This lecture extends the simple regression model to the multiple
-regression model. Many aspects of multiple regression parallel those
-of regression with a single regressor. The coefficients of the
-multiple regression model can be estimated using the OLS estimation
-method. The algebraic and statistical properties of the OLS estimators
-of the multiple regression are also similar to those of the simple
-regression. However, there are some new concepts, such as the
-omitted variable bias and multicollinearity, to deepen our
-understanding of the OLS estimation.
-
-** Learning goals
-- Be able to set up a multiple regression model with matrix notation.
-- Understand the meaning of holding other things constant.
-- Estimate the multiple regression model with the OLS estimation.
-- Understand the Frisch-Waugh-Lovell theorem.
-- Capable of detecting the omitted variable bias and
-  multicollinearity.
-
-** Readings
-- /Introduction to Econometrics/ by Stock and Watson. Read thoroughly
-  Chapter 6 and Sections 18.1 and 18.2
-- /Introductory Econometrics: a Modern Approach/ by
-  Wooldridge. Chapter 3.
 * The Multiple Regression Model
+#+TOC: headlines [currentsection]
 
 ** The problem of a simple linear regression
 
-In the last two lectures, we use a simple linear regression model to
-examine the effect of class sizes on test scores in the California
-elementary school districts. The simple linear regression model with
-only one regressor is
+*** The simple linear regression model
 \begin{equation*}
 TestScore = \beta_0 + \beta_1 \times STR + OtherFactors
 \end{equation*}
 
-*** Is this model adequate to characterize the determination of test scores?
+*** Question: Is this model adequate to characterize the determination of test scores?
 
-Obviously, it ignores too many other important factors. Instead, all
-these other factors are lumped into a single term, /OtherFactors/,
-which is the error term, $u_i$, in the regression model.
+- It ignores many important factors, simply lumped into
+  /OtherFactors/, the error term, $u_i$, in the regression model.
 
- What are possible other important factors?
- - School district characteristics: average income level, demographic
-   components
- - School characteristics: teachers' quality, school buildings, 
- - Student characteristics: family economic conditions, individual
-   ability
+- What are possible other important factors?
+  - School district characteristics: average income level, demographic
+    components
+  - School characteristics: teachers' quality, school buildings, 
+  - Student characteristics: family economic conditions, individual
+    ability
 
-*** Percentage of English learners as an example
+** Percentage of English learners as an example
+:PROPERTIES:
+:BEAMER_opt:
+:END:
 
 The percentage of English learners in a school district could be an
 relevant and important determinant of test scores, which is omitted
 in the simple regression model.
 
-**** How can it affect the estimate of the effect of student-teacher ratios on test score?
+*** How can it affect the estimate of the effect of student-teacher ratios on test score?
 
-- The districts with high percentages of English learners tend to have
-  large student-teacher ratios. That is, these two variables are
-  correlated with the correlation coefficient being 0.17.
-- The higher percentage of English learners a district has, the lower
-  test scores students there will make.
-- In the simple regression model, the estimated negative coefficient on
-  student-teacher ratios on test scores could include not only the
-  negative influence from class sizes but also that from the
-  percentage of English learners.
+- High percentage of English learners \Rightarrow large student-teacher ratios.
+
+- High percentage of English learners \Rightarrow lower test scores.
+
+- The estimated effect of student-teacher ratios may in fact include
+  the influence from the high percentage of English learners. 
+
 - In the terminology of statistics, the magnitude of the coefficient
   on student-teacher ratio is *overestimated*.
-- Generally, we commit an *omitted variable bias* by setting up a simple
-  regression model. We will explore the omitted variable bias in the
-  last section in this lecture.
 
-**** Solutions to the omitted variable bias
+- The problem is called *the omitted variable bias*
+
+** Solutions to the problem of ignoring important factors
 
 We can include these important but ignored variables, like the
 percentage of English learners ($PctEL$), in the regression model.  
@@ -120,8 +88,10 @@ OtherFactors_i
 A regression model with more than one regressors is a multiple
 regression model. 
 
-
 ** A multiple regression model
+:PROPERTIES:
+:BEAMER_opt:
+:END:
 
 The general form of a *multiple regression model* is
 \begin{equation}
@@ -129,267 +99,302 @@ The general form of a *multiple regression model* is
 Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_k X_{ki} + u_i,\; i = 1, \ldots, n
 \end{equation}
 where
-- $Y_i$ is the i^{th} observation on the dependent variable.
+- $Y_i$ is the i^{th} observation on the dependent variable;
 - $X_{1i}, X_{2i}, \ldots, X_{ki}$ are the i^{th} observation on each
-  of the $k$ regressors.
+  of the $k$ regressors; and
 - $u_i$ is the error term associated with the i^{th} observation,
-  representing all other factors that are not included in the model. 
+  representing all other factors that are not included in the model.
+
+** The components in a multiple regression model
+:PROPERTIES:
+:BEAMER_opt:
+:END:
+
 - The population regression line (or population regression
-  function) is the relationship that holds between $Y$ and $X$ on
-  average in the population
+  function)
   \begin{equation*}
   E(Y_i | X_{1i}, \ldots, X_{ki}) = \beta_0 + \beta_1 X_{1i} + \cdots + \beta_k X_{ki}
   \end{equation*}
+
 - $\beta_1, \ldots, \beta_k$ are the coefficients on the corresponding
-  $X_i,\, i = 1, \ldots, k$. $\beta_0$ is the intercept, which can
-  also be thought of the coefficient on a regressor $X_{0i}$ that equals
-  1 for all observations.
-  - Including $X_{0i}$, there are $k+1$ regressors in the multiple
+  $X_i,\, i = 1, \ldots, k$.
+
+- $\beta_0$ is the intercept, which can also be thought of the
+  coefficient on a regressor $X_{0}$ that equals 1 for all
+  observations.
+
+  - Including $X_{0}$, there are $k+1$ regressors in the multiple
     regression model.
-  - The linear regression model with a single regressor is in fact a
-    multiple regression model with two regressors, 1 and $X$.
 
-
-** The interpretation of $\beta_i$
-
-*** Holding other things constant
-
-We can suppress the subscript $i$ in Equation (\ref{eq:multi-regress-1})
-so that we re-write it as
+** The interpretation of $\beta_i$: Holding other things constant
 
 \begin{equation}
 \label{eq:multi-regress-1a}
 Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k + u
 \end{equation}
 
-In Equation (\ref{eq:multi-regress-1a}), the coefficient $\beta_i$ on
-a regressor $X_i$, for $i=1, \ldots, k$, measures the effect on $Y$ of a
-unit change in $X_i$, *holding other $X$ constant*. 
+The coefficient $\beta_i$ on the regressor
+$X_i$ for $i=1, \ldots, k$ measures the effect on $Y$ of a unit change
+in $X_i$, *holding other $X$ constant*. 
+
+*** An example
 
 Suppose we have two regressors $X_1$ and $X_2$ and we are interested
 in the effect of $X_1$ on $Y$. We can let $X_1$ change by $\Delta X_1$
 and holding $X_2$ constant. Then, the new value of $Y$ is
-\[ 
-Y + \Delta Y = \beta_0 + \beta_1 (X_1 + \Delta X_1) + \beta_2 X_2  
-\]
+
+\[ Y + \Delta Y = \beta_0 + \beta_1 (X_1 + \Delta X_1) + \beta_2 X_2  \]
+
 Subtracting $Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2$, we have
 $\Delta Y = \beta_1 \Delta X_1$. That is
-\[ \beta_1 = \frac{\Delta Y}{\Delta X} \text{ holding } X_2 \text{ constant} \]
+\[ \beta_1 = \frac{\Delta Y}{\Delta X}, \text{ holding } X_2 \text{ constant} \]
 
-*** Partial effect
+** The partial effect
 
 If $Y$ and $X_i$ for $i = 1, \ldots, k$ are continuous and
-differentiated variables, from Equation (\ref{eq:multi-regress-1a}),
-we know that $\beta_i$ is as simply as the partial derivative of $Y$ with
-respect to $X_i$. That is \[\beta_i = \frac{\partial Y}{\partial
-X_i}\] By the definition of a partial derivative, $\beta_i$ is just
+differentiable variables, $\beta_i$ is as simply as the partial
+derivative of $Y$ with respect to $X_i$. That is
+
+\[\beta_i = \frac{\partial Y}{\partial X_i}\]
+
+By the definition of a partial derivative, $\beta_i$ is just
 the effect of a marginal change in $X_i$ on $Y$ holding other $X$
 constant.
 
-
-** The matrix notation of a multiple regression model
-
-*** Consider the matrix notation as a way to organize data
-
-When we save the data set of California school districts in Excel, it
-is saved in a spreadsheet as shown in Figure [[fig:data-snapshot]].
+** Look at the data in terms of vectors and matrix
+:PROPERTIES:
+:BEAMER_opt:
+:END:
 
 #+NAME: fig:data-snapshot
-#+CAPTION: The California data set in spreadsheet
-#+ATTR_LATEX: :width 0.6\textwidth :height 0.6\textwidth
+#+CAPTION: The California data set in Excel
+#+ATTR_LATEX: :width 0.4\textwidth :height 0.5\textheight
 [[file:img/data_snapshot.png]]
 
-Each row represents an observation of all variables pertaining to a
-school district, and each column represents a variable with all
-observations. This format of data display can be concisely denoted
-using vectors and a matrix.
+- Each row represents an observation of all variables pertaining to a
+  school district.
+- Each column represents a variable with all
+  observations.
+- The whole dataset can be seen as a matrix. 
 
-Let us first define the following vectors and matrices:
+** Define variables in matrix notation
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+
+*** Write all the variables in vector and matrix notation
+
 \begin{equation*}
+\underbrace{
 \mathbf{Y} =
 \begin{pmatrix}
 Y_1 \\
 Y_2 \\
 \vdots \\
 Y_n
-\end{pmatrix},\,
+\end{pmatrix},}_{\text{Dependent variable}}
+\underbrace{
 \mathbf{X} =
 \begin{pmatrix}
 1 & X_{11} & \cdots & X_{k1} \\
 1 & X_{12} & \cdots & X_{k2} \\
 \vdots & \vdots & \ddots & \vdots \\
 1 & X_{1n} & \cdots & X_{kn}
-\end{pmatrix}
-=
-\begin{pmatrix}
-\mathbi{x}^{\prime}_1 \\
-\mathbi{x}^{\prime}_2 \\
-\vdots \\
-\mathbi{x}^{\prime}_n
-\end{pmatrix},\,
+\end{pmatrix},}_{\text{Independent variables}}
+\underbrace{
 \mathbf{u} =
 \begin{pmatrix}
 u_1 \\
 u_2 \\
 \vdots \\
 u_n
-\end{pmatrix},\,
+\end{pmatrix},\,}_{\text{Errors}}
+\underbrace{
 \boldsymbol{\beta} =
 \begin{pmatrix}
 \beta_0 \\
 \beta_1 \\
 \vdots \\
 \beta_k
-\end{pmatrix}
+\end{pmatrix}}_{\text{Coefficients}}
 \end{equation*}
 
-- $\mathbf{Y}$ is an $n \times 1$ vector of $n$ observations on the
-  dependent variable.
-- $\mathbf{X}$ is an $n \times (k+1)$ matrix of $n$ observations on
-  $k + 1$ regressors which include the intercept term as a regressor of
-  1's.
-- $\mathbi{x}_i$ is a $(k+1) \times 1$ vector of the i^{th}
-  observation on all $(k+1)$ regressors. Thus,
-  $\mathbi{x}^{\prime}_i$ denotes the i^{th} row in $\mathbf{X}$.
-- $\boldsymbol{\beta}$ is a $(k+1) \times 1$ vector of the $(k+1)$
-  regression coefficients.
-- $\mathbf{u}$ is an $n \times 1$ vector of the $n$ error terms.
+*** Write the multiple regression model in matrix notation
 
-*** Write a multiple regression model with matrix notation
-**** The multiple regression model for one observation
-
-The multiple regression model in Equation (\ref{eq:multi-regress-1})
-for the i^{th} observation can be written as
-\begin{equation}
-\label{eq:multi-regress-mi}
-Y_i = \mathbi{x}^{\prime}_i \boldsymbol{\beta} + u_i,\; i = 1, \ldots, n
-\end{equation}
-
-**** The multiple regression model for all observations
-
-Stacking all $n$ observations in Equation (\ref{eq:multi-regress-mi})
-yields the multiple regression model in matrix form:
 \begin{equation}
 \label{eq:multi-regress-m}
 \mathbf{Y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{u}
 \end{equation}
 
-$\mathbf{X}$ can also be written in terms of column vectors as
-\[
-\mathbf{X} = [\mathbf{X}_0, \mathbf{X}_1, \ldots, \mathbf{X}_k ]
-\]
-where $\mathbf{X}_i = [X_{i1}, X_{i2}, \ldots, X_{in}]^{\prime}$ is a
-$n \times 1$ vector of $n$ observations of the k^{th}
-regressor. $\mathbf{X}_0$ is a vector of 1s. That is,
-$\mathbf{X}_0 = [1, 1, \ldots, 1]^{\prime}$. More often, we use
-$\boldsymbol{\iota}$ to denote such a vector of 1s. [fn:1]
+*** Why do we use matrix notation
+Concise, easy to derive properties; big-picture perspective.
 
-Thus, Equation (\ref{eq:multi-regress-m}) can be re-written as
-\begin{equation}
-\label{eq:multi-regress-m2}
-\mathbf{Y} = \beta_0\boldsymbol{\iota} + \beta_1\mathbf{X}_1 + \cdots + \beta_k\mathbf{X}_k + \mathbf{u}
-\end{equation}
 
+** Two other ways to write the regression model
+
+*** Write $\mathrm{X}$ in row vectors
+
+- The i^{th} row in $\mathrm{X}$ is a $(k+1) \times 1$ vector
+  \begin{equation*}
+  \mathbi{x}_i =
+  \begin{pmatrix}
+  1 \\
+  X_{1i} \\
+  \vdots \\
+  X_{ki} \\
+  \end{pmatrix}. \text{ Thus, its transpose is }
+  \mathbi{x}_i^{\prime} = (1, X_{1i}, \cdots, X_{ki})
+  \end{equation*}
+
+- We can write the regression model (Equation
+  \ref{eq:multi-regress-m}) as
+
+  \begin{equation}
+  Y_i = \mathbi{x}^{\prime}_i \boldsymbol{\beta} + u_i,\; i = 1, \ldots, n
+  \end{equation}
+
+** Two other ways to write the regression model (cont'd)
+*** Write $\mathrm{X}$ in vector vectors
+- The i^{th} column in $\mathbf{X}$ is a $n \times 1$ vector
+  \begin{equation*}
+  \boldsymbol{X}_i =
+  \begin{pmatrix}
+  X_{i1} \\
+  \vdots \\
+  X_{in} \\
+  \end{pmatrix}. \text{ The first column is }
+  \boldsymbol{\iota} = 
+  \begin{pmatrix}
+  1 \\
+  \vdots \\
+  1
+  \end{pmatrix}. \text{ Thus }
+  \mathbf{X} = \left(\boldsymbol{\iota}, \boldsymbol{X}_1, \ldots, \boldsymbol{X}_k \right)
+  \end{equation*}
+
+- The regression model (Equation \ref{eq:multi-regress-m}) can be
+  re-written as
+  \begin{equation}
+  \label{eq:multi-regress-m2}
+  \mathbf{Y} = \beta_0 \boldsymbol{\iota} + \beta_1\boldsymbol{X}_1 + \cdots + \beta_k\boldsymbol{X}_k + \mathbf{u}
+  \end{equation}
 
 * The OLS Estimator in Multiple Regression
+#+TOC: headlines [currentsection]
 
-** The OLS estimator
+** The minimization problem and the OLS estimator
 
-*** The minimization problem
+- The core idea of the OLS estimator for a multiple regression model
+  remains the same as in a simple regression model: 
+  *minimizing the sum of the squared residuals*. 
 
-The idea of the ordinary least squares estimation for a multiple
-regression model is exactly the same as for a simple regression
-model. The OLS estimators of the multiple regression model are obtained by
-minimizing the sum of the squared prediction mistakes.
+- Let $\mathbf{b} = [b_0, b_1, \ldots, b_k]^{\prime}$ be some estimators
+  of $\boldsymbol{\beta} = [\beta_0, \beta_1, \ldots,
+  \beta_k]^{\prime}$.
 
-Let $\mathbf{b} = [b_0, b_1, \ldots, b_k]^{\prime}$ be some estimators of
-$\boldsymbol{\beta} = [\beta_0, \beta_1, \ldots,
-\beta_k]^{\prime}$. The predicted $Y_i$ can be obtained by
-\[ \hat{Y}_i = b_0 + b_1 X_{1i} + \cdots + b_k X_{ki} = \mathbi{x}^{\prime}_i
-\mathbf{b},\, i = 1, \ldots, n \]
-or in matrix notation
-\[ \hat{\mathbf{Y}} = \mathbf{Xb} \]
+- The predicted $Y_i$ is
+  \begin{gather*}
+  \hat{Y}_i = b_0 + b_1 X_{1i} + \cdots + b_k X_{ki} = \mathbi{x}^{\prime}_i
+  \mathbf{b},\, i = 1, \ldots, \\
+  \text{ or in matrix notation }  \hat{\mathbf{Y}} = \mathbf{Xb}
+  \end{gather*}
+  
+- The residuals, i.e., the prediction mistakes, with $\mathbf{b}$ is
+  \begin{gather*}
+  \hat{u}_i = Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki} = Y_i -
+  \mathbi{x}^{\prime}_i \mathbf{b} \\
+  \text{ or in matrix notation }  \hat{\mathbf{u}} = \mathbf{Y} - \mathbf{Xb}
+  \end{gather*}
 
-The prediction mistakes with $\mathbf{b}$, or called the residuals, are
-\[ \hat{u}_i = Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki} = Y_i -
-\mathbi{x}^{\prime}_i \mathbf{b} \]
-or in matrix notation, the residual vector is
-\[ \hat{\mathbf{u}} = \mathbf{Y} - \mathbf{Xb} \]
+** The minimization problem and the OLS estimator (cont'd)
 
-Then the sum of the squared prediction mistakes (residuals) is
-\begin{align*}
-S(\mathbf{b}) & = S(b_0, b_1, \ldots, b_k) = \sum_{i=1}^n (Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki})^2 \\
-& = \sum_{i=1}^n (Y_i - \mathbi{x}^{\prime}_i \mathbf{b})^2 = (\mathbf{Y} -
-\mathbf{Xb})^{\prime}(\mathbf{Y}-\mathbf{Xb}) \\
-& = \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}} = \sum_{i=1}^n \hat{u}_i^2
-\end{align*}
+- The sum of the squared residuals is
+  \begin{align*}
+  S(\mathbf{b}) & = S(b_0, b_1, \ldots, b_k) = \sum_{i=1}^n (Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki})^2 \\
+  & = \sum_{i=1}^n (Y_i - \mathbf{x}^{\prime}_i \mathbf{b})^2 = (\mathbf{Y} -
+  \mathbf{Xb})^{\prime}(\mathbf{Y}-\mathbf{Xb}) \\
+  & = \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}} = \sum_{i=1}^n \hat{u}_i^2
+  \end{align*}
 
-The OLS estimator is the solution to the following minimization problem:
-\begin{equation}
-\label{eq:ols-multi-regress}
-\operatorname*{min}_{\mathbf{b}}\: S(\mathbf{b}) = \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}}
-\end{equation}
+- The OLS estimator is the solution to the following minimization problem:
+  \begin{equation}
+  \label{eq:ols-multi-regress}
+  \operatorname*{min}_{\mathbf{b}}\: S(\mathbf{b}) = \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}}
+  \end{equation}
 
-*** The OLS estimator of $\boldsymbol{\beta}$ as a solution to the minimization problem
+** The OLS estimator of $\boldsymbol{\beta}$ as a solution to the minimization problem
 
-The formula for the OLS estimator is obtained by taking the derivative
-of the sum of squared prediction mistakes, $S(b_0, b_1, \ldots, b_k)$, with respect to each coefficient,
-setting these derivatives to zero, and solving for the estimator
-$\hat{\boldsymbol{\beta}}$.
+- Solve the minimization problem: 
+  
+  $$\text{F.O.C.: } \frac{\partial S(\mathbf{b})}{\partial b_j} = 0,
+  \text{ for } j =
+  0, 1, \ldots, k$$
 
-The derivative of $S(b_0, \ldots, b_k)$ with respect to $b_j$ is
-\begin{gather*}
-\label{eq:ols-wrt-bj}
-\frac{\partial }{\partial b_j} \sum_{i=1}^n \left(Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki} \right)^2 = \\
--2 \sum_{i=1}^n X_{ji} \left(Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki} \right) = 0
-\end{gather*}
-There are $k+1$ such equations for $j=0, \ldots, k$. Solving this
-system of equations, we obtain the OLS estimator
-$\hat{\boldsymbol{\beta}} = (\hat{\beta}_0, \ldots, \hat{\beta}_k)^{\prime}$.
+- The derivative of $S(b_0, \ldots, b_k)$ with respect to $b_j$ is
+  \begin{gather*}
+  \label{eq:ols-wrt-bj}
+  \frac{\partial }{\partial b_j} \sum_{i=1}^n \left(Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki} \right)^2 = \\
+  -2 \sum_{i=1}^n X_{ji} \left(Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki} \right) = 0
+  \end{gather*}
 
-Using matrix notation, the formula for the OLS estimator
-$\boldsymbol{\hat{\beta}}$ is
+- There are $k+1$ such equations. Solving the system of equations, we
+  obtain the OLS estimator $\hat{\boldsymbol{\beta}} = (\hat{\beta}_0, \ldots,
+  \hat{\beta}_k)^{\prime}$.
+
+** The OLS estimator in matrix notation
+
+Let $\boldsymbol{\hat{\beta}}$ denote the OLS estimator. Then the
+expression of $\boldsymbol{\hat{\beta}}$ is given by
 \begin{equation}
 \label{eq:betahat-mult}
 \boldsymbol{\hat{\beta}} = (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Y}
 \end{equation}
 
+*** Some useful results of matrix calculus
 To prove Equation (\ref{eq:betahat-mult}), we need to use some results
 of matrix calculus.
 \begin{equation}
 \label{eq:matrix-calc}
 \frac{\partial \mathbf{a}^{\prime} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a},\; \frac{\partial \mathbf{x}^{\prime} \mathbf{a}}{\partial \mathbf{x}} = \mathbf{a},\; \text{ and } \frac{\partial \mathbf{x}^{\prime} \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = (\mathbf{A} + \mathbf{A}^{\prime}) \mathbf{x}
 \end{equation}
-when $\mathbf{A}$ is symmetric, then $(\partial \mathbf{x}^{\prime} \mathbf{A} \mathbf{x}) / (\partial \mathbf{x}) = 2\mathbf{A} \mathbf{x}$
+when $\mathbf{A}$ is symmetric, then $(\partial \mathbf{x}^{\prime}
+\mathbf{A} \mathbf{x}) / (\partial \mathbf{x}) = 2\mathbf{A}
+\mathbf{x}$
+
+** The proof
+:PROPERTIES:
+:BEAMER_opt:
+:END:
 
 \begin{proof}[Proof of Equation (\ref{eq:betahat-mult})]
-The sum of squared prediction mistakes is
-\begin{equation*}
-S(\mathbf{b}) = \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}} = \mathbf{Y}^{\prime} \mathbf{Y} - \mathbf{b}^{\prime} \mathbf{X}^{\prime} \mathbf{Y} - \mathbf{Y}^{\prime} \mathbf{Xb} - \mathbf{b}^{\prime} \mathbf{X}^{\prime} \mathbf{Xb}
-\end{equation*}
-The first order conditions for minimizing $S(\mathbf{b})$ with respect to $\mathbf{b}$ is
-\begin{equation}
-\label{eq:ols-mult-eqs}
--2 \mathbf{X}^{\prime} \mathbf{Y} - 2 \mathbf{X}^{\prime} \mathbf{Xb} = \mathbf{0}
-\end{equation}
-Then
-\begin{equation*}
-\mathbf{b} = (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Y}
-\end{equation*}
-given that $\mathbf{X}^{\prime} \mathbf{X}$ is invertible.
+  \begin{equation*}
+  S(\mathbf{b}) = \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}} = \mathbf{Y}^{\prime} \mathbf{Y} - \mathbf{b}^{\prime} \mathbf{X}^{\prime} \mathbf{Y} - \mathbf{Y}^{\prime} \mathbf{Xb} - \mathbf{b}^{\prime} \mathbf{X}^{\prime} \mathbf{Xb}
+  \end{equation*}
+
+  The first order conditions for minimizing $S(\mathbf{b})$ with respect to $\mathbf{b}$ is
+  \begin{gather}
+  -2 \mathbf{X}^{\prime} \mathbf{Y} - 2 \mathbf{X}^{\prime} \mathbf{Xb} = \mathbf{0} \notag \\
+  \mathbf{X}^{\prime} \mathbf{Xb} = \mathbf{X}^{\prime} \mathbf{Y} \label{eq:ols-mult-eqs}
+  \end{gather}
+
+  Then
+  \begin{equation*}
+  \mathbf{b} = (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Y}
+  \end{equation*}
+  given that $\mathbf{X}^{\prime} \mathbf{X}$ is invertible.
 \end{proof}
 
 Note that Equation (\ref{eq:ols-mult-eqs}) represents a system of
 equations with $k+1$ equations.
 
+** The OLS estimator of $\hat{\beta}_1$ in a simple regression model
 
-** Example: the OLS estimator of $\hat{\beta}_1$ in a simple regression model
+The simple linear regression model written in matrix notation is
 
-Let take a simple linear regression model as an example. The simple
-linear regression model written in matrix notation is
 \begin{equation*}
 \mathbf{Y} = \beta_0 \boldsymbol{\iota} + \beta_1 \mathbf{X}_1 + \mathbf{u} = \mathbf{X} \boldsymbol{\beta} + \mathbf{u}
 \end{equation*}
+
 where
 
 \begin{equation*}
@@ -422,14 +427,18 @@ u_n
 \end{pmatrix}
 \end{equation*}
 
+** The OLS estimator of $\hat{\beta}_1$ in a simple regression model (cont'd)
+:PROPERTIES:
+:BEAMER_opt: plain
+:END:
+
 Let's get the components in Equation (\ref{eq:betahat-mult}) step by
 step.
 
-First, the most important part is
-$\left(\mathbf{X}^{\prime}\mathbf{X}\right)^{-1}$.
+*** Step (1): compute $\left(\mathbf{X}^{\prime}\mathbf{X}\right)$
 
 \begin{align*}
-\mathbf{X}^{\prime}\mathbf{X} &=
+\mathbf{X}^{\prime}\mathbf{X} & =
 \begin{pmatrix}
 \boldsymbol{\iota}^{\prime} \\
 \mathbf{X}_1^{\prime}
@@ -446,7 +455,7 @@ X_{11} & \cdots & X_{1n}
 \vdots & \vdots \\
 1 & X_{1n}
 \end{pmatrix} \\
-&=
+& =
 \begin{pmatrix}
 \boldsymbol{\iota}^{\prime} \boldsymbol{\iota} & \boldsymbol{\iota}^{\prime} \mathbf{X}_1 \\
 \mathbf{X}_1^{\prime} \boldsymbol{\iota} & \mathbf{X}_1^{\prime} \mathbf{X}_1
@@ -457,30 +466,42 @@ n & \sum_{i=1}^n X_{1i} \\
 \end{pmatrix}
 \end{align*}
 
-Recall that the inverse of a $2 \times 2$ matrix can be calculated as follows
-\begin{equation*}
-\begin{pmatrix}
-a_{11} & a_{12} \\
-a_{21} & a_{22}
-\end{pmatrix}^{-1}
-=\frac{1}{a_{11}a_{22} - a_{12}a_{21}}
-\begin{pmatrix}
-a_{22} & -a_{12} \\
--a_{21} & a_{11}
-\end{pmatrix}
-\end{equation*}
+** The OLS estimator of $\hat{\beta}_1$ in a simple regression model (cont'd)
+:PROPERTIES:
+:BEAMER_opt: plain
+:END:
+*** Step (2): compute $\left(\mathbf{X}^{\prime}\mathbf{X}\right)^{-1}$
 
-Thus, the inverse of $\mathbf{X}^{\prime}\mathbf{X}$ is
-\begin{equation*}
-\left(\mathbf{X}^{\prime}\mathbf{X}\right)^{-1} =
-\frac{1}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2}
-\begin{pmatrix}
-\sum_{i=1}^n X_{1i}^2 & - \sum_{i=1}^n X_{1i} \\
--\sum_{i=1}^n X_{1i} & n
-\end{pmatrix}
-\end{equation*}
+**** The inverse of a $2 \times 2$ matrix
+  \begin{equation*}
+  \begin{pmatrix}
+  a_{11} & a_{12} \\
+  a_{21} & a_{22}
+  \end{pmatrix}^{-1}
+  =\frac{1}{a_{11}a_{22} - a_{12}a_{21}}
+  \begin{pmatrix}
+  a_{22} & -a_{12} \\
+  -a_{21} & a_{11}
+  \end{pmatrix}
+  \end{equation*}
 
-Next, we compute $\mathbf{X}^{\prime} \mathbf{Y}$.
+**** The inverse of $\mathbf{X}^{\prime}\mathbf{X}$
+  \begin{equation*}
+  \left(\mathbf{X}^{\prime}\mathbf{X}\right)^{-1} =
+  \frac{1}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2}
+  \begin{pmatrix}
+  \sum_{i=1}^n X_{1i}^2 & - \sum_{i=1}^n X_{1i} \\
+  -\sum_{i=1}^n X_{1i} & n
+  \end{pmatrix}
+  \end{equation*}
+
+** The OLS estimator of $\hat{\beta}_1$ in a simple regression model (cont'd)
+:PROPERTIES:
+:BEAMER_opt: plain
+:END:
+
+*** Step (3): compute $\mathbf{X}^{\prime} \mathbf{Y}$
+
 \begin{equation*}
 \mathbf{X}^{\prime} \mathbf{Y} =
 \begin{pmatrix}
@@ -507,8 +528,8 @@ Y_n
 \end{pmatrix}
 \end{equation*}
 
-Finally, we compute $\boldsymbol{\hat{\beta}} = (\mathbf{X}^{\prime}
-\mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Y}$, which is
+*** Step (4): compute $\boldsymbol{\hat{\beta}}=(\mathbf{X}^{\prime}\mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Y}$
+
 \begin{align*}
 \begin{pmatrix}
 \hat{\beta}_0 \\
@@ -531,30 +552,34 @@ Finally, we compute $\boldsymbol{\hat{\beta}} = (\mathbf{X}^{\prime}
 \end{pmatrix}
 \end{align*}
 
-Therefore, $\hat{\beta}_1$ is the second element of the vector
-pare-multiplied by the fraction, that is,
-\begin{equation*}
-\hat{\beta}_1 = \frac{n \sum_{i=1}^n X_{1i} Y_i - \sum_{i=1}^n X_{1i} \sum_{i=1}^n Y_i}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2} = \frac{\sum_{i=1}^n (X_{1i} - \bar{X}_1)(Y_i - \bar{Y})}{\sum_{i=1}^n (X_{1i} - \bar{X}_1)^2}
-\end{equation*}
+** The OLS estimator of $\hat{\beta}_1$ in a simple regression model (cont'd)
+:PROPERTIES:
+:BEAMER_opt: plain
+:END:
 
-It follows that
-\begin{equation*}
-\hat{\beta}_0 = \frac{\sum_{i=1}^n X_{1i}^2 \sum_{i=1}^n Y_i - \sum_{i=1}^n X_{1i} \sum_{i=1}^n X_{1i}Y_i}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2} = \bar{Y} - \hat{\beta}_1 \bar{X}_1
-\end{equation*}
+*** The formula of $\hat{\beta}_1$
+  \begin{equation*}
+  \hat{\beta}_1 = \frac{n \sum_{i=1}^n X_{1i} Y_i - \sum_{i=1}^n X_{1i} \sum_{i=1}^n Y_i}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2} = \frac{\sum_{i=1}^n (X_{1i} - \bar{X}_1)(Y_i - \bar{Y})}{\sum_{i=1}^n (X_{1i} - \bar{X}_1)^2}
+  \end{equation*}
+
+*** The formula of $\hat{\beta}_0$
+  \begin{equation*}
+  \hat{\beta}_0 = \frac{\sum_{i=1}^n X_{1i}^2 \sum_{i=1}^n Y_i - \sum_{i=1}^n X_{1i} \sum_{i=1}^n X_{1i}Y_i}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2} = \bar{Y} - \hat{\beta}_1 \bar{X}_1
+  \end{equation*}
 
 ** Application to Test Scores and the Student-Teacher Ratio
-Now we can apply the OLS estimation method of multiple regression to
-the application of California school districts. Recall that the
-estimated simple linear regression model is
+:PROPERTIES:
+:BEAMER_opt: shrink,plain
+:END:
+*** The simple regression compared with the multiple regression
+The estimated simple linear regression model is
 \[ \widehat{TestScore} = 698.9 - 2.28 \times STR \]
 
-Since we concern that the estimated coefficient on /STR/ may be
-overestimated without considering the percentage of English
-learners in the districts, we include this new variable in the
-multiple regression model to control for the effect of English
-learners, yielding a new estimated regression model as
+The estimated multiple linear regression model is
 \[ \widehat{TestScore} = 686.0 - 1.10 \times STR - 0.65 \times PctEL
 \]
+
+*** Explanations
 - The interpretation of the new estimated coefficient on /STR/ is,
   *holding the percentage of English learners constant*, a unit
   decrease in /STR/ is estimated to increase test scores by 1.10
@@ -564,32 +589,58 @@ learners, yielding a new estimated regression model as
   scores by 0.65 point.
 - The magnitude of the negative effect of /STR/ on test scores in the
   multiple regression is approximately half as large as when /STR/ is
-  the only regressor, which verifies our concern that we may omit
-  important variables in the simple linear regression model.
+  the only regressor.
 
-* Measures of Fit in Multiple Regression
+** COMMENT Warm-up exercises
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+*** 1) In the multiple regression model you estimate the effect on Yi of a unit change in one of the Xi while holding all other regressors constant. This
+- A) :: makes little sense, because in the real world all other variables change.
+- B) :: corresponds to the economic principle of mutatis mutandis.
+- C) :: leaves the formula for the coefficient in the single explanatory variable case unaffected.
+- D) :: corresponds to taking a partial derivative in mathematics.
+\pause
+Answer:  D
+
+*** 2) The multiple regression model can be written in matrix form as follows:
+- A) :: $\mathbf{Y} = \mathbf{X} \boldsymbol{\beta}$
+- B) :: $\mathbf{Y} = \mathbf{X} + \mathbf{U}$
+- C) :: $\mathbf{Y} = \boldsymbol{\beta} \mathbf{X} + \mathbf{U}$
+- D) :: $\mathbf{Y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{U}$
+\pause
+Answer:  D
+
+*** 3) Minimization of $\sum_{i=1}^n (Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki})^2$ results in
+- A) :: $\mathbf{X}^{\prime}\mathbf{Y} = \mathbf{X} \hat{\boldsymbol{\beta}}$
+- B) :: $\mathbf{X} \hat{\boldsymbol{\beta}} = \mathbf{0}_{k+1}$
+- C) :: $\mathbf{X}^{\prime} (\mathbf{Y} - \mathbf{X} \hat{\boldsymbol{\beta}}) = \mathbf{0}_{k+1}$
+- D) :: $\mathbf{R} \boldsymbol{\beta} = \mathbf{r}$
+\pause
+Answer:  C
+
+* TODO COMMENT Measures of Fit in Multiple Regression
+#+TOC: headlines [currentsection]
 ** The Standard errors of the regression (SER)
-The standard error
-of regression (SER) estimates the standard deviation of the error term
+The standard error of regression (SER) estimates the standard deviation of the error term
 $\mathbf{u}$. In multiple regression, the SER is
 \begin{equation}
 \label{eq:ser-m}
-SER = s_{\hat{u}},\; \text{ where } s^2_{\hat{u}} = \frac{1}{n-k-1} \sum_{i=1}^n \hat{u}_i^2 =\frac{\mathbf{\hat{u}}^{\prime} \mathbf{\hat{u}}}{n-k-1} = \frac{SSR}{n-k-1}
+SER = s_{\hat{u}},\, \text{ where } s^2_{\hat{u}} = \frac{\sum_{i=1}^n \hat{u}_i^2}{n-k-1} =\frac{\mathbf{\hat{u}}^{\prime} \mathbf{\hat{u}}}{n-k-1} = \frac{SSR}{n-k-1}
 \end{equation}
 In the multiple regression model, $SSR$ needs to be divided by
 $(n-k-1)$ because there are $(k+1)$ coefficients to be estimated using
 $n$ samples.
 
-** The R^{2}
-Like in the regression model with single regressor, we can define
-$TSS$, $ESS$, and $SSR$ in the multiple regression model.
+** The R^2
+- The total sum of squares (TSS) :: $TSS = \sum_{i=1}^n (Y_i - \bar{Y})^2$
+- The explained sum of squares (ESS) :: $ESS = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$
+- The sum of squared residuals (SSR) :: $SSR = \sum_{i=1}^n \hat{u}_i^2$
 
-- *The total sum of squares (TSS)*: $TSS = \sum_{i=1}^n (Y_i - \bar{Y})^2$
-- *The explained sum of squares (ESS)*: $ESS = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$
-- *The sum of squared residuals (SSR)*: $SSR = \sum_{i=1}^n \hat{u}_i^2$
-
-In matrix notation, we can write $Y_i - \bar{Y},\; i=1,\ldots,n$ using
-the following vectors.
+*** Matrix notation                                               :B_block:
+:PROPERTIES:
+:BEAMER_env: block
+:END:
 \begin{equation*}
 \mathbf{Y} =
 \begin{pmatrix}
@@ -620,27 +671,35 @@ Y_n
 \bar{Y}
 \end{pmatrix}
 \end{equation*}
-Therefore, $\mathbf{y}$ represents the deviation from the mean of
+Therefore, $\mathbf{y}$ represents *the deviation from the mean* of
 $Y_i,\; i=1,\ldots,n$. Similarly, we can define the deviation from the
 mean of $\hat{Y}_i,\, i=1, \ldots, n$ as $\hat{\mathbf{y}} =
-\hat{\mathbf{Y}} - \bar{Y} \boldsymbol{\iota}$. Then we can rewrite
+\hat{\mathbf{Y}} - \bar{Y} \boldsymbol{\iota}$.
+
+** R^2 (cont'd)
+:PROPERTIES:
+:BEAMER_opt: plain
+:END:
+Then we can rewrite
 $TSS, ESS,\, \text{ and } SSR$ as
 \[ TSS = \mathbf{y}^{\prime} \mathbf{y},\; ESS =
 \hat{\mathbf{y}}^{\prime} \hat{\mathbf{y}},\; \text{ and } SSR =
 \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}} \]
 
 In multiple regression, the relationship that
-\[ TSS = ESS + SSR, \text{ or, } \mathbf{y}^{\prime} \mathbf{y} =
+\[ TSS = ESS + SSR, \text{ or } \mathbf{y}^{\prime} \mathbf{y} =
 \hat{\mathbf{y}}^{\prime} \hat{\mathbf{y}} + \hat{\mathbf{u}}^{\prime}
 \hat{\mathbf{u}}\]
-still holds so that we can define R^{2} as
+still holds so that we can define R^2 as
 \begin{equation}
 \label{eq:r2-center}
 R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 \end{equation}
 
-*** Limitations of R^{2}
-
+** Limitations of R^2
+:PROPERTIES:
+:BEAMER_opt:
+:END:
 1. R^{2} is valid only if a regression model is estimated using the OLS
    since otherwise it would not be true that $TSS = ESS + SSR$.
 2. R^{2} that is defined using the deviation from the mean is only valid
@@ -656,6 +715,11 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
    \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}}$, using the uncentered
    variables.  Note that in a regression without a constant term, the
    equality $TSS = ESS + SSR$ is still true.
+
+** Limitation of R^2 (cont'd)
+:PROPERTIES:
+:BEAMER_opt:
+:END:
 3. R^{2} increases whenever an additional regressor is included in a
    multiple regression model, unless the estimated coefficient on the
    added regressor is exactly zero. Consider two regression models
@@ -672,15 +736,24 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
    $\beta_2 = 0$ and the latter is minimized without the constraint
    over $\beta_2$.
 
-** The adjusted R^{2}
-The adjusted R^{2} is, or $\bar{R}^2$, is a modified version of
-R^{2} in Equation (\ref{eq:r2-center}). The $\bar{R}^2$ improves R^{2} in the sense that it does not
-necessarily increase when a new regressor is added. The $\bar{R}^2$ is
+** The adjusted R^2
+The adjusted R^2 is, or $\bar{R}^2$, is a modified version of R^2 in
+Equation (\ref{eq:r2-center}). The $\bar{R}^2$ improves R^2 in the
+sense that it does not necessarily increase when a new regressor is
+added. The $\bar{R}^2$ is
+
 \begin{equation}
 \label{eq:adj-r2}
 \bar{R}^2 = 1 - \frac{SSR / (n-k-1)}{TSS / (n-1)} = 1 - \frac{n-1}{n-k-1}\frac{SSR}{TSS} = 1 - \frac{s^2_u}{s^2_Y}
 \end{equation}
 
+where $s^2_u$ is the sample variance of the OLS residuals, which is given
+in Equation (\ref{eq:ser-m}); $s^2_Y$ is the sample variance of $Y$.
+
+** Properties of $\bar{R}^2$
+:PROPERTIES:
+:BEAMER_opt:
+:END:
 - The adjustment is made by dividing $SSR$ and $TSS$ by their
   corresponding degrees of freedom, which is $n-k-1$ and $n-1$
   respectively.
@@ -699,15 +772,16 @@ necessarily increase when a new regressor is added. The $\bar{R}^2$ is
   taken together, reduce the sum of squared residuals by such a small
   amount that his reduction fails to offset the factor $\frac{n-1}{n-k-1}$.
 
-*** The usefulness of the R^{2} and $\bar{R}^2$
+** The usefulness of the R^2 and $\bar{R}^2$
 - Both $R^2$ and $\bar{R}^2$ are valid when the regression model is
   estimated by the OLS estimators. R^2 computed with estimators other
-  than the OLS ones is usually called /pseudo/ R^{2}.
+  than the OLS ones is usually called /pseudo/ R^2.
 - Their importance as measures of fit cannot be overstated. We cannot heavily
-  reply on R^{2} or $\bar{R}^2$ to judge whether some regressors should
+  reply on R^2 or $\bar{R}^2$ to judge whether some regressors should
   be included in the model or not.
 
 * TODO COMMENT The Frisch-Waugh-Lovell Theorem
+#+TOC: headlines [currentsection]
 ** The grouped regressors
 Consider a multiple regression model
 \begin{equation*}
@@ -751,6 +825,7 @@ proof. Interested students may refer to Exercise 18.7.
 Understanding the meaning of this theorem is much more important than
 understanding the proof.
 
+** An understanding of the FWL theorem
 The FWL theorem provides a mathematical statement of how the multiple
 regression coefficient $\hat{\boldsymbol{\beta}}_1$ estimates the
 effect on $\mathbf{Y}$ of $\mathbf{X}_1$, controlling for other
@@ -762,40 +837,38 @@ $\mathbf{X}$.
   after removing the effect of other X's.
 
 ** An example of the FWL theorem
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
 Consider a regression model with single regressor
 \[ Y_i = \beta_0 +
 \beta_1 X_i + u_i,\; i=1, \ldots, n
 \]
 
 Following the estimation strategy in the FWL theorem, we can carry out the following regressions,
-1. Regress $Y_i$ on 1. That is, estimate the model
-   \[ Y_i = \alpha + e_i \]
+1. Regress $Y_i$ on 1. That is, estimate the model $Y_i = \alpha + e_i$
    Then, the OLS estimator of $\alpha$ is
    $\bar{Y}$ and the residuals is $y_i = Y_i - \bar{Y}$
-2. Similarly, regress $X_{1i}$ on 1. Then
-   the residuals from these two regressions are $x_{1i} = X_{1i} -
-   \bar{X}_1$.
-3. Regress $y_i$ on $x_{1i}$ without intercept. That is,
+2. Similarly, regress $X_{i}$ on 1. Then
+   the residuals from these two regressions are $x_{i} = X_{i} -
+   \bar{X}$.
+3. Regress $y_i$ on $x_{i}$ without intercept. That is,
    estimate the model
-   \[ y_i = \beta_1 x_{1i} + v_i \]
+   \[ y_i = \beta_1 x_{i} + v_i \]
 Then the OLS estimate of $\beta_1$ in the reduced model is the same as that in the original model.
 
 We can obtain $\hat{\beta_1}$ directly by applyin the formula in Equation (\ref{eq:betahat-mult}). That is
-\[ \hat{\beta}_1 = (\mathbf{x}_1^{\prime} \mathbf{x}_1)^{-1} \mathbf{x}_1^{\prime} \mathbf{y} = \frac{\sum_i x_{1i} y_i}{\sum_i x_{1i}^2} \]
+\[ \hat{\beta}_1 = (\mathbf{x}^{\prime} \mathbf{x})^{-1} \mathbf{x}^{\prime} \mathbf{y} = \frac{\sum_i x_{i} y_i}{\sum_i x_{i}^2} \]
 
 * TODO COMMENT The Least Squares Assumptions in Multiple Regression
-** The least squares assumptions
-We introduce four least squares assumptions for a multiple regression
-model. The first three assumptions directly follows those in the
-simple regression model with minor modification to allow for multiple
-regressors. The fourth assumption is new.
-
-- Assumption #1 :: $E(u_i | \mathbi{x}_i) = 0$. The conditional mean
+#+TOC: headlines [currentsection]
+** The least squares assumptions in Multiple Regression
+- Assumption #1 :: $E(u_i | \mathbf{X}_i) = 0$. The conditional mean
                    of $u_i$ given $X_{1i}, X_{2i}, \ldots, X_{ki}$ has
                    mean of zero. This is the key assumption to assure
                    that the OLS estimators are unbiased.
 
-- Assumption #2 :: $(Y_i, \mathbi{x}_i^{\prime})\, i=1, \ldots, n$ are
+- Assumption #2 :: $(Y_i, \mathbf{X}_i^{\prime})\, i=1, \ldots, n$ are
                    i.i.d. This assumption holds automatically if the
                    data are collected by simple random sampling.
 
@@ -810,16 +883,16 @@ regressors. The fourth assumption is new.
                    regressors.
 
 * TODO COMMENT The Statistical Properties of the OLS Estimators in Multiple Regression
-** Unbiasedness and consistency
-Under the least squares assumptions the OLS estimator
-$\hat{\boldsymbol{\beta}}$ can be shown to be *unbiased* and
-*consistent* estimator of $\boldsymbol{\beta}$ in the multiple
-regression model of Equation (\ref{eq:multi-regress-m}).
-
-*** Unbiasedness
+#+TOC: headlines [currentsection]
+** Unbiasedness and consistency \\ \small Unbiasedness
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+*** The definition of unbiasedness
 The OLS estimators $\hat{\boldsymbol{\beta}}$ is unbiased if
 $E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}$.
 
+*** The proof
 To show the unbiasedness, we can rewrite $\hat{\boldsymbol{\beta}}$ as
 follows,
 #+BEGIN_LaTeX
@@ -830,7 +903,6 @@ follows,
 = \boldsymbol{\beta} + \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} \mathbf{u}
 \end{equation}
 #+END_LaTeX
-
 Thus, the conditional expectation of $\hat{\boldsymbol{\beta}}$ is
 #+BEGIN_LaTeX
 \begin{equation}
@@ -841,6 +913,7 @@ E(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \boldsymbol{\beta} + \left(\mathbf{X}
 in which $E(\mathbf{u} | \mathbf{X}) = 0$ from the first least squares
 assumption.
 
+\vspace{0.2cm}
 Using the law of iterated expectation, we have
 #+BEGIN_LaTeX
 \[ E(\hat{\boldsymbol{\beta}}) = E(E(\hat{\boldsymbol{\beta}} |
@@ -849,83 +922,95 @@ Using the law of iterated expectation, we have
 Therefore, $\hat{\boldsymbol{\beta}}$ is an unbiased estimator of
 $\boldsymbol{\beta}$.
 
-*** Consistency
+** Unbiasedness and consistency \\ \small Consistency
+*** Definition of consistency
 The OLS estimator $\hat{\boldsymbol{\beta}}$ is consistent if as $n
 \rightarrow \infty$, $\hat{\boldsymbol{\beta}}$ will converge to
 $\boldsymbol{\beta}$ in probability, that is, $\plim_{n \rightarrow
 \infty} \hat{\boldsymbol{\beta}} = \boldsymbol{\beta}$.
 
+*** A scratch of the proof
 From Equation (\ref{eq:bhat-m-a}), we can have
 \begin{equation*}
 \plim_{n \rightarrow \infty} \hat{\boldsymbol{\beta}} = \boldsymbol{\beta} + \plim_{n \rightarrow \infty} \left(\frac{\mathbf{X}^{\prime} \mathbf{X}}{n} \right)^{-1} \plim_{n \rightarrow \infty}\left( \frac{\mathbf{X}^{\prime} \mathbf{u}}{n} \right)
 \end{equation*}
-Let us first  make an assumption, which is usually true, that
+Let us first make an assumption, which is usually true, that
 \begin{equation}
 \label{eq:plim-bhat-m}
  \plim_{n \rightarrow \infty} \frac{1}{n} \mathbf{X}^{\prime}
 \mathbf{X} = \underset{(k+1) \times (k+1)}{\mathbf{Q_X}}
 \end{equation}
-which means as $n$ goes to very large, $\mathbf{X}^{\prime}
-\mathbf{X}$ converge to a nonstochastic matrix $\mathbf{Q_X}$ with
-full rank $(k + 1)$. In Chapter 18, we will see that $\mathbf{Q_X} =
-E(\mathbf{X}_i \mathbi{x}_i^{\prime})$ where $\mathbi{x}_i = [1,
-X_{1i}, \ldots, X_{ki}]^{\prime}$ is the $i^{th}$ row of
-$\mathbf{X}$.
+where $\mathbf{Q_X}$ is a nonstochastic matrix with full rank.
 
-Now let us look at $\plim_{n \rightarrow \infty} \frac{1}{n}
+** Unbiasedness and consistency \\ \small Consistency (cont'd)
+*** A scratch of the proof
+Then let us look at $\plim_{n \rightarrow \infty} \frac{1}{n}
 \mathbf{X}^{\prime} \mathbf{u}$ which can be rewritten as
-\[ \plim_{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^n \mathbi{x}_i
-u_i \]
-Since $E(u_i | \mathbi{x}_i) = 0$, we know that $E(\mathbi{x}_i u_i) =
-E(\mathbi{x}_iE(u_i | \mathbi{x}_i)) = 0$. Also, by Assumptions #2 and
-#3, we know that $\mathbi{x}_i u_i$ are i.i.d. and have positive
-finite variance. Thus, by the law of large number
-\[ \plim_{n \rightarrow  \infty} \frac{1}{n} \sum_{i=1}^n \mathbi{x}_i u_i = E(\mathbi{x}_i
+#+BEGIN_LaTeX
+\[ \plim_{n \rightarrow  \infty} \frac{1}{n} \sum_{i=1}^n \mathbf{X}_i u_i = E(\mathbf{X}_i
 u_i) = 0 \]
-
+#+END_LaTeX
+Here we use Assumption #1 $E(u_i | \mathbf{X}_i) = 0$, implying that $E(\mathbf{X}_i u_i) =
+E(\mathbf{X}_iE(u_i | \mathbf{X}_i)) = 0$.
+\vspace{0.2cm}
+And by Assumptions #2 and #3, we know that $\mathbf{X}_i u_i$ are i.i.d. and have
+positive finite variance.
+\vspace{0.2cm}
 Therefore, we can conclude that
 \[ \plim_{n \rightarrow \infty} \hat{\boldsymbol{\beta}} = \boldsymbol{\beta}  \]
 That is, $\hat{\boldsymbol{\beta}}$ is consistent.
 
-** The Gauss-Markov theorem and efficiency
-*** The Gauss-Markov conditions
+** The efficiency \\ \small The Gauss-Markov conditions
 The Gauss-Markov conditions for multiple regression are
 1. $E(\mathbf{u} | \mathbf{X}) = 0$,
 2. $\var(\mathbf{u} | \mathbf{X}) = E(\mathbf{uu}^{\prime} |
    \mathbf{X}) = \sigma^2_u \mathbf{I}_n$ (homoskedasticity),
 3. $\mathbf{X}$ has full column rank (no perfect multicollinearity).
 
-*** Understanding the Gauss-Markov conditions
-
-Like in the regression model with single regressor, the least
+** Understanding the Gauss-Markov conditions
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+Like in the regression model with single regressor, the five least
 squares assumptions can be summarized by the Gauss-Markov conditions
 as
 - Assumptions #1 and #2 imply that $E(\mathbf{u} | \mathbf{X}) = \mathbf{0}_n$.
-  \[E(u_i | \mathbf{X}) = E(u_i | [\mathbf{X_1}, \ldots, \mathbi{x}_i,
-  \ldots, \mathbi{x}_n]^{\prime}) = E(u_i | \mathbi{x}_i) = 0\]
+  \[E(u_i | \mathbf{X}) = E(u_i | [\mathbf{X_1}, \ldots, \mathbf{X}_i,
+  \ldots, \mathbf{X}_n]^{\prime}) = E(u_i | \mathbf{X}_i) = 0\]
   in  which the second equality follows Assumption #2 that
-  $\mathbi{x}_i,\,\text{ for } i = 1,\ldots,n$ are independent.
+  $\mathbf{X}_i,\,\text{ for } i = 1,\ldots,n$ are independent.
 
 - Assumption #1, #2, and the additional assumption of homoskedasticity
-  imply that $\var(\mathbf{u} | \mathbf{X}) = \sigma^2_u \mathbf{I}_n$.
+  imply that $\var(\mathbf{u} | \mathbf{X}) = \sigma^2_u
+  \mathbf{I}_n$.
+  \begin{equation*}
+  \var(\mathbf{u} | \mathbf{X}) =
+  \begin{pmatrix}
+  \sigma^2_u & 0 & \cdots & 0 \\
+  0 & \sigma^2_u & \cdots & 0 \\
+  \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & \cdots & \sigma^2_u
+  \end{pmatrix}
+  = \sigma^2_u \mathbf{I}_n
+  \end{equation*}
 
-  For a random vector $\mathbf{x}$, the variance of $\mathbf{x}$ is a
-  covariance matrix defined as
+** A digression for the covariance matrix of a vector
+:PROPERTIES:
+:BEAMER_opt: shrink,plain
+:END:
+For a random vector $\mathbf{x}$, the variance of $\mathbf{x}$ is a
+covariance matrix defined as
   #+BEGIN_LaTeX
   \[ \var(\mathbf{x}) =
-  E\left((\mathbf{x}-E(\mathbf{x}))(\mathbf{x}-E(\mathbf{x}))^{\prime}\right)
-  \]
-  #+END_LaTeX
-  which also holds for the conditional variance by replacing the
-  expectation operator with the conditional expectation operator.
-
-  Since $E(\mathbf{u} | \mathbf{X}) = 0$, its covariance matrix,
-  conditioned on $\mathbf{X}$, is
+  E\left((\mathbf{x}-E(\mathbf{x}))(\mathbf{x}-E(\mathbf{x}))^{\prime}\right) \]
+  #+END_LaTex
+Since $E(\mathbf{u} | \mathbf{X}) = 0$, its covariance matrix,
+conditioned on $\mathbf{X}$, is
   #+BEGIN_LaTeX
   \[ \var(\mathbf{u} | \mathbf{X}) = E(\mathbf{u} \mathbf{u}^{\prime} | \mathbf{X})
   \]
   #+END_LaTeX
-  where
+where
   #+BEGIN_LaTeX
   \begin{equation*}
   \mathbf{u} \mathbf{u}^{\prime} =
@@ -937,110 +1022,87 @@ as
   \end{pmatrix}
   \end{equation*}
   #+END_LaTeX
-  Thus, in the matrix $\mathbf{u} \mathbf{u}^{\prime}$,
-  - the expectation of the diagonal elements, conditioned on $\mathbf{X}$,
-    are the conditional variance of $u_i$ which is $\sigma^2_u$ because
-    of homoskedasticity.
-  - The conditional expectation of the off-diagonal elements are the
-    covariance of $u_i$ and $u_j$, conditioned on $\mathbf{X}$. Since
-    $u_i$ and $u_j$ are independent according to Assumption #2, $E(u_i
-    u_j | \mathbf{X}) = 0$.
+Thus, in the matrix $\mathbf{u} \mathbf{u}^{\prime}$,
+- the expectation of the diagonal elements, conditioned on $\mathbf{X}$,
+  are the conditional variance of $u_i$ which is $\sigma^2_u$ because
+  of homoskedasticity.
+- The conditional expectation of the off-diagonal elements are the
+  covariance of $u_i$ and $u_j$, conditioned on $\mathbf{X}$. Since
+  $u_i$ and $u_j$ are independent according to Assumption #2, $E(u_i
+  u_j | \mathbf{X}) = 0$.
 
-  Therefore, the conditional covariance matrix of $\mathbf{u}$ is
-  #+BEGIN_LaTeX
-  \begin{equation*}
-  \var(\mathbf{u} | \mathbf{X}) =
-  \begin{pmatrix}
-  \sigma^2_u & 0 & \cdots & 0 \\
-  0 & \sigma^2_u & \cdots & 0 \\
-  \vdots & \vdots & \ddots & \vdots \\
-  0 & 0 & \cdots & \sigma^2_u
-  \end{pmatrix}
-  = \sigma^2_u \mathbf{I}_n
-  \end{equation*}
-  #+END_LaTeX
-
-*** The Gauss-Markov Theorem
+** The Gauss-Markov Theorem
+:PROPERTIES:
+:BEAMER_opt:
+:END:
 #+BEGIN_QUOTE
 If the Gauss-Markov conditions hold in the multiple regression model,
 then the OLS estimator $\hat{\boldsymbol{\beta}}$ is more efficient
-than any other linear unbiased estimator $\tilde{\boldsymbol{\beta}}$
+than any other linear unbiased estimator $\tilde{\boldsymbol{\beta}}$,
 in the sense that $\var(\tilde{\boldsymbol{\beta}}) -
 \var(\hat{\boldsymbol{\beta}})$ is a positive semidefinite
 matrix. That is, the OLS estimator is BLUE.
 #+END_QUOTE
 
+\vspace{0.3cm}
 That $\var(\tilde{\boldsymbol{\beta}}) -
 \var(\hat{\boldsymbol{\beta}})$ is a positive semidefinite matrix
 means that for any nonzero $(k+1) \times 1$ vector $\mathbf{c}$,
-#+BEGIN_LaTeX
 \[ \mathbf{c}^{\prime}\left(\var(\tilde{\boldsymbol{\beta}}) -
 \var(\hat{\boldsymbol{\beta}})\right) \mathbf{c} \geq 0 \]
-#+END_LaTeX
 or we can simply write as
-#+BEGIN_LaTeX
-\[ \var(\tilde{\boldsymbol{\beta}}) \geq
-\var(\hat{\boldsymbol{\beta}})  \]
-#+END_LaTeX
+\[ \var(\tilde{\boldsymbol{\beta}}) \geq \var(\hat{\boldsymbol{\beta}})  \]
 The equality holds only when $\tilde{\boldsymbol{\beta}} =
-\hat{\boldsymbol{\beta}}$.[fn:: The complete proof of the Gauss-Markov
-theorem in multiple regression is in Appendix 18.5.]
+\hat{\boldsymbol{\beta}}$.
 
-*** Linear conditionally unbiased estimators
+** Linear conditionally unbiased estimators
+:PROPERTIES:
+:END:
 Any linear estimator of $\boldsymbol{\beta}$ can be written as
-#+BEGIN_LaTeX
-\[ \tilde{\boldsymbol{\beta}} = \mathbf{Ay} = \mathbf{AX}\boldsymbol{\beta} + \mathbf{Au} \]
-#+END_LaTeX
+\[ \tilde{\boldsymbol{\beta}} = \mathbf{Ay} =
+\mathbf{AX}\boldsymbol{\beta} + \mathbf{Au} \]
 where $\mathbf{A}$ is a weight matrix depending only on $\mathbf{X}$
 not on $\mathbf{y}$.
 
 For $\tilde{\boldsymbol{\beta}}$ to be conditionally unbiased, we must
 have
-#+BEGIN_LaTeX
 \begin{equation*}
 E(\tilde{\boldsymbol{\beta}} | \mathbf{X}) = \mathbf{AX} \boldsymbol{\beta} + \mathbf{A} E(\mathbf{u} | \mathbf{X}) = \boldsymbol{\beta}
 \end{equation*}
-#+END_LaTeX
-which only holds when $\mathbf{AX} = \mathbf{I}_{k+1}$ and the first
-Gauss-Markov condition holds.
+which only holds when $\mathbf{AX} = \mathbf{I}_{k+1}$.
 
 The OLS estimator $\hat{\boldsymbol{\beta}}$ is a linear conditionally
 unbiased estimator with $\mathbf{A} = \left(\mathbf{X}^{\prime}
 \mathbf{X}\right)^{-1} \mathbf{X}^{\prime}$. Obviously, $\mathbf{AX} =
 \mathbf{I}_{k+1}$ is true for $\hat{\boldsymbol{\beta}}$.
 
-*** The conditional covariance matrix of $\hat{\boldsymbol{\beta}}$
+** The conditional covariance matrix of $\hat{\boldsymbol{\beta}}$ :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
 The conditional variance matrix of $\hat{\boldsymbol{\beta}}$ can be
 derived as follows
-#+BEGIN_LaTeX
 \begin{equation*}
 \begin{split}
 \var(\hat{\boldsymbol{\beta}} | \mathbf{X}) &= E\left[ (\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})(\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})^{\prime} | \mathbf{X}\right] \\
-&= E\left[ \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} \mathbf{u} \left(\left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} \mathbf{u} \right)^{\prime} | \mathbf{X} \right] \\
 &= E\left[ \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} \mathbf{u} \mathbf{u}^{\prime} \mathbf{X} (\mathbf{X}^{\prime} \mathbf{X})^{-1} | \mathbf{X} \right] \\
 &= \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} E(\mathbf{uu}^{\prime} | \mathbf{X}) \mathbf{X} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
 \end{split}
 \end{equation*}
-#+END_LaTeX
-
 Then, by the second Gauss-Markov condition, we have
-#+BEGIN_LaTeX
-\begin{equation*}
-\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} (\sigma^2_u \mathbf{I}_n) \mathbf{X} (\mathbf{X}^{\prime} \mathbf{X})^{-1} = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
-\end{equation*}
-#+END_LaTeX
-
-The *homoskedasticity-only* covariance matrix of $\hat{\boldsymbol{\beta}}$ is
-#+BEGIN_LaTeX
 \begin{equation}
 \label{eq:varbhat-hm}
-\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
+\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} (\sigma^2_u \mathbf{I}_n) \mathbf{X} (\mathbf{X}^{\prime} \mathbf{X})^{-1} = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
 \end{equation}
-#+END_LaTeX
+which is the *homoskedasticity-only* covariance matrix.
 
+** The conditional covariance matrix of $\hat{\boldsymbol{\beta}}$ (cont'd)
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
 If the homoskedasticity assumption does not hold, denote the
 covariance matrix of $\mathbf{u}$ as
-\[ \var(\mathbf{u} | \mathbf{X}) = \mathbf{\Omega} \]
+\[ \var(\mathbf{u} | \mathbf{X}) = \boldsymbol{\Omega} \]
 
 Heteroskedasticity means that the diagonal elements of
 $\mathbf{\Omega}$ can be different (i.e. $\var(u_i | \mathbf{X}) =
@@ -1048,7 +1110,7 @@ $\mathbf{\Omega}$ can be different (i.e. $\var(u_i | \mathbf{X}) =
 elements are zeros, that is
 #+BEGIN_LaTeX
 \begin{equation*}
-\mathbf{\Omega} =
+\boldsymbol{\Omega} =
 \begin{pmatrix}
 \sigma^2_1 & 0 & \cdots & 0 \\
 0 & \sigma^2_2 & \cdots & 0 \\
@@ -1058,13 +1120,13 @@ elements are zeros, that is
 \end{equation*}
 #+END_LaTeX
 
-Define $\mathbf{\Sigma} = \mathbf{X}^{\prime} \mathbf{\Omega}
+Define $\boldsymbol{\Sigma} = \mathbf{X}^{\prime} \boldsymbol{\Omega}
 \mathbf{X}$. Then the *heteroskedasticity-robust covariance matrix* of
 $\hat{\boldsymbol{\beta}}$ is
 #+BEGIN_LaTeX
 \begin{equation}
 \label{eq:varbhat-ht}
-\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{\Sigma} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
+\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \boldsymbol{\Sigma} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
 \end{equation}
 #+END_LaTeX
 
@@ -1073,18 +1135,22 @@ In large samples, the OLS estimator $\hat{\boldsymbol{\beta}}$ has the
 multivariate normal asymptotic distribution as
 \begin{equation}
 \label{eq:normal-bhat-m}
-\hat{\boldsymbol{\beta}} \rarrowd{d} N(\boldsymbol{\beta}, \mathbf{\Sigma_{\hat{\boldsymbol{\beta}}}})
+\hat{\boldsymbol{\beta}} \rarrowd{d} N(\boldsymbol{\beta}, \boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}})
 \end{equation}
-where $\mathbf{\Sigma_{\hat{\boldsymbol{\beta}}}} =
+where $\boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}} =
 \var(\hat{\boldsymbol{\beta}} | \mathbf{X})$ for which use
 Equation (\ref{eq:varbhat-hm}) for the homoskedastic case and Equation
 (\ref{eq:varbhat-ht}) for the heteroskedastic case.
 
+\vspace{0.3cm}
 The proof of the asymptotic normal distribution and the multivariate
 central limit theorem are given in Chapter 18.
 
 * TODO COMMENT The Omitted Variable Bias
+#+TOC: headlines [currentsection]
 ** The definition of the omitted variable bias
+:PROPERTIES:
+:END:
  The *omitted variable bias* is the bias in the OLS esitmator that arises
  when the included regressors, $\mathbf{X}$, are correlated with
  omitted variables, $\mathbf{Z}$, where $\mathbf{X}$ may include $k$
@@ -1097,35 +1163,47 @@ central limit theorem are given in Chapter 18.
     $\mathbf{Y}$.
 
 ** The reason for the omitted variable bias
+:PROPERTIES:
+:BEAMER_opt: shrink,plain
+:END:
+
+\vspace{0.2cm}
+
 Suppose that the true model is
+
 \begin{equation}
 \label{eq:omb-1}
 \mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{Z}\boldsymbol{\gamma} + \mathbf{u}
 \end{equation}
-in which the first least squares assumption, $E(\mathbf{u} |
-\mathbf{X}, \mathbf{Z}) = 0$, holds. We further assume that $\cov(\mathbf{X}, \mathbf{Z})
+in which Assumption #1 is true. That is, $E(\mathbf{u} | \mathbf{X},
+\mathbf{Z}) = 0$. We further assume that $\cov(\mathbf{X}, \mathbf{Z})
 \neq 0$
+
+\vspace{0.2cm}
 
 However, we mistakenly exclude $\mathbf{Z}$ in regression analysis and
 estimate a short model
+
 \begin{equation}
 \label{eq:omb-2}
 \mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\epsilon}
 \end{equation}
+
 Since $\boldsymbol{\epsilon}$ represents all other factors that are not
 in Equation (\ref{eq:omb-2}), including $\mathbf{Z}$, and
 $\cov(\mathbf{X}, \mathbf{Z}) \neq 0$, this means that
 $\cov(\mathbf{X}, \boldsymbol{\epsilon}) \neq 0$, which implies that
-$E(\boldsymbol{\epsilon} | \mathbf{X}) \neq 0$. (Recall that in
-Chapter 4, we prove that $E(u_i | X_i) = 0 \Rightarrow \cov(u_i, X_i)
-= 0$, which implies that $\cov(u_i, X_i) \neq 0 \Rightarrow E(u_i |
-X_i) \neq 0)$.) Therefore, Assumption #1 does not hold for the short
+$E(\boldsymbol{\epsilon} | \mathbf{X}) \neq 0$.
+
+\vspace{0.2cm}
+Therefore, Assumption #1 does not hold for the short
 model, which means that the OLS estimator of Equation (\ref{eq:omb-2})
 is biased.
 
-An informal proof of the OLS estimator of Equation (\ref{eq:omb-2}) is
-biased is given as follows.
-
+** An informal explanation of the omitted variable bias
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
 The OLS estimator of Equation (\ref{eq:omb-2}) is $\hat{\boldsymbol{\beta}} &=
 (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime}
 \mathbf{Y}$. Plugging $\mathbf{Y}$ with the true model, we have
@@ -1146,16 +1224,19 @@ E(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \boldsymbol{\beta}
 The second term in the equation above usually does not equal zero
 unless either
 1) $\boldsymbol{\gamma} = \mathbf{0}$, which means that
-   $\mathbf{Z}$ are not determinants of $\mathbf{Y}$ in the true model,
-   or
+   $\mathbf{Z}$ are not determinants of $\mathbf{Y}$ in the true model, or
 2) $\mathbf{X}^{\prime} \mathbf{Z} = 0$, which means that
    $\mathbf{X}$ and $\mathbf{Z}$ are not correlated.
+\vspace{0.2cm}
 Therefore, if these two conditions do not hold,
 $\hat{\boldsymbol{\beta}}$ for the short model is biased. And the
 magnitude and direction of the bias is determined by
 $\mathbf{X}^{\prime} \mathbf{Z} \boldsymbol{\gamma}$.
 
 ** An illustration using a linear model with two regressors
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
 Suppose the true model is
 \[ Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + u_i,\; i=1,
 \ldots, n \]
@@ -1163,39 +1244,57 @@ with $E(u_i | X_{1i}, X_{2i}) = 0$
 
 However, we estimate a wrong model of
 \[ Y_i = \beta_0 + \beta_1 X_{1i} + \epsilon_i,\; i=1, \ldots, n \]
+
 In Lecture 5 we showed that $\beta_1$ can be expressed as
 \[ \hat{\beta}_1 = \beta_1 + \frac{\frac{1}{n}\sum_i
 (X_{1i} - \bar{X}_1) \epsilon_i}{\frac{1}{n}\sum_i (X_i - \bar{X}_1)^2} \]
 
-As $n \rightarrow \infty$, the numerator of the second term converges
-to $\cov(X_1, \epsilon) = \rho_{{\scriptscriptstyle X_1} \epsilon} \sigma_{\scriptscriptstyle X_1} \sigma_{\epsilon}$
-and the denominator converges to $\sigma^2_{\scriptscriptstyle X_1}$, where
-$\rho_{{\scriptscriptstyle X_1} \epsilon}$ is the correlation coefficient between $X_{1i}$ and
-$\epsilon$. Therefore, we have
+As $n \rightarrow \infty$, $\frac{1}{n}\sum_i
+(X_{1i} - \bar{X}_1) \epsilon_i \rarrow{p} \cov(X_1, \epsilon) = \rho_{{\scriptscriptstyle X_1} \epsilon} \sigma_{\scriptscriptstyle X_1} \sigma_{\epsilon}$
+and $\frac{1}{n}\sum_i (X_i - \bar{X}_1)^2 \rarrow{p}
+\sigma^2_{\scriptscriptstyle X_1}$. Therefore, we have
 
 \begin{equation}
 \label{eq:omb-4}
-\hat{\beta}_1 \rarrowd{p} \beta_1 +
-\underbrace{\rho_{{\scriptscriptstyle X_1} \epsilon}
-\frac{\sigma_{\epsilon}}{\sigma_{\scriptscriptstyle X_1}}}
-_{\mathclap{\text{omitted variable bias}}}
+\hat{\beta}_1 \rarrowd{p} \beta_1 + \underbrace{\rho_{x_1 \epsilon} \frac{\sigma_{\epsilon}}{\sigma_{x_1}}}_{\mathclap{\text{omitted variable bias}}}
 \end{equation}
 
-From Equations (\ref{eq:omb-3}) and (\ref{eq:omb-4}), we can summarize some facts about the omitted variable bias:
+** A summary of the Omitted variable bias
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+The omitted variable bias occurs when two conditions are met
+ 1. $\mathbf{X}$ is correlated with some omitted variables in $\mathbf{Z}$.
+ 2. The omitted variables are determinants of the dependent variable
+    $\mathbf{Y}$.
+
+The formula to quantify the omitted variable bias is
+\begin{equation*}
+E(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \boldsymbol{\beta}
++ (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Z} \boldsymbol{\gamma}
+\left(\text{ or }
+\hat{\beta}_1 \rarrowd{p} \beta_1 + \rho_{x_1 \epsilon} \frac{\sigma_{\epsilon}}{\sigma_{x_1}} \right)
+\end{equation*}
+
+*** Some facts summarized from the formula above
 - Omitt variable bias is a problem irregardless of whether the sample
   size is large or small. $\hat{\beta}$ is biased and inconsistent
   when there is omitted variable bias.
 - Whether this bias is large or small in practice depends on
-  $|\rho_{{\scriptscriptstyle X_1} \epsilon}|$ or $|\mathbf{X}^{\prime} \mathbf{Z}
+  $|\rho_{X_{1} \epsilon}|$ or $|\mathbf{X}^{\prime} \mathbf{Z}
   \boldsymbol{\gamma}|$.
-- The direction of this bias is determined by the sign of
-  $\rho_{{\scriptscriptstyle X_1} \epsilon}$ or $\mathbf{X}^{\prime} \mathbf{Z} \boldsymbol{\gamma}$.
+- The direction of this bias is determined by the sign of $\rho_{X_{1} \epsilon}$ or $\mathbf{X}^{\prime} \mathbf{Z}
+  \boldsymbol{\gamma}$.
 - One easy way to detect the existence of the omitted variable bias is
   that when adding a new regressor, the estimated coefficients on some
   previously included regressors change substantially.
 
 * TODO COMMENT Multicollinearity
+#+TOC: headlines [currentsection]
 ** Perfect multicollinearity
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
 *Perfect multicollinearity* refers to the situation when one of the
 regressor is a perfect linear function of the other regressors.
 - In the terminology of linear algebra, perfect multicollinearity
@@ -1207,10 +1306,10 @@ Remember that the matrix of regressors $\mathbf{X}$ can be written in
 terms of column vectors as
 #+BEGIN_LaTeX
 \[
-\mathbf{X} = [\boldsymbol{\iota}, \mathbf{X}_1, \mathbf{X}_2, \ldots, \mathbf{X}_k ]
+\mathbf{X} = [\boldsymbol{\iota}, \boldsymbol{X}_1, \boldsymbol{X}_2, \ldots, \boldsymbol{X}_k ]
 \]
 #+END_LaTeX
-where $\mathbf{X}_i = [X_{i1}, X_{i2}, \ldots, X_{in}]^{\prime}$
+where $\boldsymbol{X}_i = [X_{i1}, X_{i2}, \ldots, X_{in}]^{\prime}$
 is a $n \times 1$ vector of $n$ observations of the i^{th}
 regressor. $\boldsymbol{\iota}$ is a vector of 1s, representing the
 constant term.
@@ -1220,11 +1319,12 @@ exist some $(k+1) \times 1$ nonzero vector $\boldsymbol{\beta} =
 [\beta_0, \beta_1, \ldots, \beta_k]^{\prime}$ such that
 #+BEGIN_LaTeX
 \[
-\beta_0 \boldsymbol{\iota} + \beta_1 \mathbf{X}_1 + \cdots + \beta_k
-\mathbf{X}_k = 0 \]
+\beta_0 \boldsymbol{\iota} + \beta_1 \boldsymbol{X}_1 + \cdots + \beta_k
+\boldsymbol{X}_k = 0 \]
 #+END_LaTeX
-If $\mathbf{X}_i$, for $i=1,\ldots,n$, are linearly dependent,
-then it follows
+
+** Perfect multicollinearity (cont'd)
+If $\boldsymbol{X}_i$'s are linearly dependent, then it follows
 - $\mathbf{X}$ does not have full column rank.
 - If $\mathbf{X}$ does not have full column rank, then
   $\mathbf{X}^{\prime} \mathbf{X}$ is singular, that is, the inverse
@@ -1239,10 +1339,9 @@ then it follows
 ** Examples of perfect multicollinearity
 Remember that perfect multicollinearity occurs when one regressor can
 be expressed as a linear combination of other regressors. This problem
-belongs to the logic error when the researcher sets up the regression
-model. That is, the researcher uses some redundant regressors in the
-model to provide the same information that merely one regressor can
-sufficiently provide.
+arises from the logic error from the researcher. That is, the
+researcher uses two or more variables to provide exactly the same
+information that only one variable can provide.
 
 *** Possible linear combination
 Suppose we have a multiple regression model
@@ -1254,6 +1353,7 @@ practices cause perfect multicollinearity
 - $Z = 1 - a X_1$
 - $Z = a X_1 + b X_2$
 
+\vspace{0.2cm}
 However, we can add a $Z$ that is not a linear function of $X_1$ or
 $X_2$ such that there is no perfect multicollinearity problem. For example,
 - $Z = X_1^2$
@@ -1261,6 +1361,9 @@ $X_2$ such that there is no perfect multicollinearity problem. For example,
 - $Z = X_1 X_2$
 
 ** The dummy variable trap
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
 The dummy variable trap is a good case of perfect multicollinearity
 that a modeler often encounters. Recall that a *binary variable* (or
 *dummy variable*) $D_i$, taking values of one or zero, can be used in
@@ -1270,24 +1373,17 @@ variables can be constructed to represent more than two groups and be
 used in multiple regression to examine the difference between these
 groups.
 
+\vspace{0.2cm}
 Suppose that we have a data composed of people of four ethnic groups:
 White, African American, Hispanic, and Asian. And we want to estimate
 a regression model to see whether wages among these four groups are
-different. We may (mistakenly as we will see) set up a multiple
-regression model as follows
-#+BEGIN_LaTeX
+different. The model looks like the following,
 \begin{equation}
 \label{eq:dummy-trap}
 Wage_i = \beta_0 + \beta_1 White_i + \beta_2 African_i + \beta_3 Hispanic_i + \beta_4 Asian_i + u_i
 \end{equation}
-#+END_LaTeX
-where $White_i$ is a dummy variable which equal 1 if the i^{th}
-observation is a white people and equal 0 if he/she is not, similarly
-for $African_i, Hispanic_i, \text{ and } Asian_i$.
 
-*** A concrete example
-
-To be concrete, suppose we have four observations: Chuck,
+To be concrete, suppose we have four ordered observations: Chuck,
 Mike, Juan, and Li, who are White, African American, Hispanic, and
 Asian, respectively. Then the dummy variables are
 \begin{equation*}
@@ -1321,11 +1417,14 @@ Asian =
 \end{pmatrix}
 \end{equation*}
 
+** The dummy variable trap (cont'd)
+:PROPERTIES:
+:BEAMER_opt: plain,shrink
+:END:
 However, when we construct a model like Equation
-(\ref{eq:dummy-trap}), we fall into the dummy variable trap, suffering
-perfect multicollinearity. This is because this model has a constant
-term $\beta_0 \times 1$ which is the sum of all dummy variables. That
-is,
+(\ref{eq:dummy-trap}), we fall into the dummy variable trap and commit
+a perfect multicollinearity mistake. This is because this model has a
+constant term.
 \begin{equation*}
 \begin{pmatrix}
 1 \\
@@ -1335,10 +1434,6 @@ is,
 \end{pmatrix}
 = White + African + Hispanic + Asian
 \end{equation*}
-Let see when the observation is Chuck, then the model is
-\[ Wage = \beta_0 + \beta_1 + u \]
-Estimating this model yields $\widehat{\beta_0 + \beta_1}$, from which
-we cannot get a unique solution for $\beta_1$.
 
 To avoid the dummy variable trap, we can either of the following two
 methods:
@@ -1347,7 +1442,9 @@ methods:
 The difference between these two methods lies in how we interpret the
 coefficients on dummy variables.
 
-*** Drop the constant term
+** Drop the constant term
+:PROPERTIES:
+:END:
 
 If we drop the constant term, the model becomes
 \begin{equation}
@@ -1356,12 +1453,16 @@ Wage = \beta_1 White + \beta_2 African + \beta_3 Hispanic + \beta_4 Asian + u
 \end{equation}
 For Chuck or all white people, the model becomes
 \[ Wage = \beta_1 + u \]
-Then $\beta_1$ is the population mean wage of whites, that is, $\beta_1 =
-E(Wage | White = 1)$. Similarly,
-$\beta_2, \beta_3, \text{ and } \beta_4$ are the population mean wage
+Then $\beta_1$ is the population mean wage of whites, that is,
+\[\beta_1 = E(Wage | White = 1)\]
+
+Similarly, $\beta_2, \beta_3, \text{ and } \beta_4$ are the population mean wage
 of African Americans, Hispanics, and Asians, respectively.
 
-*** Drop one dummy variable
+** Drop one dummy variable
+:PROPERTIES:
+:BEAMER_opt: shrink,plain
+:END:
 
 If we drop the dummy variable for white people, then the model becomes
 \begin{equation}
@@ -1386,46 +1487,54 @@ Similarly, we can get that
 \beta_3 &= E(Wage | Hispanic = 1) - E(Wage | White = 1) \\
 \beta_4 &= E(Wage | Asian = 1) - E(Wage | White = 1)
 \end{align*}
-Therefore, when we adopt the second method by dropping a dummy
-variable for the reference case, then the coefficients on other dummy
-variables represent the difference in the population means between the
-interested case and the reference case.
 
-** Imperfect Multicollinearity
-*** Definition of imperfect multicollinearity
+** Definition of imperfect multicollinearity
+:PROPERTIES:
+:END:
 *Imperfect multicollinearity* is a problem of regression when two or
 more regressors are highly correlated. Although they bear similar
 names, imperfect multicollinearity and perfect multicollinearity are
 two different concepts.
 - Perfect multicollinearity is a problem of modeling building,
   resulting in a total failure to estimate a linear model.
-- Imperfect multicollinearity is usually a problem of data when some
-  regressors are highly correlated.
+- Imperfect multicollinearity is usually a problem of data in the
+  sense that data for two variables are highly correlated.
 - Imperfect multicollinearity does not affect the unbiasedness of the
   OLS estimators. However, it does affect the efficiency, i.e., the
   variance of the OLS estimators.
-*** An illustration using a regression model with two regressors
-Suppose we have a linear regression model with two regressors.
+
+** An illustration using a regression model with two regressors
+:PROPERTIES:
+:END:
+
+Suppose we have a linear regression model with two regressors
+
 \begin{equation}
 \label{eq:ex-collin}
 \mathbf{Y} = \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \mathbf{u}
 \end{equation}
-where, for simplicity, $\mathbf{u}$ is assumed to be homoskedastic.
 
 By the FWL theorem, estimating Equation (\ref{eq:ex-collin}) will get
 the same OLS estimators of $\beta_1$ and $\beta_2$ as estimating the
 following model,
+
 \begin{equation}
 \label{eq:ex-collin-1}
 \mathbf{y} = \beta_1 \mathbf{x}_1 + \beta_2 \mathbf{x}_2 + \mathbf{v}
 \end{equation}
-where $\mathbf{y} = \mathbf{Y} - \bar{Y} \boldsymbol{\iota}$, $\mathbf{x}_1 =
-\mathbf{X}_1 - \bar{X}_1 \boldsymbol{\iota}$, and $\mathbf{x}_2 = \mathbf{X}_2 -
-\bar{X}_2 \boldsymbol{\iota}$, that is, $\mathbf{y}, \mathbf{x}_1, \text{ and }
-\mathbf{x}_2}$ are in the form of the deviation from the mean. And
-denote $\mathbf{x} = [\mathbf{x}_1\;  \mathbf{x}_2]$ as the matrix of
-all regressors in Model (\ref{eq:ex-collin-1}).
 
+where $\mathbf{y} = \mathbf{Y} - \bar{Y} \boldsymbol{\iota}$,
+      $\mathbf{x}_1 =\mathbf{X}_1 - \bar{X}_1 \boldsymbol{\iota}$,
+and $\mathbf{x}_2 = \mathbf{X}_2 -\bar{X}_2 \boldsymbol{\iota}$.
+That is, $\mathbf{y}, \mathbf{x}_1,\, \text{and } \mathbf{x}_2$
+are in the form of the deviation from the mean. And
+denote $\mathbf{x} = [\mathbf{x}_1\; \mathbf{x}_2]$
+as the matrix of all regressors in Model (\ref{eq:ex-collin-1}).
+
+** An illustration using a regression model with two regressors (cont'd)
+:PROPERTIES:
+:BEAMER_opt:
+:END:
 Suppose that $X_1$ and $X_2$ are correlated so that their correlation
 coefficient $|\rho_{12}| > 0$. And the square of the sample
 correlation coefficient is
@@ -1440,15 +1549,18 @@ The OLS estimator of Model (\ref{eq:ex-collin-1}) is
 \label{eq:bhat-ex-collin}
 \hat{\boldsymbol{\beta}} = \left(\mathbf{x}^{\prime} \mathbf{x}\right)^{-1} \mathbf{x}^{\prime} \mathbf{y}
 \end{equation}
-with the homoskedasticity-only covariance matrix as
+with the covariance matrix as
 \begin{equation}
 \label{eq:bhat-cov-ex-collin}
 \var(\hat{\boldsymbol{\beta}} | \mathbf{x}) = \sigma^2_u \left(\mathbf{x}^{\prime} \mathbf{x}\right)^{-1}
 \end{equation}
 
+** An illustration using a regression model with two regressors (cont'd)
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
 - $\hat{\boldsymbol{\beta}}$ is still unbiased since the assumption of
-  $E(\mathbf{u} | X) = 0$ holds and so does $E(\mathbf{v} |
-  \mathbf{x}) = 0$.
+  $E(\mathbf{u} | X)$ holds and so does $E(\mathbf{v} | \mathbf{x})$.
 
 - The variance of $\hat{\beta}_1$, which is the first diagonal element
   of $\sigma^2_u \left(\mathbf{x}^{\prime} \mathbf{x}\right)^{-1}$, is
@@ -1456,15 +1568,20 @@ with the homoskedasticity-only covariance matrix as
   explicitly as
   \begin{equation*}
   \begin{split}
-  \var(\hat{\beta}_1 | \mathbf{x}) &=  \frac{\sigma^2_u \sum_i x_2^2}{\sum_i x_1^2 \sum_i x_2^2 - (\sum_i x_1 x_2)^2} \\
-  &= \frac{\sigma^2_u \sum_i x_2^2}{\displaystyle \sum_i x_1^2 \sum_i x_2^2 \left(1 - \frac{(\sum_i x_1 x_2)^2}{\sum_i x_1^2 \sum_i x_2^2}\right)} \\
-  &= \frac{\sigma^2_u}{\sum_i x_1^2} \frac{1}{(1 - r^2_{12})}
+  \var(\hat{\beta}_1 | \mathbf{x}) &=  \frac{\sigma^2_u \sum x_2^2}{\sum_i x_1^2 \sum x_2^2 - (\sum x_1 x_2)^2} \\
+  &= \frac{\sigma^2_u \sum x_2^2}{\displaystyle \sum x_1^2 \sum x_2^2 \left(1 - \frac{(\sum x_1 x_2)^2}{\sum x_1^2 \sum x_2^2}\right)} \\
+  &= \frac{\sigma^2_u}{\sum x_1^2} \frac{1}{(1 - r^2_{12})}
   \end{split}
   \end{equation*}
   Therefore, when $X_1$ and $X_2$ are highly correlated, that is
   $r^2_{12}$ gets close to 1, then $\var(\hat{\beta}_1 | \mathbf{x})$
   becomes very large.
 
+** The consequence and remedies of imperfect multicollinearity
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+*** The consequence and detection
 - The consequence of multicollinearity is that it may lead us to
   wrongly fail to reject the zero hypothesis in the t-test for a
   coefficient.
@@ -1482,27 +1599,11 @@ with the homoskedasticity-only covariance matrix as
   regressor is often seen as an indication of multicollinearity, but
   we cannot always trust this.
 
-*** Possible remedies for multicollinearity
+*** The remedies
 - Include more sample in hope of the variation in $\mathbf{X}$ getting
   widened, i.e., increasing $\sum_i (X_{1i} - \bar{X}_1)$.
 - Drop the variable(s) that is highly correlated with other
   regressors. Notice that by doing this we are at the risk of
   suffering the omitted variable bias. There is always a trade-off
   between including all relevant regressors and making the regression
-  model /parsimonious/.[fn:: The word "parsimonious" in Econometrics
-  means that we always want to make the model as concise as possible
-  without any redundant variables included.]
-
-* Footnotes
-
-[fn:1] $\boldsymbol{\iota}$ has the following properties:
-(1) $\boldsymbol{\iota}^{\prime} \mathbf{x} = \sum_{i=1}^n x_i$ for an
-  $n \times 1$ vector $\mathbf{x}$, (2) $\boldsymbol{\iota}^{\prime}
-\boldsymbol{\iota} = n$ and $\left(\boldsymbol{\iota}^{\prime}
-\boldsymbol{\iota} \right)^{-1} = 1/n$, (3)
-$\boldsymbol{\iota}^{\prime} \left(
-\boldsymbol{\iota}^{\prime}\boldsymbol{\iota} \right)^{-1} \mathbf{x}
-= \bar{x}$, and (4) $\boldsymbol{\iota}^{\prime} \mathbf{X} \boldsymbol{\iota} =
-  \sum_{i=1}^n \sum_{j=1}^n x_{ij}$ for an $n \times n$ matrix $\mathbf{X}$.
-
-
+  model /parsimonious/.

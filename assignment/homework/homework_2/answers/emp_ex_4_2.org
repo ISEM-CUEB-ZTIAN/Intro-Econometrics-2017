@@ -1,7 +1,7 @@
-#+TITLE: Empirical Exercises 4.2
-#+AUTHOR: Zheng Tian
+# #+TITLE: Empirical Exercises 4.2
+# #+AUTHOR: Zheng Tian
 #+DATE:
-#+OPTIONS: toc:1 H:3 num:1
+#+OPTIONS: toc:nil H:3 num:1
 #+PROPERTY: header-args:R :session *myR* :eval yes :tangle yes
 
 #+LATEX_CLASS: article
@@ -67,47 +67,35 @@ sumdf <- summary(df); sumdf
 :  3rd Qu.:4.400   3rd Qu.: 0.54560
 :  Max.   :5.000   Max.   : 1.97002
 
-First, try to use =xtable= to generate the table in html
-#+BEGIN_SRC R :exports both :results output html
-library(xtable)
-print(xtable(sumdf), type = "html")
-#+END_SRC
-
-#+RESULTS:
-#+BEGIN_EXPORT html
-<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Sat Apr  1 11:38:38 2017 -->
-<table border=1>
-<tr> <th>  </th> <th>  course_eval </th> <th>     beauty </th>  </tr>
-  <tr> <td align="right"> 1 </td> <td> Min.   :2.100   </td> <td> Min.   :-1.45049   </td> </tr>
-  <tr> <td align="right"> 2 </td> <td> 1st Qu.:3.600   </td> <td> 1st Qu.:-0.65627   </td> </tr>
-  <tr> <td align="right"> 3 </td> <td> Median :4.000   </td> <td> Median :-0.06801   </td> </tr>
-  <tr> <td align="right"> 4 </td> <td> Mean   :3.998   </td> <td> Mean   : 0.00000   </td> </tr>
-  <tr> <td align="right"> 5 </td> <td> 3rd Qu.:4.400   </td> <td> 3rd Qu.: 0.54560   </td> </tr>
-  <tr> <td align="right"> 6 </td> <td> Max.   :5.000   </td> <td> Max.   : 1.97002   </td> </tr>
-   </table>
-#+END_EXPORT
-
-Second, we can create a table that looks professional using
-=stargazer()=.
-#+BEGIN_SRC R :results output html :exports both :eval
+We can create a table that looks professional using =stargazer()=.
+#+BEGIN_SRC R :results output latex :exports both :eval
   library(stargazer)
-  stargazer(df, type = "html",
+  stargazer(df, type = "latex",
     title = "Summary Statistics", label = "tab:sum-stats")
 #+END_SRC
 
 #+RESULTS:
-#+BEGIN_EXPORT html
+#+BEGIN_EXPORT latex
 
-<table style="text-align:center"><caption><strong>Summary Statistics</strong></caption>
-<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Statistic</td><td>N</td><td>Mean</td><td>St. Dev.</td><td>Min</td><td>Max</td></tr>
-<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">course_eval</td><td>463</td><td>3.998</td><td>0.555</td><td>2.100</td><td>5.000</td></tr>
-<tr><td style="text-align:left">beauty</td><td>463</td><td>0.00000</td><td>0.789</td><td>-1.450</td><td>1.970</td></tr>
-<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, Apr 05, 2017 - 08:50:03
+\begin{table}[!htbp] \centering
+  \caption{Summary Statistics}
+  \label{tab:sum-stats}
+\begin{tabular}{@{\extracolsep{5pt}}lccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\
+\hline \\[-1.8ex]
+course\_eval & 463 & 3.998 & 0.555 & 2.100 & 5.000 \\
+beauty & 463 & 0.00000 & 0.789 & $-$1.450 & 1.970 \\
+\hline \\[-1.8ex]
+\end{tabular}
+\end{table}
 #+END_EXPORT
 
 
-** TODO Try with texreg
+** TODO COMMENT Try with texreg
 Lastly, generate the same table with =texreg()=
 #+BEGIN_SRC R :exports both :results output html
 library(texreg)
@@ -119,4 +107,128 @@ texreg(df)
 Error in library(texreg) : there is no package called ‘texreg’
 Error: could not find function "texreg"
 #+END_EXPORT
+
+
+* Scatterplot
+
+We can make scatterplot using the =plot= function.
+
+#+NAME: scatterplot
+#+BEGIN_SRC R :results output graphics :file beauty.png :exports both :eval
+  teaching.formula <- course_eval ~ beauty
+  plot(teaching.formula, data = teachingdata,
+     main = "The Scatterplot of Course Evaluation on Professor's Beauty",
+     xlab="Beauty", ylab = "Course evaluation", col = "blue")
+#+END_SRC
+
+#+CAPTION: The scatterplot of course evaulation on professors' beauty
+#+NAME: fig:scatterplot
+#+ATTR_LATEX: :width 0.75\textwidth
+#+RESULTS: scatterplot
+[[file:beauty.png]]
+
+
+* Regression
+
+Now let's estimate the regression model. The results is reported
+in Table \ref{tab:ols-1}
+
+#+BEGIN_SRC R :results output latex :exports both :eval
+  # run a regression of course evaluation on professor's beauty
+  teaching.ols <- lm(teaching.formula, data = teachingdata)
+
+  # create the latex table
+  stargazer(teaching.ols,
+    covariate.labels = c("Beauty"),
+    dep.var.labels = c("Course Evaluations"),
+    title = "The OLS Estimation of the Regression of Course Evaluation on Beauty",
+    label = "tab:ols-1", single.row = TRUE, omit.stat = c("adj.rsq", "f")
+  )
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_LaTeX
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mon, Apr 18, 2016 - 10:56:50
+\begin{table}[!htbp] \centering
+  \caption{The OLS Estimation of the Regression of Course Evaluation on Beauty}
+  \label{tab:ols-1}
+\begin{tabular}{@{\extracolsep{5pt}}lc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & \multicolumn{1}{c}{\textit{Dependent variable:}} \\
+\cline{2-2}
+\\[-1.8ex] & Course Evaluations \\
+\hline \\[-1.8ex]
+ Prof. Beauty & 0.133$^{***}$ (0.032) \\
+  Constant & 3.998$^{***}$ (0.025) \\
+ \hline \\[-1.8ex]
+Observations & 463 \\
+R$^{2}$ & 0.036 \\
+Residual Std. Error & 0.545 (df = 461) \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+\end{table}
+#+END_LaTeX
+
+
+
+* Answers to the questions
+
+- a. :: The scatterplot is Figure [[fig:scatterplot]]. There appears to be
+        a weak positive relationship between course evaluation and the
+        beauty index.
+
+- b. :: The estimation results are reported in Table \ref{tab:ols-1}.
+
+          #+BEGIN_SRC R :results silent :exports code
+          beauty.watson <- mean(teachingdata$beauty)
+          beauty.stock <- mean(teachingdata$beauty) + sd(teachingdata$beauty)
+          ave.courseval <- mean(teachingdata$course_eval)
+
+          # do prediction step by step
+          b0 <- teaching.ols$coef[1]
+          b1 <- teaching.ols$coef[2]
+          courseval.predict <- b0 + b1 * c(beauty.watson, beauty.stock)
+          names(courseval.predict) <- c("waston", "stock")
+          #+END_SRC
+
+        The slope is src_R[:exports results]{round(b1, 4)} and the intercept is
+        src_R[:exports results]{round(b0, 3)}. The sample mean of course evaluation is
+        src_R[:exports results]{round(ave.courseval, 3)}, which coincides with the slope
+        because the sample mean of /Beauty/ is
+        src_R[:exports results]{round(beauty.watson, 4)}.
+
+
+- c. :: The beauty indices for Professors Stock and Watson are
+        src_R[:exports results]{round(beauty.stock, 4)} (one standard deviation)
+        and src_R[:exports results]{round(beauty.watson, 4)} (sample average).
+        Thus, the predicted course evaluations for Professors
+        Stock and Watson are src_R[:exports results]{round(courseval.predict[2], 4)} and
+        src_R[:exports results]{round(courseval.predict[1], 4)}, respectively.
+
+        #+BEGIN_SRC R :results silent :exports code
+          beauty.sd <- sd(teachingdata$beauty)
+          courseval.sd <- sd(teachingdata$course_eval)
+          delta.courseval <- b1 * beauty.sd
+        #+END_SRC
+
+- d. :: The standard deviation of course evaluation is
+        src_R[:exports results]{round(courseval.sd, 4)}, and the standard deviation of
+        beauty is src_R[:exports results]{round(beauty.sd, 4)}. A one-standard-deviation
+        increase in beauty is expected to increase course evaluation
+        by src_R[:exports results]{round(delta.courseval, 4)}, or
+        src_R[:exports results]{round(delta.courseval/courseval.sd, 2)} of standard deviation of course
+        evaluations. The effect is small.
+
+        #+BEGIN_SRC R :results silent :exports code
+          rsq <- summary(teaching.ols)$r.squared
+        #+END_SRC
+
+- e. :: The regression R^2 is src_R[:exports results]{round(rsq, 4)}, so that /Beauty/
+        explains only src_R[:exports results]{round(rsq, 3) * 100} percent of the
+        variance in course evaluations.
 

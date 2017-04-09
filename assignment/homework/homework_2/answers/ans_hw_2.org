@@ -1,0 +1,173 @@
+#+TITLE: Answers for Homework #2
+#+AUTHOR: Zheng Tian
+#+DATE:
+#+OPTIONS: toc:nil H:3 num:1
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \singlespacing
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
+#+LATEX_HEADER: \newcommand{\var}{\mathrm{var}}
+#+LATEX_HEADER: \newcommand{\cov}{\mathrm{cov}}
+#+LATEX_HEADER: \newcommand{\corr}{\mathrm{corr}}
+#+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
+
+* Theoretical Exercises
+
+- 4.2 :: The estimated regression equation is
+         \[ \widehat{Weight} = -99.42 + 3.94 \times Height,\, R^2 =
+         0.81,\, SER = 10.2 \]
+  - a. :: Substituting $Height = (70, 65, 74)$ inches into the
+          equation, the predicted weights are $(176.39, 156.69,
+          192.15)$ pounds, respectively.
+  - b. :: $\widehat{\Delta Weight} = 3.94 \times \Delta Height = 3.94 \times 1.5 =
+          5.91$ inches.
+  - c. :: Let's consider this problem from a general case. Suppose the
+          original estimated regression model is
+          \[ Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_i + \hat{u}_i,\, i
+          = 1, \ldots, n \]
+          Now we have new data with different units such that $x_i =
+          aX_i,\, y_i = bY_i$. It is easy to see that
+          \[ \bar{x} = a
+          \bar{X},\, \bar{y} = b \bar{Y}, \sum_i(x_i - \bar{x}) = a
+          \sum_i (X_i - \bar{X}),\, \text{ and } \sum_i (y_i - \bar{y}) = b
+          \sum_i (Y_i - \bar{Y})
+          \]
+          Let $\tilde{\beta}_0 \text{ and } \tilde{\beta}_1$ be the estimated
+          coefficients and $\tilde{u}_i$ be the residuals in the new
+          regression equation as follows,
+          \[ y_i = \tilde{\beta}_0 + \tilde{\beta}_1 x_i + \tilde{u}_i
+          \]
+          Then, we have
+          \begin{gather*}
+          \tilde{\beta}_1 = \frac{\sum_i(x_i - \bar{x})(y_i -
+          \bar{y})}{\sum_i (x_i - \bar{x})^2}
+          = \frac{ab \sum_i (X_i - \bar{X})(Y_i - \bar{Y})}{a^2 \sum_i (X_i - \bar{X})} = \frac{b}{a} \hat{\beta}_1 \\
+          \tilde{\beta}_0 = \bar{y} - \tilde{\beta}_1 \bar{x} = b \bar{Y} - \frac{b}{a} \hat{\beta}_1 (a \bar{X}) = b \hat{\beta}_0 \\
+          \tilde{u}_i = y_i - \hat{y}_i = b (Y_i - \hat{Y}_i) = b \hat{u}_i \\
+          \tilde{R}^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS} = 1 - \frac{\sum_i \tilde{u}_i^2}{\sum_i (y_i - \bar{y})^2} = 1 - \frac{b^2 \sum_i \hat{u}_i^2}{b^2 \sum_i (Y_i - \bar{Y})^2} = R^2 \\
+          \widetilde{SER} = \sqrt{\frac{1}{n-2} \sum_i \tilde{u}_i^2} = \sqrt{\frac{b^2}{n-2} \sum_i \hat{u}^2_i} = b\,SER
+          \end{gather*}
+          Now let's go back to the specific question. We know that 1
+          inch = 2.54 cm and 1 pound = 0.4536 kg so that $Weight_{new}
+          = 0.4536 \times Weight$ and $Height_{new} = 2.54 \times Height$. Thus,
+          using the results above, we obtain
+          \begin{gather*}
+          \tilde{\beta}_1 = (0.4536/2.54) \times 3.94 = 0.7036 \\
+          \tilde{\beta}_0 = -99.41 \times 0.4536 = -45.0924 \\
+          \tilde{R}^2 = 0.08,\; \widetilde{SER} = 0.4536 \times 10.2 = 4.6267
+          \end{gather*}
+
+- 4.3 :: The estimated regression equation is
+         \[ \widehat{AWE} = 696.7 + 9.6 \times Age,\, R^2 = 0.023,\,
+         SER = 624.1 \]
+  - a. :: The coefficient 9.6 shows the marginal effect of Age on AWE;
+          that is, AWE is expected to increase by 9.6 for each
+          additional year of age. 696.7 is the intercept of the
+          regression line. It determines the overall level of the
+          line.
+  - b. :: SER is in the same units as the dependent variable (Y, or
+          AWE in this example). Thus SER is measured in dollars per
+          week.
+  - c. :: R^2 is unit free.
+  - d. :: Plugging 25 and 45 into the regression equation,
+    + $696.7 + 9.6 \times 25 = 936.7$
+    + $696.7 + 9.6 \times 45 = 1128.7$
+  - e. :: No. The oldest worker in the sample is 65 years old. 99
+          years is far outside the range of the sample data.
+  - f. :: No. The distribution of earning is positively skewed and has
+          kurtosis larger than the normal.
+  - g :: $\bar{Y} = \hat{\beta}_0 + \hat{\beta}_1 \bar{X}$. Thus, the
+         sample mean of /AWE/ is $696.7 + 9.6 \times 41.6 = 1096.06$.
+
+- 4.5 ::
+  - a. :: $u_i$ represents factors other than time that influence the
+          student’s performance on the exam including amount of time
+          studying, aptitude for the material, and so forth. Some
+          students will have studied more than average, other less;
+          some students will have higher than average aptitude for the
+          subject, others lower, and so forth.
+  - b. :: Because of random assignment $u_i$ is independent of
+          $X_i$. Since $u_i$ represents deviations from average
+          $E(u_i)=0$. Because $u$ and $X$ are independent $E(u_i|X_i)
+          = E(u_i)=0$.
+  - c. :: Assumption #2 is satisfied if this year's class is typical
+          of other classes, that is, students in this year's class can
+          be viewed as random draws from the population of students
+          that enroll in the class. Assumption #3 is satisfied because
+          both $X$ and $Y$ are bounded.
+  - d. ::
+    - 70.6 for 95 minutes; 77.8 for 120 minutes; 85.0 for 150 minutes
+    - 2.4 for 10 more minutes.
+
+# - 4.7. :: We know that $\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1
+#   \bar{X}$. Taking expectation on both sides, we get
+#   \begin{equation*}
+#   \begin{split}
+#   E(\hat{\beta}_0 | X) &= E\left((\bar{Y} - \hat{\beta}_1 \bar{X}) | X \right) = E\left[\left((\beta_0 + \beta_1 \bar{X} + \frac{1}{n}\sum_i u_i) - \hat{\beta}_1 \bar{X}\right) | X \right] \\
+#   &= \beta_0 + E\left[(\beta_1 - \hat{\beta}_1)\bar{X} |X \right] + \frac{1}{n}\sum_i E(u_i | X) \\
+#   &= \beta_0 + E\left((\beta_1 - \hat{\beta}_1) | X  \right) \bar{X} \\
+#   &= \beta_0 \\
+#   \text{Thus, } &E(\hat{\beta}_0) = E(E(\hat{\beta}_0) | X) = \beta_0
+#   \end{split}
+#   \end{equation*}
+
+- 4.10 ::
+  - a. :: Assumption #1 is satisfied since whatever value $X$ takes we
+          always have $E(u_i) = 0$. Assumption #2 is satisfied because
+          $(u_i, X_i)$ is i.i.d and $Y_i$ is a function of $X_i$ and
+          $u_i$. $X_i$ is bounded and so has finite fourth moment; the
+          fourth moment is non-zero because $\pr(X_i = 0)$ and
+          $\pr(X_i = 1)$ are both non-zero so that $X_i$ has finite,
+          non-zero kurtosis. Following calculation like those exercise
+          2.13, $u_i$ also has non-zero finite fourth moment.
+
+  - b. :: $\var(X_i) = 0.2 \times (1-0.2) = 0.16 \text{ and } \mu_X =
+          0.2$. Also,
+          \begin{equation*}
+          \begin{split}
+          &\var\left((X_i - \mu_X)u_i\right) = E\left((X_i - \mu_X)u_i\right)^2 = E\left[E\left((X_i - \mu_X)u_i\right)^2|X\right] \\
+          &= E\left[\left((X_i - \mu_X)u_i\right)^2|X_i = 0\right]\cdot\pr(X_i = 0) + E\left[\left((X_i - \mu_X)u_i\right)^2|X_i = 1\right]\cdot\pr(X_i = 1) \\
+          &= E((0-0.2)^2 u_i^2) \times 0.8 + E((1-0.2)^2 u_i^2) \times 0.2 \\
+          &= 0.2^2 \times 1 \times 0.8 + 0.8^2 \times 4 \times 0.2 \\
+          &= 0.544
+          \end{split}
+          \end{equation*}
+          Therefore,
+          \[ \sigma^{2}_{\hat{\beta}_1} = \frac{1}{n}\frac{\var\left(
+          (X_i - \mu_X)u_i\right)}{\left[\var(X_i)\right]^2} =
+          \frac{1}{n}\frac{0.544}{0.16^2} = \frac{1}{n}21.25 \]
+
+- 4.12 ::
+  - a. :: Write
+          \begin{equation*}
+          \begin{split}
+           ESS &= \sum_i (\hat{Y}_i - \bar{Y})^2 = \sum_i (\hat{\beta}_0 + \hat{\beta}_1 X_i - \bar{Y})^2 = \sum_i \left[\hat{\beta}_1(X_i-\bar{X})\right]^2 \\
+           &= \hat{\beta}_1^2 \sum_i (X_i - \bar{X})^2 = \frac{\left[\sum_i (X_i-\bar{X})(Y_i-\bar{Y})\right]^2}{\sum_i (X_i-\bar{X})^2}
+          \end{split}
+          \end{equation*}
+          This implies
+          \begin{equation*}
+           \begin{split}
+            R^2 &= \frac{ESS}{TSS} = \frac{\left[\sum_i (X_i-\bar{X})(Y_i-\bar{Y})\right]^2}{\sum_i (X_i-\bar{X})^2\sum_i (Y_i-\bar{Y})^2} \\
+            &= \left[\frac{\frac{1}{n-1}\sum_i (X_i-\bar{X})(Y_i-\bar{Y})}{\left(\frac{1}{n-1}\sum_i (X_i-\bar{X})^2\right)^{1/2}\left(\frac{1}{n-1}\sum_i (Y_i-\bar{Y})^2\right)^{1/2}}\right]^2 \\
+            &= \left[\frac{s_{XY}}{s_X s_Y} \right]^2 = r^2_{XY}
+           \end{split}
+          \end{equation*}
+
+  - b. :: This follows from part (a) because $r_{XY} = r_{YX}$.
+  - c. :: $r_{XY}\frac{s_Y}{s_X} = \frac{s_{XY}}{s^2_X} =
+          \frac{\frac{1}{n-1}\sum_i(X_i-\bar{X})(Y_i-\bar{Y})}{\frac{1}{n-1}\sum_i(X_i-\bar{X})^2}
+          = \frac{\sum_i(X_i-\bar{X})(Y_i-\bar{Y})}{\sum_i(X_i-\bar{X})^2}=\hat{\beta}_1$
+
+* Empirical Exercise
+#+INCLUDE: emp_ex_4_2.org
+
+
+
+
+
