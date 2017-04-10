@@ -10,6 +10,10 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 
 * Announcement
 
+** [2017-04-10 Mon]
+
+- [[*Homework set #3][Homework set #3]] is assigned, due on *April 17th*.
+
 ** [2017-03-22 Wed]
 
 - [[*Homework set #2][Homework set #2]] is assigned, due on *April 5th*.
@@ -90,4 +94,9 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 ** Homework set #2
 
 - Homework set #2: [[file:assignment/homework/homework_2/homework_2.pdf][homework_2.pdf]]. The data files are included in this
-  zip file, [[file:assignment/homework/homework_2/TeachingRatings.zip][TeachingRatings.zip]]. Answer: [[file:assignment/homework/homework_2/answers/ans_hw_2.pdf][pdf]]. 
+  zip file, [[file:assignment/homework/homework_2/TeachingRatings.zip][TeachingRatings.zip]]. Answer: [[file:assignment/homework/homework_2/answers/ans_hw_2.pdf][pdf]].
+
+** Homework set #3
+
+- Homework set #3: [[file:assignment/homework/homework_3/homework_3.pdf][homework_3.pdf]]. The data file is the same as in
+  Homework set #2.
