@@ -68,7 +68,7 @@ sections on how to interpret the estimated coefficients.
          standard errors for the regression coefficients.
   - a. :: Construct a 95% confidence interval for $\beta_0$.
   - b. :: Test $H_0: \beta_1 = 55 \text{ vs. } H_1: \beta_1 \neq 55$
-          at the 55% level.
+          at the 5% level.
   - c. :: Test $H_0: \beta_1 = 55 \text{ vs. } H_1: \beta_1 > 55$ at
           the 5% level.
           (/Hint/: this problem involves small samples with normally
@@ -83,7 +83,7 @@ sections on how to interpret the estimated coefficients.
           $X=0$ and $\bar{Y}_1$ denote the sample mean for
           observations with $X=1$. Show that $\hat{\beta}_0 =
           \bar{Y}_0,\, \hat{\beta}_0 + \hat{\beta}_1 = \bar{Y}_1,\,
-          \text{ and } \hat{\beta}_1 = \bar{Y}_1 - \hat{Y}_0$.
+          \text{ and } \hat{\beta}_1 = \bar{Y}_1 - \bar{Y}_0$.
 
 \vspace{0.2cm}
 
