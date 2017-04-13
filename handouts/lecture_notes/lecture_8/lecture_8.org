@@ -35,7 +35,9 @@
 
 
 * Introduction
+
 ** Overview
+
 This lecture extends the simple regression model to the multiple
 regression model. Many aspects of multiple regression parallel those
 of regression with a single regressor. The coefficients of the
@@ -47,6 +49,7 @@ omitted variable bias and multicollinearity, to deepen our
 understanding of the OLS estimation.
 
 ** Learning goals
+
 - Be able to set up a multiple regression model with matrix notation.
 - Understand the meaning of holding other things constant.
 - Estimate the multiple regression model with the OLS estimation.
@@ -55,10 +58,13 @@ understanding of the OLS estimation.
   multicollinearity.
 
 ** Readings
+
 - /Introduction to Econometrics/ by Stock and Watson. Read thoroughly
   Chapter 6 and Sections 18.1 and 18.2
 - /Introductory Econometrics: a Modern Approach/ by
   Wooldridge. Chapter 3.
+
+
 * The Multiple Regression Model
 
 ** The problem of a simple linear regression
@@ -542,6 +548,7 @@ It follows that
 \hat{\beta}_0 = \frac{\sum_{i=1}^n X_{1i}^2 \sum_{i=1}^n Y_i - \sum_{i=1}^n X_{1i} \sum_{i=1}^n X_{1i}Y_i}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2} = \bar{Y} - \hat{\beta}_1 \bar{X}_1
 \end{equation*}
 
+
 ** Application to Test Scores and the Student-Teacher Ratio
 Now we can apply the OLS estimation method of multiple regression to
 the application of California school districts. Recall that the
@@ -567,8 +574,11 @@ learners, yielding a new estimated regression model as
   the only regressor, which verifies our concern that we may omit
   important variables in the simple linear regression model.
 
+
 * Measures of Fit in Multiple Regression
+
 ** The Standard errors of the regression (SER)
+
 The standard error
 of regression (SER) estimates the standard deviation of the error term
 $\mathbf{u}$. In multiple regression, the SER is
@@ -576,11 +586,13 @@ $\mathbf{u}$. In multiple regression, the SER is
 \label{eq:ser-m}
 SER = s_{\hat{u}},\; \text{ where } s^2_{\hat{u}} = \frac{1}{n-k-1} \sum_{i=1}^n \hat{u}_i^2 =\frac{\mathbf{\hat{u}}^{\prime} \mathbf{\hat{u}}}{n-k-1} = \frac{SSR}{n-k-1}
 \end{equation}
-In the multiple regression model, $SSR$ needs to be divided by
+In a multiple regression model, $SSR$ is divided by
 $(n-k-1)$ because there are $(k+1)$ coefficients to be estimated using
 $n$ samples.
 
+
 ** The R^{2}
+
 Like in the regression model with single regressor, we can define
 $TSS$, $ESS$, and $SSR$ in the multiple regression model.
 
@@ -588,8 +600,8 @@ $TSS$, $ESS$, and $SSR$ in the multiple regression model.
 - *The explained sum of squares (ESS)*: $ESS = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$
 - *The sum of squared residuals (SSR)*: $SSR = \sum_{i=1}^n \hat{u}_i^2$
 
-In matrix notation, we can write $Y_i - \bar{Y},\; i=1,\ldots,n$ using
-the following vectors.
+Let $y_i$ be the deviation of $Y_i$ from its sample mean, that it,
+$y_i = Y_i - \bar{Y},\; i=1,\ldots,n$. In matrix notation, we have
 \begin{equation*}
 \mathbf{Y} =
 \begin{pmatrix}
@@ -605,7 +617,14 @@ Y_n
 \vdots \\
 1
 \end{pmatrix},\;
-\mathbf{y} = \mathbf{Y} - \bar{Y} \boldsymbol{\iota} =
+\mathbf{y} =
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix}
+=
 \begin{pmatrix}
 Y_1 \\
 Y_2 \\
@@ -619,8 +638,10 @@ Y_n
 \vdots \\
 \bar{Y}
 \end{pmatrix}
+=
+\mathbf{Y} - \bar{Y} \boldsymbol{\iota}
 \end{equation*}
-Therefore, $\mathbf{y}$ represents the deviation from the mean of
+Therefore, $\mathbf{y}$ is the vector of the deviation from the mean of
 $Y_i,\; i=1,\ldots,n$. Similarly, we can define the deviation from the
 mean of $\hat{Y}_i,\, i=1, \ldots, n$ as $\hat{\mathbf{y}} =
 \hat{\mathbf{Y}} - \bar{Y} \boldsymbol{\iota}$. Then we can rewrite
@@ -672,7 +693,9 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
    $\beta_2 = 0$ and the latter is minimized without the constraint
    over $\beta_2$.
 
+
 ** The adjusted R^{2}
+
 The adjusted R^{2} is, or $\bar{R}^2$, is a modified version of
 R^{2} in Equation (\ref{eq:r2-center}). The $\bar{R}^2$ improves R^{2} in the sense that it does not
 necessarily increase when a new regressor is added. The $\bar{R}^2$ is
@@ -700,12 +723,14 @@ necessarily increase when a new regressor is added. The $\bar{R}^2$ is
   amount that his reduction fails to offset the factor $\frac{n-1}{n-k-1}$.
 
 *** The usefulness of the R^{2} and $\bar{R}^2$
+
 - Both $R^2$ and $\bar{R}^2$ are valid when the regression model is
   estimated by the OLS estimators. R^2 computed with estimators other
   than the OLS ones is usually called /pseudo/ R^{2}.
 - Their importance as measures of fit cannot be overstated. We cannot heavily
   reply on R^{2} or $\bar{R}^2$ to judge whether some regressors should
   be included in the model or not.
+
 
 * TODO COMMENT The Frisch-Waugh-Lovell Theorem
 ** The grouped regressors

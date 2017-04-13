@@ -1,4 +1,4 @@
-% Created 2017-04-09 Sun 12:05
+% Created 2017-04-11 Tue 16:57
 % Intended LaTeX compiler: pdflatex
 \documentclass[presentation,10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -56,11 +56,11 @@
 
 
 \section{The Multiple Regression Model}
-\label{sec:org607e8ae}
+\label{sec:org6e63a3b}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
-\begin{frame}[label={sec:org0788112}]{The problem of a simple linear regression}
+\begin{frame}[label={sec:orgd601ec5}]{The problem of a simple linear regression}
 \begin{block}{The simple linear regression model}
 \begin{equation*}
 TestScore = \beta_0 + \beta_1 \times STR + OtherFactors
@@ -84,7 +84,7 @@ ability
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org85a6781}]{Percentage of English learners as an example}
+\begin{frame}[label={sec:org86d5e73}]{Percentage of English learners as an example}
 The percentage of English learners in a school district could be an
 relevant and important determinant of test scores, which is omitted
 in the simple regression model.
@@ -106,7 +106,7 @@ on student-teacher ratio is \alert{overestimated}.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org9b7b6e9}]{Solutions to the problem of ignoring important factors}
+\begin{frame}[label={sec:org8940ab9}]{Solutions to the problem of ignoring important factors}
 We can include these important but ignored variables, like the
 percentage of English learners (\(PctEL\)), in the regression model.  
 
@@ -119,7 +119,7 @@ A regression model with more than one regressors is a multiple
 regression model. 
 \end{frame}
 
-\begin{frame}[label={sec:org9d4f2bb}]{A multiple regression model}
+\begin{frame}[label={sec:orgffd2cdb}]{A multiple regression model}
 The general form of a \alert{multiple regression model} is
 \begin{equation}
 \label{eq:multi-regress-1}
@@ -135,7 +135,7 @@ representing all other factors that are not included in the model.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgba83651}]{The components in a multiple regression model}
+\begin{frame}[label={sec:orge67f546}]{The components in a multiple regression model}
 \begin{itemize}
 \item The population regression line (or population regression
 function)
@@ -157,7 +157,7 @@ regression model.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org0d505e0}]{The interpretation of \(\beta_i\): Holding other things constant}
+\begin{frame}[label={sec:orga14b840}]{The interpretation of \(\beta_i\): Holding other things constant}
 \begin{equation}
 \label{eq:multi-regress-1a}
 Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k + u
@@ -180,7 +180,7 @@ Subtracting \(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2\), we have
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org1f66d81}]{The partial effect}
+\begin{frame}[label={sec:orgebb42e8}]{The partial effect}
 If \(Y\) and \(X_i\) for \(i = 1, \ldots, k\) are continuous and
 differentiable variables, \(\beta_i\) is as simply as the partial
 derivative of \(Y\) with respect to \(X_i\). That is
@@ -192,11 +192,11 @@ the effect of a marginal change in \(X_i\) on \(Y\) holding other \(X\)
 constant.
 \end{frame}
 
-\begin{frame}[label={sec:org1790e3c}]{Look at the data in terms of vectors and matrix}
+\begin{frame}[label={sec:org8778c85}]{Look at the data in terms of vectors and matrix}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.4\textwidth,height=0.5\textheight]{img/data_snapshot.png}
-\caption{\label{fig:org1bf95df}
+\caption{\label{fig:org8b6563b}
 The California data set in Excel}
 \end{figure}
 
@@ -209,7 +209,7 @@ observations.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[shrink,label={sec:orgcd1b71d}]{Define variables in matrix notation}
+\begin{frame}[shrink,label={sec:org8c739a2}]{Define variables in matrix notation}
 \begin{block}{Write all the variables in vector and matrix notation}
 \begin{equation*}
 \underbrace{
@@ -260,7 +260,7 @@ Concise, easy to derive properties; big-picture perspective.
 \end{frame}
 
 
-\begin{frame}[label={sec:org81f751a}]{Two other ways to write the regression model}
+\begin{frame}[label={sec:org1b0f6ad}]{Two other ways to write the regression model}
 \begin{block}{Write \(\mathrm{X}\) in row vectors}
 \begin{itemize}
 \item The i\(^{\text{th}}\) row in \(\mathrm{X}\) is a \((k+1) \times 1\) vector
@@ -285,7 +285,7 @@ Y_i = \mathbi{x}^{\prime}_i \boldsymbol{\beta} + u_i,\; i = 1, \ldots, n
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org91db4c9}]{Two other ways to write the regression model (cont'd)}
+\begin{frame}[label={sec:orgdc768e6}]{Two other ways to write the regression model (cont'd)}
 \begin{block}{Write \(\mathrm{X}\) in vector vectors}
 \begin{itemize}
 \item The i\(^{\text{th}}\) column in \(\mathbf{X}\) is a \(n \times 1\) vector
@@ -315,12 +315,13 @@ re-written as
 \end{block}
 \end{frame}
 
+
 \section{The OLS Estimator in Multiple Regression}
-\label{sec:org5deabde}
+\label{sec:org0426ff4}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
-\begin{frame}[label={sec:orgb139788}]{The minimization problem and the OLS estimator}
+\begin{frame}[label={sec:orgd435edd}]{The minimization problem and the OLS estimator}
 \begin{itemize}
 \item The core idea of the OLS estimator for a multiple regression model
 remains the same as in a simple regression model: 
@@ -346,7 +347,7 @@ of \(\boldsymbol{\beta} = [\beta_0, \beta_1, \ldots,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org99abab5}]{The minimization problem and the OLS estimator (cont'd)}
+\begin{frame}[label={sec:org9218b48}]{The minimization problem and the OLS estimator (cont'd)}
 \begin{itemize}
 \item The sum of the squared residuals is
 \begin{align*}
@@ -364,7 +365,7 @@ S(\mathbf{b}) & = S(b_0, b_1, \ldots, b_k) = \sum_{i=1}^n (Y_i - b_0 - b_1 X_{1i
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgeb313eb}]{The OLS estimator of \(\boldsymbol{\beta}\) as a solution to the minimization problem}
+\begin{frame}[label={sec:orga9e77ca}]{The OLS estimator of \(\boldsymbol{\beta}\) as a solution to the minimization problem}
 \begin{itemize}
 \item Solve the minimization problem: 
 
@@ -385,7 +386,7 @@ obtain the OLS estimator \(\hat{\boldsymbol{\beta}} = (\hat{\beta}_0, \ldots,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org7ac1c5b}]{The OLS estimator in matrix notation}
+\begin{frame}[label={sec:orgc766047}]{The OLS estimator in matrix notation}
 Let \(\boldsymbol{\hat{\beta}}\) denote the OLS estimator. Then the
 expression of \(\boldsymbol{\hat{\beta}}\) is given by
 \begin{equation}
@@ -406,7 +407,7 @@ when \(\mathbf{A}\) is symmetric, then \((\partial \mathbf{x}^{\prime}
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org7031284}]{The proof}
+\begin{frame}[label={sec:org6014bcb}]{The proof}
 \begin{proof}[Proof of Equation (\ref{eq:betahat-mult})]
   \begin{equation*}
   S(\mathbf{b}) = \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}} = \mathbf{Y}^{\prime} \mathbf{Y} - \mathbf{b}^{\prime} \mathbf{X}^{\prime} \mathbf{Y} - \mathbf{Y}^{\prime} \mathbf{Xb} - \mathbf{b}^{\prime} \mathbf{X}^{\prime} \mathbf{Xb}
@@ -429,7 +430,7 @@ Note that Equation (\ref{eq:ols-mult-eqs}) represents a system of
 equations with \(k+1\) equations.
 \end{frame}
 
-\begin{frame}[label={sec:org0e6fdae}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model}
+\begin{frame}[label={sec:org1befa41}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model}
 The simple linear regression model written in matrix notation is
 
 \begin{equation*}
@@ -469,7 +470,7 @@ u_n
 \end{equation*}
 \end{frame}
 
-\begin{frame}[plain,label={sec:orgb46997f}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
+\begin{frame}[plain,label={sec:org1e9a97c}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
 Let's get the components in Equation (\ref{eq:betahat-mult}) step by
 step.
 
@@ -505,7 +506,7 @@ n & \sum_{i=1}^n X_{1i} \\
 \end{block}
 \end{frame}
 
-\begin{frame}[plain,label={sec:org744491d}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
+\begin{frame}[plain,label={sec:org7180f0c}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
 \begin{block}{Step (2): compute \(\left(\mathbf{X}^{\prime}\mathbf{X}\right)^{-1}\)}
 \begin{block}{The inverse of a \(2 \times 2\) matrix}
 \begin{equation*}
@@ -534,7 +535,7 @@ a_{22} & -a_{12} \\
 \end{block}
 \end{frame}
 
-\begin{frame}[plain,label={sec:org0c61e34}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
+\begin{frame}[plain,label={sec:org37f17d3}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
 \begin{block}{Step (3): compute \(\mathbf{X}^{\prime} \mathbf{Y}\)}
 \begin{equation*}
 \mathbf{X}^{\prime} \mathbf{Y} =
@@ -588,7 +589,7 @@ Y_n
 \end{block}
 \end{frame}
 
-\begin{frame}[plain,label={sec:org38f6c41}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
+\begin{frame}[plain,label={sec:orgd3b8445}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
 \begin{block}{The formula of \(\hat{\beta}_1\)}
 \begin{equation*}
 \hat{\beta}_1 = \frac{n \sum_{i=1}^n X_{1i} Y_i - \sum_{i=1}^n X_{1i} \sum_{i=1}^n Y_i}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2} = \frac{\sum_{i=1}^n (X_{1i} - \bar{X}_1)(Y_i - \bar{Y})}{\sum_{i=1}^n (X_{1i} - \bar{X}_1)^2}
@@ -602,7 +603,7 @@ Y_n
 \end{block}
 \end{frame}
 
-\begin{frame}[shrink,plain,label={sec:org5469912}]{Application to Test Scores and the Student-Teacher Ratio}
+\begin{frame}[shrink,plain,label={sec:orgeab9b23}]{Application to Test Scores and the Student-Teacher Ratio}
 \begin{block}{The simple regression compared with the multiple regression}
 The estimated simple linear regression model is
 \[ \widehat{TestScore} = 698.9 - 2.28 \times STR \]
@@ -626,5 +627,187 @@ multiple regression is approximately half as large as when \emph{STR} is
 the only regressor.
 \end{itemize}
 \end{block}
+\end{frame}
+
+\section{{\bfseries\sffamily TODO} Measures of Fit in Multiple Regression}
+\label{sec:org4a90111}
+\setcounter{tocdepth}{1}
+\tableofcontents[currentsection]
+
+\begin{frame}[label={sec:orgbd3d8d8}]{The Standard errors of the regression (SER)}
+\begin{itemize}
+\item The standard error of regression (SER) estimates the standard deviation of the error term
+\(\mathbf{u}\). In multiple regression, the SER is
+\begin{equation}
+\label{eq:ser-m}
+SER = s_{\hat{u}},\, \text{ where } s^2_{\hat{u}} = \frac{\sum_{i=1}^n \hat{u}_i^2}{n-k-1} =\frac{\mathbf{\hat{u}}^{\prime} \mathbf{\hat{u}}}{n-k-1} = \frac{SSR}{n-k-1}
+\end{equation}
+
+\item \(SSR\) is divided by \((n-k-1)\) because there are \(n\) observations and
+\((k+1)\) coefficients to be estimated.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgf7774b4}]{The R\(^{\text{2}}\)}
+\begin{block}{TSS, ESS, and SSR in multiple regression models}
+\begin{description}
+\item[{The total sum of squares (TSS)}] \(TSS = \sum_{i=1}^n (Y_i - \bar{Y})^2\)
+\item[{The explained sum of squares (ESS)}] \(ESS = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2\)
+\item[{The sum of squared residuals (SSR)}] \(SSR = \sum_{i=1}^n \hat{u}_i^2\)
+\end{description}
+\end{block}
+
+\begin{block}{Matrix notation}
+\begin{equation*}
+\mathbf{Y} =
+\begin{pmatrix}
+Y_1 \\
+Y_2 \\
+\vdots \\
+Y_n
+\end{pmatrix},\;
+\boldsymbol{\iota} =
+\begin{pmatrix}
+1 \\
+1 \\
+\vdots \\
+1
+\end{pmatrix},\;
+\mathbf{y} = 
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix}
+ =
+\begin{pmatrix}
+Y_1 \\
+Y_2 \\
+\vdots \\
+Y_n
+\end{pmatrix}
+-
+\begin{pmatrix}
+\bar{Y} \\
+\bar{Y} \\
+\vdots \\
+\bar{Y}
+\end{pmatrix}
+=
+\mathbf{Y} - \bar{Y} \boldsymbol{\iota}
+\end{equation*}
+Therefore, \(\mathbf{y}\) represents \alert{the deviation from the mean} of
+\(Y_i,\; i=1,\ldots,n\). Similarly, we can define the deviation from the
+mean of \(\hat{Y}_i,\, i=1, \ldots, n\) as \(\hat{\mathbf{y}} =
+\hat{\mathbf{Y}} - \bar{Y} \boldsymbol{\iota}\).
+\end{block}
+\end{frame}
+
+
+\begin{frame}[plain,label={sec:org6aefa4e}]{R\(^{\text{2}}\) (cont'd)}
+Then we can rewrite
+\(TSS, ESS,\, \text{ and } SSR\) as
+\[ TSS = \mathbf{y}^{\prime} \mathbf{y},\; ESS =
+\hat{\mathbf{y}}^{\prime} \hat{\mathbf{y}},\; \text{ and } SSR =
+\hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}} \]
+
+In multiple regression, the relationship that
+\[ TSS = ESS + SSR, \text{ or } \mathbf{y}^{\prime} \mathbf{y} =
+\hat{\mathbf{y}}^{\prime} \hat{\mathbf{y}} + \hat{\mathbf{u}}^{\prime}
+\hat{\mathbf{u}}\]
+still holds so that we can define R\(^{\text{2}}\) as
+\begin{equation}
+\label{eq:r2-center}
+R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
+\end{equation}
+\end{frame}
+
+\begin{frame}[label={sec:orge859e84}]{Limitations of R\(^{\text{2}}\)}
+\begin{enumerate}
+\item R\(^{\text{2}}\) is valid only if a regression model is estimated using the OLS
+since otherwise it would not be true that \(TSS = ESS + SSR\).
+\item R\(^{\text{2}}\) that is defined using the deviation from the mean is only valid
+when a constant term is included in regression. Otherwise, use the
+uncentered version of R\(^{\text{2}}\), which is also defined as
+\begin{equation}
+\label{eq:r2-uncenter}
+R^2_u = \frac{EES}{TSS} = 1 - \frac{SSR}{TSS}
+\end{equation}
+where \(TSS = \sum_{i=1}^n Y_i^2 = \mathbf{Y}^{\prime} \mathbf{Y}\),
+\(ESS = \sum_{i=1}^2 \hat{Y}_i^2 = \hat{\mathbf{Y}}^{\prime}
+   \hat{\mathbf{Y}}\), and \(SSR = \sum_{i=1}^n \hat{u}_i^2 =
+   \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}}\), using the uncentered
+variables.  Note that in a regression without a constant term, the
+equality \(TSS = ESS + SSR\) is still true.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:org0ee6979}]{Limitation of R\(^{\text{2}}\) (cont'd)}
+\begin{enumerate}
+\item R\(^{\text{2}}\) increases whenever an additional regressor is included in a
+multiple regression model, unless the estimated coefficient on the
+added regressor is exactly zero. Consider two regression models
+\begin{align}
+\mathbf{Y} &= \beta_0 + \beta_1 \mathbf{X}_1 + \mathbf{u}
+\label{eq:ex-eq-1} \\
+\mathbf{Y} &= \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \mathbf{u} \label{eq:ex-eq-2}
+\end{align}
+Since both models use the same \(\mathbf{Y}\), \(TSS\) must be the
+same. If the OLS estimator \(\hat{\beta}_2\) does not equal 0, then
+\(SSR\) in Equation (\ref{eq:ex-eq-1}) is always larger than that of
+Equation (\ref{eq:ex-eq-2})  since the former \(SSR\) is minimized
+with respect to \(\beta_0, \beta_1\) and with the constraint of
+\(\beta_2 = 0\) and the latter is minimized without the constraint
+over \(\beta_2\).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:org481c840}]{The adjusted R\(^{\text{2}}\)}
+The adjusted R\(^{\text{2}}\) is, or \(\bar{R}^2\), is a modified version of R\(^{\text{2}}\) in
+Equation (\ref{eq:r2-center}). The \(\bar{R}^2\) improves R\(^{\text{2}}\) in the
+sense that it does not necessarily increase when a new regressor is
+added. The \(\bar{R}^2\) is
+
+\begin{equation}
+\label{eq:adj-r2}
+\bar{R}^2 = 1 - \frac{SSR / (n-k-1)}{TSS / (n-1)} = 1 - \frac{n-1}{n-k-1}\frac{SSR}{TSS} = 1 - \frac{s^2_u}{s^2_Y}
+\end{equation}
+
+where \(s^2_u\) is the sample variance of the OLS residuals, which is given
+in Equation (\ref{eq:ser-m}); \(s^2_Y\) is the sample variance of \(Y\).
+\end{frame}
+
+\begin{frame}[label={sec:org1e29749}]{Properties of \(\bar{R}^2\)}
+\begin{itemize}
+\item The adjustment is made by dividing \(SSR\) and \(TSS\) by their
+corresponding degrees of freedom, which is \(n-k-1\) and \(n-1\)
+respectively.
+\item \(s^2_u\) is the sample variance of the OLS residuals, which is given
+in Equation (\ref{eq:ser-m}); \(s^2_Y\) is the sample variance of \(Y\).
+\item The definition of the \(\bar{R}^2\) in Equation (\ref{eq:adj-r2}) is
+valid only when a constant term is included in the regression
+model.
+\item Since \(\frac{n-1}{n-k-1} > 1\), then it is always true that
+the \(\bar{R}^2 < R^2\).
+\item On one hand \(k \uparrow\, \Rightarrow\, \frac{SSR}{TSS} \downarrow\). On
+the other hand, \(k \uparrow\, \Rightarrow \frac{n-1}{n-k-1}
+  \uparrow\). Whether \(\bar{R}^2\) increases or decreases depends on
+which of these effects is stronger.
+\item The \(\bar{R}^2\) can be negative. This happens when the regressors,
+taken together, reduce the sum of squared residuals by such a small
+amount that his reduction fails to offset the factor \(\frac{n-1}{n-k-1}\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orga5e9e6a}]{The usefulness of the R\(^{\text{2}}\) and \(\bar{R}^2\)}
+\begin{itemize}
+\item Both \(R^2\) and \(\bar{R}^2\) are valid when the regression model is
+estimated by the OLS estimators. R\(^{\text{2}}\) computed with estimators other
+than the OLS ones is usually called \emph{pseudo} R\(^{\text{2}}\).
+\item Their importance as measures of fit cannot be overstated. We cannot heavily
+reply on R\(^{\text{2}}\) or \(\bar{R}^2\) to judge whether some regressors should
+be included in the model or not.
+\end{itemize}
 \end{frame}
 \end{document}

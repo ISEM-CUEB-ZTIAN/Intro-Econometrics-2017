@@ -1,4 +1,4 @@
-% Created 2017-04-09 Sun 11:56
+% Created 2017-04-11 Tue 16:47
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -61,9 +61,11 @@
 
 
 \section{Introduction}
-\label{sec:org6ff9d2e}
+\label{sec:org8c47b7f}
+
 \subsection{Overview}
-\label{sec:orgd43f344}
+\label{sec:org887f0bb}
+
 This lecture extends the simple regression model to the multiple
 regression model. Many aspects of multiple regression parallel those
 of regression with a single regressor. The coefficients of the
@@ -75,7 +77,8 @@ omitted variable bias and multicollinearity, to deepen our
 understanding of the OLS estimation.
 
 \subsection{Learning goals}
-\label{sec:org172507c}
+\label{sec:orgce3eebb}
+
 \begin{itemize}
 \item Be able to set up a multiple regression model with matrix notation.
 \item Understand the meaning of holding other things constant.
@@ -86,18 +89,21 @@ multicollinearity.
 \end{itemize}
 
 \subsection{Readings}
-\label{sec:orgd3ddf88}
+\label{sec:orgb5c581a}
+
 \begin{itemize}
 \item \emph{Introduction to Econometrics} by Stock and Watson. Read thoroughly
 Chapter 6 and Sections 18.1 and 18.2
 \item \emph{Introductory Econometrics: a Modern Approach} by
 Wooldridge. Chapter 3.
 \end{itemize}
+
+
 \section{The Multiple Regression Model}
-\label{sec:org5ca6121}
+\label{sec:org097017e}
 
 \subsection{The problem of a simple linear regression}
-\label{sec:orgb418e4a}
+\label{sec:org0c9ae4c}
 
 In the last two lectures, we use a simple linear regression model to
 examine the effect of class sizes on test scores in the California
@@ -108,7 +114,7 @@ TestScore = \beta_0 + \beta_1 \times STR + OtherFactors
 \end{equation*}
 
 \subsubsection*{Is this model adequate to characterize the determination of test scores?}
-\label{sec:org86ad614}
+\label{sec:org8617919}
 
 Obviously, it ignores too many other important factors. Instead, all
 these other factors are lumped into a single term, \emph{OtherFactors},
@@ -124,7 +130,7 @@ ability
 \end{itemize}
 
 \subsubsection*{Percentage of English learners as an example}
-\label{sec:orge5acd07}
+\label{sec:orgd578d1a}
 
 The percentage of English learners in a school district could be an
 relevant and important determinant of test scores, which is omitted
@@ -132,7 +138,7 @@ in the simple regression model.
 
 \begin{itemize}
 \item How can it affect the estimate of the effect of student-teacher ratios on test score?
-\label{sec:org1dc4230}
+\label{sec:org2571557}
 
 \begin{itemize}
 \item The districts with high percentages of English learners tend to have
@@ -152,7 +158,7 @@ last section in this lecture.
 \end{itemize}
 
 \item Solutions to the omitted variable bias
-\label{sec:org51c7df9}
+\label{sec:orgba824aa}
 
 We can include these important but ignored variables, like the
 percentage of English learners (\(PctEL\)), in the regression model.  
@@ -168,7 +174,7 @@ regression model.
 
 
 \subsection{A multiple regression model}
-\label{sec:org49c0b48}
+\label{sec:orgec745c3}
 
 The general form of a \textbf{multiple regression model} is
 \begin{equation}
@@ -202,10 +208,10 @@ multiple regression model with two regressors, 1 and \(X\).
 
 
 \subsection{The interpretation of \(\beta_i\)}
-\label{sec:org1158e84}
+\label{sec:orgb84cfaa}
 
 \subsubsection*{Holding other things constant}
-\label{sec:org2348a02}
+\label{sec:org89f6c52}
 
 We can suppress the subscript \(i\) in Equation (\ref{eq:multi-regress-1})
 so that we re-write it as
@@ -230,7 +236,7 @@ Subtracting \(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2\), we have
 \[ \beta_1 = \frac{\Delta Y}{\Delta X} \text{ holding } X_2 \text{ constant} \]
 
 \subsubsection*{Partial effect}
-\label{sec:orgaede3d1}
+\label{sec:orge715c55}
 
 If \(Y\) and \(X_i\) for \(i = 1, \ldots, k\) are continuous and
 differentiated variables, from Equation (\ref{eq:multi-regress-1a}),
@@ -242,18 +248,18 @@ constant.
 
 
 \subsection{The matrix notation of a multiple regression model}
-\label{sec:org109c902}
+\label{sec:org76a897f}
 
 \subsubsection*{Consider the matrix notation as a way to organize data}
-\label{sec:org963ab6b}
+\label{sec:org8845ff9}
 
 When we save the data set of California school districts in Excel, it
-is saved in a spreadsheet as shown in Figure \ref{fig:orgf76437b}.
+is saved in a spreadsheet as shown in Figure \ref{fig:org4837652}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth,height=0.6\textwidth]{img/data_snapshot.png}
-\caption{\label{fig:orgf76437b}
+\caption{\label{fig:org4837652}
 The California data set in spreadsheet}
 \end{figure}
 
@@ -316,10 +322,10 @@ regression coefficients.
 \end{itemize}
 
 \subsubsection*{Write a multiple regression model with matrix notation}
-\label{sec:org357139c}
+\label{sec:orgc00c563}
 \begin{itemize}
 \item The multiple regression model for one observation
-\label{sec:orgca6f401}
+\label{sec:org88a2b93}
 
 The multiple regression model in Equation (\ref{eq:multi-regress-1})
 for the i\(^{\text{th}}\) observation can be written as
@@ -329,7 +335,7 @@ Y_i = \mathbi{x}^{\prime}_i \boldsymbol{\beta} + u_i,\; i = 1, \ldots, n
 \end{equation}
 
 \item The multiple regression model for all observations
-\label{sec:org40f1f1f}
+\label{sec:org09c3593}
 
 Stacking all \(n\) observations in Equation (\ref{eq:multi-regress-mi})
 yields the multiple regression model in matrix form:
@@ -365,13 +371,13 @@ Thus, Equation (\ref{eq:multi-regress-m}) can be re-written as
 
 
 \section{The OLS Estimator in Multiple Regression}
-\label{sec:orgbd2bf02}
+\label{sec:orgc6288ad}
 
 \subsection{The OLS estimator}
-\label{sec:org54d9287}
+\label{sec:orgee6e9d4}
 
 \subsubsection*{The minimization problem}
-\label{sec:orgef750d7}
+\label{sec:orgb3fa2f9}
 
 The idea of the ordinary least squares estimation for a multiple
 regression model is exactly the same as for a simple regression
@@ -407,7 +413,7 @@ The OLS estimator is the solution to the following minimization problem:
 \end{equation}
 
 \subsubsection*{The OLS estimator of \(\boldsymbol{\beta}\) as a solution to the minimization problem}
-\label{sec:orgacf035e}
+\label{sec:orgf923a29}
 
 The formula for the OLS estimator is obtained by taking the derivative
 of the sum of squared prediction mistakes, \(S(b_0, b_1, \ldots, b_k)\), with respect to each coefficient,
@@ -461,7 +467,7 @@ equations with \(k+1\) equations.
 
 
 \subsection{Example: the OLS estimator of \(\hat{\beta}_1\) in a simple regression model}
-\label{sec:org1876d88}
+\label{sec:orgd7d1a1f}
 
 Let take a simple linear regression model as an example. The simple
 linear regression model written in matrix notation is
@@ -620,8 +626,9 @@ It follows that
 \hat{\beta}_0 = \frac{\sum_{i=1}^n X_{1i}^2 \sum_{i=1}^n Y_i - \sum_{i=1}^n X_{1i} \sum_{i=1}^n X_{1i}Y_i}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2} = \bar{Y} - \hat{\beta}_1 \bar{X}_1
 \end{equation*}
 
+
 \subsection{Application to Test Scores and the Student-Teacher Ratio}
-\label{sec:orgbd9c16a}
+\label{sec:org4ae0971}
 Now we can apply the OLS estimation method of multiple regression to
 the application of California school districts. Recall that the
 estimated simple linear regression model is
@@ -648,10 +655,13 @@ the only regressor, which verifies our concern that we may omit
 important variables in the simple linear regression model.
 \end{itemize}
 
+
 \section{Measures of Fit in Multiple Regression}
-\label{sec:org6b35845}
+\label{sec:orgf9cecf0}
+
 \subsection{The Standard errors of the regression (SER)}
-\label{sec:orgfeeff00}
+\label{sec:org76a1fba}
+
 The standard error
 of regression (SER) estimates the standard deviation of the error term
 \(\mathbf{u}\). In multiple regression, the SER is
@@ -659,12 +669,14 @@ of regression (SER) estimates the standard deviation of the error term
 \label{eq:ser-m}
 SER = s_{\hat{u}},\; \text{ where } s^2_{\hat{u}} = \frac{1}{n-k-1} \sum_{i=1}^n \hat{u}_i^2 =\frac{\mathbf{\hat{u}}^{\prime} \mathbf{\hat{u}}}{n-k-1} = \frac{SSR}{n-k-1}
 \end{equation}
-In the multiple regression model, \(SSR\) needs to be divided by
+In a multiple regression model, \(SSR\) is divided by
 \((n-k-1)\) because there are \((k+1)\) coefficients to be estimated using
 \(n\) samples.
 
+
 \subsection{The R\(^{\text{2}}\)}
-\label{sec:org89142d5}
+\label{sec:org00229ba}
+
 Like in the regression model with single regressor, we can define
 \(TSS\), \(ESS\), and \(SSR\) in the multiple regression model.
 
@@ -674,8 +686,8 @@ Like in the regression model with single regressor, we can define
 \item \textbf{The sum of squared residuals (SSR)}: \(SSR = \sum_{i=1}^n \hat{u}_i^2\)
 \end{itemize}
 
-In matrix notation, we can write \(Y_i - \bar{Y},\; i=1,\ldots,n\) using
-the following vectors.
+Let \(y_i\) be the deviation of \(Y_i\) from its sample mean, that it,
+\(y_i = Y_i - \bar{Y},\; i=1,\ldots,n\). In matrix notation, we have
 \begin{equation*}
 \mathbf{Y} =
 \begin{pmatrix}
@@ -691,7 +703,15 @@ Y_n
 \vdots \\
 1
 \end{pmatrix},\;
-\mathbf{y} = \mathbf{Y} - \bar{Y} \boldsymbol{\iota} =
+\mathbf{y} =
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix}
+=
+\mathbf{Y} - \bar{Y} \boldsymbol{\iota} =
 \begin{pmatrix}
 Y_1 \\
 Y_2 \\
@@ -726,7 +746,7 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 \end{equation}
 
 \subsubsection*{Limitations of R\(^{\text{2}}\)}
-\label{sec:orgce59faa}
+\label{sec:orgc2a1810}
 
 \begin{enumerate}
 \item R\(^{\text{2}}\) is valid only if a regression model is estimated using the OLS
@@ -761,8 +781,10 @@ with respect to \(\beta_0, \beta_1\) and with the constraint of
 over \(\beta_2\).
 \end{enumerate}
 
+
 \subsection{The adjusted R\(^{\text{2}}\)}
-\label{sec:orgb8763cf}
+\label{sec:orgcae45af}
+
 The adjusted R\(^{\text{2}}\) is, or \(\bar{R}^2\), is a modified version of
 R\(^{\text{2}}\) in Equation (\ref{eq:r2-center}). The \(\bar{R}^2\) improves R\(^{\text{2}}\) in the sense that it does not
 necessarily increase when a new regressor is added. The \(\bar{R}^2\) is
@@ -792,7 +814,8 @@ amount that his reduction fails to offset the factor \(\frac{n-1}{n-k-1}\).
 \end{itemize}
 
 \subsubsection*{The usefulness of the R\(^{\text{2}}\) and \(\bar{R}^2\)}
-\label{sec:orgfdf3693}
+\label{sec:org6170da0}
+
 \begin{itemize}
 \item Both \(R^2\) and \(\bar{R}^2\) are valid when the regression model is
 estimated by the OLS estimators. R\^{}2 computed with estimators other
