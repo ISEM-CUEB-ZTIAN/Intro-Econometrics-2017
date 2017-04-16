@@ -48,6 +48,7 @@ regression. However, there are some new concepts, such as the
 omitted variable bias and multicollinearity, to deepen our
 understanding of the OLS estimation.
 
+
 ** Learning goals
 
 - Be able to set up a multiple regression model with matrix notation.
@@ -56,6 +57,7 @@ understanding of the OLS estimation.
 - Understand the Frisch-Waugh-Lovell theorem.
 - Capable of detecting the omitted variable bias and
   multicollinearity.
+
 
 ** Readings
 
@@ -158,7 +160,7 @@ where
 
 ** The interpretation of $\beta_i$
 
-*** Holding other things constant
+***  Holding other things constant
 
 We can suppress the subscript $i$ in Equation (\ref{eq:multi-regress-1})
 so that we re-write it as
@@ -550,6 +552,7 @@ It follows that
 
 
 ** Application to Test Scores and the Student-Teacher Ratio
+
 Now we can apply the OLS estimation method of multiple regression to
 the application of California school districts. Recall that the
 estimated simple linear regression model is
@@ -586,12 +589,13 @@ $\mathbf{u}$. In multiple regression, the SER is
 \label{eq:ser-m}
 SER = s_{\hat{u}},\; \text{ where } s^2_{\hat{u}} = \frac{1}{n-k-1} \sum_{i=1}^n \hat{u}_i^2 =\frac{\mathbf{\hat{u}}^{\prime} \mathbf{\hat{u}}}{n-k-1} = \frac{SSR}{n-k-1}
 \end{equation}
-In a multiple regression model, $SSR$ is divided by
-$(n-k-1)$ because there are $(k+1)$ coefficients to be estimated using
-$n$ samples.
+Here $SSR$ is divided by $(n-k-1)$ because there are $(k+1)$
+coefficients to be estimated using $n$ samples.
 
 
-** The R^{2}
+** $R^2$
+
+*** The definition of $R^2$ in multiple regression models
 
 Like in the regression model with single regressor, we can define
 $TSS$, $ESS$, and $SSR$ in the multiple regression model.
@@ -654,19 +658,20 @@ In multiple regression, the relationship that
 \[ TSS = ESS + SSR, \text{ or, } \mathbf{y}^{\prime} \mathbf{y} =
 \hat{\mathbf{y}}^{\prime} \hat{\mathbf{y}} + \hat{\mathbf{u}}^{\prime}
 \hat{\mathbf{u}}\]
-still holds so that we can define R^{2} as
+still holds so that we can define $R^2$ as
 \begin{equation}
 \label{eq:r2-center}
 R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 \end{equation}
 
-*** Limitations of R^{2}
+*** Limitations of $R^2$
 
-1. R^{2} is valid only if a regression model is estimated using the OLS
+1. $R^2$ is valid only if a regression model is estimated using the OLS
    since otherwise it would not be true that $TSS = ESS + SSR$.
-2. R^{2} that is defined using the deviation from the mean is only valid
-   when a constant term is included in regression. Otherwise, use the
-   uncentered version of R^{2}, which is also defined as
+
+2. $R^2$ defined in the form of the deviation from the mean is only
+   valid when a constant term is included in regression. Otherwise,
+   use the uncentered version of $R^2$, which is also defined as
    \begin{equation}
    \label{eq:r2-uncenter}
    R^2_u = \frac{EES}{TSS} = 1 - \frac{SSR}{TSS}
@@ -677,14 +682,18 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
    \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}}$, using the uncentered
    variables.  Note that in a regression without a constant term, the
    equality $TSS = ESS + SSR$ is still true.
-3. R^{2} increases whenever an additional regressor is included in a
-   multiple regression model, unless the estimated coefficient on the
-   added regressor is exactly zero. Consider two regression models
+
+3. Most importantly, $R^2$ increases whenever an additional regressor
+   is included in a multiple regression model, unless the estimated
+   coefficient on the added regressor is exactly zero. 
+
+   Consider two regression models
    \begin{align}
    \mathbf{Y} &= \beta_0 + \beta_1 \mathbf{X}_1 + \mathbf{u}
    \label{eq:ex-eq-1} \\
    \mathbf{Y} &= \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \mathbf{u} \label{eq:ex-eq-2}
    \end{align}
+   
    Since both models use the same $\mathbf{Y}$, $TSS$ must be the
    same. If the OLS estimator $\hat{\beta}_2$ does not equal 0, then
    $SSR$ in Equation (\ref{eq:ex-eq-1}) is always larger than that of
@@ -694,27 +703,32 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
    over $\beta_2$.
 
 
-** The adjusted R^{2}
+** The adjusted $R^2$
 
-The adjusted R^{2} is, or $\bar{R}^2$, is a modified version of
-R^{2} in Equation (\ref{eq:r2-center}). The $\bar{R}^2$ improves R^{2} in the sense that it does not
-necessarily increase when a new regressor is added. The $\bar{R}^2$ is
+*** The definition of the adjusted $R^2$
+
+The adjusted $R^2$ is, or $\bar{R}^2$, is a modified version of
+$R^2$ in Equation (\ref{eq:r2-center}). $\bar{R}^2$ improves $R^2$ in the sense that it does not
+necessarily increase when a new regressor is added. 
+
+$\bar{R}^2$ is
+defined as
 \begin{equation}
 \label{eq:adj-r2}
 \bar{R}^2 = 1 - \frac{SSR / (n-k-1)}{TSS / (n-1)} = 1 - \frac{n-1}{n-k-1}\frac{SSR}{TSS} = 1 - \frac{s^2_u}{s^2_Y}
 \end{equation}
 
 - The adjustment is made by dividing $SSR$ and $TSS$ by their
-  corresponding degrees of freedom, which is $n-k-1$ and $n-1$
+  corresponding degrees of freedom, which is $n-k-1$ and $n-1$,
   respectively.
 - $s^2_u$ is the sample variance of the OLS residuals, which is given
   in Equation (\ref{eq:ser-m}); $s^2_Y$ is the sample variance of $Y$.
-- The definition of the $\bar{R}^2$ in Equation (\ref{eq:adj-r2}) is
+- The definition of $\bar{R}^2$ in Equation (\ref{eq:adj-r2}) is
   valid only when a constant term is included in the regression
   model.
 - Since $\frac{n-1}{n-k-1} > 1$, then it is always true that
   the $\bar{R}^2 < R^2$.
-- On one hand $k \uparrow\, \Rightarrow\, \frac{SSR}{TSS} \downarrow$. On
+- On one hand, $k \uparrow\, \Rightarrow\, \frac{SSR}{TSS} \downarrow$. On
   the other hand, $k \uparrow\, \Rightarrow \frac{n-1}{n-k-1}
   \uparrow$. Whether $\bar{R}^2$ increases or decreases depends on
   which of these effects is stronger.
@@ -722,54 +736,115 @@ necessarily increase when a new regressor is added. The $\bar{R}^2$ is
   taken together, reduce the sum of squared residuals by such a small
   amount that his reduction fails to offset the factor $\frac{n-1}{n-k-1}$.
 
-*** The usefulness of the R^{2} and $\bar{R}^2$
+*** The usefulness of $R^{2}$ and $\bar{R}^2$
 
 - Both $R^2$ and $\bar{R}^2$ are valid when the regression model is
-  estimated by the OLS estimators. R^2 computed with estimators other
-  than the OLS ones is usually called /pseudo/ R^{2}.
+  estimated by the OLS estimators. $R^2$ or $\bar{R}^2$ computed with the
+  estimators other than the OLS estimators is usually called /pseudo/
+  $R^2$.
+
 - Their importance as measures of fit cannot be overstated. We cannot heavily
-  reply on R^{2} or $\bar{R}^2$ to judge whether some regressors should
+  reply on $R^{2}$ or $\bar{R}^2$ to judge whether some regressors should
   be included in the model or not.
 
 
-* TODO COMMENT The Frisch-Waugh-Lovell Theorem
+* The Frisch-Waugh-Lovell Theorem
+
 ** The grouped regressors
+
 Consider a multiple regression model
-\begin{equation*}
-\mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{u}
-\end{equation*}
-which has $k$ regressors. We can group these $k$ regressors into two
-subset, $\mathbf{X}_1$ with $k_1$ regressors and $\mathbf{X}_2$ with
-$k_2$ regressors, with which we rewrite the multiple regression model
-above as
+\begin{equation}
+\label{eq:fwl-eq}
+Y_i = \underbrace{\beta_0 + \beta_1 X_{1i} +
+\cdots + \beta_{k1} X_{k1,i}}_{\text{k1+1 regressors}} + \underbrace{
+\beta_{k1+1} X_{k1+1,i} + \cdots \beta_k X_k}_{\text{k2 regressors}} + u_i
+\end{equation}
+
+In Equation eqref:eq:fwl-eq, among k regressors, $X_1, \ldots, X_k$,
+we collect $k1$ regressors and an intercept into a group and the rest
+$k2 = k - k1$ regressors into a second group. In matrix notation,
+we write
 \begin{equation}
 \label{eq:mult-reg-2g}
 \mathbf{Y} = \mathbf{X}_1\boldsymbol{\beta}_1 + \mathbf{X}_2 \boldsymbol{\beta}_2 + \mathbf{u}
 \end{equation}
+where $\mathbf{X}_1$ is an $n \times (k1+1)$ matrix composed of the
+intercept and the first $k1+1$ regressors in Equation eqref:eq:fwl-eq,
+and $\mathbf{X}_2$ is an $n \times k2$ matrix composed of the rest
+$k_2$ regressors. $\boldsymbol{\beta}_1 = (\beta_0, \beta_1, \ldots,
+\beta_{k1})^{\prime}$ and $\boldsymbol{\beta}_2 = (\beta_{k1+1},
+\ldots, \beta_k)^{\prime}$. 
 
-** An estimation strategy
-Suppose that we are interested in $\boldsymbol{\beta}_1$ in Equation
-(\ref{eq:mult-reg-2g}). We can perform the following steps to
-estimate $\boldsymbol{\beta}_1$:
-1. Regress each regressor in $\mathbf{X}_1$ on all regressors in $\mathbf{X}_2$,
-   denoting the residuals from this regression as
-   $\widetilde{\mathbf{X}}_1$.
-2. Regress $\mathbf{Y}$ on all regressors in $\mathbf{X}_2$, denoting
+
+** Two estimation strategies
+
+Suppose that we are interested in $\boldsymbol{\beta}_2$ but not much
+in $\boldsymbol{\beta}_1$ in Equation eqref:eq:mult-reg-2g. How can we
+estimate $\boldsymbol{\beta}_2$?
+
+*** The first strategy: the standard OLS estimation
+
+We can obtain the OLS estimation of $\boldsymbol{\beta}_2$ with
+Equation eqref:eq:betahat-mult, i.e., $\hat{\boldsymbol{\beta}} =
+(\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime}
+\mathbf{Y}$. $\hat{\boldsymbol{\beta}}_2$ is a vector consisting of
+the last $k2$ elements in $\hat{\boldsymbol{\beta}}$. 
+
+In matrix notation, we can get $\hat{\boldsymbol{\beta}}_2$ from the
+following equation
+\begin{equation*}
+\begin{pmatrix}
+\hat{\boldsymbol{\beta}}_1 \\
+\hat{\boldsymbol{\beta}}_2 
+\end{pmatrix} =
+\begin{pmatrix}
+\mathbf{X}_1^{\prime} \mathbf{X}_1 & \mathbf{X}_1^{\prime} \mathbf{X}_2 \\
+\mathbf{X}_2^{\prime} \mathbf{X}_1 & \mathbf{X}_2^{\prime} \mathbf{X}_2
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+\mathbf{X}_1^{\prime} \mathbf{Y} \\
+\mathbf{X}_2^{\prime} \mathbf{Y}
+\end{pmatrix}
+\end{equation*}
+
+*** The second strategy: the step OLS estimation
+
+Alternatively, we can perform the following steps to estimate
+$\boldsymbol{\beta}_2$:
+1. Regress each regressor in $\mathbf{X}_2$ on all regressors in
+   $\mathbf{X}_1$, including the intercept, and get the residuals from
+   this regression, denoted as $\widetilde{\mathbf{X}}_2$.
+
+   That is, for each regressor $\mathbf{X}_i$ in $\mathbf{X}_2$,
+   $i=k1+1, \ldots, k$, we estimate a multiple regression, 
+   \[
+   \mathbf{X}_i = \gamma_0 + \gamma_1 \mathbf{X}_1 + \cdots +
+   \gamma_{k1} \mathbf{X}_{k1} + v \] 
+   The residuals from this regression is 
+   \[ \widetilde{\mathbf{X}}_i = X_i - \hat{\gamma}_0 -
+   \hat{\gamma}_1 \mathbf{X}_1 - \cdots - \hat{\gamma}_{k1}
+   \mathbf{X}_{k1} \] 
+   As such, we can get an $n \times k2$ matrix
+   composed of all the residuals $\widetilde{\mathbf{X}}_2 =
+   (\widetilde{\mathbf{X}}_{k1+1} \cdots \widetilde{\mathbf{X}}_k)$.
+
+2. Regress $\mathbf{Y}$ on all regressors in $\mathbf{X}_1$, denoting
    the residuals from this regression as $\widetilde{\mathbf{Y}}$.
-3. Regress $\widetilde{\mathbf{Y}}$ on $\widetilde{\mathbf{X}}_1$, and
-   obtain the estimates of $\boldsymbol{\beta}_1$ as
-   $(\widetilde{\mathbf{X}}_1^{\prime} \widetilde{\mathbf{X}}_1)^{-1}
-   \widetilde{\mathbf{X}}_1^{\prime} \widetilde{\mathbf{Y}}$.
+
+3. Regress $\widetilde{\mathbf{Y}}$ on $\widetilde{\mathbf{X}}_2$, and
+   obtain the estimates of $\boldsymbol{\beta}_2$ as
+   $\boldsymbol{\beta}_2=(\widetilde{\mathbf{X}}_2^{\prime} \widetilde{\mathbf{X}}_2)^{-1}
+   \widetilde{\mathbf{X}}_2^{\prime} \widetilde{\mathbf{Y}}$.
+
 
 ** The Frisch-Waugh-Lovell Theorem
+
 The Frisch-Waugh-Lovell (FWL) Theorem states that
-1) the OLS estimates of
-  $\boldsymbol{\beta}_1$ using the steps above and the OLS estimates of
-  $\boldsymbol{\beta}_1$ computed directly from Equation
-  (\ref{eq:mult-reg-2g}) are numerically identical.
+1) the OLS estimates of $\boldsymbol{\beta}_2$ using the second strategy
+   and that from the first strategy are numerically identical.
 2) the residuals from the regression of $\widetilde{\mathbf{Y}}$ on
-  $\widetilde{\mathbf{X}}_1$ and the residuals from Equation
-  (\ref{eq:mult-reg-2g}) are numerically identical.
+   $\widetilde{\mathbf{X}}_2$ and the residuals from Equation
+   (\ref{eq:mult-reg-2g}) are numerically identical.
 
 The proof of the FWL theorem is beyond the scope of this
 proof. Interested students may refer to Exercise 18.7.
@@ -777,14 +852,17 @@ Understanding the meaning of this theorem is much more important than
 understanding the proof.
 
 The FWL theorem provides a mathematical statement of how the multiple
-regression coefficient $\hat{\boldsymbol{\beta}}_1$ estimates the
-effect on $\mathbf{Y}$ of $\mathbf{X}_1$, controlling for other
+regression coefficients in $\hat{\boldsymbol{\beta}}_2$ capture the
+effects of $\mathbf{X}_2$ on $\mathbf{Y}$, controlling for other
 $\mathbf{X}$.
 
-- Step 1 purges the effects of other X's on X_1
-- Step 2 purges the effects of other X's on Y
-- Step 3 estimates the effect of X_1 on Y using what is left over
-  after removing the effect of other X's.
+- Step 1 purges the effects of the regressors in $\mathbf{X}_1$ on the
+  regressors in $\mathbf{X}_2$
+- Step 2 purges the effects of the regressors in $\mathbf{X}_1$ on
+  $\mathbf{Y}$. 
+- Step 3 estimates the effect of the regressors in $\mathbf{X}_2$ on
+  $\mathbf{Y}$ using the parts in $\mathbf{X}_2$ and
+  $\mathbf{Y}$ that have excluded the effects of $\mathbf{X}_1$. 
 
 ** An example of the FWL theorem
 Consider a regression model with single regressor
@@ -792,35 +870,40 @@ Consider a regression model with single regressor
 \beta_1 X_i + u_i,\; i=1, \ldots, n
 \]
 
-Following the estimation strategy in the FWL theorem, we can carry out the following regressions,
+Following the estimation strategy in the FWL theorem, we can carry out
+the following regressions,
 1. Regress $Y_i$ on 1. That is, estimate the model
    \[ Y_i = \alpha + e_i \]
    Then, the OLS estimator of $\alpha$ is
    $\bar{Y}$ and the residuals is $y_i = Y_i - \bar{Y}$
-2. Similarly, regress $X_{1i}$ on 1. Then
-   the residuals from these two regressions are $x_{1i} = X_{1i} -
-   \bar{X}_1$.
-3. Regress $y_i$ on $x_{1i}$ without intercept. That is,
+2. Similarly, regress $X_{i}$ on 1. Then
+   the residuals from this regression is $x_{i} = X_{i} -
+   \bar{X}$.
+3. Regress $y_i$ on $x_{i}$ without intercept. That is,
    estimate the model
-   \[ y_i = \beta_1 x_{1i} + v_i \]
-Then the OLS estimate of $\beta_1$ in the reduced model is the same as that in the original model.
+   \[ y_i = \beta_1 x_{i} + v_i \]
+4. We can obtain $\hat{\beta_1}$ directly by applying the formula in
+   Equation (\ref{eq:betahat-mult}). That is 
+   \[ \hat{\beta}_1 = (\mathbf{x}_1^{\prime} \mathbf{x}_1)^{-1}
+   \mathbf{x}_1^{\prime} \mathbf{y} = \frac{\sum_i x_{1i} y_i}{\sum_i
+   x_{1i}^2} = \frac{\sum_i (X_i-\bar{X})(Y_i-\bar{Y})}{\sum_i(X_i-\bar{X})^2} \] 
+   which is exactly the same as the OLS estimator of $\beta_1$ in $Y_i
+   = \beta_0 + \beta_1 X_i + u_i$. 
 
-We can obtain $\hat{\beta_1}$ directly by applyin the formula in Equation (\ref{eq:betahat-mult}). That is
-\[ \hat{\beta}_1 = (\mathbf{x}_1^{\prime} \mathbf{x}_1)^{-1} \mathbf{x}_1^{\prime} \mathbf{y} = \frac{\sum_i x_{1i} y_i}{\sum_i x_{1i}^2} \]
 
-* TODO COMMENT The Least Squares Assumptions in Multiple Regression
-** The least squares assumptions
+* The Least Squares Assumptions in Multiple Regression
+
 We introduce four least squares assumptions for a multiple regression
-model. The first three assumptions directly follows those in the
-simple regression model with minor modification to allow for multiple
-regressors. The fourth assumption is new.
+model. The first three assumptions are the same as those in the
+simple regression model with just minor modifications to suit multiple
+regressors. The fourth assumption is a new one. 
 
 - Assumption #1 :: $E(u_i | \mathbi{x}_i) = 0$. The conditional mean
                    of $u_i$ given $X_{1i}, X_{2i}, \ldots, X_{ki}$ has
                    mean of zero. This is the key assumption to assure
                    that the OLS estimators are unbiased.
 
-- Assumption #2 :: $(Y_i, \mathbi{x}_i^{\prime})\, i=1, \ldots, n$ are
+- Assumption #2 :: $(Y_i, \mathbi{x}_i^{\prime}),\; i=1, \ldots, n$, are
                    i.i.d. This assumption holds automatically if the
                    data are collected by simple random sampling.
 
@@ -829,10 +912,10 @@ regressors. The fourth assumption is new.
                    < \infty$. That is, the dependent variables and
                    regressors have finite kurtosis.
 - Assumption #4 :: No *perfect multicollinearity*. The regressors are
-                   said to exhibit perfect multicollinearity (or to
-                   be perfectly multicollinear) if one of the
-                   regressor is a perfect linear function of the other
-                   regressors.
+                   said to exhibit perfect multicollinearity if one of
+                   the regressor is a perfect linear function of the
+                   other regressors.
+
 
 * TODO COMMENT The Statistical Properties of the OLS Estimators in Multiple Regression
 ** Unbiasedness and consistency
@@ -920,6 +1003,31 @@ The Gauss-Markov conditions for multiple regression are
    \mathbf{X}) = \sigma^2_u \mathbf{I}_n$ (homoskedasticity),
 3. $\mathbf{X}$ has full column rank (no perfect multicollinearity).
 
+*** The Gauss-Markov Theorem
+#+BEGIN_QUOTE
+If the Gauss-Markov conditions hold in the multiple regression model,
+then the OLS estimator $\hat{\boldsymbol{\beta}}$ is more efficient
+than any other linear unbiased estimator $\tilde{\boldsymbol{\beta}}$
+in the sense that $\var(\tilde{\boldsymbol{\beta}}) -
+\var(\hat{\boldsymbol{\beta}})$ is a positive semidefinite
+matrix. That is, the OLS estimator is BLUE.
+#+END_QUOTE
+
+That $\var(\tilde{\boldsymbol{\beta}}) -
+\var(\hat{\boldsymbol{\beta}})$ is a positive semidefinite matrix
+means that for any nonzero $(k+1) \times 1$ vector $\mathbf{c}$,
+#+BEGIN_LaTeX
+\[ \mathbf{c}^{\prime}\left(\var(\tilde{\boldsymbol{\beta}}) -
+\var(\hat{\boldsymbol{\beta}})\right) \mathbf{c} \geq 0 \]
+#+END_LaTeX
+or we can simply write as
+#+BEGIN_LaTeX
+\[ \var(\tilde{\boldsymbol{\beta}}) \geq
+\var(\hat{\boldsymbol{\beta}})  \]
+#+END_LaTeX
+The equality holds only when $\tilde{\boldsymbol{\beta}} =
+\hat{\boldsymbol{\beta}}$.[fn:2]
+
 *** Understanding the Gauss-Markov conditions
 
 Like in the regression model with single regressor, the least
@@ -984,32 +1092,6 @@ as
   = \sigma^2_u \mathbf{I}_n
   \end{equation*}
   #+END_LaTeX
-
-*** The Gauss-Markov Theorem
-#+BEGIN_QUOTE
-If the Gauss-Markov conditions hold in the multiple regression model,
-then the OLS estimator $\hat{\boldsymbol{\beta}}$ is more efficient
-than any other linear unbiased estimator $\tilde{\boldsymbol{\beta}}$
-in the sense that $\var(\tilde{\boldsymbol{\beta}}) -
-\var(\hat{\boldsymbol{\beta}})$ is a positive semidefinite
-matrix. That is, the OLS estimator is BLUE.
-#+END_QUOTE
-
-That $\var(\tilde{\boldsymbol{\beta}}) -
-\var(\hat{\boldsymbol{\beta}})$ is a positive semidefinite matrix
-means that for any nonzero $(k+1) \times 1$ vector $\mathbf{c}$,
-#+BEGIN_LaTeX
-\[ \mathbf{c}^{\prime}\left(\var(\tilde{\boldsymbol{\beta}}) -
-\var(\hat{\boldsymbol{\beta}})\right) \mathbf{c} \geq 0 \]
-#+END_LaTeX
-or we can simply write as
-#+BEGIN_LaTeX
-\[ \var(\tilde{\boldsymbol{\beta}}) \geq
-\var(\hat{\boldsymbol{\beta}})  \]
-#+END_LaTeX
-The equality holds only when $\tilde{\boldsymbol{\beta}} =
-\hat{\boldsymbol{\beta}}$.[fn:: The complete proof of the Gauss-Markov
-theorem in multiple regression is in Appendix 18.5.]
 
 *** Linear conditionally unbiased estimators
 Any linear estimator of $\boldsymbol{\beta}$ can be written as
@@ -1519,6 +1601,9 @@ with the homoskedasticity-only covariance matrix as
   without any redundant variables included.]
 
 * Footnotes
+
+[fn:2] The complete proof of the Gauss-Markov
+theorem in multiple regression is in Appendix 18.5.
 
 [fn:1] $\boldsymbol{\iota}$ has the following properties:
 (1) $\boldsymbol{\iota}^{\prime} \mathbf{x} = \sum_{i=1}^n x_i$ for an

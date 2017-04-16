@@ -10,9 +10,17 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 
 * Announcement
 
+** [2017-04-16 Sun]
+
+We will have a midterm exam on April 24th, Monday. The test will cover
+all contents we have learned through lecture 1 to 8. A cheat sheet is
+allowed to bring in the exam. The following is a sample midterm test
+to help you prepare the midterm, [[file:assignment/midterm/A%20Sample%20Mid.pdf][a sample midterm]]. 
+
 ** [2017-04-10 Mon]
 
 - [[*Homework set #3][Homework set #3]] is assigned, due on *April 17th*.
+
 
 ** [2017-03-22 Wed]
 
