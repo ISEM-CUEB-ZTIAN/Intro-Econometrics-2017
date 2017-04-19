@@ -1,0 +1,167 @@
+% Created 2017-04-19 Wed 09:22
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{setspace}
+\singlespacing
+\usepackage{parskip}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\newcommand{\corr}{\mathrm{corr}}
+\newcommand{\pr}{\mathrm{Pr}}
+\setcounter{secnumdepth}{0}
+\date{Due on May 3rd, 2017}
+\title{Homework Set 4}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Homework Set 4},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+All questions are from the end-of-chapter exercises. The question
+numbers refer to those in the book. I highly recommend you reading the
+textbook and lecture notes before completing the homework
+questions. When reading the textbook, please pay attention to the
+sections on how to interpret the estimated coefficients.
+
+\section*{Exercises}
+\label{sec:orgc818fa3}
+\begin{description}
+\item[{6.5}] Data were collected from a random sample of 220 home sales
+from a community in 2003. Let \emph{Price} denote the selling
+price (in \$1000), \emph{BDR} denote the number of bedrooms, \emph{Bath}
+denote the number of bathrooms, \emph{Hsize} denote the size of
+the house (in square feet), \emph{Lsize} denote the lot size (in
+square feet), \emph{Age} denote the age of the house (in years),
+and \emph{Poor} denote a binary variable that is equal to 1 if the
+condition of the house is reported as "poor". An estimated
+regression yields
+\begin{equation*}
+\begin{split}
+\widehat{Price} =& 119.2 + 0.485 BDR + 23.4 Bath + 0.156
+Hsize + 0.002 Lsize \\
+&+ 0.090 Age - 48.8 Poor,\, \bar{R}^2 = 0.72,\,
+SER = 41.5
+\end{split}
+\end{equation*}
+\begin{description}
+\item[{a.}] Suppose that a home owner converts part of an existing family
+room in the house into a new bath room. What is the expected
+increase in the value of the house?
+\item[{b.}] Suppose that a homeowner adds a new bathroom to her house,
+which increases the size of the house by 100 square
+feet. What is the expected increase in the value of the house?
+\item[{c.}] What is the loss in value if a homeowner lets his house run
+down so that its condition becomes "poor"?
+\item[{d.}] Compute the \(R^2\) for the regression.
+\end{description}
+
+\item[{6.6}] A researcher plans to study the causal effect of police on
+crime using data from a random sample of U.S. counties. He
+plans to regress the county's crime rate on the (per capita)
+size of the county's police force.
+\begin{description}
+\item[{a.}] Explain why this regression is likely to suffer from omitted
+variable bias. Which variables would you add to the
+regression to control for important omitted variables?
+\item[{b.}] Use your answer to (a) and the expression for omitted
+variable bias given in Equation (6.1) to determine whether
+the regression will likely over- or underestimate the effect
+of police on the crime rate. (That is, do you think that
+\(\hat{\beta}_1 > \beta_1\) or \(\hat{\beta}_1 < \beta_1\)?)
+\end{description}
+
+\item[{6.10}] \((Y_i, X_{1i}, X_{2i})\) satisfy the assumptions in Key
+Concept 6.4; in addition, \(\var(u_i | X_{1i}, X_{2i}) = 4\)
+and \(\var(X_{1i}) = 6\). A random sample of size \(n=400\) is
+drawn from the population.
+\begin{description}
+\item[{a.}] Assume that \(X_1\) and \(X_2\) are uncorrelated. Compute the
+variance of \(\hat{\beta}_1\). (\emph{Hint}: Look at Equation
+(6.17) in the Appendix 6.2)
+\item[{b.}] Assume that \(\corr(X_1, X_2) = 0.5\). Compute the variance of
+\(\hat{\beta}_1\).
+\item[{c.}] Comment on the following statements: "When \(X_1\) and \(X_2\)
+are correlated, the variance of \(\hat{\beta}_1\) is larger
+than it would be if \(X_1\) and \(X_2\) were uncorrelated. Thus
+if you are interested in \(\beta_1\), it is best to leave
+\(X_2\) out of the
+regression if it is correlated with \(X_1\)."
+\end{description}
+
+\item[{6.11}] (Require calculus) Consider the regression model
+\[ Y_i = \beta_1 X_{1i} + \beta_2 X_{2i} + u_i \]
+for \(i=1,\ldots,n\). (Notice that there is no constant term
+in the regression.)
+\begin{description}
+\item[{a.}] Specify the least squares function that is minimized by OLS.
+\item[{b.}] Compute the partial derivatives of the objective function
+with respect to \(b_1\) and \(b_2\).
+\item[{c.}] Suppose \(\sum_{i=1}^n X_{1i}X_{2i} = 0\). Show that
+\(\hat{\beta}_1 = \sum_{i=1}^n X_{1i}Y_i/\sum_{i=1}^n
+          X_{1i}^2\).
+\item[{d.}] Suppose \(\sum_{i=1}^n X_{1i}X_{2i} \neq 0\). Derive an
+expression for \(\hat{\beta}_1\) as a function of the data
+\((Y_i, X_{1i}, X_{2i}),\, i=1,\ldots, n\).
+\item[{e.}] Suppose that the model includes an intercept:
+\(Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} +
+          u_i\). Show that the least squares estimators satisfy
+\(\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X}_1 -
+          \hat{\beta}_2 \bar{X}_2\).
+\item[{f.}] As in (e), suppose that the model contains an
+intercept. Also suppose that \(\sum_{i=1}^n (X_{1i} -
+          \bar{X}_1)(X_{2i} - \bar{X}_2) = 0\). Show that
+\(\hat{\beta}_1 = \sum_{i=1}^n (X_{1i} - \bar{X}_1)(Y_i -
+          \bar{Y})/\sum_{i=1}^n (X_{1i} - \bar{X}_1)^2\). How does this
+compare to the OLS estimator of \(\beta_1\) from the
+regression that omit \(X_2\)?
+\end{description}
+\end{description}
+
+\section*{Empirical Exercises}
+\label{sec:orgfb1df83}
+\begin{description}
+\item[{E6.1}] Using the data set \textbf{TeachingRatings} described in Empirical
+Exercise 4.2, carry out the following exercise.
+\begin{description}
+\item[{a.}] Run a regression of \texttt{Course\_Eval} on \texttt{Beauty}. What is the
+estimated slope?
+\item[{b.}] Run a regression of \texttt{Course\_Eval} on \texttt{Beauty}, including
+some additional variables to control for the type of course
+and professor characteristics. In particular, include as
+additional regressors \texttt{Intro}, \texttt{OneCredit}, \texttt{Female},
+\texttt{Minority}, and \texttt{NNEnglish}. What is the estimated effect of
+\texttt{Beauty} on \texttt{Course\_Eval}? Does the regression in (a) suffer
+from important omitted variable bias?
+\item[{c.}] Estimate the coefficient on \texttt{Beauty} for the multiple
+regression model in (b) using the three-step process in
+Appendix 6.3 (the Frisch-Waugh theorem). Verify that the
+three-step-process yields the same estimated coefficient for
+\texttt{Beauty} as that obtained in (b).
+\item[{d.}] Professor Smith is a black male with average beauty and is a
+native English speaker. He teaches a three-credit
+upper-division course. Predict Professor Smith's course
+evaluation.
+\end{description}
+\end{description}
+\end{document}

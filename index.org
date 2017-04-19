@@ -9,6 +9,8 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 2016-2017 academic year.
 
 * Announcement
+** [2017-04-19 Wed]
+[[*Homework set #4][Homework set #4]] is assigned, which is due on May 3rd. 
 
 ** [2017-04-16 Sun]
 
@@ -16,6 +18,7 @@ We will have a midterm exam on April 24th, Monday. The test will cover
 all contents we have learned through lecture 1 to 8. A cheat sheet is
 allowed to bring in the exam. The following is a sample midterm test
 to help you prepare the midterm, [[file:assignment/midterm/A%20Sample%20Mid.pdf][a sample midterm]].
+
 
 ** [2017-04-10 Mon]
 
@@ -112,3 +115,6 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - Homework set #3: [[file:assignment/homework/homework_3/homework_3.pdf][homework_3.pdf]]. The data file is the same as in
   Homework set #2.
 - Answers to homework 3 ([[file:assignment/homework/homework_3/answers.zip][zip]])
+
+** Homework set #4
+- Homework set #4: [[file:assignment/homework/homework_4/homework_4.pdf][pdf]]. 
