@@ -15,7 +15,7 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 We will have a midterm exam on April 24th, Monday. The test will cover
 all contents we have learned through lecture 1 to 8. A cheat sheet is
 allowed to bring in the exam. The following is a sample midterm test
-to help you prepare the midterm, [[file:assignment/midterm/A%20Sample%20Mid.pdf][a sample midterm]]. 
+to help you prepare the midterm, [[file:assignment/midterm/A%20Sample%20Mid.pdf][a sample midterm]].
 
 ** [2017-04-10 Mon]
 
@@ -89,8 +89,9 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - The R replication package ([[file:handouts/lecture_notes/lecture_7/replication/replicate_ch5.zip][zip]])
 
 ** Lecture 8: Linear Regression with Multiple Regressors
-- Lecture notes ([[file:handouts/lecture_notes/lecture_8/lecture_8.pdf][pdf]] not completed)
-- Slides ([[file:handouts/lecture_notes/lecture_8/slides_lecture_8.pdf][beamer]] not completed)
+- Lecture notes ([[file:handouts/lecture_notes/lecture_8/lecture_8.pdf][pdf]])
+- Slides ([[file:handouts/lecture_notes/lecture_8/slides_lecture_8.pdf][beamer]])
+- R document ([[file:handouts/lecture_notes/lecture_8/replication/replicate_ch6.pdf][pdf]] and [[file:handouts/lecture_notes/lecture_8/replication.zip][zip]])
 
 
 * Homework

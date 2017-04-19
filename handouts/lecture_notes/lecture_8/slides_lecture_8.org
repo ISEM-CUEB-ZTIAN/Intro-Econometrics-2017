@@ -16,8 +16,8 @@
 #+LATEX_HEADER: \newtheorem{mydef}{Definition}
 #+LATEX_HEADER: \newtheorem{mythm}{Theorem}
 #+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
-#+LATEX_HEADER: \newcommand{\var}{\mathrm{var}}
-#+LATEX_HEADER: \newcommand{\cov}{\mathrm{cov}}
+#+LATEX_HEADER: \newcommand{\var}{\mathrm{Var}}
+#+LATEX_HEADER: \newcommand{\cov}{\mathrm{Cov}}
 #+LATEX_HEADER: \newcommand{\corr}{\mathrm{corr}}
 #+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
 #+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
@@ -988,422 +988,156 @@ perfect multicollinearity if one of the regressor is a perfect linear
 function of the other regressors.
 
 
-* TODO COMMENT The Statistical Properties of the OLS Estimators in Multiple Regression :B_quotation:
+* The Statistical Properties of the OLS Estimators in Multiple Regression
 :PROPERTIES:
 :BEAMER_env: quotation
 :END:
 #+TOC: headlines [currentsection]
-** Unbiasedness and consistency \\ \small Unbiasedness
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-*** The definition of unbiasedness
-The OLS estimators $\hat{\boldsymbol{\beta}}$ is unbiased if
-$E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}$.
 
-*** The proof
-To show the unbiasedness, we can rewrite $\hat{\boldsymbol{\beta}}$ as
-follows,
-#+BEGIN_LaTeX
-\begin{equation}
-\label{eq:bhat-m-a}
-\hat{\boldsymbol{\beta}} = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} \mathbf{Y}
-= \left(\mathbf{X}^{\prime} \mathbf{X} \right)^{-1} \mathbf{X}^{\prime} (\mathbf{X} \boldsymbol{\beta} + \mathbf{u})
-= \boldsymbol{\beta} + \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} \mathbf{u}
-\end{equation}
-#+END_LaTeX
-Thus, the conditional expectation of $\hat{\boldsymbol{\beta}}$ is
-#+BEGIN_LaTeX
-\begin{equation}
-\label{eq:bhat-unbias}
-E(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \boldsymbol{\beta} + \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} E(\mathbf{u} | \mathbf{X}) = \boldsymbol{\beta}
-\end{equation}
-#+END_LaTeX
-in which $E(\mathbf{u} | \mathbf{X}) = 0$ from the first least squares
-assumption.
+** Unbiasedness and consistency
 
-\vspace{0.2cm}
-Using the law of iterated expectation, we have
-#+BEGIN_LaTeX
-\[ E(\hat{\boldsymbol{\beta}}) = E(E(\hat{\boldsymbol{\beta}} |
-\mathbf{X})) = E(\boldsymbol{\beta}) = \boldsymbol{\beta} \]
-#+END_LaTeX
-Therefore, $\hat{\boldsymbol{\beta}}$ is an unbiased estimator of
-$\boldsymbol{\beta}$.
+When all the least squares assumptions are true, especially, $E(u_i |
+\mathbi{x}_i) = 0$, we can prove 
 
-** Unbiasedness and consistency \\ \small Consistency
-*** Definition of consistency
-The OLS estimator $\hat{\boldsymbol{\beta}}$ is consistent if as $n
-\rightarrow \infty$, $\hat{\boldsymbol{\beta}}$ will converge to
-$\boldsymbol{\beta}$ in probability, that is, $\plim_{n \rightarrow
-\infty} \hat{\boldsymbol{\beta}} = \boldsymbol{\beta}$.
+- $\hat{\boldsymbol{\beta}}$ is unbiased, that is,
+  $E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}$. 
 
-*** A scratch of the proof
-From Equation (\ref{eq:bhat-m-a}), we can have
-\begin{equation*}
-\plim_{n \rightarrow \infty} \hat{\boldsymbol{\beta}} = \boldsymbol{\beta} + \plim_{n \rightarrow \infty} \left(\frac{\mathbf{X}^{\prime} \mathbf{X}}{n} \right)^{-1} \plim_{n \rightarrow \infty}\left( \frac{\mathbf{X}^{\prime} \mathbf{u}}{n} \right)
-\end{equation*}
-Let us first make an assumption, which is usually true, that
-\begin{equation}
-\label{eq:plim-bhat-m}
- \plim_{n \rightarrow \infty} \frac{1}{n} \mathbf{X}^{\prime}
-\mathbf{X} = \underset{(k+1) \times (k+1)}{\mathbf{Q_X}}
-\end{equation}
-where $\mathbf{Q_X}$ is a nonstochastic matrix with full rank.
+- $\hat{\boldsymbol{\beta}}$ is consistent, that is, as $n \rightarrow
+  \infty$, $\hat{\boldsymbol{\beta}} \rarrowd{p} \boldsymbol{\beta}$. 
 
-** Unbiasedness and consistency \\ \small Consistency (cont'd)
-*** A scratch of the proof
-Then let us look at $\plim_{n \rightarrow \infty} \frac{1}{n}
-\mathbf{X}^{\prime} \mathbf{u}$ which can be rewritten as
-#+BEGIN_LaTeX
-\[ \plim_{n \rightarrow  \infty} \frac{1}{n} \sum_{i=1}^n \mathbf{X}_i u_i = E(\mathbf{X}_i
-u_i) = 0 \]
-#+END_LaTeX
-Here we use Assumption #1 $E(u_i | \mathbf{X}_i) = 0$, implying that $E(\mathbf{X}_i u_i) =
-E(\mathbf{X}_iE(u_i | \mathbf{X}_i)) = 0$.
-\vspace{0.2cm}
-And by Assumptions #2 and #3, we know that $\mathbf{X}_i u_i$ are i.i.d. and have
-positive finite variance.
-\vspace{0.2cm}
-Therefore, we can conclude that
-\[ \plim_{n \rightarrow \infty} \hat{\boldsymbol{\beta}} = \boldsymbol{\beta}  \]
-That is, $\hat{\boldsymbol{\beta}}$ is consistent.
+** The Gauss-Markov conditions and Theorem
 
-** The efficiency \\ \small The Gauss-Markov conditions
+*** The G-M conditions
 The Gauss-Markov conditions for multiple regression are
 1. $E(\mathbf{u} | \mathbf{X}) = 0$,
 2. $\var(\mathbf{u} | \mathbf{X}) = E(\mathbf{uu}^{\prime} |
    \mathbf{X}) = \sigma^2_u \mathbf{I}_n$ (homoskedasticity),
 3. $\mathbf{X}$ has full column rank (no perfect multicollinearity).
 
-** Understanding the Gauss-Markov conditions
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-Like in the regression model with single regressor, the five least
-squares assumptions can be summarized by the Gauss-Markov conditions
-as
-- Assumptions #1 and #2 imply that $E(\mathbf{u} | \mathbf{X}) = \mathbf{0}_n$.
-  \[E(u_i | \mathbf{X}) = E(u_i | [\mathbf{X_1}, \ldots, \mathbf{X}_i,
-  \ldots, \mathbf{X}_n]^{\prime}) = E(u_i | \mathbf{X}_i) = 0\]
-  in  which the second equality follows Assumption #2 that
-  $\mathbf{X}_i,\,\text{ for } i = 1,\ldots,n$ are independent.
-
-- Assumption #1, #2, and the additional assumption of homoskedasticity
-  imply that $\var(\mathbf{u} | \mathbf{X}) = \sigma^2_u
-  \mathbf{I}_n$.
-  \begin{equation*}
-  \var(\mathbf{u} | \mathbf{X}) =
-  \begin{pmatrix}
-  \sigma^2_u & 0 & \cdots & 0 \\
-  0 & \sigma^2_u & \cdots & 0 \\
-  \vdots & \vdots & \ddots & \vdots \\
-  0 & 0 & \cdots & \sigma^2_u
-  \end{pmatrix}
-  = \sigma^2_u \mathbf{I}_n
-  \end{equation*}
-
-** A digression for the covariance matrix of a vector
-:PROPERTIES:
-:BEAMER_opt: shrink,plain
-:END:
-For a random vector $\mathbf{x}$, the variance of $\mathbf{x}$ is a
-covariance matrix defined as
-  #+BEGIN_LaTeX
-  \[ \var(\mathbf{x}) =
-  E\left((\mathbf{x}-E(\mathbf{x}))(\mathbf{x}-E(\mathbf{x}))^{\prime}\right) \]
-  #+END_LaTex
-Since $E(\mathbf{u} | \mathbf{X}) = 0$, its covariance matrix,
-conditioned on $\mathbf{X}$, is
-  #+BEGIN_LaTeX
-  \[ \var(\mathbf{u} | \mathbf{X}) = E(\mathbf{u} \mathbf{u}^{\prime} | \mathbf{X})
-  \]
-  #+END_LaTeX
-where
-  #+BEGIN_LaTeX
-  \begin{equation*}
-  \mathbf{u} \mathbf{u}^{\prime} =
-  \begin{pmatrix}
-  u_1^2 & u_1 u_2 & \cdots &u_1 u_n \\
-  u_2 u_1 & u_2^2 & \cdots & u_2 u_n \\
-  \vdots & \vdots & \ddots & \vdots \\
-  u_n u_1 & u_n u_2 & \cdots & u_n^2 \\
-  \end{pmatrix}
-  \end{equation*}
-  #+END_LaTeX
-Thus, in the matrix $\mathbf{u} \mathbf{u}^{\prime}$,
-- the expectation of the diagonal elements, conditioned on $\mathbf{X}$,
-  are the conditional variance of $u_i$ which is $\sigma^2_u$ because
-  of homoskedasticity.
-- The conditional expectation of the off-diagonal elements are the
-  covariance of $u_i$ and $u_j$, conditioned on $\mathbf{X}$. Since
-  $u_i$ and $u_j$ are independent according to Assumption #2, $E(u_i
-  u_j | \mathbf{X}) = 0$.
-
-** The Gauss-Markov Theorem
-:PROPERTIES:
-:BEAMER_opt:
-:END:
-#+BEGIN_QUOTE
+*** The G-M Theorem
 If the Gauss-Markov conditions hold in the multiple regression model,
 then the OLS estimator $\hat{\boldsymbol{\beta}}$ is more efficient
-than any other linear unbiased estimator $\tilde{\boldsymbol{\beta}}$,
-in the sense that $\var(\tilde{\boldsymbol{\beta}}) -
-\var(\hat{\boldsymbol{\beta}})$ is a positive semidefinite
-matrix. That is, the OLS estimator is BLUE.
-#+END_QUOTE
+than any other linear unbiased estimator
+$\tilde{\boldsymbol{\beta}}$. That is, the OLS estimator is BLUE.
 
-\vspace{0.3cm}
-That $\var(\tilde{\boldsymbol{\beta}}) -
-\var(\hat{\boldsymbol{\beta}})$ is a positive semidefinite matrix
-means that for any nonzero $(k+1) \times 1$ vector $\mathbf{c}$,
-\[ \mathbf{c}^{\prime}\left(\var(\tilde{\boldsymbol{\beta}}) -
-\var(\hat{\boldsymbol{\beta}})\right) \mathbf{c} \geq 0 \]
-or we can simply write as
-\[ \var(\tilde{\boldsymbol{\beta}}) \geq \var(\hat{\boldsymbol{\beta}})  \]
-The equality holds only when $\tilde{\boldsymbol{\beta}} =
-\hat{\boldsymbol{\beta}}$.
+** The conditional covariance matrix of $\hat{\boldsymbol{\beta}}$
 
-** Linear conditionally unbiased estimators
-:PROPERTIES:
-:END:
-Any linear estimator of $\boldsymbol{\beta}$ can be written as
-\[ \tilde{\boldsymbol{\beta}} = \mathbf{Ay} =
-\mathbf{AX}\boldsymbol{\beta} + \mathbf{Au} \]
-where $\mathbf{A}$ is a weight matrix depending only on $\mathbf{X}$
-not on $\mathbf{y}$.
-
-For $\tilde{\boldsymbol{\beta}}$ to be conditionally unbiased, we must
-have
-\begin{equation*}
-E(\tilde{\boldsymbol{\beta}} | \mathbf{X}) = \mathbf{AX} \boldsymbol{\beta} + \mathbf{A} E(\mathbf{u} | \mathbf{X}) = \boldsymbol{\beta}
-\end{equation*}
-which only holds when $\mathbf{AX} = \mathbf{I}_{k+1}$.
-
-The OLS estimator $\hat{\boldsymbol{\beta}}$ is a linear conditionally
-unbiased estimator with $\mathbf{A} = \left(\mathbf{X}^{\prime}
-\mathbf{X}\right)^{-1} \mathbf{X}^{\prime}$. Obviously, $\mathbf{AX} =
-\mathbf{I}_{k+1}$ is true for $\hat{\boldsymbol{\beta}}$.
-
-** The conditional covariance matrix of $\hat{\boldsymbol{\beta}}$ :B_frame:
-:PROPERTIES:
-:BEAMER_env: frame
-:END:
-The conditional variance matrix of $\hat{\boldsymbol{\beta}}$ can be
-derived as follows
-\begin{equation*}
-\begin{split}
-\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) &= E\left[ (\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})(\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})^{\prime} | \mathbf{X}\right] \\
-&= E\left[ \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} \mathbf{u} \mathbf{u}^{\prime} \mathbf{X} (\mathbf{X}^{\prime} \mathbf{X})^{-1} | \mathbf{X} \right] \\
-&= \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} E(\mathbf{uu}^{\prime} | \mathbf{X}) \mathbf{X} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
-\end{split}
-\end{equation*}
-Then, by the second Gauss-Markov condition, we have
+*** The *homoskedasticity-only* covariance matrix.
 \begin{equation}
 \label{eq:varbhat-hm}
-\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} (\sigma^2_u \mathbf{I}_n) \mathbf{X} (\mathbf{X}^{\prime} \mathbf{X})^{-1} = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
+\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
 \end{equation}
-which is the *homoskedasticity-only* covariance matrix.
 
-** The conditional covariance matrix of $\hat{\boldsymbol{\beta}}$ (cont'd)
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-If the homoskedasticity assumption does not hold, denote the
-covariance matrix of $\mathbf{u}$ as
-\[ \var(\mathbf{u} | \mathbf{X}) = \boldsymbol{\Omega} \]
-
-Heteroskedasticity means that the diagonal elements of
-$\mathbf{\Omega}$ can be different (i.e. $\var(u_i | \mathbf{X}) =
-\sigma^2_i \text{ for } i=1, \ldots, n)$, while the off-diagonal
-elements are zeros, that is
-#+BEGIN_LaTeX
-\begin{equation*}
-\boldsymbol{\Omega} =
-\begin{pmatrix}
-\sigma^2_1 & 0 & \cdots & 0 \\
-0 & \sigma^2_2 & \cdots & 0 \\
-\vdots & \vdots & \ddots & \vdots \\
-0 & 0 & \cdots & \sigma^2_n
-\end{pmatrix}
-\end{equation*}
-#+END_LaTeX
-
-Define $\boldsymbol{\Sigma} = \mathbf{X}^{\prime} \boldsymbol{\Omega}
-\mathbf{X}$. Then the *heteroskedasticity-robust covariance matrix* of
-$\hat{\boldsymbol{\beta}}$ is
-#+BEGIN_LaTeX
+*** The *heteroskedasticity-robust covariance matrix*
 \begin{equation}
 \label{eq:varbhat-ht}
 \var_{\mathrm{h}}(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \boldsymbol{\Sigma} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
 \end{equation}
-#+END_LaTeX
+where $\boldsymbol{\Sigma} = \mathbf{X}^{\prime}
+\boldsymbol{\Omega}\mathbf{X}$ and $\boldsymbol{\Omega} = \var(\mathbf{u} | \mathbf{X})$
 
 ** The asymptotic normal distribution
-In large samples, the OLS estimator $\hat{\boldsymbol{\beta}}$ has the
-multivariate normal asymptotic distribution as
-\begin{equation}
-\label{eq:normal-bhat-m}
-\hat{\boldsymbol{\beta}} \rarrowd{d} N(\boldsymbol{\beta}, \boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}})
-\end{equation}
-where $\boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}} =
-\var(\hat{\boldsymbol{\beta}} | \mathbf{X})$ for which use
-Equation (\ref{eq:varbhat-hm}) for the homoskedastic case and Equation
-(\ref{eq:varbhat-ht}) for the heteroskedastic case.
 
-\vspace{0.3cm}
-The proof of the asymptotic normal distribution and the multivariate
-central limit theorem are given in Chapter 18.
+- With large samples, the OLS estimator $\hat{\boldsymbol{\beta}}$ has the
+  multivariate normal asymptotic distribution as
+  \begin{equation}
+  \label{eq:normal-bhat-m}
+  \hat{\boldsymbol{\beta}} \rarrowd{d} N(\boldsymbol{\beta}, \boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}})
+  \end{equation}
 
-* TODO COMMENT The Omitted Variable Bias
+- $\boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}} =
+  \var(\hat{\boldsymbol{\beta}} | \mathbf{X})$. 
+  - Use Equation (\ref{eq:varbhat-hm}) for the homoskedastic case
+  - Use Equation (\ref{eq:varbhat-ht}) for the heteroskedastic case.
+
+* The Omitted Variable Bias
 #+TOC: headlines [currentsection]
 ** The definition of the omitted variable bias
 :PROPERTIES:
 :END:
- The *omitted variable bias* is the bias in the OLS esitmator that arises
- when the included regressors, $\mathbf{X}$, are correlated with
- omitted variables, $\mathbf{Z}$, where $\mathbf{X}$ may include $k$
- regressors, $\mathbf{X}_1, \ldots, \mathbf{X}_k$, and $\mathbf{Z}$
- may include $l$ omitted variables, $\mathbf{Z}_1, \ldots,
- \mathbf{Z}_m$. The omitted variable bias occurs
- when two conditions are met
- 1. $\mathbf{X}$ is correlated with some omitted variables in $\mathbf{Z}$.
- 2. The omitted variables are determinants of the dependent variable
-    $\mathbf{Y}$.
+
+ The *omitted variable bias* arises when two conditions are met
+ 1. The included regressors $\mathbf{X}$ is correlated with the
+    omitted regressors, denoted as $\mathbf{Z}$.
+ 2. The omitted variables, $\mathbf{Z}$, are determinants of the
+    dependent variable $\mathbf{Y}$.
 
 ** The reason for the omitted variable bias
 :PROPERTIES:
 :BEAMER_opt: shrink,plain
 :END:
-
-\vspace{0.2cm}
-
+*** The true model
 Suppose that the true model is
-
 \begin{equation}
 \label{eq:omb-1}
 \mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{Z}\boldsymbol{\gamma} + \mathbf{u}
 \end{equation}
-in which Assumption #1 is true. That is, $E(\mathbf{u} | \mathbf{X},
-\mathbf{Z}) = 0$. We further assume that $\cov(\mathbf{X}, \mathbf{Z})
-\neq 0$
+- We assume $E(\mathbf{u} | \mathbf{X}, \mathbf{Z}) = 0$. 
+- The OLS estimators, $\hat{\boldsymbol{\beta}}$ and
+  $\hat{\boldsymbol{\gamma}}$, from Equation eqref:eq:omb-1 are unbiased. 
+- We also assume $\cov(\mathbf{X}, \mathbf{Z}) \neq 0$. 
 
-\vspace{0.2cm}
-
-However, we mistakenly exclude $\mathbf{Z}$ in regression analysis and
-estimate a short model
-
+*** The wrong model
 \begin{equation}
 \label{eq:omb-2}
 \mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\epsilon}
 \end{equation}
 
-Since $\boldsymbol{\epsilon}$ represents all other factors that are not
-in Equation (\ref{eq:omb-2}), including $\mathbf{Z}$, and
-$\cov(\mathbf{X}, \mathbf{Z}) \neq 0$, this means that
-$\cov(\mathbf{X}, \boldsymbol{\epsilon}) \neq 0$, which implies that
-$E(\boldsymbol{\epsilon} | \mathbf{X}) \neq 0$.
-
-\vspace{0.2cm}
-Therefore, Assumption #1 does not hold for the short
-model, which means that the OLS estimator of Equation (\ref{eq:omb-2})
-is biased.
-
-** An informal explanation of the omitted variable bias
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-The OLS estimator of Equation (\ref{eq:omb-2}) is $\hat{\boldsymbol{\beta}} &=
-(\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime}
-\mathbf{Y}$. Plugging $\mathbf{Y}$ with the true model, we have
-\[\hat{\boldsymbol{\beta}} = (\mathbf{X}^{\prime} \mathbf{X})^{-1}
-\mathbf{X}^{\prime} (\mathbf{X}\boldsymbol{\beta} +
-\mathbf{Z}\boldsymbol{\gamma} + \mathbf{u})
-= \boldsymbol{\beta} + (\mathbf{X}^{\prime} \mathbf{X})^{-1}
-\mathbf{X}^{\prime} \mathbf{Z} \boldsymbol{\gamma} +
-(\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{u} \]
-
-Taking the expectation of $\hat{\boldsymbol{\beta}}$,
-conditioned on $\mathbf{X}$, we have
-\begin{equation}
-\label{eq:omb-3}
-E(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \boldsymbol{\beta}
-+ \underbrace{(\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Z} \boldsymbol{\gamma}}_{\mathclap{\text{omitted variable bias}}} + \mathbf{0}
-\end{equation}
-The second term in the equation above usually does not equal zero
-unless either
-1) $\boldsymbol{\gamma} = \mathbf{0}$, which means that
-   $\mathbf{Z}$ are not determinants of $\mathbf{Y}$ in the true model, or
-2) $\mathbf{X}^{\prime} \mathbf{Z} = 0$, which means that
-   $\mathbf{X}$ and $\mathbf{Z}$ are not correlated.
-\vspace{0.2cm}
-Therefore, if these two conditions do not hold,
-$\hat{\boldsymbol{\beta}}$ for the short model is biased. And the
-magnitude and direction of the bias is determined by
-$\mathbf{X}^{\prime} \mathbf{Z} \boldsymbol{\gamma}$.
+- $\boldsymbol{\epsilon}$ represents all other factors that are not
+  in Equation (\ref{eq:omb-2}), including $\mathbf{Z}$
+- $\cov(\mathbf{X}, \mathbf{Z}) \neq 0$ \Rightarrow $\cov(\mathbf{X},
+  \boldsymbol{\epsilon}) \neq 0$ \Rightarrow
+  $E(\boldsymbol{\epsilon} | \mathbf{X}) \neq 0$
+- The OLS estimator, $\tilde{\boldsymbol{\beta}}$, from Equation
+  eqref:eq:omb-2 is biased. 
 
 ** An illustration using a linear model with two regressors
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-Suppose the true model is
-\[ Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + u_i,\; i=1,
-\ldots, n \]
-with $E(u_i | X_{1i}, X_{2i}) = 0$
 
-However, we estimate a wrong model of
-\[ Y_i = \beta_0 + \beta_1 X_{1i} + \epsilon_i,\; i=1, \ldots, n \]
+- Suppose the true model is
+  \[ Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + u_i,\; i=1,
+  \ldots, n \]
+  with $E(u_i | X_{1i}, X_{2i}) = 0$
 
-In Lecture 5 we showed that $\beta_1$ can be expressed as
-\[ \hat{\beta}_1 = \beta_1 + \frac{\frac{1}{n}\sum_i
-(X_{1i} - \bar{X}_1) \epsilon_i}{\frac{1}{n}\sum_i (X_i - \bar{X}_1)^2} \]
+- However, we estimate a wrong model of
+  \[ Y_i = \beta_0 + \beta_1 X_{1i} + \epsilon_i,\; i=1, \ldots, n \]
 
-As $n \rightarrow \infty$, $\frac{1}{n}\sum_i
-(X_{1i} - \bar{X}_1) \epsilon_i \rarrow{p} \cov(X_1, \epsilon) = \rho_{{\scriptscriptstyle X_1} \epsilon} \sigma_{\scriptscriptstyle X_1} \sigma_{\epsilon}$
-and $\frac{1}{n}\sum_i (X_i - \bar{X}_1)^2 \rarrow{p}
-\sigma^2_{\scriptscriptstyle X_1}$. Therefore, we have
+** An illustration using a linear model with two regressors (cont'd)
 
-\begin{equation}
-\label{eq:omb-4}
-\hat{\beta}_1 \rarrowd{p} \beta_1 + \underbrace{\rho_{x_1 \epsilon} \frac{\sigma_{\epsilon}}{\sigma_{x_1}}}_{\mathclap{\text{omitted variable bias}}}
-\end{equation}
+- We can prove that $\beta_1$ can be expressed as
+  \[ \hat{\beta}_1 = \beta_1 + \frac{\frac{1}{n}\sum_i
+  (X_{1i} - \bar{X}_1) \epsilon_i}{\frac{1}{n}\sum_i (X_i - \bar{X}_1)^2} \]
 
-** A summary of the Omitted variable bias
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-The omitted variable bias occurs when two conditions are met
- 1. $\mathbf{X}$ is correlated with some omitted variables in $\mathbf{Z}$.
- 2. The omitted variables are determinants of the dependent variable
-    $\mathbf{Y}$.
+- As $n \rightarrow \infty$, $\frac{1}{n}\sum_i
+  (X_{1i} - \bar{X}_1) \epsilon_i \rarrowd{p} \cov(X_1, \epsilon) = \rho_{{\scriptscriptstyle X_1} \epsilon} \sigma_{\scriptscriptstyle X_1} \sigma_{\epsilon}$
+  and $\frac{1}{n}\sum_i (X_i - \bar{X}_1)^2 \rarrowd{p}
+  \sigma^2_{\scriptscriptstyle X_1}$. 
 
-The formula to quantify the omitted variable bias is
-\begin{equation*}
-E(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \boldsymbol{\beta}
-+ (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Z} \boldsymbol{\gamma}
-\left(\text{ or }
-\hat{\beta}_1 \rarrowd{p} \beta_1 + \rho_{x_1 \epsilon} \frac{\sigma_{\epsilon}}{\sigma_{x_1}} \right)
-\end{equation*}
+- We have the formula to quantify the omitted variable bias as
+  \begin{equation}
+  \label{eq:omb-4}
+  \hat{\beta}_1 \rarrowd{p} \beta_1 + \underbrace{\rho_{x_1 \epsilon} \frac{\sigma_{\epsilon}}{\sigma_{x_1}}}_{\mathclap{\text{omitted variable bias}}}
+  \end{equation}
 
-*** Some facts summarized from the formula above
+** Some facts summarized from the formula
+
 - Omitt variable bias is a problem irregardless of whether the sample
-  size is large or small. $\hat{\beta}$ is biased and inconsistent
-  when there is omitted variable bias.
+  size is large or small. 
+
 - Whether this bias is large or small in practice depends on
-  $|\rho_{X_{1} \epsilon}|$ or $|\mathbf{X}^{\prime} \mathbf{Z}
-  \boldsymbol{\gamma}|$.
-- The direction of this bias is determined by the sign of $\rho_{X_{1} \epsilon}$ or $\mathbf{X}^{\prime} \mathbf{Z}
-  \boldsymbol{\gamma}$.
+  $|\rho_{X_{1} \epsilon}|$. 
+
+- The direction of this bias is determined by the sign of $\rho_{X_{1}
+  \epsilon}$. 
+
 - One easy way to detect the existence of the omitted variable bias is
   that when adding a new regressor, the estimated coefficients on some
   previously included regressors change substantially.
 
-* TODO COMMENT Multicollinearity
+* Multicollinearity
 #+TOC: headlines [currentsection]
-** Perfect multicollinearity
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
+
+** Definition of perfect multicollinearity
+
 *Perfect multicollinearity* refers to the situation when one of the
 regressor is a perfect linear function of the other regressors.
 - In the terminology of linear algebra, perfect multicollinearity
@@ -1411,138 +1145,117 @@ regressor is a perfect linear function of the other regressors.
 - That is, the vector of a regressor can be expressed as a linear
   combination of vectors of the other regressors.
 
-Remember that the matrix of regressors $\mathbf{X}$ can be written in
-terms of column vectors as
-#+BEGIN_LaTeX
-\[
-\mathbf{X} = [\boldsymbol{\iota}, \boldsymbol{X}_1, \boldsymbol{X}_2, \ldots, \boldsymbol{X}_k ]
-\]
-#+END_LaTeX
-where $\boldsymbol{X}_i = [X_{i1}, X_{i2}, \ldots, X_{in}]^{\prime}$
-is a $n \times 1$ vector of $n$ observations of the i^{th}
-regressor. $\boldsymbol{\iota}$ is a vector of 1s, representing the
-constant term.
+** Understanding perfect multicollinearity
 
-That the $k+1$ column vectors are linearly dependent means that there
-exist some $(k+1) \times 1$ nonzero vector $\boldsymbol{\beta} =
-[\beta_0, \beta_1, \ldots, \beta_k]^{\prime}$ such that
-#+BEGIN_LaTeX
-\[
-\beta_0 \boldsymbol{\iota} + \beta_1 \boldsymbol{X}_1 + \cdots + \beta_k
-\boldsymbol{X}_k = 0 \]
-#+END_LaTeX
+*** Linear dependence 
 
-** Perfect multicollinearity (cont'd)
-If $\boldsymbol{X}_i$'s are linearly dependent, then it follows
+- Write the matrix of regressors $\mathbf{X}$ with column vectors
+  \[
+  \mathbf{X} = [\boldsymbol{\iota}, \boldsymbol{X}_1, \boldsymbol{X}_2, \ldots, \boldsymbol{X}_k ]
+  \]
+- That the $k+1$ column vectors are linearly dependent means that there
+  exist some $(k+1) \times 1$ nonzero vector $\boldsymbol{\beta} =
+  [\beta_0, \beta_1, \ldots, \beta_k]^{\prime}$ such that
+  \[
+  \beta_0 \boldsymbol{\iota} + \beta_1 \boldsymbol{X}_1 + \cdots + \beta_k
+  \boldsymbol{X}_k = 0 
+  \]
+
+** Consequence of perfect multicollinearity
+
+If $\boldsymbol{X}_i$ are linearly dependent, then
 - $\mathbf{X}$ does not have full column rank.
 - If $\mathbf{X}$ does not have full column rank, then
-  $\mathbf{X}^{\prime} \mathbf{X}$ is singular, that is, the inverse
-  of $\mathbf{X}^{\prime} \mathbf{X}$ does not exist. Therefore, we
-  can state the assumption of requiring no perfect multicollinearity
-  in another way as assuming that $\mathbf{X}$ has full column rank.
+  $\mathbf{X}^{\prime} \mathbf{X}$ is singular.
+- It means that the inverse
+  of $\mathbf{X}^{\prime} \mathbf{X}$ does not exist. 
 - If $\mathbf{X}^{\prime} \mathbf{X}$ is not invertible, the OLS
   estimator based on the formula of $\boldsymbol{\hat{\beta}} =
   (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime}
   \mathbf{Y}$ does not exist.
 
 ** Examples of perfect multicollinearity
-Remember that perfect multicollinearity occurs when one regressor can
-be expressed as a linear combination of other regressors. This problem
-arises from the logic error from the researcher. That is, the
-researcher uses two or more variables to provide exactly the same
-information that only one variable can provide.
 
-*** Possible linear combination
 Suppose we have a multiple regression model
 \[ \mathbf{Y} = \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2
 \mathbf{X}_2 + \mathbf{u}  \]
-And we want to add a new variable $Z$ into this model. The following
-practices cause perfect multicollinearity
+
+*** Cases that imply perfect multicollinearity
 - $Z = a X_1$ or $Z = b X_2$
 - $Z = 1 - a X_1$
 - $Z = a X_1 + b X_2$
 
-\vspace{0.2cm}
-However, we can add a $Z$ that is not a linear function of $X_1$ or
-$X_2$ such that there is no perfect multicollinearity problem. For example,
+*** Cases that do not imply perfect multicollinearity
 - $Z = X_1^2$
 - $Z = \ln X_1$
 - $Z = X_1 X_2$
 
 ** The dummy variable trap
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-The dummy variable trap is a good case of perfect multicollinearity
-that a modeler often encounters. Recall that a *binary variable* (or
-*dummy variable*) $D_i$, taking values of one or zero, can be used in
-a regression model to distinguish two mutually exclusive groups of
-samples, for instance, the male and the female. In fact, dummy
-variables can be constructed to represent more than two groups and be
-used in multiple regression to examine the difference between these
-groups.
 
-\vspace{0.2cm}
-Suppose that we have a data composed of people of four ethnic groups:
-White, African American, Hispanic, and Asian. And we want to estimate
-a regression model to see whether wages among these four groups are
-different. The model looks like the following,
-\begin{equation}
-\label{eq:dummy-trap}
-Wage_i = \beta_0 + \beta_1 White_i + \beta_2 African_i + \beta_3 Hispanic_i + \beta_4 Asian_i + u_i
-\end{equation}
+- The dummy variable trap is a case of perfect multicollinearity
+  that a modeler often encounters. 
+- We use dummy variables to distinguish different groups of objects.
+- Question: How many dummy variables should we include?
 
-To be concrete, suppose we have four ordered observations: Chuck,
-Mike, Juan, and Li, who are White, African American, Hispanic, and
-Asian, respectively. Then the dummy variables are
-\begin{equation*}
-White =
-\begin{pmatrix}
-1 \\
-0 \\
-0 \\
-0
-\end{pmatrix},\,
-African =
-\begin{pmatrix}
-0 \\
-1 \\
-0 \\
-0
-\end{pmatrix},\,
-Hispanic =
-\begin{pmatrix}
-0 \\
-0 \\
-1 \\
-0
-\end{pmatrix},\,
-Asian =
-\begin{pmatrix}
-0 \\
-0 \\
-0 \\
-1
-\end{pmatrix}
-\end{equation*}
+*** An example
 
-** The dummy variable trap (cont'd)
-:PROPERTIES:
-:BEAMER_opt: plain,shrink
-:END:
-However, when we construct a model like Equation
-(\ref{eq:dummy-trap}), we fall into the dummy variable trap and commit
-a perfect multicollinearity mistake. This is because this model has a
-constant term.
-\begin{equation*}
-\begin{pmatrix}
-1 \\
-1 \\
-1 \\
-1 \\
-\end{pmatrix}
-= White + African + Hispanic + Asian
-\end{equation*}
+- Four ethnic groups: White, African American, Hispanic, and
+  Asian.
+- We want to estimate a regression model to see whether wages among
+  these four groups are different. 
+- Suppose we have four observations: Chuck (White), 
+  Mike (African American), Juan (Hispanic), and Li (Asian). Define
+  dummy variables as
+  \begin{equation*}
+  White =
+  \begin{pmatrix}
+  1 \\
+  0 \\
+  0 \\
+  0
+  \end{pmatrix},\,
+  African =
+  \begin{pmatrix}
+  0 \\
+  1 \\
+  0 \\
+  0
+  \end{pmatrix},\,
+  Hispanic =
+  \begin{pmatrix}
+  0 \\
+  0 \\
+  1 \\
+  0
+  \end{pmatrix},\,
+  Asian =
+  \begin{pmatrix}
+  0 \\
+  0 \\
+  0 \\
+  1
+  \end{pmatrix}
+  \end{equation*}
+
+** The wrong regression model 
+
+- We set up a regression model as follows
+  \begin{equation}
+  \label{eq:dummy-trap}
+  Wage_i = \beta_0 + \beta_1 White_i + \beta_2 African_i + \beta_3 Hispanic_i + \beta_4 Asian_i + u_i
+  \end{equation}
+- Dummy variable trap (perfect multicollinearity) occurs
+  \begin{equation*}
+  \begin{pmatrix}
+  1 \\
+  1 \\
+  1 \\
+  1 \\
+  \end{pmatrix}
+  = White + African + Hispanic + Asian
+  \end{equation*}
+
+** Remedy to dummy variable trap
 
 To avoid the dummy variable trap, we can either of the following two
 methods:
@@ -1569,9 +1282,6 @@ Similarly, $\beta_2, \beta_3, \text{ and } \beta_4$ are the population mean wage
 of African Americans, Hispanics, and Asians, respectively.
 
 ** Drop one dummy variable
-:PROPERTIES:
-:BEAMER_opt: shrink,plain
-:END:
 
 If we drop the dummy variable for white people, then the model becomes
 \begin{equation}
@@ -1586,6 +1296,8 @@ whites, that is,
 So we say that white people
 serve as a reference case in Model (\ref{eq:dummy-trap-2}).
 
+** Drop one dummy variable (cont'd)
+
 For African Americans, the model is
 \[ Wage = \beta_1 + \beta_2 + u  \]
 From it we have $E(Wage | African=1) = \beta_1 + \beta_2$ so that
@@ -1598,10 +1310,12 @@ Similarly, we can get that
 \end{align*}
 
 ** Definition of imperfect multicollinearity
-:PROPERTIES:
-:END:
+
 *Imperfect multicollinearity* is a problem of regression when two or
-more regressors are highly correlated. Although they bear similar
+more regressors are highly correlated. 
+
+\vspace{0.3cm}
+Although they bear similar
 names, imperfect multicollinearity and perfect multicollinearity are
 two different concepts.
 - Perfect multicollinearity is a problem of modeling building,
@@ -1613,87 +1327,27 @@ two different concepts.
   variance of the OLS estimators.
 
 ** An illustration using a regression model with two regressors
-:PROPERTIES:
-:END:
 
 Suppose we have a linear regression model with two regressors
-
 \begin{equation}
 \label{eq:ex-collin}
 \mathbf{Y} = \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \mathbf{u}
 \end{equation}
 
-By the FWL theorem, estimating Equation (\ref{eq:ex-collin}) will get
-the same OLS estimators of $\beta_1$ and $\beta_2$ as estimating the
-following model,
+- We can prove that 
+  \[\var(\hat{\beta}_1 | \mathbf{X}) =
+  \frac{\sigma^2_u}{\sum_i (X_{1i} - \bar{X})_1^2} \frac{1}{(1 - r^2_{12})}\]
+  where $r_{12}$ is the correlation coefficient between $X_1$ and $X_2$. 
 
-\begin{equation}
-\label{eq:ex-collin-1}
-\mathbf{y} = \beta_1 \mathbf{x}_1 + \beta_2 \mathbf{x}_2 + \mathbf{v}
-\end{equation}
+- When $X_1$ and $X_2$ are highly correlated, that is $r^2_{12}$ gets
+  close to 1, then $\var(\hat{\beta}_1 | \mathbf{X})$ becomes very
+  large.
 
-where $\mathbf{y} = \mathbf{Y} - \bar{Y} \boldsymbol{\iota}$,
-      $\mathbf{x}_1 =\mathbf{X}_1 - \bar{X}_1 \boldsymbol{\iota}$,
-and $\mathbf{x}_2 = \mathbf{X}_2 -\bar{X}_2 \boldsymbol{\iota}$.
-That is, $\mathbf{y}, \mathbf{x}_1,\, \text{and } \mathbf{x}_2$
-are in the form of the deviation from the mean. And
-denote $\mathbf{x} = [\mathbf{x}_1\; \mathbf{x}_2]$
-as the matrix of all regressors in Model (\ref{eq:ex-collin-1}).
+** The consequence and detection of imperfect multicollinearity
 
-** An illustration using a regression model with two regressors (cont'd)
-:PROPERTIES:
-:BEAMER_opt:
-:END:
-Suppose that $X_1$ and $X_2$ are correlated so that their correlation
-coefficient $|\rho_{12}| > 0$. And the square of the sample
-correlation coefficient is
-
-\begin{equation}
-r^2_{12} = \frac{\left(\sum (X_1 - \bar{X}_1)(X_2 - \bar{X}_2)\right)^2}{\sum (X_1 - \bar{X}_1)^2 \sum (X_2 - \bar{X}_2)^2}
-= \frac{\left( \sum x_1 x_2\right)^2}{\sum x_1 \sum x_2}
-\end{equation}
-
-The OLS estimator of Model (\ref{eq:ex-collin-1}) is
-\begin{equation}
-\label{eq:bhat-ex-collin}
-\hat{\boldsymbol{\beta}} = \left(\mathbf{x}^{\prime} \mathbf{x}\right)^{-1} \mathbf{x}^{\prime} \mathbf{y}
-\end{equation}
-with the covariance matrix as
-\begin{equation}
-\label{eq:bhat-cov-ex-collin}
-\var(\hat{\boldsymbol{\beta}} | \mathbf{x}) = \sigma^2_u \left(\mathbf{x}^{\prime} \mathbf{x}\right)^{-1}
-\end{equation}
-
-** An illustration using a regression model with two regressors (cont'd)
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-- $\hat{\boldsymbol{\beta}}$ is still unbiased since the assumption of
-  $E(\mathbf{u} | X)$ holds and so does $E(\mathbf{v} | \mathbf{x})$.
-
-- The variance of $\hat{\beta}_1$, which is the first diagonal element
-  of $\sigma^2_u \left(\mathbf{x}^{\prime} \mathbf{x}\right)^{-1}$, is
-  affected by $r_{12}$. To see this, we write $\var(\hat{\beta}_1 | \mathbf{x})$
-  explicitly as
-  \begin{equation*}
-  \begin{split}
-  \var(\hat{\beta}_1 | \mathbf{x}) &=  \frac{\sigma^2_u \sum x_2^2}{\sum_i x_1^2 \sum x_2^2 - (\sum x_1 x_2)^2} \\
-  &= \frac{\sigma^2_u \sum x_2^2}{\displaystyle \sum x_1^2 \sum x_2^2 \left(1 - \frac{(\sum x_1 x_2)^2}{\sum x_1^2 \sum x_2^2}\right)} \\
-  &= \frac{\sigma^2_u}{\sum x_1^2} \frac{1}{(1 - r^2_{12})}
-  \end{split}
-  \end{equation*}
-  Therefore, when $X_1$ and $X_2$ are highly correlated, that is
-  $r^2_{12}$ gets close to 1, then $\var(\hat{\beta}_1 | \mathbf{x})$
-  becomes very large.
-
-** The consequence and remedies of imperfect multicollinearity
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-*** The consequence and detection
-- The consequence of multicollinearity is that it may lead us to
-  wrongly fail to reject the zero hypothesis in the t-test for a
-  coefficient.
+- The consequence of imperfect multicollinearity is that I may more
+  often fail to reject the null hypothesis of a zero coefficient with
+  t-statistic. 
 
 - The variance inflation factor (VIF) is a commonly used indicator for
   detecting multicollinearity. The definition is
@@ -1703,14 +1357,13 @@ with the covariance matrix as
   \end{equation*}
 
   The smaller VIF is for a regressor, the less severe the problem of
-  multicollinearity is. However, there is no widely accepted cut-off
-  value for VIF to detect multicollinearity. $VIF > 10$ for a
-  regressor is often seen as an indication of multicollinearity, but
-  we cannot always trust this.
+  multicollinearity is. 
 
-*** The remedies
+** The remedies to imperfect multicollinearity
+
 - Include more sample in hope of the variation in $\mathbf{X}$ getting
-  widened, i.e., increasing $\sum_i (X_{1i} - \bar{X}_1)$.
+  widened, i.e., increasing $\sum_i (X_{1i} - \bar{X}_1)^2$.
+
 - Drop the variable(s) that is highly correlated with other
   regressors. Notice that by doing this we are at the risk of
   suffering the omitted variable bias. There is always a trade-off

@@ -1,4 +1,4 @@
-% Created 2017-04-16 Sun 16:20
+% Created 2017-04-18 Tue 23:42
 % Intended LaTeX compiler: pdflatex
 \documentclass[presentation,10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -21,8 +21,8 @@
 \newtheorem{mydef}{Definition}
 \newtheorem{mythm}{Theorem}
 \newcommand{\dx}{\mathrm{d}}
-\newcommand{\var}{\mathrm{var}}
-\newcommand{\cov}{\mathrm{cov}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
 \newcommand{\corr}{\mathrm{corr}}
 \newcommand{\pr}{\mathrm{Pr}}
 \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
@@ -57,11 +57,11 @@
 
 
 \section{The Multiple Regression Model}
-\label{sec:orge073eb1}
+\label{sec:org5871418}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
-\begin{frame}[label={sec:orgddeb34d}]{The problem of a simple linear regression}
+\begin{frame}[label={sec:orgba83b4c}]{The problem of a simple linear regression}
 \begin{block}{The simple linear regression model}
 \begin{equation*}
 TestScore = \beta_0 + \beta_1 \times STR + OtherFactors
@@ -85,7 +85,7 @@ ability
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org6bc9d2d}]{Percentage of English learners as an example}
+\begin{frame}[label={sec:orgfd22377}]{Percentage of English learners as an example}
 The percentage of English learners in a school district could be an
 relevant and important determinant of test scores, which is omitted
 in the simple regression model.
@@ -107,7 +107,7 @@ on student-teacher ratio is \alert{overestimated}.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org7f60cfc}]{Solutions to the problem of ignoring important factors}
+\begin{frame}[label={sec:org0357308}]{Solutions to the problem of ignoring important factors}
 We can include these important but ignored variables, like the
 percentage of English learners (\(PctEL\)), in the regression model.  
 
@@ -120,7 +120,7 @@ A regression model with more than one regressors is a multiple
 regression model. 
 \end{frame}
 
-\begin{frame}[label={sec:org894d06a}]{A multiple regression model}
+\begin{frame}[label={sec:org401d7e4}]{A multiple regression model}
 The general form of a \alert{multiple regression model} is
 \begin{equation}
 \label{eq:multi-regress-1}
@@ -136,7 +136,7 @@ representing all other factors that are not included in the model.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org84d6260}]{The components in a multiple regression model}
+\begin{frame}[label={sec:org4209af2}]{The components in a multiple regression model}
 \begin{itemize}
 \item The population regression line (or population regression
 function)
@@ -158,7 +158,7 @@ regression model.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgd108d66}]{The interpretation of \(\beta_i\): Holding other things constant}
+\begin{frame}[label={sec:org5a774d9}]{The interpretation of \(\beta_i\): Holding other things constant}
 \begin{equation}
 \label{eq:multi-regress-1a}
 Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k + u
@@ -181,7 +181,7 @@ Subtracting \(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2\), we have
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org02ac992}]{The partial effect}
+\begin{frame}[label={sec:org18cd185}]{The partial effect}
 If \(Y\) and \(X_i\) for \(i = 1, \ldots, k\) are continuous and
 differentiable variables, \(\beta_i\) is as simply as the partial
 derivative of \(Y\) with respect to \(X_i\). That is
@@ -193,11 +193,11 @@ the effect of a marginal change in \(X_i\) on \(Y\) holding other \(X\)
 constant.
 \end{frame}
 
-\begin{frame}[label={sec:org60da45f}]{Look at the data in terms of vectors and matrix}
+\begin{frame}[label={sec:org0f20940}]{Look at the data in terms of vectors and matrix}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.4\textwidth,height=0.5\textheight]{img/data_snapshot.png}
-\caption{\label{fig:org55f2bc0}
+\caption{\label{fig:org8673189}
 The California data set in Excel}
 \end{figure}
 
@@ -210,7 +210,7 @@ observations.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[shrink,label={sec:orgc2f511f}]{Define variables in matrix notation}
+\begin{frame}[shrink,label={sec:orgcde926b}]{Define variables in matrix notation}
 \begin{block}{Write all the variables in vector and matrix notation}
 \begin{equation*}
 \underbrace{
@@ -261,7 +261,7 @@ Concise, easy to derive properties; big-picture perspective.
 \end{frame}
 
 
-\begin{frame}[label={sec:org7be9519}]{Two other ways to write the regression model}
+\begin{frame}[label={sec:org42aa23d}]{Two other ways to write the regression model}
 \begin{block}{Write \(\mathrm{X}\) in row vectors}
 \begin{itemize}
 \item The i\(^{\text{th}}\) row in \(\mathrm{X}\) is a \((k+1) \times 1\) vector
@@ -286,7 +286,7 @@ Y_i = \mathbi{x}^{\prime}_i \boldsymbol{\beta} + u_i,\; i = 1, \ldots, n
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org1da255c}]{Two other ways to write the regression model (cont'd)}
+\begin{frame}[label={sec:orgf622d07}]{Two other ways to write the regression model (cont'd)}
 \begin{block}{Write \(\mathrm{X}\) in vector vectors}
 \begin{itemize}
 \item The i\(^{\text{th}}\) column in \(\mathbf{X}\) is a \(n \times 1\) vector
@@ -318,11 +318,11 @@ re-written as
 
 
 \section{The OLS Estimator in Multiple Regression}
-\label{sec:orgf6a6af9}
+\label{sec:org729e33b}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
-\begin{frame}[label={sec:org5716e1e}]{The minimization problem and the OLS estimator}
+\begin{frame}[label={sec:org9a91cc5}]{The minimization problem and the OLS estimator}
 \begin{itemize}
 \item The core idea of the OLS estimator for a multiple regression model
 remains the same as in a simple regression model: 
@@ -348,7 +348,7 @@ of \(\boldsymbol{\beta} = [\beta_0, \beta_1, \ldots,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org2462a58}]{The minimization problem and the OLS estimator (cont'd)}
+\begin{frame}[label={sec:org6b5d5da}]{The minimization problem and the OLS estimator (cont'd)}
 \begin{itemize}
 \item The sum of the squared residuals is
 \begin{align*}
@@ -366,7 +366,7 @@ S(\mathbf{b}) & = S(b_0, b_1, \ldots, b_k) = \sum_{i=1}^n (Y_i - b_0 - b_1 X_{1i
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgfe88736}]{The OLS estimator of \(\boldsymbol{\beta}\) as a solution to the minimization problem}
+\begin{frame}[label={sec:orgfe5a9a4}]{The OLS estimator of \(\boldsymbol{\beta}\) as a solution to the minimization problem}
 \begin{itemize}
 \item Solve the minimization problem: 
 
@@ -387,7 +387,7 @@ obtain the OLS estimator \(\hat{\boldsymbol{\beta}} = (\hat{\beta}_0, \ldots,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgfef12aa}]{The OLS estimator in matrix notation}
+\begin{frame}[label={sec:orge55fe43}]{The OLS estimator in matrix notation}
 Let \(\boldsymbol{\hat{\beta}}\) denote the OLS estimator. Then the
 expression of \(\boldsymbol{\hat{\beta}}\) is given by
 \begin{equation}
@@ -408,7 +408,7 @@ when \(\mathbf{A}\) is symmetric, then \((\partial \mathbf{x}^{\prime}
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org5a0e64a}]{The proof}
+\begin{frame}[label={sec:org7a64328}]{The proof}
 \begin{proof}[Proof of Equation (\ref{eq:betahat-mult})]
   \begin{equation*}
   S(\mathbf{b}) = \hat{\mathbf{u}}^{\prime} \hat{\mathbf{u}} = \mathbf{Y}^{\prime} \mathbf{Y} - \mathbf{b}^{\prime} \mathbf{X}^{\prime} \mathbf{Y} - \mathbf{Y}^{\prime} \mathbf{Xb} - \mathbf{b}^{\prime} \mathbf{X}^{\prime} \mathbf{Xb}
@@ -431,7 +431,7 @@ Note that Equation (\ref{eq:ols-mult-eqs}) represents a system of
 equations with \(k+1\) equations.
 \end{frame}
 
-\begin{frame}[label={sec:org9c094bc}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model}
+\begin{frame}[label={sec:org3675aa1}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model}
 The simple linear regression model written in matrix notation is
 
 \begin{equation*}
@@ -471,7 +471,7 @@ u_n
 \end{equation*}
 \end{frame}
 
-\begin{frame}[plain,label={sec:orgb2d59cc}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
+\begin{frame}[plain,label={sec:org9d65049}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
 Let's get the components in Equation (\ref{eq:betahat-mult}) step by
 step.
 
@@ -507,7 +507,7 @@ n & \sum_{i=1}^n X_{1i} \\
 \end{block}
 \end{frame}
 
-\begin{frame}[plain,label={sec:orgc426184}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
+\begin{frame}[plain,label={sec:orgb6de805}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
 \begin{description}
 \item[{Step (2): compute \(\left(\mathbf{X}^{\prime}\mathbf{X}\right)^{-1}\)}] 
 \end{description}
@@ -538,7 +538,7 @@ a_{22} & -a_{12} \\
 \end{block}
 \end{frame}
 
-\begin{frame}[plain,label={sec:org104f8ef}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
+\begin{frame}[plain,label={sec:org063559b}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
 \begin{block}{Step (3): compute \(\mathbf{X}^{\prime} \mathbf{Y}\)}
 \begin{equation*}
 \mathbf{X}^{\prime} \mathbf{Y} =
@@ -592,7 +592,7 @@ Y_n
 \end{block}
 \end{frame}
 
-\begin{frame}[plain,label={sec:org3d41d9c}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
+\begin{frame}[plain,label={sec:org2820f09}]{The OLS estimator of \(\hat{\beta}_1\) in a simple regression model (cont'd)}
 \begin{block}{The formula of \(\hat{\beta}_1\)}
 \begin{equation*}
 \hat{\beta}_1 = \frac{n \sum_{i=1}^n X_{1i} Y_i - \sum_{i=1}^n X_{1i} \sum_{i=1}^n Y_i}{n \sum_{i=1}^n X_{1i}^2 - (\sum_{i=1}^n X_{1i})^2} = \frac{\sum_{i=1}^n (X_{1i} - \bar{X}_1)(Y_i - \bar{Y})}{\sum_{i=1}^n (X_{1i} - \bar{X}_1)^2}
@@ -606,7 +606,7 @@ Y_n
 \end{block}
 \end{frame}
 
-\begin{frame}[shrink,plain,label={sec:orga338f93}]{Application to Test Scores and the Student-Teacher Ratio}
+\begin{frame}[shrink,plain,label={sec:org7412b50}]{Application to Test Scores and the Student-Teacher Ratio}
 \begin{block}{The simple regression compared with the multiple regression}
 The estimated simple linear regression model is
 \[ \widehat{TestScore} = 698.9 - 2.28 \times STR \]
@@ -633,11 +633,11 @@ the only regressor.
 \end{frame}
 
 \section{Measures of Fit in Multiple Regression}
-\label{sec:org3a03983}
+\label{sec:org9ef4c68}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
-\begin{frame}[label={sec:org5f049f0}]{The standard errors of the regression (SER)}
+\begin{frame}[label={sec:org96768c1}]{The standard errors of the regression (SER)}
 \begin{itemize}
 \item The standard error of regression (SER) estimates the standard
 deviation of the error term \(\mathbf{u}\). In multiple regression,
@@ -652,7 +652,7 @@ SER = s_{\hat{u}},\, \text{ where } s^2_{\hat{u}} = \frac{\sum_{i=1}^n \hat{u}_i
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orge54d837}]{\(R^2\)}
+\begin{frame}[label={sec:orgfc59514}]{\(R^2\)}
 \begin{block}{TSS, ESS, and SSR}
 \begin{itemize}
 \item The total sum of squares (TSS): \(TSS = \sum_{i=1}^n (Y_i - \bar{Y})^2\)
@@ -673,7 +673,7 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org197548c}]{Limitations of R\(^{\text{2}}\)}
+\begin{frame}[label={sec:org78a372e}]{Limitations of R\(^{\text{2}}\)}
 \begin{itemize}
 \item \(R^{2}\) is valid only if a regression model is estimated using the OLS
 since otherwise it would not be true that \(TSS = ESS + SSR\).
@@ -697,7 +697,7 @@ equality \(TSS = ESS + SSR\) holds.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgd25ae3b}]{Limitation of R\(^{\text{2}}\) (cont'd)}
+\begin{frame}[label={sec:orgf63104e}]{Limitation of R\(^{\text{2}}\) (cont'd)}
 \begin{itemize}
 \item R\(^{\text{2}}\) increases whenever an additional regressor is included in a
 multiple regression model, unless the estimated coefficient on the
@@ -715,7 +715,7 @@ Which model should have smaller \emph{SSR}?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org0bb94a0}]{Limitation of R\(^{\text{2}}\) (cont'd)}
+\begin{frame}[label={sec:org9111f7a}]{Limitation of R\(^{\text{2}}\) (cont'd)}
 \begin{itemize}
 \item Equation (\ref{eq:ex-eq-2}) have the smaller \emph{SSR} than equation
 (\ref{eq:ex-eq-1}). Why?
@@ -738,7 +738,7 @@ unconstrained minimization problem.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org3203b27}]{The adjusted R\(^{\text{2}}\)}
+\begin{frame}[label={sec:orgc4d2823}]{The adjusted R\(^{\text{2}}\)}
 \begin{itemize}
 \item The adjusted R\(^{\text{2}}\) is, or \(\bar{R}^2\), is a modified version of R\(^{\text{2}}\).
 
@@ -761,7 +761,7 @@ the sample variance of \(Y\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org475d762}]{Properties of \(\bar{R}^2\)}
+\begin{frame}[label={sec:orgf5032b7}]{Properties of \(\bar{R}^2\)}
 \begin{itemize}
 \item The definition of the \(\bar{R}^2\) in Equation (\ref{eq:adj-r2}) is
 valid only when a constant term is included in the regression
@@ -788,7 +788,7 @@ amount that his reduction fails to offset the factor
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org7aa7ad8}]{The usefulness of the R\(^{\text{2}}\) and \(\bar{R}^2\)}
+\begin{frame}[label={sec:orge085f30}]{The usefulness of the R\(^{\text{2}}\) and \(\bar{R}^2\)}
 \begin{itemize}
 \item Both \(R^2\) and \(\bar{R}^2\) are valid when the regression model is
 estimated by the OLS estimators. R\(^{\text{2}}\) computed with estimators other
@@ -804,11 +804,11 @@ be included in the model or not.
 
 
 \section{The Frisch-Waugh-Lovell Theorem}
-\label{sec:org1fda1f2}
+\label{sec:org7d2a190}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
-\begin{frame}[label={sec:org1e77331}]{The grouped regressors}
+\begin{frame}[label={sec:org6a4a240}]{The grouped regressors}
 Consider a multiple regression model
 \begin{equation}
 \label{eq:fwl-eq}
@@ -834,7 +834,7 @@ intercept and the first \(k1+1\) regressors in Equation \eqref{eq:fwl-eq},
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orged02423}]{Two estimation strategies}
+\begin{frame}[label={sec:orgf97f0ef}]{Two estimation strategies}
 Suppose that we are interested in \(\boldsymbol{\beta}_2\) but not much
 in \(\boldsymbol{\beta}_1\) in Equation \eqref{eq:mult-reg-2g}. How can we
 estimate \(\boldsymbol{\beta}_2\)?
@@ -865,7 +865,7 @@ following equation
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org18a0756}]{The second strategy: the step OLS estimation}
+\begin{frame}[label={sec:org89481a3}]{The second strategy: the step OLS estimation}
 \begin{enumerate}
 \item Regress each regressor in \(\mathbf{X}_2\) on all regressors in
 \(\mathbf{X}_1\), including the intercept, and get the residuals from
@@ -893,7 +893,7 @@ obtain the estimates of \(\boldsymbol{\beta}_2\) as
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:org91b59ab}]{The Frisch-Waugh-Lovell Theorem}
+\begin{frame}[label={sec:org78d01c9}]{The Frisch-Waugh-Lovell Theorem}
 The Frisch-Waugh-Lovell (FWL) Theorem states that
 \begin{enumerate}
 \item the OLS estimates of \(\boldsymbol{\beta}_2\) using the second strategy
@@ -904,7 +904,7 @@ and that from the first strategy are numerically identical.
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:org485f5d6}]{An understanding of the FWL theorem}
+\begin{frame}[label={sec:org731ea07}]{An understanding of the FWL theorem}
 The FWL theorem provides a mathematical statement of how the multiple
 regression coefficients in \(\hat{\boldsymbol{\beta}}_2\) capture the
 effects of \(\mathbf{X}_2\) on \(\mathbf{Y}\), controlling for other
@@ -921,7 +921,7 @@ regressors in \(\mathbf{X}_2\)
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orge256fb4}]{An example of the FWL theorem}
+\begin{frame}[label={sec:org4bafcf1}]{An example of the FWL theorem}
 Consider a regression model with single regressor
 \(Y_i = \beta_0 + \beta_1 X_i + u_i\). 
 
@@ -949,11 +949,11 @@ Equation (\ref{eq:betahat-mult}). That is
 
 
 \section{The Least Squares Assumptions in Multiple Regression}
-\label{sec:orgeea010f}
+\label{sec:org1b8e11e}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
 
-\begin{frame}[label={sec:orgf9e756a}]{The least squares assumptions in Multiple Regression}
+\begin{frame}[label={sec:orgf387e60}]{The least squares assumptions in Multiple Regression}
 \begin{block}{Assumption \#1}
 \(E(u_i | \mathbi{x}_i) = 0\). The conditional mean
 of \(u_i\) given \(X_{1i}, X_{2i}, \ldots, X_{ki}\) has
@@ -979,5 +979,439 @@ No \alert{perfect multicollinearity}. The regressors are said to exhibit
 perfect multicollinearity if one of the regressor is a perfect linear
 function of the other regressors.
 \end{block}
+\end{frame}
+
+
+\section{The Statistical Properties of the OLS Estimators in Multiple Regression}
+\label{sec:orgdde0aa5}
+\setcounter{tocdepth}{1}
+\tableofcontents[currentsection]
+
+\begin{frame}[label={sec:orgdb786b0}]{Unbiasedness and consistency}
+When all the least squares assumptions are true, especially, \(E(u_i |
+\mathbi{x}_i) = 0\), we can prove 
+
+\begin{itemize}
+\item \(\hat{\boldsymbol{\beta}}\) is unbiased, that is,
+\(E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}\).
+
+\item \(\hat{\boldsymbol{\beta}}\) is consistent, that is, as \(n \rightarrow
+  \infty\), \(\hat{\boldsymbol{\beta}} \rarrowd{p} \boldsymbol{\beta}\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org98eec21}]{The Gauss-Markov conditions and Theorem}
+\begin{block}{The G-M conditions}
+The Gauss-Markov conditions for multiple regression are
+\begin{enumerate}
+\item \(E(\mathbf{u} | \mathbf{X}) = 0\),
+\item \(\var(\mathbf{u} | \mathbf{X}) = E(\mathbf{uu}^{\prime} |
+   \mathbf{X}) = \sigma^2_u \mathbf{I}_n\) (homoskedasticity),
+\item \(\mathbf{X}\) has full column rank (no perfect multicollinearity).
+\end{enumerate}
+\end{block}
+
+\begin{block}{The G-M Theorem}
+If the Gauss-Markov conditions hold in the multiple regression model,
+then the OLS estimator \(\hat{\boldsymbol{\beta}}\) is more efficient
+than any other linear unbiased estimator
+\(\tilde{\boldsymbol{\beta}}\). That is, the OLS estimator is BLUE.
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org3d01705}]{The conditional covariance matrix of \(\hat{\boldsymbol{\beta}}\)}
+\begin{block}{The \alert{homoskedasticity-only} covariance matrix.}
+\begin{equation}
+\label{eq:varbhat-hm}
+\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
+\end{equation}
+\end{block}
+
+\begin{block}{The \alert{heteroskedasticity-robust covariance matrix}}
+\begin{equation}
+\label{eq:varbhat-ht}
+\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \boldsymbol{\Sigma} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
+\end{equation}
+where \(\boldsymbol{\Sigma} = \mathbf{X}^{\prime}
+\boldsymbol{\Omega}\mathbf{X}\) and \(\boldsymbol{\Omega} = \var(\mathbf{u} | \mathbf{X})\)
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:orgc1f1b20}]{The asymptotic normal distribution}
+\begin{itemize}
+\item With large samples, the OLS estimator \(\hat{\boldsymbol{\beta}}\) has the
+multivariate normal asymptotic distribution as
+\begin{equation}
+\label{eq:normal-bhat-m}
+\hat{\boldsymbol{\beta}} \rarrowd{d} N(\boldsymbol{\beta}, \boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}})
+\end{equation}
+
+\item \(\boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}} =
+  \var(\hat{\boldsymbol{\beta}} | \mathbf{X})\). 
+\begin{itemize}
+\item Use Equation (\ref{eq:varbhat-hm}) for the homoskedastic case
+\item Use Equation (\ref{eq:varbhat-ht}) for the heteroskedastic case.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{The Omitted Variable Bias}
+\label{sec:orgf22afe5}
+\setcounter{tocdepth}{1}
+\tableofcontents[currentsection]
+\begin{frame}[label={sec:org4cd9ef4}]{The definition of the omitted variable bias}
+The \alert{omitted variable bias} arises when two conditions are met
+\begin{enumerate}
+\item The included regressors \(\mathbf{X}\) is correlated with the
+omitted regressors, denoted as \(\mathbf{Z}\).
+\item The omitted variables, \(\mathbf{Z}\), are determinants of the
+dependent variable \(\mathbf{Y}\).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[shrink,plain,label={sec:org5a64027}]{The reason for the omitted variable bias}
+\begin{block}{The true model}
+Suppose that the true model is
+\begin{equation}
+\label{eq:omb-1}
+\mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{Z}\boldsymbol{\gamma} + \mathbf{u}
+\end{equation}
+\begin{itemize}
+\item We assume \(E(\mathbf{u} | \mathbf{X}, \mathbf{Z}) = 0\).
+\item The OLS estimators, \(\hat{\boldsymbol{\beta}}\) and
+\(\hat{\boldsymbol{\gamma}}\), from Equation \eqref{eq:omb-1} are unbiased.
+\item We also assume \(\cov(\mathbf{X}, \mathbf{Z}) \neq 0\).
+\end{itemize}
+\end{block}
+
+\begin{block}{The wrong model}
+\begin{equation}
+\label{eq:omb-2}
+\mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\epsilon}
+\end{equation}
+
+\begin{itemize}
+\item \(\boldsymbol{\epsilon}\) represents all other factors that are not
+in Equation (\ref{eq:omb-2}), including \(\mathbf{Z}\)
+\item \(\cov(\mathbf{X}, \mathbf{Z}) \neq 0\) \(\Rightarrow\) \(\cov(\mathbf{X},
+  \boldsymbol{\epsilon}) \neq 0\) \(\Rightarrow\)
+\(E(\boldsymbol{\epsilon} | \mathbf{X}) \neq 0\)
+\item The OLS estimator, \(\tilde{\boldsymbol{\beta}}\), from Equation
+\eqref{eq:omb-2} is biased.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org3d6f3aa}]{An illustration using a linear model with two regressors}
+\begin{itemize}
+\item Suppose the true model is
+\[ Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + u_i,\; i=1,
+  \ldots, n \]
+with \(E(u_i | X_{1i}, X_{2i}) = 0\)
+
+\item However, we estimate a wrong model of
+\[ Y_i = \beta_0 + \beta_1 X_{1i} + \epsilon_i,\; i=1, \ldots, n \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org3a9867a}]{An illustration using a linear model with two regressors (cont'd)}
+\begin{itemize}
+\item We can prove that \(\beta_1\) can be expressed as
+\[ \hat{\beta}_1 = \beta_1 + \frac{\frac{1}{n}\sum_i
+  (X_{1i} - \bar{X}_1) \epsilon_i}{\frac{1}{n}\sum_i (X_i - \bar{X}_1)^2} \]
+
+\item As \(n \rightarrow \infty\), \(\frac{1}{n}\sum_i
+  (X_{1i} - \bar{X}_1) \epsilon_i \rarrowd{p} \cov(X_1, \epsilon) = \rho_{{\scriptscriptstyle X_1} \epsilon} \sigma_{\scriptscriptstyle X_1} \sigma_{\epsilon}\)
+and \(\frac{1}{n}\sum_i (X_i - \bar{X}_1)^2 \rarrowd{p}
+  \sigma^2_{\scriptscriptstyle X_1}\).
+
+\item We have the formula to quantify the omitted variable bias as
+\begin{equation}
+\label{eq:omb-4}
+\hat{\beta}_1 \rarrowd{p} \beta_1 + \underbrace{\rho_{x_1 \epsilon} \frac{\sigma_{\epsilon}}{\sigma_{x_1}}}_{\mathclap{\text{omitted variable bias}}}
+\end{equation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgae47735}]{Some facts summarized from the formula}
+\begin{itemize}
+\item Omitt variable bias is a problem irregardless of whether the sample
+size is large or small.
+
+\item Whether this bias is large or small in practice depends on
+\(|\rho_{X_{1} \epsilon}|\).
+
+\item The direction of this bias is determined by the sign of \(\rho_{X_{1}
+  \epsilon}\).
+
+\item One easy way to detect the existence of the omitted variable bias is
+that when adding a new regressor, the estimated coefficients on some
+previously included regressors change substantially.
+\end{itemize}
+\end{frame}
+
+\section{Multicollinearity}
+\label{sec:orge398ace}
+\setcounter{tocdepth}{1}
+\tableofcontents[currentsection]
+
+\begin{frame}[label={sec:orgc4efd89}]{Definition of perfect multicollinearity}
+\alert{Perfect multicollinearity} refers to the situation when one of the
+regressor is a perfect linear function of the other regressors.
+\begin{itemize}
+\item In the terminology of linear algebra, perfect multicollinearity
+means that the vectors of regressors are linearly dependent.
+\item That is, the vector of a regressor can be expressed as a linear
+combination of vectors of the other regressors.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org29d4001}]{Understanding perfect multicollinearity}
+\begin{block}{Linear dependence}
+\begin{itemize}
+\item Write the matrix of regressors \(\mathbf{X}\) with column vectors
+\[
+  \mathbf{X} = [\boldsymbol{\iota}, \boldsymbol{X}_1, \boldsymbol{X}_2, \ldots, \boldsymbol{X}_k ]
+  \]
+\item That the \(k+1\) column vectors are linearly dependent means that there
+exist some \((k+1) \times 1\) nonzero vector \(\boldsymbol{\beta} =
+  [\beta_0, \beta_1, \ldots, \beta_k]^{\prime}\) such that
+\[
+  \beta_0 \boldsymbol{\iota} + \beta_1 \boldsymbol{X}_1 + \cdots + \beta_k
+  \boldsymbol{X}_k = 0 
+  \]
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org790340a}]{Consequence of perfect multicollinearity}
+If \(\boldsymbol{X}_i\) are linearly dependent, then
+\begin{itemize}
+\item \(\mathbf{X}\) does not have full column rank.
+\item If \(\mathbf{X}\) does not have full column rank, then
+\(\mathbf{X}^{\prime} \mathbf{X}\) is singular.
+\item It means that the inverse
+of \(\mathbf{X}^{\prime} \mathbf{X}\) does not exist.
+\item If \(\mathbf{X}^{\prime} \mathbf{X}\) is not invertible, the OLS
+estimator based on the formula of \(\boldsymbol{\hat{\beta}} =
+  (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime}
+  \mathbf{Y}\) does not exist.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgbe4d796}]{Examples of perfect multicollinearity}
+Suppose we have a multiple regression model
+\[ \mathbf{Y} = \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2
+\mathbf{X}_2 + \mathbf{u}  \]
+
+\begin{block}{Cases that imply perfect multicollinearity}
+\begin{itemize}
+\item \(Z = a X_1\) or \(Z = b X_2\)
+\item \(Z = 1 - a X_1\)
+\item \(Z = a X_1 + b X_2\)
+\end{itemize}
+\end{block}
+
+\begin{block}{Cases that do not imply perfect multicollinearity}
+\begin{itemize}
+\item \(Z = X_1^2\)
+\item \(Z = \ln X_1\)
+\item \(Z = X_1 X_2\)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:orga379ca1}]{The dummy variable trap}
+\begin{itemize}
+\item The dummy variable trap is a case of perfect multicollinearity
+that a modeler often encounters.
+\item We use dummy variables to distinguish different groups of objects.
+\item Question: How many dummy variables should we include?
+\end{itemize}
+
+\begin{block}{An example}
+\begin{itemize}
+\item Four ethnic groups: White, African American, Hispanic, and
+Asian.
+\item We want to estimate a regression model to see whether wages among
+these four groups are different.
+\item Suppose we have four observations: Chuck (White), 
+Mike (African American), Juan (Hispanic), and Li (Asian). Define
+dummy variables as
+\begin{equation*}
+White =
+\begin{pmatrix}
+1 \\
+0 \\
+0 \\
+0
+\end{pmatrix},\,
+African =
+\begin{pmatrix}
+0 \\
+1 \\
+0 \\
+0
+\end{pmatrix},\,
+Hispanic =
+\begin{pmatrix}
+0 \\
+0 \\
+1 \\
+0
+\end{pmatrix},\,
+Asian =
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+1
+\end{pmatrix}
+\end{equation*}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:orgc02e23b}]{The wrong regression model}
+\begin{itemize}
+\item We set up a regression model as follows
+\begin{equation}
+\label{eq:dummy-trap}
+Wage_i = \beta_0 + \beta_1 White_i + \beta_2 African_i + \beta_3 Hispanic_i + \beta_4 Asian_i + u_i
+\end{equation}
+\item Dummy variable trap (perfect multicollinearity) occurs
+\begin{equation*}
+\begin{pmatrix}
+1 \\
+1 \\
+1 \\
+1 \\
+\end{pmatrix}
+= White + African + Hispanic + Asian
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgf5adac1}]{Remedy to dummy variable trap}
+To avoid the dummy variable trap, we can either of the following two
+methods:
+\begin{enumerate}
+\item drop the constant term
+\item drop one dummy variable
+\end{enumerate}
+The difference between these two methods lies in how we interpret the
+coefficients on dummy variables.
+\end{frame}
+
+\begin{frame}[label={sec:org3331587}]{Drop the constant term}
+If we drop the constant term, the model becomes
+\begin{equation}
+\label{eq:dummy-trap-1}
+Wage = \beta_1 White + \beta_2 African + \beta_3 Hispanic + \beta_4 Asian + u
+\end{equation}
+For Chuck or all white people, the model becomes
+\[ Wage = \beta_1 + u \]
+Then \(\beta_1\) is the population mean wage of whites, that is,
+\[\beta_1 = E(Wage | White = 1)\]
+
+Similarly, \(\beta_2, \beta_3, \text{ and } \beta_4\) are the population mean wage
+of African Americans, Hispanics, and Asians, respectively.
+\end{frame}
+
+\begin{frame}[label={sec:org2f61aa7}]{Drop one dummy variable}
+If we drop the dummy variable for white people, then the model becomes
+\begin{equation}
+\label{eq:dummy-trap-2}
+Wage = \beta_1 + \beta_2 African + \beta_3 Hispanic + \beta_4 Asian + u
+\end{equation}
+For white people, the model is
+\[Wage = \beta_1 + u_i \]
+And the constant term \(\beta_1\) is just the population mean of
+whites, that is,
+\[\beta_1 = E(Wage | White = 1)\]
+So we say that white people
+serve as a reference case in Model (\ref{eq:dummy-trap-2}).
+\end{frame}
+
+\begin{frame}[label={sec:org8dd31f7}]{Drop one dummy variable (cont'd)}
+For African Americans, the model is
+\[ Wage = \beta_1 + \beta_2 + u  \]
+From it we have \(E(Wage | African=1) = \beta_1 + \beta_2\) so that
+\[\beta_2 = E(Wage | African = 1) - \beta_1 = E(Wage | African = 1) -
+E(Wage | White = 1)\]
+Similarly, we can get that
+\begin{align*}
+\beta_3 &= E(Wage | Hispanic = 1) - E(Wage | White = 1) \\
+\beta_4 &= E(Wage | Asian = 1) - E(Wage | White = 1)
+\end{align*}
+\end{frame}
+
+\begin{frame}[label={sec:org46a4c2c}]{Definition of imperfect multicollinearity}
+\alert{Imperfect multicollinearity} is a problem of regression when two or
+more regressors are highly correlated. 
+
+\vspace{0.3cm}
+Although they bear similar
+names, imperfect multicollinearity and perfect multicollinearity are
+two different concepts.
+\begin{itemize}
+\item Perfect multicollinearity is a problem of modeling building,
+resulting in a total failure to estimate a linear model.
+\item Imperfect multicollinearity is usually a problem of data in the
+sense that data for two variables are highly correlated.
+\item Imperfect multicollinearity does not affect the unbiasedness of the
+OLS estimators. However, it does affect the efficiency, i.e., the
+variance of the OLS estimators.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgf4c85d3}]{An illustration using a regression model with two regressors}
+Suppose we have a linear regression model with two regressors
+\begin{equation}
+\label{eq:ex-collin}
+\mathbf{Y} = \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \mathbf{u}
+\end{equation}
+
+\begin{itemize}
+\item We can prove that 
+\[\var(\hat{\beta}_1 | \mathbf{X}) =
+  \frac{\sigma^2_u}{\sum_i (X_{1i} - \bar{X})_1^2} \frac{1}{(1 - r^2_{12})}\]
+where \(r_{12}\) is the correlation coefficient between \(X_1\) and \(X_2\).
+
+\item When \(X_1\) and \(X_2\) are highly correlated, that is \(r^2_{12}\) gets
+close to 1, then \(\var(\hat{\beta}_1 | \mathbf{X})\) becomes very
+large.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org2e04048}]{The consequence and detection of imperfect multicollinearity}
+\begin{itemize}
+\item The consequence of imperfect multicollinearity is that I may more
+often fail to reject the null hypothesis of a zero coefficient with
+t-statistic.
+
+\item The variance inflation factor (VIF) is a commonly used indicator for
+detecting multicollinearity. The definition is
+
+\begin{equation*}
+\mathrm{VIF} = \frac{1}{1 - r^2_{12}}
+\end{equation*}
+
+The smaller VIF is for a regressor, the less severe the problem of
+multicollinearity is.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orga0c6a2c}]{The remedies to imperfect multicollinearity}
+\begin{itemize}
+\item Include more sample in hope of the variation in \(\mathbf{X}\) getting
+widened, i.e., increasing \(\sum_i (X_{1i} - \bar{X}_1)^2\).
+
+\item Drop the variable(s) that is highly correlated with other
+regressors. Notice that by doing this we are at the risk of
+suffering the omitted variable bias. There is always a trade-off
+between including all relevant regressors and making the regression
+model \emph{parsimonious}.
+\end{itemize}
 \end{frame}
 \end{document}

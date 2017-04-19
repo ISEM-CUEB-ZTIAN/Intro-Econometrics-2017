@@ -917,47 +917,45 @@ regressors. The fourth assumption is a new one.
                    other regressors.
 
 
-* TODO COMMENT The Statistical Properties of the OLS Estimators in Multiple Regression
+* The Statistical Properties of the OLS Estimators in Multiple Regression
+
 ** Unbiasedness and consistency
+
 Under the least squares assumptions the OLS estimator
 $\hat{\boldsymbol{\beta}}$ can be shown to be *unbiased* and
 *consistent* estimator of $\boldsymbol{\beta}$ in the multiple
 regression model of Equation (\ref{eq:multi-regress-m}).
 
 *** Unbiasedness
+
 The OLS estimators $\hat{\boldsymbol{\beta}}$ is unbiased if
 $E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}$.
 
 To show the unbiasedness, we can rewrite $\hat{\boldsymbol{\beta}}$ as
 follows,
-#+BEGIN_LaTeX
 \begin{equation}
 \label{eq:bhat-m-a}
 \hat{\boldsymbol{\beta}} = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} \mathbf{Y}
 = \left(\mathbf{X}^{\prime} \mathbf{X} \right)^{-1} \mathbf{X}^{\prime} (\mathbf{X} \boldsymbol{\beta} + \mathbf{u})
 = \boldsymbol{\beta} + \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} \mathbf{u}
 \end{equation}
-#+END_LaTeX
 
 Thus, the conditional expectation of $\hat{\boldsymbol{\beta}}$ is
-#+BEGIN_LaTeX
 \begin{equation}
 \label{eq:bhat-unbias}
 E(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \boldsymbol{\beta} + \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} E(\mathbf{u} | \mathbf{X}) = \boldsymbol{\beta}
 \end{equation}
-#+END_LaTeX
 in which $E(\mathbf{u} | \mathbf{X}) = 0$ from the first least squares
 assumption.
 
 Using the law of iterated expectation, we have
-#+BEGIN_LaTeX
 \[ E(\hat{\boldsymbol{\beta}}) = E(E(\hat{\boldsymbol{\beta}} |
 \mathbf{X})) = E(\boldsymbol{\beta}) = \boldsymbol{\beta} \]
-#+END_LaTeX
 Therefore, $\hat{\boldsymbol{\beta}}$ is an unbiased estimator of
 $\boldsymbol{\beta}$.
 
 *** Consistency
+
 The OLS estimator $\hat{\boldsymbol{\beta}}$ is consistent if as $n
 \rightarrow \infty$, $\hat{\boldsymbol{\beta}}$ will converge to
 $\boldsymbol{\beta}$ in probability, that is, $\plim_{n \rightarrow
@@ -995,8 +993,11 @@ Therefore, we can conclude that
 \[ \plim_{n \rightarrow \infty} \hat{\boldsymbol{\beta}} = \boldsymbol{\beta}  \]
 That is, $\hat{\boldsymbol{\beta}}$ is consistent.
 
+
 ** The Gauss-Markov theorem and efficiency
+
 *** The Gauss-Markov conditions
+
 The Gauss-Markov conditions for multiple regression are
 1. $E(\mathbf{u} | \mathbf{X}) = 0$,
 2. $\var(\mathbf{u} | \mathbf{X}) = E(\mathbf{uu}^{\prime} |
@@ -1004,6 +1005,7 @@ The Gauss-Markov conditions for multiple regression are
 3. $\mathbf{X}$ has full column rank (no perfect multicollinearity).
 
 *** The Gauss-Markov Theorem
+
 #+BEGIN_QUOTE
 If the Gauss-Markov conditions hold in the multiple regression model,
 then the OLS estimator $\hat{\boldsymbol{\beta}}$ is more efficient
@@ -1016,15 +1018,11 @@ matrix. That is, the OLS estimator is BLUE.
 That $\var(\tilde{\boldsymbol{\beta}}) -
 \var(\hat{\boldsymbol{\beta}})$ is a positive semidefinite matrix
 means that for any nonzero $(k+1) \times 1$ vector $\mathbf{c}$,
-#+BEGIN_LaTeX
 \[ \mathbf{c}^{\prime}\left(\var(\tilde{\boldsymbol{\beta}}) -
 \var(\hat{\boldsymbol{\beta}})\right) \mathbf{c} \geq 0 \]
-#+END_LaTeX
 or we can simply write as
-#+BEGIN_LaTeX
 \[ \var(\tilde{\boldsymbol{\beta}}) \geq
 \var(\hat{\boldsymbol{\beta}})  \]
-#+END_LaTeX
 The equality holds only when $\tilde{\boldsymbol{\beta}} =
 \hat{\boldsymbol{\beta}}$.[fn:2]
 
@@ -1044,22 +1042,17 @@ as
 
   For a random vector $\mathbf{x}$, the variance of $\mathbf{x}$ is a
   covariance matrix defined as
-  #+BEGIN_LaTeX
   \[ \var(\mathbf{x}) =
   E\left((\mathbf{x}-E(\mathbf{x}))(\mathbf{x}-E(\mathbf{x}))^{\prime}\right)
   \]
-  #+END_LaTeX
   which also holds for the conditional variance by replacing the
   expectation operator with the conditional expectation operator.
 
   Since $E(\mathbf{u} | \mathbf{X}) = 0$, its covariance matrix,
   conditioned on $\mathbf{X}$, is
-  #+BEGIN_LaTeX
   \[ \var(\mathbf{u} | \mathbf{X}) = E(\mathbf{u} \mathbf{u}^{\prime} | \mathbf{X})
   \]
-  #+END_LaTeX
   where
-  #+BEGIN_LaTeX
   \begin{equation*}
   \mathbf{u} \mathbf{u}^{\prime} =
   \begin{pmatrix}
@@ -1069,7 +1062,6 @@ as
   u_n u_1 & u_n u_2 & \cdots & u_n^2 \\
   \end{pmatrix}
   \end{equation*}
-  #+END_LaTeX
   Thus, in the matrix $\mathbf{u} \mathbf{u}^{\prime}$,
   - the expectation of the diagonal elements, conditioned on $\mathbf{X}$,
     are the conditional variance of $u_i$ which is $\sigma^2_u$ because
@@ -1080,7 +1072,6 @@ as
     u_j | \mathbf{X}) = 0$.
 
   Therefore, the conditional covariance matrix of $\mathbf{u}$ is
-  #+BEGIN_LaTeX
   \begin{equation*}
   \var(\mathbf{u} | \mathbf{X}) =
   \begin{pmatrix}
@@ -1091,23 +1082,19 @@ as
   \end{pmatrix}
   = \sigma^2_u \mathbf{I}_n
   \end{equation*}
-  #+END_LaTeX
 
 *** Linear conditionally unbiased estimators
+
 Any linear estimator of $\boldsymbol{\beta}$ can be written as
-#+BEGIN_LaTeX
 \[ \tilde{\boldsymbol{\beta}} = \mathbf{Ay} = \mathbf{AX}\boldsymbol{\beta} + \mathbf{Au} \]
-#+END_LaTeX
 where $\mathbf{A}$ is a weight matrix depending only on $\mathbf{X}$
 not on $\mathbf{y}$.
 
 For $\tilde{\boldsymbol{\beta}}$ to be conditionally unbiased, we must
 have
-#+BEGIN_LaTeX
 \begin{equation*}
 E(\tilde{\boldsymbol{\beta}} | \mathbf{X}) = \mathbf{AX} \boldsymbol{\beta} + \mathbf{A} E(\mathbf{u} | \mathbf{X}) = \boldsymbol{\beta}
 \end{equation*}
-#+END_LaTeX
 which only holds when $\mathbf{AX} = \mathbf{I}_{k+1}$ and the first
 Gauss-Markov condition holds.
 
@@ -1117,9 +1104,9 @@ unbiased estimator with $\mathbf{A} = \left(\mathbf{X}^{\prime}
 \mathbf{I}_{k+1}$ is true for $\hat{\boldsymbol{\beta}}$.
 
 *** The conditional covariance matrix of $\hat{\boldsymbol{\beta}}$
+
 The conditional variance matrix of $\hat{\boldsymbol{\beta}}$ can be
 derived as follows
-#+BEGIN_LaTeX
 \begin{equation*}
 \begin{split}
 \var(\hat{\boldsymbol{\beta}} | \mathbf{X}) &= E\left[ (\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})(\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})^{\prime} | \mathbf{X}\right] \\
@@ -1128,22 +1115,17 @@ derived as follows
 &= \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} E(\mathbf{uu}^{\prime} | \mathbf{X}) \mathbf{X} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
 \end{split}
 \end{equation*}
-#+END_LaTeX
 
 Then, by the second Gauss-Markov condition, we have
-#+BEGIN_LaTeX
 \begin{equation*}
 \var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{X}^{\prime} (\sigma^2_u \mathbf{I}_n) \mathbf{X} (\mathbf{X}^{\prime} \mathbf{X})^{-1} = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
 \end{equation*}
-#+END_LaTeX
 
 The *homoskedasticity-only* covariance matrix of $\hat{\boldsymbol{\beta}}$ is
-#+BEGIN_LaTeX
 \begin{equation}
 \label{eq:varbhat-hm}
 \var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
 \end{equation}
-#+END_LaTeX
 
 If the homoskedasticity assumption does not hold, denote the
 covariance matrix of $\mathbf{u}$ as
@@ -1153,7 +1135,6 @@ Heteroskedasticity means that the diagonal elements of
 $\mathbf{\Omega}$ can be different (i.e. $\var(u_i | \mathbf{X}) =
 \sigma^2_i \text{ for } i=1, \ldots, n)$, while the off-diagonal
 elements are zeros, that is
-#+BEGIN_LaTeX
 \begin{equation*}
 \mathbf{\Omega} =
 \begin{pmatrix}
@@ -1163,19 +1144,18 @@ elements are zeros, that is
 0 & 0 & \cdots & \sigma^2_n
 \end{pmatrix}
 \end{equation*}
-#+END_LaTeX
 
 Define $\mathbf{\Sigma} = \mathbf{X}^{\prime} \mathbf{\Omega}
 \mathbf{X}$. Then the *heteroskedasticity-robust covariance matrix* of
 $\hat{\boldsymbol{\beta}}$ is
-#+BEGIN_LaTeX
 \begin{equation}
 \label{eq:varbhat-ht}
 \var_{\mathrm{h}}(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{\Sigma} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
 \end{equation}
-#+END_LaTeX
+
 
 ** The asymptotic normal distribution
+
 In large samples, the OLS estimator $\hat{\boldsymbol{\beta}}$ has the
 multivariate normal asymptotic distribution as
 \begin{equation}
@@ -1190,7 +1170,9 @@ Equation (\ref{eq:varbhat-hm}) for the homoskedastic case and Equation
 The proof of the asymptotic normal distribution and the multivariate
 central limit theorem are given in Chapter 18.
 
-* TODO COMMENT The Omitted Variable Bias
+
+* The Omitted Variable Bias
+
 ** The definition of the omitted variable bias
  The *omitted variable bias* is the bias in the OLS esitmator that arises
  when the included regressors, $\mathbf{X}$, are correlated with
@@ -1202,6 +1184,7 @@ central limit theorem are given in Chapter 18.
  1. $\mathbf{X}$ is correlated with some omitted variables in $\mathbf{Z}$.
  2. The omitted variables are determinants of the dependent variable
     $\mathbf{Y}$.
+
 
 ** The reason for the omitted variable bias
 Suppose that the true model is
@@ -1262,6 +1245,7 @@ $\hat{\boldsymbol{\beta}}$ for the short model is biased. And the
 magnitude and direction of the bias is determined by
 $\mathbf{X}^{\prime} \mathbf{Z} \boldsymbol{\gamma}$.
 
+
 ** An illustration using a linear model with two regressors
 Suppose the true model is
 \[ Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + u_i,\; i=1,
@@ -1301,8 +1285,11 @@ From Equations (\ref{eq:omb-3}) and (\ref{eq:omb-4}), we can summarize some fact
   that when adding a new regressor, the estimated coefficients on some
   previously included regressors change substantially.
 
-* TODO COMMENT Multicollinearity
+
+* TODO Multicollinearity
+
 ** Perfect multicollinearity
+
 *Perfect multicollinearity* refers to the situation when one of the
 regressor is a perfect linear function of the other regressors.
 - In the terminology of linear algebra, perfect multicollinearity
@@ -1312,11 +1299,9 @@ regressor is a perfect linear function of the other regressors.
 
 Remember that the matrix of regressors $\mathbf{X}$ can be written in
 terms of column vectors as
-#+BEGIN_LaTeX
 \[
 \mathbf{X} = [\boldsymbol{\iota}, \mathbf{X}_1, \mathbf{X}_2, \ldots, \mathbf{X}_k ]
 \]
-#+END_LaTeX
 where $\mathbf{X}_i = [X_{i1}, X_{i2}, \ldots, X_{in}]^{\prime}$
 is a $n \times 1$ vector of $n$ observations of the i^{th}
 regressor. $\boldsymbol{\iota}$ is a vector of 1s, representing the
@@ -1325,11 +1310,10 @@ constant term.
 That the $k+1$ column vectors are linearly dependent means that there
 exist some $(k+1) \times 1$ nonzero vector $\boldsymbol{\beta} =
 [\beta_0, \beta_1, \ldots, \beta_k]^{\prime}$ such that
-#+BEGIN_LaTeX
 \[
 \beta_0 \boldsymbol{\iota} + \beta_1 \mathbf{X}_1 + \cdots + \beta_k
 \mathbf{X}_k = 0 \]
-#+END_LaTeX
+
 If $\mathbf{X}_i$, for $i=1,\ldots,n$, are linearly dependent,
 then it follows
 - $\mathbf{X}$ does not have full column rank.
@@ -1343,7 +1327,9 @@ then it follows
   (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime}
   \mathbf{Y}$ does not exist.
 
+
 ** Examples of perfect multicollinearity
+
 Remember that perfect multicollinearity occurs when one regressor can
 be expressed as a linear combination of other regressors. This problem
 belongs to the logic error when the researcher sets up the regression
@@ -1367,6 +1353,7 @@ $X_2$ such that there is no perfect multicollinearity problem. For example,
 - $Z = \ln X_1$
 - $Z = X_1 X_2$
 
+
 ** The dummy variable trap
 The dummy variable trap is a good case of perfect multicollinearity
 that a modeler often encounters. Recall that a *binary variable* (or
@@ -1382,12 +1369,10 @@ White, African American, Hispanic, and Asian. And we want to estimate
 a regression model to see whether wages among these four groups are
 different. We may (mistakenly as we will see) set up a multiple
 regression model as follows
-#+BEGIN_LaTeX
 \begin{equation}
 \label{eq:dummy-trap}
 Wage_i = \beta_0 + \beta_1 White_i + \beta_2 African_i + \beta_3 Hispanic_i + \beta_4 Asian_i + u_i
 \end{equation}
-#+END_LaTeX
 where $White_i$ is a dummy variable which equal 1 if the i^{th}
 observation is a white people and equal 0 if he/she is not, similarly
 for $African_i, Hispanic_i, \text{ and } Asian_i$.
@@ -1498,6 +1483,7 @@ variable for the reference case, then the coefficients on other dummy
 variables represent the difference in the population means between the
 interested case and the reference case.
 
+
 ** Imperfect Multicollinearity
 *** Definition of imperfect multicollinearity
 *Imperfect multicollinearity* is a problem of regression when two or
@@ -1599,6 +1585,7 @@ with the homoskedasticity-only covariance matrix as
   model /parsimonious/.[fn:: The word "parsimonious" in Econometrics
   means that we always want to make the model as concise as possible
   without any redundant variables included.]
+
 
 * Footnotes
 
