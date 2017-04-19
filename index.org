@@ -98,14 +98,17 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 
 ** Homework set #1
 
-- Homework set #1: [[file:assignment/homework/homework_1/homework_1.pdf][homework_1.pdf]]. Answer: [[file:assignment/homework/homework_1/ans_hw_1.pdf][ans_hw_1.pdf]]
+- Homework set #1: [[file:assignment/homework/homework_1/homework_1.pdf][homework_1.pdf]].
+- Answer: [[file:assignment/homework/homework_1/ans_hw_1.pdf][ans_hw_1.pdf]]
 
 ** Homework set #2
 
 - Homework set #2: [[file:assignment/homework/homework_2/homework_2.pdf][homework_2.pdf]]. The data files are included in this
-  zip file, [[file:assignment/homework/homework_2/TeachingRatings.zip][TeachingRatings.zip]]. Answer: [[file:assignment/homework/homework_2/answers/ans_hw_2.pdf][pdf]].
+  zip file, [[file:assignment/homework/homework_2/TeachingRatings.zip][TeachingRatings.zip]].
+- Answer: [[file:assignment/homework/homework_2/answers/ans_hw_2.pdf][pdf]].
 
 ** Homework set #3
 
 - Homework set #3: [[file:assignment/homework/homework_3/homework_3.pdf][homework_3.pdf]]. The data file is the same as in
   Homework set #2.
+- Answers to homework 3 ([[file:assignment/homework/homework_3/answers.zip][zip]])
