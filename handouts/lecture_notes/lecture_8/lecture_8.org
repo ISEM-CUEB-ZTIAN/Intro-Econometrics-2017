@@ -88,7 +88,7 @@ which is the error term, $u_i$, in the regression model.
  What are possible other important factors?
  - School district characteristics: average income level, demographic
    components
- - School characteristics: teachers' quality, school buildings, 
+ - School characteristics: teachers' quality, school buildings,
  - Student characteristics: family economic conditions, individual
    ability
 
@@ -118,15 +118,15 @@ in the simple regression model.
 **** Solutions to the omitted variable bias
 
 We can include these important but ignored variables, like the
-percentage of English learners ($PctEL$), in the regression model.  
+percentage of English learners ($PctEL$), in the regression model.
 
 \[
 TestScore_i = \beta_0 + \beta_1 STR_i + \beta_2 PctEL_i +
-OtherFactors_i 
-\] 
+OtherFactors_i
+\]
 
 A regression model with more than one regressors is a multiple
-regression model. 
+regression model.
 
 
 ** A multiple regression model
@@ -141,7 +141,7 @@ where
 - $X_{1i}, X_{2i}, \ldots, X_{ki}$ are the i^{th} observation on each
   of the $k$ regressors.
 - $u_i$ is the error term associated with the i^{th} observation,
-  representing all other factors that are not included in the model. 
+  representing all other factors that are not included in the model.
 - The population regression line (or population regression
   function) is the relationship that holds between $Y$ and $X$ on
   average in the population
@@ -172,13 +172,13 @@ Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k + u
 
 In Equation (\ref{eq:multi-regress-1a}), the coefficient $\beta_i$ on
 a regressor $X_i$, for $i=1, \ldots, k$, measures the effect on $Y$ of a
-unit change in $X_i$, *holding other $X$ constant*. 
+unit change in $X_i$, *holding other $X$ constant*.
 
 Suppose we have two regressors $X_1$ and $X_2$ and we are interested
 in the effect of $X_1$ on $Y$. We can let $X_1$ change by $\Delta X_1$
 and holding $X_2$ constant. Then, the new value of $Y$ is
-\[ 
-Y + \Delta Y = \beta_0 + \beta_1 (X_1 + \Delta X_1) + \beta_2 X_2  
+\[
+Y + \Delta Y = \beta_0 + \beta_1 (X_1 + \Delta X_1) + \beta_2 X_2
 \]
 Subtracting $Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2$, we have
 $\Delta Y = \beta_1 \Delta X_1$. That is
@@ -685,7 +685,7 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 
 3. Most importantly, $R^2$ increases whenever an additional regressor
    is included in a multiple regression model, unless the estimated
-   coefficient on the added regressor is exactly zero. 
+   coefficient on the added regressor is exactly zero.
 
    Consider two regression models
    \begin{align}
@@ -693,7 +693,7 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
    \label{eq:ex-eq-1} \\
    \mathbf{Y} &= \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \mathbf{u} \label{eq:ex-eq-2}
    \end{align}
-   
+
    Since both models use the same $\mathbf{Y}$, $TSS$ must be the
    same. If the OLS estimator $\hat{\beta}_2$ does not equal 0, then
    $SSR$ in Equation (\ref{eq:ex-eq-1}) is always larger than that of
@@ -709,7 +709,7 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 
 The adjusted $R^2$ is, or $\bar{R}^2$, is a modified version of
 $R^2$ in Equation (\ref{eq:r2-center}). $\bar{R}^2$ improves $R^2$ in the sense that it does not
-necessarily increase when a new regressor is added. 
+necessarily increase when a new regressor is added.
 
 $\bar{R}^2$ is
 defined as
@@ -773,7 +773,7 @@ intercept and the first $k1+1$ regressors in Equation eqref:eq:fwl-eq,
 and $\mathbf{X}_2$ is an $n \times k2$ matrix composed of the rest
 $k_2$ regressors. $\boldsymbol{\beta}_1 = (\beta_0, \beta_1, \ldots,
 \beta_{k1})^{\prime}$ and $\boldsymbol{\beta}_2 = (\beta_{k1+1},
-\ldots, \beta_k)^{\prime}$. 
+\ldots, \beta_k)^{\prime}$.
 
 
 ** Two estimation strategies
@@ -788,14 +788,14 @@ We can obtain the OLS estimation of $\boldsymbol{\beta}_2$ with
 Equation eqref:eq:betahat-mult, i.e., $\hat{\boldsymbol{\beta}} =
 (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime}
 \mathbf{Y}$. $\hat{\boldsymbol{\beta}}_2$ is a vector consisting of
-the last $k2$ elements in $\hat{\boldsymbol{\beta}}$. 
+the last $k2$ elements in $\hat{\boldsymbol{\beta}}$.
 
 In matrix notation, we can get $\hat{\boldsymbol{\beta}}_2$ from the
 following equation
 \begin{equation*}
 \begin{pmatrix}
 \hat{\boldsymbol{\beta}}_1 \\
-\hat{\boldsymbol{\beta}}_2 
+\hat{\boldsymbol{\beta}}_2
 \end{pmatrix} =
 \begin{pmatrix}
 \mathbf{X}_1^{\prime} \mathbf{X}_1 & \mathbf{X}_1^{\prime} \mathbf{X}_2 \\
@@ -816,14 +816,14 @@ $\boldsymbol{\beta}_2$:
    this regression, denoted as $\widetilde{\mathbf{X}}_2$.
 
    That is, for each regressor $\mathbf{X}_i$ in $\mathbf{X}_2$,
-   $i=k1+1, \ldots, k$, we estimate a multiple regression, 
+   $i=k1+1, \ldots, k$, we estimate a multiple regression,
    \[
    \mathbf{X}_i = \gamma_0 + \gamma_1 \mathbf{X}_1 + \cdots +
-   \gamma_{k1} \mathbf{X}_{k1} + v \] 
-   The residuals from this regression is 
+   \gamma_{k1} \mathbf{X}_{k1} + v \]
+   The residuals from this regression is
    \[ \widetilde{\mathbf{X}}_i = X_i - \hat{\gamma}_0 -
    \hat{\gamma}_1 \mathbf{X}_1 - \cdots - \hat{\gamma}_{k1}
-   \mathbf{X}_{k1} \] 
+   \mathbf{X}_{k1} \]
    As such, we can get an $n \times k2$ matrix
    composed of all the residuals $\widetilde{\mathbf{X}}_2 =
    (\widetilde{\mathbf{X}}_{k1+1} \cdots \widetilde{\mathbf{X}}_k)$.
@@ -859,10 +859,11 @@ $\mathbf{X}$.
 - Step 1 purges the effects of the regressors in $\mathbf{X}_1$ on the
   regressors in $\mathbf{X}_2$
 - Step 2 purges the effects of the regressors in $\mathbf{X}_1$ on
-  $\mathbf{Y}$. 
+  $\mathbf{Y}$.
 - Step 3 estimates the effect of the regressors in $\mathbf{X}_2$ on
   $\mathbf{Y}$ using the parts in $\mathbf{X}_2$ and
-  $\mathbf{Y}$ that have excluded the effects of $\mathbf{X}_1$. 
+  $\mathbf{Y}$ that have excluded the effects of $\mathbf{X}_1$.
+
 
 ** An example of the FWL theorem
 Consider a regression model with single regressor
@@ -881,14 +882,15 @@ the following regressions,
    \bar{X}$.
 3. Regress $y_i$ on $x_{i}$ without intercept. That is,
    estimate the model
-   \[ y_i = \beta_1 x_{i} + v_i \]
+   \[ y_i = \beta_1 x_{i} + v_i \text{ or in matrix notation }
+   \mathbf{y} = \beta_1 \mathbf{x} + \mathbf{v} \]
 4. We can obtain $\hat{\beta_1}$ directly by applying the formula in
-   Equation (\ref{eq:betahat-mult}). That is 
-   \[ \hat{\beta}_1 = (\mathbf{x}_1^{\prime} \mathbf{x}_1)^{-1}
-   \mathbf{x}_1^{\prime} \mathbf{y} = \frac{\sum_i x_{1i} y_i}{\sum_i
-   x_{1i}^2} = \frac{\sum_i (X_i-\bar{X})(Y_i-\bar{Y})}{\sum_i(X_i-\bar{X})^2} \] 
+   Equation (\ref{eq:betahat-mult}). That is
+   \[ \hat{\beta}_1 = (\mathbf{x}^{\prime} \mathbf{x})^{-1}
+   \mathbf{x}^{\prime} \mathbf{y} = \frac{\sum_i x_{i} y_i}{\sum_i
+   x_{i}^2} = \frac{\sum_i (X_i-\bar{X})(Y_i-\bar{Y})}{\sum_i(X_i-\bar{X})^2} \]
    which is exactly the same as the OLS estimator of $\beta_1$ in $Y_i
-   = \beta_0 + \beta_1 X_i + u_i$. 
+   = \beta_0 + \beta_1 X_i + u_i$.
 
 
 * The Least Squares Assumptions in Multiple Regression
@@ -896,7 +898,7 @@ the following regressions,
 We introduce four least squares assumptions for a multiple regression
 model. The first three assumptions are the same as those in the
 simple regression model with just minor modifications to suit multiple
-regressors. The fourth assumption is a new one. 
+regressors. The fourth assumption is a new one.
 
 - Assumption #1 :: $E(u_i | \mathbi{x}_i) = 0$. The conditional mean
                    of $u_i$ given $X_{1i}, X_{2i}, \ldots, X_{ki}$ has
@@ -1286,7 +1288,7 @@ From Equations (\ref{eq:omb-3}) and (\ref{eq:omb-4}), we can summarize some fact
   previously included regressors change substantially.
 
 
-* TODO Multicollinearity
+* Multicollinearity
 
 ** Perfect multicollinearity
 

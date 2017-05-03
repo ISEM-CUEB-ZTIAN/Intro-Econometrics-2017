@@ -1,0 +1,485 @@
+% Created 2017-05-03 Wed 08:48
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation,10pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\newtheorem{mydef}{Definition}
+\newtheorem{mythm}{Theorem}
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\var}{\mathrm{var}}
+\newcommand{\cov}{\mathrm{cov}}
+\newcommand{\corr}{\mathrm{corr}}
+\newcommand{\pr}{\mathrm{Pr}}
+\newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+\DeclareMathOperator*{\plim}{plim}
+\newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{caption}
+\usepackage{subcaption}
+\setlength{\parskip}{1em}
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+\author{Zheng Tian}
+\date{}
+\title{Lecture 9: Hypothesis Tests and Confidence Intervals in Multiple Regression}
+\hypersetup{
+ pdfauthor={Zheng Tian},
+ pdftitle={Lecture 9: Hypothesis Tests and Confidence Intervals in Multiple Regression},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\end{frame}
+
+
+
+\section{Hypothesis Tests and Confidence Intervals For a Single Coefficient}
+\label{sec:org121d0e1}
+\setcounter{tocdepth}{1}
+\tableofcontents[currentsection]
+\begin{frame}[label={sec:orga1a52f1}]{The basic multiple regression model}
+Consider the following model
+\begin{equation}
+\label{eq:jnt-hyp-mod}
+\mathbf{Y} = \beta_0 \boldsymbol{\iota} + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \cdots + \beta_k \mathbf{X}_k + \mathbf{u}
+\end{equation}
+\begin{itemize}
+\item \(\mathbf{Y}, \mathbf{X}_1, \mathbf{X}_2, \ldots, \mathbf{X}_k, \text{ and } \mathbf{u}\) are \(n
+  \times 1\) vectors of the dependent variable, regressors, and
+errors
+\item \(\beta_0, \beta_1, \beta_2, \ldots, \text{ and } \beta_k\) are
+parameters.
+\item \(\boldsymbol{\iota}\) is the \(n \times 1\) vector of 1s.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgf0fba73}]{Review of \(\var(\hat{\boldsymbol{\beta}}|X)\)}
+\begin{itemize}
+\item The homoskedasticity-only covariance matrix if \(u_i\) is
+homoskedastic
+
+\begin{equation}
+\label{eq:varbhat-hm-1}
+\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
+\end{equation}
+
+\item The heteroskedasticity-robust covariance matrix if \(u_i\) is
+heteroskedastic
+
+\begin{equation}
+\label{eq:varbhat-ht-1}
+\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \boldsymbol{\Sigma} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
+\end{equation}
+
+where \(\boldsymbol{\Sigma} = \mathbf{X}^{\prime} \boldsymbol{\Omega}
+  \mathbf{X}\), and \(\boldsymbol{\Omega} = \var(\mathbf{u} |
+  \mathbf{X})\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orge801c2d}]{The multivariate normal distribution of \(\hat{\mathbf{\beta}}\)}
+We know that if the least squares assumptions hold,
+\(\hat{\boldsymbol{\beta}}\) has an asymptotic multivariate normal
+distribution as
+
+\begin{equation}
+\label{eq:normal-bhat-m}
+\hat{\boldsymbol{\beta}} \rarrowd{d} N(\boldsymbol{\beta}, \boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}})
+\end{equation}
+
+where \(\boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}} =
+\var(\hat{\boldsymbol{\beta}} | \mathbf{X})\) for which use
+Equation (\ref{eq:varbhat-hm-1}) for the homoskedastic case and Equation
+(\ref{eq:varbhat-ht-1}) for the heteroskedastic case.
+\end{frame}
+
+\begin{frame}[label={sec:orga371acf}]{The estimator of \(\var(\hat{\boldsymbol{\beta}}|X)\)}
+\begin{block}{The estimator of \(\sigma^2_u\)}
+\begin{equation}
+\label{eq:sigma2u}
+s^2_u = \frac{1}{n-k-1} \sum_{i=1}^n \hat{u}^2_i
+\end{equation}
+Thus, the estimator of the homoskedasticity-only covariance matrix
+is
+\begin{equation}
+\label{eq:hat-vbhat-hm}
+\widehat{\var(\hat{\boldsymbol{\beta}})} = s^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
+\end{equation}
+\end{block}
+
+\begin{block}{The estimator of \(\boldsymbol{\Sigma}\)}
+\begin{equation}
+\label{eq:Sigmahat}
+\widehat{\boldsymbol{\Sigma}} = \frac{n}{n-k-1} \sum_{i=1}^n
+\mathbf{X}_i \mathbf{X}_i^{\prime} \hat{u}^2_i
+\end{equation}
+where \(\mathbf{X}_i\) is the vector of the i\(^{\text{th}}\)
+observation of \((k+1)\) regressors. 
+The \alert{heteroskedasticity-consistent (robust) covariance matrix estimator} is
+\begin{equation}
+\label{eq:hat-vbhat-ht}
+\widehat{\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}})} = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \widehat{\boldsymbol{\Sigma}} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:orgefc12eb}]{The estimator of \(SE(\hat{\beta}_j)\)}
+We can get the standard error of \(\hat{\beta}_j\) as the
+square root of the j\(^{\text{th}}\) diagonal element of
+\(\widehat{\var(\hat{\boldsymbol{\beta}})}\) for homoskedasticity and
+\(\widehat{\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}})}\) for
+heteroskedasticity. That is,
+\begin{itemize}
+\item Homoskedasticity-only standard error: \(SE(\hat{\beta}_j) =
+  \left(\left[\widehat{\var(\hat{\boldsymbol{\beta}})}\right]_{(j,j)}\right)^{\frac{1}{2}}\)
+\item Heteroskedasticity-robust standard error: \(SE(\hat{\beta}_j) =
+  \left(\left[\widehat{\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}})}\right]_{(j,j)}\right)^{\frac{1}{2}}\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org3561aab}]{The t-statistic}
+We can perform a two-sided hypothesis test as
+\[ H_0:\, \beta_j = \beta_{j,0} \text{ vs. } H_1:\, \beta_j \neq
+\beta_{j,0} \]
+
+\begin{itemize}
+\item We still use the t-statistic, computed as
+\(t = (\hat{\beta}_j - \beta_{j,0})/SE(\hat{\beta}_j)\),
+where \(SE(\hat{\beta}_j)\) is the standard error of \(\hat{\beta}_j\).
+
+\item Under the null hypothesis, we have, in large samples, \(t \overset{a}{\sim} N(0, 1)\).
+Therefore, the p-value can still be computed as \(2\varPhi(-|t^{act}|)\).
+
+\item The null hypothesis is rejected at the 5\% significant level when
+the p-value is less than 0.05, or equivalently, if \(|t^{act}| >
+  1.96\). (Replace the critical value with 1.64 at the 10\% level and 2.58
+at the 1\% level.)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orge4d8504}]{Confidence intervals for a single coefficient}
+The confidence intervals for a single coefficient can be constructed
+as before using the t-statistic.
+
+\vspace{0.2cm}
+
+Given large samples, a 95\% two-sided confidence interval for the
+coefficient \(\beta_j\) is
+\[ \left[\hat{\beta}_j - 1.96 SE(\hat{\beta}_j),\; \hat{\beta}_j +
+1.96 SE(\hat{\beta}_j)\right] \]
+\end{frame}
+
+\begin{frame}[label={sec:org38977e9}]{Application to test scores and the student-teacher ratio}
+The estimated model can be written as follows
+\begin{equation*}
+\widehat{TestScore} = \underset{{\displaystyle (8.7)}}{686.0}
+- \underset{{\displaystyle (0.43)}}{1.10} \times STR
+- \underset{\displaystyle (0.031)}{0.650} \times PctEl
+\end{equation*}
+
+\begin{itemize}
+\item We test \(H_0: \beta_1 = 0\) vs \(H_1: \beta_1 \neq 0\). The t-statistic
+for this test can be computed as \(t = (-1.10-0) / 0.43 = -2.54 <
+  -1.96\), and the p-value is \(2\Phi(-2.54) = 0.011 < 0.05\). Based on
+either the t-statistic or the p-value, we can reject the null
+hypothesis at the 5\% level.
+
+\item The confidence interval that contains the
+true value of \(\beta_1\) with a 95\% probability can be computed as
+\(-1.10 \pm 1.96 \times 0.43 = (-1.95, -0.26)\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgab15080}]{Adding expenditure per pupil to the equation}
+Now we add a new explanatory variable in the regression, \emph{Expn}, that
+is the expenditure per pupil in the district in thousands of dollars.
+\begin{equation*}
+\widehat{TestScore} = \underset{{\displaystyle (15.5)}}{649.6}
+- \underset{\displaystyle (0.48)}{0.29} \times STR
++ \underset{\displaystyle (1.59)}{3.87} \times Expn
+- \underset{\displaystyle (0.032)}{0.656} \times PctEl
+\end{equation*}
+
+\begin{itemize}
+\item The magnitude of the coefficient on \emph{STR} decreases from 1.10 to
+0.29 after \emph{Expn} is added.
+\item The standard error of the coefficient on \emph{STR} increases from 0.43
+to 0.48 after \emph{Expn} is added.
+\item Consequently, in the new model, the t-statistic for the coefficient
+becomes \(t = -0.29/0.48 = -0.60 > -1.96\) so that we cannot reject
+the zero hypothesis at the 5\% level. (neither can we at the 10\%
+level).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org5ebd3ac}]{How can we interpret such changes?}
+\begin{itemize}
+\item The decrease in the magnitude of the coefficient reflects that
+expenditure per pupil is an important factor that carry over some
+influence of student-teacher ratio on test scores. 
+\vspace{0.2cm}
+
+In other words, holding expenditure per pupil and the percentage of
+English-learners constant, reducing class sizes by hiring more
+teachers have only small effect on test scores
+\vspace{0.2cm}
+
+\item The increase in the standard error reflects that \emph{Expn} and \emph{STR}
+are correlated so that there is imperfect multicollinearity in this
+model. In fact, the correlation coefficient between the two
+variables is 0.48, which is relatively high.
+\end{itemize}
+\end{frame}
+
+
+\section{Tests of Joint Hypotheses}
+\label{sec:orge1fce88}
+\setcounter{tocdepth}{1}
+\tableofcontents[currentsection]
+\begin{frame}[label={sec:org6e36ebc}]{The unrestricted model}
+Consider the following multiple regression model
+\begin{equation}
+\label{eq:fullmodel}
+\mathbf{Y} = \beta_0 \boldsymbol{\iota} + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \cdots + \beta_k \mathbf{X}_k + \mathbf{u}
+\end{equation}
+
+We call Equation (\ref{eq:fullmodel}) as the full model or \alert{the
+unrestricted model} because \(\beta_0\) to \(\beta_k\) can take any value
+without restrictions. 
+\end{frame}
+
+\begin{frame}[label={sec:org7661e56}]{Joint hypothesis: a case of two zero restrictions}
+\begin{itemize}
+\item Question: Are the coefficients on the first two regressors zero?
+
+\item Joint hypotheses
+\[ H_0:\, \beta_1 = 0, \beta_2 = 0, \text{ vs. }
+  H_1:\, \text{either } \beta_1 \neq 0 \text{ or } \beta_2 \neq 0 \text{
+  (or both)} \]
+
+\item This is a joint hypothesis because \(\beta_1=0\) and \(\beta_2=0\) must
+hold at the same time. So if either of them is invalid, the null
+hypothesis is rejected as a whole.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org1b96e47}]{The restricted model with two zero restrictions}
+\begin{itemize}
+\item If the null hypothesis is true, we have   
+\begin{equation}
+\label{eq:restmodel-1}
+\mathbf{Y} = \beta_0 + \beta_3 \mathbf{X}_3 + \beta_4 \mathbf{X}_4 + \cdots + \beta_k \mathbf{X}_k + \mathbf{u}
+\end{equation}
+We call Equation \eqref{eq:restmodel-1} as \alert{the restricted model}
+because we impose two restrictions \(\beta_1 = 0\) and \(\beta_2 = 0\).
+
+\item To test these two restrictions jointly means that we need to use a
+single statistic to test these restrictions simultaneously. That
+statistic is F-statistic.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgc65221b}]{Why not use t-statistic and test individual coefficients one at a time?}
+\begin{itemize}
+\item Let us test the null hypothesis above using t-statistics for \(\beta_1\)
+and \(\beta_2\) separately. That is, \(t_1\) is the t-statistic for
+\(\beta_1 = 0\) and \(t_2\) is the t-statistic for \(\beta_2 = 0\). \vspace{0.2cm}
+
+\item Compute the t-statistics \(t_1\) for \(\beta_1 = 0\) and \(t_2\) for
+\(\beta_2 = 0\). We call this "one-at-a-time" testing procedure.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org57719b0}]{What's the problem with the one-at-a-time procedure}
+\begin{block}{How can we reject the null hypothesis with this procedure?}
+Using the one-at-a-time procedure, at the 5\% significance level, we
+can reject the null hypothesis of \(H_0: \beta_1 = 0 \text{ and }
+  \beta_2 = 0\) when either \(|t_1| > 1.96\) or \(|t_2| > 1.96\) (or
+both). In other words, the null is not rejected only when both
+\(|t_1| \leq 1.96\) and \(|t_2| \leq 1.96\).
+\end{block}
+
+\begin{block}{What is the probability of committing Type I error?}
+Assume \(t_1\) and \(t_2\) to be independent. Then,
+\[\pr(|t_1| \leq 1.96 \text{ \& } |t_2| \leq 1.96) = \pr(|t_1| \leq
+  1.96) \pr(|t_2| \leq 1.96) = 0.95^2 = 90.25\%\]
+
+So the probability of rejecting the null when it is true is \(1 -
+  90.25\% = 9.75\%\). We may reject the null hypothesis with a higher
+probability than what we have pre-specified with the significant
+level. 
+\end{block}
+\end{frame}
+
+
+\begin{frame}[label={sec:org19525b0}]{Joint hypothesis involving one coefficient for each restriction}
+\begin{block}{q restrictions}
+\begin{align*}
+&H_0: \beta_1 = \beta_{1,0},\ \beta_2 = \beta_{2,0},\ \ldots,\ \beta_q = \beta_{q,0} \text{ versus } \\
+&H_1: \text{at least one restriction does not hold}
+\end{align*}
+\end{block}
+
+\begin{block}{The restricted model}
+Suppose that we are testing the q zero hypotheses, that is, q
+restrictions, \(\beta_1 = \beta_2 = \cdots = \beta_q = 0\). The
+restricted model is
+\begin{equation}
+\label{eq:restmodel-2}
+\mathbf{Y} = \beta_0 + \beta_{q+1} \mathbf{X}_{q+1} + \beta_{q+2} \mathbf{X}_{q+2} + \cdots + \beta_k \mathbf{X}_k + \mathbf{u}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org77e5fa3}]{Joint linear hypotheses}
+Joint hypotheses include \alert{linear hypotheses} like the followings
+
+\begin{description}
+\item[{1}] \begin{equation*}
+H_0:\, \beta_1 = \beta_2 \text{ vs. } H_1:\, \beta_1 \neq \beta_2
+\end{equation*}
+
+\item[{2}] \begin{equation*}
+H_0:\, \beta_1 + \beta_2 = 1 \text{ vs. } H_1:\, \beta_1 + \beta_2 \neq 1
+\end{equation*}
+
+\item[{3}] \begin{align*}
+&H_0: \beta_1 + \beta_2 = 0,\, 2\beta_2 + 4\beta_3 + \beta_4 = 3 \text{ vs. } \\
+&H_1: \text{at least one restriction does not hold}
+\end{align*}
+\end{description}
+\end{frame}
+
+\begin{frame}[label={sec:org9a7a439}]{A general form of joint hypotheses}
+We can use a matrix form to represent all linear hypotheses regarding
+the coefficients in Equation (\ref{eq:fullmodel}) as follows
+
+\begin{equation}
+\label{eq:jnt-hyp-g}
+H_0:\, \mathbf{R}\boldsymbol{\beta} = \mathbf{r} \text{ vs. } H_1: \mathbf{R}\boldsymbol{\beta} \neq \mathbf{r}
+\end{equation}
+
+where \(\mathbf{R}\) is a \(q \times (k+1)\) matrix with the \alert{full row rank},
+\(\boldsymbol{\beta}\) represent the \(k+1\) regressors, including
+the intercept, and \(\mathbf{r}\) is a \(q \times 1\) vector of real
+numbers.
+\end{frame}
+
+\begin{frame}[label={sec:org18f32d3}]{Examples of \(\mathbf{R}\boldsymbol{\beta} = \mathbf{r}\)}
+\begin{itemize}
+\item For \(H_0: \beta_1 = 0, \beta_2=0\)
+\begin{equation*}
+\mathbf{R} =
+\bordermatrix{~ & \beta_0 & \beta_1 & \beta_2 & \beta_3 & \cdots & \beta_k \cr
+R1 & 0 & 1 & 0 & 0 & \cdots & 0 \cr
+R2 & 0 & 0 & 1 & 0 & \cdots & 0 \cr}
+\text{ and }
+\mathbf{r} =
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}
+\end{equation*}
+
+\item For \(H_0: \beta_1 + \beta_2 = 0,\, 2\beta_2 + 4\beta_3 + \beta_4 =
+  3,\, \beta_1 = 2 \beta_3 + 1\)
+\begin{equation*}
+\mathbf{R} =
+\bordermatrix{~ & \beta_0 & \beta_1 & \beta_2 & \beta_3 & \beta_4 & \cdots & \beta_k \cr
+R1 & 0 & 1 & 1 & 0 & 0 & \cdots & 0 \cr
+R2 & 0 & 0 & 2 & 4 & 1 & \cdots & 0 \cr
+R3 & 0 & 1 & 0 & -2 & 0 & \cdots & 0 \cr}
+\text{ and }
+\mathbf{r} =
+\begin{pmatrix}
+0 \\
+3 \\
+1
+\end{pmatrix}
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgb0da466}]{The general form of the F-statistic}
+To test the null hypothesis
+\[ H_0:\, \mathbf{R}\boldsymbol{\beta} = \mathbf{r} \]
+
+we compute the F-statistic
+\begin{equation}
+\label{eq:ftest-gen}
+F = \frac{1}{q}(\mathbf{R}\hat{\boldsymbol{\beta}} - \mathbf{r})^{\prime} \left[ \mathbf{R} \widehat{\var(\hat{\boldsymbol{\beta}})} \mathbf{R}^{\prime} \right]^{-1} (\mathbf{R}\hat{\boldsymbol{\beta}} - \mathbf{r})
+\end{equation}
+
+\begin{itemize}
+\item \(\hat{\boldsymbol{\beta}}\) is the estimated coefficients by OLS and
+\(\widehat{\var(\hat{\boldsymbol{\beta}})}\) is the estimated covariance
+matrix.
+\item For homoskedastic errors, we can compute
+\(\widehat{\var(\hat{\boldsymbol{\beta}})}\) as in Equation (\ref{eq:hat-vbhat-hm})
+\item For heteroskedastic errors, we can compute
+\(\widehat{\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}})}\) as in
+Equation (\ref{eq:hat-vbhat-ht})
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org63d1010}]{The F distribution, the critical value, and the p-value}
+\begin{block}{The F distribution}
+If the least square assumptions hold, under the null hypothesis, the
+F-statistic is asymptotically distributed as F distribution with
+degree of freedom \((q, \infty)\). That is,
+\[ F \overset{a}{\sim} F(q, \infty) \]
+\end{block}
+
+\begin{block}{The critical value and the p-value of F test.}
+The 5\% critical value of the F test using F-statistic is \(c_{\alpha}\)
+such that
+\[\pr(F < c_{\alpha}) = 0.95\]
+And the p-value of F test can be computed as
+ \[ p\text{-value} = \pr(F > F^{act})\]
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org14e6596}]{The F-statistic when \(q=2\)}
+The F-statistic for testing the null hypothesis of \(H_0: \beta_1 = 0,
+\beta_2 = 0\) can be proved to take the following form,
+
+\begin{equation}
+\label{eq:ftest-q2}
+F = \frac{1}{2}\frac{t_1^2 + t_2^2 - 2 \hat{\rho}_{t_1,t_2}t_1t_2}{1 - \hat{\rho}_{t_1,t_2}^2}
+\end{equation}
+
+\begin{itemize}
+\item For simplicity, suppose \(t_1\) and \(t_2\) are independent so that
+\(\hat{\rho}_{t_1,t_2} = 0\). Then \(F = \frac{1}{2}(t_1^2 +
+  t_2^2)\).
+\item Under the null hypothesis, both \(t_1\) and \(t_2\) have standard normal
+distribution asymptotically. Then \(t^2_1 + t^2_2\) has a chi-squared
+distribution with 2 degrees of freedom.
+\item It follows that \(F = \frac{1}{2}(t^2_1 + t^2_2)\) has asymptotically
+distributed as \(F(2, \infty)\).
+\item The discussion about F-statistic in Equation (\ref{eq:ftest-q2})
+will become complicated when \(\hat{\rho}_{t_1,t_2} \neq 0\).
+\end{itemize}
+\end{frame}
+\end{document}

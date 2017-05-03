@@ -1,4 +1,4 @@
-% Created 2017-03-30 Thu 18:03
+% Created 2017-04-25 Tue 16:51
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -40,7 +40,7 @@
  pdftitle={Lecture 6: Linear Regression with One Regressor},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)},
  pdflang={English}}
 \begin{document}
 
@@ -51,7 +51,7 @@
 
 
 \section{Introduction}
-\label{sec:org1bd2417}
+\label{sec:org9281348}
 
 This lecture introduces a linear regression model with one regressor
 called a simple linear regression model. We will learn the ordinary
@@ -70,13 +70,13 @@ multiple regressors.
 
 
 \section{The Linear Regression Model}
-\label{sec:orgc0c0c0a}
+\label{sec:org96c983f}
 
 \subsection{What is regression?}
-\label{sec:org234a79a}
+\label{sec:org7edc891}
 
 \subsubsection*{Definition of \textbf{regress} in Merriam-Webster's dictionary}
-\label{sec:orgaab9632}
+\label{sec:orgfd215b1}
 
 Merriam-Webster gives the following definition of the word "regress":
 \begin{enumerate}
@@ -87,7 +87,7 @@ primitive state or condition
 \end{enumerate}
 
 \subsubsection*{The meaning of regression in statistics?}
-\label{sec:org2c39e99}
+\label{sec:orgfeff6ad}
 
 In statistical modeling, regression analysis is a statistical process
 for estimating the relationships among variables.\footnote{Wikipedia, the free encyclopedia. Regression analysis. Retrieved from \url{https://en.wikipedia.org/wiki/Regression\_analysis}} Specifically,
@@ -106,19 +106,19 @@ function}.
 
 
 \subsection{An example: Test scores versus class size}
-\label{sec:org4c89d2d}
+\label{sec:orgb5bded9}
 
 Let's go back to the example of California school districts,
 introduced in Lecture 1.
 
 \subsubsection*{Research question:}
-\label{sec:orge2c8e62}
+\label{sec:org24323de}
 
 The research question of this application is: Can reducing class size
 increase students' test scores?
 
 \subsubsection*{How can we answer the question?}
-\label{sec:org5dfc89b}
+\label{sec:orga74dd84}
 
 \begin{itemize}
 \item We randomly choose 42 students and divide them into two classes,
@@ -146,7 +146,7 @@ can improve students' test performance.
 \end{itemize}
 
 \subsubsection*{A simple linear regression model of test scores v.s. class size}
-\label{sec:org3ffc1ba}
+\label{sec:orgc4e82c4}
 
 As mentioned above, a simple linear regression function can be used to
 describe the relationship between test scores and class sizes. Since
@@ -176,7 +176,7 @@ becomes the population regression line
 (Eq. \ref{eq:popreg-testscore}).
 
 \subsubsection*{A distinction between the population regression function and the population regression model}
-\label{sec:orgc92859c}
+\label{sec:org8f752c9}
 
 Note that here we have two concepts: the population regression
 function and the population regression model. What's their difference?
@@ -199,7 +199,7 @@ deterministic, depending on the value of other factors.
 \end{itemize}
 
 \subsubsection*{An interpretation of the population regression model}
-\label{sec:org09803fe}
+\label{sec:org8bd5c47}
 
 Now we have set up the simple linear regression model,
 \begin{equation*}
@@ -209,7 +209,7 @@ What is \(\beta_1\) and \(\beta_0\) represent in the model?
 
 \begin{itemize}
 \item Interpret \(\beta_1\)
-\label{sec:org1ae1c92}
+\label{sec:org8e9652b}
 
 Let's first look at \(\beta_1\). When we hold other factors constant,
 the only reason for a change in test scores is a change in class
@@ -232,7 +232,7 @@ from other factors. "Holding other things constant" is often expressed
 as the notion of \textbf{ceteris paribus}.
 
 \item Interpret \(\beta_0\)
-\label{sec:org0993c20}
+\label{sec:org0d90804}
 
 \(\beta_0\) is the intercept in the model. Sometimes it bears real
 meanings, but sometimes it merely presents as an intercept. In this
@@ -245,7 +245,7 @@ axis.
 
 
 \subsection{The general linear regression model}
-\label{sec:org9fc48c1}
+\label{sec:orgb4b49f9}
 
 Let's generalize test scores and class sizes to be two random
 variables \(Y\) and \(X\). For both, there are \(n\) observations so that
@@ -280,24 +280,24 @@ function(or the population regression line).
 
 
 \subsection{An graphical illustration of a linear regression model}
-\label{sec:orga473c5c}
+\label{sec:org0dea4bb}
 
 The relationship between the data points, the population regression
-line, and the errors (other factors) are illustrated in Figure \ref{fig:org8711569}.
+line, and the errors (other factors) are illustrated in Figure \ref{fig:org42527c0}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{figure/fig-4-1.png}
-\caption{\label{fig:org8711569}
+\caption{\label{fig:org42527c0}
 The Population Regression Line}
 \end{figure}
 
 
 \section{The OLS Estimation Method for a Linear Regression Model}
-\label{sec:org25d93ac}
+\label{sec:org3acfd32}
 
 \subsection{The intuition for the OLS and minimization}
-\label{sec:org298630d}
+\label{sec:orgcc0aced}
 
 The most commonly used method to estimate a linear regression model, like
 Equation \ref{eq:single-regress}, is the ordinary least squares (OLS)
@@ -329,7 +329,7 @@ avoid possible offsetting between positive and negative values of
 
 
 \subsection{The OLS estimators for \(\beta_0\) and \(\beta_1\)}
-\label{sec:org02249e1}
+\label{sec:org684acab}
 
 Let \(b_0\) and \(b_1\) be some estimators of \(\beta_0\) and \(\beta_1\),
 respectively. \footnote{Recall that an \textbf{estimator} is a function of a sample of
@@ -345,7 +345,7 @@ where \(S(b_0, b_1)\) is a function of \(b_0\) and \(b_1\), measuring the
 sum of the squared prediction mistakes over all \(n\) observation.
 
 \subsubsection*{The mathematical derivation of the OLS estimators for \(\beta_0\) and \(\beta_1\)}
-\label{sec:org92d1564}
+\label{sec:org22cdf1b}
 
 We solve the problem by taking the derivative of \(S(b_0, b_1)\) with respect to \(b_0\) and \(b_1\),
 respectively. Suppose \(b_0^*=\hat{\beta}_0\) and \(b^*_1=\hat{\beta}_1\) are the
@@ -401,9 +401,9 @@ In sum, solving the minimization problem (Equation
 
 
 \subsection{The predicted values, residuals, and the sample regression line}
-\label{sec:org4bb1442}
+\label{sec:orgaec38d9}
 \subsubsection*{The predicted values}
-\label{sec:org5adfc74}
+\label{sec:orgb4a3635}
 
 \begin{itemize}
 \item After obtaining the estimators, we can compute the \textbf{predicted values}
@@ -420,7 +420,7 @@ always on the sample regression line because, from Equation
 \end{itemize}
 
 \subsubsection*{The residuals}
-\label{sec:org57a1288}
+\label{sec:orga9df5d5}
 
 \begin{itemize}
 \item The \textbf{residuals} \(\hat{u}_i\) for \(i = 1, \ldots, n\) are
@@ -433,13 +433,13 @@ prediction errors we make when using the OLS estimators.
 
 
 \subsection{A comparison between the population regression model and the sample counterparts}
-\label{sec:org6990bbf}
+\label{sec:orgb397d40}
 
 We should pause here to make a clear distinction between the
 population regression function and model and their counterparts.
 
 \subsubsection*{The population regression function versus the sample regression function}
-\label{sec:org49fa6e8}
+\label{sec:orga39d36d}
 
 \begin{itemize}
 \item The population regression function is a function between the
@@ -452,7 +452,7 @@ value and \(X\), that is,
 \end{itemize}
 
 \subsubsection*{The regression errors versus residuals}
-\label{sec:org528ed3a}
+\label{sec:orgd5c6012}
 
 \begin{itemize}
 \item The error term, \(u_i\), in the population regression model represents the
@@ -483,7 +483,7 @@ The regression model & \(Y_i = \beta_0 + \beta_1 X_i + u_i\) & \(Y_i = \hat{\bet
 
 
 \subsection{The OLS estimates of the relationship between test scores and the student-teacher ratio}
-\label{sec:orgc63472f}
+\label{sec:org1c14f9d}
 
 Let's come back to the application of test scores versus the
 student-teacher ratios in California school districts. The goal is to
@@ -493,20 +493,20 @@ it is always a good practice to glance over the data using some
 exploratory data analysis techniques.
 
 \subsubsection*{Exploratory analysis}
-\label{sec:orga01dfc0}
+\label{sec:orgf5a60db}
 
 \begin{itemize}
 \item Basic summary statistics
-\label{sec:org0208472}
+\label{sec:org52f1c3d}
 
 We first need to compute basic summary statistics to see the sample
 distribution of the data. Some commonly used summary statistics
 include mean, standard deviation, median, minimum, maximum, and
-quantile (percentile), etc. Table \ref{tab:org01579f8} summarizes the
+quantile (percentile), etc. Table \ref{tab:org0d8fa04} summarizes the
 distribution of test scores and class sizes for the sample.
 
 \begin{table}[htbp]
-\caption{\label{tab:org01579f8}
+\caption{\label{tab:org0d8fa04}
 Summary Of distributions of student-teacher ratios and test scores}
 \centering
 \begin{tabular}{lrrrrrrrrr}
@@ -519,11 +519,11 @@ Summary Of distributions of student-teacher ratios and test scores}
 \end{table}
 
 \item Scatterplot
-\label{sec:org309e96f}
+\label{sec:org2ffd417}
 
 A scatterplot visualizes the relationship between two variables
 straightforwardly, which is helpful for us to decide what a functional
-form a regression model should properly take. Figure \ref{fig:org28da0fd}
+form a regression model should properly take. Figure \ref{fig:org3a3cb6f}
 shows that test scores and student-teacher ratios may be negatively
 related. The correlation coefficient between the two variables is
 -0.23, verifying the existence of a weak negative relationship.
@@ -531,13 +531,13 @@ related. The correlation coefficient between the two variables is
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{figure/fig-4-2.png}
-\caption{\label{fig:org28da0fd}
+\caption{\label{fig:org3a3cb6f}
 The scatterplot between student-teacher ratios and test scores}
 \end{figure}
 \end{itemize}
 
 \subsubsection*{Regression analysis}
-\label{sec:orga185c44}
+\label{sec:org28a51e0}
 
 After exploratory analysis, we can estimate the linear model. Although
 the formula of computing \(\beta_1\) and \(\beta_0\) (Equations
@@ -562,7 +562,7 @@ regression model fits the data.
 \end{figure}
 
 \subsubsection*{Interpretation of the estimated coefficients}
-\label{sec:org6060c6f}
+\label{sec:orgcc0e201}
 
 Upon obtaining the coefficient estimates, what we need to do next
 includes hypothesis tests, model specification tests, robustness (or
@@ -591,7 +591,7 @@ paragraphs in Page 117.)
 
 
 \section{Algebraic Properties of the OLS Estimator}
-\label{sec:orgb8c6d09}
+\label{sec:org8496655}
 
 The OLS estimator has many good properties. Let's first look at some
 of its algebraic properties. That is, these properties are the results
@@ -599,7 +599,7 @@ of the minimization problem in Equation \eqref{eq:min-ols}, regardless of any
 statistical assumptions we will introduce in the next sections.
 
 \subsection{TSS, ESS, and SSR}
-\label{sec:org6158460}
+\label{sec:org2b4984b}
 
 \begin{itemize}
 \item From \(Y_i = \hat{Y}_i + \hat{u}_i\), we can define
@@ -621,7 +621,7 @@ this model, \(\sum_i^n \hat{u}_i \neq 0\).}
 
 
 \subsection{Some algebraic properties among \(\hat{u}_i\), \(\hat{Y}_i\), \(Y_i\), and \(X_i\)}
-\label{sec:orge8eda80}
+\label{sec:org68b9a28}
 
 The OLS residuals and the predicted values satisfy the following
 equations:\footnote{Equation \ref{eq:algebra-ols-1} holds only for a
@@ -637,13 +637,13 @@ TSS = ESS + SSR \label{eq:tss-ess}
 
 
 \subsection{The proof of these properties}
-\label{sec:org48833b6}
+\label{sec:org5484b30}
 
 Here, I just prove Equation \ref{eq:tss-ess}. The proofs for the other
 equations above are in Appendix 4.3 in the textbook.
 
 \subsubsection*{Proof of Equation \ref{eq:algebra-ols-1}}
-\label{sec:orgcd8577c}
+\label{sec:org71c758d}
 
 From Equation \ref{eq:betahat-0} we can write the OLS residuals as
 \[\hat{u}_i = Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i = (Y_i -
@@ -658,7 +658,7 @@ By definition of the sample average, we have
 It follows that \(\sum_{i=1}^n \hat{u}_i = 0\).
 
 \subsubsection*{Proof of Equation \ref{eq:algebra-ols-2}}
-\label{sec:orge62e3cb}
+\label{sec:org3089710}
 
 Note that \(Y_i = \hat{Y}_i + \hat{u}_i\). So
 \[\sum_{i=1}^n Y_i =
@@ -667,7 +667,7 @@ Note that \(Y_i = \hat{Y}_i + \hat{u}_i\). So
 It follows that \(\overline{\hat{Y}} = (1/n)\sum_{i=1}^n \hat{Y}_i = \overline{Y}\).
 
 \subsubsection*{Proof of Equation \ref{eq:algebra-ols-3}}
-\label{sec:org227c689}
+\label{sec:orgb93f831}
 
 \(\sum_{i=1}^n \hat{u}_i = 0\) implies that
 
@@ -679,7 +679,7 @@ It follows that \(\overline{\hat{Y}} = (1/n)\sum_{i=1}^n \hat{Y}_i = \overline{Y
 \end{align*}
 
 \subsubsection*{Proof of \(TSS = ESS + SSR\)}
-\label{sec:org78d128e}
+\label{sec:org5393678}
 
 \begin{equation*}
 \begin{split}
@@ -695,10 +695,10 @@ where the final equality follows from Equations \ref{eq:algebra-ols-1} and \ref{
 
 
 \section{Measures of Fit}
-\label{sec:org4691077}
+\label{sec:orgf5134c9}
 
 \subsection{Goodness of Fit: R\(^{\text{2}}\)}
-\label{sec:org487ccc6}
+\label{sec:org1fff789}
 
 \(R^{2}\) is one of the commonly used measures for how well the OLS
 regression line fits the data. \(R^{2}\) is the fraction of the sample
@@ -717,11 +717,11 @@ the proportion of the variance in the dependent variable that is
 predictable from the independent variable(s).
 
 \subsubsection*{Properties of R\(^{\text{2}}\)}
-\label{sec:org39961de}
+\label{sec:org6abd4df}
 
 \begin{itemize}
 \item \(R^2 \in [0, 1]\)
-\label{sec:org9cbec34}
+\label{sec:org36099ae}
 
 \(R^2 = 0\) when \(\hat{\beta}_1 = 0\), that is, \(X\) cannot explain the
 variance in \(Y\).
@@ -736,7 +736,7 @@ the regression line fits all the sample data perfectly.
   \Rightarrow R^2 = 1 \]
 
 \item \(R^2 = r^2_{XY}\)
-\label{sec:orgc831e56}
+\label{sec:org5b70932}
 
 \(r_{XY}\) is the sample correlation coefficient, that is,
 \[ r_{XY} = \frac{S_{XY}}{S_X S_Y} = \frac{\sum_i^n(X_i -
@@ -763,7 +763,7 @@ with \textbf{one regressor and an intercept}.
 \end{itemize}
 
 \subsubsection*{The use of \(R^2\)}
-\label{sec:org0886b2d}
+\label{sec:orgb799706}
 
 \begin{itemize}
 \item \(R^2\) is usually the first statistics that we look at for judging
@@ -777,7 +777,7 @@ statistics that will be taught soon.
 
 
 \subsection{The standard error of regression (SER) as a measure of fit}
-\label{sec:org800addf}
+\label{sec:orgcab8bec}
 
 Like \(R^2\), the standard error of regression (SER) is another measure
 of fit for the OLS regression.
@@ -797,7 +797,7 @@ As \(n \rightarrow \infty\), \(SER = RMSE\).
 
 
 \subsection{\(R^2\) and SER for the application of test scores v.s. class sizes}
-\label{sec:orgc98f234}
+\label{sec:org77d001f}
 
 \begin{itemize}
 \item In the application of test scores v.s. class sizes, \(R^2\) is 0.051
@@ -811,14 +811,14 @@ model does not fit the data well.
 
 
 \section{The Least Squares Assumptions}
-\label{sec:orge6a5df7}
+\label{sec:org9d6f231}
 
 The last two sections regard the algebraic properties of the OLS
 estimators. Now let's turn to their statistical properties, which are
 built on the following assumptions.
 
 \subsection{Assumption 1: The conditional mean of \(u_i\) given \(X_i\) is zero}
-\label{sec:orgd6fd0da}
+\label{sec:org8063841}
 
 \begin{equation}
 \label{eq:Eu}
@@ -845,7 +845,7 @@ experiment, \(E(u|X = x) = 0\).
 think hard about whether \(E(u|X = x) = 0\) holds.
 \end{itemize}
 
-Assumption 1 can be illustrated by Figure \ref{fig:org70dc00d}. The conditional
+Assumption 1 can be illustrated by Figure \ref{fig:orga7f01bd}. The conditional
 mean, \(E(Y \mid X)\), of the conditional density distribution, \(f(y
 \mid x)\), is vertically projected right on the population regression
 line \(\beta_0 + \beta_1 X\) because \(E(Y\mid X) = \beta_0 + \beta_1 X +
@@ -854,13 +854,13 @@ E(u \mid X) = \beta_0 + \beta_1 X\).
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figure/fig-4-4.png}
-\caption{\label{fig:org70dc00d}
+\caption{\label{fig:orga7f01bd}
 An illustration of \(E(u|X=x)=0\)}
 \end{figure}
 
 \begin{itemize}
 \item Correlation and conditional mean
-\label{sec:org5ffe867}
+\label{sec:org7eba55d}
 
 \[ E(u_i | X_i) = 0 \Rightarrow \mathrm{Cov}(u_i, X_i) = 0 \]
 
@@ -881,7 +881,7 @@ It follows that \(\mathrm{Cov}(u_i, X_i) \neq 0 \Rightarrow E(u_i|X_i) \neq 0\).
 
 
 \subsection{Assumption 2: \((X_i, Y_i)\) for \(i = 1, \ldots, n\) are i.i.d.}
-\label{sec:orgc1180bd}
+\label{sec:orgaf83d0e}
 
 \begin{itemize}
 \item Each pair of \(X\) and \(Y\), i.e., \((X_i, Y_i)\) for \(i=1, \ldots, n\), is
@@ -902,10 +902,10 @@ adjacent. We call this violation as spatial correlation.
 
 
 \subsection{Assumption 3: large outliers are unlikely}
-\label{sec:orgc3436d1}
+\label{sec:org5d03fa0}
 
 \subsubsection*{\(0 < E(X^4_i) < \infty \text{ and } 0 < E(Y_i^4) < \infty\)}
-\label{sec:orgf44cd3c}
+\label{sec:orga6fa364}
 
 \begin{itemize}
 \item A large outlier is an extreme value of \(X\) or \(Y\).
@@ -917,15 +917,15 @@ outliers in estimation.
 \end{itemize}
 
 \subsubsection*{The influential observations and the leverage effects}
-\label{sec:orgd1dd7e0}
+\label{sec:org057c5f6}
 
 \begin{itemize}
-\item An outlier can be detected by a scatterplot. See Figure \ref{fig:orgaff224c}.
+\item An outlier can be detected by a scatterplot. See Figure \ref{fig:org8cfa5e0}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{figure/fig-4-5.png}
-\caption{\label{fig:orgaff224c}
+\caption{\label{fig:org8cfa5e0}
 How an outlier can influence the OLS estimates}
 \end{figure}
 
@@ -936,31 +936,31 @@ R and Stata.
 
 
 \section{Sampling Distribution of the OLS Estimators}
-\label{sec:orgfaaecf5}
+\label{sec:org1e95657}
 
 \subsection{Unbiasedness and consistency}
-\label{sec:org3ddea17}
+\label{sec:org6b01731}
 
 \subsubsection*{The unbiasedness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)}
-\label{sec:orgc8187ad}
+\label{sec:org772bff0}
 
 \begin{itemize}
 \item The randomness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)
-\label{sec:org5bffdbe}
+\label{sec:org94183fd}
 
 Since \((X_i, Y_i)\) for \(i = 1, \ldots, n\) are randomly drawn from a
 population, different draws can render different estimates, giving
 rise to the randomness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\).
 
 \item The unbiasedness of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)
-\label{sec:org96aab67}
+\label{sec:org4e4211d}
 
 Let the true values of the intercept and the slope be \(\beta_0\) and \(\beta_1\). Based on the least squares assumption \#1: \(E(u_i|X_i) = 0\)
 \[ E(\hat{\beta}_0) = \beta_0 \text{ and } E(\hat{\beta}_1) =
   \beta_1 \]
 
 \item Show that \(\hat{\beta}_1\) is unbiased
-\label{sec:orgbf4c3ec}
+\label{sec:orge06eca5}
 
 Let's rewrite the formula of \(\hat{\beta}_1\) here
 \begin{equation}
@@ -984,7 +984,7 @@ Plugging it in the numerator in Equation (\ref{eq:betahat-1a}). Then,
 In the second equality, we use the fact that \(\sum_i (X_i -
   \overline{X}) = 0\). Note that although we know from the first OLS
 assumption, \(E(u_i) = 0\), we cannot guarantee that \(\bar{u} = 0\)
-since \(u_1, \ldots, u_n\) are simply random draws of \(u_i\). 
+since \(u_1, \ldots, u_n\) are simply random draws of \(u_i\).
 
 Substituting this expression in Equation (\ref{eq:betahat-1a}) yields
 
@@ -1012,7 +1012,7 @@ The proof of unbiasedness of \(\hat{\beta}_0\) is left for exercise.
 
 
 \subsubsection*{The consistency of \(\hat{\beta}_0\) and \(\hat{\beta}_1\)}
-\label{sec:org911b89a}
+\label{sec:org2517482}
 
 \(\hat{\beta}\) is said to be a consistent estimator
 of \(\beta\) if as \(n\) goes to infinity, \(\hat{\beta}\) is in probability
@@ -1029,7 +1029,7 @@ Then we can show that \(\plim_{n \rightarrow \infty} \hat{\beta}_1 =
 
 \begin{itemize}
 \item A proof of consistency
-\label{sec:orgc55b02c}
+\label{sec:org08f1dac}
 
 \textbf{The proof is not required to understand for this course. Therefore,
 you can skip it when you first read the notes.}
@@ -1068,7 +1068,7 @@ is \(\plim_{n \rightarrow \infty} \hat{\beta}_0 = \beta_0\).
 
 
 \subsection{The asymptotic normal distribution}
-\label{sec:org56cbfc1}
+\label{sec:orgb2dedb0}
 
 The central limit theory states that if \(X_1, \ldots, X_n\) with the mean
 \(\mu\) and the variance \(0 < \sigma^2 < \infty\). Then,
@@ -1107,7 +1107,7 @@ increases.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{figure/fig-4-6.png}
-\caption{\label{fig:org3a72a9d}
+\caption{\label{fig:org460a94a}
 The Variance of \(\hat{\beta}_1\) and the variance of \(X_i\)}
 \end{figure}
 \end{itemize}
