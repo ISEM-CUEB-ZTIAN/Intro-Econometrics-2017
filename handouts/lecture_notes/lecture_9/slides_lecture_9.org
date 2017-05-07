@@ -1,6 +1,6 @@
 #+TITLE: Lecture 9: Hypothesis Tests and Confidence Intervals in Multiple Regression
 #+AUTHOR: Zheng Tian
-#+DATE: 
+#+DATE:
 #+STARTUP: beamer
 #+OPTIONS: toc:1 H:2
 #+LATEX_CLASS: beamer
@@ -15,8 +15,8 @@
 #+LATEX_HEADER: \newtheorem{mydef}{Definition}
 #+LATEX_HEADER: \newtheorem{mythm}{Theorem}
 #+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
-#+LATEX_HEADER: \newcommand{\var}{\mathrm{var}}
-#+LATEX_HEADER: \newcommand{\cov}{\mathrm{cov}}
+#+LATEX_HEADER: \newcommand{\var}{\mathrm{Var}}
+#+LATEX_HEADER: \newcommand{\cov}{\mathrm{Cov}}
 #+LATEX_HEADER: \newcommand{\corr}{\mathrm{corr}}
 #+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
 #+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
@@ -77,20 +77,20 @@ Consider the following model
 
 - The homoskedasticity-only covariance matrix if $u_i$ is
   homoskedastic
-   
+
   \begin{equation}
   \label{eq:varbhat-hm-1}
   \var(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1}
   \end{equation}
-   
+
 - The heteroskedasticity-robust covariance matrix if $u_i$ is
   heteroskedastic
-   
+
   \begin{equation}
   \label{eq:varbhat-ht-1}
   \var_{\mathrm{h}}(\hat{\boldsymbol{\beta}} | \mathbf{X}) = \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \boldsymbol{\Sigma} (\mathbf{X}^{\prime} \mathbf{X})^{-1}
   \end{equation}
-   
+
   where $\boldsymbol{\Sigma} = \mathbf{X}^{\prime} \boldsymbol{\Omega}
   \mathbf{X}$, and $\boldsymbol{\Omega} = \var(\mathbf{u} |
   \mathbf{X})$.
@@ -100,21 +100,21 @@ Consider the following model
 We know that if the least squares assumptions hold,
 $\hat{\boldsymbol{\beta}}$ has an asymptotic multivariate normal
 distribution as
- 
+
 \begin{equation}
 \label{eq:normal-bhat-m}
 \hat{\boldsymbol{\beta}} \rarrowd{d} N(\boldsymbol{\beta}, \boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}})
 \end{equation}
- 
+
 where $\boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}} =
 \var(\hat{\boldsymbol{\beta}} | \mathbf{X})$ for which use
 Equation (\ref{eq:varbhat-hm-1}) for the homoskedastic case and Equation
 (\ref{eq:varbhat-ht-1}) for the heteroskedastic case.
 
-** The estimator of $\var(\hat{\boldsymbol{\beta}}|X)$ 
+** The estimator of $\var(\hat{\boldsymbol{\beta}}|X)$
 
 *** The estimator of $\sigma^2_u$
-   
+
   \begin{equation}
   \label{eq:sigma2u}
   s^2_u = \frac{1}{n-k-1} \sum_{i=1}^n \hat{u}^2_i
@@ -127,14 +127,14 @@ Equation (\ref{eq:varbhat-hm-1}) for the homoskedastic case and Equation
   \end{equation}
 
 *** The estimator of $\boldsymbol{\Sigma}$
-   
+
   \begin{equation}
   \label{eq:Sigmahat}
   \widehat{\boldsymbol{\Sigma}} = \frac{n}{n-k-1} \sum_{i=1}^n
   \mathbf{X}_i \mathbf{X}_i^{\prime} \hat{u}^2_i
   \end{equation}
   where $\mathbf{X}_i$ is the vector of the i^{th}
-  observation of $(k+1)$ regressors. 
+  observation of $(k+1)$ regressors.
   The *heteroskedasticity-consistent (robust) covariance matrix estimator* is
   \begin{equation}
   \label{eq:hat-vbhat-ht}
@@ -226,7 +226,7 @@ is the expenditure per pupil in the district in thousands of dollars.
 
 - The decrease in the magnitude of the coefficient reflects that
   expenditure per pupil is an important factor that carry over some
-  influence of student-teacher ratio on test scores. 
+  influence of student-teacher ratio on test scores.
   \vspace{0.2cm}
 
   In other words, holding expenditure per pupil and the percentage of
@@ -248,14 +248,14 @@ Consider the following multiple regression model
 \label{eq:fullmodel}
 \mathbf{Y} = \beta_0 \boldsymbol{\iota} + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \cdots + \beta_k \mathbf{X}_k + \mathbf{u}
 \end{equation}
- 
+
 We call Equation (\ref{eq:fullmodel}) as the full model or *the
 unrestricted model* because $\beta_0$ to $\beta_k$ can take any value
-without restrictions. 
+without restrictions.
 
 ** Joint hypothesis: a case of two zero restrictions
 
-- Question: Are the coefficients on the first two regressors zero? 
+- Question: Are the coefficients on the first two regressors zero?
 
 - Joint hypotheses
   \[ H_0:\, \beta_1 = 0, \beta_2 = 0, \text{ vs. }
@@ -268,18 +268,18 @@ without restrictions.
 
 ** The restricted model with two zero restrictions
 
-- If the null hypothesis is true, we have   
+- If the null hypothesis is true, we have
   \begin{equation}
   \label{eq:restmodel-1}
   \mathbf{Y} = \beta_0 + \beta_3 \mathbf{X}_3 + \beta_4 \mathbf{X}_4 + \cdots + \beta_k \mathbf{X}_k + \mathbf{u}
   \end{equation}
   We call Equation eqref:eq:restmodel-1 as *the restricted model*
-  because we impose two restrictions $\beta_1 = 0$ and $\beta_2 = 0$. 
+  because we impose two restrictions $\beta_1 = 0$ and $\beta_2 = 0$.
 
 - To test these two restrictions jointly means that we need to use a
   single statistic to test these restrictions simultaneously. That
-  statistic is F-statistic. 
-   
+  statistic is F-statistic.
+
 ** Why not use t-statistic and test individual coefficients one at a time?
 
 - Let us test the null hypothesis above using t-statistics for $\beta_1$
@@ -308,17 +308,16 @@ without restrictions.
   So the probability of rejecting the null when it is true is $1 -
   90.25\% = 9.75\%$. We may reject the null hypothesis with a higher
   probability than what we have pre-specified with the significant
-  level. 
-
+  level.
 
 ** Joint hypothesis involving one coefficient for each restriction
 
-*** q restrictions 
+*** q restrictions
 \begin{align*}
 &H_0: \beta_1 = \beta_{1,0},\ \beta_2 = \beta_{2,0},\ \ldots,\ \beta_q = \beta_{q,0} \text{ versus } \\
 &H_1: \text{at least one restriction does not hold}
 \end{align*}
- 
+
 *** The restricted model
 
 Suppose that we are testing the q zero hypotheses, that is, q
@@ -328,7 +327,7 @@ restricted model is
 \label{eq:restmodel-2}
 \mathbf{Y} = \beta_0 + \beta_{q+1} \mathbf{X}_{q+1} + \beta_{q+2} \mathbf{X}_{q+2} + \cdots + \beta_k \mathbf{X}_k + \mathbf{u}
 \end{equation}
- 
+
 ** Joint linear hypotheses
 
 Joint hypotheses include *linear hypotheses* like the followings
@@ -353,12 +352,12 @@ Joint hypotheses include *linear hypotheses* like the followings
 
 We can use a matrix form to represent all linear hypotheses regarding
 the coefficients in Equation (\ref{eq:fullmodel}) as follows
- 
+
 \begin{equation}
 \label{eq:jnt-hyp-g}
 H_0:\, \mathbf{R}\boldsymbol{\beta} = \mathbf{r} \text{ vs. } H_1: \mathbf{R}\boldsymbol{\beta} \neq \mathbf{r}
 \end{equation}
- 
+
 where $\mathbf{R}$ is a $q \times (k+1)$ matrix with the *full row rank*,
 $\boldsymbol{\beta}$ represent the $k+1$ regressors, including
 the intercept, and $\mathbf{r}$ is a $q \times 1$ vector of real
@@ -378,7 +377,7 @@ numbers.
   0
   \end{pmatrix}
   \end{equation*}
-   
+
 - For $H_0: \beta_1 + \beta_2 = 0,\, 2\beta_2 + 4\beta_3 + \beta_4 =
   3,\, \beta_1 = 2 \beta_3 + 1$
   \begin{equation*}
@@ -395,7 +394,7 @@ numbers.
   1
   \end{pmatrix}
   \end{equation*}
-   
+
 ** COMMENT The F-statistic \\ \small Review of the F distribution
 Let's first review some properties of F distribution, which is
 the probability distribution that the F-statistic follows under the
@@ -429,13 +428,13 @@ $F \sim F(n_1, n_2)$
 
 To test the null hypothesis
 \[ H_0:\, \mathbf{R}\boldsymbol{\beta} = \mathbf{r} \]
- 
+
 we compute the F-statistic
 \begin{equation}
 \label{eq:ftest-gen}
 F = \frac{1}{q}(\mathbf{R}\hat{\boldsymbol{\beta}} - \mathbf{r})^{\prime} \left[ \mathbf{R} \widehat{\var(\hat{\boldsymbol{\beta}})} \mathbf{R}^{\prime} \right]^{-1} (\mathbf{R}\hat{\boldsymbol{\beta}} - \mathbf{r})
 \end{equation}
- 
+
  - $\hat{\boldsymbol{\beta}}$ is the estimated coefficients by OLS and
    $\widehat{\var(\hat{\boldsymbol{\beta}})}$ is the estimated covariance
    matrix.
@@ -464,12 +463,12 @@ And the p-value of F test can be computed as
 
 The F-statistic for testing the null hypothesis of $H_0: \beta_1 = 0,
 \beta_2 = 0$ can be proved to take the following form,
- 
+
 \begin{equation}
 \label{eq:ftest-q2}
 F = \frac{1}{2}\frac{t_1^2 + t_2^2 - 2 \hat{\rho}_{t_1,t_2}t_1t_2}{1 - \hat{\rho}_{t_1,t_2}^2}
 \end{equation}
- 
+
 - For simplicity, suppose $t_1$ and $t_2$ are independent so that
   $\hat{\rho}_{t_1,t_2} = 0$. Then $F = \frac{1}{2}(t_1^2 +
   t_2^2)$.
@@ -481,136 +480,163 @@ F = \frac{1}{2}\frac{t_1^2 + t_2^2 - 2 \hat{\rho}_{t_1,t_2}t_1t_2}{1 - \hat{\rho
 - The discussion about F-statistic in Equation (\ref{eq:ftest-q2})
   will become complicated when $\hat{\rho}_{t_1,t_2} \neq 0$.
 
-** TODO COMMENT The homoskedasticity-only F-statistic
-When regressor errors are homoskedastic, then we can compute *the
-homoskedasticity-only F-statistic* that bears more meaningful
-implications for the F tests.
+** The homoskedasticity-only F-statistic
 
-\begin{align*}
-H_0:&  \mathbf{Y} = \beta_0 + \beta_{q+1} \mathbf{X}_{q+1} + \beta_{q+2} \mathbf{X}_{q+2} + \cdots + \beta_k \mathbf{X}_k + \mathbf{u} \text{\footnotesize{ (the restricted model)}} \\
-H_1:&  \mathbf{Y} = \beta_0 + \beta_{1} \mathbf{X}_{1} + \beta_{2} \mathbf{X}_{2} + \cdots + \beta_k \mathbf{X}_k + \mathbf{u} \text{\footnotesize{ (the unrestricted model)}}
-\end{align*}
+- Assume that $\var(u_i | \mathbf{X}_i) = \sigma^2_u$ for $i
+  = 1, \ldots, n$, i.e., $u_i$ has a constant conditional variance for
+  all $i$.
+- Test hypotheses
+  \begin{align*}
+  H_0:\, & \text{the restricted model with q restrictions } \mathbf{R}\boldsymbol{\beta} = \mathbf{r}  \\
+  H_1:\, & \text{the unrestricted model } \mathbf{Y} = \beta_0 + \beta_{1} \mathbf{X}_{1} + \cdots + \beta_k \mathbf{X}_k + \mathbf{u}
+  \end{align*}
+- The *homoskedasticity-only* F-statistic can be computed as
+  \begin{equation}
+  \label{eq:ftest-hm}
+  F = \frac{(RSSR - USSR)/q}{USSR/(n-k-1)}
+  \end{equation}
+  - $RSSR$ is the sum of squared residuals of the restricted model
+  - $USSR$ is the sum of squared residuals of the unrestricted model.
 
-Then the homoskedasticity-only F-statistic can be computed as
-\begin{equation}
-\label{eq:ftest-hm}
-F = \frac{(RSSR - USSR)/q}{USSR/(n-k-1)}
-\end{equation}
-where $RSSR$ is the sum of squared residuals of the restricted model
-and $USSR$ is the sum of squared residuals of the unrestricted model.
+** The homoskedasticity-only F-statistic (cont'd)
 
-** TODO COMMENT The homoskedasticity-only F-statistic (cont'd)
-Since both restricted and unrestricted models have the same
-$\mathbf{Y}$, $TSS$ is the same for both models. Therefore, dividing
-the numerator and the denominator by $TSS$ and doing simple
-manipulations, we get another expression of the homoskedasticity-only
-F-statistic in terms of $R^2$ as
-\begin{equation}
-\label{eq:ftest-hm-r}
-F = \frac{(R^2_{unrestrict} - R^2_{restrict})/q}{(1 - R^2_{unrestrict})/(n-k-1)}
-\end{equation}
+- Dividing the numerator and the denominator in F-statistic by $TSS$,
+  we get another expression of the homoskedasticity-only F-statistic
+  in terms of $R^2$ as
+  \begin{equation}
+  \label{eq:ftest-hm-r}
+  F = \frac{(R^2_{unrestrict} - R^2_{restrict})/q}{(1 - R^2_{unrestrict})/(n-k-1)}
+  \end{equation}
 
-Suppose that all least square assumptions hold, then we have
-\[ F \sim F(q, n-k-1) \]
+- Suppose that all least square assumptions and the homoskedasticity
+  assumption hold, then we know that
+  \[ F \sim F(q, n-k-1) \]
+  So we can get the p-value and the critical value from the
+  distribution $F(q, n-k-1)$.
 
-** TODO COMMENT Understanding the homoskedasticity-only F-statistic
-We can understand the meaning of the homoskedasticity-only F-statistic
-by the following reasoning line
-- The unrestricted model have more regressors than the restricted
-  model.
-- By the properties of the OLS estimation, $SSR$ will decrease whenever
-  an additional regressor is included in the model and the
-  coefficient on that new regressor is not zero.
-- In other words, given the same sample, $R^2$ in the unrestricted
-  model will increase when a new regressor is added with a nonzero
-  coefficient.
-- That means $RSSR \geq USSR$ and $R^2_{unrestrict} > R^2_{restrict}$
-  are always true.
+** Understanding the homoskedasticity-only F-statistic
 
-** TODO COMMENT Understanding the homoskedasticity-only F-statistic (cont'd)
-- However, suppose that the null hypothesis is true. That is, the
-  true model is really the restricted one.
-- Then, adding other regressors in the model should not increase the
-  explanatory power of the model by too much.
-- That means that $USSR$ cannot be too much smaller than $RSSR$, or
-  $R^2_{unrestrict}$ cannot be too much larger than $R^2_{restrict}$
-  if the null hypothesis is true.
-- That means $F$ should not be a large positive number under the null
-  hypothesis.
-- If we compute an F-statistic that is large enough compared with a
-  critical value at some significance level, then we can reject the
-  null hypothesis.
+- $RSSR \geq USSR$ and $R^2_{unrestrict} \geq R^2_{restrict}$
+  are always true. Why?
 
-** TODO COMMENT Transformation of joint hypothesis testing to single hypothesis testing
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-For some simple joint hypotheses, we can transform the model so that a
-joint hypothesis test is converted to a single hypothesis
-test. Consider the following model
-\[ \mathbf{Y} = \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2
-\mathbf{X}_2 + \mathbf{u} \]
-And the null hypothesis is $H_0: \beta_1 = \beta_2$. Then we can rewrite the model as
-\begin{equation*}
-\mathbf{Y} = \beta_0 + (\beta_1 - \beta_2) \mathbf{X}_1 + \beta_2 (\mathbf{X}_1 + \mathbf{X}_2) + \mathbf{u}
-\end{equation*}
-Define $\gamma = \beta_1 - \beta_2$ and $\mathbf{W} =
-\mathbf{X}_1 + \mathbf{X}_2$. Then the original model becomes
-\[ \mathbf{Y} = \beta_0 + \gamma \mathbf{X}_1 + \beta_2
-\mathbf{W} + \mathbf{u} \]
-Thus, instead of testing $\beta_1 - \beta_2 = 0$, we test $H_0:\, \gamma
-= 0$ using the t-statistic computed from the transformed model.
+  - The unrestricted model have more regressors than the restricted
+    model.
 
-** TODO COMMENT Application to test scores and the student-teacher ratio
-:PROPERTIES:
-:BEAMER_opt:
-:END:
-We rewrite the estimated regression model of test scores against
-the student-teacher ratio, expenditures per pupil, and the percentage of
-English learners below.
- 
-\begin{equation*}
-\widehat{TestScore} = \underset{{\displaystyle (15.5)}}{649.6}
-- \underset{\displaystyle (0.48)}{0.29} \times STR
-+ \underset{\displaystyle (1.59)}{3.87} \times Expn
-- \underset{\displaystyle (0.032)}{0.656} \times PctEl,\, R^2 = 0.4366
-\end{equation*}
- 
-The null hypothesis is $H_0:\, \beta_1 = 0,\,\text{ and } \beta_2 = 0$, and the
-alternative hypothesis is $H_1:\, \beta_1 \neq 0\,\text{ or } \beta_2
-\neq 0$.
-- *The heteroskedasticity-robust F statistic* is 5.43, calculated by the
-  computer program using the heteroskedasticity-consistent covariance
-  matrix. The critical value of the $F_{2,\infty}$ distribution at the
-  5% significance level is 3.00, and 4.61 at the 1% level. Since $F =
-  5.43 > 4.61$, we can reject the null hypothesis saying that neither
-  the student-teacher ratio nor expenditures per pupil have an effect
-  on test scores, holding constant the percentage of English
-  learners.
+    \vspace{0.2cm}
 
-** TODO COMMENT Application to test scores and the student-teacher ratio (cont'd)
-- *The homoskedasticity-only F statistic*. To compute the
-  homoskedasticity-only F statistic, we need to estimate the
-  restricted model by OLS, which yields
-   
+  - $SSR$ will decrease whenever an additional regressor is included
+    in the model and the coefficient on the new regressor is not
+    zero.
+
+    \vspace{0.2cm}
+
+  - In other words, $R^2$ in the unrestricted model will increase when
+    a new regressor is added with a nonzero coefficient.
+
+** Understanding the homoskedasticity-only F-statistic (cont'd)
+
+- Suppose that the null hypothesis is true. That is, the
+  true model is really the restricted one. What would this imply?
+
+  - The explanatory power of the additional regressors in the
+    unrestricted model should be very small.
+
+    \vspace{0.2cm}
+
+  - That means that $USSR$ cannot be too much smaller than $RSSR$, or
+    $R^2_{unrestrict}$ cannot be too much larger than $R^2_{restrict}$
+    if the null hypothesis is true.
+
+    \vspace{0.2cm}
+
+  - That means $F$ should not be a large positive number under the null
+    hypothesis.
+
+    \vspace{0.2cm}
+
+  - If we compute an F-statistic that is large enough compared with a
+    critical value at some significance level, then we can reject the
+    null hypothesis.
+
+** Transformation of joint hypothesis testing to single hypothesis testing
+
+- The goal: to convert a joint hypothesis to a single hypothesis.
+
+- Consider the following model
+  \[ \mathbf{Y} = \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2
+  \mathbf{X}_2 + \mathbf{u} \]
+
+- The null hypothesis is $H_0: \beta_1 = \beta_2$.
+
+- How can we convert $H_0$ to a single hypothesis test?
+
+** Transformation of joint hypothesis testing to single hypothesis testing (cont'd)
+
+- Rewrite the model
+  \begin{equation*}
+  \mathbf{Y} = \beta_0 + (\beta_1 - \beta_2) \mathbf{X}_1 + \beta_2 (\mathbf{X}_1 + \mathbf{X}_2) + \mathbf{u}
+  \end{equation*}
+
+- Define $\gamma = \beta_1 - \beta_2$ and $\mathbf{W} =
+  \mathbf{X}_1 + \mathbf{X}_2$. Then the original model becomes
+  \[ \mathbf{Y} = \beta_0 + \gamma \mathbf{X}_1 + \beta_2
+  \mathbf{W} + \mathbf{u} \]
+
+- Instead of testing $\beta_1 - \beta_2 = 0$, we test $H_0:\, \gamma
+  = 0$ using the t-statistic computed from the transformed model.
+
+** Application of the California school districts
+
+- The estimated model
+  \begin{equation*}
+  \widehat{TestScore} = \underset{{\displaystyle (15.5)}}{649.6}
+  - \underset{\displaystyle (0.48)}{0.29} \times STR
+  - \underset{\displaystyle (1.59)}{3.87} \times Expn
+  - \underset{\displaystyle (0.032)}{0.656} \times PctEl,\, R^2 = 0.4366
+  \end{equation*}
+
+- The joint hypothesis
+   \[H_0:\, \beta_1 = 0,\,\text{ and } \beta_2 = 0 \text{ v.s. }
+    H_1:\, \beta_1 \neq 0\,\text{ or } \beta_2 \neq 0\]
+
+- The heteroskedasticity-robust F statistic is 5.43. The critical
+  value of the $F_{2,\infty}$ distribution at the 5% significance
+  level is 3.00. So we reject the null hypothesis.
+
+** Application to test scores and the student-teacher ratio (cont'd)
+
+- The homoskedasticity-only F statistic.
   \begin{equation*}
   \widehat{TestScore} = \underset{{\displaystyle (1.0)}}{664.7}
-  - \underset{\displaystyle (0.032)}{0.671} \times PctEl,\, R^2 = 0.4149
+   -\underset{\displaystyle (0.032)}{0.671} \times PctEl,\, R^2 = 0.4149
   \end{equation*}
-   
 
-  Now we know that the unrestricted $R^2_{\text{unrestricted}}$ is
-  0.4366, the restricted $R^2_{\text{restricted}}$ is 0.4149, the
-  number of restrictions $q=2$, the number of observations $n = 420$,
-  and the number of coefficients in the unrestricted model $k =
-  3$. Then, the homoskedasticity-only F statistic is computed as
-   
+- Now we have $R^2_{\text{unrestricted}} = 0.4366$,
+  $R^2_{\text{restricted}} = 0.4149$, $q=2$, $n = 420$, and $k = 3$.
+
+- The homoskedasticity-only F statistic is computed as
   \[F=\frac{(0.4366 - 0.4149)/2}{(1-0.4366)/(420-3-1)} = 8.01 \]
-   
   Because 8.01 exceeds the 1% critical value of 4.61 from the
   $F_{2,\infty}$ distribution, the null hypothesis is rejected.
 
-** TODO COMMENT Warm-up Exercises
+** Check the critical value using the F table
+*** F(q, \infty)                                                    :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+#+CAPTION: The table of critical values of the $F(q, \infty)$ distribution
+#+ATTR_LATEX: :width 0.8\textwidth :placement
+[[file:img/fdist.png]]
+
+*** F(m, n)                                                         :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+#+CAPTION: The table of critical values at the 5% level of the $F(m, n)$ distribution
+#+ATTR_LATEX: :width 0.8\textwidth :placement
+[[file:img/Ftrunc.jpg]]
+
+** COMMENT Warm-up Exercises
 :PROPERTIES:
 :BEAMER_opt: shrink
 :END:
@@ -630,7 +656,7 @@ Answer: A
 \pause
 Answer:  B
 
-** TODO COMMENT Warm-up exercises
+** COMMENT Warm-up exercises
 :PROPERTIES:
 :BEAMER_opt: shrink
 :END:
@@ -653,121 +679,108 @@ Answer:  B
 *** The formulation $\boldsymbol{R\beta} = \boldsymbol{r}$ to test a hypotheses
 - A) :: allows for restrictions involving both multiple regression coefficients and single regression coefficients.
 - B) :: is F-distributed in large samples.
-- C) :: allows only for restrictions involving multiple regression coefficients. 
+- C) :: allows only for restrictions involving multiple regression coefficients.
 - D) :: allows for testing linear as well as nonlinear hypotheses.
 \pause
 Answer:  A
 \pause
 
-** TODO COMMENT Check the critical value using the F table
-*** F(q, \infty)                                                    :BMCOL:
-:PROPERTIES:
-:BEAMER_col: 0.5
-:END:
-#+CAPTION: The table of critical values of the $F(q, \infty)$ distribution
-#+ATTR_LATEX: :width 0.8\textwidth :placement
-[[file:img/fdist.png]]
-
-*** F(m, n)                                                         :BMCOL:
-:PROPERTIES:
-:BEAMER_col: 0.5
-:END:
-#+CAPTION: The table of critical values at the 5% level of the $F(m, n)$ distribution
-#+ATTR_LATEX: :width 0.8\textwidth :placement
-[[file:img/Ftrunc.jpg]]
-
-* TODO COMMENT Confidence Sets for multiple coefficients
+* Confidence Sets for multiple coefficients
 #+TOC: headlines [currentsection]
 ** Confidence set: definition
-A *95% confidence set* for two or more coefficients is
+
+A 95% *confidence set* for two or more coefficients is
+
 - a set that contains the true population values of these coefficients
   in 95% of randomly drawn samples.
+
 - Equivalently, the set of coefficient values that cannot be rejected
   at the 5% significance level.
+
 ** How to construct a confidence set
+
 Suppose that we construct the confidence set for $\beta_1 =
 \beta_{1,0}, \beta_2 = \beta_{2,0}$.
 
 - Let $F_{\beta_1, \beta_2}$ be the heteroskedasticity-robust or
   homoskedasticity-only F-statistic.
+
 - A 95% confidence set is
   \[\{\beta_1, \beta_2:\, F_{\beta_1,\beta_2} < c_F\}\]
   where $c_F$ is the 5% critical value of the $F(2, \infty)$
   distribution, which is close to 3 in this case.
+
 - This set has coverage rate 95% because the test on which it is based
-  has the size of 5%. That is, 5% of the time, the test incorrectly
-  rejects the null when the null is true, so 95% of the time it does
-  not.
+  has the size of 5%.
+
 - Therefore the confidence set constructed as the nonrejected values
   contains the true value 95% of the time.
+
 ** The confidence set based on the F-statistic is an ellipse
-According to Equation (\ref{eq:ftest-q2}), the confidence set for $\beta_1, \text{ and } \beta_2$ is
-\begin{gather*}
-\left\{ \beta_1, \beta_2:\, F = \frac{1}{2}\frac{t^2_1 + t^2_2 - 2 \hat{\rho}_{t_1,t_2}t_1t_2}{1 - \hat{\rho}_{t_1,t_2}^2} \leq 3 \right\}
-\end{gather*}
-Plugging the formula of $t_1$ and $t_2$, the F-statistic becomes
-\begin{equation*}
-F = \left[ \left(\frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}\right)^2 + \left(\frac{\hat{\beta}_2 - \beta_{2,0}}{SE(\hat{\beta}_2)}\right)^2 + 2 \hat{\rho}_{t_1,t_2}\left(\frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}\right) \left(\frac{\hat{\beta}_2 - \beta_{2,0}}{SE(\hat{\beta}_2)}\right) \right] \leq 3
-\end{equation*}
-which is an ellipse containing the pairs of values of $\beta_1$ and
-$\beta_2$ that cannot be rejected using the F-statistic at the 5%
-significance level. See Figure [[fig:fig-7-1]].
+
+- According to Equation (\ref{eq:ftest-q2}), the confidence set for $\beta_1, \text{ and } \beta_2$ is
+  \begin{gather*}
+  \left\{ \beta_1, \beta_2:\, F = \frac{1}{2}\frac{t^2_1 + t^2_2 - 2 \hat{\rho}_{t_1,t_2}t_1t_2}{1 - \hat{\rho}_{t_1,t_2}^2} \leq 3 \right\}
+  \end{gather*}
+
+- Plugging the formula of $t_1$ and $t_2$, the F-statistic becomes
+  \begin{equation*}
+  \left[ \left(\frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}\right)^2 + \left(\frac{\hat{\beta}_2 - \beta_{2,0}}{SE(\hat{\beta}_2)}\right)^2 + 2 \hat{\rho}_{t_1,t_2}\left(\frac{\hat{\beta}_1 - \beta_{1,0}}{SE(\hat{\beta}_1)}\right) \left(\frac{\hat{\beta}_2 - \beta_{2,0}}{SE(\hat{\beta}_2)}\right) \right] \leq 3
+  \end{equation*}
+
 ** The confidence set: an illustration
+
 #+CAPTION: 95% Confidence Set for Coefficients on STR and Expn
 #+NAME: fig:fig-7-1
 [[file:img/fig-7-1.png]]
 
-* TODO COMMENT Model Specification for Multiple Regression
+* Model Specification for Multiple Regression
 #+TOC: headlines [currentsection]
 ** Omitted variable bias in multiple regression
-Omitted variable bias is the bias in the OLS estimator that arises
-when one or more included regressors are correlated with an omitted
-variable.
 
-\vspace{0.2cm}
+- We should always be alert to omitted variable bias in the OLS
+  estimation.
 
-For omitted variable bias to arise, two things must be true:
-1. At least one of the included regressors must be correlated with the
-   omitted variable.
-2. The omitted variable must be a determinant of the dependent
-   variable, $Y$.
+- For omitted variable bias to arise, two things must be true:
+  1. At least one of the included regressors must be correlated with the
+     omitted variable.
+  2. The omitted variable must be a determinant of the dependent
+     variable, $Y$.
 
-\vspace{0.2cm}
+- With omitted variable bias, the least square assumption $E(u|X) = 0$
+  does not hold any more.
 
-With omitted variable bias, the least square assumption $E(u | X) = 0$
-does not hold any more. The OLS estimator $\hat{\beta}$ is biased
-no matter how large the sample size is.
+** The problem of the assumption of $E(u|X) = 0$ and control variables
 
-** A dilemma regarding to the OLS estimation and omitted variable bias
-We want to get an unbiased estimate of the effect on test scores of
-changing class size, holding constant factors outside the school
-committee’s control – such as outside learning opportunities (museums,
-etc), parental involvement in education, etc.
+- The assumption of $E(u|X) = 0$ is essential to ensures unbiasedness
+  and consistency. However, it is too strong to be completely realized
+  in practice.
 
-\vspace{0.2cm}
+- What we can do is that we divide all regressors into two groups:
+  1) One group consists of regressors whose causal effects on $Y$ are our
+     research interest so that we want unbiased estimates of these
+     coefficients.
+  2) Another group consists of regressors whose causal effects on $Y$ are
+     not our focus. But if we omit them, we would risk making omitted
+     variable bias in the coefficients that we do care.
 
-If we could run an experiment, we would randomly assign students
-(and teachers) to different sized classes.  Then $STR_i$ would be
-independent of all the things that go into $u_i$, so $E(u_i|STR_i) = 0$ and
-the OLS slope estimator in the regression of $TestScore_i$ on $STR_i$ will
-be an unbiased estimator of the desired causal effect.
+- The regressors in the latter group are called *control
+  variable*.
 
-** A dilemma, cont'd
-But with observational data, $u_i$ depends on additional factors
-(museums, parental involvement, knowledge of English etc).
-- If you can observe those factors (e.g. /PctEL/), then include them in
-  the regression.
-- But usually you can’t observe all these omitted causal factors
-  (e.g. parental involvement in homework).  In this case, you can
-  include *control variables* which are correlated with these omitted
-  causal factors, but may not have causal implication.
+- W use an assumption that is weaker than the assumption of
+  $E(u|X)=0$ to ensure that the estimated coefficients on the
+  regressors in the first groups are unbiased, maintaining the causal
+  implication that we want.
 
 ** Control variables: definition
+
+*** Definition
+
 A control variable $W$ is a variable that is correlated with, and
 controls for, an omitted causal factor in the regression of Y on X,
 but which itself does not necessarily have a causal effect on Y.
 
-\vspace{0.3cm}
+*** The role of control variables
 
 A control variable is not the object of interest in the study; rather
 it is a regressor included to hold constant factors that, if
@@ -775,6 +788,7 @@ neglected, could lead to the estimated causal effect of interest to
 suffer from omitted variable bias.
 
 ** The test score example
+
 \[TestScore = \underset{(5.6)}{700.2} - \underset{(0.27)}{1.00}STR -
 \underset{(0.033)}{0.122}PctEL - \underset{(0.024)}{0.547}LchPct,\,
 \bar{R}^2 = 0.773 \]
@@ -784,56 +798,42 @@ $LchPct=$ percent of students receiving a free/subsidized lunch.
 
 - Which variable is the variable of interest? $STR$
 - Which variables are control variables? Do they have causal
-  components? What do they control for?
-
-** The test score example, cont'd
- - /PctEL/ probably has a direct causal effect (school is tougher if
-   you are learning English!).  But it is also a control variable:
-   immigrant communities tend to be less affluent and often have
-   fewer outside learning opportunities, and /PctEL/ is correlated with
-   those omitted causal variables.  /PctEL/ is both a possible causal
-   variable and a control variable.
- - /LchPct/ might slightly have a causal effect (eating lunch helps
-   learning); But it is correlated with and controls for
-   income-related outside learning opportunities.  /LchPct/ is more
-   serving as a proxy variable for income than bearing causal effect
-   itself.
+  implications? What do they control for?
 
 ** What makes an effective control variable?
-*** Three interchangeable statements about what makes an effective control variable:
-- An effective control variable is one which, when included in
-  the regression, makes the error term uncorrelated with the variable of
-  interest.
-- Holding constant the control variable(s), the variable of interest
-  is “as if” randomly assigned.
-- Among individuals (entities) with the same value of the control
-  variable(s), the variable of interest is uncorrelated with the
-  omitted determinants of $Y$.
 
-*** Control variables need not be causal, and their coefficients generally do not have a causal interpretation.
-- Does the coefficient on /LchPct/ have a causal interpretation?  If
-  so, then we should be able to boost test scores (by a lot! Do the
-  math!) by simply eliminating the school lunch program, so that
-  $LchPct = 0$. But it makes nonsense. 
+- Three interchangeable statements about what makes an effective control
+  variable:
+  - An effective control variable is one which, when included in
+    the regression, makes the error term uncorrelated with the variable of
+    interest.
+  - Holding constant the control variable(s), the variable of interest
+    is “as if” randomly assigned.
+  - Among individuals (entities) with the same value of the control
+    variable(s), the variable of interest is uncorrelated with the
+    omitted determinants of $Y$.
+
+- Control variables need not be causal, and their coefficients
+  generally do not have a causal interpretation.
 
 ** Conditional mean independence: definition
-We need a mathematical statement of what makes an effective control
-variable. This condition is *conditional mean independence*: given the
-control variable, the mean of $u_i$ doesn’t depend on the variable of
-interest.
 
-\vspace{0.3cm}
+- *Conditional mean independence*: given the
+  control variable, the mean of $u_i$ doesn’t depend on the variable of
+  interest.
 
-Let $X_i$ denote the variable of interest and $W_i$ denote the control
-variable(s).  $W$ is an effective control variable if conditional mean
-independence holds:
-\[ E(u_i|X_i, W_i) = E(u_i|W_i) \]
+\vspace{0.2cm}
 
-If $W$ is a control variable, then conditional mean
-independence replaces the first least square assumption requiring
-$E(u_i | X_i, W_i) = 0$.
+- Let $X_i$ denote the variable of interest and $W_i$ denote the control
+  variable(s).  $W$ is an effective control variable if conditional mean
+  independence holds:
+  \[ E(u_i|X_i, W_i) = E(u_i|W_i) \]
+
+- Conditional mean independence substitute the first least square
+  assumption requiring $E(u_i | X_i, W_i) = 0$.
 
 ** Implications of conditional mean independence
+
 Consider the regression model
 \[ Y = \beta_0 + \beta_1 X + \beta_2 W + u \]
 where $X$ is the variable of interest and $W$ is an effective control
@@ -845,6 +845,7 @@ suppose that the other least square assumptions hold. Then,
   general biased.
 
 ** $\beta_1$ has a causal interpretation
+
 The expected change in $Y$ resulting from a change in $X$, holding $W$
 constant, is:
 \begin{equation*}
@@ -860,6 +861,7 @@ In the second equality, we use conditional mean independence $E(u|X =
 x + \Delta x, W = w) = E(u|X = x, W = w) = E(u|W = w)$.
 
 ** $\hat{\beta}_1$ is unbiased and $\hat{\beta}_2$ is biased
+
 For convenience, suppose that $E(u|W) = \gamma_0 + \gamma_1 W$. Thus,
 under conditional mean independence, we have
 \[ E(u|X,W) = E(u|W) = \gamma_0 + \gamma_1 W \]
@@ -867,6 +869,8 @@ Let $v = u - E(u|W)$ so that
 \[E(v|X, W) = E(u|X,W) - E(u|W) = 0 \]
 Then, it follows that
 \[ u = E(u|X,W) + v = \gamma_0 + \gamma_1 W + v \]
+
+** $\hat{\beta}_1$ is unbiased and $\hat{\beta}_2$ is biased (cont'd)
 
 Then, the original model $Y = \beta_0 + \beta_1 X + \beta_2 W + u$
 becomes
@@ -880,51 +884,63 @@ Y &= \beta_0 + \beta_1 X + \beta_2 W + \gamma_0 + \gamma_1 W + v \notag \\
 where $\delta_0 = \beta_0 + \gamma_0$ and $\delta_2 = \beta_2 +
 \gamma_2$.
 
-** $\hat{\beta}_1$ is unbiased and $\hat{\beta}_2$ is biased (cont'd)
-*** For the new model $Y = \delta_0 + \beta_1 X + \delta_2 W + v$, we can conclude that
-- because $E(v|X,W) = 0$, the new model satisfy the first least square
-  assumption so that the OLS estimator of $\delta_0, \beta_1, \text{
-  and } \delta_2$ are unbiased.
-- because the regressors in both the original and new model are the
-  same, the OLS coefficients in the original model satisfy
-  $E(\hat{\beta}_1) = \beta_1$ and $E(\hat{\delta}_2) = \delta_2 \neq
+What can we conclude from the new model?
+- The new model satisfy $E(v|X,W) = 0$ so that the OLS estimator of
+  $\delta_0, \beta_1, \text{ and } \delta_2$ are unbiased.
+- The estimated coefficients in the original model are actually
+  $\hat{\beta}_1$ and $\hat{\delta}_2$, which we know that
+  $E(\hat{\beta}_1) = \beta_1$ and $E(\hat{\beta}_2) = \delta_2 \neq
   \beta_2$ in general.
 
-*** In summary, if $W$ is such that conditional mean independence is satisfied, then:
-- The OLS estimator of the effect of interest, $\hat{\beta}_1$, is
-  unbiased.
-- The OLS estimator of the coefficient on the control variable,
-  $\hat{\beta}_2$, is biased. Thus, we cannot interpret
-  $\hat{\beta}_2$ as measuring any causal effects of $W$ on $Y$. 
-
 ** Model specification in theory and in practice
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-The following steps are advocated to set up a regression model:
-- A core or base set of regressors should be chosen using a
-  combination of expert judgment, economic theory, and knowledge of
-  how data were collected. The regression using this base set of
-  regressors is referred to as a *base specification*. This step
-  involves the following consideration:
-  1) identifying the variable of interest.
-  2) thinking of the omitted causal effects that could result in omitted
-     variable bias.
-  3) including those omitted causal effects if you can. If you
-     can’t, include variables correlated with them that serve as
-     control variables.
-- Also specify a range of plausible *alternative model
-  specifications*, which include additional candidate variables.
-  1) If the estimates of the coefficients of interest are numerically
-     similar across the alternative specifications, then this
-     provides evidence that the estimates from your base
-     specification are reliable.
-  2) If the estimates of the coefficients of interest change
-     substantially across specifications, this often provides
-     evidence that the original specification had omitted variable
-     bias.
 
-** Interpreting the $R^2$ and the adjusted $R^2$ in practice
+The following steps are advocated to set up a regression model:
+
+*** Step 1: Set up a base specification
+
+A core or base set of regressors should be chosen using a
+combination of expert judgment, economic theory, and knowledge of
+how data were collected. The regression using this base set of
+regressors is referred to as a *base specification*. This step
+involves the following consideration:
+1) identifying the variable of interest.
+2) thinking of the omitted causal effects that could result in omitted
+   variable bias.
+3) including those omitted causal effects if you can. If you
+   can’t, include variables correlated with them that serve as
+   control variables.
+
+** Model specification in theory and in practice (cont'd)
+
+*** Step 2: Set up alternative specifications
+
+Also specify a range of plausible *alternative model
+specifications*, which include additional candidate variables.
+1) If the estimates of the coefficients of interest are numerically
+   similar across the alternative specifications, then this
+   provides evidence that the estimates from your base
+   specification are reliable.
+2) If the estimates of the coefficients of interest change
+   substantially across specifications, this often provides
+   evidence that the original specification had omitted variable
+   bias.
+
+** Model specification in theory and in practice (cont'd)
+
+*** Step 3: Use test statistics to judge a model specification
+
+1) Use $R^2$ and $\bar{R}^2$ to see the overall goodness of fit of
+   a model specification. Caution: a high $R^2$ or $\bar{R}^2$ does
+   not mean that you have eliminated omitted variable bias. Neither
+   does a high $R^2$ or $\bar{R}^2$ mean that the included
+   variables and the model as a whole are statistically
+   significant.
+2) Use t-statistic to check the significance of individual
+   coefficients, and use F-statistic to check the overall
+   significance of the model as a whole. That is, use F test for
+   \[H_0:\, \beta_1 = \beta_2 = \cdots = \beta_k = 0 \]
+
+** COMMENT Interpreting the $R^2$ and the adjusted $R^2$ in practice
 It is easy to fall into the trap of maximizing the $R^2$ and $\bar{R}^2$, but this
 loses sight of our real objective, an unbiased estimator of the class
 size effect.
@@ -937,12 +953,11 @@ size effect.
 - To test the overall significance of the regression model, we use the
   F-test with the null $H_0:\, \beta_1 = \cdots = \beta_k = 0$, that
   is, testing all coefficients on regressors excluding the intercept
-  to be jointly significant. 
+  to be jointly significant.
 
 ** Analysis of the test score data set
 :PROPERTIES:
 :BEAMER_opt: shrink
 :END:
-#+CAPTION:
-#+ATTR_LATEX: :width 0.95\textwidth
+#+ATTR_LATEX: :float t
 [[file:img/tab-7-1.png]]

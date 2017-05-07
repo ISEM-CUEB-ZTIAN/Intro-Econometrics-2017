@@ -10,7 +10,7 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 
 * Announcement
 ** [2017-04-19 Wed]
-[[*Homework set #4][Homework set #4]] is assigned, which is due on May 3rd. 
+[[*Homework set #4][Homework set #4]] is assigned, which is due on May 3rd.
 
 ** [2017-04-16 Sun]
 
@@ -96,9 +96,9 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - Slides ([[file:handouts/lecture_notes/lecture_8/slides_lecture_8.pdf][beamer]])
 - R document ([[file:handouts/lecture_notes/lecture_8/replication/replicate_ch6.pdf][pdf]] and [[file:handouts/lecture_notes/lecture_8/replication.zip][zip]])
 ** Lecture 9: Hypothesis Tests and Confidence Intervals in Multiple Regression
-- Lecture notes ([[file:handouts/lecture_notes/lecture_9/lecture_9.pdf][pdf]], incomplete)
-- Slides ([[file:handouts/lecture_notes/lecture_9/slides_lecture_9.pdf][beamer]], incomplete)
-
+- Lecture notes ([[file:handouts/lecture_notes/lecture_9/lecture_9.pdf][pdf]])
+- Slides ([[file:handouts/lecture_notes/lecture_9/slides_lecture_9.pdf][beamer]])
+- R documents ([[file:handouts/lecture_notes/lecture_9/replication_ch7.zip][zip]])
 
 * Homework
 
@@ -120,4 +120,4 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - Answers to homework 3 ([[file:assignment/homework/homework_3/answers.zip][zip]])
 
 ** Homework set #4
-- Homework set #4: [[file:assignment/homework/homework_4/homework_4.pdf][pdf]]. 
+- Homework set #4: [[file:assignment/homework/homework_4/homework_4.pdf][pdf]].
