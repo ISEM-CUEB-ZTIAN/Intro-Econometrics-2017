@@ -1,0 +1,283 @@
+#+TITLE: Empirical Exercise 6.1
+#+AUTHOR: Zheng Tian
+#+DATE: [2016-05-04 Wed]
+#+OPTIONS: toc:nil H:3 num:2
+#+PROPERTY: header-args:R :session my-r-session
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \singlespacing
+#+LATEX_HEADER: \usepackage{parskip}
+
+\vspace{1cm}
+
+This file include answers and R codes for completing Empirical
+Exercise 6.1 in Introduction to Econometrics (3rd edition) by Stock
+and Watson.
+
+* Instructions
+** Read the data
+As usual, we first read the data and load the =AER= package
+#+BEGIN_SRC R :results output :exports both
+library(AER)
+library(foreign)
+teachingdata <- read.dta("TeachingRatings.dta")
+summary(teachingdata)
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+    minority           age            female         onecredit
+ Min.   :0.0000   Min.   :29.00   Min.   :0.0000   Min.   :0.00000
+ 1st Qu.:0.0000   1st Qu.:42.00   1st Qu.:0.0000   1st Qu.:0.00000
+ Median :0.0000   Median :48.00   Median :0.0000   Median :0.00000
+ Mean   :0.1382   Mean   :48.37   Mean   :0.4212   Mean   :0.05832
+ 3rd Qu.:0.0000   3rd Qu.:57.00   3rd Qu.:1.0000   3rd Qu.:0.00000
+ Max.   :1.0000   Max.   :73.00   Max.   :1.0000   Max.   :1.00000
+     beauty          course_eval        intro          nnenglish
+ Min.   :-1.45049   Min.   :2.100   Min.   :0.0000   Min.   :0.00000
+ 1st Qu.:-0.65627   1st Qu.:3.600   1st Qu.:0.0000   1st Qu.:0.00000
+ Median :-0.06801   Median :4.000   Median :0.0000   Median :0.00000
+ Mean   : 0.00000   Mean   :3.998   Mean   :0.3391   Mean   :0.06048
+ 3rd Qu.: 0.54560   3rd Qu.:4.400   3rd Qu.:1.0000   3rd Qu.:0.00000
+ Max.   : 1.97002   Max.   :5.000   Max.   :1.0000   Max.   :1.00000
+#+end_example
+
+** Run regressions
+*** Run a simple regression of =Course_Eval= on =Beauty=
+We first run a simple linear regression model of =Course_Eval= on
+=Beauty=.
+
+#+BEGIN_SRC R :results output :exports code
+mod1 <- lm(course_eval ~ beauty, data = teachingdata)
+summary(mod1)
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+
+Call:
+lm(formula = course_eval ~ beauty, data = teachingdata)
+
+Residuals:
+     Min       1Q   Median       3Q      Max
+-1.80015 -0.36304  0.07254  0.40207  1.10373
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)  3.99827    0.02535 157.727  < 2e-16 ***
+beauty       0.13300    0.03218   4.133 4.25e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.5455 on 461 degrees of freedom
+Multiple R-squared:  0.03574,	Adjusted R-squared:  0.03364
+F-statistic: 17.08 on 1 and 461 DF,  p-value: 4.247e-05
+#+end_example
+
+*** Run a multiple regression model
+Then we run a multiple regression model.
+
+#+BEGIN_SRC R :results output :exports code
+mod2 <- lm(course_eval ~ beauty + intro + onecredit + female
+           + minority + nnenglish, data = teachingdata)
+summary(mod2)
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+
+Call:
+lm(formula = course_eval ~ beauty + intro + onecredit + female +
+    minority + nnenglish, data = teachingdata)
+
+Residuals:
+     Min       1Q   Median       3Q      Max
+-1.84611 -0.33300  0.04912  0.37672  1.05872
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)  4.06829    0.03754 108.364  < 2e-16 ***
+beauty       0.16561    0.03073   5.389 1.14e-07 ***
+intro        0.01133    0.05448   0.208 0.835413
+onecredit    0.63453    0.11134   5.699 2.17e-08 ***
+female      -0.17348    0.04928  -3.520 0.000474 ***
+minority    -0.16662    0.07628  -2.184 0.029448 *
+nnenglish   -0.24416    0.10696  -2.283 0.022903 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.5135 on 456 degrees of freedom
+Multiple R-squared:  0.1546,	Adjusted R-squared:  0.1435
+F-statistic:  13.9 on 6 and 456 DF,  p-value: 1.529e-14
+#+end_example
+
+*** Re-run the multiple regression model to test the FWL theorem
+
+#+BEGIN_SRC R :results output :exports code
+mod2.a <- lm(course_eval ~ intro + onecredit + female
+             + minority + nnenglish, data = teachingdata)
+mod2.b <- lm(beauty ~ intro + onecredit + female
+             + minority + nnenglish, data = teachingdata)
+mod2.c <- lm(resid(mod2.a) ~ resid(mod2.b) - 1)
+summary(mod2.c)
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+
+Call:
+lm(formula = resid(mod2.a) ~ resid(mod2.b) - 1)
+
+Residuals:
+     Min       1Q   Median       3Q      Max
+-1.84611 -0.33300  0.04912  0.37672  1.05872
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+resid(mod2.b)  0.16561    0.03053   5.425 9.39e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.5102 on 462 degrees of freedom
+Multiple R-squared:  0.05988,	Adjusted R-squared:  0.05784
+F-statistic: 29.43 on 1 and 462 DF,  p-value: 9.387e-08
+#+end_example
+
+** Prediction
+Prediction can be made with =predict()=. First, we need to define a
+=data.frame= object for Professor Smith. Then, use it in the
+function.
+
+#+BEGIN_SRC R :results output silent :exports code
+smith <- data.frame(minority = 1, female = 0,
+                    beauty = mean(teachingdata$beauty),
+                    nnenglish = 0, intro = 0, onecredit = 0)
+smith.hat <- predict(mod2, smith)
+#+END_SRC
+
+* Answers
+
+#+BEGIN_SRC R :results output silent :exports none
+b1.mod1 <- coef(mod1)[2]
+b1.mod2 <- coef(mod2)[2]
+b1.mod2c <- coef(mod2.c)[1]
+#+END_SRC
+
+** Answers for a and b
+The results of the simple linear regression model and the
+multiple regression model are summarized in Table 1.
+
+  #+BEGIN_SRC R :results output latex :exports results :eval no
+  library(stargazer)
+  stargazer(mod1, mod2,
+          title = "The OLS Estimation of the Simple and Multiple Regressions",
+          label = "tab:results_ab",
+          dep.var.labels = "course-eval",
+          digits = 4, no.space = TRUE)
+  #+END_SRC
+
+  #+RESULTS:
+  #+BEGIN_LaTeX
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, May 04, 2016 - 16:55:32
+\begin{table}[!htbp] \centering
+  \caption{The OLS Estimation of the Simple and Multiple Regressions}
+  \label{tab:results_ab}
+\begin{tabular}{@{\extracolsep{5pt}}lcc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\
+\cline{2-3}
+\\[-1.8ex] & \multicolumn{2}{c}{course-eval} \\
+\\[-1.8ex] & (1) & (2)\\
+\hline \\[-1.8ex]
+ beauty & 0.1330$^{***}$ & 0.1656$^{***}$ \\
+  & (0.0322) & (0.0307) \\
+  intro &  & 0.0113 \\
+  &  & (0.0545) \\
+  onecredit &  & 0.6345$^{***}$ \\
+  &  & (0.1113) \\
+  female &  & $-$0.1735$^{***}$ \\
+  &  & (0.0493) \\
+  minority &  & $-$0.1666$^{**}$ \\
+  &  & (0.0763) \\
+  nnenglish &  & $-$0.2442$^{**}$ \\
+  &  & (0.1070) \\
+  Constant & 3.9983$^{***}$ & 4.0683$^{***}$ \\
+  & (0.0253) & (0.0375) \\
+ \hline \\[-1.8ex]
+Observations & 463 & 463 \\
+R$^{2}$ & 0.0357 & 0.1546 \\
+Adjusted R$^{2}$ & 0.0336 & 0.1435 \\
+Residual Std. Error & 0.5455 (df = 461) & 0.5135 (df = 456) \\
+F Statistic & 17.0847$^{***}$ (df = 1; 461) & 13.9036$^{***}$ (df = 6; 456) \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+\end{table}
+  #+END_LaTeX
+
+  The coefficient on =beauty= in the simple linear regression model is
+  src_R{round(b1.mod1, 4)}, while that in the multiple regression model
+  is src_R{round(b1.mod2, 4)}. The difference between the two estimated
+  coefficients are not very large, which may imply that the omitted
+  variable bias in the simple regression model is not very serious.
+
+** Answer for c
+The estimation following the three steps in the FWL theorem yields the
+estimate of the coefficient on =beauty= is src_R{round(b1.mod2c, 4)},
+which is identical to that in the multiple regression model shown
+above.
+
+** Answer for d
+The predicted course evaluation for Professor Smith is
+src_R{round(smith.hat, 4)}, calculated as $4.0683 +
+0.1656 \times 0 + 0.0113 \times 0 + 0.6345 \times 0 -
+0.1735 \times 0 - 0.1666 \times 1 - 0.2442 \times 0 = 3.9017$.
+
+* Appendix: R codes
+#+BEGIN_EXAMPLE
+library(AER)
+library(foreign)
+teachingdata <- read.dta("TeachingRatings.dta")
+summary(teachingdata)
+
+# simple regression
+mod1 <- lm(course_eval ~ beauty, data = teachingdata)
+summary(mod1)
+
+# multiple regression
+mod2 <- lm(course_eval ~ beauty + intro + onecredit + female
+           + minority + nnenglish, data = teachingdata)
+summary(mod2)
+
+# FWL regressions
+mod2.a <- lm(course_eval ~ intro + onecredit + female
+             + minority + nnenglish, data = teachingdata)
+mod2.b <- lm(beauty ~ intro + onecredit + female
+             + minority + nnenglish, data = teachingdata)
+mod2.c <- lm(resid(mod2.a) ~ resid(mod2.b) - 1)
+summary(mod2.c)
+
+# prediction
+smith <- data.frame(minority = 1, female = 0,
+                    beauty = mean(teachingdata$beauty),
+                    nnenglish = 0, intro = 0, onecredit = 0)
+smith.hat <- predict(mod2, smith)
+
+b1.mod1 <- coef(mod1)[2]
+b1.mod2 <- coef(mod2)[2]
+b1.mod2c <- coef(mod2.c)[1]
+
+library(stargazer)
+stargazer(mod1, mod2,
+          title = "The OLS Estimation of the Simple and Multiple Regressions",
+          label = "tab:results_ab",
+          dep.var.labels = "course_eval",
+          digits = 4, no.space = TRUE)
+#+END_EXAMPLE
+

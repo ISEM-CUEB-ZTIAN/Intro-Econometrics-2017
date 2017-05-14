@@ -49,7 +49,7 @@ TestScore = \beta_0 + \beta_1 \times STR + OtherFactors
 - What are possible other important factors?
   - School district characteristics: average income level, demographic
     components
-  - School characteristics: teachers' quality, school buildings, 
+  - School characteristics: teachers' quality, school buildings,
   - Student characteristics: family economic conditions, individual
     ability
 
@@ -69,7 +69,7 @@ in the simple regression model.
 - High percentage of English learners \Rightarrow lower test scores.
 
 - The estimated effect of student-teacher ratios may in fact include
-  the influence from the high percentage of English learners. 
+  the influence from the high percentage of English learners.
 
 - In the terminology of statistics, the magnitude of the coefficient
   on student-teacher ratio is *overestimated*.
@@ -79,15 +79,15 @@ in the simple regression model.
 ** Solutions to the problem of ignoring important factors
 
 We can include these important but ignored variables, like the
-percentage of English learners ($PctEL$), in the regression model.  
+percentage of English learners ($PctEL$), in the regression model.
 
 \[
 TestScore_i = \beta_0 + \beta_1 STR_i + \beta_2 PctEL_i +
-OtherFactors_i 
-\] 
+OtherFactors_i
+\]
 
 A regression model with more than one regressors is a multiple
-regression model. 
+regression model.
 
 ** A multiple regression model
 :PROPERTIES:
@@ -136,7 +136,7 @@ Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k + u
 
 The coefficient $\beta_i$ on the regressor
 $X_i$ for $i=1, \ldots, k$ measures the effect on $Y$ of a unit change
-in $X_i$, *holding other $X$ constant*. 
+in $X_i$, *holding other $X$ constant*.
 
 *** An example
 
@@ -176,7 +176,7 @@ constant.
   school district.
 - Each column represents a variable with all
   observations.
-- The whole dataset can be seen as a matrix. 
+- The whole dataset can be seen as a matrix.
 
 ** Define variables in matrix notation
 :PROPERTIES:
@@ -264,7 +264,7 @@ Concise, easy to derive properties; big-picture perspective.
   \vdots \\
   X_{in} \\
   \end{pmatrix}. \text{ The first column is }
-  \boldsymbol{\iota} = 
+  \boldsymbol{\iota} =
   \begin{pmatrix}
   1 \\
   \vdots \\
@@ -287,8 +287,8 @@ Concise, easy to derive properties; big-picture perspective.
 ** The minimization problem and the OLS estimator
 
 - The core idea of the OLS estimator for a multiple regression model
-  remains the same as in a simple regression model: 
-  *minimizing the sum of the squared residuals*. 
+  remains the same as in a simple regression model:
+  *minimizing the sum of the squared residuals*.
 
 - Let $\mathbf{b} = [b_0, b_1, \ldots, b_k]^{\prime}$ be some estimators
   of $\boldsymbol{\beta} = [\beta_0, \beta_1, \ldots,
@@ -300,7 +300,7 @@ Concise, easy to derive properties; big-picture perspective.
   \mathbf{b},\, i = 1, \ldots, \\
   \text{ or in matrix notation }  \hat{\mathbf{Y}} = \mathbf{Xb}
   \end{gather*}
-  
+
 - The residuals, i.e., the prediction mistakes, with $\mathbf{b}$ is
   \begin{gather*}
   \hat{u}_i = Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki} = Y_i -
@@ -326,8 +326,8 @@ Concise, easy to derive properties; big-picture perspective.
 
 ** The OLS estimator of $\boldsymbol{\beta}$ as a solution to the minimization problem
 
-- Solve the minimization problem: 
-  
+- Solve the minimization problem:
+
   $$\text{F.O.C.: } \frac{\partial S(\mathbf{b})}{\partial b_j} = 0,
   \text{ for } j =
   0, 1, \ldots, k$$
@@ -647,7 +647,7 @@ Answer:  C
 - The explained sum of squares (ESS): $ESS = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$
 - The sum of squared residuals (SSR): $SSR = \sum_{i=1}^n \hat{u}_i^2$
 
-*** COMMENT In matrix notation 
+*** COMMENT In matrix notation
 \begin{equation*}
 \mathbf{Y} =
 \begin{pmatrix}
@@ -661,7 +661,7 @@ Y_n
 \vdots \\
 1
 \end{pmatrix},\;
-\mathbf{y} = 
+\mathbf{y} =
 \begin{pmatrix}
 y_1 \\
 \vdots \\
@@ -685,7 +685,7 @@ Y_n
 
 - $\mathbf{y}$ represents *the deviation from the mean* of $Y_i,\;
   i=1,\ldots,n$. Similarly, we can get the deviation-from-the-mean
-  form of $\hat{Y}_i$ as $\mathbf{\hat{y}}$. 
+  form of $\hat{Y}_i$ as $\mathbf{\hat{y}}$.
 
 - Rewrite $TSS, ESS, \text{ and } SSR$ as
 
@@ -695,7 +695,7 @@ Y_n
 
 *** The equality still holds in multiple regression
   \[ TSS = ESS + SSR \]
-  
+
 *** Define $R^2$ as before
 \begin{equation}
 \label{eq:r2-center}
@@ -710,20 +710,20 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
   since otherwise it would not be true that $TSS = ESS + SSR$.
 
 - $R^2$ defined in the form of the deviation from the mean is only
-  valid when a constant term is included in regression. 
+  valid when a constant term is included in regression.
 
-  In a regression model without an intercept, 
+  In a regression model without an intercept,
   use the uncentered version of $R^2$, which is also defined as
   \begin{equation}
   \label{eq:r2-uncenter}
   R^2_u = \frac{EES}{TSS} = 1 - \frac{SSR}{TSS}
   \end{equation}
-  where 
+  where
   - $TSS = \sum_{i=1}^n Y_i^2$, $ESS = \sum_{i=1}^2 \hat{Y}_i^2$, and
-    $SSR = \sum_{i=1}^n \hat{u}_i^2$ 
-  
+    $SSR = \sum_{i=1}^n \hat{u}_i^2$
+
   Note that in a regression without a constant term, the
-  equality $TSS = ESS + SSR$ holds. 
+  equality $TSS = ESS + SSR$ holds.
 
 ** Limitation of R^2 (cont'd)
 :PROPERTIES:
@@ -731,8 +731,8 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 :END:
 - R^{2} increases whenever an additional regressor is included in a
   multiple regression model, unless the estimated coefficient on the
-  added regressor is exactly zero. 
-  
+  added regressor is exactly zero.
+
   \vspace{1cm}
   Consider two regression models
   \begin{align}
@@ -747,26 +747,26 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 
 - Equation (\ref{eq:ex-eq-2}) have the smaller /SSR/ than equation
   (\ref{eq:ex-eq-1}). Why?
-  
-  \vspace{0.5cm}   
-  
+
+  \vspace{0.5cm}
+
   An additional $X_2$ \Rightarrow More in the total variation of $Y$
   is explained \Rightarrow Smaller /SSR/ (unless $\hat{\beta}_2=0$)
-  
+
   \vspace{0.5cm}
 
 - Since both models use the same $\mathbf{Y}$, $TSS$ must be the
   same. Because /SSR/ decreases as more regressors are added, $R^2$
-  increases. 
+  increases.
 
 - In mathematics, this is essentially because the OLS estimation
   for equation (\ref{eq:ex-eq-1}) solves a constrained minimization
   problem, while that for equation (\ref{eq:ex-eq-2}) solves an
-  unconstrained minimization problem. 
+  unconstrained minimization problem.
 
 ** The adjusted R^2
 
-- The adjusted R^2 is, or $\bar{R}^2$, is a modified version of R^2. 
+- The adjusted R^2 is, or $\bar{R}^2$, is a modified version of R^2.
 
 - The $\bar{R}^2$ improves R^2 in the sense that it does not
   necessarily increase when a new regressor is added. The $\bar{R}^2$
@@ -797,8 +797,8 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 
   \vspace{0.4cm}
 - $k \uparrow\, \Rightarrow\, \frac{SSR}{TSS} \downarrow$, but $k
-  \uparrow\, \Rightarrow \frac{n-1}{n-k-1} \uparrow$. 
-  
+  \uparrow\, \Rightarrow \frac{n-1}{n-k-1} \uparrow$.
+
   \vspace{0.2cm}
 
   Whether $\bar{R}^2$ increases or decreases depends on which of these
@@ -815,7 +815,7 @@ R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
 - Both $R^2$ and $\bar{R}^2$ are valid when the regression model is
   estimated by the OLS estimators. R^2 computed with estimators other
   than the OLS ones is usually called /pseudo/ R^2.
-  
+
   \vspace{0.5cm}
 
 - Their importance as measures of fit cannot be overstated. We cannot heavily
@@ -841,14 +841,14 @@ In matrix notation, we write
 \label{eq:mult-reg-2g}
 \mathbf{Y} = \mathbf{X}_1\boldsymbol{\beta}_1 + \mathbf{X}_2 \boldsymbol{\beta}_2 + \mathbf{u}
 \end{equation}
-where 
+where
 - $\mathbf{X}_1$ is an $n \times (k1+1)$ matrix composed of the
   intercept and the first $k1+1$ regressors in Equation eqref:eq:fwl-eq,
 - $\mathbf{X}_2$ is an $n \times k2$ matrix composed of the rest
   $k_2$ regressors.
 - $\boldsymbol{\beta}_1 = (\beta_0, \beta_1, \ldots,
   \beta_{k1})^{\prime}$ and $\boldsymbol{\beta}_2 = (\beta_{k1+1},
-  \ldots, \beta_k)^{\prime}$. 
+  \ldots, \beta_k)^{\prime}$.
 
 ** Two estimation strategies
 
@@ -862,14 +862,14 @@ We can obtain the OLS estimation of $\boldsymbol{\beta}_2$ with
 Equation eqref:eq:betahat-mult, i.e., $\hat{\boldsymbol{\beta}} =
 (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime}
 \mathbf{Y}$. $\hat{\boldsymbol{\beta}}_2$ is a vector consisting of
-the last $k2$ elements in $\hat{\boldsymbol{\beta}}$. 
+the last $k2$ elements in $\hat{\boldsymbol{\beta}}$.
 
 In matrix notation, we can get $\hat{\boldsymbol{\beta}}_2$ from the
 following equation
 \begin{equation*}
 \begin{pmatrix}
 \hat{\boldsymbol{\beta}}_1 \\
-\hat{\boldsymbol{\beta}}_2 
+\hat{\boldsymbol{\beta}}_2
 \end{pmatrix} =
 \begin{pmatrix}
 \mathbf{X}_1^{\prime} \mathbf{X}_1 & \mathbf{X}_1^{\prime} \mathbf{X}_2 \\
@@ -890,11 +890,11 @@ following equation
    \ldots, k$, we estimate a multiple regression,
    \[
    \mathbf{X}_i = \gamma_0 + \gamma_1 \mathbf{X}_1 + \cdots +
-   \gamma_{k1} \mathbf{X}_{k1} + v \] 
-   The residuals from this regression is 
+   \gamma_{k1} \mathbf{X}_{k1} + v \]
+   The residuals from this regression is
    \[ \widetilde{\mathbf{X}}_i = X_i - \hat{\gamma}_0 -
    \hat{\gamma}_1 \mathbf{X}_1 - \cdots - \hat{\gamma}_{k1}
-   \mathbf{X}_{k1} \] 
+   \mathbf{X}_{k1} \]
    As such, we can get an $n \times k2$ matrix
    composed of all the residuals $\widetilde{\mathbf{X}}_2 =
    (\widetilde{\mathbf{X}}_{k1+1} \cdots \widetilde{\mathbf{X}}_k)$.
@@ -926,15 +926,15 @@ $\mathbf{X}$.
 - Step 1 purges the effects of the regressors in $\mathbf{X}_1$ on the
   regressors in $\mathbf{X}_2$
 - Step 2 purges the effects of the regressors in $\mathbf{X}_1$ on
-  $\mathbf{Y}$. 
+  $\mathbf{Y}$.
 - Step 3 estimates the effect of the regressors in $\mathbf{X}_2$ on
   $\mathbf{Y}$ using the parts in $\mathbf{X}_2$ and
-  $\mathbf{Y}$ that have excluded the effects of $\mathbf{X}_1$. 
+  $\mathbf{Y}$ that have excluded the effects of $\mathbf{X}_1$.
 
 ** An example of the FWL theorem
 
 Consider a regression model with single regressor
-$Y_i = \beta_0 + \beta_1 X_i + u_i$. 
+$Y_i = \beta_0 + \beta_1 X_i + u_i$.
 
 Following the estimation strategy in the FWL theorem, we can carry out
 the following regressions,
@@ -948,13 +948,13 @@ the following regressions,
 3. Regress $y_i$ on $x_{i}$ without intercept. That is,
    estimate the model $y_i = \beta_1 x_{i} + v_i$
 4. We can obtain $\hat{\beta_1}$ directly by applying the formula in
-   Equation (\ref{eq:betahat-mult}). That is 
+   Equation (\ref{eq:betahat-mult}). That is
    \[ \hat{\beta}_1 =
    (\mathbf{x}_1^{\prime} \mathbf{x}_1)^{-1} \mathbf{x}_1^{\prime}
    \mathbf{y} = \frac{\sum_i x_{1i} y_i}{\sum_i x_{1i}^2} =
-   \frac{\sum_i (X_i-\bar{X})(Y_i-\bar{Y})}{\sum_i(X_i-\bar{X})^2} 
+   \frac{\sum_i (X_i-\bar{X})(Y_i-\bar{Y})}{\sum_i(X_i-\bar{X})^2}
    \]
-   
+
 
 * The Least Squares Assumptions in Multiple Regression
 #+TOC: headlines [currentsection]
@@ -974,14 +974,14 @@ $(Y_i, \mathbi{x}_i^{\prime})\, i=1, \ldots, n$ are
 i.i.d. This assumption holds automatically if the
 data are collected by simple random sampling.
 
-*** Assumption #3 
+*** Assumption #3
 
 Large outliers are unlikely, i.e.,, $0 <
 E(\mathbf{X}^4) < \infty$ and $0 < E(\mathbf{Y}^4)
 < \infty$. That is, the dependent variables and
 regressors have finite kurtosis.
 
-*** Assumption #4 
+*** Assumption #4
 
 No *perfect multicollinearity*. The regressors are said to exhibit
 perfect multicollinearity if one of the regressor is a perfect linear
@@ -997,13 +997,13 @@ function of the other regressors.
 ** Unbiasedness and consistency
 
 When all the least squares assumptions are true, especially, $E(u_i |
-\mathbi{x}_i) = 0$, we can prove 
+\mathbi{x}_i) = 0$, we can prove
 
 - $\hat{\boldsymbol{\beta}}$ is unbiased, that is,
-  $E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}$. 
+  $E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}$.
 
 - $\hat{\boldsymbol{\beta}}$ is consistent, that is, as $n \rightarrow
-  \infty$, $\hat{\boldsymbol{\beta}} \rarrowd{p} \boldsymbol{\beta}$. 
+  \infty$, $\hat{\boldsymbol{\beta}} \rarrowd{p} \boldsymbol{\beta}$.
 
 ** The Gauss-Markov conditions and Theorem
 
@@ -1046,7 +1046,7 @@ where $\boldsymbol{\Sigma} = \mathbf{X}^{\prime}
   \end{equation}
 
 - $\boldsymbol{\Sigma_{\hat{\boldsymbol{\beta}}}} =
-  \var(\hat{\boldsymbol{\beta}} | \mathbf{X})$. 
+  \var(\hat{\boldsymbol{\beta}} | \mathbf{X})$.
   - Use Equation (\ref{eq:varbhat-hm}) for the homoskedastic case
   - Use Equation (\ref{eq:varbhat-ht}) for the heteroskedastic case.
 
@@ -1072,10 +1072,10 @@ Suppose that the true model is
 \label{eq:omb-1}
 \mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{Z}\boldsymbol{\gamma} + \mathbf{u}
 \end{equation}
-- We assume $E(\mathbf{u} | \mathbf{X}, \mathbf{Z}) = 0$. 
+- We assume $E(\mathbf{u} | \mathbf{X}, \mathbf{Z}) = 0$.
 - The OLS estimators, $\hat{\boldsymbol{\beta}}$ and
-  $\hat{\boldsymbol{\gamma}}$, from Equation eqref:eq:omb-1 are unbiased. 
-- We also assume $\cov(\mathbf{X}, \mathbf{Z}) \neq 0$. 
+  $\hat{\boldsymbol{\gamma}}$, from Equation eqref:eq:omb-1 are unbiased.
+- We also assume $\cov(\mathbf{X}, \mathbf{Z}) \neq 0$.
 
 *** The wrong model
 \begin{equation}
@@ -1089,7 +1089,7 @@ Suppose that the true model is
   \boldsymbol{\epsilon}) \neq 0$ \Rightarrow
   $E(\boldsymbol{\epsilon} | \mathbf{X}) \neq 0$
 - The OLS estimator, $\tilde{\boldsymbol{\beta}}$, from Equation
-  eqref:eq:omb-2 is biased. 
+  eqref:eq:omb-2 is biased.
 
 ** An illustration using a linear model with two regressors
 
@@ -1110,7 +1110,7 @@ Suppose that the true model is
 - As $n \rightarrow \infty$, $\frac{1}{n}\sum_i
   (X_{1i} - \bar{X}_1) \epsilon_i \rarrowd{p} \cov(X_1, \epsilon) = \rho_{{\scriptscriptstyle X_1} \epsilon} \sigma_{\scriptscriptstyle X_1} \sigma_{\epsilon}$
   and $\frac{1}{n}\sum_i (X_i - \bar{X}_1)^2 \rarrowd{p}
-  \sigma^2_{\scriptscriptstyle X_1}$. 
+  \sigma^2_{\scriptscriptstyle X_1}$.
 
 - We have the formula to quantify the omitted variable bias as
   \begin{equation}
@@ -1121,13 +1121,13 @@ Suppose that the true model is
 ** Some facts summarized from the formula
 
 - Omitt variable bias is a problem irregardless of whether the sample
-  size is large or small. 
+  size is large or small.
 
 - Whether this bias is large or small in practice depends on
-  $|\rho_{X_{1} \epsilon}|$. 
+  $|\rho_{X_{1} \epsilon}|$.
 
 - The direction of this bias is determined by the sign of $\rho_{X_{1}
-  \epsilon}$. 
+  \epsilon}$.
 
 - One easy way to detect the existence of the omitted variable bias is
   that when adding a new regressor, the estimated coefficients on some
@@ -1147,7 +1147,7 @@ regressor is a perfect linear function of the other regressors.
 
 ** Understanding perfect multicollinearity
 
-*** Linear dependence 
+*** Linear dependence
 
 - Write the matrix of regressors $\mathbf{X}$ with column vectors
   \[
@@ -1158,7 +1158,7 @@ regressor is a perfect linear function of the other regressors.
   [\beta_0, \beta_1, \ldots, \beta_k]^{\prime}$ such that
   \[
   \beta_0 \boldsymbol{\iota} + \beta_1 \boldsymbol{X}_1 + \cdots + \beta_k
-  \boldsymbol{X}_k = 0 
+  \boldsymbol{X}_k = 0
   \]
 
 ** Consequence of perfect multicollinearity
@@ -1168,7 +1168,7 @@ If $\boldsymbol{X}_i$ are linearly dependent, then
 - If $\mathbf{X}$ does not have full column rank, then
   $\mathbf{X}^{\prime} \mathbf{X}$ is singular.
 - It means that the inverse
-  of $\mathbf{X}^{\prime} \mathbf{X}$ does not exist. 
+  of $\mathbf{X}^{\prime} \mathbf{X}$ does not exist.
 - If $\mathbf{X}^{\prime} \mathbf{X}$ is not invertible, the OLS
   estimator based on the formula of $\boldsymbol{\hat{\beta}} =
   (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime}
@@ -1193,7 +1193,7 @@ Suppose we have a multiple regression model
 ** The dummy variable trap
 
 - The dummy variable trap is a case of perfect multicollinearity
-  that a modeler often encounters. 
+  that a modeler often encounters.
 - We use dummy variables to distinguish different groups of objects.
 - Question: How many dummy variables should we include?
 
@@ -1202,8 +1202,8 @@ Suppose we have a multiple regression model
 - Four ethnic groups: White, African American, Hispanic, and
   Asian.
 - We want to estimate a regression model to see whether wages among
-  these four groups are different. 
-- Suppose we have four observations: Chuck (White), 
+  these four groups are different.
+- Suppose we have four observations: Chuck (White),
   Mike (African American), Juan (Hispanic), and Li (Asian). Define
   dummy variables as
   \begin{equation*}
@@ -1237,7 +1237,7 @@ Suppose we have a multiple regression model
   \end{pmatrix}
   \end{equation*}
 
-** The wrong regression model 
+** The wrong regression model
 
 - We set up a regression model as follows
   \begin{equation}
@@ -1312,7 +1312,7 @@ Similarly, we can get that
 ** Definition of imperfect multicollinearity
 
 *Imperfect multicollinearity* is a problem of regression when two or
-more regressors are highly correlated. 
+more regressors are highly correlated.
 
 \vspace{0.3cm}
 Although they bear similar
@@ -1334,10 +1334,10 @@ Suppose we have a linear regression model with two regressors
 \mathbf{Y} = \beta_0 + \beta_1 \mathbf{X}_1 + \beta_2 \mathbf{X}_2 + \mathbf{u}
 \end{equation}
 
-- We can prove that 
+- We can prove that
   \[\var(\hat{\beta}_1 | \mathbf{X}) =
   \frac{\sigma^2_u}{\sum_i (X_{1i} - \bar{X})_1^2} \frac{1}{(1 - r^2_{12})}\]
-  where $r_{12}$ is the correlation coefficient between $X_1$ and $X_2$. 
+  where $r_{12}$ is the correlation coefficient between $X_1$ and $X_2$.
 
 - When $X_1$ and $X_2$ are highly correlated, that is $r^2_{12}$ gets
   close to 1, then $\var(\hat{\beta}_1 | \mathbf{X})$ becomes very
@@ -1347,7 +1347,7 @@ Suppose we have a linear regression model with two regressors
 
 - The consequence of imperfect multicollinearity is that I may more
   often fail to reject the null hypothesis of a zero coefficient with
-  t-statistic. 
+  t-statistic.
 
 - The variance inflation factor (VIF) is a commonly used indicator for
   detecting multicollinearity. The definition is
@@ -1357,7 +1357,7 @@ Suppose we have a linear regression model with two regressors
   \end{equation*}
 
   The smaller VIF is for a regressor, the less severe the problem of
-  multicollinearity is. 
+  multicollinearity is.
 
 ** The remedies to imperfect multicollinearity
 

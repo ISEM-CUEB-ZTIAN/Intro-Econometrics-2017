@@ -10,7 +10,8 @@
 #+LATEX_HEADER: \usepackage{parskip}
 
 * Introduction
-This tutorial is to show how to estimate a multiple regression model
+
+This tutorial shows how to estimate a multiple regression model
 and perform linear hypothesis testing. The application is about the
 test scores of the California school districts. We will use R to
 replicate the multiple regression with this data set in Chapter 6, and
