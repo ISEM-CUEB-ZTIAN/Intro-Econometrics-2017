@@ -1,4 +1,4 @@
-% Created 2017-05-07 Sun 17:32
+% Created 2017-05-15 Mon 07:32
 % Intended LaTeX compiler: pdflatex
 \documentclass[presentation,10pt]{beamer}
 \usepackage[utf8]{inputenc}
@@ -42,7 +42,7 @@
  pdftitle={Lecture 9: Hypothesis Tests and Confidence Intervals in Multiple Regression},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
  pdflang={English}}
 \begin{document}
 
@@ -55,10 +55,10 @@
 
 
 \section{Hypothesis Tests and Confidence Intervals For a Single Coefficient}
-\label{sec:org280ef5a}
+\label{sec:orgaf389e5}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
-\begin{frame}[label={sec:org29ea1ed}]{The basic multiple regression model}
+\begin{frame}[label={sec:org4fdbb0f}]{The basic multiple regression model}
 Consider the following model
 \begin{equation}
 \label{eq:jnt-hyp-mod}
@@ -74,7 +74,7 @@ parameters.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org3e0a1b4}]{Review of \(\var(\hat{\boldsymbol{\beta}}|X)\)}
+\begin{frame}[label={sec:org058f89f}]{Review of \(\var(\hat{\boldsymbol{\beta}}|X)\)}
 \begin{itemize}
 \item The homoskedasticity-only covariance matrix if \(u_i\) is
 homoskedastic
@@ -98,7 +98,7 @@ where \(\boldsymbol{\Sigma} = \mathbf{X}^{\prime} \boldsymbol{\Omega}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org5415c7f}]{The multivariate normal distribution of \(\hat{\mathbf{\beta}}\)}
+\begin{frame}[label={sec:orgcfca189}]{The multivariate normal distribution of \(\hat{\mathbf{\beta}}\)}
 We know that if the least squares assumptions hold,
 \(\hat{\boldsymbol{\beta}}\) has an asymptotic multivariate normal
 distribution as
@@ -114,7 +114,7 @@ Equation (\ref{eq:varbhat-hm-1}) for the homoskedastic case and Equation
 (\ref{eq:varbhat-ht-1}) for the heteroskedastic case.
 \end{frame}
 
-\begin{frame}[label={sec:org8e94813}]{The estimator of \(\var(\hat{\boldsymbol{\beta}}|X)\)}
+\begin{frame}[label={sec:orgc34546c}]{The estimator of \(\var(\hat{\boldsymbol{\beta}}|X)\)}
 \begin{block}{The estimator of \(\sigma^2_u\)}
 \begin{equation}
 \label{eq:sigma2u}
@@ -144,7 +144,7 @@ The \alert{heteroskedasticity-consistent (robust) covariance matrix estimator} i
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org8ef0d08}]{The estimator of \(SE(\hat{\beta}_j)\)}
+\begin{frame}[label={sec:org6aedfb2}]{The estimator of \(SE(\hat{\beta}_j)\)}
 We can get the standard error of \(\hat{\beta}_j\) as the
 square root of the j\(^{\text{th}}\) diagonal element of
 \(\widehat{\var(\hat{\boldsymbol{\beta}})}\) for homoskedasticity and
@@ -158,7 +158,7 @@ heteroskedasticity. That is,
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org28c07d4}]{The t-statistic}
+\begin{frame}[label={sec:orgb5bce4e}]{The t-statistic}
 We can perform a two-sided hypothesis test as
 \[ H_0:\, \beta_j = \beta_{j,0} \text{ vs. } H_1:\, \beta_j \neq
 \beta_{j,0} \]
@@ -178,7 +178,7 @@ at the 1\% level.)
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org7bc0d1f}]{Confidence intervals for a single coefficient}
+\begin{frame}[label={sec:org612c29c}]{Confidence intervals for a single coefficient}
 The confidence intervals for a single coefficient can be constructed
 as before using the t-statistic.
 
@@ -190,7 +190,7 @@ coefficient \(\beta_j\) is
 1.96 SE(\hat{\beta}_j)\right] \]
 \end{frame}
 
-\begin{frame}[label={sec:org8808665}]{Application to test scores and the student-teacher ratio}
+\begin{frame}[label={sec:org1d41e1f}]{Application to test scores and the student-teacher ratio}
 The estimated model can be written as follows
 \begin{equation*}
 \widehat{TestScore} = \underset{{\displaystyle (8.7)}}{686.0}
@@ -211,7 +211,7 @@ true value of \(\beta_1\) with a 95\% probability can be computed as
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgf33e6c9}]{Adding expenditure per pupil to the equation}
+\begin{frame}[label={sec:org6b12fa1}]{Adding expenditure per pupil to the equation}
 Now we add a new explanatory variable in the regression, \emph{Expn}, that
 is the expenditure per pupil in the district in thousands of dollars.
 \begin{equation*}
@@ -233,7 +233,7 @@ level).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org935e628}]{How can we interpret such changes?}
+\begin{frame}[label={sec:orgc5360a5}]{How can we interpret such changes?}
 \begin{itemize}
 \item The decrease in the magnitude of the coefficient reflects that
 expenditure per pupil is an important factor that carry over some
@@ -252,12 +252,11 @@ variables is 0.48, which is relatively high.
 \end{itemize}
 \end{frame}
 
-
 \section{Tests of Joint Hypotheses}
-\label{sec:org062799c}
+\label{sec:orgee2a40f}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
-\begin{frame}[label={sec:orgf19ed70}]{The unrestricted model}
+\begin{frame}[label={sec:org4cff55a}]{The unrestricted model}
 Consider the following multiple regression model
 \begin{equation}
 \label{eq:fullmodel}
@@ -269,7 +268,7 @@ unrestricted model} because \(\beta_0\) to \(\beta_k\) can take any value
 without restrictions.
 \end{frame}
 
-\begin{frame}[label={sec:org4b3c21a}]{Joint hypothesis: a case of two zero restrictions}
+\begin{frame}[label={sec:orge5c6f97}]{Joint hypothesis: a case of two zero restrictions}
 \begin{itemize}
 \item Question: Are the coefficients on the first two regressors zero?
 
@@ -284,7 +283,7 @@ hypothesis is rejected as a whole.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org19830fd}]{The restricted model with two zero restrictions}
+\begin{frame}[label={sec:orgef6c912}]{The restricted model with two zero restrictions}
 \begin{itemize}
 \item If the null hypothesis is true, we have
 \begin{equation}
@@ -300,7 +299,7 @@ statistic is F-statistic.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org5f69dd5}]{Why not use t-statistic and test individual coefficients one at a time?}
+\begin{frame}[label={sec:orgc136249}]{Why not use t-statistic and test individual coefficients one at a time?}
 \begin{itemize}
 \item Let us test the null hypothesis above using t-statistics for \(\beta_1\)
 and \(\beta_2\) separately. That is, \(t_1\) is the t-statistic for
@@ -311,7 +310,7 @@ and \(\beta_2\) separately. That is, \(t_1\) is the t-statistic for
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org3ebaecf}]{What's the problem with the one-at-a-time procedure}
+\begin{frame}[label={sec:orga54074e}]{What's the problem with the one-at-a-time procedure}
 \begin{block}{How can we reject the null hypothesis with this procedure?}
 Using the one-at-a-time procedure, at the 5\% significance level, we
 can reject the null hypothesis of \(H_0: \beta_1 = 0 \text{ and }
@@ -332,7 +331,7 @@ level.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgfa10ae8}]{Joint hypothesis involving one coefficient for each restriction}
+\begin{frame}[label={sec:org190b00f}]{Joint hypothesis involving one coefficient for each restriction}
 \begin{block}{q restrictions}
 \begin{align*}
 &H_0: \beta_1 = \beta_{1,0},\ \beta_2 = \beta_{2,0},\ \ldots,\ \beta_q = \beta_{q,0} \text{ versus } \\
@@ -351,7 +350,7 @@ restricted model is
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org49d28b7}]{Joint linear hypotheses}
+\begin{frame}[label={sec:org2e23850}]{Joint linear hypotheses}
 Joint hypotheses include \alert{linear hypotheses} like the followings
 
 \begin{description}
@@ -370,7 +369,7 @@ H_0:\, \beta_1 + \beta_2 = 1 \text{ vs. } H_1:\, \beta_1 + \beta_2 \neq 1
 \end{description}
 \end{frame}
 
-\begin{frame}[label={sec:org7aad802}]{A general form of joint hypotheses}
+\begin{frame}[label={sec:org25bde99}]{A general form of joint hypotheses}
 We can use a matrix form to represent all linear hypotheses regarding
 the coefficients in Equation (\ref{eq:fullmodel}) as follows
 
@@ -385,7 +384,7 @@ the intercept, and \(\mathbf{r}\) is a \(q \times 1\) vector of real
 numbers.
 \end{frame}
 
-\begin{frame}[label={sec:org3a2b2d0}]{Examples of \(\mathbf{R}\boldsymbol{\beta} = \mathbf{r}\)}
+\begin{frame}[label={sec:org665b9f9}]{Examples of \(\mathbf{R}\boldsymbol{\beta} = \mathbf{r}\)}
 \begin{itemize}
 \item For \(H_0: \beta_1 = 0, \beta_2=0\)
 \begin{equation*}
@@ -420,7 +419,7 @@ R3 & 0 & 1 & 0 & -2 & 0 & \cdots & 0 \cr}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org58a82f3}]{The general form of the F-statistic}
+\begin{frame}[label={sec:org9b81d7c}]{The general form of the F-statistic}
 To test the null hypothesis
 \[ H_0:\, \mathbf{R}\boldsymbol{\beta} = \mathbf{r} \]
 
@@ -442,7 +441,7 @@ Equation (\ref{eq:hat-vbhat-ht})
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org933dd36}]{The F distribution, the critical value, and the p-value}
+\begin{frame}[label={sec:org796f35f}]{The F distribution, the critical value, and the p-value}
 \begin{block}{The F distribution}
 If the least square assumptions hold, under the null hypothesis, the
 F-statistic is asymptotically distributed as F distribution with
@@ -459,7 +458,7 @@ And the p-value of F test can be computed as
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgfd6bcdf}]{The F-statistic when \(q=2\)}
+\begin{frame}[label={sec:orgcbdf97a}]{The F-statistic when \(q=2\)}
 The F-statistic for testing the null hypothesis of \(H_0: \beta_1 = 0,
 \beta_2 = 0\) can be proved to take the following form,
 
@@ -482,7 +481,7 @@ will become complicated when \(\hat{\rho}_{t_1,t_2} \neq 0\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgccdf2e3}]{The homoskedasticity-only F-statistic}
+\begin{frame}[label={sec:org98ca903}]{The homoskedasticity-only F-statistic}
 \begin{itemize}
 \item Assume that \(\var(u_i | \mathbf{X}_i) = \sigma^2_u\) for \(i
   = 1, \ldots, n\), i.e., \(u_i\) has a constant conditional variance for
@@ -504,7 +503,7 @@ F = \frac{(RSSR - USSR)/q}{USSR/(n-k-1)}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org661a07f}]{The homoskedasticity-only F-statistic (cont'd)}
+\begin{frame}[label={sec:org879c39e}]{The homoskedasticity-only F-statistic (cont'd)}
 \begin{itemize}
 \item Dividing the numerator and the denominator in F-statistic by \(TSS\),
 we get another expression of the homoskedasticity-only F-statistic
@@ -522,7 +521,7 @@ distribution \(F(q, n-k-1)\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgbe2ea16}]{Understanding the homoskedasticity-only F-statistic}
+\begin{frame}[label={sec:org616b6f2}]{Understanding the homoskedasticity-only F-statistic}
 \begin{itemize}
 \item \(RSSR \geq USSR\) and \(R^2_{unrestrict} \geq R^2_{restrict}\)
 are always true. Why?
@@ -545,7 +544,7 @@ a new regressor is added with a nonzero coefficient.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org6815421}]{Understanding the homoskedasticity-only F-statistic (cont'd)}
+\begin{frame}[label={sec:orge06bb88}]{Understanding the homoskedasticity-only F-statistic (cont'd)}
 \begin{itemize}
 \item Suppose that the null hypothesis is true. That is, the
 true model is really the restricted one. What would this imply?
@@ -574,7 +573,7 @@ null hypothesis.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgc441e22}]{Transformation of joint hypothesis testing to single hypothesis testing}
+\begin{frame}[label={sec:org26f71c2}]{Transformation of joint hypothesis testing to single hypothesis testing}
 \begin{itemize}
 \item The goal: to convert a joint hypothesis to a single hypothesis.
 
@@ -588,7 +587,7 @@ null hypothesis.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgd887d12}]{Transformation of joint hypothesis testing to single hypothesis testing (cont'd)}
+\begin{frame}[label={sec:org17c0194}]{Transformation of joint hypothesis testing to single hypothesis testing (cont'd)}
 \begin{itemize}
 \item Rewrite the model
 \begin{equation*}
@@ -605,7 +604,7 @@ null hypothesis.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgc55924b}]{Application of the California school districts}
+\begin{frame}[label={sec:orga370b71}]{Application of the California school districts}
 \begin{itemize}
 \item The estimated model
 \begin{equation*}
@@ -625,7 +624,7 @@ level is 3.00. So we reject the null hypothesis.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org64c43dc}]{Application to test scores and the student-teacher ratio (cont'd)}
+\begin{frame}[label={sec:org7f65352}]{Application to test scores and the student-teacher ratio (cont'd)}
 \begin{itemize}
 \item The homoskedasticity-only F statistic.
 \begin{equation*}
@@ -643,7 +642,7 @@ Because 8.01 exceeds the 1\% critical value of 4.61 from the
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org4c71e80}]{Check the critical value using the F table}
+\begin{frame}[label={sec:org6aafe07}]{Check the critical value using the F table}
 \begin{columns}
 \begin{column}{0.5\columnwidth}
 \begin{figure}[htbp]
@@ -664,10 +663,10 @@ Because 8.01 exceeds the 1\% critical value of 4.61 from the
 \end{frame}
 
 \section{Confidence Sets for multiple coefficients}
-\label{sec:org1ee8fa0}
+\label{sec:org6da0a6b}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
-\begin{frame}[label={sec:org8579a42}]{Confidence set: definition}
+\begin{frame}[label={sec:org3bbfe6a}]{Confidence set: definition}
 A 95\% \alert{confidence set} for two or more coefficients is
 
 \begin{itemize}
@@ -679,7 +678,7 @@ at the 5\% significance level.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org54e3ab1}]{How to construct a confidence set}
+\begin{frame}[label={sec:orgf822f7f}]{How to construct a confidence set}
 Suppose that we construct the confidence set for \(\beta_1 =
 \beta_{1,0}, \beta_2 = \beta_{2,0}\).
 
@@ -700,7 +699,7 @@ contains the true value 95\% of the time.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgcd7a2a8}]{The confidence set based on the F-statistic is an ellipse}
+\begin{frame}[label={sec:org979438c}]{The confidence set based on the F-statistic is an ellipse}
 \begin{itemize}
 \item According to Equation (\ref{eq:ftest-q2}), the confidence set for \(\beta_1, \text{ and } \beta_2\) is
 \begin{gather*}
@@ -714,20 +713,72 @@ contains the true value 95\% of the time.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org941fe2d}]{The confidence set: an illustration}
+\begin{frame}[label={sec:orgc252728}]{The confidence set: an illustration}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/fig-7-1.png}
-\caption{\label{fig:orgc2e52f5}
+\caption{\label{fig:org1943a27}
 95\% Confidence Set for Coefficients on STR and Expn}
 \end{figure}
 \end{frame}
 
+
+\section{Warm-up Exercises}
+\label{sec:org5994556}
+\begin{frame}[label={sec:org55ee11e}]{Question 1}
+The following linear hypothesis can be tested using the F-test with the exception of
+\begin{description}
+\item[{A)}] \(\beta_2=1\) and \(\beta_3 = \beta_4 / \beta_5\)
+\item[{B)}] \(\beta_2=0\)
+\item[{C)}] \(\beta_1 + \beta_2 = 1\) and \(\beta_3 = -2\beta_4\)
+\item[{D)}] \(\beta_0 = \beta_1\) and \(\beta_1 = 0\)
+\end{description}
+\pause
+Answer: A
+\end{frame}
+
+\begin{frame}[label={sec:org76f72d6}]{Question 2}
+To test joint linear hypotheses in the multiple regression model, you need to
+\begin{description}
+\item[{A)}] compare the sums of squared residuals from the restricted and unrestricted model.
+\item[{B)}] use the heteroskedasticity-robust F-statistic.
+\item[{C)}] use several t-statistics and perform tests using the standard normal distribution.
+\item[{D)}] compare the adjusted R\(^{\text{2}}\) for the model which imposes the restrictions, and the unrestricted model.
+\end{description}
+\pause
+Answer:  B
+\end{frame}
+
+\begin{frame}[label={sec:org70d198c}]{Question 3}
+Let R\(^{\text{2}}_{\text{unrestricted}}\) and R\(^{\text{2}}_{\text{restricted}}\) be 0.4366 and 0.4149 respectively. The difference between the unrestricted and the restricted model is that you have imposed two restrictions. There are 420 observations and 3 regressors including the intercept. The homoskedasticity-only F-statistic in this case is
+\begin{description}
+\item[{A)}] 4.61
+\item[{B)}] 8.01
+\item[{C)}] 10.34
+\item[{D)}] 7.71
+\end{description}
+\pause
+Answer:  B
+\end{frame}
+
+\begin{frame}[label={sec:org75b5960}]{Question 4}
+The formulation \(\boldsymbol{R\beta} = \boldsymbol{r}\) to test a hypotheses
+\begin{description}
+\item[{A)}] allows for restrictions involving both multiple regression coefficients and single regression coefficients.
+\item[{B)}] is F-distributed in large samples.
+\item[{C)}] allows only for restrictions involving multiple regression coefficients.
+\item[{D)}] allows for testing linear as well as nonlinear hypotheses.
+\end{description}
+\pause
+Answer:  A
+\end{frame}
+
+
 \section{Model Specification for Multiple Regression}
-\label{sec:org253b2aa}
+\label{sec:org1600b91}
 \setcounter{tocdepth}{1}
 \tableofcontents[currentsection]
-\begin{frame}[label={sec:org2b72b3d}]{Omitted variable bias in multiple regression}
+\begin{frame}[label={sec:orgf153337}]{Omitted variable bias in multiple regression}
 \begin{itemize}
 \item We should always be alert to omitted variable bias in the OLS
 estimation.
@@ -745,7 +796,7 @@ does not hold any more.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org923dcd8}]{The problem of the assumption of \(E(u|X) = 0\) and control variables}
+\begin{frame}[label={sec:org3b6ff70}]{The problem of the assumption of \(E(u|X) = 0\) and control variables}
 \begin{itemize}
 \item The assumption of \(E(u|X) = 0\) is essential to ensures unbiasedness
 and consistency. However, it is too strong to be completely realized
@@ -771,7 +822,7 @@ implication that we want.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgdf993e5}]{Control variables: definition}
+\begin{frame}[label={sec:org1f35056}]{Control variables: definition}
 \begin{block}{Definition}
 A control variable \(W\) is a variable that is correlated with, and
 controls for, an omitted causal factor in the regression of Y on X,
@@ -786,7 +837,7 @@ suffer from omitted variable bias.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgbd390e1}]{The test score example}
+\begin{frame}[label={sec:orgcb25ccf}]{The test score example}
 \[TestScore = \underset{(5.6)}{700.2} - \underset{(0.27)}{1.00}STR -
 \underset{(0.033)}{0.122}PctEL - \underset{(0.024)}{0.547}LchPct,\,
 \bar{R}^2 = 0.773 \]
@@ -801,7 +852,7 @@ implications? What do they control for?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org86cdee4}]{What makes an effective control variable?}
+\begin{frame}[label={sec:org35cbf6f}]{What makes an effective control variable?}
 \begin{itemize}
 \item Three interchangeable statements about what makes an effective control
 variable:
@@ -821,7 +872,7 @@ generally do not have a causal interpretation.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org369f95f}]{Conditional mean independence: definition}
+\begin{frame}[label={sec:org679cdc0}]{Conditional mean independence: definition}
 \begin{itemize}
 \item \alert{Conditional mean independence}: given the
 control variable, the mean of \(u_i\) doesn’t depend on the variable of
@@ -841,7 +892,7 @@ assumption requiring \(E(u_i | X_i, W_i) = 0\).
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orga53fed1}]{Implications of conditional mean independence}
+\begin{frame}[label={sec:org9446052}]{Implications of conditional mean independence}
 Consider the regression model
 \[ Y = \beta_0 + \beta_1 X + \beta_2 W + u \]
 where \(X\) is the variable of interest and \(W\) is an effective control
@@ -855,7 +906,7 @@ general biased.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org1486948}]{\(\beta_1\) has a causal interpretation}
+\begin{frame}[label={sec:orgf2bbde8}]{\(\beta_1\) has a causal interpretation}
 The expected change in \(Y\) resulting from a change in \(X\), holding \(W\)
 constant, is:
 \begin{equation*}
@@ -871,7 +922,7 @@ In the second equality, we use conditional mean independence \(E(u|X =
 x + \Delta x, W = w) = E(u|X = x, W = w) = E(u|W = w)\).
 \end{frame}
 
-\begin{frame}[label={sec:org323e17e}]{\(\hat{\beta}_1\) is unbiased and \(\hat{\beta}_2\) is biased}
+\begin{frame}[label={sec:org254ae90}]{\(\hat{\beta}_1\) is unbiased and \(\hat{\beta}_2\) is biased}
 For convenience, suppose that \(E(u|W) = \gamma_0 + \gamma_1 W\). Thus,
 under conditional mean independence, we have
 \[ E(u|X,W) = E(u|W) = \gamma_0 + \gamma_1 W \]
@@ -881,7 +932,7 @@ Then, it follows that
 \[ u = E(u|X,W) + v = \gamma_0 + \gamma_1 W + v \]
 \end{frame}
 
-\begin{frame}[label={sec:org27ce9e0}]{\(\hat{\beta}_1\) is unbiased and \(\hat{\beta}_2\) is biased (cont'd)}
+\begin{frame}[label={sec:org3b084bb}]{\(\hat{\beta}_1\) is unbiased and \(\hat{\beta}_2\) is biased (cont'd)}
 Then, the original model \(Y = \beta_0 + \beta_1 X + \beta_2 W + u\)
 becomes
 \begin{equation}
@@ -905,7 +956,7 @@ What can we conclude from the new model?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org21da272}]{Model specification in theory and in practice}
+\begin{frame}[label={sec:org4360409}]{Model specification in theory and in practice}
 The following steps are advocated to set up a regression model:
 
 \begin{block}{Step 1: Set up a base specification}
@@ -925,7 +976,7 @@ control variables.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org0e09e73}]{Model specification in theory and in practice (cont'd)}
+\begin{frame}[label={sec:orgde3a9b7}]{Model specification in theory and in practice (cont'd)}
 \begin{block}{Step 2: Set up alternative specifications}
 Also specify a range of plausible \alert{alternative model
 specifications}, which include additional candidate variables.
@@ -942,7 +993,7 @@ bias.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org8239c50}]{Model specification in theory and in practice (cont'd)}
+\begin{frame}[label={sec:orgca3fdec}]{Model specification in theory and in practice (cont'd)}
 \begin{block}{Step 3: Use test statistics to judge a model specification}
 \begin{enumerate}
 \item Use \(R^2\) and \(\bar{R}^2\) to see the overall goodness of fit of
@@ -959,7 +1010,7 @@ significance of the model as a whole. That is, use F test for
 \end{block}
 \end{frame}
 
-\begin{frame}[shrink,label={sec:org0da7a15}]{Analysis of the test score data set}
+\begin{frame}[shrink,label={sec:org58bce13}]{Analysis of the test score data set}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/tab-7-1.png}

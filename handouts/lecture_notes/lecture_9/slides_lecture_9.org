@@ -239,7 +239,6 @@ is the expenditure per pupil in the district in thousands of dollars.
   model. In fact, the correlation coefficient between the two
   variables is 0.48, which is relatively high.
 
-
 * Tests of Joint Hypotheses
 #+TOC: headlines [currentsection]
 ** The unrestricted model
@@ -636,55 +635,6 @@ F = \frac{1}{2}\frac{t_1^2 + t_2^2 - 2 \hat{\rho}_{t_1,t_2}t_1t_2}{1 - \hat{\rho
 #+ATTR_LATEX: :width 0.8\textwidth :placement
 [[file:img/Ftrunc.jpg]]
 
-** COMMENT Warm-up Exercises
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-*** The following linear hypothesis can be tested using the F-test with the exception of
-- A) :: $\beta_2=1$ and $\beta_3 = \beta_4 / \beta_5$
-- B) :: $\beta_2=0$
-- C) :: $\beta_1 + \beta_2 = 1$ and $\beta_3 = -2\beta_4$
-- D) :: $\beta_0 = \beta_1$ and $\beta_1 = 0$
-\pause
-Answer: A
-
-*** 11) To test joint linear hypotheses in the multiple regression model, you need to
-- A) :: compare the sums of squared residuals from the restricted and unrestricted model.
-- B) :: use the heteroskedasticity-robust F-statistic.
-- C) :: use several t-statistics and perform tests using the standard normal distribution.
-- D) :: compare the adjusted R^{2} for the model which imposes the restrictions, and the unrestricted model.
-\pause
-Answer:  B
-
-** COMMENT Warm-up exercises
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-*** If you reject a joint null hypothesis using the F-test in a multiple hypothesis setting, then
-- A) :: a series of t-tests may or may not give you the same conclusion.
-- B) :: the regression is always significant.
-- C) :: all of the hypotheses are always simultaneously rejected.
-- D) :: the F-statistic must be negative.
-\pause
-Answer:  A
-\pause
-*** Let R^{2}_{unrestricted} and R^{2}_{restricted} be 0.4366 and 0.4149 respectively. The difference between the unrestricted and the restricted model is that you have imposed two restrictions. There are 420 observations and 3 regressors including the intercept. The homoskedasticity-only F-statistic in this case is
-- A) :: 4.61
-- B) :: 8.01
-- C) :: 10.34
-- D) :: 7.71
-\pause
-Answer:  B
-\pause
-*** The formulation $\boldsymbol{R\beta} = \boldsymbol{r}$ to test a hypotheses
-- A) :: allows for restrictions involving both multiple regression coefficients and single regression coefficients.
-- B) :: is F-distributed in large samples.
-- C) :: allows only for restrictions involving multiple regression coefficients.
-- D) :: allows for testing linear as well as nonlinear hypotheses.
-\pause
-Answer:  A
-\pause
-
 * Confidence Sets for multiple coefficients
 #+TOC: headlines [currentsection]
 ** Confidence set: definition
@@ -733,6 +683,54 @@ Suppose that we construct the confidence set for $\beta_1 =
 #+CAPTION: 95% Confidence Set for Coefficients on STR and Expn
 #+NAME: fig:fig-7-1
 [[file:img/fig-7-1.png]]
+
+
+* Warm-up Exercises
+** Question 1
+The following linear hypothesis can be tested using the F-test with the exception of
+- A) :: $\beta_2=1$ and $\beta_3 = \beta_4 / \beta_5$
+- B) :: $\beta_2=0$
+- C) :: $\beta_1 + \beta_2 = 1$ and $\beta_3 = -2\beta_4$
+- D) :: $\beta_0 = \beta_1$ and $\beta_1 = 0$
+\pause
+Answer: A
+
+** Question 2
+To test joint linear hypotheses in the multiple regression model, you need to
+- A) :: compare the sums of squared residuals from the restricted and unrestricted model.
+- B) :: use the heteroskedasticity-robust F-statistic.
+- C) :: use several t-statistics and perform tests using the standard normal distribution.
+- D) :: compare the adjusted R^{2} for the model which imposes the restrictions, and the unrestricted model.
+\pause
+Answer:  B
+
+** COMMENT Question 3
+If you reject a joint null hypothesis using the F-test in a multiple hypothesis setting, then
+- A) :: a series of t-tests may or may not give you the same conclusion.
+- B) :: the regression is always significant.
+- C) :: all of the hypotheses are always simultaneously rejected.
+- D) :: the F-statistic must be negative.
+\pause
+Answer:  A
+
+** Question 3
+Let R^{2}_{unrestricted} and R^{2}_{restricted} be 0.4366 and 0.4149 respectively. The difference between the unrestricted and the restricted model is that you have imposed two restrictions. There are 420 observations and 3 regressors including the intercept. The homoskedasticity-only F-statistic in this case is
+- A) :: 4.61
+- B) :: 8.01
+- C) :: 10.34
+- D) :: 7.71
+\pause
+Answer:  B
+
+** Question 4
+The formulation $\boldsymbol{R\beta} = \boldsymbol{r}$ to test a hypotheses
+- A) :: allows for restrictions involving both multiple regression coefficients and single regression coefficients.
+- B) :: is F-distributed in large samples.
+- C) :: allows only for restrictions involving multiple regression coefficients.
+- D) :: allows for testing linear as well as nonlinear hypotheses.
+\pause
+Answer:  A
+
 
 * Model Specification for Multiple Regression
 #+TOC: headlines [currentsection]
