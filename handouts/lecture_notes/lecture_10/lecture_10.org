@@ -60,7 +60,7 @@ type of models.
 - Chapter 8 in /Introduction to Econometrics/ by Stock and Watson.
 
 
-* TODO A General Strategy For Modeling Nonlinear Regression Functions
+* A General Strategy For Modeling Nonlinear Regression Functions
 
 ** Test Scores and district income
 
@@ -167,60 +167,59 @@ things constant, can be computed as
 When $X_1$ and $Y$ are continuous variables and $f(\cdot)$ is
 differentiable, the marginal effect of $X_1$ is the partial derivative
 of $f$ with respect to $X_1$, that is, holding other things constant
- 
-\[ \Delta Y = \frac{\partial f(X_1, \ldots, X_k; \boldsymbol{\beta})}{\partial X_1} \Delta X_1  \]
- 
+\[ \mathrm{d}Y = \frac{\partial f(X_1, \ldots, X_k;
+\boldsymbol{\beta})}{\partial X_i} \mathrm{d} X_i \]
+because $\mathrm{d}X_j = 0$ for $j \neq i$. 
 
+ 
 ** Application to test scores and income
 
 We estimate the quadratic regression model for test scores and
 district income (Equation \ref{eq:quadratic-testscore}) by OLS,
 resulting in the following
- 
 \begin{equation}
 \label{eq:tsr-income2}
 \widehat{TestScore} = \underset{\displaystyle (2.9)}{607.3} +
 \underset{\displaystyle (0.27)}{3.85}Income - \underset{\displaystyle (0.0048)}{0.0423}Income^2,\, \bar{R}^2 = 0.554
 \end{equation}
- 
 
 We can test whether the squared income has a significant
 coefficient. That is, we test $H_0:\, \beta_2 = 0 \text{ vs. } H_1:\,
 \beta_2 \neq 0$. In other words, we test the quadratic regression mode
 against the linear regression model. For this two-sided test, we can
 as usual compute the t-statistic
- 
 \[ t = \frac{-0.0423}{0.0048} = -8.81 > -1.96 \]
  
 Thus, we can reject the null at the 1%, 5% and 10% significance levels.
 
 From Equation (\ref{eq:tsr-income2}), we can compute the effect of
 change in district average income on test scores.
+
 *** A change in income from $10 thousand to $20 thousand
-  \begin{equation*}
-  \begin{split}
-  \Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 11 + \hat{\beta}_2 \times 11^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 10 + \hat{\beta}_2 \times 10^2) \\
-  &= \hat{\beta}_1 (11 - 10) + \hat{\beta}_2(11^2 - 10^2) \\
-  & = 3.85 - 0.0423 \times 21 = 2.96
-  \end{split}
-  \end{equation*}
-  Thus, the predicted difference in test scores between a district with
-  average income of $11,000 and one with average income of $10,000 is
-  2.96 points.
+\begin{equation*}
+\begin{split}
+\Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 11 + \hat{\beta}_2 \times 11^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 10 + \hat{\beta}_2 \times 10^2) \\
+&= \hat{\beta}_1 (11 - 10) + \hat{\beta}_2(11^2 - 10^2) \\
+& = 3.85 - 0.0423 \times 21 = 2.96
+\end{split}
+\end{equation*}
+Thus, the predicted difference in test scores between a district with
+average income of $11,000 and one with average income of $10,000 is
+2.96 points.
 
 *** A change in income from $40 thousand to $41 thousand
-  \begin{equation*}
-  \begin{split}
-  \Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 41 + \hat{\beta}_2 \times 41^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 40 + \hat{\beta}_2 \times 40^2) \\
-  &= \hat{\beta}_1 (41 - 40) + \hat{\beta}_2(41^2 - 40^2) \\
-  & = 3.85 - 0.0423 \times 81 = 0.42
-  \end{split}
-  \end{equation*}
-  Thus, the predicted difference in test scores between a district with
-  average income of $41,000 and one with average income of $40,000 is
-  0.42 points. Thus, a change of income of $1,000 is associated with a
-  larger change in predicted test scores if the initial income is
-  $10,000 than if it is $40,000.
+\begin{equation*}
+\begin{split}
+\Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 41 + \hat{\beta}_2 \times 41^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 40 + \hat{\beta}_2 \times 40^2) \\
+&= \hat{\beta}_1 (41 - 40) + \hat{\beta}_2(41^2 - 40^2) \\
+& = 3.85 - 0.0423 \times 81 = 0.42
+\end{split}
+\end{equation*}
+Thus, the predicted difference in test scores between a district with
+average income of $41,000 and one with average income of $40,000 is
+0.42 points. Thus, a change of income of $1,000 is associated with a
+larger change in predicted test scores if the initial income is
+$10,000 than if it is $40,000.
 
 
 ** A general approach to modeling nonlinearities using multiple regression
@@ -231,15 +230,16 @@ change in district average income on test scores.
 2. Specify a nonlinear function and estimate its parameters by OLS.
    - The OLS estimation and inference techniques can be used as usual
      when the regression function is linear with respect to $\beta$.
-3. Determine whether the nonlinear model improves upon a linear model
+3. Determine whether the nonlinear model can improve a linear model
    - Use t- and/or F-statistics to test the null hypothesis that the
      population regression function is linear against the alternative
      that it is nonlinear.
 4. Plot the estimated nonlinear regression function.
-5. Compute the effect on /Y/ of a change in /X/.
+5. Compute the effect on /Y/ of a change in /X/ and interpret the
+   results.
 
 
-* TODO COMMENT Nonlinear functions of a single independent variable
+* Nonlinear functions of a single independent variable
 ** Polynomials
 *** A polynomial regression model of degree r
 \begin{equation}
@@ -251,11 +251,23 @@ Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \cdots + \beta_r X_i^r + u_i
 - A polynomial regression model is just regression of $Y_i$ on
   regressors $X_i, X_i^2, \ldots, X_i^r$. So use the OLS method to
   estimate $\beta_1, \beta_2, \ldots, \beta_r$.
+
 *** Testing the null hypothesis that the population regression function is linear
 \[ H_0:\, \beta_2 = 0, \beta_3 = 0, ..., \beta_r = 0 \text{ vs. }
 H_1:\, \text{ at least one } \beta_j \neq 0, j = 2, \ldots, r \]
 - Use F statistic to test this joint hypothesis. The number of
   restriction is $q = r-1$.
+
+
+*** What is $\Delta Y / \Delta X$ in a polynomial regression model?
+
+- Consider a cubic model and continuous $X$ and $Y$
+  \[Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \beta_3 X^3 + u\]
+- Then, we can calculate
+  \[\frac{\dx Y}{\dx X} = \beta_1 + 2\beta_2 X + 3\beta_3 X^2 \]
+- The effect of a unit change in $X$ on $Y$ depends on the value of
+  $X$ at evaluation. 
+
 *** Which degree polynomial should I use?
 - Balance a trade-off between flexibility and statistical precision.
   - Flexibility. Relate Y to X in more complicated way than simple
@@ -280,9 +292,12 @@ H_1:\, \text{ at least one } \beta_j \neq 0, j = 2, \ldots, r \]
 *** Application to district income and test scores
 We estimate a cubic regression model relating test scores to district
 income as follows
- 
-\[ \widehat{TestScore} = \underset{\displaystyle (5.1)}{600.1} + \underset{\displaystyle (0.71)}{5.02}Income
-- \underset{\displaystyle (0.029)}{0.096}Income^2 + \underset{\displaystyle (0.00035)}{0.00069} Income^3, \hat{R}^2 = 0.555  \]
+\begin{equation*}
+\widehat{TestScore} = \underset{\displaystyle (5.1)}{600.1} 
+                    + \underset{\displaystyle (0.71)}{5.02} Income
+                    - \underset{\displaystyle (0.029)}{0.096} Income^2 
+                    + \underset{\displaystyle (0.00035)}{0.00069} Income^3, \hat{R}^2 = 0.555 
+\end{equation*}
  
 - Test whether it is a cubic model. We can test the null $H_0: \beta_3
   = 0$ using the t-statistic, which is 1.97 so that we can reject the
@@ -296,6 +311,7 @@ income as follows
   interpret is to plot the estimated regression function and calculate
   the estimated effect on Y associated with a change in X for one or
   more values of X.
+
 
 ** Logarithms
 *** A natural logarithmic function $y = \ln(x)$
@@ -418,6 +434,7 @@ This implies that a 1% increase in income corresponds to a
 | I    | $Y = \beta_0 + \beta_1 \ln(X) + u$      | A 1% change in X is associated with a change in Y of $0.01\beta_{1}$                                                  |
 | II   | $\ln(Y) = \beta_0 + \beta_1 X + u$      | A change in X by one unit is associated with a $100\beta_1\%$ change in Y                                             |
 | III  | $\ln(Y) = \beta_0 + \beta_1 \ln(X) + u$ | A 1% change in X is associated with a $\beta_{1}\%$ change in Y, so $\beta_1$ is the elasticity of Y with respect to X |
+
 
 * TODO COMMENT Interactions between independent variables
 ** Interactions between two binary variables

@@ -1,6 +1,6 @@
 #+TITLE: The Application of California School
 #+AUTHOR: Zheng Tian
-#+DATE: May 4th, 2015
+#+DATE:
 #+OPTIONS: H:2 num:1 toc:nil
 #+PROPERTY: header-args:R :session *myR* :tangle yes
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]

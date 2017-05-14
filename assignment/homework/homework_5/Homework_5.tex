@@ -1,0 +1,174 @@
+% Created 2017-05-14 Sun 21:58
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{setspace}
+\singlespacing
+\usepackage{parskip}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\var}{\mathrm{var}}
+\newcommand{\cov}{\mathrm{cov}}
+\newcommand{\corr}{\mathrm{corr}}
+\newcommand{\pr}{\mathrm{Pr}}
+\setcounter{secnumdepth}{0}
+\date{Due on May 22th, 2017}
+\title{Homework Set 5}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Homework Set 5},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+All questions are from the end-of-chapter exercises in Chapter 7. The question
+numbers refer to those in the book. I highly recommend you reading the
+textbook and lecture notes before completing the homework
+questions. When reading the textbook, please pay attention to the
+sections on how to interpret the estimated coefficients.
+
+\section*{Exercises}
+\label{sec:org64a5d87}
+
+\begin{description}
+\item[{7.7}] Question 6.5 reported the following regression (where
+standard erros have been added): 
+\begin{equation*}
+\begin{split}
+\widehat{Price} &= \underset{(23.9)}{119.2} + \underset{(2.61)}{0.485}BDR + \underset{(8.94)}{23.4}Bath + \underset{(0.011)}{0.156} Hsize + \underset{(0.00048)}{0.002}Lsize \\
+&+ \underset{(0.311)}{0.090} Age - \underset{(10.5)}{48.8}Poor,\, \bar{R}^2 = 0.72,\, SER = 41.5
+\end{split}
+\end{equation*}
+\begin{description}
+\item[{a.}] is the coefficient on \(BDR\) statistically significantly
+different from zero?
+\item[{b.}] Typically five-bedroom houses sell for much more than
+two-bedroom houses. Is this consistent with your answer to
+(a) and with the regression more generally?
+\item[{c.}] A homeowner purchase 2000 square feet from an adjacent
+lot. Construct a 99\% confident interval for the change in
+the value of her house.
+\item[{d.}] Lot size is measured in square feet. do you think that
+another scale might be more appropriate? Why or why not?
+\item[{e.}] The F-statistic fro omitting \(BDR\) and \(Age\) from the
+regression is \(F = 0.08\). Are the coefficients on \(BDR\) and
+\(Age\) statistically different from zero at the 10\% level?
+\end{description}
+\end{description}
+
+\vspace{0.5cm}
+
+\begin{description}
+\item[{7.8}] Referring to Table 7.1 in the text:
+\begin{description}
+\item[{a}] Construct and compute the \(R^2\) from \(\bar{R}^2\) for each of
+the regression.
+\item[{b}] Construct the homoskedasticity-only F-statistic for testing
+\(\beta_3 = \beta_4 = 0\) in the regression shown in column
+(5). Is the statistic significant at the 5\% level?
+\item[{c}] Construct a 99\% confidence interval for \(\beta_1\) for the
+regression in column (5).
+\end{description}
+\end{description}
+
+\vspace{0.5cm}
+
+\begin{description}
+\item[{7.9}] Consider the regression model \(Y_i = \beta_0 + \beta_1
+         X_{1i} + \beta_2 X_{2i} + u_i\). Use Approach \#2 from Section
+7.3 to transform the regression so that you can use a
+t-statistic to test
+\begin{description}
+\item[{a.}] \(\beta_1 = \beta_2\)
+\item[{b.}] \(\beta_1 + a\beta_2 = 0\), where \(a\) is a constant;
+\item[{c.}] \(\beta_1 + \beta_2 = 1\). (\emph{Hint}: You must redefine the
+dependent variable in the regression)
+\end{description}
+\end{description}
+
+\vspace{0.5cm}
+
+\begin{description}
+\item[{7.11}] A school district undertakes an experiment to estimate the
+effect of class size on test scores in second grade
+classes. The district assigns 50\% of its previous year's
+first graders to small second-grade classes (18 students per
+classroom) and 50\% to regular-size classes (21 students per
+classroom). Students new to the district are handled
+differently: 20\% are randomly assigned to small classes and
+80\% to regular-size classes. At the end of the second-grade
+school year, each student is given a standardized exam. let
+\(Y_i\) denote the exam score for i\(^{\text{th}}\) student, \(X_{1i}\)
+denote a binary variable that equals 1 if the student is
+assigned to small class, and \(X_{2i}\) denote a binary
+variable that equals 1 if the student is newly enrolled. Let
+\(\beta_1\) denote the class effect on test scores of reducing
+class size from regular to small.
+\begin{description}
+\item[{a.}] Consider the regression \(Y_i = \beta_0 + \beta_1 X_{1i} +
+          u_i\). Do you think that \(E(u_i | X_{1i}) = 0\)? Is the OLS
+estimator of \(\beta_1\) unbiased and consistent? Explain.
+\item[{b.}] Consider the regression \(Y_i = \beta_0 + \beta_1 X_{1i} +
+          \beta_2 X_{2i} + u_i\). Do you think that \(E(u_i | X_{1i},
+          X_{2i})\) depends on \(X_1\)? Is the OLS estimator of \(\beta_{\text{1}}\)
+unbiased and consistent? Explain. Do you think that \(E(u_i |
+          X_{1i}, X_{2i})\) depends on \(X_2\)? Will the OLS estimator of
+\(\beta_{\text{2}}\) provide an unbiased and consistent estimate of the
+causal effect of transferring to a new school (that is,
+being a newly-enrolled student)? Explain.
+\end{description}
+\end{description}
+
+\section*{Empirical Exercise}
+\label{sec:orgc8f98de}
+\begin{description}
+\item[{E7.1}] use the data set \textbf{CPS08} described in Empirical Exercise 4.1
+to answer the following questions.
+\begin{description}
+\item[{a.}] Run a regression of average hourly earnings (\emph{AHE}) on age
+(\emph{Age}). What is the estimated intercept? What is the
+estimated slope?
+\item[{b.}] Run a regression of \emph{AHE} on \emph{Age}, gender (\emph{Female}), and
+education (\emph{Bachelor}). What is the estimated effect of
+\emph{Age} on earnings? Construct a 95\% confidence interval for
+the coefficient on \emph{Age} in the regression.
+\item[{c.}] Are the results from the regression in (b) substantively
+different from the results in (a) regarding the effects of
+\emph{Age} and \emph{AHE}? Does the regression in (a) seem to suffer
+from omitted variable bias?
+\item[{d.}] Bob is a 26-year-old male worker with a high school
+diploma. Predict Bob's earnings using the estimated
+regression in (b). Alexis is a 30-year-old female worker
+with a college degree. Predict Alexis's earnings using the regression.
+\item[{e.}] Compare the fit of the regression in (a) and (b) using the
+regression standard errors, \(R^2\) and \(\bar{R}^2\). Why are
+the \(R^2\) and \(\bar{R}^2\) so similar in regression (b)?
+\item[{f.}] Are gender and education determinants of earnings? Test the
+null hypothesis that \emph{Female} can be deleted from the
+regression. Test the null hypothesis that \emph{Bachelor} can be
+deleted from the regression. Test the null hypothesis that
+both \emph{Female} and \emph{Bachelor} can be deleted from the
+regression.
+\item[{g.}] A regression will suffer from omitted variable bias when two
+conditions hold. What are these two conditions? Do these
+conditions seem to hold here?
+\end{description}
+\end{description}
+\end{document}

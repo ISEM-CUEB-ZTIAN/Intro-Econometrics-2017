@@ -139,94 +139,84 @@ Y_i = f(X_{i1}, X_{i2}, \ldots, X_{ik}; \beta_1, \beta_2, \ldots, \beta_m) + u_i
   $\boldsymbol{\beta}$*. 
 
 ** The effect on $Y$ of a change in a regressor
-For the general nonlinear model in Equation (\ref{eq:nl-general}), the
-effect on $Y$ of a change in one regressor, say $X_1$, holding other
-things constant, can be computed
-as
- 
+
+*** For any general nonlinear regression function
+The effect on $Y$ of a change in one regressor, say $X_1$, holding
+other things constant, can be computed as
 \begin{equation}
 \label{eq:nl-gen-effect}
 \Delta Y = f(X_1 + \Delta X_1, X_2, \ldots, X_k; \boldsymbol{\beta}) - f(X_1, X_2, \ldots, X_k; \boldsymbol{\beta})
 \end{equation}
- 
+
+*** For continuous and differentiable nonlinear functions
 When $X_1$ and $Y$ are continuous variables and $f(\cdot)$ is
 differentiable, the marginal effect of $X_1$ is the partial derivative
 of $f$ with respect to $X_1$, that is, holding other things constant
+\[ \mathrm{d}Y = \frac{\partial f(X_1, \ldots, X_k;
+\boldsymbol{\beta})}{\partial X_i} \mathrm{d} X_i \]
+because $\mathrm{d}X_j = 0$ for $j \neq i$
  
-\[ \Delta Y = \frac{\partial f(X_1, \ldots, X_k; \boldsymbol{\beta})}{\partial X_1} \Delta X_1  \]
- 
+** Application to test scores and income
 
-** Application to test scores and income \\ \small Estimation and inference
-We estimate the quadratic regression model for test scores and
-district income (Equation \ref{eq:quadratic-testscore}) by OLS,
-resulting in the following
- 
+*** Estimation
+
 \begin{equation}
 \label{eq:tsr-income2}
 \widehat{TestScore} = \underset{\displaystyle (2.9)}{607.3} +
 \underset{\displaystyle (0.27)}{3.85}Income - \underset{\displaystyle (0.0048)}{0.0423}Income^2,\, \bar{R}^2 = 0.554
 \end{equation}
  
-
-We can test whether the squared income has a significant
-coefficient. That is, we test $H_0:\, \beta_2 = 0 \text{ vs. } H_1:\,
-\beta_2 \neq 0$. In other words, we test the quadratic regression mode
-against the linear regression model. For this two-sided test, we can
-as usual compute the t-statistic
- 
+*** Hypothesis test
+Test $H_0:\, \beta_2 = 0 \text{ vs. } H_1:\,\beta_2 \neq 0$. 
 \[ t = \frac{-0.0423}{0.0048} = -8.81 > -1.96 \]
- 
-Thus, we can reject the null at the 1%, 5% and 10% significance levels.
+We reject the null at the 1%, 5% and 10% significance levels, and
+therefore, confirm the quadratic relationship between test scores
+and income. 
 
-** Application to test scores and income \\ \small The effect of change in income on test scores
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
+** The effect of change in income on test scores
 *** A change in income from $10 thousand to $20 thousand
-
-  \begin{equation*}
-  \begin{split}
-  \Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 11 + \hat{\beta}_2 \times 11^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 10 + \hat{\beta}_2 \times 10^2) \\
-  &= \hat{\beta}_1 (11 - 10) + \hat{\beta}_2(11^2 - 10^2) \\
-  & = 3.85 - 0.0423 \times 21 = 2.96
-  \end{split}
-  \end{equation*}
-  - Thus, the predicted difference in test scores between a district with
-    average income of $11,000 and one with average income of $10,000 is
-    2.96 points.
+\begin{equation*}
+\begin{split}
+\Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 11 + \hat{\beta}_2 \times 11^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 10 + \hat{\beta}_2 \times 10^2) \\
+&= \hat{\beta}_1 (11 - 10) + \hat{\beta}_2(11^2 - 10^2) \\
+& = 3.85 - 0.0423 \times 21 = 2.96
+\end{split}
+\end{equation*}
 
 *** A change in income from $40 thousand to $41 thousand
-  \begin{equation*}
-  \begin{split}
-  \Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 41 + \hat{\beta}_2 \times 41^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 40 + \hat{\beta}_2 \times 40^2) \\
-  &= \hat{\beta}_1 (41 - 40) + \hat{\beta}_2(41^2 - 40^2) \\
-  & = 3.85 - 0.0423 \times 81 = 0.42
-  \end{split}
-  \end{equation*}
-  - The predicted difference in test scores between a district with
-    average income of $41,000 and one with average income of $40,000 is
-    0.42 points.
-  - A change of income of $1,000 is associated with a
-    larger change in predicted test scores if the initial income is
-    $10,000 than if it is $40,000.
+\begin{equation*}
+\begin{split}
+\Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 41 + \hat{\beta}_2 \times 41^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 40 + \hat{\beta}_2 \times 40^2) \\
+&= \hat{\beta}_1 (41 - 40) + \hat{\beta}_2(41^2 - 40^2) \\
+& = 3.85 - 0.0423 \times 81 = 0.42
+\end{split}
+\end{equation*}
 
 ** A general approach to modeling nonlinearities using multiple regression
+
 1. Identify a possible nonlinear relationship.
    - Economic theory
    - Scatterplots
    - Your judgment and experts' opinions
+
 2. Specify a nonlinear function and estimate its parameters by OLS.
    - The OLS estimation and inference techniques can be used as usual
      when the regression function is linear with respect to $\beta$.
-3. Determine whether the nonlinear model improves upon a linear model
+
+3. Determine whether the nonlinear model can improve a linear model
    - Use t- and/or F-statistics to test the null hypothesis that the
      population regression function is linear against the alternative
      that it is nonlinear.
-4. Plot the estimated nonlinear regression function.
-5. Compute the effect on /Y/ of a change in /X/.
 
-* TODO COMMENT Nonlinear functions of a single independent variable
+4. Plot the estimated nonlinear regression function.
+
+5. Compute the effect on /Y/ of a change in /X/ and interpret the results.
+
+
+* Nonlinear functions of a single independent variable
+
 ** Polynomials
+
 *** A polynomial regression model of degree r
 \begin{equation}
 \label{eq:poly-r}
@@ -234,9 +224,8 @@ Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \cdots + \beta_r X_i^r + u_i
 \end{equation}
 - $r = 2$: a *quadratic* regression model
 - $r = 3$: a *cubic* regression model
-- A polynomial regression model is just regression of $Y_i$ on
-  regressors $X_i, X_i^2, \ldots, X_i^r$. So use the OLS method to
-  estimate $\beta_1, \beta_2, \ldots, \beta_r$.
+- Use the OLS method to estimate $\beta_1, \beta_2, \ldots, \beta_r$.
+
 *** Testing the null hypothesis that the population regression function is linear
  
 \[ H_0:\, \beta_2 = 0, \beta_3 = 0, ..., \beta_r = 0 \text{ vs. }
@@ -244,7 +233,20 @@ H_1:\, \text{ at least one } \beta_j \neq 0, j = 2, \ldots, r \]
  
 Use F statistic to test this joint hypothesis. The number of
 restriction is $q = r-1$.
-** Polynomials \\ \small Which degree polynomial should I use?
+
+** What is $\Delta Y / \Delta X$ in a polynomial regression model?
+
+- Consider a cubic model and continuous $X$ and $Y$
+  \[Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \beta_3 X^3 + u\]
+
+- Then, we can calculate
+  \[\frac{\dx Y}{\dx X} = \beta_1 + 2\beta_2 X + 3\beta_3 X^2 \]
+
+- The effect of a unit change in $X$ on $Y$ depends on the value of
+  $X$ at evaluation. 
+
+** Which degree of polynomial should I use?
+
 - Balance a trade-off between flexibility and statistical precision.
   - Flexibility. Relate Y to X in more complicated way than simple
     linear regression.
@@ -253,44 +255,37 @@ restriction is $q = r-1$.
 - Follow a sequential hypothesis testing procedure
   1) Pick a maximum value of $r$ and estimate the polynomial
      regression for that $r$.
-  2) Use the t-statistic to test the hypothesis that the coefficient
-     on $X^r$ is zero. If you reject this hypothesis, then $X^r$
-     belongs in the regression, so use the polynomial of degree $r$.
-  3) If you do not reject $\beta_j = 0$ in step 2, eliminate $X^r$
-     from the regression and estimate a polynomial regression of
-     degree $r-1$. Test whether the coefficient on $X^{r-1}$ is
-     zero. If you reject, use the polynomial of degree $r-1$.
-  4) If you do not reject $\beta_{r-1} = 0$ in step 3, continue this
-     procedure until the coefficient on the highest power in your
-     polynomial is statistically significant.
-- Quite often, we use a maximum degree of 2, 3, or 4.
+  2) Follow a "deletion" rule based on t-statistic or F-statistic. 
 
-** Polynomials \\ \small Application to district income and test scores
+** Application to district income and test scores
 :PROPERTIES:
 :BEAMER_opt: shrink
 :END:
 We estimate a cubic regression model relating test scores to district
 income as follows
-\[ \widehat{TestScore} = \underset{\displaystyle (5.1)}{600.1} + \underset{\displaystyle (0.71)}{5.02}Income
-- \underset{\displaystyle (0.029)}{0.096}Income^2 + \underset{\displaystyle (0.00035)}{0.00069} Income^3, \hat{R}^2 = 0.555  \]
+\begin{equation*}
+\widehat{TestScore} = \underset{\displaystyle (5.1)}{600.1} 
+                    + \underset{\displaystyle (0.71)}{5.02} Income
+                    - \underset{\displaystyle (0.029)}{0.096} Income^2 
+                    + \underset{\displaystyle (0.00035)}{0.00069} Income^3, \hat{R}^2 = 0.555 
+\end{equation*}
  
-- Test whether it is a cubic model. We can test the null $H_0: \beta_3
-  = 0$ using the t-statistic, which is 1.97 so that we can reject the
-  null at the 5% level but fail to reject the null at the 1% level.
-- Test whether it is a nonlinear model. In this case, we test the null
-  $H_0: \beta_2 = \beta_3 = 0$ using the F-statistic, which is 37.7
-  with the p-value less than 0.01% so that we reject the null at the
-  1% level.
-- Interpretation of coefficients. The coefficients in polynomial
-  regressions do not have a simple interpretation. The best way to
-  interpret is to plot the estimated regression function and calculate
-  the estimated effect on Y associated with a change in X for one or
-  more values of X.
+*** Test whether it is a cubic model
+  
+  The t-statistic for $H_0: \beta_3 = 0$ is 1.97 \Rightarrow Fail to reject
+
+*** Test whether it is a nonlinear model
+
+The F-statistic for $H_0: \beta_2 = \beta_3 = 0$ is 37.7, p-value
+$<0.01$
+
+*** Interpretation of coefficients
+
+Use the general formula of interpreting the effect of $\Delta X$ on
+$Y$.
 
 ** A natural logarithmic function $y = \ln(x)$
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
+
 - Properties of $\ln(x)$
   \begin{gather*}
   \ln(1/x) = -\ln(x),\, \ln(ax) = \ln(a) + \ln(x) \\
@@ -303,104 +298,109 @@ income as follows
   It follows that $\dx \ln(x) = \dx x / x$, representing the percentage
   change in $x$.
 
-- We can also denote the "percentage-change" form using the $\Delta$
-  operator, that is,
+** The percentage-change form using $\ln(x)$
+
+- The change in $\ln(X)$ represents the percentage change in $X$
+
   \[ \ln(x + \Delta x) - \ln(x) \approx \frac{\Delta x}{x} \text{ when
   } \Delta x \text{ is small.} \]
 
-  We can reach the above equation by the Taylor expansion of $\ln(x +
+- The Taylor expansion of $\ln(x +
   \Delta x)$ at $x$, which is
   \begin{align*}
-  \ln(x + \Delta x) &= \ln(x) + \frac{\dx \ln(x)}{\dx} (x + \Delta x - x) + \frac{1}{2!}\frac{\dx^2 \ln(x)}{\dx x^2}(x + \Delta x - x)^2 + \cdots \\
-  &= \ln(x) + \frac{\Delta x}{x} -\frac{\Delta x^2}{2x^2} + \cdots
+  \ln(x + \Delta x) &= \ln(x) + \frac{\dx \ln(x)}{\dx x} (x + \Delta x - x) + \frac{1}{2!}\frac{\dx^2 \ln(x)}{\dx x^2}(x + \Delta x - x)^2 + \cdots \\
+                    &= \ln(x) + \frac{\Delta x}{x} -\frac{\Delta x^2}{2x^2} + \cdots
   \end{align*}
   When $\Delta x$ is very small, we can omit the terms with $\Delta
   x^2, \Delta x^3$, etc. Thus, we have $\ln(x + \Delta x) - \ln(x)
   \approx \frac{\Delta x}{x}$ when $\Delta x$ is small.
 
 ** The three logarithmic regression models
-There are three types of logarithmic regression models.
+
+There are three types of logarithmic regression models:
+
 - Linear-log model
+
 - Log-linear model
+
 - Log-log model
+
 Differences in logarithmic transformation of $X$ and/or $Y$ lead to
 differences in interpretation of the coefficient.
 
 ** Case I: linear-log model
-In this case $X$ is in logarithms, $Y$ is not.
-\begin{equation}
-\label{eq:linear-log}
-Y_i = \beta_0 + \beta_1 \ln(X_i) + u_i, i = 1, \ldots, n
-\end{equation}
-In the linear-log model, a 1% change in $X$ is associated with a
-change in $Y$ of 0.01\beta_1 because
-\[ \Delta Y = \beta_1 \ln(X + \Delta X) - \beta_1 \ln(X) \approx
-\beta_1 \frac{\Delta X}{X} \]
-If $X$ changes by 1%, then $\Delta X/X = 0.01$ and $\Delta Y =
-0.01\beta_1$.  Using the derivative of $ln(x)$, we can easily see that
-$\beta_1 = \dx Y/\dx \ln(X) = \dx Y / (\dx X/X)$.
 
-\vspace{0.3cm}
-/e.g./ Suppose that we have the estimated model as
-\[\widehat{TestScore} = 557.8 + 36.42\ln(Income)\]
-Then it implies that 1% increase in average district income results in an
-     increase in test scores by $0.01 \times 36.42 = 0.36$ point.
-** Case I: linear-log model (cont'd)
+- *Model form*. $X$ is in logarithms, $Y$ is not.
+  \begin{equation}
+  \label{eq:linear-log}
+  Y_i = \beta_0 + \beta_1 \ln(X_i) + u_i, i = 1, \ldots, n
+  \end{equation}
+
+- *Interpretation*. a 1% change in $X$ is associated with a
+  change in $Y$ of 0.01\beta_1
+  \[ \Delta Y = \beta_1 \ln(X + \Delta X) - \beta_1 \ln(X) \approx
+  \beta_1 \frac{\Delta X}{X} \]
+
+- *Example*. The estimated model is 
+  \[\widehat{TestScore} = 557.8 + 36.42\ln(Income)\] 
+  - 1% increase in average district income results in an increase in
+    test scores by $0.01 \times 36.42 = 0.36$ point.
+
+** COMMENT Case I: linear-log model (cont'd)
 #+NAME: fig:fig-8-5
 #+CAPTION: The linear-log and cubic regression function
 #+ATTR_LATEX: :width 0.65\textwidth
 [[file:img/fig-8-5.png]]
 
 ** Case II: log-linear model
-In this case $Y$ is in logarithms, $X$ is not.
-\begin{equation}
-\label{eq:log-linear}
-\ln(Y_i) = \beta_0 + \beta_1 X_i + u_i
-\end{equation}
-In the log-linear model, a one-unit change in $X$ is associated
-with a $100 \times \beta_1\%$ change in $Y$ because
-\begin{equation*}
-\frac{\Delta Y}{Y} \approx \ln(Y + \Delta Y) - \ln(Y) = \beta_1 \Delta X
-\end{equation*}
-If $\Delta X = 1$, then $\Delta Y / Y = \beta_1$. Expressed in
-percentage, we say that $Y$ change by $100\beta_1\%$. With the
-derivative, $\beta_1 = \dx \ln(Y) / \dx X = (\dx Y/Y) / X$.
 
-\vspace{0.3cm}
-/e.g./ In a regression of earnings on age, we have the estimated
-model as
-\[ \widehat{\ln(Earnings)} = 2.805 + 0.0087Age \]
-So in this regression, earnings are predicted to increase by
-0.87% for each additional year of age.
+- *Model form*. $Y$ is in logarithms, $X$ is not.
+  \begin{equation}
+  \label{eq:log-linear}
+  \ln(Y_i) = \beta_0 + \beta_1 X_i + u_i
+  \end{equation}
+
+- *Interpretation*. A one-unit change in $X$
+  is associated with a $100 \times \beta_1\%$ change in $Y$ because
+  \begin{equation*}
+  \frac{\Delta Y}{Y} \approx \ln(Y + \Delta Y) - \ln(Y) = \beta_1 \Delta X
+  \end{equation*}
+
+- *Example*. 
+   \[ \widehat{\ln(Earnings)} = 2.805 + 0.0087Age \]
+  - Earnings are predicted to increase by 0.87% for each additional
+    year of age.
 
 ** Case III: log-log model
 :PROPERTIES:
 :BEAMER_opt: shrink
 :END:
-In this case both $X$ and $Y$ are in logarithms.
+- *Model form*. Both $X$ and $Y$ are in logarithms.
+  \begin{equation}
+  \label{eq:log-log}
+  \ln(Y_i) = \beta_0 + \beta_1 \ln(X_i) + u_i
+  \end{equation}
 
-\begin{equation}
-\label{eq:log-log}
-\ln(Y_i) = \beta_0 + \beta_1 \ln(X_i) + u_i
-\end{equation}
-In the log-log model, 1% change in $X$ is associated with a
-\beta_1% change in $Y$ because
-\[ \frac{\Delta Y}{Y} \approx \ln(Y + \Delta Y) - \ln(Y) =
-\beta_1 (\ln(X + \Delta X) - \ln(X)) \approx \beta_1 \frac{\Delta
-X}{X} \]
-Thus, \beta_1 is the *elasticity* of $Y$ with respect to $X$, that
-is
-\[ \beta_1 = \frac{100 \times (\Delta Y / Y)}{100\times (\Delta X
-/ X)} =\frac{\text{percentage change in } Y}{\text{percentage
-change in } X}  \]
-With the derivative, $\beta_1 = \dx \ln(Y) / \dx \ln(X) = (\dx Y/Y) /
-(\dx X/X)$.
+- *Interpretation: elasticity*. 1% change in $X$ is associated with a
+  \beta_1% change in $Y$ because 
+  \begin{equation*}
+  \frac{\Delta Y}{Y} \approx \ln(Y +
+  \Delta Y) - \ln(Y) = \beta_1 (\ln(X + \Delta X) - \ln(X)) \approx
+  \beta_1 \frac{\Delta X}{X}
+  \end{equation*}
 
-/e.g./ The log-log model of the test score application is
-estimated as
-\[ \widehat{\ln(TestScore)} = 6.336 + 0.0544 \ln(Income) \]
-This implies that a 1% increase in income corresponds to a
-0.0544% increase in test scores.
+  - \beta_1 is the *elasticity* of $Y$ with respect to $X$, that is 
+    \[ \beta_1 = \frac{100 \times
+    (\Delta Y / Y)}{100\times (\Delta X / X)} =\frac{\text{percentage
+    change in } Y}{\text{percentage change in } X} \] 
+  - With the derivative, $\beta_1 = \dx \ln(Y) / \dx \ln(X) = (\dx Y/Y)
+    / (\dx X/X)$.
+
+- *Example*. The log-log model of the test score application is
+  estimated as
+  \[ \widehat{\ln(TestScore)} = 6.336 + 0.0544 \ln(Income) \]
+  This implies that a 1% increase in income corresponds to a
+  0.0544% increase in test scores.
 
 ** The log-linear and log-log regression functions
 #+ATTR_LATEX: :width 0.65\textwidth
