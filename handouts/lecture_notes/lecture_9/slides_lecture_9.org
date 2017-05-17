@@ -765,7 +765,7 @@ Answer:  A
 - The regressors in the latter group are called *control
   variable*.
 
-- W use an assumption that is weaker than the assumption of
+- We use an assumption that is weaker than the assumption of
   $E(u|X)=0$ to ensure that the estimated coefficients on the
   regressors in the first groups are unbiased, maintaining the causal
   implication that we want.
@@ -912,7 +912,7 @@ involves the following consideration:
 
 *** Step 2: Set up alternative specifications
 
-Also specify a range of plausible *alternative model
+Specify a range of plausible *alternative model
 specifications*, which include additional candidate variables.
 1) If the estimates of the coefficients of interest are numerically
    similar across the alternative specifications, then this

@@ -1,7 +1,7 @@
 #+TITLE: Lecture 10: Nonlinear Regression Functions
 #+AUTHOR: Zheng Tian
 #+DATE:
-#+OPTIONS: toc:nil H:3 num:2 tex:t todo:nil <:nil ^:{}
+#+OPTIONS: toc:1 H:3 num:2 tex:t todo:nil <:nil ^:{}
 #+PROPERTY: header-args:R  :session my-r-session
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]
@@ -436,14 +436,17 @@ This implies that a 1% increase in income corresponds to a
 | III  | $\ln(Y) = \beta_0 + \beta_1 \ln(X) + u$ | A 1% change in X is associated with a $\beta_{1}\%$ change in Y, so $\beta_1$ is the elasticity of Y with respect to X |
 
 
-* TODO COMMENT Interactions between independent variables
+* Interactions between independent variables
+
 ** Interactions between two binary variables
+
 *** The regression model with interaction between two binary variables
-Consider the population regression of earnings ($Y_i$, where $Y_i
-= Earnings_i$) against two binary variables: whether a worker has
-a college degree ($D_i$, where $D_{1i} = 1$ if the i^{th} person
-graduated from college) and the worker's gender ($D_{2i}$, where
-$D_{2i} = 1$ if the i^{th} person is female).
+
+Consider the population regression of earnings ($Y_i$, where $Y_i =
+Earnings_i$) against two binary variables: a worker has a college
+degree ($D_i$, where $D_{1i} = 1$ if the i^{th} person graduated from
+college) and a worker's gender ($D_{2i}$, where $D_{2i} = 1$ if the
+i^{th} person is female).
 
 Then the population regression model with an interaction term of
 two binary variables is
@@ -454,7 +457,7 @@ Y_i = \beta_0 + \beta_1 D_{1i} + \beta_2 D_{2i} + \beta_3 (D_{1i} \times D_{2i})
 in which $D_{1i} \times D_{2i}$ is the *interaction term*.
 
 *** The method of interpreting coefficients in regressions with interacted binary variables
-We can follow the following general rule for interpreting coefficients in Equation
+We follow a general rule for interpreting coefficients in Equation
 (\ref{eq:interact-dd}):
 #+BEGIN_QUOTE
 First compute the expected values of $Y$ for each possible case
@@ -514,6 +517,7 @@ whether the average income of female college graduates differs from that
 of female non-college graduates, the null hypothesis is $H_0:
 \beta_1 + \beta_3 = 0 \text{ vs. } H_1: \beta_1 + \beta_3 \neq
 0$. Then, we need to use an F-statistic for this test.
+
 
 ** Interactions between a continuous and a binary variable
 Consider the population regression of earnings ($Y_i$) against one
@@ -596,7 +600,8 @@ Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 (X_{1i} \times X_{2i})
 - Similarly, the effect of a change in $X_2$, holding $X_1$ constant, is
   \[ \frac{\Delta Y}{\Delta X_2} = \beta_1 + \beta_3 X_1 \]
 
-* TODO COMMENT Regression Functions That Are Nonlinear in the Parameters
+* TODO Regression Functions That Are Nonlinear in the Parameters
+
 All the regression models that we have discussed in this lecture are
 nonlinear in the regressors but linear in parameters so that we can
 still treat them as linear regression models and estimate using the
@@ -606,6 +611,7 @@ parameters. For these models, we can either transform them to the
 squares* (NLS) estimators.
 
 ** Transform a nonlinear model to a linear one
+
 Suppose we have a nonlinear regression model as follows
 \begin{equation}
 \label{eq:nls-xaxb}
@@ -629,14 +635,15 @@ estimated using the OLS. $\beta_i$ for $i=1, 2, \ldots, k$ are the
 elasticities of $Y$ with respect to $X_i$.
 
 ** Nonlinear models that cannot be linearized
+
 There are nonlinear models that cannot be linearized by any
 transformation. We introduce two examples.
 
 *** Logistic curve
 
 Sometimes we may have a dependent variable taking values between 0 and
-1, such as the fraction of students who get the test scores lower than
-70. The linear regression model generally cannot guarantee the
+1, such as the fraction of students who get the test scores lower
+than 70. The linear regression model generally cannot guarantee the
 predicted dependent variable to be bounded between 0 and 1. For this
 reason, we can use the logistic function to set up a nonlinear
 regression function.
