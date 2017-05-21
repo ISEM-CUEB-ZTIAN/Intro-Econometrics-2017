@@ -47,6 +47,7 @@ $E(Y_i \mid \mathbf{X}_i) = f(X_{i1}, X_{i2}, \ldots, X_{ik};
 - What types of nonlinear regression models can we estimate by OLS?
 - How can we interpret the coefficients in nonlinear regression models?
 
+
 * A General Strategy For Modeling Nonlinear Regression Functions
 
 ** Test Scores and district income
@@ -418,6 +419,7 @@ differences in interpretation of the coefficient.
 |-----------------------------------------+------------------------------------------------------------------------------------------------------------------------|
 | $\ln(Y) = \beta_0 + \beta_1 \ln(X) + u$ | A 1% change in X is associated with a $\beta_{1}\%$ change in Y, so $\beta_1$ is the elasticity of Y with respect to X |
 
+
 * Interactions between independent variables
 
 ** Interactions between independent variables
@@ -624,6 +626,7 @@ Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 (X_{1i} \times X_{2i})
 - Similarly, the effect of a change in $X_2$, holding $X_1$ constant, is
   \[ \frac{\Delta Y}{\Delta X_2} = \beta_1 + \beta_3 X_1 \]
 
+
 * Regression Functions That Are Nonlinear in the Parameters
 ** Nonlinear regression models and nonlinear least squares estimator
 
@@ -698,7 +701,7 @@ of the equation
   - There is an upper bound, that is, a limit of $Y$ as $X$ goes to
     infinity, $\beta_0$.
 
-** Nonlinear models that cannot be linearized \\ \small Logistic and negative exponential growth curves
+** Logistic and negative exponential growth curves
 
 #+CAPTION: The logistic and negative exponential growth functions
 #+ATTR_LATEX: :textwidth 0.9\textwidth
@@ -720,6 +723,7 @@ of squared prediction mistakes. That is
 \end{equation*}
 The solution to this minimization problem is the nonlinear least
 squares estimators.
+
 
 * TODO COMMENT Nonlinear effects on test scores of the student-teacher ratio
 ** Nonlinear effects on test scores of the student-teacher ratio
