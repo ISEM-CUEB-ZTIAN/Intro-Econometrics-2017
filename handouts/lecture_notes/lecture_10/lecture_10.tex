@@ -1,4 +1,4 @@
-% Created 2017-05-17 Wed 09:33
+% Created 2017-05-21 Sun 14:53
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -48,7 +48,7 @@
  pdftitle={Lecture 10: Nonlinear Regression Functions},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)},
  pdflang={English}}
 \begin{document}
 
@@ -58,9 +58,9 @@
 
 
 \section{Introduction}
-\label{sec:orgc909103}
+\label{sec:org143f5b4}
 \subsection{Overview}
-\label{sec:orga62771c}
+\label{sec:org067dc79}
 In the previous lectures, the population regression function is
 assumed to be linear. In other words, the slope of the population
 regression function was constant, so the effect on Y of a unit change
@@ -85,35 +85,35 @@ put emphasis on the correct interpretation of the coefficients in each
 type of models.
 
 \subsection{Reading materials}
-\label{sec:org60992b1}
+\label{sec:org63225e6}
 \begin{itemize}
 \item Chapter 8 in \emph{Introduction to Econometrics} by Stock and Watson.
 \end{itemize}
 
 
 \section{A General Strategy For Modeling Nonlinear Regression Functions}
-\label{sec:org9f1ce83}
+\label{sec:orge0706e4}
 
 \subsection{Test Scores and district income}
-\label{sec:orgb9807ea}
+\label{sec:org9c9000c}
 
 In the application of California elementary schools, we know that test
 scores can be determined by average district income, along with
 student-teacher ratios that we have included in regression. For
 simplicity, let's just consider the relationship between test scores
 and district income using a scatterplot. As shown in Figure
-\ref{fig:org0767477}, test scores and district income are indeed
+\ref{fig:org2215659}, test scores and district income are indeed
 positively correlated, with a correlation coefficient of 0.71.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{img/fig-8-2.png}
-\caption{\label{fig:org0767477}
+\caption{\label{fig:org2215659}
 Scatterplot of test score vs district income and a linear regression line}
 \end{figure}
 
 \subsubsection*{How does a simple linear regression model fit the data?}
-\label{sec:org229af95}
+\label{sec:org99fd0d9}
 
 We estimate a simple linear regression model
 \[TestScore = \beta_0 + \beta_1 Income + u\]
@@ -137,7 +137,7 @@ is constant.
 \end{itemize}
 
 \subsubsection*{Estimate a quadratic regression model}
-\label{sec:org4d5b933}
+\label{sec:org747a7d2}
 
 Instead of estimating a linear regression model, we can set up a
 quadratic regression model as
@@ -157,19 +157,19 @@ statistics for inference as we do in multiple regression. We simply
 treat \(Income^2\) as another regressor in a multiple regression model.
 \item The quadratic regression line is added onto the scatterplot, which
 fits the points better than the linear regression line, as shown in
-Figure \ref{fig:org46f11e9}.
+Figure \ref{fig:org03838b9}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{img/fig-8-3.png}
-\caption{\label{fig:org46f11e9}
+\caption{\label{fig:org03838b9}
 Scatterplot of test score vs district income and a quadratic regression line}
 \end{figure}
 \end{itemize}
 
 
 \subsection{A general formula for a nonlinear population regression function}
-\label{sec:org1988d9d}
+\label{sec:org6826d50}
 
 A general nonlinear regression model is
 \begin{equation}
@@ -200,7 +200,7 @@ being "linear" and estimated by the OLS method.
 
 
 \subsection{The effect on \(Y\) of a change in a regressor}
-\label{sec:orgafbe39c}
+\label{sec:org737a21b}
 
 For the general nonlinear model in Equation (\ref{eq:nl-general}), the
 effect on \(Y\) of a change in one regressor, say \(X_1\), holding other
@@ -214,11 +214,11 @@ differentiable, the marginal effect of \(X_1\) is the partial derivative
 of \(f\) with respect to \(X_1\), that is, holding other things constant
 \[ \mathrm{d}Y = \frac{\partial f(X_1, \ldots, X_k;
 \boldsymbol{\beta})}{\partial X_i} \mathrm{d} X_i \]
-because \(\mathrm{d}X_j = 0\) for \(j \neq i\). 
+because \(\mathrm{d}X_j = 0\) for \(j \neq i\).
 
 
 \subsection{Application to test scores and income}
-\label{sec:orgb8168dd}
+\label{sec:org3866b31}
 
 We estimate the quadratic regression model for test scores and
 district income (Equation \ref{eq:quadratic-testscore}) by OLS,
@@ -242,7 +242,7 @@ From Equation (\ref{eq:tsr-income2}), we can compute the effect of
 change in district average income on test scores.
 
 \subsubsection*{A change in income from \$10 thousand to \$20 thousand}
-\label{sec:org38d83e3}
+\label{sec:org97e2cf1}
 \begin{equation*}
 \begin{split}
 \Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 11 + \hat{\beta}_2 \times 11^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 10 + \hat{\beta}_2 \times 10^2) \\
@@ -255,7 +255,7 @@ average income of \$11,000 and one with average income of \$10,000 is
 2.96 points.
 
 \subsubsection*{A change in income from \$40 thousand to \$41 thousand}
-\label{sec:org2f9d9fb}
+\label{sec:org5e72359}
 \begin{equation*}
 \begin{split}
 \Delta \hat{Y} &= \hat{\beta}_0 + \hat{\beta}_1 \times 41 + \hat{\beta}_2 \times 41^2 - (\hat{\beta}_0 + \hat{\beta}_1 \times 40 + \hat{\beta}_2 \times 40^2) \\
@@ -271,7 +271,7 @@ larger change in predicted test scores if the initial income is
 
 
 \subsection{A general approach to modeling nonlinearities using multiple regression}
-\label{sec:orgd043fd6}
+\label{sec:org7ef2624}
 \begin{enumerate}
 \item Identify a possible nonlinear relationship.
 \begin{itemize}
@@ -297,11 +297,11 @@ results.
 
 
 \section{Nonlinear functions of a single independent variable}
-\label{sec:org539af9c}
+\label{sec:orga352598}
 \subsection{Polynomials}
-\label{sec:org1b44132}
+\label{sec:org9b7e5bc}
 \subsubsection*{A polynomial regression model of degree r}
-\label{sec:orgbb8ed1c}
+\label{sec:org0504295}
 \begin{equation}
 \label{eq:poly-r}
 Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \cdots + \beta_r X_i^r + u_i
@@ -315,7 +315,7 @@ estimate \(\beta_1, \beta_2, \ldots, \beta_r\).
 \end{itemize}
 
 \subsubsection*{Testing the null hypothesis that the population regression function is linear}
-\label{sec:org95d6325}
+\label{sec:org50c8b39}
 \[ H_0:\, \beta_2 = 0, \beta_3 = 0, ..., \beta_r = 0 \text{ vs. }
 H_1:\, \text{ at least one } \beta_j \neq 0, j = 2, \ldots, r \]
 \begin{itemize}
@@ -325,7 +325,7 @@ restriction is \(q = r-1\).
 
 
 \subsubsection*{What is \(\Delta Y / \Delta X\) in a polynomial regression model?}
-\label{sec:org8546c12}
+\label{sec:orgd6777d1}
 
 \begin{itemize}
 \item Consider a cubic model and continuous \(X\) and \(Y\)
@@ -337,7 +337,7 @@ restriction is \(q = r-1\).
 \end{itemize}
 
 \subsubsection*{Which degree polynomial should I use?}
-\label{sec:orgbc950fd}
+\label{sec:org207c0cb}
 \begin{itemize}
 \item Balance a trade-off between flexibility and statistical precision.
 \begin{itemize}
@@ -365,14 +365,14 @@ polynomial is statistically significant.
 \end{itemize}
 
 \subsubsection*{Application to district income and test scores}
-\label{sec:orgb540783}
+\label{sec:org7ce0f56}
 We estimate a cubic regression model relating test scores to district
 income as follows
 \begin{equation*}
-\widehat{TestScore} = \underset{\displaystyle (5.1)}{600.1} 
+\widehat{TestScore} = \underset{\displaystyle (5.1)}{600.1}
                     + \underset{\displaystyle (0.71)}{5.02} Income
-                    - \underset{\displaystyle (0.029)}{0.096} Income^2 
-                    + \underset{\displaystyle (0.00035)}{0.00069} Income^3, \hat{R}^2 = 0.555 
+                    - \underset{\displaystyle (0.029)}{0.096} Income^2
+                    + \underset{\displaystyle (0.00035)}{0.00069} Income^3, \hat{R}^2 = 0.555
 \end{equation*}
 
 \begin{itemize}
@@ -392,9 +392,9 @@ more values of X.
 
 
 \subsection{Logarithms}
-\label{sec:orgb057295}
+\label{sec:org6258ffc}
 \subsubsection*{A natural logarithmic function \(y = \ln(x)\)}
-\label{sec:orgf2130c7}
+\label{sec:org6178648}
 \begin{itemize}
 \item Properties of \(\ln(x)\)
 \begin{gather*}
@@ -425,14 +425,14 @@ When \(\Delta x\) is very small, we can omit the terms with \(\Delta
 \end{itemize}
 
 \subsubsection*{The three logarithmic regression models}
-\label{sec:org3aa34c8}
+\label{sec:orgd330a0e}
 There are three types of logarithmic regression models. Differences in
 logarithmic transformation of \(X\) and/or \(Y\) lead to differences in
 interpretation of the coefficient.
 
 \begin{itemize}
 \item \textbf{Case I: linear-log model}
-\label{sec:orgc0bf9ad}
+\label{sec:org676fb5d}
 
 In this case \(X\) is in logarithms, \(Y\) is not.
 \begin{equation}
@@ -455,12 +455,12 @@ increase in test scores by \(0.01 \times 36.42 = 0.36\) point.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.65\textwidth]{img/fig-8-5.png}
-\caption{\label{fig:org3d8b02e}
+\caption{\label{fig:org3d5c690}
 The linear-log and cubic regression function}
 \end{figure}
 
 \item \textbf{Case II: log-linear model}
-\label{sec:org3ad0a4f}
+\label{sec:org9255cb1}
 
 In this case \(Y\) is in logarithms, \(X\)
 is not.
@@ -484,7 +484,7 @@ So in this regression, earnings are predicted to increase by
 0.87\% for each additional year of age.
 
 \item \textbf{Case III: log-log model}
-\label{sec:org0e11cec}
+\label{sec:orgc692561}
 
 In this case both \(X\) and \(Y\) are in
 logarithms.
@@ -514,7 +514,7 @@ This implies that a 1\% increase in income corresponds to a
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.65\textwidth]{img/fig-8-6.png}
-\caption{\label{fig:org04cb59a}
+\caption{\label{fig:orga791f55}
 The log-linear and log-log regression functions}
 \end{figure}
 
@@ -533,13 +533,13 @@ III & \(\ln(Y) = \beta_0 + \beta_1 \ln(X) + u\) & A 1\% change in X is associate
 
 
 \section{Interactions between independent variables}
-\label{sec:orga725be1}
+\label{sec:org927e22d}
 
 \subsection{Interactions between two binary variables}
-\label{sec:org19d82d6}
+\label{sec:org752f644}
 
 \subsubsection*{The regression model with interaction between two binary variables}
-\label{sec:orgebf3d1a}
+\label{sec:org90f094b}
 
 Consider the population regression of earnings (\(Y_i\), where \(Y_i =
 Earnings_i\)) against two binary variables: a worker has a college
@@ -556,7 +556,7 @@ Y_i = \beta_0 + \beta_1 D_{1i} + \beta_2 D_{2i} + \beta_3 (D_{1i} \times D_{2i})
 in which \(D_{1i} \times D_{2i}\) is the \textbf{interaction term}.
 
 \subsubsection*{The method of interpreting coefficients in regressions with interacted binary variables}
-\label{sec:org9debe52}
+\label{sec:org2338fa1}
 We follow a general rule for interpreting coefficients in Equation
 (\ref{eq:interact-dd}):
 \begin{quote}
@@ -568,7 +568,7 @@ value or as the difference between two or more expected values.
 
 \begin{itemize}
 \item \textbf{Compute the expected values of \(Y\) for each possible combinations of \(D_1\) and \(D_2\)}
-\label{sec:org00e8688}
+\label{sec:org6cb5d8c}
 
 \begin{description}
 \item[{Case 1}] \(E(Y_i | D_{1i} = 0, D_{2i} = 0) = \beta_0\): the average
@@ -585,7 +585,7 @@ graduates is \(\beta_0 + \beta_1 + \beta_2 + \beta_3\).
 \end{description}
 
 \item \textbf{Compute the difference between a pair of cases}
-\label{sec:orga128804}
+\label{sec:orgcc649e8}
 
 \begin{description}
 \item[{Case 1 vs. Case 2}] \(E(Y_i | D_{1i} = 1, D_{2i} = 0) - E(Y_i |
@@ -628,25 +628,25 @@ of female non-college graduates, the null hypothesis is \(H_0:
 
 
 \subsection{Interactions between a continuous and a binary variable}
-\label{sec:org9ce99fe}
+\label{sec:org8a9d211}
 Consider the population regression of earnings (\(Y_i\)) against one
 continuous variable, individual's years of work experience (\(X_i\)),
 and one binary variable, whether the worker has a college degree
 (\(D_i\), where \(D_i=1\) if the i\(^{\text{th}}\) person is a college graduate).
 
-As shown in Figure \ref{fig:org6a9773e}, the population regression line relating \(Y\) and
+As shown in Figure \ref{fig:org047aa70}, the population regression line relating \(Y\) and
 \(X\) depends on \(D\) in three different ways.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{img/fig-8-8.png}
-\caption{\label{fig:org6a9773e}
+\caption{\label{fig:org047aa70}
 Regression Functions Using Binary and Continuous Variables}
 \end{figure}
 
 \subsubsection*{Different intercept, same slope.}
-\label{sec:orgfe4873f}
-As shown in Figure \ref{fig:org6a9773e} (a), the corresponding population
+\label{sec:orgd82e7c1}
+As shown in Figure \ref{fig:org047aa70} (a), the corresponding population
 regression model is
 \begin{equation}
 \label{eq:interact-dx-a}
@@ -665,8 +665,8 @@ magnitude regardless of how many years a worker has been working.
 \end{itemize}
 
 \subsubsection*{Different intercepts and different slopes.}
-\label{sec:org360b9f7}
-As shown in Figure \ref{fig:org6a9773e} (b), to allow for different slopes, we
+\label{sec:org37abe3a}
+As shown in Figure \ref{fig:org047aa70} (b), to allow for different slopes, we
 need to add an interaction term to Equation (\ref{eq:interact-dx-a})
 as follows:
 \begin{equation}
@@ -686,8 +686,8 @@ earnings.
 \end{itemize}
 
 \subsubsection*{Different intercepts and same intercept.}
-\label{sec:org6c3cc9b}
-As shown in Figure \ref{fig:org6a9773e} (c), there is no difference in the
+\label{sec:orgeee91ab}
+As shown in Figure \ref{fig:org047aa70} (c), there is no difference in the
 intercept between the two regression line, but they have different
 slopes. The corresponding regression model is
 \begin{equation}
@@ -696,7 +696,7 @@ Y_i = \beta_0 + \beta_1 X_i + \beta_2 (X_i \times D_i) + u_i
 \end{equation}
 
 \subsection{Interactions between two continuous variables}
-\label{sec:org0e7363b}
+\label{sec:orga2902c5}
 Now we consider the regression of earnings against two continuous
 variables, one for the years of work experience (\(X_1\)) and another
 for the years of schooling (\(X_2\)). The interaction term \(X_{1i}
@@ -722,7 +722,7 @@ or generally,
 \end{itemize}
 
 \section{Regression Functions That Are Nonlinear in the Parameters}
-\label{sec:orgf1d66fc}
+\label{sec:org7000f5b}
 
 All the regression models that we have discussed in this lecture are
 nonlinear in the regressors but linear in parameters so that we can
@@ -733,7 +733,7 @@ parameters. For these models, we can either transform them to the
 squares} (NLS) estimators.
 
 \subsection{Transform a nonlinear model to a linear one}
-\label{sec:orgbd4ab50}
+\label{sec:org3946152}
 
 Suppose we have a nonlinear regression model as follows
 \begin{equation}
@@ -758,13 +758,13 @@ estimated using the OLS. \(\beta_i\) for \(i=1, 2, \ldots, k\) are the
 elasticities of \(Y\) with respect to \(X_i\).
 
 \subsection{Nonlinear models that cannot be linearized}
-\label{sec:org7b19ec5}
+\label{sec:org4dddcd8}
 
 There are nonlinear models that cannot be linearized by any
 transformation. We introduce two examples.
 
 \subsubsection*{Logistic curve}
-\label{sec:org6e64c46}
+\label{sec:org2ae744d}
 
 Sometimes we may have a dependent variable taking values between 0 and
 1, such as the fraction of students who get the test scores lower
@@ -779,7 +779,7 @@ The logistic regression model with k regressors is
 Y_i = \frac{1}{1 + \exp(\beta_0 + \beta_1 X_{1i} + \cdots \beta_k X_{ki})} + u_i
 \end{equation}
 
-The logistic function with a single \(X\) is graphed in Figure \ref{fig:org8679f3e}(a). The
+The logistic function with a single \(X\) is graphed in Figure \ref{fig:org3231e6f}(a). The
 logistic function has an elongated "S" shape.
 \begin{itemize}
 \item For small values of \(X\), the value of the function is nearly 0 and
@@ -789,7 +789,7 @@ flat again.
 \end{itemize}
 
 \subsubsection*{Negative exponential growth function}
-\label{sec:org7ee47fa}
+\label{sec:org730b502}
 
 Sometimes the effect of \(X\) on \(Y\) must be positive and the effect is
 bounded by a upper bound. For this case, we can use a negative
@@ -800,7 +800,7 @@ Y_i = \beta_0 [1-\exp(-\beta_1(X_i - \beta_2))] + u_i
 \end{equation}
 
 The negative exponential growth function is graphed in Figure
-\ref{fig:org8679f3e}(b), which has the desired properties:
+\ref{fig:org3231e6f}(b), which has the desired properties:
 \begin{itemize}
 \item The slope is positive for all values of \(X\).
 \item The slope is greatest at low values of \(X\) and decreases as \(X\)
@@ -812,12 +812,12 @@ infinity, \(\beta_0\).
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/fig-8-12.png}
-\caption{\label{fig:org8679f3e}
+\caption{\label{fig:org3231e6f}
 The logistic and negative exponential growth functions}
 \end{figure}
 
 \subsubsection*{The nonlinear least squares estimators}
-\label{sec:org8bbad12}
+\label{sec:org7dfbdcd}
 For a nonlinear regression function
 \[ Y_i = f(X_1, \ldots, X_k; \beta_1, \ldots, \beta_m) + u_i \]
 which is nonlinear in both \(X\) and \(\beta\), we can obtain the
@@ -829,4 +829,16 @@ of squared prediction mistakes. That is
 \end{equation*}
 The solution to this minimization problem is the nonlinear least
 squares estimators.
+
+\section{Nonlinear effects on test scores of the student-teacher ratio}
+\label{sec:orgd47ded5}
+
+We apply the nonlinear regression models to examine the effect of
+the student-teacher ratios on test scores in California elementary
+school districts.
+
+Let's read \href{run:replicate\_ch8/replicate\_ch8.pdf}{replicate\_ch8.pdf}.
+
+The goal is to reproduce Table 8.3 and Figures 8.10 and 8.11. in the
+textbook.
 \end{document}

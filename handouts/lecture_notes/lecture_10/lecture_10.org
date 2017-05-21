@@ -106,7 +106,7 @@ quadratic regression model as
 \label{eq:quadratic-testscore}
 TestScore = \beta_0 + \beta_1 Income + \beta_2 Income^2 + u
 \end{equation}
- 
+
 - This model is nonlinear, specifically quadratic, with respect to
   $Income$ because we include the squared income.
 - The population regression function is
@@ -132,7 +132,7 @@ A general nonlinear regression model is
 \label{eq:nl-general}
 Y_i = f(X_{i1}, X_{i2}, \ldots, X_{ik}; \beta_1, \beta_2, \ldots, \beta_m) + u_i
 \end{equation}
- 
+
 where $f(X_{i1}, X_{i2}, \ldots, X_{ik}; \beta_1, \beta_2, \ldots,
 \beta_m)$ is the *population nonlinear regression function*. Note that
 the number of regressors and the number of parameters are not
@@ -143,12 +143,12 @@ regressors for the i^{th} observation, and use
 $\boldsymbol{\beta}=(\beta_1, \beta_2, \ldots, \beta_m)$ to represent
 the parameters to be estimated. Then, the nonlinear regression model
 in Equation (\ref{eq:nl-general}) can be re-written as
- 
+
 \begin{equation}
 \label{eq:nl-general-mat}
 Y_i = f(\mathbf{X}_i; \boldsymbol{\beta}) + u_i
 \end{equation}
- 
+
 In this lecture, we focus on the nonlinear regression models
 such that $f(\cdot)$ is nonlinear with $\mathbf{X}_i$ but linear with
 $\boldsymbol{\beta}$. So this type of models are also consider as
@@ -169,9 +169,9 @@ differentiable, the marginal effect of $X_1$ is the partial derivative
 of $f$ with respect to $X_1$, that is, holding other things constant
 \[ \mathrm{d}Y = \frac{\partial f(X_1, \ldots, X_k;
 \boldsymbol{\beta})}{\partial X_i} \mathrm{d} X_i \]
-because $\mathrm{d}X_j = 0$ for $j \neq i$. 
+because $\mathrm{d}X_j = 0$ for $j \neq i$.
 
- 
+
 ** Application to test scores and income
 
 We estimate the quadratic regression model for test scores and
@@ -189,7 +189,7 @@ coefficient. That is, we test $H_0:\, \beta_2 = 0 \text{ vs. } H_1:\,
 against the linear regression model. For this two-sided test, we can
 as usual compute the t-statistic
 \[ t = \frac{-0.0423}{0.0048} = -8.81 > -1.96 \]
- 
+
 Thus, we can reject the null at the 1%, 5% and 10% significance levels.
 
 From Equation (\ref{eq:tsr-income2}), we can compute the effect of
@@ -266,7 +266,7 @@ H_1:\, \text{ at least one } \beta_j \neq 0, j = 2, \ldots, r \]
 - Then, we can calculate
   \[\frac{\dx Y}{\dx X} = \beta_1 + 2\beta_2 X + 3\beta_3 X^2 \]
 - The effect of a unit change in $X$ on $Y$ depends on the value of
-  $X$ at evaluation. 
+  $X$ at evaluation.
 
 *** Which degree polynomial should I use?
 - Balance a trade-off between flexibility and statistical precision.
@@ -293,12 +293,12 @@ H_1:\, \text{ at least one } \beta_j \neq 0, j = 2, \ldots, r \]
 We estimate a cubic regression model relating test scores to district
 income as follows
 \begin{equation*}
-\widehat{TestScore} = \underset{\displaystyle (5.1)}{600.1} 
+\widehat{TestScore} = \underset{\displaystyle (5.1)}{600.1}
                     + \underset{\displaystyle (0.71)}{5.02} Income
-                    - \underset{\displaystyle (0.029)}{0.096} Income^2 
-                    + \underset{\displaystyle (0.00035)}{0.00069} Income^3, \hat{R}^2 = 0.555 
+                    - \underset{\displaystyle (0.029)}{0.096} Income^2
+                    + \underset{\displaystyle (0.00035)}{0.00069} Income^3, \hat{R}^2 = 0.555
 \end{equation*}
- 
+
 - Test whether it is a cubic model. We can test the null $H_0: \beta_3
   = 0$ using the t-statistic, which is 1.97 so that we can reject the
   null at the 5% level but fail to reject the null at the 1% level.
@@ -600,7 +600,7 @@ Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 (X_{1i} \times X_{2i})
 - Similarly, the effect of a change in $X_2$, holding $X_1$ constant, is
   \[ \frac{\Delta Y}{\Delta X_2} = \beta_1 + \beta_3 X_1 \]
 
-* TODO Regression Functions That Are Nonlinear in the Parameters
+* Regression Functions That Are Nonlinear in the Parameters
 
 All the regression models that we have discussed in this lecture are
 nonlinear in the regressors but linear in parameters so that we can
@@ -697,12 +697,13 @@ of squared prediction mistakes. That is
 The solution to this minimization problem is the nonlinear least
 squares estimators.
 
-* TODO COMMENT Nonlinear effects on test scores of the student-teacher ratio
+* Nonlinear effects on test scores of the student-teacher ratio
+
 We apply the nonlinear regression models to examine the effect of
 the student-teacher ratios on test scores in California elementary
 school districts.
 
-Let's read *[[file:~/MyGit/Teaching/201603_IntroEconometrics/lecturenotes/r_tutorials/replicate_ch8.pdf][The R tutorial for nonlinear least squares]]*.
+Let's read [[file+sys:run:replicate_ch8/replicate_ch8.pdf][replicate_ch8.pdf]].
 
 The goal is to reproduce Table 8.3 and Figures 8.10 and 8.11. in the
 textbook.
