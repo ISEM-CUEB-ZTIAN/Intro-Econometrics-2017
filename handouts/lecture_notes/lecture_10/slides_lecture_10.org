@@ -627,6 +627,47 @@ Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 (X_{1i} \times X_{2i})
   \[ \frac{\Delta Y}{\Delta X_2} = \beta_1 + \beta_3 X_1 \]
 
 
+* Warm-up exercises
+
+** Question 1
+
+The interpretation of the slope coefficient in the model $\ln(Y_i) =
+\beta_0 + \beta_1 \ln(X_i)+ u_i$ is as follows:
+- A) :: a 1% change in X is associated with a \beta_{1}% change in Y.
+- B) :: a change in X by one unit is associated with a \beta_{1} change in Y.
+- C) :: a change in X by one unit is associated with a 100 \beta_{1} % change in Y.
+- D) :: a 1% change in X is associated with a change in Y of 0.01\beta_{1}.
+\pause
+Answer: A
+
+** Question 2
+
+In the regression model $Y_i = \beta_0 + \beta_1 X_i + \beta_2 D_i +
+\beta_3 (X_i \times D_i) + u_i$, where X is a continuous variable and
+D is a binary variable, to test that the two regressions are
+identical, you must use the
+- A) :: t-statistic separately for $\beta_2 = 0, \beta_3 = 0$. 
+- B) :: F-statistic for the joint hypothesis that $\beta_0 = 0,
+        \beta_1 = 0$
+- C) :: t-statistic separately for $\beta_3 = 0$
+- D) :: F-statistic for the joint hypothesis that $\beta_2 = 0,
+        \beta_3 = 0$. 
+\pause
+Answer:  D
+
+\pause
+** Question 3
+(Requires Calculus)  In the equation $\widehat{TestScore} = 607.3 +
+3.85 Income - 0.0423 Income^2$, the following income level results in
+the maximum test score
+- A) :: 607.3.
+- B) :: 91.02.
+- C) :: 45.50.
+- D) :: cannot be determined without a plot of the data.
+\pause
+Answer:  C
+
+
 * Regression Functions That Are Nonlinear in the Parameters
 ** Nonlinear regression models and nonlinear least squares estimator
 
