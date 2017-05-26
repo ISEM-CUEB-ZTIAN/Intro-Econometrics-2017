@@ -1,0 +1,680 @@
+#+TITLE: Lecture 11: Assessing Studies Based on Multiple Regression
+#+AUTHOR: Zheng Tian
+#+DATE: 
+#+STARTUP: beamer
+#+OPTIONS: toc:1 H:2
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation,10pt]
+#+BEAMER_THEME: CambridgeUS
+#+BEAMER_COLOR_THEME: beaver
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \newtheorem{mydef}{Definition}
+#+LATEX_HEADER: \newtheorem{mythm}{Theorem}
+#+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
+#+LATEX_HEADER: \newcommand{\var}{\mathrm{var}}
+#+LATEX_HEADER: \newcommand{\cov}{\mathrm{cov}}
+#+LATEX_HEADER: \newcommand{\corr}{\mathrm{corr}}
+#+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
+#+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+#+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
+#+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{color}
+#+LATEX_HEADER: \usepackage{caption}
+#+LATEX_HEADER: \usepackage{subcaption}
+
+* COMMENT Warm-up exercises                                 :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+** Warm-up exercises
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+*** The interpretation of the slope coefficient in the model $\ln(Y_i) = \beta_0 + \beta_1 \ln(X_i)+ u_i$ is as follows:
+- A) :: a 1% change in X is associated with a \beta_{1}% change in Y.
+- B) :: a change in X by one unit is associated with a \beta_{1} change in Y.
+- C) :: a change in X by one unit is associated with a 100 \beta_{1} % change in Y.
+- D) :: a 1% change in X is associated with a change in Y of 0.01\beta_{1}.
+\pause
+Answer: A
+
+*** In the regression model $Y_i = \beta_0 + \beta_1 X_i + \beta_2 D_i + \beta_3 (X_i \times D_i) + u_i$, where X is a continuous variable and D is a binary variable, to test that the two regressions are identical, you must use the
+- A) :: t-statistic separately for $\beta_2 = 0, \beta_3 = 0$. 
+- B) :: F-statistic for the joint hypothesis that $\beta_0 = 0,
+        \beta_1 = 0$
+- C) :: t-statistic separately for $\beta_3 = 0$
+- D) :: F-statistic for the joint hypothesis that $\beta_2 = 0,
+        \beta_3 = 0$. 
+\pause
+Answer:  D
+
+\pause
+*** (Requires Calculus)  In the equation $\widehat{TestScore} = 607.3 + 3.85 Income - 0.0423 Income^2$, the following income level results in the maximum test score
+- A) :: 607.3.
+- B) :: 91.02.
+- C) :: 45.50.
+- D) :: cannot be determined without a plot of the data.
+\pause
+Answer:  C
+
+* COMMENT Introduction
+** Introduction 
+*** Overview
+The preceding lectures explain how to use multiple regression to
+analyze the relationship among variables. In this lecture, we step
+back and ask, What makes a study that uses multiple regression
+reliable? We answer this question by assessing regression analysis
+under the framework of internal and external validity. 
+
+*** Reading materials
+- Chapter 9 in /Introduction to Econometrics/ by Stock and Watson. 
+
+* Internal and External Validity
+#+TOC: headlines [currentsection]
+** An over view of internal and external validity
+
+- The concepts of internal and external validity provide a general
+  framework for assessing whether a statistical or econometric study is
+  useful for answering a specific question of interest. 
+
+\vspace{0.1cm} 
+
+- We focus on regression analysis that have the objective
+  of estimating the causal effect of a change in some independent
+  variable on a dependent variable.
+
+** The population and setting studied versus the population and setting of interest
+*** The population and setting studied
+- The population studied is the population of entities-people,
+  companies, school districts, and so forth-from which the sample is
+  drawn. 
+- The setting studied refers to as the institutional, legal, social,
+  and economic environment in which the population studied fits in and
+  the sample is drawn. 
+
+*** The population and setting of interest
+- The population and setting of interest is the population
+  and setting of entities to which the causal inferences from the study
+  are to be applied. 
+
+** Definition of internal and external validity
+*** Internal validity
+
+The statistical inferences about causal effects are valid for the
+population being studied.
+
+*** External validity
+
+The statistical inferences can be generalized from the population and
+setting studied to other populations and settings of interest. 
+
+** Threats to internal validity
+*** Internal validity consists of two components
+
+- The estimator of the causal effect should be unbiased and
+  consistent.
+- Hypothesis tests should have the desired significance level, and the
+  confidence intervals should have the desired confidence level.
+
+*** Internal validity in regression analysis
+
+1) the OLS estimator is unbiased and consistent, and
+2) the standard errors are computed in the correct way that makes
+   confidence intervals have the desired confidence level.
+
+** Threats to external validity
+
+*** Differences in populations
+The causal effect may be different regarding different populations
+- demographic and personal characteristics
+- geographic and climate features
+- timing
+
+*** Differences in settings
+- Difference in institutional environment, laws, or physical
+  environment. 
+
+*** How to assess the external validity of a study
+- Use specific knowledge.
+- Case-by-case judgment. 
+
+** Threats to Internal Validity of Multiple Regression Analysis
+We introduce five threats to the internal validity of regression studies:
+1. Omitted variable bias
+2. Wrong functional form
+3. Errors-in-variables bias
+4. Sample selection bias
+5. Simultaneous causality bias
+
+\vspace{0.3cm} 
+All of these imply that $E(u_i|X_{1i},…,X_{ki}) \neq 0$ so as to make
+the OLS estimators biased and inconsistent.  
+
+* Omitted Variable Bias
+** Omitted variable bias
+
+What are the two conditions for omitted variable bias?
+\pause
+1. At least one of the included regressors must be correlated with the
+   omitted variable.
+2. The omitted variable must be a determinant of the dependent
+   variable, $Y$.
+
+** Solutions to omitted variable bias when the variable is observed or there are adequate control variables
+
+- Include the omitted variables or the control variables
+  - Avoid the violation of the first least squares assumption, $E(u |
+    X ) = 0$ or to let the conditional mean independence assumption
+    hold, i.e., $E(u|X, W) = E(u|X)$
+
+\vspace{0.2cm} 
+
+- Adding an additional independent variable may reduce the precision of the
+  estimators of the coefficients 
+  - when the new variable actually does not belong to the population
+    regression function,
+  - when the new variable is correlated with other regressors.
+
+** Solutions to omitted variable bias when the variable is observed or there are adequate control variables
+
+1. Identify the key coefficient(s) of interest.
+
+2. /a priori/ reasoning: before analyzing data, you should consider
+   - What are the most likely sources of important omitted variable?
+   - Answer the question using economic theory and expert knowledge.
+
+3. Result in a base specification and a list of additional
+   questionable variables that might help mitigate possible omitted
+   variable bias.
+
+4. Augment your base specification with the additional questionable
+   control variables.
+
+5. Present an accurate summary of your results in tabular form.
+
+** Solutions to omitted variable bias when adequate control variables are not available
+
+- Panel data regression;
+- Instrumental variables regression;
+- Randomized controlled experiment. 
+
+** COMMENT Panel data regression \\ \small Panel data 
+
+Panel data (or longitudinal data) consist of observations on the same $n$ entities at two or
+more time periods. If the data set contains observations on the
+variables $X$ and $Y$, then the data are denoted
+\[ (X_{it}, Y_{it}),\; i = 1, \ldots, n \text{ and } t = 1, \ldots, T \]
+where the first subscript, $i$, refers to the entity being observed
+and the second subscript, $t$, refers to the date at which it is
+observed. 
+
+The key of using panel data regression to circumvent omitted variable
+bias lies in the idea that omitted variables that represent personal
+characteristics do not change over time so that any changes in $Y$
+over time cannot be caused by the omitted variable.
+
+** COMMENT Panel data regression \\ \small The fixed effects panel data regression model
+Suppose we have $n$ entities and $T$ observations for each
+entity. $X_{it}$ is the observed regressor, $Y_{it}$ is the dependent
+variable, and $Z_i$ is the unobserved time-invariant variable
+representing idiosyncratic characteristics of entity $i$. We can set
+up a linear regression model as follows 
+\[ Y_{it} = \beta_0 + \beta_1 X_{it} +
+\beta_2 Z_i + u_{it} \] 
+This model is a simple representation of the *fixed effects* panel
+data regression model, in which $Z_i$ is usually defined as a dummy
+variable for entity $i$. 
+
+\vspace{0.3cm} 
+Panel data regressions are discussed in Chapter 10. 
+
+** COMMENT Instrumental variables regression
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+
+If the omitted variable(s) cannot be measured, we can use an instrumental
+variables (IV) regression. Suppose that in the simple linear
+regression model
+\[ Y_i = \beta_0 + \beta_1 X_i + u_i, i = 1, \ldots, n \]
+$X_i$ and $u_i$ are correlated due to unobserved omitted
+variables. Then we can use an instrumental variable $Z$ to account for
+the part in $X$ that is correlated with $u$. 
+*** The validity of an instrumental variable
+For an instrumental variable $Z$ to be valid, it
+must satisfy two conditions: 
+1. *Instrument relevance*: $\corr(Z_i, X_i) \neq 0$
+2. *Instrument exogeneity*: $\corr(Z_i, u_i) = 0$
+
+*** The two-stage-least-squares method
+The model is estimated using the Two-Stage-Least-Squares (TSLS) method
+which basically consists of two steps:
+- Stage 1 :: Regress $X_i$ on $Z_i$, including an intercept, obtain
+             the predicted values, $\hat{X}_i$.
+- Stage 2 :: Regress $Y_i$ on $\hat{X}_i$, including an intercept; the
+             coefficient on $\hat{X}_i$ is the TSLS estimator
+             $\hat{\beta}_1^{TSLS}$. 
+
+The IV estimation is discussed in Chapter 12. 
+
+** COMMENT Randomized controlled experiment
+
+The third solution is to use a research design in which the effect of
+interest is studied using a randomized controlled
+experiment. Randomized controlled experiments are discussed in
+Chapter 12.
+
+* Misspecification of the Functional Form 
+
+** Misspecification of the functional form of the regression function
+
+- Functional form misspecification arises when the functional form of
+  the estimated regression function differs from the functional form of
+  the population regression function. 
+  - e.g., nonlinear vs. linear models
+
+\vspace{0.1cm}
+
+- Functional form misspecification bias can be considered as a type of
+  omitted variable bias, in which the omitted variables are the terms
+  that reflect the missing nonlinear aspects of the regression
+  function. 
+  - e.g., missing the quadratic term
+
+** Solutions to functional form misspecification
+
+- Plotting the data and the estimated regression function.
+
+\vspace{0.1cm}
+
+- Use a different functional form.
+  - Continuous dependent variable:  use the “appropriate” nonlinear
+    specifications in X (logarithms, interactions, etc.) 
+  - Discrete (example: binary) dependent variable:  need an extension of
+    multiple regression methods (“probit” or “logit” analysis for binary
+    dependent variables) 
+
+* Measurement Errors and Errors-in-Variable Bias
+
+** Measurement error and errors-in-variable bias
+
+Measurement errors often happen in practice. 
+- respondents misstated answers to survey questions
+- typographical errors when data were entered into the database
+- the malfunctions of machines when recording data. 
+
+\vspace{0.1cm}
+
+Measurement errors in
+- dependent variable
+- independent variable \Rightarrow *errors-in-variable bias*.
+
+** Definition of errors-in-variable bias
+
+- *Errors-in-variables bias* in the OLS estimator arises when an
+  independent variable is measured imprecisely. 
+
+\vspace{0.3cm}
+
+- This bias depends on the nature of the measurement error and persists
+  even if the sample size is large.
+
+** Mathematical illustration of errors-in-variable bias
+- The population regression model is 
+  \[ Y_i = \beta_0 + \beta_1 X_i + u_i, \text{ where } E(u_i | X_i) =
+  0 \text{ is satisfied}  \]
+
+- Suppose a regressor $X_i$ is imprecisely measured by
+  $\tilde{X}_i$.
+  - The measurement error is $w_i = \tilde{X}_i - X_i$.
+  - Assume $E(w_i) = 0$ and $\var(w_i) = \sigma^2_w$.
+
+- Rewrite the model in terms of $\tilde{X}_i$,
+  \begin{equation}
+  \begin{split}
+  Y_i &= \beta_0 + \beta_1 \tilde{X}_i + [\beta_1 (X_i - \tilde{X}_i) + u_i] \\
+      &= \beta_0 + \beta_1 \tilde{X}_i + v_i \label{eq:err-in-var}
+  \end{split}
+  \end{equation}
+  - The new error term is $v_i = \beta_1(X_i - \tilde{X}_i) + u_i$
+
+- If $\cov(w_i, \tilde{X}_i) \neq 0$, then $\cov(v_i, \tilde{X}_i)
+  \neq 0$ and the OLS estimator $\hat{\beta}_1$ is biased since
+  $E(v_i | \tilde{X}_i) \neq 0$.
+
+** The biased and inconsistent OLS estimator with measurement errors
+
+- If $\cov(w_i, \tilde{X}_i) \neq 0$, then $\cov(v_i, \tilde{X}_i)
+  \neq 0$ and the OLS estimator $\hat{\beta}_1$ is biased since
+  $E(v_i | \tilde{X}_i) \neq 0$.
+
+\vspace{0.3cm}
+
+- The OLS estimator is inconsistent.
+  - The precise size and direction of the bias in $\hat{\beta}_1$ depend
+    on the correlation between $\tilde{X}_i$ and the measurement error
+    $w_i$. This correlation depends, in turn, on the specific nature of
+    the measurement error. 
+
+** The classical measurement error model
+
+- The classical measurement error model assumes that the errors are
+  purely random. 
+  $$\corr(w_i, X_i) = 0 \text{ and }\corr(w_i, u_i) = 0$$
+
+- The errors are correlated with $\tilde{X}_i$, that is,
+  $\corr(\tilde{X}_i, w_i) \neq 0$. 
+
+- In the classical measurement model, the OLS estimator
+  $\hat{\beta}_1$ is inconsistent, and its the probability limit is
+  \begin{equation}
+  \label{eq:eiv-lim}
+  \hat{\beta}_1 \rarrowd{p} \frac{\sigma^2_X}{\sigma^2_X + \sigma^2_w}\beta_1
+  \end{equation}
+
+- Since $\frac{\sigma^2_X}{\sigma^2_X + \sigma^2_w} < 1$, Equation
+  (\ref{eq:eiv-lim}) implies that
+  $\hat{\beta}_1$ is biased toward 0.
+  - When $\sigma^2_w$ is very large, then $\hat{\beta}_1 \rarrowd{p} 0$;
+  - When $\sigma^2_w$ is very small, then $\hat{\beta}_1 \rarrowd{p} \beta_1$.
+
+** COMMENT The classical measurement error model (cont'd)
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+
+Since $\tilde{X}_i = X_i + w_i$, we have $\var(\tilde{X}_i) = \sigma^2_{X} + \sigma^2_w$. 
+
+According to Equation (\ref{eq:eiv-lim}) and $\cov(X_i, u_i) = 0$, we have
+\begin{gather*}
+v_i = \beta_1 (X_i - \tilde{X}_i) + u_i = -\beta_1 w_i + u_i \\
+\cov(\tilde{X}_i, w_i) = \cov(X_i + w_i, w_i) = \sigma^2_w \\
+\cov(\tilde{X}_i, v_i) = -\beta_1 \cov(\tilde{X}_i, w_i) + \cov(\tilde{X}_i, u_i) = -\beta_1 \sigma^2_w
+\end{gather*}
+
+Recall that when the error term is correlated with the regressor, like
+$\cov(\tilde{X}_i, v_i) \neq 0$, then $\hat{\beta_1}$ has the
+probability limit 
+\[\hat{\beta}_1 \rarrowd{p} \beta_1 +
+\frac{\cov(\tilde{X}_i, v_i)}{\var(\tilde{X}_i)} \] 
+for which the
+probability limit is just 
+\[ \beta_1 - \beta_1
+\frac{\sigma^2_w}{\sigma^2_{\tilde{X}_i}} =
+\frac{\sigma^2_X}{\sigma^2_X + \sigma^2_w}\beta_1 \]
+
+** COMMENT The modeling of error-in-variable bias \\ \small The best-guess error model
+
+In contrast with the classical error model, the best-guess model
+assume that $w_i$ and $\tilde{X}_i$ are uncorrelated in the sense that
+$\tilde{X}_i$ is the best guess about $X_i$ given all available
+information. 
+
+- $\tilde{X}_i$ is modeled as the conditional mean of $X_i$, given the
+  information available to the respondent, that is, $\tilde{X}_i =
+  E(X_i | \Phi_i)$, where $\Phi_i$ represents the all available data
+  (or information), including $\tilde{X}_i$. It follows that
+  $E(\tilde{X}_i - X_i | \tilde{X}_i) = 0$.
+
+- Then, the measurement error is uncorrelated with $\tilde{X}_i$. That
+  is,
+
+  \[ E(w_i \tilde{X}_i) = E \left[ E \left( (\tilde{X}_i - X_i)\tilde{X}_i|
+  \tilde{X}_i \right) \right] = E\left[ E\left( \tilde{X}_i - X_i |
+  \tilde{X}_i \right) \tilde{X}_i \right] = 0\]
+
+- If $\tilde{X}_i$ is uncorrelated with $u_i$, then $\tilde{X}_i$ is
+  uncorrelated with $v_i$, that is, $E(v_i \tilde{X}_i) =
+  0$.
+
+- $\hat{\beta}_1$ is consistent but inefficient.
+
+** Measurement error in Y
+The effect of measurement error in Y is different from that in
+X. Generally, measurement in Y that has conditional mean zero given
+the regressors will not induce bias in the OLS coefficients, but will
+lead to inefficient estimators. 
+
+- Suppose Y has the classical measurement error, that is, what we
+  observe, $\tilde{Y}_i$, is the true value of $Y_i$ plus a purely
+  random error $w_i$. Then, the regression model is 
+  \[ \tilde{Y}_i = \beta_0 + \beta_1 X_i + v_i, \text{ where } v_i = w_i +
+  u_i\]
+- If $w_i$ and $X_i$ are independently distributed so that $E(w_i | X_i)
+  = 0$, in which case $E(v_i | X_i) = 0$, so $\hat{\beta}_1$ is
+  unbiased.
+- Since $\var(v_i) = \var(w_i) + \var(u_i) > \var(u_i)$, the variance
+  of $\hat{\beta}_1$ is larger than it would be without measurement
+  error. 
+
+** Solutions to errors-in-variable bias
+- Get an accurate measure of $X$ as possible as you can.
+- Use an instrumental variable that is correlated with the actual
+  value of $X_i$ but is uncorrelated with the measurement error.
+- Develop a mathematical model of the measurement error and use the
+  resulting formula to adjust the estimates. This requires specific
+  knowledge of the errors. 
+
+* COMMENT Missing data and sample selection
+
+** Missing data and sample selection
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+Missing data are a common feature of economic data sets. Whether
+missing data pose a threat to internal validity depends on why the
+data are missing. We consider three cases of missing data. 
+
+*** Missing data at random
+
+When data are missing completely at random, unrelated with $X$ and
+$Y$, then the effect is to reduce the sample size but not introduce
+any estimation bias. 
+
+*** Missing data based on $X$
+
+When the data are missing based on the value of a regressor but
+unrelated with generating $Y$, the effect is also to reduce the sample
+size but not introduce bias. 
+
+\vspace{0.2cm}
+For example, we repeat an experiment
+examining the influence of X on Y on several days and save the results
+at different time. Suppose that time is a regressor, and we miss the
+all data from 1 pm to 2 pm. If the missing data do not affect the
+process of doing the experiment, then the estimate of the causal
+effect of X on Y will still be unbiased. 
+
+** Missing data and sample selection \\ \small Sample selection bias
+
+When the data are missing because of a selection process that is
+related with the value of the dependent variable $Y$, beyond depending
+on the regressors $X$, then this selection process can introduce
+correlation between the error term and the regressors, resulting in
+*sample selection bias*.
+
+\vspace{0.3cm}
+The sample selection problem can be cast either as a consequence of
+nonrandom sampling or as a missing data problem, illustrated using the
+following two examples. 
+
+** \small Sample selection bias (cont'd)
+:PROPERTIES:
+:BEAMER_opt: shrink,plain
+:END:
+*** Nonrandom sampling: Height of undergraduates
+The professor of Statistics asks you to estimate the mean height of
+  undergraduate males. You collect your data (obtain your sample) by
+  standing outside the basketball team’s locker room and recording the
+  height of the undergraduates who enter.
+  - Is this a good research design – will it yield an unbiased
+    estimate of undergraduate height?
+  - You have sampled individuals in a way that was related to
+    the outcome Y (height), resulting in bias.
+
+*** Missing data: Trade volume of pairs of countries
+- The amount of commodities that two countries can trade depends on
+  GDP of two countries, industrial structures, factor abundance,
+  etc.
+- We can get the data on trade volume between pairs of countries
+  from World Bank, Penn World Table, etc. 
+- Using the data of observed trade volume between pairs of countries
+  can lead to sample selection bias because the sample selection
+  process omit the pairs of countries that do not trade with each
+  other. But the fact that two countries do not trade may also bear
+  some economic meaning that can influence the causal effect of the
+  variables of interest on trade volume. 
+
+*** Solutions to sample selection bias 
+- Collect the sample in a way that avoids sample. 
+- Heckman's two-step method.
+- Randomized controlled experiment.
+- Construct a model of the sample selection problem and estimate that
+  model. 
+
+* COMMENT Simultaneous causality
+
+** Simultaneous causality
+Up to now, all we examined is how $X$ can cause $Y$. What if $Y$ causes
+$X$? If $Y$ does cause $X$ in some way, there is *simultaneous
+causality* problem, which lead to biased and inconsistent OLS
+estimator. 
+
+\vspace{0.3cm}
+There are many examples of simultaneous causality in Economics. In the
+paper of Acemuglou et al.(2000), /The Colonial Origins of Comparative
+Development: An Empirical Investigation/, the authors estimate the
+effect of institutions on economic performance. However, the
+simultaneous causality (or mutual causality) comes from the fact that
+not only do good institutions promote economic performance, but also
+countries with high GDP per capita can afford good institutions and
+secure property rights, which in turn yield better economic
+performance. 
+
+** Simultaneous causality bias
+Simultaneous causality leads to biased estimates of the effect of $X$
+on $Y$, referred to as *simultaneous causality bias*. We can express
+the simultaneous causality using a simultaneous equations.
+\begin{gather}
+Y_i = \beta_0 + \beta_1 X_i + u_i \label{eq:sim-cau-1} \\
+X_i = \gamma_0 + \gamma_1 Y_i + v_i \label{eq:sim-cau-2}
+\end{gather}
+
+Intuitively, simultaneous causality comes from the following facts. 
+- Large $u_i$ means large $Y_i$, which implies large $X_i$ (if
+  $\gamma_1$ > 0). 
+- This implies that $u_i$ and $X_i$ are correlated, i.e., $\cov(X_i,
+  u_i) \neq 0$. 
+- Thus, the OLS estimator of $\beta_1$ from merely estimating Equation
+  (\ref{eq:sim-cau-1}) is biased and inconsistent.
+
+** Simultaneous causality bias (cont'd)
+Formally, we can prove that $\cov(X_i, u_i) \neq 0$, resulting in the
+bias in the OLS estimator of $\beta_1$. 
+\begin{proof}
+\begin{align*}
+\cov(X_i, u_i) &= \cov(\gamma_0 + \gamma_1 Y_i + v_i, u_i) \\
+&= \gamma_1\cov(Y_i, u_i) + \cov(v_i, u_i) (\text{ Assuming } \cov(v_i, u_i)=0) \\
+&= \gamma_1\cov(\beta_0 + \beta_1 X_i + u_i, u_i) \\
+&= \gamma_1\cov(X_i, u_i) + \gamma_1\sigma^2_u
+\end{align*}
+Solving for $\cov(X_i, u_i)$ yields the result 
+$\cov(X_i, u_i) = \gamma_1 \sigma^2_u /(1-\gamma_1\beta_1)$, which is not
+equal to zero unless $\gamma_1 = 0$, i.e., the simultaneous causality does
+exist. 
+\end{proof}
+
+** Solutions to simultaneous causality bias
+- Run a randomized controlled experiment.  Because $X_i$ is chosen at
+  random by the experimenter, there is no feedback from the outcome
+  variable to $Y_i$ (assuming perfect compliance).
+- Develop and estimate a complete model of both directions of
+  causality.  This is the idea behind many large macro models
+  (e.g. Federal Reserve Bank-US).  This is extremely difficult in
+  practice.
+- Use instrumental variables regression to estimate the causal effect
+  of interest (effect of X on Y, ignoring effect of Y on X)
+
+* COMMENT Inconsistency of Standard Errors
+
+** Sources of inconsistency of OLS standard errors
+Inconsistent standard errors pose a different threat to internal
+validity. Even if the OLS estimator is consistent and the sample is
+large, inconsistent standard errors will produce hypothesis tests with
+size that differs from the desired significance level and "95%"
+confidence intervals that fail to include the true value in 95% of
+repeated samples. 
+
+\vspace{0.3cm}
+There are two main reasons for inconsistent standard errors:
+improperly handled heteroskedasticity and correlation of the error
+term across observations.
+
+** Heteroskedasticity
+If the errors are heteroskedastic and you mistakenly use the
+homoskedasticity-only standard errors that are reported by some
+software by default, then the t-test and the F-test based on the wrong
+standard errors do not have the desired size. 
+
+\vspace{0.3cm}
+The solution to this problem is to use heteroskedasticity-robust
+standard errors of the OLS estimators and to construct t- and
+F-statistics using a heteroskedasticity-robust variance estimator,
+which is provided as an option in modern software packages. 
+
+** The Breusch-Pagan test for heteroskedasticity
+:PROPERTIES:
+:BEAMER_opt: shrink
+:END:
+We can test whether heteroskedasticity exists in a regression model
+using the Breusch-Pagan test. The test consist of the following steps: 
+1. Estimate a regression model, $Y = \beta_0 + \beta_1 X_1 + \cdots +
+   \beta_k X_k + u$, and obtain the squared OLS residuals,
+   $\hat{u}^2$.
+2. Run a regression of $\hat{u}^2 = \delta_0 + \delta_1 X_1 + \cdots +
+   \delta_k X_k + v$, and obtain the $R^2$ of this regression, denoted
+   as $R^2_{\hat{u}^2}$.
+3. Test the null hypothesis, $H_0: E(u^2 | X_1, \ldots, X_k) =
+   \sigma^2$, i.e., homoskedasticity, against the alternative
+   hypothesis for heteroskedasticity. The test statistics can be the
+   overall F statistics for the regression in the second step, which
+   is
+   \[ F = \frac{R^2_{\hat{u}^2}/k}{(1 - R^2_{\hat{u}^2})/(n-k-1)} \sim
+   F(k, n-k-1)\]
+   Or we can compute an LM test statistics, which is
+   \[ LM = n R^2_{\hat{u}^2} \sim \chi^2(k) \]
+   where $n$ is the number of observations. 
+4. Based on the F-statistic or the LM statistic, compute the
+   p-value. If the p-value is smaller than the significance level, we
+   can reject the null hypothesis of homoskedasticity.
+
+** Correlation of the error term across observations
+In the lease squares assumptions, we assume that $(X_i, Y_i)$ for
+$i=1, \ldots, n$ are i.i.d., which implies that $u_i$ are uncorrelated
+across observations. However, in some setting, the population
+regression error can be correlated across observations. There are
+mainly two types of correlation in consideration: serial correlation
+and spatial correlation. 
+
+- Serial correlation arises from the repeated observations over the
+  same entity over time. It is a prevalent problem in time series
+  data. 
+- Spatial correlation arises from the influence of contiguous
+  (neighboring) observations over geographic units.
+- The OLS estimator with serial correlation or spatial correlation is
+  still unbiased and consistent, but inference based on no correlation
+  assumption is not valid.
+
+** Solutions to correlation of the error term across observations
+- use the *heteroskedasticity-and-auto-correlation-consistent
+  standard errors (HAC)*. We will learn how to handle serial
+  correlation in time series data in the next two semesters. 
+
+\vspace{0.3cm}
+- Model the spatial correlation specifically. Spatial econometrics
+  is a branch of econometrics that deals with spatial correlation. 

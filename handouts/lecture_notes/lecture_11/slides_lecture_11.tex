@@ -1,0 +1,418 @@
+% Created 2017-05-26 Fri 16:19
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation,10pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\newtheorem{mydef}{Definition}
+\newtheorem{mythm}{Theorem}
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\var}{\mathrm{var}}
+\newcommand{\cov}{\mathrm{cov}}
+\newcommand{\corr}{\mathrm{corr}}
+\newcommand{\pr}{\mathrm{Pr}}
+\newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+\DeclareMathOperator*{\plim}{plim}
+\newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+\author{Zheng Tian}
+\date{}
+\title{Lecture 11: Assessing Studies Based on Multiple Regression}
+\hypersetup{
+ pdfauthor={Zheng Tian},
+ pdftitle={Lecture 11: Assessing Studies Based on Multiple Regression},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\end{frame}
+
+
+\section{Internal and External Validity}
+\label{sec:org2bc7712}
+\setcounter{tocdepth}{1}
+\tableofcontents[currentsection]
+\begin{frame}[label={sec:org2eeee5f}]{An over view of internal and external validity}
+\begin{itemize}
+\item The concepts of internal and external validity provide a general
+framework for assessing whether a statistical or econometric study is
+useful for answering a specific question of interest.
+\end{itemize}
+
+\vspace{0.1cm} 
+
+\begin{itemize}
+\item We focus on regression analysis that have the objective
+of estimating the causal effect of a change in some independent
+variable on a dependent variable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgcbe640f}]{The population and setting studied versus the population and setting of interest}
+\begin{block}{The population and setting studied}
+\begin{itemize}
+\item The population studied is the population of entities-people,
+companies, school districts, and so forth-from which the sample is
+drawn.
+\item The setting studied refers to as the institutional, legal, social,
+and economic environment in which the population studied fits in and
+the sample is drawn.
+\end{itemize}
+\end{block}
+
+\begin{block}{The population and setting of interest}
+\begin{itemize}
+\item The population and setting of interest is the population
+and setting of entities to which the causal inferences from the study
+are to be applied.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org558b7ad}]{Definition of internal and external validity}
+\begin{block}{Internal validity}
+The statistical inferences about causal effects are valid for the
+population being studied.
+\end{block}
+
+\begin{block}{External validity}
+The statistical inferences can be generalized from the population and
+setting studied to other populations and settings of interest. 
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org10add6d}]{Threats to internal validity}
+\begin{block}{Internal validity consists of two components}
+\begin{itemize}
+\item The estimator of the causal effect should be unbiased and
+consistent.
+\item Hypothesis tests should have the desired significance level, and the
+confidence intervals should have the desired confidence level.
+\end{itemize}
+\end{block}
+
+\begin{block}{Internal validity in regression analysis}
+\begin{enumerate}
+\item the OLS estimator is unbiased and consistent, and
+\item the standard errors are computed in the correct way that makes
+confidence intervals have the desired confidence level.
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org64e22e3}]{Threats to external validity}
+\begin{block}{Differences in populations}
+The causal effect may be different regarding different populations
+\begin{itemize}
+\item demographic and personal characteristics
+\item geographic and climate features
+\item timing
+\end{itemize}
+\end{block}
+
+\begin{block}{Differences in settings}
+\begin{itemize}
+\item Difference in institutional environment, laws, or physical
+environment.
+\end{itemize}
+\end{block}
+
+\begin{block}{How to assess the external validity of a study}
+\begin{itemize}
+\item Use specific knowledge.
+\item Case-by-case judgment.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org6bb9bdb}]{Threats to Internal Validity of Multiple Regression Analysis}
+We introduce five threats to the internal validity of regression studies:
+\begin{enumerate}
+\item Omitted variable bias
+\item Wrong functional form
+\item Errors-in-variables bias
+\item Sample selection bias
+\item Simultaneous causality bias
+\end{enumerate}
+
+\vspace{0.3cm} 
+All of these imply that \(E(u_i|X_{1i},…,X_{ki}) \neq 0\) so as to make
+the OLS estimators biased and inconsistent.  
+\end{frame}
+
+\section{Omitted Variable Bias}
+\label{sec:org62ac70b}
+\begin{frame}[label={sec:org5dd421e}]{Omitted variable bias}
+What are the two conditions for omitted variable bias?
+\pause
+\begin{enumerate}
+\item At least one of the included regressors must be correlated with the
+omitted variable.
+\item The omitted variable must be a determinant of the dependent
+variable, \(Y\).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:org8f437d6}]{Solutions to omitted variable bias when the variable is observed or there are adequate control variables}
+\begin{itemize}
+\item Include the omitted variables or the control variables
+\begin{itemize}
+\item Avoid the violation of the first least squares assumption, \(E(u |
+    X ) = 0\) or to let the conditional mean independence assumption
+hold, i.e., \(E(u|X, W) = E(u|X)\)
+\end{itemize}
+\end{itemize}
+
+\vspace{0.2cm} 
+
+\begin{itemize}
+\item Adding an additional independent variable may reduce the precision of the
+estimators of the coefficients 
+\begin{itemize}
+\item when the new variable actually does not belong to the population
+regression function,
+\item when the new variable is correlated with other regressors.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgafc0301}]{Solutions to omitted variable bias when the variable is observed or there are adequate control variables}
+\begin{enumerate}
+\item Identify the key coefficient(s) of interest.
+
+\item \emph{a priori} reasoning: before analyzing data, you should consider
+\begin{itemize}
+\item What are the most likely sources of important omitted variable?
+\item Answer the question using economic theory and expert knowledge.
+\end{itemize}
+
+\item Result in a base specification and a list of additional
+questionable variables that might help mitigate possible omitted
+variable bias.
+
+\item Augment your base specification with the additional questionable
+control variables.
+
+\item Present an accurate summary of your results in tabular form.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:orgd31d2c9}]{Solutions to omitted variable bias when adequate control variables are not available}
+\begin{itemize}
+\item Panel data regression;
+\item Instrumental variables regression;
+\item Randomized controlled experiment.
+\end{itemize}
+\end{frame}
+
+\section{Misspecification of the Functional Form}
+\label{sec:orgfcac74a}
+
+\begin{frame}[label={sec:org04cfe82}]{Misspecification of the functional form of the regression function}
+\begin{itemize}
+\item Functional form misspecification arises when the functional form of
+the estimated regression function differs from the functional form of
+the population regression function. 
+\begin{itemize}
+\item e.g., nonlinear vs. linear models
+\end{itemize}
+\end{itemize}
+
+\vspace{0.1cm}
+
+\begin{itemize}
+\item Functional form misspecification bias can be considered as a type of
+omitted variable bias, in which the omitted variables are the terms
+that reflect the missing nonlinear aspects of the regression
+function. 
+\begin{itemize}
+\item e.g., missing the quadratic term
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgda2ac81}]{Solutions to functional form misspecification}
+\begin{itemize}
+\item Plotting the data and the estimated regression function.
+\end{itemize}
+
+\vspace{0.1cm}
+
+\begin{itemize}
+\item Use a different functional form.
+\begin{itemize}
+\item Continuous dependent variable:  use the “appropriate” nonlinear
+specifications in X (logarithms, interactions, etc.)
+\item Discrete (example: binary) dependent variable:  need an extension of
+multiple regression methods (“probit” or “logit” analysis for binary
+dependent variables)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Measurement Errors and Errors-in-Variable Bias}
+\label{sec:org4783f2a}
+
+\begin{frame}[label={sec:org284141e}]{Measurement error and errors-in-variable bias}
+Measurement errors often happen in practice. 
+\begin{itemize}
+\item respondents misstated answers to survey questions
+\item typographical errors when data were entered into the database
+\item the malfunctions of machines when recording data.
+\end{itemize}
+
+\vspace{0.1cm}
+
+Measurement errors in
+\begin{itemize}
+\item dependent variable
+\item independent variable \(\Rightarrow\) \alert{errors-in-variable bias}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org24fff68}]{Definition of errors-in-variable bias}
+\begin{itemize}
+\item \alert{Errors-in-variables bias} in the OLS estimator arises when an
+independent variable is measured imprecisely.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item This bias depends on the nature of the measurement error and persists
+even if the sample size is large.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org37efb02}]{Mathematical illustration of errors-in-variable bias}
+\begin{itemize}
+\item The population regression model is 
+\[ Y_i = \beta_0 + \beta_1 X_i + u_i, \text{ where } E(u_i | X_i) =
+  0 \text{ is satisfied}  \]
+
+\item Suppose a regressor \(X_i\) is imprecisely measured by
+\(\tilde{X}_i\).
+\begin{itemize}
+\item The measurement error is \(w_i = \tilde{X}_i - X_i\).
+\item Assume \(E(w_i) = 0\) and \(\var(w_i) = \sigma^2_w\).
+\end{itemize}
+
+\item Rewrite the model in terms of \(\tilde{X}_i\),
+\begin{equation}
+\begin{split}
+Y_i &= \beta_0 + \beta_1 \tilde{X}_i + [\beta_1 (X_i - \tilde{X}_i) + u_i] \\
+    &= \beta_0 + \beta_1 \tilde{X}_i + v_i \label{eq:err-in-var}
+\end{split}
+\end{equation}
+\begin{itemize}
+\item The new error term is \(v_i = \beta_1(X_i - \tilde{X}_i) + u_i\)
+\end{itemize}
+
+\item If \(\cov(w_i, \tilde{X}_i) \neq 0\), then \(\cov(v_i, \tilde{X}_i)
+  \neq 0\) and the OLS estimator \(\hat{\beta}_1\) is biased since
+\(E(v_i | \tilde{X}_i) \neq 0\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org1cbd779}]{The biased and inconsistent OLS estimator with measurement errors}
+\begin{itemize}
+\item If \(\cov(w_i, \tilde{X}_i) \neq 0\), then \(\cov(v_i, \tilde{X}_i)
+  \neq 0\) and the OLS estimator \(\hat{\beta}_1\) is biased since
+\(E(v_i | \tilde{X}_i) \neq 0\).
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item The OLS estimator is inconsistent.
+\begin{itemize}
+\item The precise size and direction of the bias in \(\hat{\beta}_1\) depend
+on the correlation between \(\tilde{X}_i\) and the measurement error
+\(w_i\). This correlation depends, in turn, on the specific nature of
+the measurement error.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org43d6f9f}]{The classical measurement error model}
+\begin{itemize}
+\item The classical measurement error model assumes that the errors are
+purely random. 
+$$\corr(w_i, X_i) = 0 \text{ and }\corr(w_i, u_i) = 0$$
+
+\item The errors are correlated with \(\tilde{X}_i\), that is,
+\(\corr(\tilde{X}_i, w_i) \neq 0\).
+
+\item In the classical measurement model, the OLS estimator
+\(\hat{\beta}_1\) is inconsistent, and its the probability limit is
+\begin{equation}
+\label{eq:eiv-lim}
+\hat{\beta}_1 \rarrowd{p} \frac{\sigma^2_X}{\sigma^2_X + \sigma^2_w}\beta_1
+\end{equation}
+
+\item Since \(\frac{\sigma^2_X}{\sigma^2_X + \sigma^2_w} < 1\), Equation
+(\ref{eq:eiv-lim}) implies that
+\(\hat{\beta}_1\) is biased toward 0.
+\begin{itemize}
+\item When \(\sigma^2_w\) is very large, then \(\hat{\beta}_1 \rarrowd{p} 0\);
+\item When \(\sigma^2_w\) is very small, then \(\hat{\beta}_1 \rarrowd{p} \beta_1\).
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgab50e81}]{Measurement error in Y}
+The effect of measurement error in Y is different from that in
+X. Generally, measurement in Y that has conditional mean zero given
+the regressors will not induce bias in the OLS coefficients, but will
+lead to inefficient estimators. 
+
+\begin{itemize}
+\item Suppose Y has the classical measurement error, that is, what we
+observe, \(\tilde{Y}_i\), is the true value of \(Y_i\) plus a purely
+random error \(w_i\). Then, the regression model is 
+\[ \tilde{Y}_i = \beta_0 + \beta_1 X_i + v_i, \text{ where } v_i = w_i +
+  u_i\]
+\item If \(w_i\) and \(X_i\) are independently distributed so that \(E(w_i | X_i)
+  = 0\), in which case \(E(v_i | X_i) = 0\), so \(\hat{\beta}_1\) is
+unbiased.
+\item Since \(\var(v_i) = \var(w_i) + \var(u_i) > \var(u_i)\), the variance
+of \(\hat{\beta}_1\) is larger than it would be without measurement
+error.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org4c7891f}]{Solutions to errors-in-variable bias}
+\begin{itemize}
+\item Get an accurate measure of \(X\) as possible as you can.
+\item Use an instrumental variable that is correlated with the actual
+value of \(X_i\) but is uncorrelated with the measurement error.
+\item Develop a mathematical model of the measurement error and use the
+resulting formula to adjust the estimates. This requires specific
+knowledge of the errors.
+\end{itemize}
+\end{frame}
+\end{document}

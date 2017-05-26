@@ -106,7 +106,9 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - Lecture notes ([[file:handouts/lecture_notes/lecture_10/lecture_10.pdf][pdf]])
 - Slides ([[file:handouts/lecture_notes/lecture_10/slides_lecture_10.pdf][beamer]])
 - R documents ([[file:handouts/lecture_notes/lecture_10/replicate_ch8.zip][zip]])
-
+** Lecture 11: Assessing Studies Based on Multiple Regression
+- Lecture notes ([[file:handouts/lecture_notes/lecture_11/lecture_11.pdf][pdf]], incomplete)
+- Slides ([[file:handouts/lecture_notes/lecture_11/slides_lecture_11.pdf][beamer]], incomplete)
 
 * Homework
 
