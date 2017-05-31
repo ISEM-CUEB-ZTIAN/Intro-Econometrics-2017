@@ -1,0 +1,54 @@
+> #"Empirical Exercise"
+> #problem a: 
+> setwd("C:/Users/user/Desktop")
+> a<-read.csv("TeachingRatings.csv")
+> attach(a)
+> plot(beauty,course_eval)
+> plot(beauty,course_eval,col="blue",pch=19,main="the scatterplot of average evaluations on the professor's beauty")
+> #The relationship between the variables is not very obvious,because whether the beauty level is high or low,the course evaluation points distribute homogeneously between high evaluation and low evaluation.But it seems that higher the level of beauty can lead to a large probability to get a higher evaluation.
+> #problem b:
+> head(a)
+  minority age female onecredit     beauty course_eval intro nnenglish
+1        1  36      1         0  0.2899157         4.3     0         0
+2        0  59      0         0 -0.7377322         4.5     0         0
+3        0  51      0         0 -0.5719836         3.7     0         0
+4        0  40      1         0 -0.6779634         4.3     0         0
+5        0  31      1         0  1.5097940         4.4     0         0
+6        0  62      0         0  0.5885687         4.2     0         0
+
+> b<-lm(course_eval~beauty,data=a)
+> summary(b)
+
+Call:
+lm(formula = course_eval ~ beauty, data = a)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.80015 -0.36304  0.07254  0.40207  1.10373 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  3.99827    0.02535 157.727  < 2e-16 ***
+beauty       0.13300    0.03218   4.133 4.25e-05 ***
+---
+Signif. codes:  0 ¡®***¡¯ 0.001 ¡®**¡¯ 0.01 ¡®*¡¯ 0.05 ¡®.¡¯ 0.1 ¡® ¡¯ 1
+
+Residual standard error: 0.5455 on 461 degrees of freedom
+Multiple R-squared:  0.03574,	Adjusted R-squared:  0.03364 
+F-statistic: 17.08 on 1 and 461 DF,  p-value: 4.247e-05
+
+> #so, the estimated intercept=3.998  ,  the estimated slope=0.133
+> course_eval=3.998+0.133beauty
+Error: unexpected symbol in "course_eval=3.998+0.133beauty"
+> mean(beauty)
+[1] 6.263499e-08
+> #Because the average of beauty is too small(almost equal to zero),so the estimated intercept is almost equal to the sample mean of course_evaluation.(3.998)
+> abline(b)
+> #problem c:
+> #professor waston:course_eval=3.998+6.263499e-08*0.133=3.998
+> sd(beauty)
+[1] 0.7886477
+> #professor Stock: course_eval=3.998+(6.263499e-08+0.7886)*0.133=4.103
+> #problem d:
+> #The estimated effect of Beauty on Course_eval is small.it means the slope of the regression line is small.
+> #problem e: R-squared=0.03574 which is far away from 1.That means beauty can not explain a large fraction of the variance in evaluations across courses.

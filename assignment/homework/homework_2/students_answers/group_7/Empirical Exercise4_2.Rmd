@@ -1,0 +1,126 @@
+---
+title: "Empirical Exercise"
+author: "LeTao Wang"
+date: "2017/4/2"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Answers
+
+### a.
+
+```{r,echo=TRUE}
+library(foreign)
+mydata<-read.dta("/Users/wangletao/Desktop/college/TeachingRatings/TeachingRatings.dta")
+df<-mydata[c("course_eval","beauty")]
+plot(df$beauty, df$course_eval,col="blue",pch=16,cex=0.5,bty="l",
+     main= "Scatterplot of Course Evaluation on Beauty",
+     xlab= "Beauty",ylab= "Course Evaluation")
+```
+
+We can compute the correlation coefficient between the two variables, using the function `cor`, to see the relationship.
+
+```{r,echo=TRUE}
+cor(df$beauty,df$course_eval)
+```
+
+Apparently, the relationship between the two variables is small.
+
+### b.
+
+Using `lm(course_eval~beauty,…)` to construct a regression.
+```{r mod,echo=TRUE}
+mod<-lm(course_eval~beauty,data=df)
+summary(mod)
+```
+
+From the table:
+
+* Estimated Intercept=3.998 (4)
+* Estimated Slope=0.133
+
+The linear regression equation:
+$$\hat{Y_i} = 3.998 +0.133 X_i + u_i, \text{ for } i = 1, \ldots, n$$
+
+Based on the scatterplot in **a**, we add the regression line:
+```{r,echo=TRUE}
+intercept<-coef(mod)[1]
+slope<-coef(mod)[2]
+texteq<-paste("Course Evaluation=",round(intercept,1),"+",round(slope,3),"Beauty",sep="")
+plot(df$beauty,df$course_eval,col="blue",pch=16,cex=0.5,bty="l",
+     xlab="Beauty",ylab="Course Evaluation")
+abline(intercept,slope,col="red")
+text(0.6,3.9,texteq,cex.lab = 0.5, font.lab = 3)
+```
+
+```{r df,echo=TRUE}
+summary(df)
+```
+
+According to the summary of *df* and *mod*, we can conclude that estimated intercept equals to the sample mean of Course_Eval.
+
+Because:
+$$\overline{Course\ Evaluation}= \hat\beta_0 + \hat\beta_1\overline{Beauty}$$
+
+and $\overline{Beauty}$=0.00 (According to the summary of *df*)
+=>$\overline{Course\   Evaluation}$=3.998+0.133*0=3.998=$\hat{intercept}$
+
+### c.
+
+Compute the standard deviation of beauty:
+
+```{r sumtab,echo=TRUE}
+std<-sapply(df,sd)
+print(std)
+```
+
+* Professor Watson: 
+  + Beauty=0
+  + Course Evaluation=4+0.133*0=4
+  
+* Professor Stock: 
+  + Beauty=0+ SD of Beauty =0+0.789=0.789
+  + Course Evaluation=4+0.133*0.789=4.105
+
+### d.
+
+* Small.
+
+* The determinant of the effect is the absolute value of regression’s slope.
+
+### e.
+
+According to the summary in **b**, we can know that the `Adjusted $R^2$= 0.03364`, which implies that the regressor *Beauty* explains ONLY 3.36% of the variance of the dependent variable *Course_Eval*.
+
+
+## Problem Codes
+
+```{r,eval=FALSE,echo=TRUE}
+library(foreign)
+mydata<-read.dta("/Users/wangletao/Desktop/college/TeachingRatings/TeachingRatings.dta")
+df<-mydata[c("course_eval","beauty")]
+plot(df$beauty, df$course_eval,col="blue",pch=16,cex=0.5,bty="l",
+     main= "Scatterplot of Course Evaluation on Beauty",
+     xlab= "Beauty",ylab= "Course Evaluation")
+cor(df$beauty,df$course_eval)
+mod<-lm(course_eval~beauty,data=df)
+summary(mod)
+intercept<-coef(mod)[1]
+slope<-coef(mod)[2]
+texteq<-paste("Course Evaluation=",round(intercept,1),"+",round(slope,3),"Beauty",sep="")
+plot(df$beauty,df$course_eval,col="blue",pch=16,cex=0.5,bty="l",
+     xlab="Beauty",ylab="Course Evaluation")
+abline(intercept,slope,col="red")
+text(0.6,3.9,texteq,cex.lab = 0.5, font.lab = 3)
+summary(df)
+std<-sapply(df,sd)
+print(std)
+```
+
+
