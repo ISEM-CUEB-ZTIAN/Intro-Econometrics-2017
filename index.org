@@ -27,22 +27,18 @@ all contents we have learned through lecture 1 to 8. A cheat sheet is
 allowed to bring in the exam. The following is a sample midterm test
 to help you prepare the midterm, [[file:assignment/midterm/A%20Sample%20Mid.pdf][a sample midterm]].
 
-
 ** [2017-04-10 Mon]
 
 - [[*Homework set #3][Homework set #3]] is assigned, due on *April 17th*.
-
 
 ** [2017-03-22 Wed]
 
 - [[*Homework set #2][Homework set #2]] is assigned, due on *April 5th*.
 
-
 ** [2017-03-20 Mon]
 
 You can download the following files, [[file:handouts/lecture_notes/r_docs/Reference%20Card.pdf][Rreferencecard.pdf]] and
 [[file:handouts/lecture_notes/r_docs/r-cheat-sheet-3.pdf][Rcheatsheet.pdf]], which can help you quickly find relevant R commands.
-
 
 ** [2017-03-06 Mon]
 
