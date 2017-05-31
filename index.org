@@ -12,7 +12,7 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 ** [2017-05-31 Wed]
 - [[*Homework set #6][Homework set #6]] is assigned. You can turn it in on the day of final
   exam, which is TBA. 
-- The sample final exam is here, [[file+sys:assignment/final/EconometricsFinalSample2017.docx][sample test.]]
+- The sample final exam is here, [[file:assignment/final/EconometricsFinalSample2017.docx.zip][zip]]. 
 
 ** [2017-05-14 Sun]
 [[*Homework set #5][Homework set #5]] is assigned, which is due on May 22nd.
