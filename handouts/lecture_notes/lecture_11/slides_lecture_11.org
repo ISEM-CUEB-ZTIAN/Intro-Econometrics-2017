@@ -460,15 +460,11 @@ lead to inefficient estimators.
   resulting formula to adjust the estimates. This requires specific
   knowledge of the errors. 
 
-* COMMENT Missing data and sample selection
+* Missing data and sample selection
 
 ** Missing data and sample selection
-:PROPERTIES:
-:BEAMER_opt: shrink
-:END:
-Missing data are a common feature of economic data sets. Whether
-missing data pose a threat to internal validity depends on why the
-data are missing. We consider three cases of missing data. 
+Whether missing data pose a threat to internal validity depends on why
+the data are missing. We consider three cases of missing data.
 
 *** Missing data at random
 
@@ -482,15 +478,7 @@ When the data are missing based on the value of a regressor but
 unrelated with generating $Y$, the effect is also to reduce the sample
 size but not introduce bias. 
 
-\vspace{0.2cm}
-For example, we repeat an experiment
-examining the influence of X on Y on several days and save the results
-at different time. Suppose that time is a regressor, and we miss the
-all data from 1 pm to 2 pm. If the missing data do not affect the
-process of doing the experiment, then the estimate of the causal
-effect of X on Y will still be unbiased. 
-
-** Missing data and sample selection \\ \small Sample selection bias
+*** Sample selection bias
 
 When the data are missing because of a selection process that is
 related with the value of the dependent variable $Y$, beyond depending
@@ -498,46 +486,38 @@ on the regressors $X$, then this selection process can introduce
 correlation between the error term and the regressors, resulting in
 *sample selection bias*.
 
-\vspace{0.3cm}
+
+** Sample selection bias: two examples
+
 The sample selection problem can be cast either as a consequence of
 nonrandom sampling or as a missing data problem, illustrated using the
 following two examples. 
 
-** \small Sample selection bias (cont'd)
-:PROPERTIES:
-:BEAMER_opt: shrink,plain
-:END:
 *** Nonrandom sampling: Height of undergraduates
+
 The professor of Statistics asks you to estimate the mean height of
-  undergraduate males. You collect your data (obtain your sample) by
-  standing outside the basketball team’s locker room and recording the
-  height of the undergraduates who enter.
-  - Is this a good research design – will it yield an unbiased
-    estimate of undergraduate height?
-  - You have sampled individuals in a way that was related to
-    the outcome Y (height), resulting in bias.
+undergraduate males. You collect your data (obtain your sample) by
+standing outside the basketball team’s locker room and recording the
+height of the undergraduates who enter.
 
 *** Missing data: Trade volume of pairs of countries
+
 - The amount of commodities that two countries can trade depends on
   GDP of two countries, industrial structures, factor abundance,
   etc.
 - We can get the data on trade volume between pairs of countries
   from World Bank, Penn World Table, etc. 
-- Using the data of observed trade volume between pairs of countries
-  can lead to sample selection bias because the sample selection
-  process omit the pairs of countries that do not trade with each
-  other. But the fact that two countries do not trade may also bear
-  some economic meaning that can influence the causal effect of the
-  variables of interest on trade volume. 
+- Sample selection bias occurs due to the non-trading pairs.
 
-*** Solutions to sample selection bias 
-- Collect the sample in a way that avoids sample. 
+** Solutions to sample selection bias 
+
+- Collect the sample in a way that avoids sample selection.
 - Heckman's two-step method.
 - Randomized controlled experiment.
 - Construct a model of the sample selection problem and estimate that
   model. 
 
-* COMMENT Simultaneous causality
+* Simultaneous causality
 
 ** Simultaneous causality
 Up to now, all we examined is how $X$ can cause $Y$. What if $Y$ causes
@@ -600,7 +580,7 @@ exist.
 - Use instrumental variables regression to estimate the causal effect
   of interest (effect of X on Y, ignoring effect of Y on X)
 
-* COMMENT Inconsistency of Standard Errors
+* Inconsistency of Standard Errors
 
 ** Sources of inconsistency of OLS standard errors
 Inconsistent standard errors pose a different threat to internal
@@ -671,7 +651,7 @@ and spatial correlation.
   assumption is not valid.
 
 ** Solutions to correlation of the error term across observations
-- use the *heteroskedasticity-and-auto-correlation-consistent
+- Use the *heteroskedasticity-and-auto-correlation-consistent
   standard errors (HAC)*. We will learn how to handle serial
   correlation in time series data in the next two semesters. 
 

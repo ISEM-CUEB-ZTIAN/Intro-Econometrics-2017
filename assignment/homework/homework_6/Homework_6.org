@@ -1,6 +1,6 @@
 #+TITLE: Homework Set 6
 #+AUTHOR:
-#+DATE: Due on June 5th, 2017
+#+DATE: Due on TBA
 #+OPTIONS: toc:nil H:1 num:0
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]

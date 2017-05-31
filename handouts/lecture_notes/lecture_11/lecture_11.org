@@ -442,13 +442,15 @@ following two examples.
     some economic meaning that can influence the causal effect of the
     variables of interest on trade volume. 
 
-**** Solutions to sample selection bias 
-- Collect the sample in a way that avoids sample
+*** Solutions to sample selection bias 
+- Collect the sample in a way that avoids sample selection. 
+- Heckman's two-step method.
 - Randomized controlled experiment.
 - Construct a model of the sample selection problem and estimate that
   model. 
 
 ** Simultaneous causality
+
 Up to now, all we examined is how $X$ can cause $Y$. What if $Y$ causes
 $X$? If $Y$ does cause $X$ in some way, there is *simultaneous
 causality* problem, which lead to biased and inconsistent OLS

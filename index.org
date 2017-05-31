@@ -9,6 +9,11 @@ Econometrics offered at ISEM, CUEB, in the 2nd semester of the
 2016-2017 academic year.
 
 * Announcement
+** [2017-05-31 Wed]
+- [[*Homework set #6][Homework set #6]] is assigned. You can turn it in on the day of final
+  exam, which is TBA. 
+- The sample final exam is here, [[file+sys:assignment/final/EconometricsFinalSample2017.docx][sample test.]]
+
 ** [2017-05-14 Sun]
 [[*Homework set #5][Homework set #5]] is assigned, which is due on May 22nd.
 
@@ -110,6 +115,7 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - Lecture notes ([[file:handouts/lecture_notes/lecture_11/lecture_11.pdf][pdf]], incomplete)
 - Slides ([[file:handouts/lecture_notes/lecture_11/slides_lecture_11.pdf][beamer]], incomplete)
 
+
 * Homework
 
 ** Homework set #1
@@ -135,3 +141,6 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 
 ** Homework set #5
 - Homework set #5: [[file:assignment/homework/homework_5/homework_5.pdf][pdf]]. Data file, [[file:assignment/homework/homework_5/data.zip][zip]].
+
+** Homework set #6
+- Homework set #6: [[file:assignment/homework/homework_6/Homework_6.pdf][pdf]]. Data file, [[file:assignment/homework/homework_6/data.zip][zip]].
