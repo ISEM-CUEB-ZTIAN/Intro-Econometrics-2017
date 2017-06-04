@@ -111,6 +111,8 @@ Read carefully the syllabus ([[file:handouts/syllabus/syllabus_econometrics_2017
 - Lecture notes ([[file:handouts/lecture_notes/lecture_11/lecture_11.pdf][pdf]], incomplete)
 - Slides ([[file:handouts/lecture_notes/lecture_11/slides_lecture_11.pdf][beamer]], incomplete)
 
+** Final review
+- The final review: ([[file:handouts/lecture_notes/finalreview/finalreview_2017.pdf][pdf]])
 
 * Homework
 

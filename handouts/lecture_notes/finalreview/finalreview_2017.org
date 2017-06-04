@@ -1,0 +1,503 @@
+#+TITLE: Review of Econometrics
+#+DATE: June 5th, 2017
+#+OPTIONS: toc:nil H:3 num:2
+#+PROPERTY: header-args:R  :session my-r-session
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper,10pt]
+#+LATEX_HEADER: \usepackage[margin=1.0in]{geometry}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+#+LATEX_HEADER: \newtheorem{mydef}{Definition}
+#+LATEX_HEADER: \newtheorem{mythm}{Theorem}
+#+LATEX_HEADER: \newcommand{\dx}{\mathrm{d}}
+#+LATEX_HEADER: \newcommand{\var}{\mathrm{Var}}
+#+LATEX_HEADER: \newcommand{\cov}{\mathrm{Cov}}
+#+LATEX_HEADER: \newcommand{\corr}{\mathrm{Corr}}
+#+LATEX_HEADER: \newcommand{\pr}{\mathrm{Pr}}
+#+LATEX_HEADER: \newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+#+LATEX_HEADER: \DeclareMathOperator*{\plim}{plim}
+#+LATEX_HEADER: \newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+
+* The Essence of the OLS Estimation
+Multiple regression model involves the models as follows
+\begin{equation}
+\label{eq:multi-regress-1}
+Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_k X_{ki} + u_i,\; i = 1, \ldots, n
+\end{equation}
+
+Or in matrix notation
+\begin{equation}
+\label{eq:multi-regress-m}
+\mathbf{Y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{u}
+\end{equation}
+
+** The OLS estimation
+
+The OLS estimator is the solution to the minimization problem that
+minimizes the sum of squared prediction mistakes (residuals)
+\begin{equation}
+\label{eq:ols-multi-regress}
+\operatorname*{Minimize}_{b_i,i=0,\dotsc,k}\: \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki})^2
+\end{equation}
+
+*** When $k = 2$
+\begin{align}
+\hat{\beta}_1 & = \frac{\sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sum_{i=1}^n (X_i - \bar{X})^2}  \label{eq:betahat-1} \\
+\hat{\beta}_0 & = \bar{Y} - \hat{\beta}_1 \bar{X}  \label{eq:betahat-0}
+\end{align}
+
+*** In general
+\begin{equation}
+\label{eq:betahat-mult}
+\boldsymbol{\hat{\beta}} = (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Y}
+\end{equation}
+
+** Measures of fit
+*** SER
+\begin{equation}
+\label{eq:ser-m}
+SER = s_{\hat{u}},\; \text{ where } s^2_{\hat{u}} = \frac{1}{n-k-1} \sum_{i=1}^n \hat{u}_i^2 =\frac{\mathbf{\hat{u}}^{\prime} \mathbf{\hat{u}}}{n-k-1} = \frac{SSR}{n-k-1}
+\end{equation}
+*** $R^2$
+- The total sum of squares (TSS): $TSS = \sum_{i=1}^n (Y_i - \bar{Y})^2$
+- The explained sum of squares (ESS): $ESS = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2$
+- The sum of squared residuals (SSR): $SSR = \sum_{i=1}^n
+     \hat{u}_i^2$
+- An important equality is $TSS = ESS + SSR$, which holds only when we
+  use the OLS estimation. 
+
+\begin{equation}
+\label{eq:r2-center} 
+R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
+\end{equation}
+
+*** The Adjusted $R^2$
+\begin{equation}
+\label{eq:adj-r2}
+\bar{R}^2 = 1 - \frac{n-1}{n-k-1}\frac{SSR}{TSS} = 1 - \frac{s^2_u}{s^2_Y}
+\end{equation}
+
+- What is the purpose of designing the adjusted $R^2$?
+
+  It is to alleviate the problem of $R^2$ that when a new regressor is
+  added, as long as its coefficient is not zero, $R^2$ will always
+  increase, regardless of whether the new regressor is a determinant
+  of $Y$. 
+
+*** The limitation of $R^2$ and $\bar{R}^2$
+- A high $R^2$ or $\bar{R}^2$ does not mean that you have eliminated omitted variable bias.
+- A high $R^2$ or $\bar{R}^2$ does not mean that you have an unbiased estimator of a causal effect ($\beta_1$).
+- A high $R^2$ or $\bar{R}^2$ does not mean that the included
+  variables are statistically significant. This must be determined
+  using hypotheses tests.
+
+** The least squares assumptions
+- Assumption #1: $E(u_i | \mathbf{X}_i) = 0$
+- Assumption #2: $(Y_i, \mathbf{X}_i^{\prime})\, i=1, \ldots, n$ are i.i.d.
+- Assumption #3: Large outliers are unlikely, i.e.,, $0 < E(\mathbf{X}^4) < \infty$ and $0 < E(\mathbf{Y}^4) < \infty$
+- Assumption #4: No perfect multicollinearity
+** Sampling distributions of the OLS estimators
+*** Unbiasedness:
+$E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}$
+*** Consistency: 
+$\plim_{n \rightarrow \infty} \hat{\boldsymbol{\beta}} = \boldsymbol{\beta}$
+*** Efficiency: 
+The Gauss-Markov theorem ensures that the OLS is the BLUE under the least
+squares assumptions plus the homoskedasticity assumption. 
+*** The asymptotic normal distribution: 
+\begin{equation}
+\label{eq:normal-bhat-m}
+\hat{\boldsymbol{\beta}} \rarrowd{d} N(\boldsymbol{\beta}, \mathbf{\Sigma_{\hat{\boldsymbol{\beta}}}})
+\end{equation}
+where $\mathbf{\Sigma_{\hat{\boldsymbol{\beta}}}} =
+\var(\hat{\boldsymbol{\beta}} | \mathbf{X})$ for which use
+Equation (\ref{eq:varbhat-hm}) for the homoskedastic case and Equation
+(\ref{eq:varbhat-ht}) for the heteroskedastic case. 
+\begin{align}
+\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) &= \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1} \label{eq:varbhat-hm} \\
+\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}} | \mathbf{X}) &= \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{\Sigma} (\mathbf{X}^{\prime} \mathbf{X})^{-1} \label{eq:varbhat-ht}
+\end{align} 
+
+* Hypothesis Test Concerning the Coefficients in Multiple Regression Models
+** The t test
+*** A single hypothesis test
+- Two sided: \[ H_0:\, \beta_j = \beta_{j,0} \text{ vs. } H_1:\, \beta_j \neq
+  \beta_{j,0} \] 
+- One sided: \[ H_0:\, \beta_j = \beta_{j,0} \text{ vs. } H_1:\, \beta_j <
+  \beta_{j,0} \]
+*** The t statistics
+\[ t = \frac{\hat{\beta}_j - \beta_{j,0}}{SE(\hat{\beta}_j)} \]
+where $SE(\hat{\beta}_j)$ is the *heteroskedasticity-robust* standard error of $\hat{\beta}_j$. 
+
+*** The confidence interval
+\[ \left[\hat{\beta}_j - 1.96 SE(\hat{\beta}_j),\; \hat{\beta}_j +
+1.96 SE(\hat{\beta}_j)\right] \]
+
+** The F test
+*** A joint hypothesis: linear and involving more than one coefficients
+\begin{equation}
+\label{eq:jnt-hypo-1}
+H_0: \beta_1 = \beta_{1,0},\ \ldots, \beta_q = \beta_{q,0} \text{ vs. } H_1: \text{at least one restriction does not hold}
+\end{equation} 
+\begin{equation}
+\label{eq:jnt-hyp-2}
+H_0:\, \beta_1 = \beta_2 \text{ vs. } H_1:\, \beta_1 \neq \beta_2
+\end{equation}
+or
+\begin{equation}
+\label{eq:jnt-hyp-3}
+H_0:\, \beta_1 + \beta_2 = 1 \text{ vs. } H_1:\, \beta_1 + \beta_2 \neq 1
+\end{equation}
+or more generally, 
+\begin{equation}
+\label{eq:jnt-hyp-4}
+H_0: \beta_1 + \beta_2 = 0,\, 2\beta_2 + 4\beta_3 + \beta_4 = 3 \text{ vs. } H_1:\, \text{at least one restriction does not hold}
+\end{equation}
+\begin{equation}
+\label{eq:jnt-hyp-g}
+H_0:\, \mathbf{R}\boldsymbol{\beta} = \mathbf{r} \text{ vs. } H_1: \mathbf{R}\boldsymbol{\beta} \neq \mathbf{r}
+\end{equation}
+
+*** The F-statistic
+\begin{equation}
+\label{eq:ftest-gen}
+F = \frac{1}{q}(\mathbf{R}\hat{\boldsymbol{\beta}} - \mathbf{r})^{\prime} \left[ \mathbf{R} \widehat{\var(\hat{\boldsymbol{\beta}})} \mathbf{R}^{\prime} \right]^{-1} (\mathbf{R}\hat{\boldsymbol{\beta}} - \mathbf{r})
+\end{equation}
+
+- The F distribution: $F \overset{a}{\sim} F(q, \infty)$
+
+- The homoskedasticity-only F statistic
+  \begin{equation}
+  \label{eq:ftest-hm-r}
+  F = \frac{(SSR_{\text{restrict}} - SSR_{\text{unrestrict}})/q}{SSR_{\text{unrestrict}}/(n-k-1)} = \frac{(R^2_{\text{unrestrict}} - R^2_{\text{restrict}})/q}{(1 - R^2_{\text{unrestrict}})/(n-k-1)} \sim F(q, n-k-1)
+  \end{equation}
+
+*** The confidence set
+A 95% confidence set for two or more coefficients is 
+- a set that contains the true population values of these coefficients
+  in 95% of randomly drawn samples.
+- an ellipse containing the pairs of values of $\beta_1$ and
+  $\beta_2$ that cannot be rejected using the F-statistic at the 5%
+  significance level
+- $\{\beta_1, \beta_2:\, F_{\beta_1,\beta_2} <
+  c_F\}$, where $c_F$ is the 5% critical value of the $F(2, \infty)$
+
+* Nonlinear regression models
+** A general nonlinear model
+A general nonlinear regression model is 
+\begin{equation}
+\label{eq:nl-general}
+Y_i = f(\mathbf{X}_i; \boldsymbol{\theta}) + u_i
+\end{equation}
+
+The effect of $Y$ of a change in $X$ can be computed as
+\begin{equation}
+\label{eq:nl-gen-effect}
+\Delta Y = f(X_1 + \Delta X_1, X_2, \ldots, X_k; \boldsymbol{\theta}) - f(X_1, X_2, \ldots, X_k; \boldsymbol{\theta})
+\end{equation}
+
+** Polynomials
+*** A polynomial regression model of degree r
+\begin{equation}
+\label{eq:poly-r}
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \cdots + \beta_r X_i^r + u_i
+\end{equation}
+
+*** Testing the null hypothesis that the population regression function is linear
+\[ H_0:\, \beta_2 = 0, \beta_3 = 0, ..., \beta_r = 0 \text{ vs. }
+H_1:\, \text{ at least one } \beta_j \neq 0, j = 2, \ldots, r \]
+- Use F statistic to test this joint hypothesis. The number of
+  restriction is $q = r-1$.
+
+** Logarithms
+*** Case I: linear-log model
+\begin{equation}
+\label{eq:linear-log}
+Y_i = \beta_0 + \beta_1 \ln(X_i) + u_i, i = 1, \ldots, n
+\end{equation}
+- a 1% change in $X$ is associated with a change in $Y$ of
+  0.01\beta_1.
+
+*** Case II: log-linear model 
+\begin{equation}
+\label{eq:log-linear}
+\ln(Y_i) = \beta_0 + \beta_1 X_i + u_i
+\end{equation}
+- a one-unit change in $X$ is associated with a $100 \times \beta_1\%$
+  change in $Y$
+
+*** Case III: log-log model
+ \begin{equation}
+ \label{eq:log-log}
+ \ln(Y_i) = \beta_0 + \beta_1 \ln(X_i)
+ \end{equation}
+ - 1% change in $X$ is associated with a \beta_1% change in $Y$
+   because
+
+** Interactions between independent variables
+*** Interaction between two binary variables
+\begin{equation}
+\label{eq:interact-dd}
+Y_i = \beta_0 + \beta_1 D_{1i} + \beta_2 D_{2i} + \beta_3 (D_{1i} \times D_{2i}) + u_i
+\end{equation}
+
+*** Interactions between a continuous and a binary variable
+**** Different intercept, same slope.
+\begin{equation}
+\label{eq:interact-dx-a}
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 D_i + u_i
+\end{equation}
+**** Different intercepts and different slopes.
+\begin{equation}
+\label{eq:interact-dx-b}
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 D_i + \beta_3 (X_i \times D_i) + u_i
+\end{equation}
+**** Different intercepts and same intercept.
+\begin{equation}
+\label{eq:interact-dx-c}
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 (X_i \times D_i) + u_i
+\end{equation}
+*** Interactions between two continuous variables
+\begin{equation}
+\label{eq:interact-xx}
+Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 (X_{1i} \times X_{2i}) + u_i
+\end{equation}
+
+* Assessing regression analysis
+** Internal and external validity
+*** Internal validity
+
+The statistical inferences about causal effects are valid for the
+population being studied.
+
+*** Internal validity consists of two components
+
+- The estimator of the causal effect should be unbiased and
+  consistent.
+- Hypothesis tests should have the desired significance level (the
+  actual rejection rate of the test under the null hypothesis should
+  equal its desired significance level), and the confidence intervals
+  should have the desired confidence level. 
+
+*** External validity
+
+The statistical inferences can be generalized from the population and
+setting studied to other populations and settings, where the
+“setting” refers to the legal, policy, and physical environment
+and related salient features.
+
+** Threats to external validity
+*** Differences in populations
+*** Differences in settings
+
+** Threats to internal validity of multiple regression analysis
+*** The five main threats
+- Omitted variable bias
+- Wrong functional form
+- Errors-in-variables bias
+- Sample selection bias
+- Simultaneous causality bias
+
+All of these imply that $E(u_i|X_{1i},…,X_{ki}) \neq 0$ in which case
+OLS is biased and inconsistent.  
+
+*** Omitted variable bias
+**** The definition of omitted variable bias
+
+Omitted variable bias is the bias in the OLS esitmator that arises
+when the included regressors, $\mathbf{X}$, are correlated with
+omitted variables, $\mathbf{Z}$. 
+
+**** Solutions to omitted variable bias
+- When the omitted variables are observed, include them or control
+  variables that are measurable.
+- When the omitted variable are not observed
+  - Panel data model
+  - Instrumental variables method
+  - Randomized controlled experiment
+
+*** Misspecification of functional form
+
+We consider functional form misspecification as a type of omitted
+variable bias, that is, we omit the appropriate nonlinear terms in the
+regression model. 
+
+*** Measurement error and errors-in-variable bias
+
+\begin{equation}
+\begin{split}
+Y_i &= \beta_0 + \beta_1 \tilde{X}_i + [\beta_1 (X_i - \tilde{X}_i) + u_i] \\
+&= \beta_0 + \beta_1 \tilde{X}_i + v_i \label{eq:err-in-var}
+\end{split}
+\end{equation}
+
+**** The classical measurement error model
+\begin{equation}
+\label{eq:eiv-class}
+\tilde{X}_i = X_i + w_i, \text{ where } \corr(w_i, X_i) = 0 \text{
+and } \corr(w_i, u_i) = 0
+\end{equation}
+It follows that $\corr(w_i, \tilde{X}_i) \neq 0$. 
+
+With the classical measurement error model, the OLS estimator
+$\hat{\beta}_1$ of Equation (\ref{eq:err-in-var}) has the probability
+limit
+\begin{equation}
+\label{eq:eiv-lim}
+\hat{\beta}_1 \rarrowd{p} \frac{\sigma^2_X}{\sigma^2_X + \sigma^2_w}\beta_1
+\end{equation}
+$\hat{\beta}_1$ is an inconsistent estimator of $\beta_1$. 
+
+**** COMMENT The best-guess error model
+\begin{equation*}
+\tilde{X}_i = E(X_i | \Phi_i)
+\end{equation*}
+It follows that $\cov(w_i, \tilde{X}_i) = E(w_i \tilde{X}_i) = 0$. 
+
+With the best-guess model, the OLS estimator $\hat{\beta}_1$ is
+consistent. 
+
+**** Solutions
+***** Instrumental variables method
+***** Modeling the measurement errors directly, and adjusting the OLS estimation accordingly
+
+*** Missing data and sample selection
+**** Missing data at random
+
+Data are missing for purely random reasons. The OLS estimator is
+unbiased. 
+
+**** Missing data based on $X$
+
+Data are missing based on $X$ but unrelated with the data generating
+process of $Y$. The OLS estimator is unbiased. 
+
+**** Sample selection bias
+
+The sample selection process affect the value of the dependent
+variable $Y$ and the regressors $X$. The OLS estimator is biased. 
+
+**** Solutions to sample selection bias 
+- Collect the sample in a way that avoids sample. 
+- Heckman's two-step method.
+- Randomized controlled experiment.
+- Construct a model of the sample selection problem and estimate that
+  model. 
+
+*** Simultaneous causality
+
+\begin{gather*}
+Y_i = \beta_0 + \beta_1 X_i + u_i \\
+X_i = \gamma_0 + \gamma_1 Y_i + v_i
+\end{gather*}
+
+**** Solutions to simultaneous causality bias
+
+1. Randomized controlled experiment
+2. Simultaneous equation estimation
+3. Instrumental variables
+
+* COMMENT Regression with panel data
+\[ (X_{it}, Y_{it}),\; i = 1, \ldots, n \text{ and } t = 1, \ldots, T
+\]
+** The advantages of panel data
+With panel data we can control for factors that:
+- Vary across entities but do not vary over time
+- Could cause omitted variable bias if they are omitted
+- Are unobserved or unmeasured – and therefore cannot be included in
+  the regression using multiple regression
+
+Here’s the key idea: If an omitted variable does not change over time,
+then any changes in $Y$ over time cannot be caused by the
+omitted variable.
+** The entity fixed effects model
+*** The fixed effects regression model with different intercepts
+\begin{equation}
+\label{eq:fe-a}
+Y_{it} = \mathbf{X}_{it}^{\prime} \boldsymbol{\beta} + \alpha_i + u_i, i=1,\dotsc,n, t=1,\dots,T
+\end{equation}
+*** The fixed effects regression model with binary variables
+\begin{equation}
+\label{eq:fe-b}
+Y_{it} = \mathbf{X}_{it}^{\prime} \boldsymbol{\beta} + \beta_0 + \gamma_2 D2_{it} + \gamma_3 D3_{it} + \cdots + \gamma_n Dn_{it} + u_{it}
+\end{equation}
+
+- Keep in mind the dummy variable trap problem!
+
+** The entity and time fixed effects model
+\begin{equation}
+\label{eq:2fe-a}
+Y_{it} = \mathbf{X}_{it}^{\prime} \boldsymbol{\beta} + \alpha_i + \lambda_t + u_{it}
+\end{equation}
+Or, equivalently
+\begin{equation}
+\label{eq:2fe-b}
+\begin{split}
+Y_{it} &= \mathbf{X}_{it}^{\prime} \boldsymbol{\beta} + \beta_0 \\
+&+ \gamma_2 D2_{it} + \gamma_3 D3_{it} + \cdots + \gamma_n Dn_{it} \\
+&+ \delta_2 B2_{it} + \delta_3 B3_{it} + \cdots + \delta_T BT_{it} + u_{it}
+\end{split}
+\end{equation}
+
+** Estimation
+*** The "before and after" estimation
+When $T = 2$, we estimate a model with the first difference.
+\[ \Delta Y_i = \Delta \mathbf{X}_i \boldsymbol{\beta} + \Delta u_i, i=1,\dotsc,n  \]
+where $\Delta Y_i = Y_{i1} - Y_{i0}$, and $\Delta \mathbf{X}_i =
+\mathbf{X}_{i1} - \mathbf{X}_{i0}$.
+
+*** The "entity-demeaned" OLS estimation
+1. Compute the entity demeaned variables. That is, Let 
+   - $\tilde{Y}_{it} = Y_{it} - \frac{1}{T} \sum_{t=1}^T Y_{it} =
+     Y_{it} - \bar{Y}_{i\cdot}$
+   - $\tilde{X}_{l,it} = X_{l,it} - \frac{1}{T} \sum_{t=1}^T X_{l,it}
+     = X_{l,it} - \bar{X}_{l,i\cdot}$
+   - and $\tilde{u}_{it} = u_{it} - \frac{1}{T} \sum_{t=1}^T u_{it} =
+     u_{it} - u_{i\cdot}$
+   for $i = 1, 2, \ldots, n$ and $l = 1, 2, \ldots, k$.
+2. Using the OLS method to estimate the entity demeaned regression
+   model
+   \begin{equation}
+   \label{eq:lsdv}
+   \tilde{Y}_{it} = \tilde{\mathbf{X}}_{it}^{\prime}
+   \boldsymbol{\beta} + \tilde{u}_{it}
+   \end{equation}
+   where $\tilde{\mathbf{X}}_{it} = (\tilde{X}_{1,it}, \ldots,
+   \tilde{X}_{k,it})^{\prime}$. 
+   - The number of observations: $nT$.
+   - The number of parameters to be estimated: $k$.
+   - $\hat{\boldsymbol{\beta}} = (\tilde{\mathbf{X}}^{\prime}
+     \tilde{\mathbf{X}})^{-1} \tilde{\mathbf{X}}^{\prime}
+     \tilde{\mathbf{Y}}$, where $\tilde{\mathbf{X}}$ is the $nT \times
+     k$ matrix of entity-demeaned regressors, and $\tilde{\mathbf{}}$
+     is the $nT \times 1$ vector of the dependent variable.
+
+*** The "before and after" estimation and the "entity-demeaned" estimation are equivalent for $T=2$
+
+** The fixed effects regression assumptions
+The fixed effects regression assumptions are
+1. $u_{it}$ has conditional mean zero: $E(u_{it} | \mathbf{X}_{i1},
+   \mathbf{X}_{i2}, \ldots, \mathbf{X}_{iT}, \alpha_i) = 0$.
+2. $(\mathbf{X}_{i1}, \mathbf{X}_{i2}, \ldots, \mathbf{X}_{iT},
+   u_{i1}, u_{i2}, \ldots, u_{iT}), i = 1, \ldots, n$ are i.i.d. draws
+   from their joint distribution.
+3. Large outliers are unlikely: $(\mathbf{X}_{it}, u_{it})$ have
+   nonzero finite fourth moments.
+4. There is no perfect multicollinearity. 
+
+*** Autocorrelation
+- $u_{it}$ and $u_{is}$ can be correlated
+- Use the clustered standard errors (HAC) for autocorrelation
+
+ 
+
+

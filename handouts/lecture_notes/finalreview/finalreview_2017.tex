@@ -1,0 +1,535 @@
+% Created 2017-06-04 Sun 14:39
+% -*- latex-run-command: pdflatex -*-
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{parskip}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+\newtheorem{mydef}{Definition}
+\newtheorem{mythm}{Theorem}
+\newcommand{\dx}{\mathrm{d}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\newcommand{\corr}{\mathrm{Corr}}
+\newcommand{\pr}{\mathrm{Pr}}
+\newcommand{\rarrowd}[1]{\xrightarrow{\text{ \textit #1 }}}
+\DeclareMathOperator*{\plim}{plim}
+\newcommand{\plimn}{\plim_{n \rightarrow \infty}}
+\setcounter{secnumdepth}{2}
+\author{Zheng Tian}
+\date{June 5th, 2017}
+\title{Review of Econometrics}
+\hypersetup{
+ pdfauthor={Zheng Tian},
+ pdftitle={Review of Econometrics},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{The Essence of the OLS Estimation}
+\label{sec:orgb88d612}
+Multiple regression model involves the models as follows
+\begin{equation}
+\label{eq:multi-regress-1}
+Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \cdots + \beta_k X_{ki} + u_i,\; i = 1, \ldots, n
+\end{equation}
+
+Or in matrix notation
+\begin{equation}
+\label{eq:multi-regress-m}
+\mathbf{Y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{u}
+\end{equation}
+
+\subsection{The OLS estimation}
+\label{sec:org3024f6b}
+
+The OLS estimator is the solution to the minimization problem that
+minimizes the sum of squared prediction mistakes (residuals)
+\begin{equation}
+\label{eq:ols-multi-regress}
+\operatorname*{Minimize}_{b_i,i=0,\dotsc,k}\: \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki})^2
+\end{equation}
+
+\subsubsection*{When \(k = 2\)}
+\label{sec:org709a7b3}
+\begin{align}
+\hat{\beta}_1 & = \frac{\sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sum_{i=1}^n (X_i - \bar{X})^2}  \label{eq:betahat-1} \\
+\hat{\beta}_0 & = \bar{Y} - \hat{\beta}_1 \bar{X}  \label{eq:betahat-0}
+\end{align}
+
+\subsubsection*{In general}
+\label{sec:org91bd64b}
+\begin{equation}
+\label{eq:betahat-mult}
+\boldsymbol{\hat{\beta}} = (\mathbf{X}^{\prime} \mathbf{X})^{-1} \mathbf{X}^{\prime} \mathbf{Y}
+\end{equation}
+
+\subsection{Measures of fit}
+\label{sec:org4fc6d9c}
+\subsubsection*{SER}
+\label{sec:org69875e9}
+\begin{equation}
+\label{eq:ser-m}
+SER = s_{\hat{u}},\; \text{ where } s^2_{\hat{u}} = \frac{1}{n-k-1} \sum_{i=1}^n \hat{u}_i^2 =\frac{\mathbf{\hat{u}}^{\prime} \mathbf{\hat{u}}}{n-k-1} = \frac{SSR}{n-k-1}
+\end{equation}
+\subsubsection*{\(R^2\)}
+\label{sec:orgcf26742}
+\begin{itemize}
+\item The total sum of squares (TSS): \(TSS = \sum_{i=1}^n (Y_i - \bar{Y})^2\)
+\item The explained sum of squares (ESS): \(ESS = \sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2\)
+\item The sum of squared residuals (SSR): \(SSR = \sum_{i=1}^n
+     \hat{u}_i^2\)
+\item An important equality is \(TSS = ESS + SSR\), which holds only when we
+use the OLS estimation.
+\end{itemize}
+
+\begin{equation}
+\label{eq:r2-center} 
+R^2 = \frac{ESS}{TSS} = 1 - \frac{SSR}{TSS}
+\end{equation}
+
+\subsubsection*{The Adjusted \(R^2\)}
+\label{sec:orga209b3b}
+\begin{equation}
+\label{eq:adj-r2}
+\bar{R}^2 = 1 - \frac{n-1}{n-k-1}\frac{SSR}{TSS} = 1 - \frac{s^2_u}{s^2_Y}
+\end{equation}
+
+\begin{itemize}
+\item What is the purpose of designing the adjusted \(R^2\)?
+
+It is to alleviate the problem of \(R^2\) that when a new regressor is
+added, as long as its coefficient is not zero, \(R^2\) will always
+increase, regardless of whether the new regressor is a determinant
+of \(Y\).
+\end{itemize}
+
+\subsubsection*{The limitation of \(R^2\) and \(\bar{R}^2\)}
+\label{sec:org93d3af2}
+\begin{itemize}
+\item A high \(R^2\) or \(\bar{R}^2\) does not mean that you have eliminated omitted variable bias.
+\item A high \(R^2\) or \(\bar{R}^2\) does not mean that you have an unbiased estimator of a causal effect (\(\beta_1\)).
+\item A high \(R^2\) or \(\bar{R}^2\) does not mean that the included
+variables are statistically significant. This must be determined
+using hypotheses tests.
+\end{itemize}
+
+\subsection{The least squares assumptions}
+\label{sec:org25f7b7c}
+\begin{itemize}
+\item Assumption \#1: \(E(u_i | \mathbf{X}_i) = 0\)
+\item Assumption \#2: \((Y_i, \mathbf{X}_i^{\prime})\, i=1, \ldots, n\) are i.i.d.
+\item Assumption \#3: Large outliers are unlikely, i.e.,, \(0 < E(\mathbf{X}^4) < \infty\) and \(0 < E(\mathbf{Y}^4) < \infty\)
+\item Assumption \#4: No perfect multicollinearity
+\end{itemize}
+\subsection{Sampling distributions of the OLS estimators}
+\label{sec:org39c1b8b}
+\subsubsection*{Unbiasedness:}
+\label{sec:orgae23a4a}
+\(E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}\)
+\subsubsection*{Consistency:}
+\label{sec:org8cd12bd}
+\(\plim_{n \rightarrow \infty} \hat{\boldsymbol{\beta}} = \boldsymbol{\beta}\)
+\subsubsection*{Efficiency:}
+\label{sec:org4f2576c}
+The Gauss-Markov theorem ensures that the OLS is the BLUE under the least
+squares assumptions plus the homoskedasticity assumption. 
+\subsubsection*{The asymptotic normal distribution:}
+\label{sec:org6cf3692}
+\begin{equation}
+\label{eq:normal-bhat-m}
+\hat{\boldsymbol{\beta}} \rarrowd{d} N(\boldsymbol{\beta}, \mathbf{\Sigma_{\hat{\boldsymbol{\beta}}}})
+\end{equation}
+where \(\mathbf{\Sigma_{\hat{\boldsymbol{\beta}}}} =
+\var(\hat{\boldsymbol{\beta}} | \mathbf{X})\) for which use
+Equation (\ref{eq:varbhat-hm}) for the homoskedastic case and Equation
+(\ref{eq:varbhat-ht}) for the heteroskedastic case. 
+\begin{align}
+\var(\hat{\boldsymbol{\beta}} | \mathbf{X}) &= \sigma^2_u (\mathbf{X}^{\prime} \mathbf{X})^{-1} \label{eq:varbhat-hm} \\
+\var_{\mathrm{h}}(\hat{\boldsymbol{\beta}} | \mathbf{X}) &= \left(\mathbf{X}^{\prime} \mathbf{X}\right)^{-1} \mathbf{\Sigma} (\mathbf{X}^{\prime} \mathbf{X})^{-1} \label{eq:varbhat-ht}
+\end{align} 
+
+\section{Hypothesis Test Concerning the Coefficients in Multiple Regression Models}
+\label{sec:orgcda6518}
+\subsection{The t test}
+\label{sec:org2c0e38c}
+\subsubsection*{A single hypothesis test}
+\label{sec:orgd918425}
+\begin{itemize}
+\item Two sided: \[ H_0:\, \beta_j = \beta_{j,0} \text{ vs. } H_1:\, \beta_j \neq
+  \beta_{j,0} \]
+\item One sided: \[ H_0:\, \beta_j = \beta_{j,0} \text{ vs. } H_1:\, \beta_j <
+  \beta_{j,0} \]
+\end{itemize}
+\subsubsection*{The t statistics}
+\label{sec:org1be51f3}
+\[ t = \frac{\hat{\beta}_j - \beta_{j,0}}{SE(\hat{\beta}_j)} \]
+where \(SE(\hat{\beta}_j)\) is the \textbf{heteroskedasticity-robust} standard error of \(\hat{\beta}_j\). 
+
+\subsubsection*{The confidence interval}
+\label{sec:org2be9693}
+\[ \left[\hat{\beta}_j - 1.96 SE(\hat{\beta}_j),\; \hat{\beta}_j +
+1.96 SE(\hat{\beta}_j)\right] \]
+
+\subsection{The F test}
+\label{sec:org957796b}
+\subsubsection*{A joint hypothesis: linear and involving more than one coefficients}
+\label{sec:org09e5530}
+\begin{equation}
+\label{eq:jnt-hypo-1}
+H_0: \beta_1 = \beta_{1,0},\ \ldots, \beta_q = \beta_{q,0} \text{ vs. } H_1: \text{at least one restriction does not hold}
+\end{equation} 
+\begin{equation}
+\label{eq:jnt-hyp-2}
+H_0:\, \beta_1 = \beta_2 \text{ vs. } H_1:\, \beta_1 \neq \beta_2
+\end{equation}
+or
+\begin{equation}
+\label{eq:jnt-hyp-3}
+H_0:\, \beta_1 + \beta_2 = 1 \text{ vs. } H_1:\, \beta_1 + \beta_2 \neq 1
+\end{equation}
+or more generally, 
+\begin{equation}
+\label{eq:jnt-hyp-4}
+H_0: \beta_1 + \beta_2 = 0,\, 2\beta_2 + 4\beta_3 + \beta_4 = 3 \text{ vs. } H_1:\, \text{at least one restriction does not hold}
+\end{equation}
+\begin{equation}
+\label{eq:jnt-hyp-g}
+H_0:\, \mathbf{R}\boldsymbol{\beta} = \mathbf{r} \text{ vs. } H_1: \mathbf{R}\boldsymbol{\beta} \neq \mathbf{r}
+\end{equation}
+
+\subsubsection*{The F-statistic}
+\label{sec:org0c49b94}
+\begin{equation}
+\label{eq:ftest-gen}
+F = \frac{1}{q}(\mathbf{R}\hat{\boldsymbol{\beta}} - \mathbf{r})^{\prime} \left[ \mathbf{R} \widehat{\var(\hat{\boldsymbol{\beta}})} \mathbf{R}^{\prime} \right]^{-1} (\mathbf{R}\hat{\boldsymbol{\beta}} - \mathbf{r})
+\end{equation}
+
+\begin{itemize}
+\item The F distribution: \(F \overset{a}{\sim} F(q, \infty)\)
+
+\item The homoskedasticity-only F statistic
+\begin{equation}
+\label{eq:ftest-hm-r}
+F = \frac{(SSR_{\text{restrict}} - SSR_{\text{unrestrict}})/q}{SSR_{\text{unrestrict}}/(n-k-1)} = \frac{(R^2_{\text{unrestrict}} - R^2_{\text{restrict}})/q}{(1 - R^2_{\text{unrestrict}})/(n-k-1)} \sim F(q, n-k-1)
+\end{equation}
+\end{itemize}
+
+\subsubsection*{The confidence set}
+\label{sec:org3e7e432}
+A 95\% confidence set for two or more coefficients is 
+\begin{itemize}
+\item a set that contains the true population values of these coefficients
+in 95\% of randomly drawn samples.
+\item an ellipse containing the pairs of values of \(\beta_1\) and
+\(\beta_2\) that cannot be rejected using the F-statistic at the 5\%
+significance level
+\item \(\{\beta_1, \beta_2:\, F_{\beta_1,\beta_2} <
+  c_F\}\), where \(c_F\) is the 5\% critical value of the \(F(2, \infty)\)
+\end{itemize}
+
+\section{Nonlinear regression models}
+\label{sec:orgcb0911e}
+\subsection{A general nonlinear model}
+\label{sec:org0bfa898}
+A general nonlinear regression model is 
+\begin{equation}
+\label{eq:nl-general}
+Y_i = f(\mathbf{X}_i; \boldsymbol{\theta}) + u_i
+\end{equation}
+
+The effect of \(Y\) of a change in \(X\) can be computed as
+\begin{equation}
+\label{eq:nl-gen-effect}
+\Delta Y = f(X_1 + \Delta X_1, X_2, \ldots, X_k; \boldsymbol{\theta}) - f(X_1, X_2, \ldots, X_k; \boldsymbol{\theta})
+\end{equation}
+
+\subsection{Polynomials}
+\label{sec:org13cf77e}
+\subsubsection*{A polynomial regression model of degree r}
+\label{sec:orge00e8fc}
+\begin{equation}
+\label{eq:poly-r}
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \cdots + \beta_r X_i^r + u_i
+\end{equation}
+
+\subsubsection*{Testing the null hypothesis that the population regression function is linear}
+\label{sec:org03f050a}
+\[ H_0:\, \beta_2 = 0, \beta_3 = 0, ..., \beta_r = 0 \text{ vs. }
+H_1:\, \text{ at least one } \beta_j \neq 0, j = 2, \ldots, r \]
+\begin{itemize}
+\item Use F statistic to test this joint hypothesis. The number of
+restriction is \(q = r-1\).
+\end{itemize}
+
+\subsection{Logarithms}
+\label{sec:orgfbab5c6}
+\subsubsection*{Case I: linear-log model}
+\label{sec:orgf414eec}
+\begin{equation}
+\label{eq:linear-log}
+Y_i = \beta_0 + \beta_1 \ln(X_i) + u_i, i = 1, \ldots, n
+\end{equation}
+\begin{itemize}
+\item a 1\% change in \(X\) is associated with a change in \(Y\) of
+0.01\(\beta_{\text{1}}\).
+\end{itemize}
+
+\subsubsection*{Case II: log-linear model}
+\label{sec:orge3f961d}
+\begin{equation}
+\label{eq:log-linear}
+\ln(Y_i) = \beta_0 + \beta_1 X_i + u_i
+\end{equation}
+\begin{itemize}
+\item a one-unit change in \(X\) is associated with a \(100 \times \beta_1\%\)
+change in \(Y\)
+\end{itemize}
+
+\subsubsection*{Case III: log-log model}
+\label{sec:org51a5347}
+\begin{equation}
+\label{eq:log-log}
+\ln(Y_i) = \beta_0 + \beta_1 \ln(X_i)
+\end{equation}
+\begin{itemize}
+\item 1\% change in \(X\) is associated with a \(\beta_{\text{1}}\)\% change in \(Y\)
+because
+\end{itemize}
+
+\subsection{Interactions between independent variables}
+\label{sec:orgc165caf}
+\subsubsection*{Interaction between two binary variables}
+\label{sec:orgac7488b}
+\begin{equation}
+\label{eq:interact-dd}
+Y_i = \beta_0 + \beta_1 D_{1i} + \beta_2 D_{2i} + \beta_3 (D_{1i} \times D_{2i}) + u_i
+\end{equation}
+
+\subsubsection*{Interactions between a continuous and a binary variable}
+\label{sec:org07d74fd}
+\begin{itemize}
+\item Different intercept, same slope.
+\label{sec:orgd180f3b}
+\begin{equation}
+\label{eq:interact-dx-a}
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 D_i + u_i
+\end{equation}
+\item Different intercepts and different slopes.
+\label{sec:orgc199c56}
+\begin{equation}
+\label{eq:interact-dx-b}
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 D_i + \beta_3 (X_i \times D_i) + u_i
+\end{equation}
+\item Different intercepts and same intercept.
+\label{sec:org36ce8eb}
+\begin{equation}
+\label{eq:interact-dx-c}
+Y_i = \beta_0 + \beta_1 X_i + \beta_2 (X_i \times D_i) + u_i
+\end{equation}
+\end{itemize}
+\subsubsection*{Interactions between two continuous variables}
+\label{sec:orgff4c0b5}
+\begin{equation}
+\label{eq:interact-xx}
+Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 (X_{1i} \times X_{2i}) + u_i
+\end{equation}
+
+\section{Assessing regression analysis}
+\label{sec:org62c8dff}
+\subsection{Internal and external validity}
+\label{sec:org21983c6}
+\subsubsection*{Internal validity}
+\label{sec:org94f646e}
+
+The statistical inferences about causal effects are valid for the
+population being studied.
+
+\subsubsection*{Internal validity consists of two components}
+\label{sec:org6b79d06}
+
+\begin{itemize}
+\item The estimator of the causal effect should be unbiased and
+consistent.
+\item Hypothesis tests should have the desired significance level (the
+actual rejection rate of the test under the null hypothesis should
+equal its desired significance level), and the confidence intervals
+should have the desired confidence level.
+\end{itemize}
+
+\subsubsection*{External validity}
+\label{sec:org7836f89}
+
+The statistical inferences can be generalized from the population and
+setting studied to other populations and settings, where the
+“setting” refers to the legal, policy, and physical environment
+and related salient features.
+
+\subsection{Threats to external validity}
+\label{sec:org1702159}
+\subsubsection*{Differences in populations}
+\label{sec:orgc135023}
+\subsubsection*{Differences in settings}
+\label{sec:orgab8a531}
+
+\subsection{Threats to internal validity of multiple regression analysis}
+\label{sec:orga2c285d}
+\subsubsection*{The five main threats}
+\label{sec:org293a488}
+\begin{itemize}
+\item Omitted variable bias
+\item Wrong functional form
+\item Errors-in-variables bias
+\item Sample selection bias
+\item Simultaneous causality bias
+\end{itemize}
+
+All of these imply that \(E(u_i|X_{1i},…,X_{ki}) \neq 0\) in which case
+OLS is biased and inconsistent.  
+
+\subsubsection*{Omitted variable bias}
+\label{sec:orgc09f1e4}
+\begin{itemize}
+\item The definition of omitted variable bias
+\label{sec:org2ced56b}
+
+Omitted variable bias is the bias in the OLS esitmator that arises
+when the included regressors, \(\mathbf{X}\), are correlated with
+omitted variables, \(\mathbf{Z}\). 
+
+\item Solutions to omitted variable bias
+\label{sec:org294d743}
+\begin{itemize}
+\item When the omitted variables are observed, include them or control
+variables that are measurable.
+\item When the omitted variable are not observed
+\begin{itemize}
+\item Panel data model
+\item Instrumental variables method
+\item Randomized controlled experiment
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{Misspecification of functional form}
+\label{sec:orgbd360d4}
+
+We consider functional form misspecification as a type of omitted
+variable bias, that is, we omit the appropriate nonlinear terms in the
+regression model. 
+
+\subsubsection*{Measurement error and errors-in-variable bias}
+\label{sec:org2022ac9}
+
+\begin{equation}
+\begin{split}
+Y_i &= \beta_0 + \beta_1 \tilde{X}_i + [\beta_1 (X_i - \tilde{X}_i) + u_i] \\
+&= \beta_0 + \beta_1 \tilde{X}_i + v_i \label{eq:err-in-var}
+\end{split}
+\end{equation}
+
+\begin{itemize}
+\item The classical measurement error model
+\label{sec:orgf4d01dd}
+\begin{equation}
+\label{eq:eiv-class}
+\tilde{X}_i = X_i + w_i, \text{ where } \corr(w_i, X_i) = 0 \text{
+and } \corr(w_i, u_i) = 0
+\end{equation}
+It follows that \(\corr(w_i, \tilde{X}_i) \neq 0\). 
+
+With the classical measurement error model, the OLS estimator
+\(\hat{\beta}_1\) of Equation (\ref{eq:err-in-var}) has the probability
+limit
+\begin{equation}
+\label{eq:eiv-lim}
+\hat{\beta}_1 \rarrowd{p} \frac{\sigma^2_X}{\sigma^2_X + \sigma^2_w}\beta_1
+\end{equation}
+\(\hat{\beta}_1\) is an inconsistent estimator of \(\beta_1\). 
+
+\item Solutions
+\label{sec:org17e1291}
+\begin{itemize}
+\item Instrumental variables method
+\label{sec:orgce16161}
+\item Modeling the measurement errors directly, and adjusting the OLS estimation accordingly
+\label{sec:orgb27026b}
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{Missing data and sample selection}
+\label{sec:org2fb64e6}
+\begin{itemize}
+\item Missing data at random
+\label{sec:orgae9db91}
+
+Data are missing for purely random reasons. The OLS estimator is
+unbiased. 
+
+\item Missing data based on \(X\)
+\label{sec:orgf515558}
+
+Data are missing based on \(X\) but unrelated with the data generating
+process of \(Y\). The OLS estimator is unbiased. 
+
+\item Sample selection bias
+\label{sec:orgdcab18f}
+
+The sample selection process affect the value of the dependent
+variable \(Y\) and the regressors \(X\). The OLS estimator is biased. 
+
+\item Solutions to sample selection bias
+\label{sec:orgb8d5b28}
+\begin{itemize}
+\item Collect the sample in a way that avoids sample.
+\item Heckman's two-step method.
+\item Randomized controlled experiment.
+\item Construct a model of the sample selection problem and estimate that
+model.
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{Simultaneous causality}
+\label{sec:org17a6710}
+
+\begin{gather*}
+Y_i = \beta_0 + \beta_1 X_i + u_i \\
+X_i = \gamma_0 + \gamma_1 Y_i + v_i
+\end{gather*}
+
+\begin{itemize}
+\item Solutions to simultaneous causality bias
+\label{sec:orgb76a57c}
+
+\begin{enumerate}
+\item Randomized controlled experiment
+\item Simultaneous equation estimation
+\item Instrumental variables
+\end{enumerate}
+\end{itemize}
+\end{document}
